@@ -1,0 +1,15 @@
+@media (max-width: 1024px) {
+    header ul.navbar-nav li a {
+        font-size: 14px;
+      
+        padding: 20px 0px;
+     
+    }
+}
+
+@media (max-width: 767px) {
+section.banner {
+    position: relative;
+    height: 500px;
+}
+}

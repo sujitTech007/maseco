@@ -1,0 +1,36 @@
+[24-Apr-2026 00:06:24 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/maseco/public_html/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home2/maseco/public_html/config/database.php on line 18
+[24-Apr-2026 00:06:24 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/maseco/public_html/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home2/maseco/public_html/config/services.php on line 18
+[24-Apr-2026 05:44:48 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/maseco/public_html/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home2/maseco/public_html/config/database.php on line 18
+[24-Apr-2026 05:44:48 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/maseco/public_html/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home2/maseco/public_html/config/services.php on line 18
+[13-Jul-2026 10:07:20 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/maseco/public_html/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home2/maseco/public_html/config/app.php on line 19
+[13-Jul-2026 10:07:21 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/maseco/public_html/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home2/maseco/public_html/config/database.php on line 18
+[01-Sep-2026 08:55:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/maseco/public_html/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home2/maseco/public_html/config/app.php on line 19
+[01-Sep-2026 08:55:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/maseco/public_html/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home2/maseco/public_html/config/database.php on line 18
+[01-Sep-2026 08:55:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/maseco/public_html/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home2/maseco/public_html/config/cache.php on line 18
