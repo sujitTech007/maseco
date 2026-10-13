@@ -8,7 +8,12 @@
 
     <!-- Background image and overlay -->
     <div class="position-absolute top-0 start-0 w-100 h-100"
-      style="background: linear-gradient(90deg, rgba(3,38,39,.94), rgba(3,38,39,.45)), url('{{ asset('assets/images/homebanner.png') }}') center/cover no-repeat;">
+      style="background:     linear-gradient(
+        90deg,
+        rgba(15, 35, 29, 0.68) 0%,
+        rgba(15, 35, 29, 0.48) 45%,
+        rgba(15, 35, 29, 0.12) 100%
+    ), url('{{ asset('assets/images/sustainable-materials.png') }}') center/cover no-repeat;">
     </div>
 
     <div class="container position-relative py-4 py-lg-5">
@@ -112,7 +117,7 @@
             <div class="col-6 col-md-3">
               <i class="fa fa-shield me-2 text-success"></i>
               <strong class="small">Verified Suppliers</strong>
-              <div class="small text-white-50">
+              <div class="small text-white">
                 Trusted textile partners
               </div>
             </div>
@@ -120,7 +125,7 @@
             <div class="col-6 col-md-3">
               <i class="fa fa-sliders me-2 text-success"></i>
               <strong class="small">Advanced Search</strong>
-              <div class="small text-white-50">
+              <div class="small text-white">
                 Find suitable materials
               </div>
             </div>
@@ -128,7 +133,7 @@
             <div class="col-6 col-md-3">
               <i class="fa fa-leaf me-2 text-success"></i>
               <strong class="small">Sustainable Textiles</strong>
-              <div class="small text-white-50">
+              <div class="small text-white">
                 Eco-conscious sourcing
               </div>
             </div>
@@ -136,7 +141,7 @@
             <div class="col-6 col-md-3">
               <i class="fa fa-comments me-2 text-success"></i>
               <strong class="small">Buyer–Seller Support</strong>
-              <div class="small text-white-50">
+              <div class="small text-white">
                 Connect and collaborate
               </div>
             </div>
@@ -150,304 +155,323 @@
   </section>
 
 
+
 <section class="maseco-featured py-5" id="featured-suppliers">
     <div class="container-fluid px-3 px-lg-5">
 
-        <!-- Section heading -->
-        <div class="featured-heading">
+        <!-- Heading -->
+        <div class="maseco-featured-heading">
             <div>
-                <span class="featured-eyebrow">
+                <span class="maseco-featured-eyebrow">
                     <i class="bi bi-leaf-fill"></i> SUSTAINABLE SOURCING
                 </span>
-                <h2>Meet our <span>featured suppliers.</span></h2>
-                <p>Thoughtfully sourced materials. Trusted textile partners.</p>
+                <h2>Featured <span>textile suppliers</span></h2>
+                <p>Discover trusted partners for responsible textile sourcing.</p>
             </div>
 
-            <a href="{{ url('/marketplace') }}" class="featured-view-all">
-                Explore all suppliers <i class="bi bi-arrow-up-right"></i>
+            <a href="{{ url('/marketplace') }}" class="maseco-view-all">
+                View all suppliers <i class="bi bi-arrow-right"></i>
             </a>
         </div>
 
         <!-- Supplier carousel -->
-        <div class="supplier-carousel">
+        <div class="maseco-supplier-carousel">
 
-            <button class="supplier-nav supplier-prev"
-                    type="button" aria-label="Previous suppliers">
-                <i class="bi bi-arrow-left"></i>
+            <button class="maseco-supplier-nav prev" type="button"
+                    aria-label="Previous suppliers">
+                <i class="bi bi-chevron-left"></i>
             </button>
 
-            <div class="supplier-track" id="supplierTrack">
+            <div class="maseco-supplier-track" id="masecoSupplierTrack">
 
                 <!-- Supplier 1 -->
-                <article class="supplier-card">
-                    <div class="supplier-image-wrap">
-                        <div class="supplier-image">
-                            <img src="{{ asset('assets/images/sustainable-materials.png') }}"
-                                 alt="GreenTextiles sustainable materials"
-                                 loading="lazy">
-                        </div>
+                <article class="maseco-supplier-card">
+                    <div class="maseco-supplier-photo">
+                        <img src="{{ asset('assets/images/sustainable-materials.png') }}"
+                             alt="GreenTextiles organic textile materials"
+                             loading="lazy">
 
-                        <span class="supplier-tag supplier-tag-green">
-                            <i class="bi bi-leaf-fill"></i> Eco materials
+                        <span class="maseco-verified">
+                            <i class="bi bi-patch-check-fill"></i> Supplier
                         </span>
 
-                        <span class="supplier-category">ORGANIC</span>
-
-                        <button class="supplier-favorite" type="button"
-                                aria-label="Add GreenTextiles to favourites"
+                        <button class="maseco-favorite" type="button"
+                                aria-label="Add GreenTextiles Co. to favourites"
                                 aria-pressed="false">
                             <i class="bi bi-heart"></i>
                         </button>
                     </div>
 
-                    <div class="supplier-specs">
-                        <div class="supplier-moq">
-                            <span>MINIMUM ORDER</span>
-                            <strong>500 kg</strong>
-                        </div>
-                        <div class="supplier-rating-box">
-                            <i class="bi bi-star-fill"></i>
-                            <strong>4.8</strong>
-                            <small>24 reviews</small>
-                        </div>
-                    </div>
-
-                    <div class="supplier-info">
-                        <span class="supplier-location">
-                            <i class="bi bi-geo-alt"></i> Bangladesh
-                        </span>
+                    <div class="maseco-supplier-details">
                         <h3>GreenTextiles Co.</h3>
-                        <div class="supplier-materials">
-                            <span>Organic cotton</span>
-                            <span>Linen</span>
-                            <span>Hemp</span>
+
+                        <p class="maseco-supplier-location">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            Bangladesh
+                        </p>
+
+                        <div class="maseco-supplier-meta">
+                            <span><i class="bi bi-box-seam-fill"></i> Organic textiles</span>
+                            <span><i class="bi bi-bounding-box"></i> MOQ: 500 kg</span>
                         </div>
-                        <a href="{{ url('/marketplace') }}" class="supplier-cta">
-                            View supplier <i class="bi bi-arrow-up-right"></i>
+
+                        <div class="maseco-supplier-price-row">
+                            <div class="maseco-supplier-moq">
+                                <small>MINIMUM ORDER</small>
+                                <strong>500 kg</strong>
+                            </div>
+                            <div class="maseco-supplier-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <strong>4.8</strong>
+                                <small>(24 reviews)</small>
+                            </div>
+                        </div>
+
+                        <div class="maseco-supplier-benefits">
+                            <span><i class="bi bi-leaf-fill"></i> Organic cotton</span>
+                            <span><i class="bi bi-check-circle-fill"></i> Linen & hemp</span>
+                        </div>
+
+                        <a href="{{ url('/marketplace') }}" class="maseco-supplier-button">
+                            View details <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
                 </article>
 
                 <!-- Supplier 2 -->
-                <article class="supplier-card">
-                    <div class="supplier-image-wrap">
-                        <div class="supplier-image">
-                            <img src="{{ asset('assets/images/manufacture.png') }}"
-                                 alt="Sunrise Fabrics textile manufacturing"
-                                 loading="lazy">
-                        </div>
+                <article class="maseco-supplier-card">
+                    <div class="maseco-supplier-photo">
+                        <img src="{{ asset('assets/images/manufacture.png') }}"
+                             alt="Sunrise Fabrics textile manufacturing"
+                             loading="lazy">
 
-                        <span class="supplier-tag supplier-tag-pink">
-                            <i class="bi bi-recycle"></i> Recycled fibres
+                        <span class="maseco-verified">
+                            <i class="bi bi-patch-check-fill"></i> Supplier
                         </span>
 
-                        <span class="supplier-category">RECYCLED</span>
-
-                        <button class="supplier-favorite" type="button"
+                        <button class="maseco-favorite" type="button"
                                 aria-label="Add Sunrise Fabrics to favourites"
                                 aria-pressed="false">
                             <i class="bi bi-heart"></i>
                         </button>
                     </div>
 
-                    <div class="supplier-specs">
-                        <div class="supplier-moq">
-                            <span>MINIMUM ORDER</span>
-                            <strong>300 kg</strong>
-                        </div>
-                        <div class="supplier-rating-box">
-                            <i class="bi bi-star-fill"></i>
-                            <strong>4.7</strong>
-                            <small>18 reviews</small>
-                        </div>
-                    </div>
-
-                    <div class="supplier-info">
-                        <span class="supplier-location">
-                            <i class="bi bi-geo-alt"></i> India
-                        </span>
+                    <div class="maseco-supplier-details">
                         <h3>Sunrise Fabrics</h3>
-                        <div class="supplier-materials">
-                            <span>Recycled polyester</span>
-                            <span>Cotton</span>
-                            <span>Knits</span>
+
+                        <p class="maseco-supplier-location">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            India
+                        </p>
+
+                        <div class="maseco-supplier-meta">
+                            <span><i class="bi bi-recycle"></i> Recycled fabrics</span>
+                            <span><i class="bi bi-bounding-box"></i> MOQ: 300 kg</span>
                         </div>
-                        <a href="{{ url('/marketplace') }}" class="supplier-cta">
-                            View supplier <i class="bi bi-arrow-up-right"></i>
+
+                        <div class="maseco-supplier-price-row">
+                            <div class="maseco-supplier-moq">
+                                <small>MINIMUM ORDER</small>
+                                <strong>300 kg</strong>
+                            </div>
+                            <div class="maseco-supplier-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <strong>4.7</strong>
+                                <small>(18 reviews)</small>
+                            </div>
+                        </div>
+
+                        <div class="maseco-supplier-benefits">
+                            <span><i class="bi bi-recycle"></i> Recycled polyester</span>
+                            <span><i class="bi bi-check-circle-fill"></i> Cotton & knits</span>
+                        </div>
+
+                        <a href="{{ url('/marketplace') }}" class="maseco-supplier-button">
+                            View details <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
                 </article>
 
                 <!-- Supplier 3 -->
-                <article class="supplier-card">
-                    <div class="supplier-image-wrap">
-                        <div class="supplier-image">
-                            <img src="{{ asset('assets/images/logistics.png') }}"
-                                 alt="EcoWeave linen and modal materials"
-                                 loading="lazy">
-                        </div>
+                <article class="maseco-supplier-card">
+                    <div class="maseco-supplier-photo">
+                        <img src="{{ asset('assets/images/logistics.png') }}"
+                             alt="EcoWeave sustainable linen and modal textiles"
+                             loading="lazy">
 
-                        <span class="supplier-tag supplier-tag-blue">
-                            <i class="bi bi-flower1"></i> Natural fibres
+                        <span class="maseco-verified">
+                            <i class="bi bi-patch-check-fill"></i> Supplier
                         </span>
 
-                        <span class="supplier-category">NATURAL</span>
-
-                        <button class="supplier-favorite" type="button"
-                                aria-label="Add EcoWeave to favourites"
+                        <button class="maseco-favorite" type="button"
+                                aria-label="Add EcoWeave Ltd. to favourites"
                                 aria-pressed="false">
                             <i class="bi bi-heart"></i>
                         </button>
                     </div>
 
-                    <div class="supplier-specs">
-                        <div class="supplier-moq">
-                            <span>MINIMUM ORDER</span>
-                            <strong>1,000 kg</strong>
-                        </div>
-                        <div class="supplier-rating-box">
-                            <i class="bi bi-star-fill"></i>
-                            <strong>4.6</strong>
-                            <small>22 reviews</small>
-                        </div>
-                    </div>
-
-                    <div class="supplier-info">
-                        <span class="supplier-location">
-                            <i class="bi bi-geo-alt"></i> Turkey
-                        </span>
+                    <div class="maseco-supplier-details">
                         <h3>EcoWeave Ltd.</h3>
-                        <div class="supplier-materials">
-                            <span>Linen</span>
-                            <span>Tencel</span>
-                            <span>Modal</span>
+
+                        <p class="maseco-supplier-location">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            Turkey
+                        </p>
+
+                        <div class="maseco-supplier-meta">
+                            <span><i class="bi bi-flower1"></i> Natural fabrics</span>
+                            <span><i class="bi bi-bounding-box"></i> MOQ: 1,000 kg</span>
                         </div>
-                        <a href="{{ url('/marketplace') }}" class="supplier-cta">
-                            View supplier <i class="bi bi-arrow-up-right"></i>
+
+                        <div class="maseco-supplier-price-row">
+                            <div class="maseco-supplier-moq">
+                                <small>MINIMUM ORDER</small>
+                                <strong>1,000 kg</strong>
+                            </div>
+                            <div class="maseco-supplier-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <strong>4.6</strong>
+                                <small>(22 reviews)</small>
+                            </div>
+                        </div>
+
+                        <div class="maseco-supplier-benefits">
+                            <span><i class="bi bi-leaf-fill"></i> Linen</span>
+                            <span><i class="bi bi-check-circle-fill"></i> Tencel & modal</span>
+                        </div>
+
+                        <a href="{{ url('/marketplace') }}" class="maseco-supplier-button">
+                            View details <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
                 </article>
 
                 <!-- Supplier 4 -->
-                <article class="supplier-card">
-                    <div class="supplier-image-wrap">
-                        <div class="supplier-image">
-                            <img src="{{ asset('assets/images/sustainable-materials.png') }}"
-                                 alt="Global Textiles fabric collection"
-                                 loading="lazy">
-                        </div>
+                <article class="maseco-supplier-card">
+                    <div class="maseco-supplier-photo">
+                        <img src="{{ asset('assets/images/suppliers/global-textiles.jpg') }}"
+                             alt="Global Textiles woven fabrics"
+                             loading="lazy">
 
-                        <span class="supplier-tag supplier-tag-orange">
-                            <i class="bi bi-patch-check"></i> Textile partner
+                        <span class="maseco-verified">
+                            <i class="bi bi-patch-check-fill"></i> Supplier
                         </span>
 
-                        <span class="supplier-category">WOVEN FABRICS</span>
-
-                        <button class="supplier-favorite" type="button"
+                        <button class="maseco-favorite" type="button"
                                 aria-label="Add Global Textiles to favourites"
                                 aria-pressed="false">
                             <i class="bi bi-heart"></i>
                         </button>
                     </div>
 
-                    <div class="supplier-specs">
-                        <div class="supplier-moq">
-                            <span>MINIMUM ORDER</span>
-                            <strong>500 kg</strong>
-                        </div>
-                        <div class="supplier-rating-box">
-                            <i class="bi bi-star-fill"></i>
-                            <strong>4.5</strong>
-                            <small>27 reviews</small>
-                        </div>
-                    </div>
-
-                    <div class="supplier-info">
-                        <span class="supplier-location">
-                            <i class="bi bi-geo-alt"></i> China
-                        </span>
+                    <div class="maseco-supplier-details">
                         <h3>Global Textiles</h3>
-                        <div class="supplier-materials">
-                            <span>Polyester</span>
-                            <span>Nylon</span>
-                            <span>Wovens</span>
+
+                        <p class="maseco-supplier-location">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            China
+                        </p>
+
+                        <div class="maseco-supplier-meta">
+                            <span><i class="bi bi-layers-fill"></i> Woven fabrics</span>
+                            <span><i class="bi bi-bounding-box"></i> MOQ: 500 kg</span>
                         </div>
-                        <a href="{{ url('/marketplace') }}" class="supplier-cta">
-                            View supplier <i class="bi bi-arrow-up-right"></i>
+
+                        <div class="maseco-supplier-price-row">
+                            <div class="maseco-supplier-moq">
+                                <small>MINIMUM ORDER</small>
+                                <strong>500 kg</strong>
+                            </div>
+                            <div class="maseco-supplier-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <strong>4.5</strong>
+                                <small>(27 reviews)</small>
+                            </div>
+                        </div>
+
+                        <div class="maseco-supplier-benefits">
+                            <span><i class="bi bi-layers-fill"></i> Polyester</span>
+                            <span><i class="bi bi-check-circle-fill"></i> Nylon & wovens</span>
+                        </div>
+
+                        <a href="{{ url('/marketplace') }}" class="maseco-supplier-button">
+                            View details <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
                 </article>
 
                 <!-- Supplier 5 -->
-                <article class="supplier-card">
-                    <div class="supplier-image-wrap">
-                        <div class="supplier-image">
-                            <img src="{{ asset('assets/images/manufacture.png') }}"
-                                 alt="Pure Fibers organic and recycled fibres"
-                                 loading="lazy">
-                        </div>
+                <article class="maseco-supplier-card">
+                    <div class="maseco-supplier-photo">
+                        <img src="{{ asset('assets/images/manufacture.png') }}"
+                             alt="Pure Fibers organic and recycled fibres"
+                             loading="lazy">
 
-                        <span class="supplier-tag supplier-tag-green">
-                            <i class="bi bi-leaf-fill"></i> Natural fibres
+                        <span class="maseco-verified">
+                            <i class="bi bi-patch-check-fill"></i> Supplier
                         </span>
 
-                        <span class="supplier-category">ECO FIBRES</span>
-
-                        <button class="supplier-favorite" type="button"
-                                aria-label="Add Pure Fibers to favourites"
+                        <button class="maseco-favorite" type="button"
+                                aria-label="Add Pure Fibers Co. to favourites"
                                 aria-pressed="false">
                             <i class="bi bi-heart"></i>
                         </button>
                     </div>
 
-                    <div class="supplier-specs">
-                        <div class="supplier-moq">
-                            <span>MINIMUM ORDER</span>
-                            <strong>200 kg</strong>
-                        </div>
-                        <div class="supplier-rating-box">
-                            <i class="bi bi-star-fill"></i>
-                            <strong>4.6</strong>
-                            <small>16 reviews</small>
-                        </div>
-                    </div>
-
-                    <div class="supplier-info">
-                        <span class="supplier-location">
-                            <i class="bi bi-geo-alt"></i> Pakistan
-                        </span>
+                    <div class="maseco-supplier-details">
                         <h3>Pure Fibers Co.</h3>
-                        <div class="supplier-materials">
-                            <span>Organic cotton</span>
-                            <span>Recycled fibres</span>
-                            <span>Bamboo</span>
+
+                        <p class="maseco-supplier-location">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            Pakistan
+                        </p>
+
+                        <div class="maseco-supplier-meta">
+                            <span><i class="bi bi-leaf-fill"></i> Eco fibres</span>
+                            <span><i class="bi bi-bounding-box"></i> MOQ: 200 kg</span>
                         </div>
-                        <a href="{{ url('/marketplace') }}" class="supplier-cta">
-                            View supplier <i class="bi bi-arrow-up-right"></i>
+
+                        <div class="maseco-supplier-price-row">
+                            <div class="maseco-supplier-moq">
+                                <small>MINIMUM ORDER</small>
+                                <strong>200 kg</strong>
+                            </div>
+                            <div class="maseco-supplier-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <strong>4.6</strong>
+                                <small>(16 reviews)</small>
+                            </div>
+                        </div>
+
+                        <div class="maseco-supplier-benefits">
+                            <span><i class="bi bi-leaf-fill"></i> Organic cotton</span>
+                            <span><i class="bi bi-check-circle-fill"></i> Bamboo & recycled</span>
+                        </div>
+
+                        <a href="{{ url('/marketplace') }}" class="maseco-supplier-button">
+                            View details <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
                 </article>
 
             </div>
 
-            <button class="supplier-nav supplier-next"
-                    type="button" aria-label="Next suppliers">
-                <i class="bi bi-arrow-right"></i>
+            <button class="maseco-supplier-nav next" type="button"
+                    aria-label="Next suppliers">
+                <i class="bi bi-chevron-right"></i>
             </button>
         </div>
 
-        <div class="supplier-carousel-footer">
-            <div class="supplier-progress">
-                <span id="supplierProgress"></span>
+        <!-- Carousel progress -->
+        <div class="maseco-supplier-footer">
+            <div class="maseco-supplier-progress">
+                <span id="masecoSupplierProgress"></span>
             </div>
-            <span class="supplier-slide-count" id="supplierSlideCount">
-                01 — 05
-            </span>
+            <span id="masecoSupplierCount">01 — 05</span>
         </div>
 
     </div>
 </section>
-
 
   <script>
     function toggleSupplierFavorite(button) {
@@ -494,126 +518,86 @@
    -->
 
 
-  <section class="maseco-about py-5" id="about-us">
+
+<section class="maseco-about-clean" id="about-maseco">
     <div class="container">
-      <div class="row align-items-center g-4 g-lg-5">
+        <div class="row align-items-center g-4 g-lg-5">
 
-        <!-- Left: About image -->
-        <div class="col-md-6">
-          <div class="maseco-about-visual reveal-about">
-            <div class="maseco-about-image">
-              <img src="{{ asset('assets/images/about-thumb.png') }}"
-                alt="Maseco sustainable fashion and textile solutions"
-                loading="lazy">
+            <!-- Left: About content -->
+            <div class="col-lg-5">
+                <div class="maseco-about-copy">
+
+                    <span class="maseco-about-eyebrow">
+                        ABOUT MASECO
+                    </span>
+
+                    <h2 class="maseco-about-title">
+                        A better way to
+                        <span>source textiles.</span>
+                    </h2>
+
+                    <p class="maseco-about-description">
+                        Maseco connects businesses with textile suppliers
+                        and supports more responsible material sourcing
+                        and production.
+                    </p>
+
+                    <p class="maseco-about-description maseco-about-secondary">
+                        We make it easier to find the right partners,
+                        explore sustainable materials, and build a more
+                        transparent supply chain for the fashion industry.
+                    </p>
+
+                    <a href="{{ url('/marketplace') }}"
+                       class="maseco-about-button">
+                        Explore the marketplace
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+
+                </div>
             </div>
 
-            <div class="maseco-about-stamp">
-              <i class="fa fa-leaf"></i>
-              <span>Sourcing for<br> a better future</span>
+            <!-- Right: Textile image and capability strip -->
+            <div class="col-lg-7">
+                <div class="maseco-about-visual">
+
+                    <img
+                        src="{{ asset('assets/images/manufacture.png') }}"
+                        alt="Textile manufacturing and fabric production"
+                        class="maseco-about-photo"
+                        loading="lazy"
+                    >
+
+                    <div class="maseco-about-capabilities">
+
+                        <div class="maseco-capability">
+                            <span class="maseco-capability-icon">
+                                <i class="bi bi-search"></i>
+                            </span>
+                            <span>Supplier discovery</span>
+                        </div>
+
+                        <div class="maseco-capability">
+                            <span class="maseco-capability-icon">
+                                <i class="bi bi-leaf"></i>
+                            </span>
+                            <span>Sustainable materials</span>
+                        </div>
+
+                        <div class="maseco-capability">
+                            <span class="maseco-capability-icon">
+                                <i class="bi bi-buildings"></i>
+                            </span>
+                            <span>Production support</span>
+                        </div>
+
+                    </div>
+                </div>
             </div>
 
-            <div class="maseco-about-caption">
-              <span class="maseco-caption-icon">
-                <i class="fa fa-check"></i>
-              </span>
-              <div>
-                <strong>Designed for sustainability</strong>
-                <small>Better choices. Better materials.</small>
-              </div>
-            </div>
-          </div>
         </div>
-
-        <!-- Right: About content -->
-        <div class="col-md-6">
-          <div class="maseco-about-content reveal-about">
-            <span class="maseco-about-eyebrow">
-              <span class="maseco-eyebrow-line"></span>
-              ABOUT MASECO
-            </span>
-
-            <h2 class="maseco-about-title">
-              Let’s Build Something
-              <span>Creative Together.</span>
-            </h2>
-
-            <p class="maseco-about-description">
-              Maseco is a sustainability-driven fashion solutions provider,
-              empowering designers with responsible sourcing, ethical
-              manufacturing, and AI-powered design insights.
-            </p>
-
-            <div class="maseco-about-features">
-
-              <div class="maseco-about-feature">
-                <span class="maseco-feature-icon">
-                  <i class="fa fa-leaf"></i>
-                </span>
-                <div>
-                  <h3>Ethical &amp; Sustainable Materials</h3>
-                  <p>Discover materials aligned with more responsible sourcing.</p>
-                </div>
-              </div>
-
-              <div class="maseco-about-feature">
-                <span class="maseco-feature-icon">
-                  <i class="fa fa-industry"></i>
-                </span>
-                <div>
-                  <h3>Seamless Manufacturing Support</h3>
-                  <p>Connect with partners to support your production journey.</p>
-                </div>
-              </div>
-
-              <div class="maseco-about-feature">
-                <span class="maseco-feature-icon">
-                  <i class="fa fa-recycle"></i>
-                </span>
-                <div>
-                  <h3>Recycling &amp; R&amp;D Innovation</h3>
-                  <p>Explore ideas for material innovation and circularity.</p>
-                </div>
-              </div>
-
-              <div class="maseco-about-feature">
-                <span class="maseco-feature-icon">
-                  <i class="fa fa-lightbulb-o"></i>
-                </span>
-                <div>
-                  <h3>AI-Driven Design Assistance</h3>
-                  <p>Bring design ideas forward with AI-powered insights.</p>
-                </div>
-              </div>
-
-              <div class="maseco-about-feature">
-                <span class="maseco-feature-icon">
-                  <i class="fa fa-truck"></i>
-                </span>
-                <div>
-                  <h3>Hassle-Free Logistics &amp; Admin</h3>
-                  <p>Simplify the steps involved in managing your sourcing needs.</p>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="maseco-about-actions">
-              <a href="{{ url('about-us') }}" class="maseco-about-btn">
-                Discover Our Story
-                <i class="fa fa-arrow-right ms-2"></i>
-              </a>
-
-              <span class="maseco-about-note">
-                <i class="fa fa-leaf me-1"></i>
-                A more thoughtful approach to fashion
-              </span>
-            </div>
-          </div>
-        </div>
-
-      </div>
     </div>
-  </section>
+</section>
 
   <section class="py-5 bg-light" id="how-it-works">
     <div class="container py-lg-4">
@@ -1050,7 +1034,7 @@
   </section>
 
 
-  <section class="production py-5">
+  <!-- <section class="production py-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
@@ -1143,7 +1127,103 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
+
+  <section class="maseco-journey">
+    <div class="container">
+
+        <!-- Section heading -->
+        <div class="journey-heading">
+            <span class="journey-eyebrow">
+                <i class="bi bi-leaf"></i> THE MASECO JOURNEY
+            </span>
+            <h2>A Smarter Way to Source Textiles</h2>
+            <p>
+                From finding the right materials to connecting with manufacturing
+                partners, Maseco brings your sourcing journey together.
+            </p>
+        </div>
+
+        <div class="row align-items-center g-4 g-lg-5">
+
+            <!-- Left: Image -->
+            <div class="col-lg-5">
+                <div class="journey-visual">
+                    <img
+                        src="{{ asset('assets/images/sustainable-materials.png') }}"
+                        alt="Textile materials and sustainable fabric sourcing"
+                        loading="lazy"
+                    >
+
+                    <div class="journey-image-caption">
+                        <span class="journey-caption-icon">
+                            <i class="bi bi-recycle"></i>
+                        </span>
+                        <div>
+                            <strong>Better sourcing starts here.</strong>
+                            <p>Materials, partners and smarter decisions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Rollout steps -->
+            <div class="col-lg-7">
+                <div class="journey-steps">
+
+                    <!-- Step 01 -->
+                    <article class="journey-step">
+                        <div class="journey-step-number">01</div>
+                        <div class="journey-step-content">
+                            <span class="journey-step-label">DISCOVER</span>
+                            <h3>Find Sustainable Materials</h3>
+                            <p>
+                                Explore textile materials and supplier options
+                                in one place. Compare available materials and
+                                identify the right fit for your business.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Step 02 -->
+                    <article class="journey-step">
+                        <div class="journey-step-number">02</div>
+                        <div class="journey-step-content">
+                            <span class="journey-step-label">CONNECT</span>
+                            <h3>Meet Manufacturing Partners</h3>
+                            <p>
+                                Discover potential suppliers and manufacturing
+                                partners based on your material requirements
+                                and production needs.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Step 03 -->
+                    <article class="journey-step">
+                        <div class="journey-step-number">03</div>
+                        <div class="journey-step-content">
+                            <span class="journey-step-label">GROW</span>
+                            <h3>Move Towards Smarter Production</h3>
+                            <p>
+                                Build a more informed sourcing process with
+                                sustainable material choices and access to
+                                Maseco's evolving sourcing and design solutions.
+                            </p>
+                        </div>
+                    </article>
+
+                </div>
+
+                <a href="{{ url('/marketplace') }}" class="journey-link">
+                    Explore the marketplace
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
 
   <section class="price-section py-5">
     <div class="container">
@@ -1822,92 +1902,111 @@
   });
 </script>
 
-
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    const track = document.getElementById('supplierTrack');
+    const track = document.getElementById('masecoSupplierTrack');
+
     if (!track) return;
 
-    const cards = Array.from(track.querySelectorAll('.supplier-card'));
-    const prev = document.querySelector('.supplier-prev');
-    const next = document.querySelector('.supplier-next');
-    const progress = document.getElementById('supplierProgress');
-    const count = document.getElementById('supplierSlideCount');
+    const cards = Array.from(
+        track.querySelectorAll('.maseco-supplier-card')
+    );
 
-    function visibleCards() {
-        if (window.innerWidth <= 479) return 1;
-        if (window.innerWidth <= 767) return 2;
-        if (window.innerWidth <= 1199) return 3;
+    const prevButton = document.querySelector('.maseco-supplier-nav.prev');
+    const nextButton = document.querySelector('.maseco-supplier-nav.next');
+    const progress = document.getElementById('masecoSupplierProgress');
+    const count = document.getElementById('masecoSupplierCount');
+
+    if (!cards.length) return;
+
+    function getVisibleCards() {
+        if (window.innerWidth <= 575.98) return 1;
+        if (window.innerWidth <= 767.98) return 2;
+        if (window.innerWidth <= 1199.98) return 3;
         return 4;
     }
 
-    function cardStep() {
-        const card = cards[0];
-        if (!card) return 0;
-
-        const styles = getComputedStyle(track);
-        const gap = parseFloat(styles.columnGap) || 0;
-        return card.getBoundingClientRect().width + gap;
-    }
-
     function updateCarousel() {
-        const step = cardStep();
-        const visible = visibleCards();
-        const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
-        const current = step ? Math.round(track.scrollLeft / step) : 0;
+        const visible = getVisibleCards();
         const maxIndex = Math.max(0, cards.length - visible);
+        const cardStep = cards[0].getBoundingClientRect().width +
+            parseFloat(getComputedStyle(track).columnGap || 0);
 
-        if (prev) prev.disabled = track.scrollLeft <= 2;
-        if (next) next.disabled = track.scrollLeft >= maxScroll - 2;
+        const index = Math.min(
+            maxIndex,
+            Math.max(0, Math.round(track.scrollLeft / cardStep))
+        );
+
+        const start = Math.min(cards.length, index + 1);
+        const end = Math.min(cards.length, index + visible);
 
         if (progress) {
-            const percentage = maxScroll > 0
-                ? (track.scrollLeft / maxScroll) * 100
-                : 100;
-            progress.style.width = percentage + '%';
+            const percent = maxIndex === 0
+                ? 100
+                : ((index + visible) / cards.length) * 100;
+
+            progress.style.width = Math.min(100, percent) + '%';
         }
 
         if (count) {
-            const first = Math.min(current + 1, cards.length);
-            const last = Math.min(first + visible - 1, cards.length);
-
             count.textContent =
-                String(first).padStart(2, '0') + ' — ' +
-                String(last).padStart(2, '0');
+                String(start).padStart(2, '0') +
+                ' — ' +
+                String(end).padStart(2, '0');
+        }
+
+        if (prevButton) {
+            prevButton.disabled = track.scrollLeft <= 2;
+            prevButton.style.opacity = prevButton.disabled ? '0.45' : '1';
+        }
+
+        if (nextButton) {
+            const atEnd =
+                track.scrollLeft + track.clientWidth >= track.scrollWidth - 3;
+
+            nextButton.disabled = atEnd;
+            nextButton.style.opacity = atEnd ? '0.45' : '1';
         }
     }
 
     function moveCarousel(direction) {
+        const visible = getVisibleCards();
+        const gap = parseFloat(getComputedStyle(track).columnGap || 0);
+        const cardWidth = cards[0].getBoundingClientRect().width;
+        const distance = (cardWidth + gap) * visible;
+
         track.scrollBy({
-            left: cardStep() * visibleCards() * direction,
+            left: direction * distance,
             behavior: 'smooth'
         });
     }
 
-    prev?.addEventListener('click', () => moveCarousel(-1));
-    next?.addEventListener('click', () => moveCarousel(1));
+    prevButton?.addEventListener('click', () => moveCarousel(-1));
+    nextButton?.addEventListener('click', () => moveCarousel(1));
 
     track.addEventListener('scroll', updateCarousel, { passive: true });
     window.addEventListener('resize', updateCarousel);
 
-    // Favourite button interaction
-    document.querySelectorAll('.supplier-favorite').forEach(button => {
+    // Favourite button toggle (visual only; no backend storage)
+    document.querySelectorAll('.maseco-favorite').forEach(function (button) {
         button.addEventListener('click', function () {
-            const active = this.getAttribute('aria-pressed') !== 'true';
+            const isFavorite = this.getAttribute('aria-pressed') === 'true';
 
-            this.setAttribute('aria-pressed', String(active));
-            this.classList.toggle('is-favorite', active);
+            this.setAttribute('aria-pressed', String(!isFavorite));
+            this.classList.toggle('is-favorite', !isFavorite);
 
             const icon = this.querySelector('i');
+
             if (icon) {
-                icon.classList.toggle('bi-heart-fill', active);
-                icon.classList.toggle('bi-heart', !active);
+                icon.classList.toggle('bi-heart', isFavorite);
+                icon.classList.toggle('bi-heart-fill', !isFavorite);
             }
         });
     });
 
     updateCarousel();
 });
+
 </script>
 
 @include('Include.footer')

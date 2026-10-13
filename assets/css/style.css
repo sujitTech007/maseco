@@ -1895,10 +1895,10 @@ footer .copyright-footer {
 }
 
 /* Maseco marketplace search card */
-form[action*="marketplace"] {
+/* form[action*="marketplace"] {
     border-color: #e5eeea !important;
     border-radius: 12px !important;
-}
+} */
 
 form[action*="marketplace"] .form-select {
     min-height: 34px;
@@ -3015,559 +3015,948 @@ form[action*="marketplace"] .btn {
 font-size: 14px;
 padding: 10px;
 }
+
+
+.small{
+  font-size: 13px !important;
+}
+
+
 ```css
-/* =========================================
-   MASECO FEATURED SUPPLIERS
-========================================= */
-
+/* ===== Maseco Featured Suppliers ===== */
 .maseco-featured {
-    --supplier-ink: #183d35;
-    --supplier-muted: #7c8178;
-    --supplier-bg: #f0f1e9;
-    --supplier-panel: #e9eae4;
-    --supplier-accent: #2dac92;
+    --maseco-green: #2DAC92;
+    --maseco-green-dark: #183D35;
+    --maseco-text: #244B70;
+    --maseco-muted: #75899D;
+    --maseco-border: #DFE9EF;
 
-    padding: 85px 0 70px;
-    background: var(--supplier-bg);
-    color: var(--supplier-ink);
+    background: #F5F9FB;
     overflow: hidden;
 }
 
-.featured-heading {
+.maseco-featured-heading {
+    max-width: 1420px;
+    margin: 0 auto 28px;
     display: flex;
     justify-content: space-between;
-    align-items: end;
+    align-items: flex-end;
     gap: 24px;
-    margin: 0 auto 38px;
-    max-width: 1800px;
 }
 
-.featured-eyebrow {
+.maseco-featured-eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: #54806e;
+    color: var(--maseco-green);
     font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
 }
 
-.featured-heading h2 {
-    margin: 14px 0 10px;
-    font-size: clamp(30px, 3.2vw, 48px);
-    line-height: 1.08;
-    font-weight: 650;
-    letter-spacing: -1.8px;
+.maseco-featured-heading h2 {
+    margin: 10px 0 7px;
+    color: var(--maseco-green-dark);
+    font-size: clamp(25px, 2.2vw, 34px);
+    font-weight: 750;
+    letter-spacing: -0.8px;
 }
 
-.featured-heading h2 span {
-    color: #73947f;
+.maseco-featured-heading h2 span {
+    color: var(--maseco-green);
 }
 
-.featured-heading p {
+.maseco-featured-heading p {
     margin: 0;
-    color: #70796f;
-    font-size: 15px;
+    color: var(--maseco-muted);
+    font-size: 14px;
 }
 
-.featured-view-all {
-    flex-shrink: 0;
-    color: var(--supplier-ink);
+.maseco-view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--maseco-green-dark);
     font-size: 13px;
-    font-weight: 650;
+    font-weight: 700;
     text-decoration: none;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #9eb3a5;
-    transition: color .25s ease, border-color .25s ease;
+    white-space: nowrap;
 }
 
-.featured-view-all i {
-    margin-left: 8px;
+.maseco-view-all:hover {
+    color: var(--maseco-green);
 }
 
-.featured-view-all:hover {
-    color: var(--supplier-accent);
-    border-color: var(--supplier-accent);
-}
-
-/* Carousel layout */
-
-.supplier-carousel {
-    position: relative;
-    max-width: 1800px;
+/* Carousel */
+.maseco-supplier-carousel {
+    max-width: 1420px;
     margin: 0 auto;
+    position: relative;
 }
 
-.supplier-track {
+.maseco-supplier-track {
     display: grid;
-    grid-auto-columns: calc((100% - 54px) / 4);
     grid-auto-flow: column;
-    gap: 18px;
+    grid-auto-columns: calc((100% - 48px) / 4);
+    gap: 16px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     scrollbar-width: none;
-    padding: 4px 2px 16px;
+    padding: 2px 1px 12px;
 }
 
-.supplier-track::-webkit-scrollbar {
+.maseco-supplier-track::-webkit-scrollbar {
     display: none;
 }
 
-/* Main card */
-
-.supplier-card {
+/* Card */
+.maseco-supplier-card {
     min-width: 0;
     display: flex;
     flex-direction: column;
-    padding: 11px;
-    background: #fff;
-    border: 1px solid rgba(255, 255, 255, .85);
-    border-radius: 29px;
-    box-shadow: 0 12px 35px rgba(38, 57, 44, .035);
-    scroll-snap-align: start;
-    transition: transform .3s ease, box-shadow .3s ease;
-}
-
-.supplier-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 42px rgba(38, 57, 44, .09);
-}
-
-/* Large image area */
-
-.supplier-image-wrap {
-    position: relative;
-    padding-bottom: 0;
-}
-
-.supplier-image {
-    position: relative;
-    height: clamp(210px, 21vw, 310px);
     overflow: hidden;
-    background: var(--supplier-panel);
-    border-radius: 22px;
+    background: #fff;
+    border: 1px solid var(--maseco-border);
+    border-radius: 15px;
+    scroll-snap-align: start;
+    box-shadow: 0 7px 22px rgba(29, 61, 79, 0.045);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.supplier-image img {
+.maseco-supplier-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(29, 61, 79, 0.10);
+}
+
+/* Image */
+.maseco-supplier-photo {
+    position: relative;
+    height: 205px;
+    overflow: hidden;
+    background: #E8EFEC;
+}
+
+.maseco-supplier-photo img {
     width: 100%;
     height: 100%;
     display: block;
     object-fit: cover;
-    transition: transform .55s cubic-bezier(.2, .7, .2, 1);
+    transition: transform 0.45s ease;
 }
 
-.supplier-card:hover .supplier-image img {
+.maseco-supplier-card:hover .maseco-supplier-photo img {
     transform: scale(1.045);
 }
 
-/* Floating image labels */
-
-.supplier-tag {
+.maseco-verified {
     position: absolute;
     top: 12px;
     left: 12px;
-    max-width: calc(100% - 64px);
-    padding: 10px 13px;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    border-radius: 14px;
-    color: var(--supplier-ink);
-    background: rgba(255, 255, 255, .92);
+    gap: 5px;
+    padding: 7px 11px;
+    border-radius: 30px;
+    background: #DDF8ED;
+    color: #078C68;
     font-size: 11px;
-    font-weight: 650;
-    backdrop-filter: blur(8px);
+    font-weight: 750;
 }
 
-.supplier-tag-green {
-    background: #d9f3bd;
-}
-
-.supplier-tag-pink {
-    background: #f9d9eb;
-}
-
-.supplier-tag-blue {
-    background: #c9eeea;
-}
-
-.supplier-tag-orange {
-    background: #ffdfc2;
-}
-
-.supplier-category {
+.maseco-favorite {
     position: absolute;
-    bottom: 12px;
-    left: 12px;
-    padding: 8px 11px;
-    color: #fff;
-    background: rgba(24, 61, 53, .82);
-    border-radius: 10px;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 1.2px;
-    backdrop-filter: blur(6px);
-}
-
-.supplier-favorite {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 40px;
-    height: 40px;
+    top: 11px;
+    right: 11px;
     display: grid;
     place-items: center;
+    width: 39px;
+    height: 39px;
     border: 0;
-    border-radius: 14px;
-    color: #37463c;
-    background: rgba(255, 255, 255, .92);
+    border-radius: 50%;
+    background: #fff;
+    color: #526D80;
     font-size: 18px;
-    transition: background .2s ease, color .2s ease, transform .2s ease;
+    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.08);
+    transition: color 0.2s ease, background 0.2s ease;
 }
 
-.supplier-favorite:hover {
-    transform: scale(1.06);
+.maseco-favorite:hover,
+.maseco-favorite.is-favorite {
+    color: #fff;
+    background: var(--maseco-green);
 }
 
-.supplier-favorite.is-favorite {
-    color: #d45b64;
-    background: #fff0f0;
-}
-
-/* Specification tiles */
-
-.supplier-specs {
-    display: grid;
-    grid-template-columns: 1.2fr .9fr;
-    gap: 8px;
-    margin-top: 9px;
-}
-
-.supplier-moq,
-.supplier-rating-box {
-    min-height: 83px;
+/* Card content */
+.maseco-supplier-details {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 17px;
-    background: #f3f3ef;
-    text-align: center;
-}
-
-.supplier-moq span {
-    margin-bottom: 5px;
-    color: #929487;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-
-.supplier-moq strong {
-    color: #45483e;
-    font-size: 21px;
-    font-weight: 650;
-    letter-spacing: -.5px;
-}
-
-.supplier-rating-box {
-    gap: 2px;
-}
-
-.supplier-rating-box > i {
-    color: #f3bd45;
-    font-size: 16px;
-}
-
-.supplier-rating-box strong {
-    color: #45483e;
-    font-size: 17px;
-    line-height: 1.1;
-}
-
-.supplier-rating-box small {
-    color: #929487;
-    font-size: 9px;
-}
-
-/* Supplier information */
-
-.supplier-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
     flex: 1;
-    padding: 17px 7px 7px;
+    flex-direction: column;
+    padding: 17px 17px 16px;
 }
 
-.supplier-location {
-    display: inline-flex;
+.maseco-supplier-details h3 {
+    margin: 0 0 7px;
+    color: var(--maseco-text);
+    font-size: 18px;
+    line-height: 1.35;
+    font-weight: 750;
+    letter-spacing: -0.35px;
+}
+
+.maseco-supplier-location {
+    display: flex;
     align-items: center;
-    gap: 6px;
-    color: #858a7d;
+    gap: 7px;
+    margin: 0 0 12px;
+    color: var(--maseco-muted);
     font-size: 12px;
 }
 
-.supplier-location i {
-    color: #73947f;
+.maseco-supplier-location i,
+.maseco-supplier-meta i,
+.maseco-supplier-benefits i {
+    color: #2996E8;
+    font-size: 13px;
 }
 
-.supplier-info h3 {
-    margin: 6px 0 12px;
-    color: #41463c;
-    font-size: clamp(19px, 1.5vw, 25px);
-    font-weight: 650;
-    line-height: 1.2;
-    letter-spacing: -.7px;
-    overflow-wrap: anywhere;
+.maseco-supplier-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 11px 0;
+    border-top: 1px solid #EDF1F4;
+    border-bottom: 1px solid #EDF1F4;
 }
 
-.supplier-materials {
+.maseco-supplier-meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--maseco-muted);
+    font-size: 10.5px;
+    line-height: 1.4;
+}
+
+.maseco-supplier-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 0;
+}
+
+.maseco-supplier-moq {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.maseco-supplier-moq small {
+    color: #8798A7;
+    font-size: 9px;
+    font-weight: 750;
+    letter-spacing: 0.7px;
+}
+
+.maseco-supplier-moq strong {
+    color: var(--maseco-text);
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.maseco-supplier-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+}
+
+.maseco-supplier-rating i {
+    color: #FFB000;
+    font-size: 13px;
+}
+
+.maseco-supplier-rating strong {
+    color: #405A70;
+    font-size: 12px;
+}
+
+.maseco-supplier-rating small {
+    color: #91A0AD;
+    font-size: 10px;
+}
+
+.maseco-supplier-benefits {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 18px;
+    gap: 8px 13px;
+    padding: 11px 0 15px;
+    border-top: 1px solid #EDF1F4;
 }
 
-.supplier-materials span {
-    padding: 6px 9px;
-    color: #5e6c60;
-    background: #f2f4ef;
-    border-radius: 9px;
-    font-size: 10px;
-    line-height: 1.2;
-}
-
-/* Pill CTA */
-
-.supplier-cta {
-    width: 100%;
-    min-height: 43px;
-    margin-top: auto;
-    padding: 11px 14px;
-    display: flex;
+.maseco-supplier-benefits span {
+    display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    border-radius: 14px;
-    color: #fff;
-    background: var(--supplier-ink);
+    gap: 5px;
+    color: #72889A;
+    font-size: 10px;
+}
+
+/* Outlined action button */
+.maseco-supplier-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
+    gap: 12px;
+    margin-top: auto;
+    padding: 9px 15px;
+    border: 1px solid var(--maseco-green-dark);
+    border-radius: 30px;
+    color: var(--primary-color);
     font-size: 12px;
-    font-weight: 650;
+    font-weight: 750;
     text-decoration: none;
-    transition: background .25s ease, transform .25s ease;
+    transition: all 0.2s ease;
 }
 
-.supplier-cta i {
-    font-size: 15px;
-    transition: transform .25s ease;
+.maseco-supplier-button:hover {
+    background: var(--maseco-green-dark);
+    color: green;
 }
 
-.supplier-cta:hover {
-    color: #fff;
-    background: var(--supplier-accent);
-}
-
-.supplier-cta:hover i {
-    transform: translate(2px, -2px);
-}
-
-/* Navigation arrows */
-
-.supplier-nav {
+/* Carousel arrows */
+.maseco-supplier-nav {
     position: absolute;
     z-index: 3;
-    top: 39%;
-    width: 42px;
-    height: 42px;
+    top: 42%;
     display: grid;
     place-items: center;
-    border: 1px solid #e6e9df;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--maseco-border);
     border-radius: 50%;
-    color: var(--supplier-ink);
     background: #fff;
-    box-shadow: 0 6px 18px rgba(24, 61, 53, .08);
-    transition: background .2s ease, color .2s ease;
+    color: var(--maseco-green-dark);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
+    transition: all 0.2s ease;
 }
 
-.supplier-nav:hover {
+.maseco-supplier-nav:hover {
+    background: var(--maseco-green);
     color: #fff;
-    background: var(--supplier-ink);
 }
 
-.supplier-prev {
-    left: -17px;
+.maseco-supplier-nav.prev {
+    left: -15px;
 }
 
-.supplier-next {
-    right: -17px;
+.maseco-supplier-nav.next {
+    right: -15px;
 }
 
-.supplier-nav:disabled {
-    opacity: .35;
-    cursor: not-allowed;
-}
-
-/* Progress line */
-
-.supplier-carousel-footer {
-    max-width: 1800px;
+.maseco-supplier-footer {
+    max-width: 1420px;
+    margin: 14px auto 0;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 16px;
-    margin: 17px auto 0;
+    gap: 20px;
 }
 
-.supplier-progress {
+.maseco-supplier-progress {
     height: 3px;
     flex: 1;
     overflow: hidden;
-    background: #dce2d8;
-    border-radius: 10px;
+    border-radius: 5px;
+    background: #DDE8E9;
 }
 
-.supplier-progress span {
+.maseco-supplier-progress span {
     display: block;
-    width: 25%;
+    width: 80%;
     height: 100%;
-    background: var(--supplier-ink);
     border-radius: inherit;
-    transition: width .3s ease;
+    background: var(--maseco-green);
+    transition: width 0.25s ease;
 }
 
-.supplier-slide-count {
-    color: #777f73;
-    font-size: 10px;
+.maseco-supplier-footer > span {
+    color: #718595;
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: 1px;
     white-space: nowrap;
 }
 
 /* Tablet */
-
 @media (max-width: 1199.98px) {
-    .supplier-track {
-        grid-auto-columns: calc((100% - 36px) / 3);
+    .maseco-supplier-track {
+        grid-auto-columns: calc((100% - 32px) / 3);
     }
 
-    .supplier-image {
-        height: 250px;
+    .maseco-supplier-photo {
+        height: 190px;
     }
 
-    .supplier-prev {
-        left: -10px;
+    .maseco-supplier-nav.prev {
+        left: -8px;
     }
 
-    .supplier-next {
-        right: -10px;
+    .maseco-supplier-nav.next {
+        right: -8px;
     }
 }
 
 /* Small tablet */
-
 @media (max-width: 767.98px) {
-    .maseco-featured {
-        padding: 58px 0 48px;
-    }
-
-    .featured-heading {
+    .maseco-featured-heading {
         align-items: flex-start;
+    }
+
+    .maseco-supplier-track {
+        grid-auto-columns: calc((100% - 16px) / 2);
+    }
+
+    .maseco-supplier-photo {
+        height: 175px;
+    }
+
+    .maseco-supplier-details {
+        padding: 14px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 575.98px) {
+    .maseco-featured-heading {
         flex-direction: column;
-        margin-bottom: 27px;
-    }
-
-    .featured-heading h2 {
-        font-size: 34px;
-        letter-spacing: -1.2px;
-    }
-
-    .supplier-track {
-        grid-auto-columns: calc((100% - 14px) / 2);
         gap: 14px;
+        margin-bottom: 22px;
     }
 
-    .supplier-card {
-        padding: 8px;
-        border-radius: 23px;
+    .maseco-supplier-track {
+        grid-auto-columns: 88%;
+        gap: 13px;
     }
 
-    .supplier-image {
-        height: 225px;
-        border-radius: 17px;
+    .maseco-supplier-photo {
+        height: 210px;
     }
 
-    .supplier-moq,
-    .supplier-rating-box {
-        min-height: 72px;
-        border-radius: 13px;
+    .maseco-supplier-details h3 {
+        font-size: 18px;
     }
 
-    .supplier-moq strong {
-        font-size: 17px;
+    .maseco-supplier-nav {
+        width: 34px;
+        height: 34px;
     }
 
-    .supplier-info {
-        padding: 14px 5px 5px;
-    }
-
-    .supplier-info h3 {
-        font-size: 19px;
-    }
-
-    .supplier-nav {
-        top: 34%;
-        width: 36px;
-        height: 36px;
-    }
-
-    .supplier-prev {
+    .maseco-supplier-nav.prev {
         left: -7px;
     }
 
-    .supplier-next {
+    .maseco-supplier-nav.next {
         right: -7px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .maseco-supplier-card,
+    .maseco-supplier-photo img,
+    .maseco-supplier-button,
+    .maseco-supplier-progress span {
+        transition: none;
+    }
+
+    .maseco-supplier-track {
+        scroll-behavior: auto;
+    }
+}
+```css
+/* ================================
+   Maseco About Section
+================================ */
+
+.maseco-about-clean {
+    position: relative;
+    padding: 90px 0;
+    background: #f5faf8;
+    overflow: hidden;
+}
+
+.maseco-about-clean .container {
+    max-width: 1320px;
+}
+
+/* Left content */
+
+.maseco-about-copy {
+    padding-right: 20px;
+}
+
+.maseco-about-eyebrow {
+    display: inline-block;
+    margin-bottom: 18px;
+    color: #2DAC92;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.maseco-about-title {
+    max-width: 520px;
+    margin: 0 0 22px;
+    color: #183d35;
+    font-size: clamp(34px, 3.2vw, 48px);
+    font-weight: 750;
+    line-height: 1.14;
+    letter-spacing: -1.4px;
+}
+
+.maseco-about-title span {
+    display: inline;
+    color: #2DAC92;
+}
+
+.maseco-about-description {
+    max-width: 510px;
+    margin-bottom: 16px;
+    color: #62736e;
+    font-size: 15px;
+    line-height: 1.85;
+}
+
+.maseco-about-secondary {
+    margin-bottom: 27px;
+}
+
+/* Marketplace button */
+
+.maseco-about-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 14px 22px;
+    border: 1px solid #2DAC92;
+    border-radius: 7px;
+    background: #2DAC92;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background .25s ease,
+                border-color .25s ease,
+                transform .25s ease;
+}
+
+.maseco-about-button i {
+    font-size: 17px;
+    transition: transform .25s ease;
+}
+
+.maseco-about-button:hover {
+    border-color: #248f7a;
+    background: #248f7a;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.maseco-about-button:hover i {
+    transform: translateX(4px);
+}
+
+/* Right image */
+
+.maseco-about-visual {
+    position: relative;
+    min-width: 0;
+    padding-bottom: 40px;
+}
+
+.maseco-about-photo {
+    display: block;
+    width: 100%;
+    height: 470px;
+    border-radius: 15px;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Bottom capability strip */
+
+.maseco-about-capabilities {
+    position: absolute;
+    right: 16px;
+    bottom: 50px;
+    left: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: center;
+    min-height: 88px;
+    padding: 14px 10px;
+    border: 1px solid rgba(255, 255, 255, .8);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, .96);
+    box-shadow: 0 10px 35px rgba(24, 61, 53, .09);
+}
+
+.maseco-capability {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 0;
+    padding: 8px 12px;
+    color: #29483f;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.maseco-capability + .maseco-capability {
+    border-left: 1px solid #e4eee9;
+}
+
+.maseco-capability-icon {
+    display: inline-flex;
+    flex: 0 0 34px;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: #e8f7f2;
+    color: #2DAC92;
+    font-size: 18px;
+}
+
+/* Responsive */
+
+@media (max-width: 991.98px) {
+    .maseco-about-clean {
+        padding: 65px 0;
+    }
+
+    .maseco-about-copy {
+        padding-right: 0;
+    }
+
+    .maseco-about-title {
+        max-width: 600px;
+    }
+
+    .maseco-about-photo {
+        height: 420px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .maseco-about-clean {
+        padding: 48px 0;
+    }
+
+    .maseco-about-title {
+        font-size: 34px;
+        letter-spacing: -.8px;
+    }
+
+    .maseco-about-description {
+        font-size: 14px;
+        line-height: 1.75;
+    }
+
+    .maseco-about-visual {
+        padding-bottom: 0;
+    }
+
+    .maseco-about-photo {
+        height: 300px;
+        border-radius: 11px;
+    }
+
+    .maseco-about-capabilities {
+        position: static;
+        grid-template-columns: 1fr;
+        gap: 0;
+        margin-top: 12px;
+        padding: 8px 14px;
+        border: 1px solid #e4eee9;
+        box-shadow: none;
+    }
+
+    .maseco-capability {
+        justify-content: flex-start;
+        padding: 11px 4px;
+        font-size: 13px;
+    }
+
+    .maseco-capability + .maseco-capability {
+        border-top: 1px solid #e4eee9;
+        border-left: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .maseco-about-button,
+    .maseco-about-button i {
+        transition: none;
+    }
+}
+/* =====================================
+   MASECO JOURNEY SECTION
+===================================== */
+
+.maseco-journey {
+    padding: 85px 0;
+    background: #ffffff;
+    color: #183d35;
+}
+
+.maseco-journey .journey-heading {
+    max-width: 650px;
+    margin: 0 auto 52px;
+    text-align: center;
+}
+
+.maseco-journey .journey-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 13px;
+    color: #2DAC92;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.maseco-journey .journey-heading h2 {
+    margin: 0 0 13px;
+    color: #183d35;
+    font-size: clamp(27px, 3vw, 38px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.8px;
+}
+
+.maseco-journey .journey-heading p {
+    max-width: 570px;
+    margin: 0 auto;
+    color: #718078;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* Image */
+
+.maseco-journey .journey-visual {
+    position: relative;
+    min-height: 480px;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 7px;
+    background: #edf3ee;
+}
+
+.maseco-journey .journey-visual > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s ease;
+}
+
+.maseco-journey .journey-visual:hover > img {
+    transform: scale(1.025);
+}
+
+.maseco-journey .journey-image-caption {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.94);
+}
+
+.maseco-journey .journey-caption-icon {
+    display: flex;
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background: #e4f7f1;
+    color: #2DAC92;
+    font-size: 20px;
+}
+
+.maseco-journey .journey-image-caption strong {
+    display: block;
+    color: #183d35;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.maseco-journey .journey-image-caption p {
+    margin: 4px 0 0;
+    color: #718078;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* Steps */
+
+.maseco-journey .journey-steps {
+    border-top: 1px solid #e5ece7;
+}
+
+.maseco-journey .journey-step {
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 18px;
+    padding: 26px 0;
+    border-bottom: 1px solid #e5ece7;
+}
+
+.maseco-journey .journey-step-number {
+    display: flex;
+    width: 43px;
+    height: 43px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccebe1;
+    border-radius: 50%;
+    color: #2DAC92;
+    font-size: 13px;
+    font-weight: 700;
+    transition: all 0.25s ease;
+}
+
+.maseco-journey .journey-step:hover .journey-step-number {
+    background: #2DAC92;
+    color: #ffffff;
+    border-color: #2DAC92;
+}
+
+.maseco-journey .journey-step-label {
+    display: block;
+    margin-bottom: 6px;
+    color: #2DAC92;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+}
+
+.maseco-journey .journey-step h3 {
+    margin: 0 0 9px;
+    color: #183d35;
+    font-size: 19px;
+    font-weight: 650;
+    line-height: 1.4;
+}
+
+.maseco-journey .journey-step p {
+    max-width: 500px;
+    margin: 0;
+    color: #718078;
+    font-size: 13px;
+    line-height: 1.85;
+}
+
+/* Link */
+
+.maseco-journey .journey-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 25px;
+    color: #248f7a;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: gap 0.2s ease;
+}
+
+.maseco-journey .journey-link:hover {
+    gap: 15px;
+    color: #183d35;
+}
+
+/* Tablet */
+
+@media (max-width: 991.98px) {
+    .maseco-journey {
+        padding: 65px 0;
+    }
+
+    .maseco-journey .journey-heading {
+        margin-bottom: 35px;
+    }
+
+    .maseco-journey .journey-visual {
+        min-height: 380px;
+    }
+
+    .maseco-journey .journey-step {
+        padding: 22px 0;
     }
 }
 
 /* Mobile */
 
-@media (max-width: 479.98px) {
-    .featured-heading h2 {
-        font-size: 30px;
+@media (max-width: 575.98px) {
+    .maseco-journey {
+        padding: 48px 0;
     }
 
-    .supplier-track {
-        grid-auto-columns: 85%;
-        gap: 13px;
+    .maseco-journey .journey-heading {
+        margin-bottom: 28px;
+        text-align: left;
     }
 
-    .supplier-image {
-        height: 270px;
+    .maseco-journey .journey-heading p {
+        margin: 0;
     }
 
-    .supplier-info h3 {
-        font-size: 23px;
+    .maseco-journey .journey-visual {
+        min-height: 330px;
     }
 
-    .supplier-moq strong {
-        font-size: 20px;
+    .maseco-journey .journey-step {
+        grid-template-columns: 40px minmax(0, 1fr);
+        gap: 12px;
+        padding: 21px 0;
     }
 
-    .supplier-nav {
-        top: 38%;
+    .maseco-journey .journey-step-number {
+        width: 36px;
+        height: 36px;
+        font-size: 12px;
+    }
+
+    .maseco-journey .journey-step h3 {
+        font-size: 17px;
+    }
+
+    .maseco-journey .journey-step p {
+        font-size: 12px;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .supplier-card,
-    .supplier-image img,
-    .supplier-cta,
-    .supplier-progress span {
-        transition: none;
-    }
-
-    .supplier-track {
-        scroll-behavior: auto;
+    .maseco-journey * {
+        transition: none !important;
     }
 }
