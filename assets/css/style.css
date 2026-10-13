@@ -3311,8 +3311,8 @@ padding: 10px;
     gap: 12px;
     margin-top: auto;
     padding: 9px 15px;
-    border: 1px solid var(--maseco-green-dark);
-    border-radius: 30px;
+    /* border: 1px solid var(--maseco-green-dark); */
+    /* border-radius: 30px; */
     color: var(--primary-color);
     font-size: 12px;
     font-weight: 750;
@@ -3321,7 +3321,7 @@ padding: 10px;
 }
 
 .maseco-supplier-button:hover {
-    background: var(--maseco-green-dark);
+    /* background: var(--maseco-green-dark); */
     color: green;
 }
 

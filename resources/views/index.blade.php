@@ -1640,27 +1640,28 @@
 
     </div>
   </section> -->
-  <section class="testimonial py-5 mb-5">
+  
+   <section class="testimonial py-5 mb-5">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-4 col-sm-12">
-          <div class="testimonial-image-box m-auto">
+      <div class="row">
+        <div class="col-xl-5">
+          <div class="testimonial-image-box">
             <img src="{{ asset('assets/images/testimonial-thumb-1.jpg')}}" alt="">
-            <!-- <div class="quote">
-                <i class="fas fa-quote-right"></i>
-              </div> -->
-            <!-- <div class="icon-box"  >
-                <div class="icon">
-                  <img src="{{ asset('assets/images/icon/machine-icon.svg')}}" alt="">
-                </div>
-                <div class="icon-box-content">
-                  <h6>Over All Rating</h6>
-                  <p>Based on 2555 Reviews</p>
-                </div>
-              </div> -->
+            <div class="quote">
+              <i class="fas fa-quote-right"></i>
+            </div>
+            <div class="icon-box">
+              <div class="icon">
+                <img src="{{ asset('assets/images/icon/machine-icon.svg')}}" alt="">
+              </div>
+              <div class="icon-box-content">
+                <h6>Over All Rating</h6>
+                <p class="icon-box-description">Based on 2555 Reviews</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-md-8 col-sm-12 ps-md-5">
+        <div class="col-xl-7 ps-md-5">
           <div class="section-heading text-white">
             <span class="needle-heading text-uppercase d-block needleIcon">our testimonials</span>
             <h2 class="text-white">what our happy clients say</h2>
@@ -1668,59 +1669,93 @@
           <div class="testimonials">
             <div class="testimonial-slider">
               <div class="testimonial-box">
-                <div class="testimonial-content py-4">
-                  <p>Maseco has made sustainable material sourcing much easier for our design process. Being able to explore suitable materials and connect with relevant suppliers in one place has saved us valuable time</p>
+                <div class="testimonial-content py-5">
+                  <p>Textiles are materials made from fibers or yarn, and they are used to create a wide
+                    range of products such as clothing, household items, and industrial goods. The
+                    fibers used in textiles can be natural, such as cotton, wool, and silk, or
+                    synthetic, such as polyester, nylon, and acrylic. Textiles can be woven, knitted, or
+                    crocheted, and they can be dyed.</p>
                 </div>
                 <div class="testimonial-info">
                   <div class="testimonial-meta d-flex align-items-center">
-                    <div class="testimonial-img d-none">
+                    <div class="testimonial-img">
                       <img decoding="async" src="{{ asset('assets/images/testimonial-user.jpg')}}" alt="testimonial-img">
                     </div>
                     <div class="testimonial-data">
-                      <h5>Alessia Romano</h5>
-                      <span>Fashion Designer</span>
+                      <h5>alex john martin</h5>
+                      <span>Photographer</span>
                     </div>
                   </div>
-                  <!-- <div class="testimonial-meta">
-                      <div class="testimonial-star">
-                        <i class="fa fa-star"  ></i>
-                        <i class="fa fa-star"  ></i>
-                        <i class="fa fa-star"  ></i>
-                        <i class="fa fa-star"  ></i>
-                        <i class="fa fa-star"  ></i>
-                      </div>
-                      <div class="owlNav"></div>
-                    </div> -->
+                  <div class="testimonial-meta">
+                    <div class="testimonial-star">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                    </div>
+                    <div class="owlNav"></div>
+                  </div>
                 </div>
               </div>
               <div class="testimonial-box">
                 <div class="testimonial-content py-5">
-                  <p>Maseco gives us a much clearer path from sourcing to manufacturing. The platform helps us discover the right materials and production partners without making the process unnecessarily complicated.</p>
+                  <p>Textiles are materials made from fibers or yarn, and they are used to create a wide
+                    range of products such as clothing, household items, and industrial goods. The
+                    fibers used in textiles can be natural, such as cotton, wool, and silk, or
+                    synthetic, such as polyester, nylon, and acrylic. Textiles can be woven, knitted, or
+                    crocheted, and they can be dyed.</p>
                 </div>
                 <div class="testimonial-info">
                   <div class="testimonial-meta d-flex align-items-center">
-
+                    <div class="testimonial-img">
+                      <img decoding="async" src="{{ asset('assets/images/testimonial-user.jpg')}}" alt="testimonial-img">
+                    </div>
                     <div class="testimonial-data">
-                      <h5>Tanvir Hasan</h5>
-                      <span>Apparel Brand Founder</span>
+                      <h5>alex john martin</h5>
+                      <span>Photographer</span>
                     </div>
                   </div>
-
+                  <div class="testimonial-meta">
+                    <div class="testimonial-star">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                    </div>
+                    <div class="owlNav"></div>
+                  </div>
                 </div>
               </div>
               <div class="testimonial-box">
                 <div class="testimonial-content py-5">
-                  <p>The AI-driven suggestions have been particularly useful when exploring new design and material possibilities. Maseco brings technology and sustainability together in a way that supports our creative process.</p>
+                  <p>Textiles are materials made from fibers or yarn, and they are used to create a wide
+                    range of products such as clothing, household items, and industrial goods. The
+                    fibers used in textiles can be natural, such as cotton, wool, and silk, or
+                    synthetic, such as polyester, nylon, and acrylic. Textiles can be woven, knitted, or
+                    crocheted, and they can be dyed.</p>
                 </div>
                 <div class="testimonial-info">
                   <div class="testimonial-meta d-flex align-items-center">
-
+                    <div class="testimonial-img">
+                      <img decoding="async" src="{{ asset('assets/images/testimonial-user.jpg')}}" alt="testimonial-img">
+                    </div>
                     <div class="testimonial-data">
-                      <h5>Yuki Nakamura</h5>
-                      <span>Product Designer</span>
+                      <h5>alex john martin</h5>
+                      <span>Photographer</span>
                     </div>
                   </div>
-
+                  <div class="testimonial-meta">
+                    <div class="testimonial-star">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                    </div>
+                    <div class="owlNav"></div>
+                  </div>
                 </div>
               </div>
 
