@@ -1,57 +1,137 @@
 @include('Include.header')
 
-  <main>
+<main>
 
-    <section class="banner inner-banner" style="background-image: url({{ asset('assets/images/inner-banner.jpg)')}};">
-        <div class="container">
-            <div class="row">
-                <div class="inner-banner-heading">
-                    <h1>About Us</h1>
-                </div>
-                <div class="breadcrumb-container">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="{{ route('home') }}"><i class="fas fa-home mr-2"></i>Home</a>
-                        </li>
-                        <li class="breadcrumb-item active">About Us</li>
-                    </ol>
-                </div>
-            </div>
+  <section class="banner inner-banner" style="background-image: url({{ asset('assets/images/inner-banner.jpg)')}};">
+    <div class="container">
+      <div class="row">
+        <div class="inner-banner-heading">
+          <h1>About Us</h1>
         </div>
-    </section>
-
-    <section class="section-Info py-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-sm-12">
-            <div class="thumb" >
-<img src="{{ asset('assets/images/about-thumb.png') }}" alt="About">
-            </div>
-          </div>
-          <div class="col-md-6 col-sm-12 text-wrapper ps-md-5" >
-            <div class="section-heading">
-              <span class="needle-heading text-uppercase d-block needleIcon">About Us</span>
-              <h2>Let’s Build Something Creative Together</h2>
-              <p>Maseco is a sustainability-driven fashion solutions provider, empowering designers with responsible
-                sourcing, ethical manufacturing, and AI-powered design insights.</p>
-            </div>
-            <ul class="listing list-with-icon">
-              <li>Ethical & Sustainable Materials</li>
-              <li>Seamless Manufacturing Support</li>
-              <li>Recycling & R&D Innovation</li>
-              <li>AI-Driven Design Assistance</li>
-              <li>Hassle-Free Logistics & Admin</li>
-            </ul>
-            <div class="section-button mt-5 d-block">
-              <!-- <a href="#" class="theme-btn">Read More <i class="fa fa-arrow-right"></i></a> -->
-            </div>
-          </div>
+        <div class="breadcrumb-container">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="{{ route('home') }}"><i class="fas fa-home mr-2"></i>Home</a>
+            </li>
+            <li class="breadcrumb-item active">About Us</li>
+          </ol>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
+<!-- 
+  <section class="section-Info py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="thumb">
+            <img src="{{ asset('assets/images/about-thumb.png') }}" alt="About">
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12 text-wrapper ps-md-5">
+          <div class="section-heading">
+            <span class="needle-heading text-uppercase d-block needleIcon">About Us</span>
+            <h2>Let’s Build Something Creative Together</h2>
+            <p>Maseco is a sustainability-driven fashion solutions provider, empowering designers with responsible
+              sourcing, ethical manufacturing, and AI-powered design insights.</p>
+          </div>
+          <ul class="listing list-with-icon">
+            <li>Ethical & Sustainable Materials</li>
+            <li>Seamless Manufacturing Support</li>
+            <li>Recycling & R&D Innovation</li>
+            <li>AI-Driven Design Assistance</li>
+            <li>Hassle-Free Logistics & Admin</li>
+          </ul>
+          <div class="section-button mt-5 d-block">
+          <a href="#" class="theme-btn">Read More <i class="fa fa-arrow-right"></i></a> -->
+          <!-- </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <section class="maseco-about-clean py-5" id="about-maseco">
+    <div class="container">
+        <div class="row align-items-center g-4 g-lg-5">
+
+            <!-- Left: About content -->
+            <div class="col-lg-5">
+                <div class="maseco-about-copy">
+
+                    <span class="maseco-about-eyebrow">
+                        ABOUT MASECO
+                    </span>
+
+                    <h2 class="maseco-about-title">
+                        A better way to
+                        <span>source textiles.</span>
+                    </h2>
+
+                    <p class="maseco-about-description">
+                        Maseco connects businesses with textile suppliers
+                        and supports more responsible material sourcing
+                        and production.
+                    </p>
+
+                    <p class="maseco-about-description maseco-about-secondary">
+                        We make it easier to find the right partners,
+                        explore sustainable materials, and build a more
+                        transparent supply chain for the fashion industry.
+                    </p>
+
+                    <a href="{{ url('/marketplace') }}"
+                       class="maseco-about-button">
+                        Explore the marketplace
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- Right: Textile image and capability strip -->
+            <div class="col-lg-7">
+                <div class="maseco-about-visual">
+
+                    <img
+                        src="{{ asset('assets/images/manufacture.png') }}"
+                        alt="Textile manufacturing and fabric production"
+                        class="maseco-about-photo"
+                        loading="lazy"
+                    >
+
+                    <div class="maseco-about-capabilities">
+
+                        <div class="maseco-capability">
+                            <span class="maseco-capability-icon">
+                                <i class="bi bi-search"></i>
+                            </span>
+                            <span>Supplier discovery</span>
+                        </div>
+
+                        <div class="maseco-capability">
+                            <span class="maseco-capability-icon">
+                                <i class="bi bi-leaf"></i>
+                            </span>
+                            <span>Sustainable materials</span>
+                        </div>
+
+                        <div class="maseco-capability">
+                            <span class="maseco-capability-icon">
+                                <i class="bi bi-buildings"></i>
+                            </span>
+                            <span>Production support</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 
 
-    <!-- <section class="services py-5">
+  <!-- <section class="services py-5">
       <div class="container">
         <div class="row">
           <div class="col-md-4">
@@ -114,7 +194,7 @@
       </div>
     </section> -->
 
-    <!-- <section class="process-section py-5">
+  <!-- <section class="process-section py-5">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
@@ -175,100 +255,195 @@
     </section> -->
 
 
-    <section class="production py-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <div class="section-heading">
-              <span class="needle-heading text-uppercase d-block needleIcon">Sustainable Journey </span>
-              <h2>Sustainable Fashion Business with Maseco</h2>
-              <p>Maseco is a sustainability-driven fashion solutions provider, empowering designers with responsible
-                sourcing, ethical manufacturing, and AI-powered design insights.</p>
-            </div>
+  <!-- <section class="production py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <div class="section-heading">
+            <span class="needle-heading text-uppercase d-block needleIcon">Sustainable Journey </span>
+            <h2>Sustainable Fashion Business with Maseco</h2>
+            <p>Maseco is a sustainability-driven fashion solutions provider, empowering designers with responsible
+              sourcing, ethical manufacturing, and AI-powered design insights.</p>
           </div>
         </div>
       </div>
-      <div class="container position-relative mt-5">
-        <div class="border-line"></div>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="timelines">
-              <div class="timeline">
-                <div class="timeline-states">
-                  <div class="timeline-state">
-                    <div class="row align-items-center">
-                      <div class="col-lg-6 col-md-6">
-                        <div class="timeline-image">
-                          <img decoding="async" src="{{ asset('assets/images/sustainable-materials.png')}}" alt="images"
-                            >
-                        </div>
-                      </div>
-                      <div class="col-lg-6 col-md-6">
-                        <div class="timeline-details position-relative">
-                          <div class="timeline-content">
-                            <h3>01. Source Ethical & Sustainable Materials</h3>
-                            <p>There are many variations of passages of Lorem Ipsum available, the majority have
-                              suffered alteration in some form, by injected humour, or randomised words which don't look
-                              even slightly believable. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            <div class="section-button mt-2 d-block">
-                            </div>
-                          </div>
-                        </div>
+    </div>
+    <div class="container position-relative mt-5">
+      <div class="border-line"></div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="timelines">
+            <div class="timeline">
+              <div class="timeline-states">
+                <div class="timeline-state">
+                  <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6">
+                      <div class="timeline-image">
+                        <img decoding="async" src="{{ asset('assets/images/sustainable-materials.png')}}" alt="images">
                       </div>
                     </div>
-                    <div class="dot-circle"></div>
-                  </div>
-                  <div class="timeline-state">
-                    <div class="row align-items-center flex-column-reverse flex-md-row">
-                      <div class="col-lg-6 col-md-6">
+                    <div class="col-lg-6 col-md-6">
+                      <div class="timeline-details position-relative">
                         <div class="timeline-content">
-                          <h3>02. Manufacture with Trusted Partners</h3>
-                          <p>There are many variations of passages of Lorem Ipsum available, the majority have suffered
-                            alteration in some form, by injected humour, or randomised words which don't look even
-                            slightly believable. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                          <div class="section-button mt-2 d-block">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-6 col-md-6">
-                        <div class="timeline-image">
-                          <img decoding="async" src="{{ asset('assets/images/manufacture.png')}}" class="wow  fadeInRight animated"
-                            alt="images" style="visibility: visible; animation-name: fadeInRight;">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="dot-circle"></div>
-                  </div>
-                  <div class="timeline-state">
-                    <div class="row align-items-center">
-                      <div class="col-lg-6 col-md-6">
-                        <div class="timeline-image">
-                          <img decoding="async" src="{{ asset('assets/images/logistics.png')}}" alt="images"
-                            style="visibility: visible; animation-name: fadeInLeft;">
-                        </div>
-                      </div>
-                      <div class="col-lg-6 col-md-6">
-                        <div class="timeline-content">
-                          <h3>03. Simplify Logistics & Design</h3>
-                          <p>There are many variations of passages of Lorem Ipsum available, the majority have suffered
-                            alteration in some form, by injected humour, or randomised words which don't look even
-                            slightly believable. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                          <h3>01. Source Ethical & Sustainable Materials</h3>
+                          <p>There are many variations of passages of Lorem Ipsum available, the majority have
+                            suffered alteration in some form, by injected humour, or randomised words which don't look
+                            even slightly believable. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                           <div class="section-button mt-2 d-block">
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="dot-circle"></div>
                   </div>
+                  <div class="dot-circle"></div>
+                </div>
+                <div class="timeline-state">
+                  <div class="row align-items-center flex-column-reverse flex-md-row">
+                    <div class="col-lg-6 col-md-6">
+                      <div class="timeline-content">
+                        <h3>02. Manufacture with Trusted Partners</h3>
+                        <p>There are many variations of passages of Lorem Ipsum available, the majority have suffered
+                          alteration in some form, by injected humour, or randomised words which don't look even
+                          slightly believable. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <div class="section-button mt-2 d-block">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                      <div class="timeline-image">
+                        <img decoding="async" src="{{ asset('assets/images/manufacture.png')}}" class="wow  fadeInRight animated"
+                          alt="images" style="visibility: visible; animation-name: fadeInRight;">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="dot-circle"></div>
+                </div>
+                <div class="timeline-state">
+                  <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6">
+                      <div class="timeline-image">
+                        <img decoding="async" src="{{ asset('assets/images/logistics.png')}}" alt="images"
+                          style="visibility: visible; animation-name: fadeInLeft;">
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                      <div class="timeline-content">
+                        <h3>03. Simplify Logistics & Design</h3>
+                        <p>There are many variations of passages of Lorem Ipsum available, the majority have suffered
+                          alteration in some form, by injected humour, or randomised words which don't look even
+                          slightly believable. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <div class="section-button mt-2 d-block">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="dot-circle"></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section> -->
+   <section class="maseco-journey">
+    <div class="container">
 
-    <!-- <section class="price-section py-5">
+        <!-- Section heading -->
+        <div class="journey-heading">
+            <span class="journey-eyebrow">
+                <i class="bi bi-leaf"></i> THE MASECO JOURNEY
+            </span>
+            <h2>A Smarter Way to Source Textiles</h2>
+            <p>
+                From finding the right materials to connecting with manufacturing
+                partners, Maseco brings your sourcing journey together.
+            </p>
+        </div>
+
+        <div class="row align-items-center g-4 g-lg-5">
+
+            <!-- Left: Image -->
+            <div class="col-lg-5">
+                <div class="journey-visual">
+                    <img
+                        src="{{ asset('assets/images/sustainable-materials.png') }}"
+                        alt="Textile materials and sustainable fabric sourcing"
+                        loading="lazy"
+                    >
+
+                    <div class="journey-image-caption">
+                        <span class="journey-caption-icon">
+                            <i class="bi bi-recycle"></i>
+                        </span>
+                        <div>
+                            <strong>Better sourcing starts here.</strong>
+                            <p>Materials, partners and smarter decisions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Rollout steps -->
+            <div class="col-lg-7">
+                <div class="journey-steps">
+
+                    <!-- Step 01 -->
+                    <article class="journey-step">
+                        <div class="journey-step-number">01</div>
+                        <div class="journey-step-content">
+                            <span class="journey-step-label">DISCOVER</span>
+                            <h3>Find Sustainable Materials</h3>
+                            <p>
+                                Explore textile materials and supplier options
+                                in one place. Compare available materials and
+                                identify the right fit for your business.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Step 02 -->
+                    <article class="journey-step">
+                        <div class="journey-step-number">02</div>
+                        <div class="journey-step-content">
+                            <span class="journey-step-label">CONNECT</span>
+                            <h3>Meet Manufacturing Partners</h3>
+                            <p>
+                                Discover potential suppliers and manufacturing
+                                partners based on your material requirements
+                                and production needs.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Step 03 -->
+                    <article class="journey-step">
+                        <div class="journey-step-number">03</div>
+                        <div class="journey-step-content">
+                            <span class="journey-step-label">GROW</span>
+                            <h3>Move Towards Smarter Production</h3>
+                            <p>
+                                Build a more informed sourcing process with
+                                sustainable material choices and access to
+                                Maseco's evolving sourcing and design solutions.
+                            </p>
+                        </div>
+                    </article>
+
+                </div>
+
+                <a href="{{ url('/marketplace') }}" class="journey-link">
+                    Explore the marketplace
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+  <!-- <section class="price-section py-5">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
@@ -357,7 +532,7 @@
       </div>
     </section> -->
 
-    <!-- <section class="provide-section py-4">
+  <!-- <section class="provide-section py-4">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-xl-8">
@@ -373,132 +548,132 @@
         </div>
       </div>
     </section> -->
-    <section class="testimonial py-5 mb-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-xl-5">
-            <div class="testimonial-image-box">
-              <img src="{{ asset('assets/images/testimonial-thumb-1.jpg')}}" alt="">
-              <div class="quote">
-                <i class="fas fa-quote-right"></i>
+  <section class="testimonial py-5 mb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-5">
+          <div class="testimonial-image-box">
+            <img src="{{ asset('assets/images/testimonial-thumb-1.jpg')}}" alt="">
+            <div class="quote">
+              <i class="fas fa-quote-right"></i>
+            </div>
+            <div class="icon-box">
+              <div class="icon">
+                <img src="{{ asset('assets/images/icon/machine-icon.svg')}}" alt="">
               </div>
-              <div class="icon-box">
-                <div class="icon">
-                  <img src="{{ asset('assets/images/icon/machine-icon.svg')}}" alt="">
-                </div>
-                <div class="icon-box-content">
-                  <h6>Over All Rating</h6>
-                  <p class="icon-box-description">Based on 2555 Reviews</p>
-                </div>
+              <div class="icon-box-content">
+                <h6>Over All Rating</h6>
+                <p class="icon-box-description">Based on 2555 Reviews</p>
               </div>
             </div>
           </div>
-          <div class="col-xl-7 ps-md-5">
-            <div class="section-heading text-white">
-              <span class="needle-heading text-uppercase d-block needleIcon">our testimonials</span>
-              <h2 class="text-white">what our happy clients say</h2>
-            </div>
-            <div class="testimonials">
-              <div class="testimonial-slider">
-                <div class="testimonial-box">
-                  <div class="testimonial-content py-5">
-                    <p>Textiles are materials made from fibers or yarn, and they are used to create a wide
-                      range of products such as clothing, household items, and industrial goods. The
-                      fibers used in textiles can be natural, such as cotton, wool, and silk, or
-                      synthetic, such as polyester, nylon, and acrylic. Textiles can be woven, knitted, or
-                      crocheted, and they can be dyed.</p>
+        </div>
+        <div class="col-xl-7 ps-md-5">
+          <div class="section-heading text-white">
+            <span class="needle-heading text-uppercase d-block needleIcon">our testimonials</span>
+            <h2 class="text-white">what our happy clients say</h2>
+          </div>
+          <div class="testimonials">
+            <div class="testimonial-slider">
+              <div class="testimonial-box">
+                <div class="testimonial-content py-5">
+                  <p>Textiles are materials made from fibers or yarn, and they are used to create a wide
+                    range of products such as clothing, household items, and industrial goods. The
+                    fibers used in textiles can be natural, such as cotton, wool, and silk, or
+                    synthetic, such as polyester, nylon, and acrylic. Textiles can be woven, knitted, or
+                    crocheted, and they can be dyed.</p>
+                </div>
+                <div class="testimonial-info">
+                  <div class="testimonial-meta d-flex align-items-center">
+                    <div class="testimonial-img">
+                      <img decoding="async" src="{{ asset('assets/images/testimonial-user.jpg')}}" alt="testimonial-img">
+                    </div>
+                    <div class="testimonial-data">
+                      <h5>alex john martin</h5>
+                      <span>Photographer</span>
+                    </div>
                   </div>
-                  <div class="testimonial-info">
-                    <div class="testimonial-meta d-flex align-items-center">
-                      <div class="testimonial-img">
-                        <img decoding="async" src="{{ asset('assets/images/testimonial-user.jpg')}}" alt="testimonial-img">
-                      </div>
-                      <div class="testimonial-data">
-                        <h5>alex john martin</h5>
-                        <span>Photographer</span>
-                      </div>
+                  <div class="testimonial-meta">
+                    <div class="testimonial-star">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
                     </div>
-                    <div class="testimonial-meta">
-                      <div class="testimonial-star">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                      </div>
-                      <div class="owlNav"></div>
-                    </div>
+                    <div class="owlNav"></div>
                   </div>
                 </div>
-                <div class="testimonial-box">
-                  <div class="testimonial-content py-5">
-                    <p>Textiles are materials made from fibers or yarn, and they are used to create a wide
-                      range of products such as clothing, household items, and industrial goods. The
-                      fibers used in textiles can be natural, such as cotton, wool, and silk, or
-                      synthetic, such as polyester, nylon, and acrylic. Textiles can be woven, knitted, or
-                      crocheted, and they can be dyed.</p>
+              </div>
+              <div class="testimonial-box">
+                <div class="testimonial-content py-5">
+                  <p>Textiles are materials made from fibers or yarn, and they are used to create a wide
+                    range of products such as clothing, household items, and industrial goods. The
+                    fibers used in textiles can be natural, such as cotton, wool, and silk, or
+                    synthetic, such as polyester, nylon, and acrylic. Textiles can be woven, knitted, or
+                    crocheted, and they can be dyed.</p>
+                </div>
+                <div class="testimonial-info">
+                  <div class="testimonial-meta d-flex align-items-center">
+                    <div class="testimonial-img">
+                      <img decoding="async" src="{{ asset('assets/images/testimonial-user.jpg')}}" alt="testimonial-img">
+                    </div>
+                    <div class="testimonial-data">
+                      <h5>alex john martin</h5>
+                      <span>Photographer</span>
+                    </div>
                   </div>
-                  <div class="testimonial-info">
-                    <div class="testimonial-meta d-flex align-items-center">
-                      <div class="testimonial-img">
-                        <img decoding="async" src="{{ asset('assets/images/testimonial-user.jpg')}}" alt="testimonial-img">
-                      </div>
-                      <div class="testimonial-data">
-                        <h5>alex john martin</h5>
-                        <span>Photographer</span>
-                      </div>
+                  <div class="testimonial-meta">
+                    <div class="testimonial-star">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
                     </div>
-                    <div class="testimonial-meta">
-                      <div class="testimonial-star">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                      </div>
-                      <div class="owlNav"></div>
-                    </div>
+                    <div class="owlNav"></div>
                   </div>
                 </div>
-                <div class="testimonial-box">
-                  <div class="testimonial-content py-5">
-                    <p>Textiles are materials made from fibers or yarn, and they are used to create a wide
-                      range of products such as clothing, household items, and industrial goods. The
-                      fibers used in textiles can be natural, such as cotton, wool, and silk, or
-                      synthetic, such as polyester, nylon, and acrylic. Textiles can be woven, knitted, or
-                      crocheted, and they can be dyed.</p>
+              </div>
+              <div class="testimonial-box">
+                <div class="testimonial-content py-5">
+                  <p>Textiles are materials made from fibers or yarn, and they are used to create a wide
+                    range of products such as clothing, household items, and industrial goods. The
+                    fibers used in textiles can be natural, such as cotton, wool, and silk, or
+                    synthetic, such as polyester, nylon, and acrylic. Textiles can be woven, knitted, or
+                    crocheted, and they can be dyed.</p>
+                </div>
+                <div class="testimonial-info">
+                  <div class="testimonial-meta d-flex align-items-center">
+                    <div class="testimonial-img">
+                      <img decoding="async" src="{{ asset('assets/images/testimonial-user.jpg')}}" alt="testimonial-img">
+                    </div>
+                    <div class="testimonial-data">
+                      <h5>alex john martin</h5>
+                      <span>Photographer</span>
+                    </div>
                   </div>
-                  <div class="testimonial-info">
-                    <div class="testimonial-meta d-flex align-items-center">
-                      <div class="testimonial-img">
-                        <img decoding="async" src="{{ asset('assets/images/testimonial-user.jpg')}}" alt="testimonial-img">
-                      </div>
-                      <div class="testimonial-data">
-                        <h5>alex john martin</h5>
-                        <span>Photographer</span>
-                      </div>
+                  <div class="testimonial-meta">
+                    <div class="testimonial-star">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
                     </div>
-                    <div class="testimonial-meta">
-                      <div class="testimonial-star">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                      </div>
-                      <div class="owlNav"></div>
-                    </div>
+                    <div class="owlNav"></div>
                   </div>
                 </div>
-
               </div>
 
-
-
             </div>
-    </section>
 
-    <!-- <section class="blogs py-5">
+
+
+          </div>
+  </section>
+
+  <!-- <section class="blogs py-5">
       <div class="container">
         <div class="row">
           <div class="section-heading text-center mt-5">
@@ -588,7 +763,7 @@
         </div>
       </div>
     </section> -->
-  </main>
+</main>
 
 
-  @include('Include.footer')
+@include('Include.footer')

@@ -2062,7 +2062,7 @@ form[action*="marketplace"] .btn {
     background: #fff;
     border: 1px solid #e8eee9;
     border-radius: 14px;
-    box-shadow: 0 3px 12px #153d2d08;
+    /* box-shadow: 0 3px 12px #153d2d08; */
     transition: transform .25s ease, box-shadow .25s ease;
 }
 
@@ -3018,11 +3018,10 @@ padding: 10px;
 
 
 .small{
-  font-size: 13px !important;
+  font-size: 12px !important;
 }
 
 
-```css
 /* ===== Maseco Featured Suppliers ===== */
 .maseco-featured {
     --maseco-green: #2DAC92;
@@ -3958,5 +3957,991 @@ padding: 10px;
 @media (prefers-reduced-motion: reduce) {
     .maseco-journey * {
         transition: none !important;
+    }
+}
+
+
+
+/* Maseco process section */
+.maseco-process {
+    padding: 82px 0;
+    background: #f2f8f5;
+    color: #183d35;
+    overflow: hidden;
+}
+
+.maseco-process .process-intro {
+    height: 100%;
+    padding-right: 22px;
+    border-right: 1px solid #cbded5;
+}
+
+.maseco-process .process-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 17px;
+    color: #247f6c;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+}
+
+.maseco-process .process-eyebrow span {
+    width: 23px;
+    height: 2px;
+    background: #2DAC92;
+}
+
+.maseco-process .process-intro h2 {
+    margin: 0 0 16px;
+    color: #183d35;
+    font-size: clamp(27px, 2.5vw, 36px);
+    font-weight: 700;
+    line-height: 1.18;
+    letter-spacing: -0.8px;
+}
+
+.maseco-process .process-intro h2 span {
+    color: #2DAC92;
+}
+
+.maseco-process .process-intro p {
+    margin: 0 0 23px;
+    color: #63766d;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.maseco-process .process-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 13px 18px;
+    border: 1px solid #2DAC92;
+    border-radius: 5px;
+    background: #2DAC92;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.maseco-process .process-cta:hover {
+    background: #248f7a;
+    border-color: #248f7a;
+    transform: translateY(-2px);
+}
+
+/* Four-step horizontal process */
+.maseco-process .process-steps {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 18px
+                           minmax(0, 1fr) 18px
+                           minmax(0, 1fr) 18px
+                           minmax(0, 1fr);
+    align-items: start;
+    gap: 12px;
+}
+
+.maseco-process .process-step {
+    min-width: 0;
+}
+
+.maseco-process .process-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 22px;
+    border-radius: 50%;
+    background: #e1ebe4;
+}
+
+.maseco-process .process-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+}
+
+.maseco-process .process-step:hover .process-image img {
+    transform: scale(1.04);
+}
+
+.maseco-process .process-number {
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    display: flex;
+    width: 39px;
+    height: 39px;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #f2f8f5;
+    border-radius: 50%;
+    background: #2DAC92;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.maseco-process .process-step h3 {
+    margin: 0 0 8px;
+    color: #183d35;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.maseco-process .process-step p {
+    margin: 0;
+    color: #657970;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.maseco-process .process-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 38%;
+    color: #247f6c;
+    font-size: 17px;
+}
+
+/* Tablet */
+@media (max-width: 991.98px) {
+    .maseco-process {
+        padding: 65px 0;
+    }
+
+    .maseco-process .process-intro {
+        padding-right: 0;
+        border-right: 0;
+        border-bottom: 1px solid #cbded5;
+        padding-bottom: 25px;
+    }
+
+    .maseco-process .process-steps {
+        gap: 10px;
+    }
+
+    .maseco-process .process-step h3 {
+        font-size: 13px;
+    }
+
+    .maseco-process .process-arrow {
+        font-size: 14px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 575.98px) {
+    .maseco-process {
+        padding: 48px 0;
+    }
+
+    .maseco-process .process-steps {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 30px 20px;
+    }
+
+    .maseco-process .process-arrow {
+        display: none;
+    }
+
+    .maseco-process .process-image {
+        margin-bottom: 18px;
+    }
+
+    .maseco-process .process-number {
+        width: 34px;
+        height: 34px;
+        font-size: 11px;
+    }
+
+    .maseco-process .process-step h3 {
+        font-size: 14px;
+    }
+
+    .maseco-process .process-step p {
+        font-size: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .maseco-process *,
+    .maseco-process *::before,
+    .maseco-process *::after {
+        transition: none !important;
+    }
+}
+```css
+/* Maseco subscription section */
+.maseco-pricing {
+    --maseco-green: #2DAC92;
+    --maseco-dark: #183d35;
+    --maseco-muted: #687d78;
+    --maseco-border: #dce8e3;
+
+    background: #f5f8f5;
+    padding: 85px 0 !important;
+    color: var(--maseco-dark);
+}
+
+.pricing-heading {
+    max-width: 760px;
+    margin: 0 auto 48px;
+}
+
+.pricing-eyebrow {
+    display: inline-block;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.pricing-heading h2 {
+    margin-bottom: 14px;
+    color: var(--maseco-dark);
+    font-size: 35px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.pricing-heading p {
+    max-width: 650px;
+    margin: 0 auto;
+    color: var(--maseco-muted);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* Plan layout */
+.maseco-plan {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    background: #fff;
+    border: 1px solid var(--maseco-border);
+    border-radius: 14px;
+    transition: border-color .25s ease, box-shadow .25s ease,
+                transform .25s ease;
+}
+
+.maseco-plan:hover {
+    transform: translateY(-4px);
+    border-color: #b6d9ce;
+    box-shadow: 0 14px 32px rgba(24, 61, 53, .07);
+}
+
+.plan-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 22px;
+    color: var(--maseco-green);
+    background: #e9f6f1;
+    border-radius: 15px;
+    font-size: 25px;
+}
+
+.maseco-plan h3 {
+    margin: 0 0 12px;
+    color: var(--maseco-dark);
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.plan-price {
+    margin-bottom: 8px;
+    color: #142f2a;
+    font-size: 43px;
+    font-weight: 750;
+    line-height: 1.2;
+}
+
+.plan-price span {
+    color: var(--maseco-muted);
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.plan-description {
+    min-height: 48px;
+    margin: 0;
+    color: var(--maseco-muted);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.maseco-plan hr {
+    margin: 20px 0;
+    border-color: var(--maseco-border);
+    opacity: 1;
+}
+
+.plan-features {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 0 0 25px;
+    padding: 0;
+    list-style: none;
+}
+
+.plan-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: #435f57;
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+.plan-features li i {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--maseco-green);
+    font-size: 16px;
+}
+
+.plan-note {
+    margin: -5px 0 20px;
+    color: var(--maseco-muted);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.plan-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    min-height: 49px;
+    margin-top: auto;
+    padding: 12px 16px;
+    color: var(--primary-color);
+    background: #fff;
+    border: 1px solid var(--primary-color);
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 650;
+    text-align: center;
+    text-decoration: none;
+    transition: .25s ease;
+}
+
+.plan-button:hover {
+    color: #fff;
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.plan-button i {
+    transition: transform .25s ease;
+}
+
+.plan-button:hover i {
+    transform: translateX(3px);
+}
+
+/* Highlight Premium */
+.maseco-plan-featured {
+    border: 1.5px solid var(--maseco-green);
+    box-shadow: 0 10px 28px rgba(45, 172, 146, .08);
+}
+
+.plan-popular {
+    position: absolute;
+    top: 28px;
+    right: 25px;
+    padding: 7px 11px;
+    color: #168c76;
+    background: #e2f5ef;
+    border-radius: 30px;
+    font-size: 10px;
+    font-weight: 750;
+    letter-spacing: .5px;
+}
+
+.plan-button-primary {
+    /* color: #fff; */
+    background: var(--maseco-green);
+    border-color: var(--maseco-green);
+}
+
+.plan-button-primary:hover {
+    background: #248f7a;
+    border-color: #248f7a;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+    .maseco-pricing {
+        padding: 65px 0 !important;
+    }
+
+    .pricing-heading {
+        margin-bottom: 35px;
+    }
+
+    .maseco-plan {
+        padding: 26px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .maseco-pricing {
+        padding: 48px 0 !important;
+    }
+
+    .pricing-heading h2 {
+        font-size: 29px;
+    }
+
+    .pricing-heading p {
+        font-size: 14px;
+    }
+
+    .maseco-plan {
+        padding: 24px;
+    }
+
+    .plan-popular {
+        top: 24px;
+        right: 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .maseco-plan,
+    .plan-button,
+    .plan-button i {
+        transition: none;
+    }
+
+    .maseco-plan:hover {
+        transform: none;
+    }
+}
+
+/* =========================================
+   MASECO SUBSCRIPTION / PRICING SECTION
+   ========================================= */
+
+.price-section {
+    position: relative;
+    padding: 90px 0 100px !important;
+    background: #f5f9f7;
+    overflow: visible;
+}
+
+/* Section heading */
+.price-section .section-heading {
+    max-width: 760px;
+    margin: 0 auto 48px;
+    text-align: center;
+}
+
+.price-section .needle-heading {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: #2dac92;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.price-section .section-heading h2 {
+    margin: 0 0 15px;
+    color: #183d35;
+    font-size: clamp(30px, 3vw, 42px);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.price-section .section-heading p {
+    margin: 0 auto;
+    max-width: 680px;
+    color: #64756f;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* Pricing card columns */
+.price-section .row.justify-content-center {
+    align-items: stretch;
+    row-gap: 24px;
+}
+
+.price-section .row.justify-content-center > div {
+    display: flex;
+    min-width: 0;
+}
+
+/* Card */
+.price-section .pricebox {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100%;
+    padding: 32px;
+    background: #ffffff;
+    border: 1px solid #dfeae5;
+    border-radius: 18px;
+    box-shadow: 0 8px 28px rgba(24, 61, 53, 0.07);
+    transition: transform 0.25s ease, box-shadow 0.25s ease,
+                border-color 0.25s ease;
+}
+
+.price-section .pricebox:hover {
+    transform: translateY(-5px);
+    border-color: #a7ddd0;
+    box-shadow: 0 16px 38px rgba(24, 61, 53, 0.12);
+}
+
+/* Keep content and button laid out correctly */
+.price-section .price-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+}
+
+/* Plan icon */
+.price-section .priceboxIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 58px;
+    margin-bottom: 25px;
+    border-radius: 15px;
+    background: #e7f6f1;
+}
+
+.price-section .priceboxIcon img {
+    display: block;
+    width: 30px;
+    height: 30px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* Plan title */
+.price-section .price-content h5 {
+    margin: 0 0 12px;
+    color: #183d35;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+/* Short description */
+.price-section .price-text {
+    margin: 0 0 20px;
+    color: #687a73;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* Price */
+.price-section .price-content h2.price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 5px;
+    width: 100%;
+    margin: 0 0 22px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #e1eae5;
+    color: #183d35;
+    font-size: 43px;
+    font-weight: 750;
+    line-height: 1.2;
+}
+
+.price-section .price .dollar {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+.price-section .price .price-month {
+    color: #75857e;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.price-section .price .pricebox-comment {
+    display: block;
+    flex-basis: 100%;
+    margin-top: 8px;
+    color: #687a73;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+/* Feature description for Basic plan */
+.price-section .price-content > p:not(.price-text) {
+    color: #687a73;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* Feature list */
+.price-section .list-info {
+    width: 100%;
+    margin: 0 0 28px;
+    padding: 0;
+    list-style: none;
+}
+
+.price-section .list-info li {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    margin-bottom: 17px;
+    color: #53675f;
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+.price-section .list-info li i {
+    flex-shrink: 0;
+    margin-top: 4px;
+    color: #2dac92;
+    font-size: 14px;
+}
+
+.price-section .list-info li span {
+    min-width: 0;
+}
+
+/* Buttons always sit at the bottom */
+
+.price-section .getStarted-btn .theme-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 50px;
+    padding: 14px 20px;
+
+    border: 1px solid #236b58;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #236b58;
+
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    line-height: 1.4;
+
+    visibility: visible;
+    opacity: 1;
+
+    transition: background-color 0.25s ease,
+                color 0.25s ease,
+                border-color 0.25s ease,
+                transform 0.25s ease;
+}
+
+/* Hover: dark green */
+.price-section .getStarted-btn .theme-btn:hover,
+.price-section .getStarted-btn .theme-btn:focus-visible {
+    background: #183d35;
+    border-color: #183d35;
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+/* Premium active button */
+.price-section .getStarted-btn .theme-btn.active {
+    background: #2dac92;
+    border-color: #2dac92;
+    color: #ffffff;
+}
+
+/* Premium button hover */
+.price-section .getStarted-btn .theme-btn.active:hover,
+.price-section .getStarted-btn .theme-btn.active:focus-visible {
+    background: #183d35;
+    border-color: #183d35;
+    color: #ffffff;
+}
+
+
+/* Responsive */
+@media (max-width: 991.98px) {
+    .price-section {
+        padding: 70px 0 !important;
+    }
+
+    .price-section .pricebox {
+        padding: 26px;
+    }
+
+    .price-section .price-content h5 {
+        font-size: 21px;
+    }
+
+    .price-section .price-content h2.price {
+        font-size: 38px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .price-section {
+        padding: 55px 0 !important;
+    }
+
+    .price-section .section-heading {
+        margin-bottom: 32px;
+    }
+
+    .price-section .section-heading p {
+        font-size: 14px;
+    }
+
+    .price-section .pricebox {
+        padding: 26px 22px;
+        border-radius: 14px;
+    }
+
+    .price-section .price-content h2.price {
+        font-size: 36px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .price-section .pricebox,
+    .price-section .getStarted-btn .theme-btn {
+        transition: none;
+    }
+}
+
+
+.supplier-benefit-card {
+    background: #f3faf7;
+    border-color: #e0eee8 !important;
+    color: #183d35;
+    min-height: 65px;
+    transition: all 0.25s ease;
+}
+
+.supplier-benefit-card:hover {
+    background: #ffffff;
+    border-color: #2dac92 !important;
+    box-shadow: 0 4px 12px rgba(24, 61, 53, 0.08);
+    transform: translateY(-2px);
+}
+
+
+
+```css
+/* ================================
+   MASECO ADVANTAGES SECTION
+================================ */
+
+.maseco-advantages-section {
+    background: #ffffff;
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+/* Heading */
+
+.maseco-advantages-heading {
+    margin-bottom: 42px;
+}
+
+.maseco-advantages-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+    color: #2dac92;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.maseco-advantages-label i {
+    font-size: 25px;
+}
+
+.maseco-advantages-heading h2 {
+    margin: 0 0 14px;
+    color: #183d35;
+    font-size: clamp(32px, 3vw, 48px);
+    font-weight: 750;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+.maseco-advantages-heading p {
+    margin: 0;
+    color: #607b83;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* Feature Cards */
+
+.maseco-advantage-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 100%;
+    min-height: 184px;
+    padding: 25px 24px;
+    background: #ffffff;
+    border: 1px solid rgba(45, 172, 146, 0.65);
+    border-radius: 16px;
+    transition: all 0.25s ease;
+}
+
+.maseco-advantage-card:hover {
+    border-color: #2dac92;
+    box-shadow: 0 10px 28px rgba(24, 61, 53, 0.09);
+    transform: translateY(-4px);
+}
+
+/* Icon Box */
+
+.maseco-advantage-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 92px;
+    width: 92px;
+    height: 92px;
+    background: #e4f7f1;
+    border: 1px solid rgba(45, 172, 146, 0.08);
+    border-radius: 22px;
+    color: #2dac92;
+    font-size: 37px;
+    transition: all 0.25s ease;
+}
+
+.maseco-advantage-card:hover .maseco-advantage-icon {
+    background: #2dac92;
+    color: #ffffff;
+}
+
+/* Card Text */
+
+.maseco-advantage-content {
+    min-width: 0;
+}
+
+.maseco-advantage-content h5 {
+    margin: 0 0 14px;
+    color: #183d35;
+    font-size: 19px;
+    font-weight: 750;
+    line-height: 1.4;
+}
+
+.maseco-advantage-content p {
+    margin: 0;
+    color: #607b83;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Tablet */
+
+@media (max-width: 1199.98px) {
+    .maseco-advantage-card {
+        min-height: 155px;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .maseco-advantage-icon {
+        flex-basis: 68px;
+        width: 68px;
+        height: 68px;
+        border-radius: 17px;
+        font-size: 29px;
+    }
+
+    .maseco-advantage-content h5 {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+
+    .maseco-advantage-content p {
+        font-size: 14px;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 575.98px) {
+    .maseco-advantages-section {
+        padding: 50px 0;
+    }
+
+    .maseco-advantages-heading {
+        margin-bottom: 28px;
+    }
+
+    .maseco-advantages-label {
+        font-size: 13px;
+        gap: 10px;
+    }
+
+    .maseco-advantages-label i {
+        font-size: 21px;
+    }
+
+    .maseco-advantages-heading h2 {
+        font-size: 30px;
+        letter-spacing: -0.5px;
+    }
+
+    .maseco-advantages-heading p {
+        font-size: 15px;
+    }
+
+    .maseco-advantage-card {
+        min-height: 120px;
+        gap: 15px;
+        padding: 18px;
+        border-radius: 13px;
+    }
+
+    .maseco-advantage-icon {
+        flex-basis: 58px;
+        width: 58px;
+        height: 58px;
+        border-radius: 14px;
+        font-size: 25px;
+    }
+
+    .maseco-advantage-content h5 {
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+
+    .maseco-advantage-content p {
+        font-size: 13px;
     }
 }

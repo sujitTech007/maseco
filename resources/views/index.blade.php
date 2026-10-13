@@ -111,53 +111,285 @@
 
 
 
-          <!-- Trust indicators -->
-          <div class="row g-3 mt-3">
-
-            <div class="col-6 col-md-3">
-              <i class="fa fa-shield me-2 text-success"></i>
-              <strong class="small">Verified Suppliers</strong>
-              <div class="small text-white">
-                Trusted textile partners
-              </div>
-            </div>
-
-            <div class="col-6 col-md-3">
-              <i class="fa fa-sliders me-2 text-success"></i>
-              <strong class="small">Advanced Search</strong>
-              <div class="small text-white">
-                Find suitable materials
-              </div>
-            </div>
-
-            <div class="col-6 col-md-3">
-              <i class="fa fa-leaf me-2 text-success"></i>
-              <strong class="small">Sustainable Textiles</strong>
-              <div class="small text-white">
-                Eco-conscious sourcing
-              </div>
-            </div>
-
-            <div class="col-6 col-md-3">
-              <i class="fa fa-comments me-2 text-success"></i>
-              <strong class="small">Buyer–Seller Support</strong>
-              <div class="small text-white">
-                Connect and collaborate
-              </div>
-            </div>
-
-          </div>
-
+         
         </div>
       </div>
 
     </div>
   </section>
 
+<section class="maseco-advantages-section py-5">
+    <div class="container">
+
+      
+
+        <!-- Feature Cards -->
+        <div class="row g-3 maseco-advantages-row">
+
+            <!-- Verified Suppliers -->
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="maseco-advantage-card">
+                    <div class="maseco-advantage-icon">
+                        <i class="fa fa-shield"></i>
+                    </div>
+
+                    <div class="maseco-advantage-content">
+                        <h5>Verified Suppliers</h5>
+                        <p>Trusted textile partners</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Search -->
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="maseco-advantage-card">
+                    <div class="maseco-advantage-icon">
+                        <i class="fa fa-sliders"></i>
+                    </div>
+
+                    <div class="maseco-advantage-content">
+                        <h5>Advanced Search</h5>
+                        <p>Find suitable materials</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sustainable Textiles -->
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="maseco-advantage-card">
+                    <div class="maseco-advantage-icon">
+                        <i class="fa fa-leaf"></i>
+                    </div>
+
+                    <div class="maseco-advantage-content">
+                        <h5>Sustainable Textiles</h5>
+                        <p>Eco-conscious sourcing</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buyer-Seller Support -->
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="maseco-advantage-card">
+                    <div class="maseco-advantage-icon">
+                        <i class="fa fa-comments"></i>
+                    </div>
+
+                    <div class="maseco-advantage-content">
+                        <h5>Buyer–Seller Support</h5>
+                        <p>Connect and collaborate</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+```
+
+
+<section class="maseco-about-clean py-5" id="about-maseco">
+    <div class="container">
+        <div class="row align-items-center g-4 g-lg-5">
+
+            <!-- Left: About content -->
+            <div class="col-lg-5">
+                <div class="maseco-about-copy">
+
+                    <span class="maseco-about-eyebrow">
+                        ABOUT MASECO
+                    </span>
+
+                    <h2 class="maseco-about-title">
+                        A better way to
+                        <span>source textiles.</span>
+                    </h2>
+
+                    <p class="maseco-about-description">
+                        Maseco connects businesses with textile suppliers
+                        and supports more responsible material sourcing
+                        and production.
+                    </p>
+
+                    <p class="maseco-about-description maseco-about-secondary">
+                        We make it easier to find the right partners,
+                        explore sustainable materials, and build a more
+                        transparent supply chain for the fashion industry.
+                    </p>
+
+                    <a href="{{ url('/marketplace') }}"
+                       class="maseco-about-button">
+                        Explore the marketplace
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- Right: Textile image and capability strip -->
+            <div class="col-lg-7">
+                <div class="maseco-about-visual">
+
+                    <img
+                        src="{{ asset('assets/images/manufacture.png') }}"
+                        alt="Textile manufacturing and fabric production"
+                        class="maseco-about-photo"
+                        loading="lazy"
+                    >
+
+                    <div class="maseco-about-capabilities">
+
+                        <div class="maseco-capability">
+                            <span class="maseco-capability-icon">
+                                <i class="bi bi-search"></i>
+                            </span>
+                            <span>Supplier discovery</span>
+                        </div>
+
+                        <div class="maseco-capability">
+                            <span class="maseco-capability-icon">
+                                <i class="bi bi-leaf"></i>
+                            </span>
+                            <span>Sustainable materials</span>
+                        </div>
+
+                        <div class="maseco-capability">
+                            <span class="maseco-capability-icon">
+                                <i class="bi bi-buildings"></i>
+                            </span>
+                            <span>Production support</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+  <section class="maseco-services">
+    <div class="container">
+
+      <!-- Section Intro -->
+      <div class="services-intro">
+        <div class="services-heading">
+          <span class="services-eyebrow">WHAT WE OFFER</span>
+          <h2>Everything you need to<br>source better textiles.</h2>
+        </div>
+
+        <div class="services-description">
+          <p>
+            Maseco helps businesses discover reliable textile suppliers,
+            explore sustainable materials, compare sourcing options,
+            and connect with partners that align with their business needs.
+          </p>
+          <p>
+            From finding the right manufacturer to building lasting
+            supplier relationships, our marketplace makes textile
+            sourcing simpler and more transparent.
+          </p>
+        </div>
+      </div>
+
+      <!-- Service Cards -->
+      <div class="row g-4 services-grid">
+
+        <!-- Service 1 -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <article class="service-card">
+            <div class="service-icon service-icon-green">
+              <i class="fa-solid fa-globe"></i>
+            </div>
+
+            <h3>Supplier<br>Discovery</h3>
+
+            <p>
+              Discover textile manufacturers and suppliers
+              that match your sourcing requirements.
+            </p>
+
+            <a href="{{ url('/marketplace') }}" class="service-button">
+              Explore suppliers
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <article class="service-card">
+            <div class="service-icon service-icon-pink">
+              <i class="fa-solid fa-leaf"></i>
+            </div>
+
+            <h3>Sustainable<br>Materials</h3>
+
+            <p>
+              Explore eco-conscious fabrics and materials
+              for more responsible textile production.
+            </p>
+
+            <a href="{{ url('/marketplace') }}?eco_certified=1"
+              class="service-button">
+              Explore materials
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <article class="service-card">
+            <div class="service-icon service-icon-blue">
+              <i class="fa-solid fa-scale-balanced"></i>
+            </div>
+
+            <h3>Compare &amp;<br>Connect</h3>
+
+            <p>
+              Review supplier options, compare your sourcing
+              needs, and find the right business partner.
+            </p>
+
+            <a href="{{ url('/marketplace') }}" class="service-button">
+              Find your match
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <article class="service-card">
+            <div class="service-icon service-icon-orange">
+              <i class="fa-solid fa-handshake"></i>
+            </div>
+
+            <h3>Business<br>Communication</h3>
+
+            <p>
+              Connect with textile businesses to discuss
+              requirements and build lasting relationships.
+            </p>
+
+            <a href="{{ url('/contact-us') }}" class="service-button">
+              Get in touch
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
 
 
 <section class="maseco-featured py-5" id="featured-suppliers">
-    <div class="container-fluid px-3 px-lg-5">
+    <div class="container">
 
         <!-- Heading -->
         <div class="maseco-featured-heading">
@@ -519,85 +751,7 @@
 
 
 
-<section class="maseco-about-clean" id="about-maseco">
-    <div class="container">
-        <div class="row align-items-center g-4 g-lg-5">
 
-            <!-- Left: About content -->
-            <div class="col-lg-5">
-                <div class="maseco-about-copy">
-
-                    <span class="maseco-about-eyebrow">
-                        ABOUT MASECO
-                    </span>
-
-                    <h2 class="maseco-about-title">
-                        A better way to
-                        <span>source textiles.</span>
-                    </h2>
-
-                    <p class="maseco-about-description">
-                        Maseco connects businesses with textile suppliers
-                        and supports more responsible material sourcing
-                        and production.
-                    </p>
-
-                    <p class="maseco-about-description maseco-about-secondary">
-                        We make it easier to find the right partners,
-                        explore sustainable materials, and build a more
-                        transparent supply chain for the fashion industry.
-                    </p>
-
-                    <a href="{{ url('/marketplace') }}"
-                       class="maseco-about-button">
-                        Explore the marketplace
-                        <i class="bi bi-arrow-right"></i>
-                    </a>
-
-                </div>
-            </div>
-
-            <!-- Right: Textile image and capability strip -->
-            <div class="col-lg-7">
-                <div class="maseco-about-visual">
-
-                    <img
-                        src="{{ asset('assets/images/manufacture.png') }}"
-                        alt="Textile manufacturing and fabric production"
-                        class="maseco-about-photo"
-                        loading="lazy"
-                    >
-
-                    <div class="maseco-about-capabilities">
-
-                        <div class="maseco-capability">
-                            <span class="maseco-capability-icon">
-                                <i class="bi bi-search"></i>
-                            </span>
-                            <span>Supplier discovery</span>
-                        </div>
-
-                        <div class="maseco-capability">
-                            <span class="maseco-capability-icon">
-                                <i class="bi bi-leaf"></i>
-                            </span>
-                            <span>Sustainable materials</span>
-                        </div>
-
-                        <div class="maseco-capability">
-                            <span class="maseco-capability-icon">
-                                <i class="bi bi-buildings"></i>
-                            </span>
-                            <span>Production support</span>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
 
   <section class="py-5 bg-light" id="how-it-works">
     <div class="container py-lg-4">
@@ -616,12 +770,12 @@
             manage your textile journey in one place.
           </p>
         </div>
-        <div class="col-lg-5 text-lg-end">
+        <!-- <div class="col-lg-5 text-lg-end">
           <a href="{{ url('/marketplace') }}"
             class="btn btn-success btn-sm px-4">
             Explore Marketplace <i class="fa fa-arrow-right ms-2"></i>
           </a>
-        </div>
+        </div> -->
       </div>
 
       <!-- Workflow slider -->
@@ -763,15 +917,21 @@
           </p>
         </div>
 
-        <div class="col-6 col-lg-3">
-          <i class="fa fa-shield text-success me-2"></i>
-          <span class="small fw-semibold">Supplier Verification</span>
-        </div>
+       
+<div class="col-6 col-lg-3">
+    <div class="d-flex align-items-center gap-2 p-3 rounded-3 border supplier-benefit-card">
+        <i class="fa fa-shield text-success fs-5"></i>
+        <span class="small fw-semibold">Supplier Verification</span>
+    </div>
+</div>
 
-        <div class="col-6 col-lg-2">
-          <i class="fa fa-recycle text-success me-2"></i>
-          <span class="small fw-semibold">Eco-conscious Options</span>
-        </div>
+<div class="col-6 col-lg-2">
+    <div class="d-flex align-items-center gap-2 p-3 rounded-3 border supplier-benefit-card">
+        <i class="fa fa-recycle text-success fs-5"></i>
+        <span class="small fw-semibold">Eco-conscious Options</span>
+    </div>
+</div>
+
 
         <div class="col-lg-3 text-lg-end">
           <a href="{{ url('/marketplace') }}"
@@ -852,128 +1012,11 @@
   <!-- Our Services Section -->
 
 
-  <section class="maseco-services">
-    <div class="container">
-
-      <!-- Section Intro -->
-      <div class="services-intro">
-        <div class="services-heading">
-          <span class="services-eyebrow">WHAT WE OFFER</span>
-          <h2>Everything you need to<br>source better textiles.</h2>
-        </div>
-
-        <div class="services-description">
-          <p>
-            Maseco helps businesses discover reliable textile suppliers,
-            explore sustainable materials, compare sourcing options,
-            and connect with partners that align with their business needs.
-          </p>
-          <p>
-            From finding the right manufacturer to building lasting
-            supplier relationships, our marketplace makes textile
-            sourcing simpler and more transparent.
-          </p>
-        </div>
-      </div>
-
-      <!-- Service Cards -->
-      <div class="row g-4 services-grid">
-
-        <!-- Service 1 -->
-        <div class="col-12 col-sm-6 col-lg-3">
-          <article class="service-card">
-            <div class="service-icon service-icon-green">
-              <i class="fa-solid fa-globe"></i>
-            </div>
-
-            <h3>Supplier<br>Discovery</h3>
-
-            <p>
-              Discover textile manufacturers and suppliers
-              that match your sourcing requirements.
-            </p>
-
-            <a href="{{ url('/marketplace') }}" class="service-button">
-              Explore suppliers
-              <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </article>
-        </div>
-
-        <!-- Service 2 -->
-        <div class="col-12 col-sm-6 col-lg-3">
-          <article class="service-card">
-            <div class="service-icon service-icon-pink">
-              <i class="fa-solid fa-leaf"></i>
-            </div>
-
-            <h3>Sustainable<br>Materials</h3>
-
-            <p>
-              Explore eco-conscious fabrics and materials
-              for more responsible textile production.
-            </p>
-
-            <a href="{{ url('/marketplace') }}?eco_certified=1"
-              class="service-button">
-              Explore materials
-              <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </article>
-        </div>
-
-        <!-- Service 3 -->
-        <div class="col-12 col-sm-6 col-lg-3">
-          <article class="service-card">
-            <div class="service-icon service-icon-blue">
-              <i class="fa-solid fa-scale-balanced"></i>
-            </div>
-
-            <h3>Compare &amp;<br>Connect</h3>
-
-            <p>
-              Review supplier options, compare your sourcing
-              needs, and find the right business partner.
-            </p>
-
-            <a href="{{ url('/marketplace') }}" class="service-button">
-              Find your match
-              <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </article>
-        </div>
-
-        <!-- Service 4 -->
-        <div class="col-12 col-sm-6 col-lg-3">
-          <article class="service-card">
-            <div class="service-icon service-icon-orange">
-              <i class="fa-solid fa-handshake"></i>
-            </div>
-
-            <h3>Business<br>Communication</h3>
-
-            <p>
-              Connect with textile businesses to discuss
-              requirements and build lasting relationships.
-            </p>
-
-            <a href="{{ url('/contact-us') }}" class="service-button">
-              Get in touch
-              <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </article>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
 
   <!-- End Our Services Section -->
 
 
-  <section class="process-section py-5">
+  <!-- <section class="process-section py-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
@@ -1031,7 +1074,122 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
+  <section class="maseco-process">
+    <div class="container">
+        <div class="row align-items-center g-4 g-lg-5">
+
+            <!-- Left introduction -->
+            <div class="col-lg-3">
+                <div class="process-intro">
+                    <span class="process-eyebrow">
+                        <span></span> OUR PROCESS
+                    </span>
+
+                    <h2>Better sourcing.<br>
+                        <span>Greater impact.</span>
+                    </h2>
+
+                    <p>
+                        Maseco helps fashion businesses discover sustainable
+                        materials, connect with trusted suppliers and move
+                        towards smarter production — all in one place.
+                    </p>
+
+                    <a href="{{ url('/marketplace') }}"
+                       class="process-cta">
+                        Explore the marketplace
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right process steps -->
+            <div class="col-lg-9">
+                <div class="process-steps">
+
+                    <article class="process-step">
+                        <div class="process-image">
+                            <img
+                                src="{{ asset('assets/images/sustainable-materials.png') }}"
+                                alt="Sustainable textile materials"
+                                loading="lazy">
+                            <span class="process-number">01</span>
+                        </div>
+
+                        <h3>Discover Materials</h3>
+                        <p>
+                            Explore textile materials and find suitable
+                            options for your sourcing needs.
+                        </p>
+                    </article>
+
+                    <div class="process-arrow">
+                        <i class="bi bi-arrow-right"></i>
+                    </div>
+
+                    <article class="process-step">
+                        <div class="process-image">
+                            <img
+                                src="{{ asset('assets/images/manufacture.png') }}"
+                                alt="Textile manufacturing and supplier connections"
+                                loading="lazy">
+                            <span class="process-number">02</span>
+                        </div>
+
+                        <h3>Connect with Suppliers</h3>
+                        <p>
+                            Discover potential partners and build
+                            relationships for your business.
+                        </p>
+                    </article>
+
+                    <div class="process-arrow">
+                        <i class="bi bi-arrow-right"></i>
+                    </div>
+
+                    <article class="process-step">
+                        <div class="process-image">
+                            <img
+                                src="{{ asset('assets/images/services/sustainable-materials.jpg') }}"
+                                alt="Textile design and material planning"
+                                loading="lazy">
+                            <span class="process-number">03</span>
+                        </div>
+
+                        <h3>Design with AI</h3>
+                        <p>
+                            Explore AI-assisted design and material
+                            recommendations as they become available.
+                        </p>
+                    </article>
+
+                    <div class="process-arrow">
+                        <i class="bi bi-arrow-right"></i>
+                    </div>
+
+                    <article class="process-step">
+                        <div class="process-image">
+                            <img
+                                src="{{ asset('assets/images/logistics.png') }}"
+                                alt="Textile production and logistics"
+                                loading="lazy">
+                            <span class="process-number">04</span>
+                        </div>
+
+                        <h3>Scale Production</h3>
+                        <p>
+                            Work towards a smoother production journey
+                            with manufacturing and post-production support.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 
 
   <!-- <section class="production py-5">
@@ -1225,7 +1383,7 @@
     </div>
 </section>
 
-  <section class="price-section py-5">
+  <!-- <section class="price-section py-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
@@ -1313,7 +1471,119 @@
         @endforeach
       </div>
     </div>
-  </section>
+  </section> -->
+
+  
+<section class="maseco-pricing py-5" id="subscription">
+    <div class="container">
+
+        <!-- Heading -->
+        <div class="pricing-heading text-center">
+            <span class="pricing-eyebrow">OUR SUBSCRIPTION</span>
+            <h2>Choose the right plan for your sourcing journey</h2>
+            <p>
+                Access textile suppliers, sustainable materials and production
+                solutions — all in one place.
+            </p>
+        </div>
+
+        <!-- Plans -->
+        <div class="row g-4 align-items-stretch">
+
+            <!-- Basic -->
+            <div class="col-lg-4">
+                <article class="maseco-plan h-100">
+                    <div class="plan-icon">
+                        <i class="bi bi-leaf"></i>
+                    </div>
+
+                    <h3>Basic</h3>
+                    <div class="plan-price">Free</div>
+                    <p class="plan-description">
+                        Explore the Maseco supplier marketplace.
+                    </p>
+
+                    <hr>
+
+                    <ul class="plan-features">
+                        <li><i class="bi bi-check-circle-fill"></i> Browse textile suppliers</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Explore materials and categories</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Discover sourcing options</li>
+                    </ul>
+
+                    <a href="{{ url('/marketplace') }}" class="plan-button">
+                        Get started <i class="bi bi-arrow-right"></i>
+                    </a>
+                </article>
+            </div>
+
+            <!-- Premium -->
+            <div class="col-lg-4">
+                <article class="maseco-plan maseco-plan-featured h-100">
+                    <span class="plan-popular">MOST POPULAR</span>
+
+                    <div class="plan-icon">
+                        <i class="bi bi-stars"></i>
+                    </div>
+
+                    <h3>Premium</h3>
+                    <div class="plan-price">
+                        $69 <span>/ month</span>
+                    </div>
+                    <p class="plan-description">
+                        For teams ready to source smarter.
+                    </p>
+
+                    <hr>
+
+                    <ul class="plan-features">
+                        <li><i class="bi bi-check-circle-fill"></i> Everything in Basic</li>
+                        <li><i class="bi bi-check-circle-fill"></i> AI-powered sourcing insights</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Supplier and vendor matching</li>
+                    </ul>
+
+                    <a href="{{ url('/marketplace') }}" class="plan-button plan-button-primary">
+                        Explore Premium <i class="bi bi-arrow-right"></i>
+                    </a>
+                </article>
+            </div>
+
+            <!-- Pro -->
+            <div class="col-lg-4">
+                <article class="maseco-plan h-100">
+                    <div class="plan-icon">
+                        <i class="bi bi-buildings"></i>
+                    </div>
+
+                    <h3>Pro</h3>
+                    <div class="plan-price">
+                        $299 <span>/ month</span>
+                    </div>
+                    <p class="plan-description">
+                        For growing production teams.
+                    </p>
+
+                    <hr>
+
+                    <ul class="plan-features">
+                        <li><i class="bi bi-check-circle-fill"></i> Everything in Premium</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Post-production support</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Advanced production workflows</li>
+                    </ul>
+
+                    <p class="plan-note">
+                        Additional commission may apply based on services used.
+                    </p>
+
+                    <a href="{{ url('/contact-us') }}" class="plan-button">
+                        Contact our team <i class="bi bi-arrow-right"></i>
+                    </a>
+                </article>
+            </div>
+
+        </div>
+    </div>
+</section>
 
 
 
@@ -1353,7 +1623,7 @@
   </div>
 
 
-  <section class="provide-section py-4">
+  <!-- <section class="provide-section py-4">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-xl-8">
@@ -1369,7 +1639,7 @@
       </div>
 
     </div>
-  </section>
+  </section> -->
   <section class="testimonial py-5 mb-5">
     <div class="container">
       <div class="row align-items-center">

@@ -33,7 +33,7 @@
 </style>
 
 <main>
-  
+
 
   <section class="banner inner-banner" style="background-image: url({{ asset('assets/images/inner-banner.jpg)')}};">
 
@@ -68,7 +68,7 @@
     </div>
 
   </section>
-  <section class="price-section py-5">
+  <!-- <section class="price-section py-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
@@ -90,7 +90,7 @@
               if(stripos($plan->name, 'premium') !== false) $icon = 'premium-icon.svg';
               elseif(stripos($plan->name, 'pro') !== false) $icon = 'pro-icon.svg';
               @endphp
-<img src="{{ asset('assets/images/icon/' . $icon) }}" alt="">
+              <img src="{{ asset('assets/images/icon/' . $icon) }}" alt="">
             </div>
             <div class="price-content">
               <h5>{{ $plan->name }}</h5>
@@ -155,7 +155,118 @@
         @endforeach
       </div>
     </div>
-  </section>
+  </section> -->
+  <section class="maseco-pricing py-5" id="subscription">
+    <div class="container">
+
+        <!-- Heading -->
+        <div class="pricing-heading text-center">
+            <span class="pricing-eyebrow">OUR SUBSCRIPTION</span>
+            <h2>Choose the right plan for your sourcing journey</h2>
+            <p>
+                Access textile suppliers, sustainable materials and production
+                solutions — all in one place.
+            </p>
+        </div>
+
+        <!-- Plans -->
+        <div class="row g-4 align-items-stretch">
+
+            <!-- Basic -->
+            <div class="col-lg-4">
+                <article class="maseco-plan h-100">
+                    <div class="plan-icon">
+                        <i class="bi bi-leaf"></i>
+                    </div>
+
+                    <h3>Basic</h3>
+                    <div class="plan-price">Free</div>
+                    <p class="plan-description">
+                        Explore the Maseco supplier marketplace.
+                    </p>
+
+                    <hr>
+
+                    <ul class="plan-features">
+                        <li><i class="bi bi-check-circle-fill"></i> Browse textile suppliers</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Explore materials and categories</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Discover sourcing options</li>
+                    </ul>
+
+                    <a href="{{ url('/marketplace') }}" class="plan-button">
+                        Get started <i class="bi bi-arrow-right"></i>
+                    </a>
+                </article>
+            </div>
+
+            <!-- Premium -->
+            <div class="col-lg-4">
+                <article class="maseco-plan maseco-plan-featured h-100">
+                    <span class="plan-popular">MOST POPULAR</span>
+
+                    <div class="plan-icon">
+                        <i class="bi bi-stars"></i>
+                    </div>
+
+                    <h3>Premium</h3>
+                    <div class="plan-price">
+                        $69 <span>/ month</span>
+                    </div>
+                    <p class="plan-description">
+                        For teams ready to source smarter.
+                    </p>
+
+                    <hr>
+
+                    <ul class="plan-features">
+                        <li><i class="bi bi-check-circle-fill"></i> Everything in Basic</li>
+                        <li><i class="bi bi-check-circle-fill"></i> AI-powered sourcing insights</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Supplier and vendor matching</li>
+                    </ul>
+
+                    <a href="{{ url('/marketplace') }}" class="plan-button plan-button-primary">
+                        Explore Premium <i class="bi bi-arrow-right"></i>
+                    </a>
+                </article>
+            </div>
+
+            <!-- Pro -->
+            <div class="col-lg-4">
+                <article class="maseco-plan h-100">
+                    <div class="plan-icon">
+                        <i class="bi bi-buildings"></i>
+                    </div>
+
+                    <h3>Pro</h3>
+                    <div class="plan-price">
+                        $299 <span>/ month</span>
+                    </div>
+                    <p class="plan-description">
+                        For growing production teams.
+                    </p>
+
+                    <hr>
+
+                    <ul class="plan-features">
+                        <li><i class="bi bi-check-circle-fill"></i> Everything in Premium</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Post-production support</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Advanced production workflows</li>
+                    </ul>
+
+                    <p class="plan-note">
+                        Additional commission may apply based on services used.
+                    </p>
+
+                    <a href="{{ url('/contact-us') }}" class="plan-button">
+                        Contact our team <i class="bi bi-arrow-right"></i>
+                    </a>
+                </article>
+            </div>
+
+        </div>
+    </div>
+</section>
+
 </main>
 
 {{-- ================== STRIPE PAYMENT MODAL ================== --}}
@@ -198,7 +309,7 @@
 <script>
   let selectedPlan = null;
 
-  function handlePlanChooseFromButton(btn){
+  function handlePlanChooseFromButton(btn) {
     const plan = {
       id: btn.getAttribute('data-plan-id'),
       name: btn.getAttribute('data-plan-name'),
@@ -221,7 +332,7 @@
     }
   }
 
-  function purchasePlan(planId){
+  function purchasePlan(planId) {
     fetch("{{ route('subscription.purchase') }}", {
         method: "POST",
         headers: {
