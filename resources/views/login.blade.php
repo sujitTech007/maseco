@@ -36,7 +36,7 @@
         height: 100%;
         min-height: 620px;
         padding: 55px 45px;
-        background: var(--maseco-green);
+        background: #123d2b;
         color: #fff;
         display: flex;
         flex-direction: column;

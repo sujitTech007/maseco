@@ -217,7 +217,7 @@
                         transparent supply chain for the fashion industry.
                     </p>
 
-                    <a href="{{ url('/marketplace') }}"
+                    <a href="{{ route('about.us') }}"
                        class="maseco-about-button">
                         Explore the marketplace
                         <i class="bi bi-arrow-right"></i>
@@ -1492,7 +1492,7 @@
 
             <!-- Basic -->
             <div class="col-lg-4">
-                <article class="maseco-plan">
+                <article class="maseco-plan shadow">
                     <div class="plan-icon">
                         <i class="bi bi-leaf"></i>
                     </div>
@@ -1511,7 +1511,7 @@
                         <li><i class="bi bi-check-circle-fill"></i> Discover sourcing options</li>
                     </ul>
 
-                    <a href="{{ url('/marketplace') }}" class="plan-button">
+                    <a href="{{ route('subscription.plan') }}" class="plan-button">
                         Get started <i class="bi bi-arrow-right"></i>
                     </a>
                 </article>
@@ -1519,7 +1519,7 @@
 
             <!-- Premium -->
             <div class="col-lg-4">
-                <article class="maseco-plan maseco-plan-featured bg-success bg-opacity-10">
+                <article class="maseco-plan maseco-plan-featured bg-success bg-opacity-10 shadow">
                     <span class="plan-popular">MOST POPULAR</span>
 
                     <div class="plan-icon">
@@ -1542,7 +1542,7 @@
                         <li><i class="bi bi-check-circle-fill"></i> Supplier and vendor matching</li>
                     </ul>
 
-                    <a href="{{ url('/marketplace') }}" class="plan-button plan-button-primary">
+                    <a href="{{ route('subscription.plan') }}" class="plan-button plan-button-primary">
                         Explore Premium <i class="bi bi-arrow-right"></i>
                     </a>
                 </article>
@@ -1550,7 +1550,7 @@
 
             <!-- Pro -->
             <div class="col-lg-4">
-                <article class="maseco-plan">
+                <article class="maseco-plan shadow">
                     <div class="plan-icon">
                         <i class="bi bi-buildings"></i>
                     </div>
@@ -1572,7 +1572,7 @@
                     </ul>
 
                     
-                    <a href="{{ url('/contact-us') }}" class="plan-button">
+                    <a href="{{ route('subscription.plan') }}" class="plan-button">
                         Contact our team <i class="bi bi-arrow-right"></i>
                     </a>
                 </article>
