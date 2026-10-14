@@ -1,405 +1,1003 @@
+
 @include('Include.header')
-
 <style>
-    .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
-    width: 125px !important;
+  
+/* ================================
+   MASECO SIGNUP PAGE
+================================ */
+
+.maseco-signup-page {
+    background: #f4f7f5;
+    padding: 55px 0;
+    min-height: 100vh;
 }
 
-.bootstrap-select .dropdown-toggle .filter-option-inner-inner {
-    overflow: hidden !important;
-    display: flex !important;
-    justify-content: center !important;
+.signup-card {
+    max-width: 1120px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 18px 65px rgba(20, 55, 38, 0.09);
+}
+
+/* Left panel */
+
+.signup-left {
+    background: #123d2b;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.signup-left-content {
+    min-height: 100%;
+    padding: 48px 38px 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+}
+
+.signup-left::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    right: -150px;
+    top: -110px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 35px rgba(255, 255, 255, 0.025),
+        0 0 0 70px rgba(255, 255, 255, 0.025);
+}
+
+.signup-brand {
+    display: inline-flex;
     align-items: center;
+    gap: 11px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 55px;
 }
 
-.dropdown-menu.show {
-    display: block !important;
-    height: 200px !important;
-}
-.bootstrap-select .dropdown-menu li a span.text {
-    display: flex !important;
-    align-items: center !important;
+.signup-brand:hover {
+    color: #fff;
 }
 
-.bs-searchbox .form-control {
-    margin-bottom: 0;
+.brand-mark {
+    width: 40px;
+    height: 40px;
+    background: #d5edac;
+    color: #123d2b;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 11px;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.signup-eyebrow,
+.form-step-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.signup-eyebrow {
+    color: #c6e7a4;
+    margin-bottom: 16px;
+}
+
+.signup-left h2 {
+    color: #fff;
+    font-size: clamp(30px, 3vw, 39px);
+    line-height: 1.25;
+    font-weight: 750;
+    margin-bottom: 18px;
+    letter-spacing: -0.8px;
+}
+
+.signup-left h2 span {
+    display: block;
+    color: #c6e7a4;
+}
+
+.signup-intro {
+    color: rgba(255, 255, 255, 0.77);
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 35px;
+    max-width: 360px;
+}
+
+.signup-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 24px;
     width: 100%;
-    float: none;
-    border: 1px solid lightgrey !important;
+}
+
+.signup-feature-icon {
+    width: 43px;
+    height: 43px;
+    min-width: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d5edac;
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 12px;
+    font-size: 17px;
+}
+
+.signup-feature h6 {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 700;
+    margin: 2px 0 5px;
+}
+
+.signup-feature p {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.68);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.signup-left-footer {
+    margin-top: auto;
+    padding-top: 28px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 11px;
+}
+
+.signup-left-footer i {
+    color: #c6e7a4;
+    margin-right: 7px;
+}
+
+/* Right panel */
+
+.signup-right {
+    background: #fff;
+}
+
+.signup-form-content {
+    padding: 44px 50px 35px;
+}
+
+.signup-form-heading {
+    margin-bottom: 27px;
+}
+
+.form-step-label {
+    color: #5c8a69;
+    display: block;
+    margin-bottom: 9px;
+    font-size: 10px;
+}
+
+.signup-form-heading h1 {
+    color: #1b3025;
+    font-size: 29px;
+    font-weight: 750;
+    letter-spacing: -0.7px;
+    margin: 0 0 8px;
+}
+
+.signup-form-heading p {
+    color: #7d8981;
+    font-size: 13px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.signup-alert {
+    font-size: 13px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Account type */
+
+.account-type-group {
+    margin-bottom: 23px !important;
+}
+
+.signup-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #33483b;
+    margin-bottom: 9px;
+}
+
+.account-type-options {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 9px;
+}
+
+.account-type-option {
+    margin: 0;
+    cursor: pointer;
+    position: relative;
+}
+
+.account-type-option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.account-type-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    min-height: 44px;
+    padding: 10px 6px;
+    border: 1px solid #e1e9e3;
+    border-radius: 9px;
+    background: #fff;
+    color: #526258;
+    font-size: 11px;
+    font-weight: 650;
+    transition: all 0.2s ease;
+}
+
+.account-type-text i {
+    font-size: 13px;
+}
+
+.account-type-option input:checked + .account-type-text {
+    border-color: #236b45;
+    color: #205a39;
+    background: #f0f7f1;
+    box-shadow: inset 0 0 0 1px #236b45;
+}
+
+.account-type-option input:focus-visible + .account-type-text {
+    outline: 2px solid #6ba881;
+    outline-offset: 3px;
+}
+
+/* Inputs */
+
+.signup-form .form-group {
+    margin-bottom: 17px;
+    width: 100%;
+}
+
+.signup-input-wrap {
+    position: relative;
+    width: 100%;
+}
+
+.signup-input-icon {
+    position: absolute;
+    top: 50%;
+    left: 14px;
+    transform: translateY(-50%);
+    color: #829187;
+    font-size: 14px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.signup-input,
+.signup-phone-input {
+    height: 47px;
+    width: 100%;
+    border: 1px solid #e0e8e2;
+    border-radius: 9px;
+    background-color: #fbfcfb;
+    color: #24382b;
+    font-size: 13px;
+    padding: 11px 14px;
+    box-shadow: none !important;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+form .signup-input,
+.signup-input {
+    padding-left: 41px;
+    padding-right: 43px;
+}
+
+.signup-input::placeholder,
+.signup-phone-input::placeholder {
+    color: #a2aca5;
+    opacity: 1;
+}
+
+.signup-input:focus,
+.signup-phone-input:focus {
+    border-color: #43825b;
+    background-color: #fff;
+    outline: none;
+}
+
+.signup-input-wrap:focus-within .signup-input-icon {
+    color: #286640;
+}
+
+.signup-password {
+    padding-right: 43px;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 0;
+    padding: 6px;
+    color: #89968d;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.password-toggle:hover {
+    color: #236b45;
+}
+
+/* International telephone input */
+
+.signup-form .iti {
+    display: block;
+    width: 100%;
+}
+
+.signup-form .iti input.signup-phone-input {
+    width: 100%;
+    height: 47px;
+    padding-left: 100px;
+}
+
+.signup-form .iti__country-container {
+    border-radius: 9px 0 0 9px;
+}
+
+.signup-form .iti__selected-country {
+    padding: 0 9px 0 12px;
+    border-radius: 9px 0 0 9px;
+}
+
+.signup-form .iti__selected-country-primary {
+    height: 45px;
+}
+
+.signup-form .iti__selected-dial-code {
+    font-size: 13px;
+    color: #33483b;
+}
+
+.signup-form .iti__dropdown-content {
+    border: 1px solid #e0e8e2;
+    border-radius: 10px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+    z-index: 1000;
+}
+
+.signup-form .iti__search-input {
+    padding: 10px;
+    border: 1px solid #e0e8e2;
+    border-radius: 7px;
+    margin: 8px;
+    width: calc(100% - 16px);
+}
+
+.signup-form .iti__country {
+    padding-top: 9px;
+    padding-bottom: 9px;
+    font-size: 13px;
+}
+
+/* Terms and submit */
+
+.signup-terms-row {
+    margin: 4px 0 20px;
+}
+
+.signup-terms {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    color: #69776e;
+    font-size: 11px;
+    line-height: 1.8;
+    cursor: pointer;
+}
+
+.signup-terms input {
+    accent-color: #236b45;
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    margin-top: 3px;
+    cursor: pointer;
+}
+
+.signup-terms a {
+    color: #236b45;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.signup-terms a:hover,
+.signup-login-link a:hover {
+    text-decoration: underline;
+}
+
+.signup-submit {
+    width: 100%;
+    min-height: 49px;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 0;
+    border-radius: 9px;
+    background: #1d603b;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.signup-submit:hover {
+    background: #164b2e;
+    color: #fff;
+}
+
+.signup-submit:active {
+    transform: translateY(1px);
+}
+
+.signup-submit i {
+    font-size: 12px;
+}
+
+.signup-login-link {
+    text-align: center;
+    margin: 20px 0 0;
+    color: #7b877e;
+    font-size: 12px;
+}
+
+.signup-login-link a {
+    color: #236b45;
+    font-weight: 750;
+    text-decoration: none;
+    margin-left: 3px;
+}
+
+/* Responsive */
+
+@media (min-width: 992px) {
+    .signup-left-content {
+        padding: 45px 35px 32px;
+    }
+
+    .signup-form-content {
+        padding: 40px 45px 32px;
+    }
+}
+
+@media (max-width: 991px) {
+    .maseco-signup-page {
+        padding: 30px 0;
+    }
+
+    .signup-left-content {
+        padding: 35px 30px;
+    }
+
+    .signup-brand {
+        margin-bottom: 30px;
+    }
+
+    .signup-left h2 {
+        font-size: 34px;
+    }
+
+    .signup-left-footer {
+        margin-top: 8px;
+    }
+
+    .signup-form-content {
+        padding: 35px 30px;
+    }
+}
+
+@media (max-width: 575px) {
+    .maseco-signup-page {
+        padding: 15px 0;
+    }
+
+    .maseco-signup-page > .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .signup-card {
+        border-radius: 15px;
+    }
+
+    .signup-left-content {
+        padding: 28px 23px;
+    }
+
+    .signup-brand {
+        font-size: 20px;
+        margin-bottom: 25px;
+    }
+
+    .signup-left h2 {
+        font-size: 30px;
+    }
+
+    .signup-intro {
+        margin-bottom: 25px;
+    }
+
+    .signup-feature {
+        margin-bottom: 17px;
+    }
+
+    .signup-form-content {
+        padding: 29px 20px;
+    }
+
+    .signup-form-heading h1 {
+        font-size: 25px;
+    }
+
+    .account-type-options {
+        gap: 6px;
+    }
+
+    .account-type-text {
+        flex-direction: column;
+        gap: 5px;
+        font-size: 10px;
+        padding: 9px 3px;
+    }
 }
 
 </style>
-<main>
+<main class="maseco-signup-page">
+    <section class="signup-section">
+        <div class="container">
+            <div class="signup-card">
+                <div class="row g-0">
 
-  <section class="sign-up-forms">
-    <div class="container">
-      <div class="form-wrapper">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form py-5">
-              <div class="form-heading">
-                <h1 data-aos="fade-up">Sign up</h1>
-                <p class="m-0" data-aos="fade-up">Sign up to access your personal account.</p>
-              </div>
-              <form class="verify-gcaptcha login-form mt-4 d-flex align-items-start justify-content-between flex-wrap" method="POST" action="{{ route('register.submit') }}">
-                @csrf
-                <div class="form-group mb-3 w-100" data-aos="zoom-in">
-                  <label class="mb-2">Register as:</label>
-                  <div class="d-flex gap-3">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="user_type" id="registerTypeUser" value="user" checked>
-                      <label class="form-check-label" for="registerTypeUser">User</label>
+                    {{-- LEFT BRAND PANEL --}}
+                    <div class="col-lg-5 signup-left">
+                        <div class="signup-left-content">
+
+                            <a href="{{ url('/') }}" class="signup-brand">
+                                <span class="brand-mark">M</span>
+                                <span>MASECO</span>
+                            </a>
+
+                            <span class="signup-eyebrow">
+                                YOUR SOURCING PARTNER
+                            </span>
+
+                            <h2>
+                                Source Better.
+                                <span>Build Smarter.</span>
+                                Grow Together.
+                            </h2>
+
+                            <p class="signup-intro">
+                                One platform to discover quality raw materials
+                                and build trusted business connections.
+                            </p>
+
+                            <div class="signup-feature">
+                                <div class="signup-feature-icon">
+                                    <i class="fas fa-boxes-stacked"></i>
+                                </div>
+                                <div>
+                                    <h6>Quality Raw Materials</h6>
+                                    <p>Find materials that fit your business.</p>
+                                </div>
+                            </div>
+
+                            <div class="signup-feature">
+                                <div class="signup-feature-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div>
+                                    <h6>Trusted Connections</h6>
+                                    <p>Connect with suppliers and manufacturers.</p>
+                                </div>
+                            </div>
+
+                            <div class="signup-feature">
+                                <div class="signup-feature-icon">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                                <div>
+                                    <h6>Smarter Sourcing</h6>
+                                    <p>Discover opportunities for your business.</p>
+                                </div>
+                            </div>
+
+                            <div class="signup-left-footer">
+                                <i class="fas fa-shield-halved"></i>
+                                Built for better business connections
+                            </div>
+
+                        </div>
                     </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="user_type" id="registerTypeSupplier" value="supplier">
-                      <label class="form-check-label" for="registerTypeSupplier">Supplier</label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="user_type" id="registerTypeManufacturer" value="manufacturer">
-                      <label class="form-check-label" for="registerTypeManufacturer">Manufacturer</label>
-                    </div>
-                  </div>
-                </div>
 
-                                <div class="form-group w-100" data-aos="zoom-in">
-                                    <fieldset>
-                                        <legend>Name</legend>
-                                        <input class="form-control form--control bg-white" name="name" placeholder="Full Name" type="text" value="{{ old('name') }}" required>
-                                    </fieldset>
-                                </div>
+                    {{-- RIGHT SIGNUP FORM --}}
+                    <div class="col-lg-7 signup-right">
+                        <div class="signup-form-content">
 
-                                <div class="form-group w-100" data-aos="zoom-in">
-                                    <fieldset>
-                                        <legend>Email Address</legend>
-                                        <input class="form-control form--control bg-white" name="email" type="email" placeholder="Email Address" value="{{ old('email') }}" required>
-                                    </fieldset>
-                                </div>
+                            <div class="signup-form-heading">
+                                <span class="form-step-label">
+                                    GET STARTED FOR FREE
+                                </span>
 
-                                <div class="form-group w-100" data-aos="zoom-in">
-                                    <fieldset>
-                                        <legend>Phone Number</legend>
-                                        <div class="frm_grp select_country">
-                                <select id="login_country_code" name="country_code" data-live-search="true" class="selectpicker">
-                                    <option data-content='<img src="https://flagcdn.com/16x12/af.png" class="me-1"> +93' value="+93"> +93</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/al.png" class="me-1"> +355' value="+355"> +355</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/dz.png" class="me-1"> +213' value="+213">+213</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/us.png" class="me-1"> +1' value="+1">+1</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ad.png" class="me-1"> +376' value="+376">+376</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ao.png" class="me-1"> +244' value="+244">+244</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ag.png" class="me-1"> +1-268' value="+1-268">+1-268</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ar.png" class="me-1"> +54 ' value="+54">+54</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/am.png" class="me-1"> +374 ' value="+374">+374</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/aw.png" class="me-1"> +297 ' value="+297">+297</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/au.png" class="me-1"> +61 ' value="+61">+61</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/at.png" class="me-1"> +43 ' value="+43">+43</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/az.png" class="me-1"> +994 ' value="+994">+994</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/bh.png" class="me-1"> +973 ' value="+973">+973</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/bd.png" class="me-1"> +880 ' value="+880">+880</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/bb.png" class="me-1"> +1-246 ' value="+1-246">+1-246</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/by.png" class="me-1"> +375 ' value="+375">+375</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/be.png" class="me-1"> +32 ' value="+32">+32</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/bz.png" class="me-1"> +501 ' value="+501">+501</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/bj.png" class="me-1"> +229 ' value="+229">+229</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/bt.png" class="me-1"> +975 ' value="+975">+975</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/bo.png" class="me-1"> +591 ' value="+591">+591</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ba.png" class="me-1"> +387 ' value="+387">+387</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/bw.png" class="me-1"> +267 ' value="+267">+267</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/br.png" class="me-1"> +55 ' value="+55">+55</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/io.png" class="me-1"> +246 ' value="+246">+246</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/bn.png" class="me-1"> +673 ' value="+673">+673</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/bg.png" class="me-1"> +359 ' value="+359">+359</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/bf.png" class="me-1"> +226 ' value="+226">+226</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/bi.png" class="me-1"> +257 ' value="+257">+257</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/kh.png" class="me-1"> +855 ' value="+855">+855</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/cm.png" class="me-1"> +237 ' value="+237">+237</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ca.png" class="me-1"> +1 ' value="+1">+1</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/cv.png" class="me-1"> +238 ' value="+238">+238</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/cf.png" class="me-1"> +236 ' value="+236">+236</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/td.png" class="me-1"> +235 ' value="+235">+235</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/cl.png" class="me-1"> +56 ' value="+56">+56</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/cn.png" class="me-1"> +86 ' value="+86">+86</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/co.png" class="me-1"> +57 ' value="+57">+57</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/km.png" class="me-1"> +269 ' value="+269">+269</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/cg.png" class="me-1"> +242 ' value="+242">+242</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/cd.png" class="me-1"> +243 ' value="+243">+243</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ck.png" class="me-1"> +682 ' value="+682">+682</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/cr.png" class="me-1"> +506 ' value="+506">+506</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/hr.png" class="me-1"> +385 ' value="+385">+385</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/cu.png" class="me-1"> +53 ' value="+53">+53</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/cy.png" class="me-1"> +357 ' value="+357">+357</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/cz.png" class="me-1"> +420 ' value="+420">+420</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/dk.png" class="me-1"> +45 ' value="+45">+45</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/dj.png" class="me-1"> +253 ' value="+253">+253</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/dm.png" class="me-1"> +1-767 ' value="+1-767">+1-767</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/do.png" class="me-1"> +1-809 ' value="+1-809">+1-809</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ec.png" class="me-1"> +593 ' value="+593">+593</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/eg.png" class="me-1"> +20 ' value="+20">+20</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/sv.png" class="me-1"> +503 ' value="+503">+503</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/gq.png" class="me-1"> +240 ' value="+240">+240</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/er.png" class="me-1"> +291 ' value="+291">+291</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ee.png" class="me-1"> +372 ' value="+372">+372</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/et.png" class="me-1"> +251 ' value="+251">+251</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/fj.png" class="me-1"> +679 ' value="+679">+679</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/fi.png" class="me-1"> +358 ' value="+358">+358</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/fr.png" class="me-1"> +33 ' value="+33">+33</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/gf.png" class="me-1"> +594 ' value="+594">+594</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/pf.png" class="me-1"> +689 ' value="+689">+689</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ga.png" class="me-1"> +241 ' value="+241">+241</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/gm.png" class="me-1"> +220 ' value="+220">+220</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ge.png" class="me-1"> +995 ' value="+995">+995</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/de.png" class="me-1"> +49 ' value="+49">+49</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/gh.png" class="me-1"> +233 ' value="+233">+233</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/gi.png" class="me-1"> +350 ' value="+350">+350</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/gr.png" class="me-1"> +30 ' value="+30">+30</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/gl.png" class="me-1"> +299 ' value="+299">+299</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/gd.png" class="me-1"> +1-473 ' value="+1-473">+1-473</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/gp.png" class="me-1"> +590 ' value="+590">+590</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/gu.png" class="me-1"> +1-671 ' value="+1-671">+1-671</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/gt.png" class="me-1"> +502 ' value="+502">+502</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/gn.png" class="me-1"> +224 ' value="+224">+224</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/gw.png" class="me-1"> +245 ' value="+245">+245</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/gy.png" class="me-1"> +592 ' value="+592">+592</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ht.png" class="me-1"> +509 ' value="+509">+509</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/hn.png" class="me-1"> +504 ' value="+504">+504</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/hk.png" class="me-1"> +852 ' value="+852">+852</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/hu.png" class="me-1"> +36 ' value="+36">+36</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/is.png" class="me-1"> +354 ' value="+354">+354</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/in.png" class="me-1"> +91 ' value="+91" selected>+91</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/id.png" class="me-1"> +62 ' value="+62">+62</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ir.png" class="me-1"> +98 ' value="+98">+98</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/iq.png" class="me-1"> +964 ' value="+964">+964</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ie.png" class="me-1"> +353 ' value="+353">+353</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/il.png" class="me-1"> +972 ' value="+972">+972</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/it.png" class="me-1"> +39 ' value="+39">+39</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/jm.png" class="me-1"> +1-876 ' value="+1-876">+1-876</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/jp.png" class="me-1"> +81 ' value="+81">+81</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/jo.png" class="me-1"> +962 ' value="+962">+962</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/kz.png" class="me-1"> +7 ' value="+7">+7</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ke.png" class="me-1"> +254 ' value="+254">+254</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ki.png" class="me-1"> +686 ' value="+686">+686</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/kw.png" class="me-1"> +965 ' value="+965">+965</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/kg.png" class="me-1"> +996 ' value="+996">+996</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/la.png" class="me-1"> +856 ' value="+856">+856</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/lv.png" class="me-1"> +371 ' value="+371">+371</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/lb.png" class="me-1"> +961 ' value="+961">+961</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ls.png" class="me-1"> +266 ' value="+266">+266</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/lr.png" class="me-1"> +231 ' value="+231">+231</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ly.png" class="me-1"> +218 ' value="+218">+218</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/li.png" class="me-1"> +423 ' value="+423">+423</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/lt.png" class="me-1"> +370 ' value="+370">+370</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/lu.png" class="me-1"> +352 ' value="+352">+352</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/mo.png" class="me-1"> +853 ' value="+853">+853</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/mk.png" class="me-1"> +389 ' value="+389">+389</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/mg.png" class="me-1"> +261 ' value="+261">+261</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/mw.png" class="me-1"> +265 ' value="+265">+265</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/my.png" class="me-1"> +60 ' value="+60">+60</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/mv.png" class="me-1"> +960 ' value="+960">+960</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ml.png" class="me-1"> +223 ' value="+223">+223</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/mt.png" class="me-1"> +356 ' value="+356">+356</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/mh.png" class="me-1"> +692 ' value="+692">+692</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/mq.png" class="me-1"> +596 ' value="+596">+596</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/mr.png" class="me-1"> +222 ' value="+222">+222</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/mu.png" class="me-1"> +230 ' value="+230">+230</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/yt.png" class="me-1"> +262 ' value="+262">+262</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/mx.png" class="me-1"> +52 ' value="+52">+52</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/fm.png" class="me-1"> +691 ' value="+691">+691</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/md.png" class="me-1"> +373 ' value="+373">+373</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/mc.png" class="me-1"> +377 ' value="+377">+377</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/mn.png" class="me-1"> +976 ' value="+976">+976</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/me.png" class="me-1"> +382 ' value="+382">+382</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ms.png" class="me-1"> +1-664 ' value="+1-664">+1-664</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ma.png" class="me-1"> +212 ' value="+212">+212</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/mz.png" class="me-1"> +258 ' value="+258">+258</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/mm.png" class="me-1"> +95 ' value="+95">+95</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/na.png" class="me-1"> +264 ' value="+264">+264</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/nr.png" class="me-1"> +674 ' value="+674">+674</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/np.png" class="me-1"> +977 ' value="+977">+977</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/nl.png" class="me-1"> +31 ' value="+31">+31</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/nc.png" class="me-1"> +687 ' value="+687">+687</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/nz.png" class="me-1"> +64 ' value="+64">+64</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ni.png" class="me-1"> +505 ' value="+505">+505</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ne.png" class="me-1"> +227 ' value="+227">+227</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ng.png" class="me-1"> +234 ' value="+234">+234</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12.nu.png" class="me-1"> +683 ' value="+683">+683</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/nf.png" class="me-1"> +672 ' value="+672">+672</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/kp.png" class="me-1"> +850 ' value="+850">+850</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/mp.png" class="me-1"> +1-670 ' value="+1-670">+1-670</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/no.png" class="me-1"> +47 ' value="+47">+47</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/om.png" class="me-1"> +968 ' value="+968">+968</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/pk.png" class="me-1"> +92 ' value="+92">+92</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/pw.png" class="me-1"> +680 ' value="+680">+680</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ps.png" class="me-1"> +970 ' value="+970">+970</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/pa.png" class="me-1"> +507 ' value="+507">+507</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/pg.png" class="me-1"> +675 ' value="+675">+675</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/py.png" class="me-1"> +595 ' value="+595">+595</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/pe.png" class="me-1"> +51 ' value="+51">+51</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ph.png" class="me-1"> +63 ' value="+63">+63</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/pl.png" class="me-1"> +48 ' value="+48">+48</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/pt.png" class="me-1"> +351 ' value="+351">+351</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/pr.png" class="me-1"> +1-787 ' value="+1-787">+1-787</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/qa.png" class="me-1"> +974 ' value="+974">+974</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ro.png" class="me-1"> +40 ' value="+40">+40</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ru.png" class="me-1"> +7 ' value="+7">+7</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/rw.png" class="me-1"> +250 ' value="+250">+250</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/bl.png" class="me-1"> +590 ' value="+590">+590</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/sh.png" class="me-1"> +290 ' value="+290">+290</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/kn.png" class="me-1"> +1-869 ' value="+1-869">+1-869</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/lc.png" class="me-1"> +1-758 ' value="+1-758">+1-758</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/mf.png" class="me-1"> +590 ' value="+590">+590</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/pn.png" class="me-1"> +508 ' value="+508">+508</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/vc.png" class="me-1"> +1-784 ' value="+1-784">+1-784</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ws.png" class="me-1"> +685 ' value="+685">+685</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/sm.png" class="me-1"> +378 ' value="+378">+378</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/st.png" class="me-1"> +239 ' value="+239">+239</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/sa.png" class="me-1"> +966 ' value="+966">+966</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/sn.png" class="me-1"> +221 ' value="+221">+221</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/rs.png" class="me-1"> +381 ' value="+381">+381</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/sc.png" class="me-1"> +248 ' value="+248">+248</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/sl.png" class="me-1"> +232 ' value="+232">+232</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/sg.png" class="me-1"> +65 ' value="+65">+65</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/sk.png" class="me-1"> +421 ' value="+421">+421</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/si.png" class="me-1"> +386 ' value="+386">+386</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/sb.png" class="me-1"> +677 ' value="+677">+677</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/so.png" class="me-1"> +252 ' value="+252">+252</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/za.png" class="me-1"> +27 ' value="+27">+27</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/kr.png" class="me-1"> +82 ' value="+82">+82</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ss.png" class="me-1"> +211 ' value="+211">+211</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/es.png" class="me-1"> +34 ' value="+34">+34</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/lk.png" class="me-1"> +94 ' value="+94">+94</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/sd.png" class="me-1"> +249 ' value="+249">+249</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/sr.png" class="me-1"> +597 ' value="+597">+597</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/sj.png" class="me-1"> +47 ' value="+47">+47</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/sz.png" class="me-1"> +268 ' value="+268">+268</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/se.png" class="me-1"> +46 ' value="+46">+46</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ch.png" class="me-1"> +41 ' value="+41">+41</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/sy.png" class="me-1"> +963 ' value="+963">+963</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/tw.png" class="me-1"> +886 ' value="+886">+886</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/tj.png" class="me-1"> +992 ' value="+992">+992</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/tz.png" class="me-1"> +255 ' value="+255">+255</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/th.png" class="me-1"> +66 ' value="+66">+66</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/tg.png" class="me-1"> +228 ' value="+228">+228</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/tk.png" class="me-1"> +690 ' value="+690">+690</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/to.png" class="me-1"> +676 ' value="+676">+676</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/tt.png" class="me-1"> +1-868 ' value="+1-868">+1-868</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/tn.png" class="me-1"> +216 ' value="+216">+216</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/tr.png" class="me-1"> +90 ' value="+90">+90</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/tm.png" class="me-1"> +993 ' value="+993">+993</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/tc.png" class="me-1"> +1-649 ' value="+1-649">+1-649</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/tv.png" class="me-1"> +688 ' value="+688">+688</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ug.png" class="me-1"> +256 ' value="+256">+256</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ua.png" class="me-1"> +380 ' value="+380">+380</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ae.png" class="me-1"> +971 ' value="+971">+971</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/gb.png" class="me-1"> +44 ' value="+44">+44</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/uy.png" class="me-1"> +598 ' value="+598">+598</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/uz.png" class="me-1"> +998 ' value="+998">+998</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/vu.png" class="me-1"> +678 ' value="+678">+678</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ve.png" class="me-1"> +58 ' value="+58">+58</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/vn.png" class="me-1"> +84 ' value="+84">+84</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/vg.png" class="me-1"> +1-284 ' value="+1-284">+1-284</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/vi.png" class="me-1"> +1-340 ' value="+1-340">+1-340</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/wf.png" class="me-1"> +681 ' value="+681">+681</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/eh.png" class="me-1"> +212 ' value="+212">+212</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/ye.png" class="me-1"> +967 ' value="+967">+967</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/zm.png" class="me-1"> +260 ' value="+260">+260</option>
-                                    <option data-content='<img src="https://flagcdn.com/16x12/zw.png" class="me-1"> +263 ' value="+263">+263</option>
-                                </select>
-                                        <input class="form-control form--control bg-white" name="phone" type="tel" placeholder="e.g. +1 234 567 8900" value="{{ old('phone') }}" required>
-                                        </div>
-                                    </fieldset>
-                                </div>
-                                <div class="form-group position-relative w-100" data-aos="zoom-in">
-                                    <fieldset>
-                                        <legend>Password</legend>
-                                        <input class="form-control form--control bg-white" id="password-field" name="password" type="password" required placeholder="Password" value="{{ old('password') }}">
-                                        <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
-                                    </fieldset>
-                                </div>
-                                <div class="form-group position-relative w-100" data-aos="zoom-in">
-                                    <fieldset>
-                                        <legend>Confirm Password</legend>
-                                        <input class="form-control form--control bg-white" id="confirm-password-field" name="password_confirmation" type="password" required placeholder="Confirm Password" value="{{ old('password_confirmation') }}">
-                                        <span toggle="#confirm-password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
-                                    </fieldset>
-                                </div>
+                                <h1>Create your account</h1>
 
-                                <div class="text-end d-flex align-items-center justify-content-between w-100">
+                                <p>
+                                    Enter your details to join the MASECO
+                                    sourcing network.
+                                </p>
+                            </div>
 
-                                    <div class="form-group d-flex align-items-center jus m-0 checkbox">
-                                        <input id="agree" name="agree" type="checkbox" required="">
-                                        <label for="agree" class="required ml-2">I agree to all the <a href="{{ route('terms.condition') }}">Terms</a> and <a href="{{ route('privacy.policy') }}">Privacy Policies</a></label>
+                            @if ($errors->any())
+                                <div class="alert alert-danger signup-alert">
+                                    <ul class="mb-0 ps-3">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
+                            <form
+                                class="verify-gcaptcha login-form signup-form"
+                                method="POST"
+                                action="{{ route('register.submit') }}"
+                            >
+                                @csrf
+
+                                {{-- ACCOUNT TYPE --}}
+                                <div class="form-group account-type-group">
+                                    <label class="signup-label">
+                                        I want to register as
+                                    </label>
+
+                                    <div class="account-type-options">
+
+                                        <label class="account-type-option"
+                                               for="registerTypeUser">
+                                            <input
+                                                type="radio"
+                                                name="user_type"
+                                                id="registerTypeUser"
+                                                value="user"
+                                                {{ old('user_type', 'user') == 'user' ? 'checked' : '' }}
+                                            >
+                                            <span class="account-type-text">
+                                                <i class="fas fa-user"></i>
+                                                User
+                                            </span>
+                                        </label>
+
+                                        <label class="account-type-option"
+                                               for="registerTypeSupplier">
+                                            <input
+                                                type="radio"
+                                                name="user_type"
+                                                id="registerTypeSupplier"
+                                                value="supplier"
+                                                {{ old('user_type') == 'supplier' ? 'checked' : '' }}
+                                            >
+                                            <span class="account-type-text">
+                                                <i class="fas fa-truck"></i>
+                                                Supplier
+                                            </span>
+                                        </label>
+
+                                        <label class="account-type-option"
+                                               for="registerTypeManufacturer">
+                                            <input
+                                                type="radio"
+                                                name="user_type"
+                                                id="registerTypeManufacturer"
+                                                value="manufacturer"
+                                                {{ old('user_type') == 'manufacturer' ? 'checked' : '' }}
+                                            >
+                                            <span class="account-type-text">
+                                                <i class="fas fa-industry"></i>
+                                                Manufacturer
+                                            </span>
+                                        </label>
+
                                     </div>
-                                    <a class="forget-text" href="{{ route('password.forgot') }}">Forgot password?</a>
                                 </div>
 
-
-                                <div class="form-group mt-4 w-100">
-                                    <button class="btn theme-btn w-100" type="submit">Create account</button>
-                                </div>
-                                <p class="mb-0 text-center w-100">Already have an account? <a href="{{ route('login') }}">Login</a></p>
-
-                                <!-- <fieldset class="or mt-4 w-100">
-                                    <legend>Or login with</legend>
-
-                                    <div class="login-with-social mt-4">
-                                        <a href="#"><img src="{{ asset('assets/images/icon/facebook-icon.svg') }}" alt="facebook"></a>
-                                        <a href="#"><img src="{{ asset('assets/images/icon/google-icon.svg') }}" alt="google"></a>
-                                        <a href="#"><img src="{{ asset('assets/images/icon/apple-icon.svg') }}" alt="apple"></a>
+                                {{-- FULL NAME --}}
+                                <div class="form-group">
+                                    <label for="signup-name" class="signup-label">
+                                        Full name
+                                    </label>
+                                    <div class="signup-input-wrap">
+                                        <i class="far fa-user signup-input-icon"></i>
+                                        <input
+                                            id="signup-name"
+                                            class="form-control signup-input"
+                                            name="name"
+                                            type="text"
+                                            placeholder="Enter your full name"
+                                            value="{{ old('name') }}"
+                                            autocomplete="name"
+                                            required
+                                        >
                                     </div>
+                                </div>
 
-                                </fieldset> -->
+                                {{-- EMAIL --}}
+                                <div class="form-group">
+                                    <label for="signup-email" class="signup-label">
+                                        Email address
+                                    </label>
+                                    <div class="signup-input-wrap">
+                                        <i class="far fa-envelope signup-input-icon"></i>
+                                        <input
+                                            id="signup-email"
+                                            class="form-control signup-input"
+                                            name="email"
+                                            type="email"
+                                            placeholder="you@company.com"
+                                            value="{{ old('email') }}"
+                                            autocomplete="email"
+                                            required
+                                        >
+                                    </div>
+                                </div>
 
+                                {{-- PHONE WITH INTL-TEL-INPUT --}}
+                                <div class="form-group">
+                                    <label for="signup-phone" class="signup-label">
+                                        Phone number
+                                    </label>
+
+                                    <input
+                                        id="signup-phone"
+                                        class="form-control signup-phone-input"
+                                        name="phone"
+                                        type="tel"
+                                        placeholder="Enter phone number"
+                                        value="{{ old('phone') }}"
+                                        autocomplete="tel-national"
+                                        required
+                                    >
+
+                                    {{-- Backend still receives country_code --}}
+                                    <input
+                                        type="hidden"
+                                        name="country_code"
+                                        id="signup-country-code"
+                                        value="{{ old('country_code', '+91') }}"
+                                    >
+                                </div>
+
+                                {{-- PASSWORD --}}
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                    <label for="password-field" class="signup-label">
+                                        Password
+                                    </label>
+
+                                    <div class="signup-input-wrap">
+                                        <i class="fas fa-lock signup-input-icon"></i>
+                                        <input
+                                            class="form-control signup-input signup-password"
+                                            id="password-field"
+                                            name="password"
+                                            type="password"
+                                            placeholder="Create a password"
+                                            autocomplete="new-password"
+                                            required
+                                        >
+                                        <button
+                                            type="button"
+                                            class="password-toggle toggle-password"
+                                            data-target="password-field"
+                                            aria-label="Show password"
+                                        >
+                                            <i class="far fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {{-- CONFIRM PASSWORD --}}
+                                
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                    <label for="confirm-password-field"
+                                           class="signup-label">
+                                        Confirm password
+                                    </label>
+
+                                    
+                                    <div class="signup-input-wrap">
+                                        <i class="fas fa-lock signup-input-icon"></i>
+                                        <input
+                                            class="form-control signup-input signup-password"
+                                            id="confirm-password-field"
+                                            name="password_confirmation"
+                                            type="password"
+                                            placeholder="Confirm your password"
+                                            autocomplete="new-password"
+                                            required
+                                        >
+                                        <button
+                                            type="button"
+                                            class="password-toggle toggle-password"
+                                            data-target="confirm-password-field"
+                                            aria-label="Show password"
+                                        >
+                                            <i class="far fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                  </div>
+                                </div>
+
+                                {{-- TERMS --}}
+                                <div class="signup-terms-row">
+                                    <label class="signup-terms">
+                                        <input
+                                            id="agree"
+                                            name="agree"
+                                            type="checkbox"
+                                            value="1"
+                                            required
+                                            {{ old('agree') ? 'checked' : '' }}
+                                        >
+                                        <span>
+                                            I agree to the
+                                            <a href="{{ route('terms.condition') }}">
+                                                Terms
+                                            </a>
+                                            and
+                                            <a href="{{ route('privacy.policy') }}">
+                                                Privacy Policy
+                                            </a>
+                                        </span>
+                                    </label>
+                                </div>
+
+                                {{-- SUBMIT --}}
+                                <button type="submit" class="signup-submit">
+                                    Create account
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+
+                                <p class="signup-login-link">
+                                    Already have an account?
+                                    <a href="{{ route('login') }}">Log in</a>
+                                </p>
 
                             </form>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-          </div>
-          <div class="col-md-6" data-aos="fade-left">
-            <div class="form-image">
-              <img src="{{ asset('assets/images/service-box.webp') }}" alt="form image">
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-
+    </section>
 </main>
-@include('Include.footer')
 
- <script>
-        $(document).ready(function() {
-            $('.selectpicker').selectpicker();
+
+<!-- International Telephone Input CSS -->
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/css/intlTelInput.css"
+>
+
+<!-- International Telephone Input JS -->
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/intlTelInput.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const phoneInput = document.querySelector('#signup-phone');
+    const countryCodeInput = document.querySelector('#signup-country-code');
+    const signupForm = document.querySelector('.signup-form');
+
+    if (phoneInput && countryCodeInput && window.intlTelInput) {
+        const iti = window.intlTelInput(phoneInput, {
+            initialCountry: 'in',
+            preferredCountries: ['in', 'us', 'gb', 'ae', 'ca'],
+            separateDialCode: true,
+            nationalMode: true,
+            countrySearch: true,
+            utilsScript:
+                'https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/utils.js'
         });
-    </script>
 
+        // Restore the previous country selection after validation errors.
+        const previousCode = countryCodeInput.value.replace(/\D/g, '');
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        if (previousCode) {
+            const countries = iti.getCountryData();
+            const matchingCountry = countries.find(function (country) {
+                return country.dialCode === previousCode;
+            });
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
+            if (matchingCountry) {
+                iti.setCountry(matchingCountry.iso2);
+            }
+        }
 
-    <!-- Bootstrap JS & jQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+        // Keep the existing Laravel country_code field updated.
+        function updateCountryCode() {
+            const selectedCountry = iti.getSelectedCountryData();
 
+            if (selectedCountry && selectedCountry.dialCode) {
+                countryCodeInput.value = '+' + selectedCountry.dialCode;
+            }
+        }
 
-<script>
-  AOS.init({
-    duration: 1200,
-  });
-</script>
+        updateCountryCode();
 
-<script>
-  $(".toggle-password").click(function() {
+        phoneInput.addEventListener('countrychange', updateCountryCode);
 
-    $(this).toggleClass("fa-eye fa-eye-slash");
-    var input = $($(this).attr("toggle"));
-    if (input.attr("type") == "password") {
-      input.attr("type", "text");
-    } else {
-      input.attr("type", "password");
+        signupForm.addEventListener('submit', function () {
+            updateCountryCode();
+        });
     }
-  });
+
+    // Password visibility toggle
+    document.querySelectorAll('.toggle-password').forEach(function (button) {
+        button.addEventListener('click', function () {
+            const input = document.getElementById(
+                button.getAttribute('data-target')
+            );
+
+            if (!input) return;
+
+            const isPassword = input.type === 'password';
+            input.type = isPassword ? 'text' : 'password';
+
+            const icon = button.querySelector('i');
+
+            if (icon) {
+                icon.classList.toggle('fa-eye', !isPassword);
+                icon.classList.toggle('fa-eye-slash', isPassword);
+            }
+
+            button.setAttribute(
+                'aria-label',
+                isPassword ? 'Hide password' : 'Show password'
+            );
+        });
+    });
+});
 </script>
+
+@include('Include.footer')

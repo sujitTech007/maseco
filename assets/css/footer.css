@@ -6,7 +6,7 @@ Footer
 
 .footer{
     /* background: url(../images/footer-bg.jpg) no-repeat center center / cover; */
-    background-color: #2D3039 !important;
+    background-color: #243F38 !important;
 
     position: relative;
 
@@ -42,7 +42,7 @@ footer .widget:first-child {
 /*======= Footer Top list =======*/
 footer .footer-bottom-list {
 	padding: 0 0 60px;
-	margin-top: -60px;
+	/* margin-top: -60px; */
 	position: relative;
 	z-index: 9;
 }

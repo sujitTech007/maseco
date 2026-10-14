@@ -37,7 +37,7 @@
 <main>
   
 <!-- Contact Banner -->
-<section class="py-4 text-white" style="background:#263b3a;">
+<section class="banner inner-banner" style="background-image: url({{ asset('assets/images/breadcumb-banner.webp)')}};">
     <div class="container">
         <!-- <p class="mb-2" style="font-size:13px;color:#c4e4dc;">
             <a href="{{ route('home') }}" class="text-white text-decoration-none">Home</a>
@@ -107,7 +107,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-6 mt-4">
                                 <label for="phone" class="form-label"
                                        style="font-size:13px;">Phone Number *</label>
                                 <input type="tel" name="phone" id="phone"
@@ -120,7 +120,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-6 mt-4">
                                 <label for="find_us" class="form-label"
                                        style="font-size:13px;">How did you find us? *</label>
                                 <select name="find_us" id="find_us"
@@ -149,7 +149,7 @@
 
                             <div class="col-12">
                                 <button type="submit"
-                                        class="btn text-white w-100 py-2"
+                                        class="btn text-white w-100 py-2 theme_btn"
                                         style="background:#2DAC92;font-size:14px;">
                                     Send Enquiry
                                     <i class="fas fa-arrow-right ms-2"></i>

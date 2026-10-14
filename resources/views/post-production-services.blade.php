@@ -6,7 +6,7 @@
 
 
 
-    <section class="banner inner-banner" style="background-image: url({{ asset('assets/images/inner-banner.jpg)')}};">
+    <section class="banner inner-banner" style="background-image: url({{ asset('assets/images/breadcumb-banner.webp)')}};">
 
         <div class="container">
 

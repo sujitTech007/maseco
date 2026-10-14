@@ -2,7 +2,7 @@
 
     <main>
 
-        <section class="banner inner-banner" style="background-image: url({{ asset('assets/images/inner-banner.jpg)')}};">
+        <section class="banner inner-banner" style="background-image: url({{ asset('assets/images/breadcumb-banner.webp)')}};">
             <div class="container">
                 <div class="row">
                     <div class="inner-banner-heading" data-aos="zoom-in">
@@ -252,7 +252,7 @@
                                             @endphp
 
                                             <button type="button"
-                                                class="btn theme_btn { w-100"
+                                                class="btn btn-outline-success { w-100"
                                                 data-bs-toggle="modal"
                                                 data-bs-target="#enquiryModal"
                                                 data-material-id="{{ $material->id }}"

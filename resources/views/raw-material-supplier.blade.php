@@ -243,7 +243,7 @@ i.fas.fa-phone.fa-rotate-90 {
   
 
 <!-- Supplier Page Header -->
-<section class="py-4 text-white" style="background:#263b3a;">
+<section class="banner inner-banner" style="background-image: url({{ asset('assets/images/breadcumb-banner.webp)')}};">
     <div class="container">
         <!-- <p class="mb-2" style="font-size:13px;color:#c4e4dc;">
             <a href="{{ route('home') }}" class="text-white text-decoration-none">
@@ -252,7 +252,7 @@ i.fas.fa-phone.fa-rotate-90 {
             / Raw Material Suppliers
         </p> -->
 
-        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+        <div class="d-flex flex-wrap justify-content-center align-items-center gap-3">
             <div>
                 <h1 class="fw-bold mb-2 text-white" style="font-size:28px;">
                     Raw Material Suppliers
@@ -262,11 +262,11 @@ i.fas.fa-phone.fa-rotate-90 {
                 </p>
             </div>
 
-            <div class="rounded-3 px-3 py-2"
+            <!-- <div class="rounded-3 px-3 py-2"
                  style="background:rgba(255,255,255,.1);font-size:14px;">
                 <i class="fas fa-building me-2"></i>
                 {{ $suppliers->count() }} Suppliers
-            </div>
+            </div> -->
         </div>
     </div>
 </section>

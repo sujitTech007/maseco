@@ -140,9 +140,9 @@
 
   
 <!-- Category Page Header -->
-<section class="py-4 text-white" style="background:#263b3a;">
-    <!-- <div class="container">
-        <nav aria-label="breadcrumb">
+<section class="banner inner-banner" style="background-image: url({{ asset('assets/images/breadcumb-banner.webp)')}};">
+    <div class="container">
+        <!-- <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-2" style="font-size:13px;">
                 <li class="breadcrumb-item">
                     <a href="{{ route('home') }}"
@@ -154,7 +154,7 @@
                     Categories
                 </li>
             </ol>
-        </nav>
+        </nav> -->
 
         <h1 class="fw-bold mb-2" style="font-size:28px;">
             Browse Material Categories
@@ -162,7 +162,7 @@
         <p class="mb-0" style="font-size:14px;color:#d5e5e0;">
             Explore available materials and discover the right options for your needs.
         </p>
-    </div> -->
+    </div>
 </section>
 
 <!-- Category Listing -->

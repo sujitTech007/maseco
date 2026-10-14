@@ -1492,7 +1492,7 @@
 
             <!-- Basic -->
             <div class="col-lg-4">
-                <article class="maseco-plan h-100">
+                <article class="maseco-plan">
                     <div class="plan-icon">
                         <i class="bi bi-leaf"></i>
                     </div>
@@ -1519,7 +1519,7 @@
 
             <!-- Premium -->
             <div class="col-lg-4">
-                <article class="maseco-plan maseco-plan-featured h-100">
+                <article class="maseco-plan maseco-plan-featured bg-success bg-opacity-10">
                     <span class="plan-popular">MOST POPULAR</span>
 
                     <div class="plan-icon">
@@ -1550,7 +1550,7 @@
 
             <!-- Pro -->
             <div class="col-lg-4">
-                <article class="maseco-plan h-100">
+                <article class="maseco-plan">
                     <div class="plan-icon">
                         <i class="bi bi-buildings"></i>
                     </div>
@@ -1571,10 +1571,7 @@
                         <li><i class="bi bi-check-circle-fill"></i> Advanced production workflows</li>
                     </ul>
 
-                    <p class="plan-note">
-                        Additional commission may apply based on services used.
-                    </p>
-
+                    
                     <a href="{{ url('/contact-us') }}" class="plan-button">
                         Contact our team <i class="bi bi-arrow-right"></i>
                     </a>
