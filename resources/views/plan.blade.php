@@ -47,7 +47,7 @@
 
         </div>
 
-        <div class="breadcrumb-container">
+        <!-- <div class="breadcrumb-container">
 
           <ol class="breadcrumb" data-aos="fade-up">
 
@@ -61,7 +61,7 @@
 
           </ol>
 
-        </div>
+        </div> -->
 
       </div>
 

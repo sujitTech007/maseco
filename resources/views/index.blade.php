@@ -13,7 +13,7 @@
         rgba(15, 35, 29, 0.68) 0%,
         rgba(15, 35, 29, 0.48) 45%,
         rgba(15, 35, 29, 0.12) 100%
-    ), url('{{ asset('assets/images/sustainable-materials.png') }}') center/cover no-repeat;">
+    ), url('{{ asset('assets/images/homepage-banner.webp') }}') center/cover no-repeat;">
     </div>
 
     <div class="container position-relative py-4 py-lg-5">
@@ -128,9 +128,9 @@
 
             <!-- Verified Suppliers -->
             <div class="col-12 col-sm-6 col-xl-3">
-                <div class="maseco-advantage-card">
-                    <div class="maseco-advantage-icon">
-                        <i class="fa fa-shield"></i>
+                <div class="maseco-advantage-card bg-danger bg-opacity-10">
+                    <div class="maseco-advantage-icon bg-danger bg-opacity-10">
+                        <i class="fa fa-shield text-danger"></i>
                     </div>
 
                     <div class="maseco-advantage-content">
@@ -142,9 +142,9 @@
 
             <!-- Advanced Search -->
             <div class="col-12 col-sm-6 col-xl-3">
-                <div class="maseco-advantage-card">
-                    <div class="maseco-advantage-icon">
-                        <i class="fa fa-sliders"></i>
+                <div class="maseco-advantage-card bg-warning bg-opacity-10">
+                    <div class="maseco-advantage-icon bg-warning bg-opacity-10">
+                        <i class="fa fa-sliders text-warning"></i>
                     </div>
 
                     <div class="maseco-advantage-content">
@@ -156,9 +156,9 @@
 
             <!-- Sustainable Textiles -->
             <div class="col-12 col-sm-6 col-xl-3">
-                <div class="maseco-advantage-card">
-                    <div class="maseco-advantage-icon">
-                        <i class="fa fa-leaf"></i>
+                <div class="maseco-advantage-card bg-secondary bg-opacity-10">
+                    <div class="maseco-advantage-icon bg-secondary bg-opacity-10">
+                        <i class="fa fa-leaf text-white"></i>
                     </div>
 
                     <div class="maseco-advantage-content">
@@ -170,9 +170,9 @@
 
             <!-- Buyer-Seller Support -->
             <div class="col-12 col-sm-6 col-xl-3">
-                <div class="maseco-advantage-card">
-                    <div class="maseco-advantage-icon">
-                        <i class="fa fa-comments"></i>
+                <div class="maseco-advantage-card bg-success bg-opacity-10">
+                    <div class="maseco-advantage-icon bg-success bg-opacity-10">
+                        <i class="fa fa-comments text-success"></i>
                     </div>
 
                     <div class="maseco-advantage-content">
@@ -185,7 +185,7 @@
         </div>
     </div>
 </section>
-```
+
 
 
 <section class="maseco-about-clean py-5" id="about-maseco">
@@ -231,7 +231,7 @@
                 <div class="maseco-about-visual">
 
                     <img
-                        src="{{ asset('assets/images/manufacture.png') }}"
+                        src="{{ asset('assets/images/about-us.webp') }}"
                         alt="Textile manufacturing and fabric production"
                         class="maseco-about-photo"
                         loading="lazy"
@@ -581,7 +581,7 @@
                 <!-- Supplier 4 -->
                 <article class="maseco-supplier-card">
                     <div class="maseco-supplier-photo">
-                        <img src="{{ asset('assets/images/suppliers/global-textiles.jpg') }}"
+                        <img src="{{ asset('assets/images/sustainable-journey-img.webp') }}"
                              alt="Global Textiles woven fabrics"
                              loading="lazy">
 
@@ -1111,7 +1111,7 @@
                     <article class="process-step">
                         <div class="process-image">
                             <img
-                                src="{{ asset('assets/images/sustainable-materials.png') }}"
+                                src="{{ asset('assets/images/sustainable-img.webp') }}"
                                 alt="Sustainable textile materials"
                                 loading="lazy">
                             <span class="process-number">01</span>
@@ -1131,7 +1131,7 @@
                     <article class="process-step">
                         <div class="process-image">
                             <img
-                                src="{{ asset('assets/images/manufacture.png') }}"
+                                src="{{ asset('assets/images/Sustainable-journey-img.webp') }}"
                                 alt="Textile manufacturing and supplier connections"
                                 loading="lazy">
                             <span class="process-number">02</span>
@@ -1151,7 +1151,7 @@
                     <article class="process-step">
                         <div class="process-image">
                             <img
-                                src="{{ asset('assets/images/services/sustainable-materials.jpg') }}"
+                                src="{{ asset('assets/images/service-box.webp') }}"
                                 alt="Textile design and material planning"
                                 loading="lazy">
                             <span class="process-number">03</span>
@@ -1171,7 +1171,7 @@
                     <article class="process-step">
                         <div class="process-image">
                             <img
-                                src="{{ asset('assets/images/logistics.png') }}"
+                                src="{{ asset('assets/images/testimonial-img.webp') }}"
                                 alt="Textile production and logistics"
                                 loading="lazy">
                             <span class="process-number">04</span>
@@ -1308,7 +1308,7 @@
             <div class="col-lg-5">
                 <div class="journey-visual">
                     <img
-                        src="{{ asset('assets/images/sustainable-materials.png') }}"
+                        src="{{ asset('assets/images/sustainable-img.webp') }}"
                         alt="Textile materials and sustainable fabric sourcing"
                         loading="lazy"
                     >
@@ -1640,131 +1640,144 @@
 
     </div>
   </section> -->
-  
-   <section class="testimonial py-5 mb-5">
+
+<section class="testimonial py-5 mb-5">
     <div class="container">
-      <div class="row">
-        <div class="col-xl-5">
-          <div class="testimonial-image-box">
-            <img src="{{ asset('assets/images/testimonial-thumb-1.jpg')}}" alt="">
-            <div class="quote">
-              <i class="fas fa-quote-right"></i>
-            </div>
-            <div class="icon-box">
-              <div class="icon">
-                <img src="{{ asset('assets/images/icon/machine-icon.svg')}}" alt="">
-              </div>
-              <div class="icon-box-content">
-                <h6>Over All Rating</h6>
-                <p class="icon-box-description">Based on 2555 Reviews</p>
-              </div>
-            </div>
-          </div>
+
+        <!-- Section Heading -->
+        <div class="text-center mb-5">
+            <span class="text-uppercase small fw-semibold d-block mb-2"
+                  style="color: rgba(45, 172, 146, 1);">
+                <i class="fa-solid fa-quote-left me-2"></i>Testimonials
+            </span>
+            <h2 class="fw-semibold mb-2">What Our Happy Clients Say</h2>
+            <p class="text-muted mb-0">
+                Trusted experiences from our valued clients.
+            </p>
         </div>
-        <div class="col-xl-7 ps-md-5">
-          <div class="section-heading text-white">
-            <span class="needle-heading text-uppercase d-block needleIcon">our testimonials</span>
-            <h2 class="text-white">what our happy clients say</h2>
-          </div>
-          <div class="testimonials">
-            <div class="testimonial-slider">
-              <div class="testimonial-box">
-                <div class="testimonial-content py-5">
-                  <p>Textiles are materials made from fibers or yarn, and they are used to create a wide
-                    range of products such as clothing, household items, and industrial goods. The
-                    fibers used in textiles can be natural, such as cotton, wool, and silk, or
-                    synthetic, such as polyester, nylon, and acrylic. Textiles can be woven, knitted, or
-                    crocheted, and they can be dyed.</p>
-                </div>
-                <div class="testimonial-info">
-                  <div class="testimonial-meta d-flex align-items-center">
-                    <div class="testimonial-img">
-                      <img decoding="async" src="{{ asset('assets/images/testimonial-user.jpg')}}" alt="testimonial-img">
-                    </div>
-                    <div class="testimonial-data">
-                      <h5>alex john martin</h5>
-                      <span>Photographer</span>
-                    </div>
-                  </div>
-                  <div class="testimonial-meta">
-                    <div class="testimonial-star">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                    <div class="owlNav"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="testimonial-box">
-                <div class="testimonial-content py-5">
-                  <p>Textiles are materials made from fibers or yarn, and they are used to create a wide
-                    range of products such as clothing, household items, and industrial goods. The
-                    fibers used in textiles can be natural, such as cotton, wool, and silk, or
-                    synthetic, such as polyester, nylon, and acrylic. Textiles can be woven, knitted, or
-                    crocheted, and they can be dyed.</p>
-                </div>
-                <div class="testimonial-info">
-                  <div class="testimonial-meta d-flex align-items-center">
-                    <div class="testimonial-img">
-                      <img decoding="async" src="{{ asset('assets/images/testimonial-user.jpg')}}" alt="testimonial-img">
-                    </div>
-                    <div class="testimonial-data">
-                      <h5>alex john martin</h5>
-                      <span>Photographer</span>
-                    </div>
-                  </div>
-                  <div class="testimonial-meta">
-                    <div class="testimonial-star">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                    <div class="owlNav"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="testimonial-box">
-                <div class="testimonial-content py-5">
-                  <p>Textiles are materials made from fibers or yarn, and they are used to create a wide
-                    range of products such as clothing, household items, and industrial goods. The
-                    fibers used in textiles can be natural, such as cotton, wool, and silk, or
-                    synthetic, such as polyester, nylon, and acrylic. Textiles can be woven, knitted, or
-                    crocheted, and they can be dyed.</p>
-                </div>
-                <div class="testimonial-info">
-                  <div class="testimonial-meta d-flex align-items-center">
-                    <div class="testimonial-img">
-                      <img decoding="async" src="{{ asset('assets/images/testimonial-user.jpg')}}" alt="testimonial-img">
-                    </div>
-                    <div class="testimonial-data">
-                      <h5>alex john martin</h5>
-                      <span>Photographer</span>
-                    </div>
-                  </div>
-                  <div class="testimonial-meta">
-                    <div class="testimonial-star">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                    <div class="owlNav"></div>
-                  </div>
-                </div>
-              </div>
 
+        <!-- Slick Slider -->
+        <div class="testimonial-slider">
+
+            <!-- Testimonial 1 -->
+            <div class="px-2 h-100">
+                <div class="testimonial-box bg-white border rounded-3 p-4 h-100">
+
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="text-warning small">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <i class="fa-solid fa-quote-right fs-3"
+                           style="color: rgba(45, 172, 146, 0.25);"></i>
+                    </div>
+
+                    <p class="text-secondary lh-lg mb-4">
+                        Maseco made our sourcing process easier and more efficient.
+                        The experience was smooth, and the team was very helpful.
+                    </p>
+
+                    <div class="d-flex align-items-center gap-3 border-top pt-3">
+                        <img src="{{ asset('assets/images/testimonial-user.jpg') }}"
+                             alt="Client"
+                             class="rounded-circle"
+                             width="52" height="52"
+                             style="object-fit: cover;">
+
+                        <div>
+                            <h6 class="mb-1 fw-semibold">Alex John Martin</h6>
+                            <small class="text-muted">Business Client</small>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
+            <!-- Testimonial 2 -->
+            <div class="px-2 h-100">
+                <div class="testimonial-box bg-white border rounded-3 p-4 h-100">
+
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="text-warning small">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <i class="fa-solid fa-quote-right fs-3"
+                           style="color: rgba(45, 172, 146, 0.25);"></i>
+                    </div>
+
+                    <p class="text-secondary lh-lg mb-4">
+                        We appreciate the quality and professionalism.
+                        Communication was clear, and the overall experience
+                        was excellent.
+                    </p>
+
+                    <div class="d-flex align-items-center gap-3 border-top pt-3">
+                        <img src="{{ asset('assets/images/testimonial-user.jpg') }}"
+                             alt="Client"
+                             class="rounded-circle"
+                             width="52" height="52"
+                             style="object-fit: cover;">
+
+                        <div>
+                            <h6 class="mb-1 fw-semibold">Sarah Williams</h6>
+                            <small class="text-muted">Verified Client</small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="px-2 h-100">
+                <div class="testimonial-box bg-white border rounded-3 p-4 h-100">
+
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="text-warning small">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <i class="fa-solid fa-quote-right fs-3"
+                           style="color: rgba(45, 172, 146, 0.25);"></i>
+                    </div>
+
+                    <p class="text-secondary lh-lg mb-4">
+                        The team was responsive and professional throughout
+                        the process. We look forward to continuing our
+                        business relationship.
+                    </p>
+
+                    <div class="d-flex align-items-center gap-3 border-top pt-3">
+                        <img src="{{ asset('assets/images/testimonial-user.jpg') }}"
+                             alt="Client"
+                             class="rounded-circle"
+                             width="52" height="52"
+                             style="object-fit: cover;">
+
+                        <div>
+                            <h6 class="mb-1 fw-semibold">Michael Brown</h6>
+                            <small class="text-muted">Business Client</small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
 
 
-          </div>
-  </section>
 
   <!-- <section class="blogs py-5">
       <div class="container">
@@ -2313,5 +2326,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 </script>
+
 
 @include('Include.footer')

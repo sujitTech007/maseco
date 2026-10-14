@@ -18,7 +18,7 @@
 
                     </div>
 
-                    <div class="breadcrumb-container">
+                    <!-- <div class="breadcrumb-container">
 
                         <ol class="breadcrumb">
 
@@ -32,7 +32,7 @@
 
                         </ol>
 
-                    </div>
+                    </div> -->
 
                 </div>
 
@@ -158,7 +158,7 @@
         <div class="row align-items-center g-4 mb-5">
 
             <div class="col-lg-5">
-                <img src="images/recycled-textiles.jpg"
+                <img src="{{ asset('assets/images/service-box.webp') }}"
                      class="img-fluid rounded-3 w-100"
                      alt="Recycled textile materials">
             </div>
@@ -285,7 +285,7 @@
         <div class="row align-items-center g-4 mb-5">
 
             <div class="col-lg-5">
-                <img src="images/textile-recycling.jpg"
+                <img src="{{ asset('assets/images/sustainable-img.webp') }}"
                      class="img-fluid rounded-3 w-100"
                      alt="Textile recycling and reuse">
             </div>

@@ -354,7 +354,7 @@
           </div>
           <div class="col-md-6" data-aos="fade-left">
             <div class="form-image">
-              <img src="{{ asset('assets/images/form-thumb.jpeg') }}" alt="form image">
+              <img src="{{ asset('assets/images/service-box.webp') }}" alt="form image">
             </div>
           </div>
         </div>

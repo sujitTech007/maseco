@@ -43,19 +43,31 @@ $(document).ready(function(){
     ]
   });
 
-  $(".testimonial-slider").slick({
-    autoplay: false,
-    arrows: true,
-    dots: false,
-    prevArrow:
-      '<div class="slick-nav prev-arrow"><i class="icon-left-arrow-thin"></i></div>',
-    nextArrow:
-      '<div class="slick-nav next-arrow"><i class="icon-right-arrow-thin"></i></div>',
-     
-    slidesToShow: 1,
-    
-    cssEase: "linear",
-  });
+$('.testimonial-slider').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    arrows: false,
+    dots: true,
+    adaptiveHeight: false,
+    responsive: [
+        {
+            breakpoint: 992,
+            settings: {
+                slidesToShow: 2
+            }
+        },
+        {
+            breakpoint: 576,
+            settings: {
+                slidesToShow: 1
+            }
+        }
+    ]
+});
+
 
 
 

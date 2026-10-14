@@ -147,159 +147,302 @@ i.fas.fa-phone.fa-rotate-90 {
 }
 }
 
+.manufacturer-card {
+    overflow: hidden;
+    transition: box-shadow .2s ease, transform .2s ease;
+}
+
+.manufacturer-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(38, 59, 58, .08);
+}
+
+.manufacturer-avatar {
+    width: 68px;
+    height: 68px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f5f3;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.manufacturer-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.manufacturer-name {
+    color: #263b3a;
+    font-size: 16px;
+    overflow-wrap: anywhere;
+}
+
+.manufacturer-contact-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.manufacturer-contact-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #248f7b;
+    background: #e7f5ef;
+    border-radius: 8px;
+}
+
+.manufacturer-contact-link {
+    color: #263b3a;
+    font-size: 13px;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.manufacturer-contact-link:hover {
+    color: #2DAC92;
+}
+
+.manufacturer-primary-btn {
+    background: #2DAC92;
+    color: #fff;
+    border: 1px solid #2DAC92;
+    font-size: 13px;
+    padding: 9px 8px;
+}
+
+.manufacturer-primary-btn:hover {
+    background: #248f7b;
+    color: #fff;
+}
+
+.manufacturer-secondary-btn {
+    background: #fff;
+    color: #2DAC92;
+    border: 1px solid #2DAC92;
+    font-size: 13px;
+    padding: 9px 8px;
+}
+
+.manufacturer-secondary-btn:hover {
+    background: #e7f5ef;
+    color: #248f7b;
+}
+
+@media (max-width: 575px) {
+    .manufacturer-avatar {
+        width: 58px;
+        height: 58px;
+    }
+
+    .manufacturer-card .p-3 {
+        padding: 14px !important;
+    }
+}
+
+
   </style>
 
 
-  <section class="banner inner-banner" style="background-image: url({{ asset('assets/images/inner-banner.jpg)')}};">
-
+  
+<!-- Manufacturer Page Header -->
+<section class="py-4 text-white" style="background:#263b3a;">
     <div class="container">
-
-      <div class="row">
-
-        <div class="inner-banner-heading" data-aos="zoom-in">
-
-          <h1>Manufacturer </h1>
-
-        </div>
-
-        <div class="breadcrumb-container">
-
-          <ol class="breadcrumb" data-aos="fade-up">
-
-            <li class="breadcrumb-item">
-
-              <a href="{{ route('home') }}"><i class="fas fa-home mr-2"></i>Home</a>
-
-            </li>
-
-            <li class="breadcrumb-item active">Manufacturer  </li>
-
-          </ol>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-  <div class="agent-grid pt-100 pb-70 mt-5 mb-5">
-
-    <div class="container">
-
-      <div class="row gx-xl-5">
-
-        <div class="col-lg-9">
-
-          <div class="row g-5">
-
-            @foreach($manufacturers as $manufacturer)
-
-            <div class="col-lg-4 col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
-
-              <div class="agent-box radius-md mb-30">
-
-                <div class="agent-img">
-
-                  <figure>
-
-                    <a href="#">
-
-                      <img class=" ls-is-cached lazyloaded"
-
-                        src="http://realimate.ca/assets/img/admins/66693d3c45263.png"
-
-                        data-src="http://realimate.ca/assets/img/admins/66693d3c45263.png">
-
-                    </a>
-
-                  </figure>
-
-                  <div class="agent-ratings d-flex align-items-center justify-content-between">
-
-                    <div class="ratings">
-
-
-
-                    </div>
-
-                    <span class="label">Manufacturer</span>
-
-                  </div>
-
-
-
-                </div>
-
-                <div class="agent-details text-center">
-
-                  <h4 class="agent-title"><a href="#">{{ $manufacturer->name }}</a>
-
-                  </h4>
-
-                  <!-- <span class="color-primary font-sm">5
-
-                    Properties</span> |
-
-                  <span class="color-primary font-sm">2
-
-                    Agents</span> |
-
-                  <span class="color-primary font-sm">3
-
-                    Projects</span> -->
-
-
-
-
-
-
-
-                  <ul class="agent-info list-unstyled p-0">
-
-
-
-                    <li class="icon-start ">
-
-                      <a href="tel:278964587"> <i class="fas fa-phone fa-rotate-90"></i>
-
-                        {{$manufacturer->phone}}</a>
-
-                    </li>
-
-
-
-                    <li class="icon-start font-sm pb-3">
-
-                      <a href="mailto:admin@example.com"> <i class="fas fa-envelope"></i>
-
-                      {{$manufacturer->email}}</a>
-
-                    </li>
-
-                  </ul>
-
-                  <!-- <a href="" class="btn-text">View Profile</a> -->
-
-                </div>
-
-              </div><!-- agent-default -->
-
+        <!-- <p class="mb-2" style="font-size:13px;color:#c4e4dc;">
+            <a href="{{ route('home') }}" class="text-white text-decoration-none">
+                <i class="fas fa-home me-1"></i> Home
+            </a>
+            / Manufacturers
+        </p> -->
+
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <div>
+                <h1 class="fw-bold mb-2 text-white" style="font-size:28px;">
+                    Manufacturers
+                </h1>
+                <p class="mb-0" style="font-size:14px;color:#e0e9e7;">
+                    Explore manufacturers and connect directly with businesses.
+                </p>
             </div>
 
-            @endforeach
+            <div class="rounded-3 px-3 py-2"
+                 style="background:rgba(255,255,255,.1);font-size:14px;">
+                <i class="fas fa-industry me-2"></i>
+                {{ $manufacturers->count() }} Manufacturers
+            </div>
+        </div>
+    </div>
+</section>
 
+<!-- Manufacturer Directory -->
+<section class="py-5" style="background:#f6f8f7;">
+    <div class="container">
 
+        <div class="mb-4">
+            <h2 class="fw-bold mb-1" style="font-size:21px;color:#263b3a;">
+                Manufacturer Directory
+            </h2>
+            <p class="text-secondary mb-0" style="font-size:13px;">
+                Find contact details for manufacturers in the Maseco network.
+            </p>
+        </div>
 
-            
+        <div class="row g-4">
 
-        
+            @forelse($manufacturers as $manufacturer)
+                <div class="col-xl-4 col-md-6">
 
-      </div>
+                    <div class="manufacturer-card bg-white border rounded-3 h-100">
+
+                        <!-- Manufacturer Information -->
+                        <div class="d-flex align-items-center gap-3 p-3 border-bottom">
+
+                            <div class="supplier-avatar">
+                                <img
+                                    src="{{ asset('public/images/default-user-profile.png') }}"
+                                    alt="Manufacturer profile"
+                                    class="img-fluid">
+                            </div>
+
+                            <div class="flex-grow-1 overflow-hidden">
+                                <span class="badge rounded-pill mb-2"
+                                      style="background:#e4f5ef;color:#248f7b;font-size:11px;">
+                                    <i class="fas fa-industry me-1"></i>
+                                    Manufacturer
+                                </span>
+
+                                <h5 class="manufacturer-name fw-bold mb-1">
+                                    {{ $manufacturer->name }}
+                                </h5>
+
+                                <p class="text-secondary mb-0" style="font-size:13px;">
+                                    Manufacturing Business
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <!-- Contact Details -->
+                        <div class="p-3">
+
+                            <p class="text-secondary mb-3" style="font-size:13px;">
+                                <i class="fas fa-address-card me-2"
+                                   style="color:#2DAC92;"></i>
+                                Contact Information
+                            </p>
+
+                            <div class="manufacturer-contact-row mb-3">
+                                <div class="manufacturer-contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+
+                                <div class="flex-grow-1 overflow-hidden">
+                                    <span class="d-block text-secondary mb-1"
+                                          style="font-size:12px;">
+                                        Phone Number
+                                    </span>
+
+                                    @if($manufacturer->phone)
+                                        <a href="tel:{{ $manufacturer->phone }}"
+                                           class="manufacturer-contact-link">
+                                            {{ $manufacturer->phone }}
+                                        </a>
+                                    @else
+                                        <span class="text-secondary"
+                                              style="font-size:13px;">
+                                            Not provided
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="manufacturer-contact-row mb-3">
+                                <div class="manufacturer-contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+
+                                <div class="flex-grow-1 overflow-hidden">
+                                    <span class="d-block text-secondary mb-1"
+                                          style="font-size:12px;">
+                                        Email Address
+                                    </span>
+
+                                    @if($manufacturer->email)
+                                        <a href="mailto:{{ $manufacturer->email }}"
+                                           class="manufacturer-contact-link">
+                                            {{ $manufacturer->email }}
+                                        </a>
+                                    @else
+                                        <span class="text-secondary"
+                                              style="font-size:13px;">
+                                            Not provided
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="d-flex gap-2 pt-3 border-top">
+
+                                @if($manufacturer->phone)
+                                    <a href="tel:{{ $manufacturer->phone }}"
+                                       class="btn manufacturer-primary-btn flex-fill">
+                                        <i class="fas fa-phone me-1"></i>
+                                        Call Manufacturer
+                                    </a>
+                                @endif
+
+                                @if($manufacturer->email)
+                                    <a href="mailto:{{ $manufacturer->email }}"
+                                       class="btn manufacturer-secondary-btn flex-fill">
+                                        <i class="fas fa-envelope me-1"></i>
+                                        Email
+                                    </a>
+                                @endif
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            @empty
+                <div class="col-12">
+                    <div class="bg-white border rounded-3 text-center p-5">
+                        <i class="fas fa-industry mb-3"
+                           style="font-size:32px;color:#2DAC92;"></i>
+
+                        <h5 class="fw-bold" style="font-size:18px;">
+                            No Manufacturers Available
+                        </h5>
+
+                        <p class="text-secondary mb-0" style="font-size:14px;">
+                            Manufacturer information will appear here when available.
+                        </p>
+                    </div>
+                </div>
+            @endforelse
+
+        </div>
+
+        <!-- Pagination: works when using Laravel paginate() -->
+        @if(method_exists($manufacturers, 'links') && $manufacturers->hasPages())
+            <div class="d-flex justify-content-end mt-4">
+                {{ $manufacturers->links() }}
+            </div>
+        @endif
 
     </div>
+</section>
 
-  </div>
 
 </main>
 
