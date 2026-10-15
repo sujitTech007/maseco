@@ -1,34 +1,77 @@
 @include('user.Include.header')
 
+<style>
+    .ud-scroll { overflow-x: auto; }
 
+    .ud-table { width: 100%; border-collapse: collapse; margin: 0; border: 0 !important; background: transparent; }
 
+    .ud-table th,
+    .ud-table td {
+        border: 0 !important;
+        border-bottom: 1px solid #eef0f3 !important;
+        padding: .9rem 1rem !important;
+        text-align: left;
+        vertical-align: middle;
+        background: transparent;
+        box-shadow: none !important;
+    }
 
+    .ud-table thead { background-color: rgb(76 76 92); }
+    .ud-table th { color: #fff; font-weight: 700; font-size: .85rem; }
+    .ud-table tbody tr:last-child td { border-bottom: 0 !important; }
+    .ud-table tbody tr:hover td { background: #f3faf8 !important; }
+    .ud-table td.text-center { text-align: center !important; }
+
+    .ud-st { font-size: .8rem; font-weight: 600; padding: .3rem .7rem; }
+    .ud-st::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; margin-right: .4rem; display: inline-block; vertical-align: middle; }
+    .ud-st-success { background: #e6f4ec; color: #198754; }
+    .ud-st-warning { background: #fff4d6; color: #a06a00; }
+    .ud-st-danger { background: #fde8e8; color: #c0392b; }
+    .ud-st-secondary { background: #eceff3; color: #5f6b7a; }
+</style>
+
+@php
+    // TEMP DEMO DATA: only shows when the list is empty, APP_DEBUG is true and the URL has ?demo=1. Delete before launch.
+    $rows = $payments;
+    if ($rows->isEmpty() && config('app.debug') && request()->boolean('demo')) {
+        $rows = collect([
+            (object) ['id' => 31, 'order_id' => 1048, 'amount' => 2500, 'status' => 'pending', 'provider' => 'stripe', 'transaction_id' => null, 'created_at' => now()->subDays(1)],
+            (object) ['id' => 30, 'order_id' => 1047, 'amount' => 1800, 'status' => 'paid', 'provider' => 'stripe', 'transaction_id' => 'pi_3Q8demo001', 'created_at' => now()->subDays(6)],
+            (object) ['id' => 29, 'order_id' => 1046, 'amount' => 950, 'status' => 'paid', 'provider' => 'stripe', 'transaction_id' => 'pi_3Q7demo002', 'created_at' => now()->subDays(18)],
+            (object) ['id' => 28, 'order_id' => 1045, 'amount' => 6400, 'status' => 'refunded', 'provider' => 'stripe', 'transaction_id' => 'pi_3Q6demo003', 'created_at' => now()->subDays(27)],
+            (object) ['id' => 27, 'order_id' => 1044, 'amount' => 420, 'status' => 'failed', 'provider' => 'stripe', 'transaction_id' => null, 'created_at' => now()->subDays(43)],
+        ]);
+    }
+@endphp
 
 <div class="page-content">
 
-
-
     <div class="container py-1">
 
-        <h4 class="mb-1 fs-bold main-heading"> Payments</h2>
-            <div class="breadcrumb-wrapper mb-3" style="font-size: 15px; font-weight: 500;">
+        <h4 class="mb-1 fs-bold main-heading"> Payments</h4>
+        <div class="breadcrumb-wrapper mb-3" style="font-size: 15px; font-weight: 500;">
 
-                <a href="{{ route('user.dashboard') }}" style="color:#454545; text-decoration:none;">
-                    Dashboard
-                </a>
+            <a href="{{ route('user.dashboard') }}" style="color:#454545; text-decoration:none;">
+                Dashboard
+            </a>
 
-                <span style="padding:0 6px; color:#999; font-size:10px;">
-                    ▶
-                </span>
+            <span style="padding:0 6px; color:#999; font-size:10px;">
+                ▶
+            </span>
 
-                <span style="color:#2DAC92;">
-                    Payments
-                </span>
+            <span style="color:#2DAC92;">
+                Payments
+            </span>
 
-            </div>
-            <div class="table-responsive">
+        </div>
 
-                <table class="table table-striped align-middle">
+        <p class="text-muted mb-3">A record of the payments you have made across your orders and subscriptions.</p>
+
+        <div class="ud-table-wrap bg-white shadow-sm rounded-4 overflow-hidden">
+
+            <div class="ud-scroll">
+
+                <table class="ud-table">
 
                     <thead>
 
@@ -54,33 +97,49 @@
 
                     <tbody>
 
-                        @forelse($payments as $p)
+                        @forelse($rows as $p)
 
-                        <tr>
+                            @php
+                                $st = [
+                                    'paid' => 'success',
+                                    'succeeded' => 'success',
+                                    'completed' => 'success',
+                                    'pending' => 'warning',
+                                    'failed' => 'danger',
+                                    'cancelled' => 'danger',
+                                ][strtolower($p->status)] ?? 'secondary';
+                            @endphp
 
-                            <td>{{ $p->id }}</td>
+                            <tr>
 
-                            <td>#{{ $p->order_id }}</td>
+                                <td class="text-muted">{{ $p->id }}</td>
 
-                            <td>${{ number_format($p->amount, 2) }}</td>
+                                <td class="fw-semibold">#{{ $p->order_id }}</td>
 
-                            <td>{{ ucfirst($p->status) }}</td>
+                                <td class="fw-semibold text-nowrap">${{ number_format($p->amount, 2) }}</td>
 
-                            <td>{{ strtoupper($p->provider ?? '-') }}</td>
+                                <td><span
+                                        class="ud-st ud-st-{{ $st }} rounded-pill d-inline-block text-nowrap">{{ ucfirst($p->status) }}</span>
+                                </td>
 
-                            <td><code>{{ $p->transaction_id ?? '-' }}</code></td>
+                                <td class="text-nowrap">{{ strtoupper($p->provider ?? '-') }}</td>
 
-                            <td>{{ $p->created_at->format('d M Y H:i') }}</td>
+                                <td><code>{{ $p->transaction_id ?? '-' }}</code></td>
 
-                        </tr>
+                                <td class="text-nowrap text-muted">{{ $p->created_at->format('d M Y H:i') }}</td>
+
+                            </tr>
 
                         @empty
 
-                        <tr>
+                            <tr>
 
-                            <td colspan="7" class="text-center">No payments found.</td>
+                                <td colspan="7" class="text-center text-muted">
+                                    <div>No payments found.</div>
+                                    <div class="small">Payments for your orders and subscriptions will appear here.</div>
+                                </td>
 
-                        </tr>
+                            </tr>
 
                         @endforelse
 
@@ -89,6 +148,17 @@
                 </table>
 
             </div>
+
+        </div>
+
+        <div
+            class="bg-white shadow-sm rounded-4 p-3 mt-3 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+            <div>
+                <h6 class="fw-bold mb-1">Need help?</h6>
+                <p class="text-muted small mb-0">Have a question about a payment? Email connect@maseco.ca.</p>
+            </div>
+            <a href="{{ url('contact-us') }}" class="btn btn-outline-success btn-sm px-3">Contact us</a>
+        </div>
 
     </div>
 

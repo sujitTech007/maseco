@@ -46,17 +46,17 @@
 
         <!-- SUCCESS / ERROR -->
         @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
+            <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
         @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul class="mb-0">
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
         @endif
 
 
@@ -71,8 +71,8 @@
                     <!-- Full Name -->
                     <div class="mb-3 col-4">
                         <label class="form-label">Full Name</label>
-                        <input type="text" name="name" class="form-control"
-                            value="{{ old('name', $user->name ?? '') }}" required>
+                        <input type="text" name="name" class="form-control" value="{{ old('name', $user->name ?? '') }}"
+                            required>
                     </div>
 
                     <!-- Phone Number -->
@@ -85,8 +85,8 @@
                     <!-- Email -->
                     <div class="mb-3 col-4">
                         <label class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control"
-                            value="{{ old('email', $user->email) }}" required>
+                        <input type="email" name="email" class="form-control" value="{{ old('email', $user->email) }}"
+                            required>
                     </div>
 
                 </div>
@@ -99,23 +99,25 @@
                         <label class="form-label">Gender</label>
                         <select name="gender" class="form-control">
                             <option value="">Select</option>
-                            <option value="Male" {{ old('gender', $user->gender ?? '') == 'Male' ? 'selected' : '' }}>Male</option>
-                            <option value="Female" {{ old('gender', $user->gender ?? '') == 'Female' ? 'selected' : '' }}>Female</option>
-                            <option value="Other" {{ old('gender', $user->gender ?? '') == 'Other' ? 'selected' : '' }}>Other</option>
+                            <option value="Male" {{ old('gender', $user->gender ?? '') == 'Male' ? 'selected' : '' }}>Male
+                            </option>
+                            <option value="Female" {{ old('gender', $user->gender ?? '') == 'Female' ? 'selected' : '' }}>
+                                Female</option>
+                            <option value="Other" {{ old('gender', $user->gender ?? '') == 'Other' ? 'selected' : '' }}>
+                                Other</option>
                         </select>
                     </div>
 
                     <!-- Birth Date -->
                     <div class="mb-3 col-4">
                         <label class="form-label">Birth Date</label>
-                        <input type="date" name="dob" class="form-control"
-                            value="{{ old('dob', $user->dob ?? '') }}">
+                        <input type="date" name="dob" class="form-control" value="{{ old('dob', $user->dob ?? '') }}">
                     </div>
 
                     <!-- Country -->
                     <div class="mb-3 col-4">
                         <label class="form-label">Country</label>
-                         <select id="country" class="form-control" name="country" required>
+                        <select id="country" class="form-control" name="country" required>
                             <option value="">Select Country</option>
                         </select>
                     </div>
@@ -126,65 +128,15 @@
                         </select>
                     </div>
 
+
+
+                    <div class="mb-3 col-8">
+                        <label class="form-label">Address</label>
+                        <textarea name="address" class="form-control" value="{{ old('address', $user->address ?? '') }}"
+                            rows="1"></textarea>
+                    </div>
+
                 </div>
-
-                <script>
-const countrySelect = document.getElementById('country');
-const stateSelect = document.getElementById('state');
-
-// Load all countries
-fetch('https://countriesnow.space/api/v0.1/countries/states')
-    .then(res => res.json())
-    .then(result => {
-        window.countriesData = result.data;
-
-        result.data.forEach(country => {
-            let option = document.createElement('option');
-            option.value = country.name;
-            option.textContent = country.name;
-
-            if (country.name === "{{ old('country', $user->country ?? '') }}") {
-                option.selected = true;
-            }
-
-            countrySelect.appendChild(option);
-        });
-
-        // Load states if edit page
-        if (countrySelect.value) {
-            loadStates(countrySelect.value);
-        }
-    });
-
-countrySelect.addEventListener('change', function () {
-    loadStates(this.value);
-});
-
-function loadStates(countryName) {
-    stateSelect.innerHTML = '<option value="">Select State</option>';
-
-    let country = window.countriesData.find(c => c.name === countryName);
-    if (!country) return;
-
-    country.states.forEach(state => {
-        let option = document.createElement('option');
-        option.value = state.name;
-        option.textContent = state.name;
-
-        if (state.name === "{{ old('state', $user->state ?? '') }}") {
-            option.selected = true;
-        }
-
-        stateSelect.appendChild(option);
-    });
-}
-</script>
-                <div class="mb-3 col-4">
-                    <label class="form-label">Address</label>
-                    <input name="address" class="form-control" value="{{ old('address', $user->address ?? '') }}">
-                </div>
-
-
 
 
                 <button type="submit" class="btn btn-primary prflbtn">Update</button>
@@ -192,6 +144,59 @@ function loadStates(countryName) {
             </form>
 
         </div>
+
+        <script>
+            const countrySelect = document.getElementById('country');
+            const stateSelect = document.getElementById('state');
+
+            // Load all countries
+            fetch('https://countriesnow.space/api/v0.1/countries/states')
+                .then(res => res.json())
+                .then(result => {
+                    window.countriesData = result.data;
+
+                    result.data.forEach(country => {
+                        let option = document.createElement('option');
+                        option.value = country.name;
+                        option.textContent = country.name;
+
+                        if (country.name === "{{ old('country', $user->country ?? '') }}") {
+                            option.selected = true;
+                        }
+
+                        countrySelect.appendChild(option);
+                    });
+
+                    // Load states if edit page
+                    if (countrySelect.value) {
+                        loadStates(countrySelect.value);
+                    }
+                });
+
+            countrySelect.addEventListener('change', function () {
+                loadStates(this.value);
+            });
+
+            function loadStates(countryName) {
+                stateSelect.innerHTML = '<option value="">Select State</option>';
+
+                let country = window.countriesData.find(c => c.name === countryName);
+                if (!country) return;
+
+                country.states.forEach(state => {
+                    let option = document.createElement('option');
+                    option.value = state.name;
+                    option.textContent = state.name;
+
+                    if (state.name === "{{ old('state', $user->state ?? '') }}") {
+                        option.selected = true;
+                    }
+
+                    stateSelect.appendChild(option);
+                });
+            }
+        </script>
+
 
 
 
@@ -234,7 +239,7 @@ function loadStates(countryName) {
 <!-- TAB SWITCH SCRIPT -->
 <script>
     document.querySelectorAll(".tab-btn").forEach(btn => {
-        btn.addEventListener("click", function() {
+        btn.addEventListener("click", function () {
 
             // remove active from both
             document.querySelectorAll(".tab-btn").forEach(b => {
