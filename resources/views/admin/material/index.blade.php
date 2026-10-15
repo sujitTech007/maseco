@@ -5,7 +5,7 @@
 <div class="page-content materials-page">
 
     <!-- Page Header -->
-    <div class="materials-page-header">
+    <div class="materials-page-header container">
         <div class="breadcrumb-wrapper">
             <h3>Materials</h3>
             <div class="breadcrumb-links">
@@ -16,6 +16,7 @@
         </div>
     </div>
 
+    <div class="page-container p-3">
     <!-- Search and Filter -->
     <div class="materials-filter-card">
         <form method="GET" class="materials-filter-form">
@@ -218,51 +219,9 @@
 
     </div>
 
+    </div>
 </div>
 
-
-
-<script>
-  document.querySelectorAll('.toggle-status-btn').forEach(btn => {
-
-    btn.addEventListener('click', function() {
-
-      const id = this.dataset.id;
-
-      fetch(`{{ url('admin/material') }}/${id}/toggle`, {
-
-          method: 'POST',
-
-          headers: {
-
-            'X-CSRF-TOKEN': '{{ csrf_token() }}',
-
-            'Accept': 'application/json',
-
-          },
-
-        })
-
-        .then(res => res.json())
-
-        .then(data => {
-
-          if (data.status !== undefined) {
-
-            this.classList.toggle('btn-success', data.status);
-
-            this.classList.toggle('btn-secondary', !data.status);
-
-            this.textContent = data.status ? 'Active' : 'Inactive';
-
-          }
-
-        });
-
-    });
-
-  });
-</script>
 
 
 

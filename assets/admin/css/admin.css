@@ -2111,4 +2111,96 @@
         padding: 16px;
     }
 }
+```css
+.dashboard-analytics .analytics-card {
+    border: 1px solid #e5eee9 !important;
+    border-radius: 14px !important;
+    background: #fff !important;
+    box-shadow: 0 2px 10px rgba(32, 75, 60, .04) !important;
+}
+
+.dashboard-analytics .card-body {
+    padding: 20px !important;
+}
+
+.analytics-heading h5,
+.summary-heading {
+    color: #214d42;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 5px;
+}
+
+.analytics-heading p,
+.summary-subtitle {
+    color: #899791;
+    font-size: 12px;
+    margin: 0;
+}
+
+.analytics-chart {
+    height: 235px;
+    width: 100%;
+    position: relative;
+    margin-top: 18px;
+}
+
+.summary-heading {
+    margin-bottom: 5px;
+}
+
+.summary-subtitle {
+    margin-bottom: 18px;
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 0;
+    border-bottom: 1px solid #edf2ef;
+    color: #52655d;
+    font-size: 13px;
+}
+
+.summary-item:last-child {
+    border-bottom: 0;
+}
+
+.summary-item strong {
+    margin-left: auto;
+    color: #234b40;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.summary-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.dot-buyer { background: #2dac92; }
+.dot-seller { background: #76b9a0; }
+.dot-manufacturer { background: #b0bd65; }
+.dot-enquiry { background: #6595cb; }
+.dot-orders { background: #d9a44c; }
+
+@media (max-width: 991px) {
+    .analytics-chart {
+        height: 220px;
+    }
+}
+
+@media (max-width: 575px) {
+    .dashboard-analytics .card-body {
+        padding: 16px !important;
+    }
+
+    .analytics-chart {
+        height: 200px;
+    }
+}
+
 

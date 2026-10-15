@@ -319,11 +319,172 @@
       </div>
 
     </div>
+    <div class="row mt-3 g-3 dashboard-analytics">
+
+    {{-- Chart --}}
+    <div class="col-lg-8 col-12">
+        <div class="card analytics-card h-100">
+            <div class="card-body">
+
+                <div class="analytics-heading">
+                    <div>
+                        <h5>Platform Overview</h5>
+                        <p>Current platform statistics</p>
+                    </div>
+                </div>
+
+                <div class="analytics-chart">
+                    <canvas id="dashboardOverviewChart"></canvas>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {{-- Quick Summary --}}
+    <div class="col-lg-4 col-12">
+        <div class="card analytics-card h-100">
+            <div class="card-body">
+
+                <h5 class="summary-heading">User Overview</h5>
+                <p class="summary-subtitle">Registered accounts</p>
+
+                <div class="summary-item">
+                    <span class="summary-dot dot-buyer"></span>
+                    <span>Buyers</span>
+                    <strong>{{ $buyerCount }}</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span class="summary-dot dot-seller"></span>
+                    <span>Sellers</span>
+                    <strong>{{ $sellerCount }}</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span class="summary-dot dot-manufacturer"></span>
+                    <span>Manufacturers</span>
+                    <strong>{{ $manufacturerCount }}</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span class="summary-dot dot-enquiry"></span>
+                    <span>Enquiries</span>
+                    <strong>{{ $enquiryCount }}</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span class="summary-dot dot-orders"></span>
+                    <span>Orders</span>
+                    <strong>{{ $orderCount }}</strong>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
 
   </div>
 
-</div> <!-- container -->
+
+
+
+</div> <!-- container --> 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+(function () {
+    function loadDashboardChart() {
+        const canvas = document.getElementById('dashboardChart');
+
+        if (!canvas) {
+            console.error('Dashboard chart canvas not found!');
+            return;
+        }
+
+        if (typeof Chart === 'undefined') {
+            console.error('Chart.js is not loaded!');
+            return;
+        }
+
+        // Prevent duplicate chart initialization
+        if (Chart.getChart(canvas)) {
+            Chart.getChart(canvas).destroy();
+        }
+
+        new Chart(canvas, {
+            type: 'line',
+
+            data: {
+                labels: [
+                    'Enquiries',
+                    'Orders',
+                    'Buyers',
+                    'Sellers',
+                    'Manufacturers'
+                ],
+
+                datasets: [{
+                    label: 'Total Records',
+                    data: [
+                        {{ (int) $enquiryCount }},
+                        {{ (int) $orderCount }},
+                        {{ (int) $buyerCount }},
+                        {{ (int) $sellerCount }},
+                        {{ (int) $manufacturerCount }}
+                    ],
+                    borderColor: '#2563eb',
+                    backgroundColor: 'rgba(37, 99, 235, 0.12)',
+                    borderWidth: 3,
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+                    pointBackgroundColor: '#2563eb',
+                    fill: true,
+                    tension: 0.35
+                }]
+            },
+
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    },
+
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            precision: 0
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadDashboardChart);
+    } else {
+        loadDashboardChart();
+    }
+})();
+</script>
 
 
 
 @include('admin.Include.footer')
+
+
