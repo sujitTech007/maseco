@@ -42,6 +42,7 @@
         <link href="{{ asset('assets/admin/css/icons.min.css') }}" rel="stylesheet" type="text/css">
 
         <link href="{{ asset('assets/admin/css/custom.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('assets/admin/css/admin.css') }}" rel="stylesheet" type="text/css">
 
 
 

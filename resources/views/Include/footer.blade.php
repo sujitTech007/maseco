@@ -52,11 +52,11 @@
 
                       <h4>call Us On</h4>
 
-                      <a href="tel:+180045647824">
+                      <!-- <a href="tel:+180045647824">
 
                         <span>+1800-001-6555</span>
 
-                      </a>
+                      </a> -->
 
                     </div>
 
@@ -76,7 +76,7 @@
 
                       <a href="#">
 
-                        <span>connect@maseco.ca</span>
+                        <span>info@maseco.ca</span>
 
                       </a>
 

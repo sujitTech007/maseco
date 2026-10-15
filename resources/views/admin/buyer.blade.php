@@ -60,14 +60,11 @@
 
 
               <div class="table-responsive pt-2">
-
-                <table class="table table-custom table-centered table-sm table-nowrap table-hover mb-0 dataTable" style="width: 100%;">
-
-                  <div class="dt-layout-row">
+                                  <div class="dt-layout-row">
 
                     <div class="dt-layout-cell dt-layout-start">
 
-                      
+
 
                     </div>
 
@@ -78,6 +75,10 @@
                     </div>
 
                   </div>
+
+                <table class="table table-custom table-centered table-sm table-nowrap table-hover mb-0 dataTable" style="width: 100%;">
+
+
 
                   <thead>
 
@@ -327,32 +328,32 @@
     });
   </script>
 
-<script>
-  const searchInput = document.getElementById('dt-search-0');
-  const table = document.querySelector('.table-custom tbody');
-  const rows = table.getElementsByTagName('tr');
+  <script>
+    const searchInput = document.getElementById('dt-search-0');
+    const table = document.querySelector('.table-custom tbody');
+    const rows = table.getElementsByTagName('tr');
 
-  function filterTable() {
-    const filter = searchInput.value.toLowerCase();
+    function filterTable() {
+      const filter = searchInput.value.toLowerCase();
 
-    for (let i = 0; i < rows.length; i++) {
-      const cells = rows[i].getElementsByTagName('td');
-      let found = false;
+      for (let i = 0; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName('td');
+        let found = false;
 
-      for (let j = 0; j < cells.length; j++) {
-        if (cells[j].textContent.toLowerCase().includes(filter)) {
-          found = true;
-          break;
+        for (let j = 0; j < cells.length; j++) {
+          if (cells[j].textContent.toLowerCase().includes(filter)) {
+            found = true;
+            break;
+          }
         }
+
+        rows[i].style.display = found ? '' : 'none';
       }
-
-      rows[i].style.display = found ? '' : 'none';
     }
-  }
 
-  // Works for typing + clear (✖) icon
-  searchInput.addEventListener('input', filterTable);
-</script>
+    // Works for typing + clear (✖) icon
+    searchInput.addEventListener('input', filterTable);
+  </script>
 
 
 

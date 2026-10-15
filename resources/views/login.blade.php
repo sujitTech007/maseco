@@ -36,7 +36,7 @@
         height: 100%;
         min-height: 620px;
         padding: 55px 45px;
-        background: #123d2b;
+        background: rgba(45, 172, 146, 1);
         color: #fff;
         display: flex;
         flex-direction: column;
@@ -77,7 +77,7 @@
     }
 
     .login-brand h2 span {
-        color: var(--maseco-accent);
+        color: #fff;
     }
 
     .login-intro {
@@ -119,7 +119,7 @@
         align-items: center;
         justify-content: center;
         background: rgba(45,172,146,.15);
-        color: var(--maseco-accent);
+        color: #fff;
         font-size: 20px;
     }
 
@@ -274,8 +274,8 @@
     }
 
     .login-submit {
-        background: var(--maseco-green);
-        border: 1px solid var(--maseco-green);
+        background: var(--primary-color);
+        border: 1px solid var(--primary-color);
         color: #fff;
         width: 100%;
         padding: 13px 18px;

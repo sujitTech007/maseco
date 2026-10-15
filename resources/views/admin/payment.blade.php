@@ -7,27 +7,28 @@
 
 
 
-     <div class="flex-grow-1">
+    <div class="flex-grow-1">
 
-                            <div class="breadcrumb-wrapper mb-3" style="font-size: 15px; font-weight: 500;">
-                                <h3 class="mb-1">Payments</h3>
+        <div class="breadcrumb-wrapper mb-3" style="font-size: 15px; font-weight: 500;">
+            <h3 class="mb-1">Payments</h3>
 
-                                <a href="https://maseco.ca/UAT/admin/dashboard" style="color:#555; text-decoration:none;">
-                                    Dashboard
-                                </a>
+            <a href="https://maseco.ca/UAT/admin/dashboard" style="color:#555; text-decoration:none;">
+                Dashboard
+            </a>
 
-                                <span style="padding:0 6px; color:#999; font-size:14px;">
-                                    ▶
-                                </span>
+            <span style="padding:0 6px; color:#999; font-size:14px;">
+                ▶
+            </span>
 
-                                <span style="color:#2DAC92;">
-                                    Payments
-                                </span>
+            <span style="color:#2DAC92;">
+                Payments
+            </span>
 
-                            </div>
-                            </h4>
+        </div>
+        </h4>
 
-                        </div>
+    </div>
+    <div class="page-container p-3">
     <div class="meetingPpage">
 
         <div class="row">
@@ -36,33 +37,10 @@
 
 
 
-                <div class="card" style="
-    background: white;
-    
- box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);    border-radius: 20px;
-">
-
-                    <div class="card-header border-bottom card-tabs d-flex flex-wrap align-items-center gap-2">
-
-                   
+                <div class="card" style="background: white;box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);    border-radius: 20px;">
 
 
 
-                        <!-- <div class="d-flex flex-wrap flex-lg-nowrap gap-2">
-
-
-
-                                    <a href="add-team.php" class="btn themeBtn"><i
-
-                                            class="ri-add-line me-1"></i>Subscription Management
-
-                                    </a>
-
-                                </div>     -->
-
-                        <!-- end d-flex -->
-
-                    </div>
 
 
 
@@ -250,6 +228,7 @@
 
 
 
+
                 </div>
 
 
@@ -284,6 +263,7 @@
 
         </div>
 
+    </div>
     </div>
 
 

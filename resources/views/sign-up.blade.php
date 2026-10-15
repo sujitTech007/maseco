@@ -24,7 +24,7 @@
 /* Left panel */
 
 .signup-left {
-    background: #123d2b;
+    background: rgba(45, 172, 146, 1);
     color: #fff;
     position: relative;
     overflow: hidden;
@@ -450,7 +450,7 @@ form .signup-input,
     gap: 10px;
     border: 0;
     border-radius: 9px;
-    background: #1d603b;
+    background: var(--primary-color);
     color: #fff;
     font-size: 13px;
     font-weight: 700;

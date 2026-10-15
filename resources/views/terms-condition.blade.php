@@ -192,7 +192,7 @@
                     <p>
                         <strong>Maseco Design Technologies Inc.</strong><br>
                         Website: <a href="https://maseco.ca" target="_blank">maseco.ca</a><br>
-                        Email: <a href="mailto:connect@maseco.ca">connect@maseco.ca</a>
+                        Email: <a href="mailto:connect@maseco.ca">info@maseco.ca</a>
                     </p>
 
                 </div>

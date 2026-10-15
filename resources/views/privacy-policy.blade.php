@@ -206,7 +206,7 @@
                     <p>
                         <strong>Privacy Officer</strong><br>
                         Maseco Design Technologies Inc.<br>
-                        Email: <a href="mailto:connect@maseco.ca">connect@maseco.ca</a>
+                        Email: <a href="mailto:info@maseco.ca">connect@maseco.ca</a>
                     </p>
 
                     <hr>

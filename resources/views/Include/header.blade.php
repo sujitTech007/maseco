@@ -278,13 +278,13 @@
 
                   <li class="pe-5">
 
-                    <a href="tel:+18000016555">
+                    <!-- <a href="tel:+18000016555">
 
                       <i class="fas fa-phone"></i>
 
                       <span>+1800-001-6555</span>
 
-                    </a>
+                    </a> -->
 
                   </li>
 
@@ -294,7 +294,7 @@
 
                       <i class="fas fa-envelope"></i>
 
-                      <span>connect@maseco.ca</span>
+                      <span>info@maseco.ca</span>
 
                     </a>
 

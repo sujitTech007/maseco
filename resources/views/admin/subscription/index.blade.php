@@ -92,10 +92,11 @@
                     <td>{{ ucfirst($plan->status) }}</td>
 
                     <td>
+                        <div class="d-flex justify-content-center align-items-center gap-2">
 
                         <a href="{{ route('admin.subscription.edit', $plan->id) }}" class="btn btn-sm btn-warning">Edit</a>
 
-                        <form action="{{ route('admin.subscription.destroy', $plan->id) }}" method="POST" class="formplan">
+                        <form action="{{ route('admin.subscription.destroy', $plan->id) }}" method="POST" class="formplan mb-0">
 
                             @csrf
 
@@ -104,6 +105,7 @@
                             <button type="submit" class="btn btn-sm btn-danger"  onclick="return confirm('Delete this plan?')"  >Delete</button>
 
                         </form>
+                        </div>
 
                     </td>
 

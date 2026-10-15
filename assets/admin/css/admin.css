@@ -1,0 +1,2114 @@
+
+/* =========================================
+   MASECO ADMIN DASHBOARD REDESIGN
+========================================= */
+
+.page-content {
+    background: #f5f8f7;
+    min-height: 100vh;
+    color: #263b38;
+    font-family: inherit;
+}
+
+/* Dashboard heading */
+.page-title-head {
+    background: #ffffff;
+    padding: 22px 28px;
+    border-bottom: 1px solid #e8efec;
+    margin-bottom: 0;
+}
+
+.page-title-head h4 {
+    color: #183e36;
+    font-size: 23px !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.5px;
+}
+
+/* Main content spacing */
+.page-container {
+    padding: 24px 22px !important;
+}
+
+.page-content .container {
+    max-width: 1600px;
+    width: 100%;
+    padding: 0 10px !important;
+}
+
+/* Summary card layout */
+.page-content .row.g-3 {
+    --bs-gutter-x: 20px;
+    --bs-gutter-y: 20px;
+}
+
+/* Dashboard cards */
+.page-content .card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #e8efec !important;
+    border-radius: 14px !important;
+    box-shadow: 0 4px 18px rgba(28, 65, 55, 0.045) !important;
+    overflow: hidden;
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+}
+
+.page-content .card:hover {
+    transform: translateY(-4px);
+    border-color: #b9e4d8 !important;
+    box-shadow: 0 10px 26px rgba(28, 65, 55, 0.09) !important;
+}
+
+/* Card body */
+.page-content .custom-card-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 142px;
+    padding: 26px 24px !important;
+    text-align: left !important;
+}
+
+/* Text area */
+.page-content .growth-text {
+    min-width: 0;
+    flex: 1;
+    order: 1;
+}
+
+.page-content .custom-card-body .card-text {
+    color: #71817d !important;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 13px !important;
+}
+
+.page-content .custom-card-body .card-title {
+    color: #203d37 !important;
+    font-size: 29px !important;
+    font-weight: 750;
+    line-height: 1.2;
+    margin: 0 !important;
+    overflow-wrap: anywhere;
+    letter-spacing: -0.7px;
+}
+
+/* Circular icon background */
+.page-content .icon-box {
+    width: 58px;
+    height: 58px;
+    min-width: 58px;
+    border-radius: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 !important;
+    font-size: 25px !important;
+    order: 2;
+}
+
+/* Enquiry - teal */
+.page-content .card-body-users .icon-box {
+    color: #219f85 !important;
+    background: #e4f6f0;
+}
+
+/* Orders - blue */
+.page-content .card-body-growth .icon-box {
+    color: #3888e8 !important;
+    background: #eaf2ff;
+}
+
+/* Payments - amber */
+.page-content .card-body-rating .icon-box {
+    color: #d99a22 !important;
+    background: #fff4dc;
+}
+
+/* Profit - rose */
+.page-content .card-body-uptime .icon-box {
+    color: #df6479 !important;
+    background: #fff0f2;
+}
+
+/* Buyer, seller and manufacturer card accents */
+.page-content .card-body-users,
+.page-content .card-body-growth,
+.page-content .card-body-rating,
+.page-content .card-body-uptime {
+    background: #ffffff !important;
+}
+
+/* User count cards */
+.page-content .card-body-users .card-title,
+.page-content .card-body-growth .card-title,
+.page-content .card-body-rating .card-title {
+    color: #203d37 !important;
+}
+
+/* Second row spacing */
+.page-content .container > .row.mt-4 {
+    margin-top: 22px !important;
+}
+
+/* Responsive grid: tablet */
+@media (max-width: 991.98px) {
+    .page-container {
+        padding: 20px 14px !important;
+    }
+
+    .page-content .container {
+        padding: 0 !important;
+    }
+
+    .page-content .container .row > .col-3 {
+        width: 50%;
+        flex: 0 0 50%;
+    }
+
+    .page-content .custom-card-body {
+        min-height: 125px;
+        padding: 22px 18px !important;
+    }
+
+    .page-content .custom-card-body .card-title {
+        font-size: 25px !important;
+    }
+}
+
+/* Responsive grid: mobile */
+@media (max-width: 575.98px) {
+    .page-title-head {
+        padding: 18px 16px;
+    }
+
+    .page-title-head h4 {
+        font-size: 20px !important;
+    }
+
+    .page-container {
+        padding: 16px 12px !important;
+    }
+
+    .page-content .row.g-3 {
+        --bs-gutter-x: 12px;
+        --bs-gutter-y: 12px;
+    }
+
+    .page-content .container .row > .col-3 {
+        width: 100%;
+        flex: 0 0 100%;
+    }
+
+    .page-content .custom-card-body {
+        min-height: 112px;
+        padding: 20px !important;
+    }
+
+    .page-content .icon-box {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        border-radius: 14px;
+        font-size: 22px !important;
+    }
+
+    .page-content .custom-card-body .card-title {
+        font-size: 26px !important;
+    }
+}
+```css
+/* =====================================
+   DIFFERENT BACKGROUNDS FOR DASH CARDS
+===================================== */
+
+/* Enquiry - Soft Mint Green */
+.page-content .card:has(.card-body-users) {
+    background: linear-gradient(135deg, #e8f8f2 0%, #f5fcf8 100%) !important;
+    border-color: #d3eee3 !important;
+}
+
+.page-content .card-body-users .icon-box {
+    background: #d0f0e4 !important;
+    color: #16866d !important;
+}
+
+/* Orders - Soft Blue */
+.page-content .card:has(.card-body-growth) {
+    background: linear-gradient(135deg, #eaf2ff 0%, #f6f9ff 100%) !important;
+    border-color: #d8e6ff !important;
+}
+
+.page-content .card-body-growth .icon-box {
+    background: #d6e6ff !important;
+    color: #3679d8 !important;
+}
+
+/* Payments - Soft Yellow */
+.page-content .card:has(.card-body-rating) {
+    background: linear-gradient(135deg, #fff4dc 0%, #fffbf1 100%) !important;
+    border-color: #f5e7c3 !important;
+}
+
+.page-content .card-body-rating .icon-box {
+    background: #ffe8b0 !important;
+    color: #b98112 !important;
+}
+
+/* Total Profit - Soft Pink */
+.page-content .card:has(.card-body-uptime) {
+    background: linear-gradient(135deg, #fff0f2 0%, #fff8f9 100%) !important;
+    border-color: #f6dce1 !important;
+}
+
+.page-content .card-body-uptime .icon-box {
+    background: #ffdce3 !important;
+    color: #d84f6b !important;
+}
+
+/* Consistent transparent card bodies */
+.page-content .custom-card-body {
+    background: transparent !important;
+}
+
+/* Buyer, Seller and Manufacturer icon colors */
+.page-content .container > .row.mt-4 .card-body-users .icon-box {
+    background: #d0f0e4 !important;
+    color: #16866d !important;
+}
+
+.page-content .container > .row.mt-4 .card-body-growth .icon-box {
+    background: #d6e6ff !important;
+    color: #3679d8 !important;
+}
+
+.page-content .container > .row.mt-4 .card-body-rating .icon-box {
+    background: #ffe8b0 !important;
+    color: #b98112 !important;
+}
+
+/* Smooth hover */
+.page-content .card {
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+.page-content .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(35, 70, 60, 0.10) !important;
+}
+```css
+/* ==========================================
+   MASECO BUYER PAGE - MODERN TABLE DESIGN
+========================================== */
+
+.page-content {
+    min-height: 100vh;
+    background: #f4f8f6;
+    color: #29453d;
+}
+
+/* Page heading */
+.page-title-head {
+    padding: 22px 28px;
+    background: #fff;
+    border-bottom: 1px solid #e5eee9;
+}
+
+.breadcrumb-wrapper h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #20483c;
+}
+
+.breadcrumb-wrapper a {
+    transition: color .2s ease;
+}
+
+.breadcrumb-wrapper a:hover {
+    color: #229b7f !important;
+}
+
+/* Page spacing */
+.page-container.p-3 {
+    padding: 24px 28px !important;
+}
+
+.meetingPpage .row {
+    --bs-gutter-x: 0;
+}
+
+/* Main table card */
+.meetingPpage .card {
+    background: #fff;
+    border: 1px solid #dcece4 !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 28px rgba(30, 75, 57, .055) !important;
+    overflow: hidden;
+}
+
+/* Search row */
+.meetingPpage .dt-layout-row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 20px 14px;
+}
+
+.meetingPpage .dt-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.meetingPpage .dt-search label {
+    color: #526d62;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.meetingPpage .dt-search input,
+.meetingPpage input.dt-input {
+    min-width: 190px;
+    height: 39px;
+    padding: 8px 12px;
+    border: 1px solid #dce8e1;
+    border-radius: 9px;
+    background: #fbfdfc;
+    color: #29453d;
+    outline: none;
+    transition: all .2s ease;
+}
+
+.meetingPpage .dt-search input:focus {
+    border-color: #2dac92;
+    box-shadow: 0 0 0 3px rgba(45, 172, 146, .12);
+    background: #fff;
+}
+
+/* Table base */
+.meetingPpage .table-responsive {
+    padding-top: 0 !important;
+}
+
+.meetingPpage table.table-custom {
+    width: 100%;
+    margin-bottom: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+/* Table headings */
+.meetingPpage .table-custom thead th {
+    padding: 15px 17px;
+    background: #edf7f2;
+    color: #355c4e;
+    font-size: 13px;
+    font-weight: 700;
+    border-top: 1px solid #e4eee8;
+    border-bottom: 1px solid #dcebe3;
+    white-space: nowrap;
+}
+
+/* Table content */
+.meetingPpage .table-custom tbody td {
+    padding: 13px 17px;
+    color: #455d53;
+    font-size: 13px;
+    font-weight: 400;
+    vertical-align: middle;
+    border-bottom: 1px solid #edf2ef;
+    background: #fff;
+}
+
+.meetingPpage .table-custom tbody tr {
+    transition: background .2s ease;
+}
+
+.meetingPpage .table-custom tbody tr:hover td {
+    background: #f3faf6;
+}
+
+.meetingPpage .table-custom tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Row text */
+.meetingPpage .table-custom td h5 {
+    margin-bottom: 0 !important;
+    color: #344f44;
+    font-size: 13px !important;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* Status toggle */
+.meetingPpage .form-check.form-switch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.meetingPpage .form-check-input.user-status-toggle {
+    float: none;
+    width: 36px;
+    height: 20px;
+    margin: 0;
+    cursor: pointer;
+    border: 1px solid #ccd9d1;
+    background-color: #e2e9e5;
+    box-shadow: none;
+}
+
+.meetingPpage .form-check-input.user-status-toggle:checked {
+    border-color: #2dac92;
+    background-color: #2dac92;
+}
+
+.meetingPpage .form-check-input.user-status-toggle:focus {
+    box-shadow: 0 0 0 3px rgba(45, 172, 146, .13);
+}
+
+/* Status labels */
+.meetingPpage .badge {
+    padding: 5px 9px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.meetingPpage .badge.bg-success {
+    background: #ddf5e8 !important;
+    color: #19784f !important;
+}
+
+.meetingPpage .badge.bg-danger {
+    background: #ffe8eb !important;
+    color: #c64255 !important;
+}
+
+/* View action button */
+.meetingPpage .actionBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.meetingPpage .actionBtn .viewBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 1px solid #d7eee4;
+    border-radius: 8px;
+    background: #eaf7f0;
+    color: #21866c;
+    text-decoration: none;
+    transition: all .2s ease;
+}
+
+.meetingPpage .actionBtn .viewBtn i {
+    font-size: 17px;
+}
+
+.meetingPpage .actionBtn .viewBtn:hover {
+    background: #2dac92;
+    border-color: #2dac92;
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 767px) {
+    .page-title-head {
+        padding: 18px 16px;
+    }
+
+    .page-container.p-3 {
+        padding: 16px !important;
+    }
+
+    .breadcrumb-wrapper h3 {
+        font-size: 21px;
+    }
+
+    .meetingPpage .dt-layout-row {
+        padding: 16px;
+    }
+
+    .meetingPpage .dt-search {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .meetingPpage .dt-search input,
+    .meetingPpage input.dt-input {
+        min-width: 0;
+        width: 65%;
+    }
+
+    .meetingPpage .table-custom thead th,
+    .meetingPpage .table-custom tbody td {
+        padding: 12px;
+        white-space: nowrap;
+    }
+}
+
+/* ==========================================
+   MASECO SELLER PAGE STYLING
+========================================== */
+
+/* Main seller table */
+.meetingPpage .card {
+    border: 1px solid #dcece4 !important;
+    border-radius: 16px !important;
+    background: #ffffff;
+    box-shadow: 0 8px 28px rgba(30, 75, 57, 0.055) !important;
+    overflow: hidden;
+}
+
+/* Remove nested card appearance */
+.meetingPpage .card .card.tableCustom {
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Search toolbar */
+.meetingPpage .dt-layout-row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 22px 16px;
+    background: #ffffff;
+}
+
+.meetingPpage .dt-search {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.meetingPpage .dt-search label {
+    color: #49665a;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.meetingPpage .dt-search input.dt-input {
+    width: 225px;
+    height: 42px;
+    padding: 9px 13px;
+    border: 1px solid #d8e8df;
+    border-radius: 10px;
+    background: #f9fcfa;
+    color: #29453d;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.meetingPpage .dt-search input.dt-input:focus {
+    background: #ffffff;
+    border-color: #2dac92;
+    box-shadow: 0 0 0 3px rgba(45, 172, 146, .12);
+}
+
+/* Table wrapper */
+.meetingPpage .table-responsive {
+    padding-top: 0 !important;
+}
+
+/* Table heading */
+.meetingPpage table.table-custom thead th {
+    padding: 16px 20px;
+    background: #edf7f2;
+    color: #355c4e;
+    font-size: 13px;
+    font-weight: 700;
+    border-top: 1px solid #e4eee8;
+    border-bottom: 1px solid #dcebe3;
+    white-space: nowrap;
+}
+
+/* Table rows */
+.meetingPpage table.table-custom tbody td {
+    padding: 15px 20px;
+    background: #ffffff;
+    color: #43594f;
+    font-size: 13px;
+    vertical-align: middle;
+    border-bottom: 1px solid #edf2ef;
+}
+
+/* Subtle hover effect */
+.meetingPpage table.table-hover tbody tr:hover td {
+    background: #f2faf6;
+}
+
+.meetingPpage table.table-custom tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Names and cell headings */
+.meetingPpage table.table-custom tbody td h5 {
+    margin: 0 !important;
+    color: #304b40;
+    font-size: 13px !important;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* Seller status switch */
+.meetingPpage .form-check.form-switch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 0;
+    margin: 0;
+}
+
+.meetingPpage .supplier-status-toggle {
+    float: none;
+    flex-shrink: 0;
+    width: 36px;
+    height: 20px;
+    margin: 0;
+    cursor: pointer;
+    background-color: #e2e9e5;
+    border: 1px solid #ccd9d1;
+    box-shadow: none;
+}
+
+.meetingPpage .supplier-status-toggle:checked {
+    background-color: #a5ad22;
+    border-color: #a5ad22;
+}
+
+.meetingPpage .supplier-status-toggle:focus {
+    box-shadow: 0 0 0 3px rgba(45, 172, 146, .13);
+}
+
+/* Active and inactive badges */
+.meetingPpage .badge.bg-success {
+    padding: 6px 11px;
+    background: #ddf5e8 !important;
+    color: #19784f !important;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+.meetingPpage .badge.bg-danger {
+    padding: 6px 11px;
+    background: #ffe8eb !important;
+    color: #c64255 !important;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+/* View button */
+.meetingPpage .actionBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.meetingPpage .actionBtn .viewSupplierBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid #d7eee4;
+    border-radius: 9px;
+    background: #eaf7f0;
+    color: #21866c;
+    text-decoration: none;
+    transition: all .2s ease;
+}
+
+.meetingPpage .actionBtn .viewSupplierBtn i {
+    font-size: 18px;
+}
+
+.meetingPpage .actionBtn .viewSupplierBtn:hover {
+    background: #2dac92;
+    border-color: #2dac92;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* Seller page heading */
+.breadcrumb-wrapper h3 {
+    color: #20483c;
+    font-weight: 700;
+}
+
+/* Responsive layout */
+@media (max-width: 767px) {
+    .meetingPpage .dt-layout-row {
+        padding: 16px;
+    }
+
+    .meetingPpage .dt-search {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .meetingPpage .dt-search input.dt-input {
+        width: 65%;
+        min-width: 0;
+    }
+
+    .meetingPpage table.table-custom thead th,
+    .meetingPpage table.table-custom tbody td {
+        padding: 12px;
+        white-space: nowrap;
+    }
+}
+
+/* ==========================================
+   MASECO MANUFACTURER PAGE DESIGN
+========================================== */
+
+/* Page background */
+.page-content {
+    min-height: 100vh;
+    background: #f4f8f6;
+    color: #29453d;
+}
+
+/* Header */
+.page-title-head {
+    padding: 22px 28px;
+    background: #fff;
+    border-bottom: 1px solid #e5eee9;
+}
+
+.breadcrumb-wrapper h3 {
+    color: #20483c;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.breadcrumb-wrapper a {
+    transition: color .2s ease;
+}
+
+.breadcrumb-wrapper a:hover {
+    color: #2dac92 !important;
+}
+
+/* Main table container */
+.meetingPpage > .row > .col-md-12 > .card {
+    background: #fff;
+    border: 1px solid #dcece4 !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 28px rgba(30, 75, 57, .055) !important;
+    overflow: hidden;
+}
+
+/* Remove nested card border and shadow */
+.meetingPpage .card .card.tableCustom {
+    margin: 0;
+    background: #fff;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Search toolbar */
+.meetingPpage .dt-layout-row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 22px 16px;
+    background: #fff;
+}
+
+.meetingPpage .dt-search {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.meetingPpage .dt-search label {
+    color: #49665a;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.meetingPpage .dt-search input.dt-input {
+    width: 225px;
+    height: 42px;
+    padding: 9px 13px;
+    border: 1px solid #d8e8df;
+    border-radius: 10px;
+    background: #f9fcfa;
+    color: #29453d;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.meetingPpage .dt-search input.dt-input:focus {
+    background: #fff;
+    border-color: #2dac92;
+    box-shadow: 0 0 0 3px rgba(45, 172, 146, .12);
+}
+
+/* Table */
+.meetingPpage .table-responsive {
+    padding-top: 0 !important;
+}
+
+.meetingPpage table.table-custom {
+    width: 100%;
+    margin-bottom: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+/* Header row */
+.meetingPpage table.table-custom thead th {
+    padding: 16px 20px;
+    background: #edf7f2 !important;
+    color: #355c4e;
+    font-size: 13px;
+    font-weight: 700;
+    border-top: 1px solid #e4eee8;
+    border-bottom: 1px solid #dcebe3;
+    white-space: nowrap;
+}
+
+/* Data rows */
+.meetingPpage table.table-custom tbody td {
+    padding: 15px 20px;
+    background: #fff;
+    color: #43594f;
+    font-size: 13px;
+    vertical-align: middle;
+    border-bottom: 1px solid #edf2ef;
+}
+
+.meetingPpage table.table-custom tbody td h5 {
+    margin: 0 !important;
+    color: #304b40;
+    font-size: 13px !important;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.meetingPpage table.table-hover tbody tr:hover td {
+    background: #f2faf6;
+}
+
+.meetingPpage table.table-custom tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Manufacturer status switch */
+.meetingPpage .form-check.form-switch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 0;
+    margin: 0;
+}
+
+.meetingPpage .manufacturer-status-toggle {
+    float: none;
+    flex-shrink: 0;
+    width: 36px;
+    height: 20px;
+    margin: 0;
+    cursor: pointer;
+    background-color: #e2e9e5;
+    border: 1px solid #ccd9d1;
+    box-shadow: none;
+}
+
+.meetingPpage .manufacturer-status-toggle:checked {
+    background-color: #a5ad22;
+    border-color: #a5ad22;
+}
+
+.meetingPpage .manufacturer-status-toggle:focus {
+    box-shadow: 0 0 0 3px rgba(45, 172, 146, .13);
+}
+
+/* Active / inactive badges */
+.meetingPpage .badge.bg-success {
+    padding: 6px 11px;
+    background: #ddf5e8 !important;
+    color: #19784f !important;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+.meetingPpage .badge.bg-danger {
+    padding: 6px 11px;
+    background: #ffe8eb !important;
+    color: #c64255 !important;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+/* View manufacturer button */
+.meetingPpage .actionBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.meetingPpage .actionBtn .viewManufacturerBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid #d7eee4;
+    border-radius: 9px;
+    background: #eaf7f0;
+    color: #21866c;
+    text-decoration: none;
+    transition: all .2s ease;
+}
+
+.meetingPpage .actionBtn .viewManufacturerBtn i {
+    font-size: 18px;
+}
+
+.meetingPpage .actionBtn .viewManufacturerBtn:hover {
+    background: #2dac92;
+    border-color: #2dac92;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Mobile layout */
+@media (max-width: 767px) {
+    .page-title-head {
+        padding: 18px 16px;
+    }
+
+    .page-container.p-3 {
+        padding: 16px !important;
+    }
+
+    .breadcrumb-wrapper h3 {
+        font-size: 21px;
+    }
+
+    .meetingPpage .dt-layout-row {
+        padding: 16px;
+    }
+
+    .meetingPpage .dt-search {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .meetingPpage .dt-search input.dt-input {
+        width: 65%;
+        min-width: 0;
+    }
+
+    .meetingPpage table.table-custom thead th,
+    .meetingPpage table.table-custom tbody td {
+        padding: 12px;
+        white-space: nowrap;
+    }
+}
+
+
+/* CATEGORY PAGE */
+.page-content:has(.breadcrumb-wrapper h3) {
+    background: #f4f8f6;
+}
+
+/* Page heading */
+.page-content .breadcrumb-wrapper h3 {
+    color: #20483c;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* Add Category button */
+.page-content .breadcrumb-wrapper ~ .btn-primary {
+    background: #2dac92 !important;
+    border-color: #2dac92 !important;
+    color: #fff !important;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: none !important;
+}
+
+.page-content .breadcrumb-wrapper ~ .btn-primary:hover {
+    background: #21866f !important;
+    border-color: #21866f !important;
+}
+
+/* Table container */
+.page-content .table-responsive:has(table.table-custom) {
+    padding: 0 !important;
+    background: #fff !important;
+    border: 1px solid #dcece4;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 28px rgba(30, 75, 57, .055) !important;
+    overflow-x: auto;
+}
+
+/* Table */
+.page-content table.table-custom {
+    width: 100%;
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+/* Header */
+.page-content table.table-custom thead th {
+    padding: 15px 20px !important;
+    background: #edf7f2 !important;
+    color: #355c4e !important;
+    font-size: 13px;
+    font-weight: 700;
+    border-top: none !important;
+    border-bottom: 1px solid #dcebe3 !important;
+    white-space: nowrap;
+}
+
+/* Rows */
+.page-content table.table-custom tbody td {
+    padding: 13px 20px !important;
+    color: #43594f;
+    font-size: 13px;
+    vertical-align: middle;
+    background: #fff;
+    border-bottom: 1px solid #edf2ef !important;
+}
+
+.page-content table.table-custom tbody tr:hover td {
+    background: #f2faf6 !important;
+}
+
+.page-content table.table-custom tbody tr:last-child td {
+    border-bottom: none !important;
+}
+
+/* Category images */
+.page-content table.table-custom tbody td img {
+    width: 58px !important;
+    height: 48px !important;
+    object-fit: cover;
+    display: block;
+    border: 1px solid #e1ece5;
+    border-radius: 8px;
+    background: #f5f8f6;
+}
+
+/* Edit button */
+.page-content table.table-custom .btn-warning {
+    padding: 7px 13px;
+    background: #e5f3ed !important;
+    border: 1px solid #d2e9dd !important;
+    border-radius: 7px;
+    color: #21866c !important;
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: none !important;
+}
+
+.page-content table.table-custom .btn-warning:hover {
+    background: #2dac92 !important;
+    border-color: #2dac92 !important;
+    color: #fff !important;
+}
+
+/* Delete button */
+.page-content table.table-custom .btn-danger {
+    padding: 7px 13px;
+    background: #fff0f1 !important;
+    border: 1px solid #f7d9dd !important;
+    border-radius: 7px;
+    color: #c64255 !important;
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: none !important;
+}
+
+.page-content table.table-custom .btn-danger:hover {
+    background: #dc4c5d !important;
+    border-color: #dc4c5d !important;
+    color: #fff !important;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    .page-content .container.mt-0 {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .page-content table.table-custom thead th,
+    .page-content table.table-custom tbody td {
+        padding: 12px !important;
+        white-space: nowrap;
+    }
+}
+```css
+/* ========================================
+   MASECO MATERIALS PAGE
+======================================== */
+
+.materials-page {
+    padding: 28px 30px !important;
+    background: #f3f8f6;
+    min-height: 100vh;
+    color: #294b48;
+}
+
+/* Page heading */
+.materials-page-header {
+    margin-bottom: 28px;
+}
+
+.materials-page .breadcrumb-wrapper h3 {
+    font-size: 27px;
+    font-weight: 700;
+    color: #244c46;
+    margin-bottom: 8px;
+}
+
+.materials-page .breadcrumb-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.materials-page .breadcrumb-links a {
+    color: #637773;
+    text-decoration: none;
+}
+
+.materials-page .breadcrumb-links a:hover {
+    color: #2dac92;
+}
+
+.materials-page .breadcrumb-links > span:nth-child(2) {
+    color: #9aa9a5;
+    font-size: 20px;
+}
+
+.materials-page .breadcrumb-links .current {
+    color: #2dac92;
+    font-weight: 600;
+}
+
+/* Filter panel */
+.materials-filter-card {
+    background: #ffffff;
+    border: 1px solid #e2eee9;
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin-bottom: 26px;
+    box-shadow: 0 5px 20px rgba(32, 75, 62, 0.035);
+}
+
+.materials-filter-form {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.materials-filter-form .filter-field {
+    width: 245px;
+}
+
+.materials-filter-form .filter-status {
+    width: 165px;
+}
+
+.materials-filter-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #385a54;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.materials-filter-form .form-control {
+    height: 44px;
+    border: 1px solid #dce7e2;
+    border-radius: 9px;
+    background-color: #fbfdfc;
+    color: #294b48;
+    font-size: 14px;
+    box-shadow: none;
+}
+
+.materials-filter-form .form-control:focus {
+    border-color: #2dac92;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(45, 172, 146, 0.10);
+}
+
+.materials-filter-form .form-control::placeholder {
+    color: #9baaa6;
+}
+
+.materials-filter-form .filter-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.material-filter-btn,
+.material-reset-btn {
+    height: 44px;
+    padding: 0 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.material-filter-btn {
+    background: #2dac92;
+    color: #ffffff;
+    border: 1px solid #2dac92;
+}
+
+.material-filter-btn:hover {
+    background: #238d78;
+    border-color: #238d78;
+    color: #ffffff;
+}
+
+.material-reset-btn {
+    background: #ffffff;
+    color: #60736e;
+    border: 1px solid #dce7e2;
+}
+
+.material-reset-btn:hover {
+    background: #edf7f3;
+    color: #238d78;
+    border-color: #b8ded1;
+}
+
+/* Table panel */
+.materials-table-card {
+    background: #ffffff;
+    border: 1px solid #e1ece7;
+    border-radius: 17px;
+    overflow: hidden;
+    box-shadow: 0 6px 24px rgba(32, 75, 62, 0.045);
+}
+
+.materials-table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 23px 25px;
+    border-bottom: 1px solid #e9f0ed;
+}
+
+.materials-table-header h4 {
+    margin: 0 0 6px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #294b48;
+}
+
+.materials-table-header p {
+    margin: 0;
+    color: #84938f;
+    font-size: 13px;
+}
+
+.materials-count {
+    padding: 8px 13px;
+    background: #e9f7f1;
+    color: #238d78;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* Table */
+.materials-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0;
+}
+
+.materials-table thead th {
+    background: #edf7f2 !important;
+    color: #355950;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 16px 20px;
+    border-bottom: 1px solid #dcebe4;
+    white-space: nowrap;
+}
+
+.materials-table tbody td {
+    padding: 17px 20px;
+    color: #536762;
+    font-size: 14px;
+    border-bottom: 1px solid #edf2ef;
+    vertical-align: middle;
+}
+
+.materials-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.materials-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.materials-table tbody tr:hover td {
+    background-color: #f6fbf8;
+}
+
+.materials-table .material-serial {
+    color: #8a9b95;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.material-thumbnail,
+.material-no-image {
+    width: 54px;
+    height: 48px;
+    border-radius: 9px;
+    object-fit: cover;
+    border: 1px solid #e7eeea;
+}
+
+.material-no-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f6f3;
+    color: #94a7a0;
+    font-size: 22px;
+}
+
+.materials-table .material-name {
+    color: #294b48;
+    font-weight: 600;
+}
+
+.materials-table .material-description {
+    display: inline-block;
+    max-width: 250px;
+    color: #7c8c86;
+    overflow-wrap: anywhere;
+}
+
+.materials-table .material-unit {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #f0f5f2;
+    color: #61736c;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.materials-table .material-price {
+    color: #294b48;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* Status buttons */
+.material-status-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 7px 12px;
+    border: none;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.material-status-btn .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.material-status-btn.is-active {
+    background: #e2f6eb;
+    color: #21865d;
+}
+
+.material-status-btn.is-inactive {
+    background: #fff0f0;
+    color: #d95362;
+}
+
+/* Action buttons */
+.material-action-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.material-action-btn {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: #ffffff;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.material-action-btn.view {
+    color: #2dac92;
+    border: 1px solid #c5e8dc;
+}
+
+.material-action-btn.view:hover {
+    background: #e9f7f1;
+    border-color: #2dac92;
+}
+
+.material-action-btn.edit {
+    color: #c38a20;
+    border: 1px solid #f1dfb5;
+}
+
+.material-action-btn.edit:hover {
+    background: #fff7e5;
+    border-color: #e7b54d;
+}
+
+.material-action-btn.delete {
+    color: #dc6470;
+    border: 1px solid #f3cbd0;
+}
+
+.material-action-btn.delete:hover {
+    background: #fff0f1;
+    border-color: #dc6470;
+}
+
+/* Empty state */
+.materials-empty-state {
+    padding: 48px 20px;
+    text-align: center;
+}
+
+.materials-empty-state > i {
+    font-size: 42px;
+    color: #9fc8b8;
+}
+
+.materials-empty-state h5 {
+    margin: 12px 0 7px;
+    color: #355950;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.materials-empty-state p {
+    margin: 0;
+    color: #8a9b95;
+    font-size: 13px;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+    .materials-page {
+        padding: 20px 14px !important;
+    }
+
+    .materials-filter-card {
+        padding: 18px;
+    }
+
+    .materials-filter-form .filter-field,
+    .materials-filter-form .filter-status {
+        width: 100%;
+    }
+
+    .materials-filter-form .filter-actions {
+        width: 100%;
+    }
+
+    .materials-filter-form .filter-actions > * {
+        flex: 1;
+    }
+
+    .materials-table-header {
+        padding: 18px;
+        align-items: flex-start;
+    }
+
+    .materials-table thead th,
+    .materials-table tbody td {
+        padding: 13px 15px;
+    }
+}
+
+
+/* ==========================================
+   MASECO SUBSCRIPTION PLANS PAGE
+   Force styles over existing Bootstrap CSS
+========================================== */
+
+/* Page background */
+.page-content {
+    background-color: #F1F6F4 !important;
+    min-height: 100vh !important;
+    padding: 25px 0 !important;
+}
+
+/* Page heading */
+.page-content .breadcrumb-wrapper h3 {
+    color: #174A43 !important;
+    font-size: 26px !important;
+    font-weight: 700 !important;
+    margin-bottom: 8px !important;
+}
+
+/* Breadcrumb links */
+.page-content .breadcrumb-wrapper a {
+    color: #536762 !important;
+    text-decoration: none !important;
+}
+
+.page-content .breadcrumb-wrapper span:last-child {
+    color: #2DAC92 !important;
+}
+
+/* Add Plan button */
+.page-content a.addpln {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #2DAC92 !important;
+    color: #FFFFFF !important;
+    border: 1px solid #2DAC92 !important;
+    border-radius: 8px !important;
+    padding: 11px 22px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    box-shadow: none !important;
+    margin-bottom: 22px !important;
+}
+
+.page-content a.addpln:hover {
+    background: #218F79 !important;
+    border-color: #218F79 !important;
+    color: #FFFFFF !important;
+}
+
+/* Table wrapper */
+.page-content .container > table.table-bordered {
+    width: 100% !important;
+    background: #FFFFFF !important;
+    border: 1px solid #DCEBE4 !important;
+    border-radius: 14px !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    overflow: hidden !important;
+    box-shadow: 0 6px 22px rgba(31, 78, 63, 0.07) !important;
+    margin-top: 5px !important;
+    margin-bottom: 30px !important;
+}
+
+/* Table header */
+.page-content .container > table.table-bordered thead th {
+    background: #E5F2EC !important;
+    color: #174A43 !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    padding: 17px 15px !important;
+    border: none !important;
+    border-bottom: 1px solid #D5E8DE !important;
+    white-space: nowrap !important;
+    vertical-align: middle !important;
+}
+
+/* Table cells */
+.page-content .container > table.table-bordered tbody td {
+    background: #FFFFFF !important;
+    color: #435751 !important;
+    font-size: 14px !important;
+    padding: 17px 15px !important;
+    border: none !important;
+    border-bottom: 1px solid #E8F0EB !important;
+    vertical-align: middle !important;
+}
+
+/* Alternate row background */
+.page-content .container > table.table-bordered tbody tr:nth-child(even) td {
+    background: #F7FAF8 !important;
+}
+
+/* Hover effect */
+.page-content .container > table.table-bordered tbody tr:hover td {
+    background: #EDF7F1 !important;
+}
+
+/* Remove bottom border from last row */
+.page-content .container > table.table-bordered tbody tr:last-child td {
+    border-bottom: none !important;
+}
+
+/* Feature list */
+.page-content .container > table.table-bordered tbody td ul {
+    margin: 0 !important;
+    padding-left: 20px !important;
+    min-width: 260px !important;
+}
+
+.page-content .container > table.table-bordered tbody td ul li {
+    padding: 3px 0 !important;
+    line-height: 1.6 !important;
+    color: #536762 !important;
+}
+
+/* Price */
+.page-content .container > table.table-bordered tbody td:nth-child(3) {
+    color: #218F79 !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+}
+
+/* Edit button */
+.page-content .container > table.table-bordered .btn-warning {
+    background: #F5F0D9 !important;
+    color: #8A7610 !important;
+    border: 1px solid #E5DCA4 !important;
+    border-radius: 6px !important;
+    padding: 7px 15px !important;
+    font-weight: 600 !important;
+}
+
+/* Edit hover */
+.page-content .container > table.table-bordered .btn-warning:hover {
+    background: #E9DFAE !important;
+    color: #65540A !important;
+}
+
+/* Delete button */
+.page-content .container > table.table-bordered .btn-danger {
+    background: #FCE9EB !important;
+    color: #D34455 !important;
+    border: 1px solid #F3C3C8 !important;
+    border-radius: 6px !important;
+    padding: 7px 15px !important;
+    font-weight: 600 !important;
+}
+
+/* Delete hover */
+.page-content .container > table.table-bordered .btn-danger:hover {
+    background: #F6D4D8 !important;
+    color: #B62E3F !important;
+}
+
+/* Keep action buttons aligned */
+.page-content .container > table.table-bordered .formplan {
+    margin: 0 !important;
+}
+
+/* Success message */
+.page-content .alert-success {
+    background: #E2F5EB !important;
+    color: #18794E !important;
+    border: 1px solid #C5E9D5 !important;
+    border-radius: 8px !important;
+}
+
+/* Responsive table */
+@media (max-width: 768px) {
+    .page-content {
+        padding: 15px 0 !important;
+    }
+
+    .page-content .container > table.table-bordered thead th,
+    .page-content .container > table.table-bordered tbody td {
+        padding: 12px 10px !important;
+        font-size: 13px !important;
+    }
+}
+
+
+/* ===================================
+   MASECO ENQUIRY PAGE
+=================================== */
+
+.enquiry-page {
+    padding: 28px 30px;
+    min-height: 100vh;
+    background: #f3f7f5;
+    color: #254b46;
+}
+
+/* Page heading */
+
+.enquiry-page-header {
+    margin-bottom: 28px;
+}
+
+.enquiry-page-header h3 {
+    margin: 0 0 7px;
+    color: #174b43;
+    font-size: 27px;
+    font-weight: 650;
+    letter-spacing: -0.4px;
+}
+
+.enquiry-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    color: #596b68;
+}
+
+.enquiry-breadcrumb a {
+    color: #52635f;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.enquiry-breadcrumb a:hover {
+    color: #2dac92;
+}
+
+.enquiry-breadcrumb .breadcrumb-arrow {
+    color: #a0aaa6;
+    font-size: 12px;
+}
+
+.enquiry-breadcrumb .current {
+    color: #2dac92;
+    font-weight: 500;
+}
+
+/* Main card */
+
+.enquiry-container {
+    width: 100%;
+}
+
+.enquiry-card {
+    background: #ffffff;
+    border: 1px solid #dfebe6;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 22px rgba(29, 76, 61, 0.035);
+}
+
+/* Search and entries controls */
+
+.enquiry-table-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding: 22px 24px;
+    border-bottom: 1px solid #e8f0ec;
+}
+
+.enquiry-length,
+.enquiry-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.enquiry-length label,
+.enquiry-length span,
+.enquiry-search label {
+    margin: 0;
+    color: #355b54;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.enquiry-page .dt-input {
+    height: 42px;
+    padding: 8px 12px;
+    background: #ffffff;
+    border: 1px solid #d8e5df;
+    border-radius: 10px;
+    color: #294c45;
+    font-size: 14px;
+    outline: none;
+    box-shadow: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.enquiry-length select.dt-input {
+    min-width: 76px;
+}
+
+.enquiry-search input.dt-input {
+    width: 250px;
+    max-width: 100%;
+}
+
+.enquiry-page .dt-input:focus {
+    border-color: #2dac92;
+    box-shadow: 0 0 0 3px rgba(45, 172, 146, 0.10);
+}
+
+/* Table wrapper */
+
+.enquiry-table-wrapper {
+    width: 100%;
+    padding: 0 20px;
+}
+
+.enquiry-page .table {
+    width: 100%;
+    margin-bottom: 0;
+    color: #304f49;
+    vertical-align: middle;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+/* Table heading */
+
+.enquiry-page .table thead th {
+    padding: 18px 16px;
+    background: #edf7f2;
+    color: #24574c;
+    border: none;
+    border-bottom: 1px solid #dcece4;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.enquiry-page .table thead th:first-child {
+    border-radius: 8px 0 0 0;
+}
+
+.enquiry-page .table thead th:last-child {
+    border-radius: 0 8px 0 0;
+}
+
+/* Table rows */
+
+.enquiry-page .table tbody td {
+    padding: 19px 16px;
+    background: #ffffff;
+    color: #3d5550;
+    border: none;
+    border-bottom: 1px solid #eaf0ed;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.enquiry-page .table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.enquiry-page .table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.enquiry-page .table-hover tbody tr:hover td {
+    background: #f5faf7;
+}
+
+.enquiry-id {
+    color: #2dac92;
+    font-weight: 600;
+}
+
+.enquiry-user {
+    color: #244d43;
+    font-weight: 600;
+}
+
+.enquiry-price {
+    color: #245c4e;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.enquiry-date {
+    color: #71827c;
+    white-space: nowrap;
+}
+
+/* Status badges */
+
+.enquiry-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 85px;
+    padding: 7px 13px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.enquiry-status.status-active,
+.enquiry-status.status-approved,
+.enquiry-status.status-completed,
+.enquiry-status.status-accepted {
+    background: #ddf5e9;
+    color: #16845d;
+}
+
+.enquiry-status.status-pending {
+    background: #fff2d9;
+    color: #9b6a10;
+}
+
+.enquiry-status.status-inactive,
+.enquiry-status.status-rejected,
+.enquiry-status.status-cancelled {
+    background: #fde7e9;
+    color: #c43f50;
+}
+
+/* Empty state */
+
+.enquiry-empty {
+    padding: 40px 20px;
+    text-align: center;
+    color: #7c8d86;
+    font-size: 14px;
+}
+
+/* Table footer */
+
+.enquiry-table-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 18px 24px;
+    border-top: 1px solid #e8f0ec;
+}
+
+.enquiry-page .dt-info {
+    color: #71827c;
+    font-size: 13px;
+}
+
+.enquiry-page .dt-paging nav {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.enquiry-page .dt-paging-button {
+    min-width: 34px;
+    height: 34px;
+    padding: 5px 10px;
+    border: 1px solid #e0e9e4;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #355b50;
+    cursor: pointer;
+}
+
+.enquiry-page .dt-paging-button.current {
+    background: #2dac92;
+    border-color: #2dac92;
+    color: #ffffff;
+}
+
+.enquiry-page .dt-paging-button.disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* Responsive layout */
+
+@media (max-width: 768px) {
+    .enquiry-page {
+        padding: 20px 14px;
+    }
+
+    .enquiry-page-header h3 {
+        font-size: 23px;
+    }
+
+    .enquiry-table-controls {
+        align-items: stretch;
+        flex-direction: column;
+        padding: 18px;
+    }
+
+    .enquiry-search {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .enquiry-search input.dt-input {
+        width: 100%;
+    }
+
+    .enquiry-table-wrapper {
+        padding: 0 12px;
+    }
+
+    .enquiry-page .table thead th,
+    .enquiry-page .table tbody td {
+        padding: 14px 12px;
+    }
+
+    .enquiry-table-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px;
+    }
+}
+

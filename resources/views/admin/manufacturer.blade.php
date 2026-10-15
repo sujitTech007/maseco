@@ -50,10 +50,7 @@
 
 
               <div class="table-responsive">
-
-                <table class="table table-custom table-centered table-sm table-nowrap table-hover mb-0 dataTable" style="width: 100%;">
-
-                  <div class="dt-layout-row">
+                <div class="dt-layout-row">
 
                     <div class="dt-layout-cell dt-layout-start">
 
@@ -71,6 +68,10 @@
                     </div>
 
                   </div>
+
+                <table class="table table-custom table-centered table-sm table-nowrap table-hover mb-0 dataTable" style="width: 100%;">
+
+                  
 
                   <thead style="background:#F7F7F7 !important">
 

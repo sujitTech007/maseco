@@ -34,7 +34,7 @@
 
             <!-- Total Customers -->
 
-            <div class="col-3">
+            <div class="col-12 col-sm-6 col-xl-3">
 
               <div class="card h-100 text-center shadow">
 
@@ -74,7 +74,7 @@
 
             <!-- New Orders -->
 
-            <div class="col-3">
+            <div class="col-12 col-sm-6 col-xl-3">
 
               <div class="card h-100 text-center shadow">
 
@@ -110,7 +110,7 @@
 
             <!-- New Designers -->
 
-            <div class="col-3">
+            <div class="col-12 col-sm-6 col-xl-3">
 
               <div class="card h-100 text-center shadow">
 
@@ -146,7 +146,7 @@
 
             <!-- Total Revenue -->
 
-            <div class="col-3">
+            <div class="col-12 col-sm-6 col-xl-3">
 
               <div class="card h-100 text-center shadow">
 
@@ -196,7 +196,7 @@
 
             <!-- Total Customers -->
 
-            <div class="col-3">
+            <div class="col-12 col-sm-6 col-xl-3">
 
               <div class="card h-100 text-center shadow">
 
@@ -236,7 +236,7 @@
 
             <!-- New Orders -->
 
-            <div class="col-3">
+            <div class="col-12 col-sm-6 col-xl-3">
 
               <div class="card h-100 text-center shadow">
 
@@ -272,7 +272,7 @@
 
             <!-- New Designers -->
 
-            <div class="col-3">
+            <div class="col-12 col-sm-6 col-xl-3">
 
               <div class="card h-100 text-center shadow">
 
