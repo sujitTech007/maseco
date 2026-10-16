@@ -388,7 +388,7 @@
   </section>
 
 
-  <section class="maseco-featured py-5" id="featured-suppliers">
+  <section class="maseco-featured py-5" id="featured-materials">
       <div class="container">
 
           <!-- Heading -->
@@ -397,132 +397,107 @@
                   <span class="maseco-featured-eyebrow">
                       <i class="bi bi-leaf-fill"></i> SUSTAINABLE SOURCING
                   </span>
-                  <h2>Featured <span>textile suppliers</span></h2>
-                  <p>Discover trusted partners for responsible textile sourcing.</p>
+                  <h2>Featured <span>materials</span></h2>
+                  <p>Explore materials offered by our textile suppliers.</p>
               </div>
 
-              <a href="{{ route('raw.material.supplier') }}" class="maseco-view-all">
-                  View all suppliers
+              <a href="{{ route('listing') }}" class="maseco-view-all">
+                  View all materials
               </a>
           </div>
 
-          <!-- Supplier carousel -->
-          <div class="maseco-supplier-carousel">
+          <div class="row g-4">
+              @forelse($materials as $material)
+                  @php
+                      $supplierAccount = $material->getRelation('supplier');
+                      $manufacturerAccount = $material->getRelation('manufacturer');
+                      $supplierName = optional($supplierAccount)->company_name
+                          ?: (optional($supplierAccount)->business_name
+                              ?: (optional($supplierAccount)->name
+                                  ?: ($material->supplier ?: optional($manufacturerAccount)->company_name
+                                      ?: optional($manufacturerAccount)->name
+                                      ?: 'Supplier')));
+                  @endphp
 
-              <button class="maseco-supplier-nav prev" type="button"
-                      @if($suppliers->isEmpty()) disabled @endif
-                      aria-label="Previous suppliers">
-                  <i class="bi bi-chevron-left"></i>
-              </button>
+                  <div class="col-xl-4 col-lg-6 col-md-6">
+                      <div class="card material-card h-100 border-0 shadow-sm">
+                          <div class="material-image position-relative">
+                              <a href="{{ route('listing.details', $material->id) }}">
+                                  <img
+                                      src="{{ $material->image ? asset('public/' . $material->image) : asset('assets/images/blog-thumb-1.jpeg') }}"
+                                      class="card-img-top"
+                                      alt="{{ $material->name }}"
+                                      loading="lazy">
+                              </a>
 
-              <div class="maseco-supplier-track" id="masecoSupplierTrack">
-
-                  @forelse($suppliers as $supplier)
-                      @php
-                          $supplierMaterials = $supplier->materials;
-                          $primaryMaterial = $supplierMaterials->first();
-                          $supplierName = $supplier->company_name ?: ($supplier->business_name ?: ($supplier->name ?: 'Textile supplier'));
-                          $supplierLocation = collect([$supplier->state, $supplier->country])->filter()->implode(', ');
-                          $materialCategories = $supplierMaterials
-                              ->map(function ($material) {
-                                  return $material->category ?: $material->sub_category;
-                              })
-                              ->filter()
-                              ->unique()
-                              ->take(2);
-                          $materialCertifications = $supplierMaterials
-                              ->pluck('certification')
-                              ->filter()
-                              ->unique()
-                              ->take(2);
-                          $supplierImage = $primaryMaterial && $primaryMaterial->image
-                              ? asset($primaryMaterial->image)
-                              : asset('assets/images/sustainable-materials.png');
-                          $minimumOrder = $primaryMaterial && $primaryMaterial->moq !== null && $primaryMaterial->moq !== ''
-                              ? $primaryMaterial->moq . ($primaryMaterial->unit ? ' ' . $primaryMaterial->unit : '')
-                              : 'Not specified';
-                      @endphp
-
-                      <article class="maseco-supplier-card">
-                          <div class="maseco-supplier-photo">
-                              <img src="{{ $supplierImage }}"
-                                  alt="{{ $supplierName }}"
-                                  loading="lazy">
-
-                              <span class="maseco-verified">
-                                  <i class="bi bi-patch-check-fill"></i> Supplier
+                              <span class="badge bg-white text_color_primary position-absolute top-0 start-0 m-3 shadow-sm">
+                                  <i class="fa fa-check-circle me-1"></i>
+                                  Verified Listing
                               </span>
-
-                              <button class="maseco-favorite" type="button"
-                                      aria-label="Add {{ $supplierName }} to favourites"
-                                      aria-pressed="false">
-                                  <i class="bi bi-heart"></i>
-                              </button>
                           </div>
 
-                          <div class="maseco-supplier-details">
-                              <h3 class="maseco-supplier-name">{{ $supplierName }}</h3>
-
-                              <p class="maseco-supplier-location">
-                                  <i class="bi bi-geo-alt-fill"></i>
-                                  {{ $supplierLocation ?: 'Location not provided' }}
-                              </p>
-
-                              <div class="maseco-supplier-meta">
-                                  <span><i class="bi bi-box-seam-fill"></i> {{ $primaryMaterial ? ($primaryMaterial->category ?: ($primaryMaterial->sub_category ?: $primaryMaterial->name)) : ($supplier->business_type ?: 'Textile supplier') }}</span>
-                                  <span><i class="bi bi-bounding-box"></i> MOQ: {{ $minimumOrder }}</span>
+                          <div class="card-body p-3 d-flex flex-column">
+                              <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                  <h5 class="fw-bold mb-0 material-name">
+                                      <a href="{{ route('listing.details', $material->id) }}"
+                                         class="text-dark text-decoration-none">
+                                          {{ $material->name }}
+                                      </a>
+                                  </h5>
                               </div>
 
-                              <div class="maseco-supplier-price-row">
-                                  <div class="maseco-supplier-moq">
-                                      <small>MINIMUM ORDER</small>
-                                      <strong>{{ $minimumOrder }}</strong>
-                                  </div>
-                                  <div class="maseco-supplier-rating">
-                                      <i class="bi bi-box-seam-fill"></i>
-                                      <strong>{{ $supplierMaterials->count() }}</strong>
-                                      <small>{{ $supplierMaterials->count() === 1 ? 'material' : 'materials' }}</small>
-                                  </div>
+                              <h4 class="text_color_primary fw-bold mb-3">
+                                  ${{ number_format($material->price, 2) }}
+                                  <small class="text-muted fs-6 fw-normal">
+                                      / {{ $material->unit }}
+                                  </small>
+                              </h4>
+
+                              <div class="material-info mb-3">
+                                  <p class="mb-2 text-muted">
+                                      <i class="fa fa-map-marker-alt text_color_primary me-2"></i>
+                                      {{ $material->location ?: 'Location not specified' }}
+                                  </p>
+
+                                  <p class="mb-2 text-muted">
+                                      <i class="fa fa-building text_color_primary me-2"></i>
+                                      <span class="text-dark fw-semibold">Supplier:</span>
+                                      {{ $supplierName }}
+                                  </p>
+
+                                  <p class="mb-0 text-muted">
+                                      <i class="fa fa-cubes text_color_primary me-2"></i>
+                                      <span class="text-dark fw-semibold">Grade / Size:</span>
+                                      {{ $material->grade ?: '-' }}
+                                      /
+                                      {{ $material->size ?: '-' }}
+                                  </p>
                               </div>
 
-                              <div class="maseco-supplier-benefits">
-                                  @forelse($materialCertifications as $certification)
-                                      <span><i class="bi bi-check-circle-fill"></i> {{ $certification }}</span>
-                                  @empty
-                                      @forelse($materialCategories as $category)
-                                          <span><i class="bi bi-leaf-fill"></i> {{ $category }}</span>
-                                      @empty
-                                          <span><i class="bi bi-info-circle-fill"></i> No materials listed yet</span>
-                                      @endforelse
-                                  @endforelse
+                              <div class="mt-auto">
+                                  <a href="{{ route('listing.details', $material->id) }}"
+                                     class="btn btn-outline-success w-100">
+                                      View Details
+                                      <i class="fa fa-arrow-right ms-1"></i>
+                                  </a>
                               </div>
-
-                              <a href="{{ $primaryMaterial ? route('listing.details', $primaryMaterial->id) : route('raw.material.supplier') }}" class="maseco-supplier-button">
-                                  View details
+                          </div>
+                      </div>
+                  </div>
+              @empty
+                  <div class="col-12">
+                      <div class="card border-0 shadow-sm text-center py-5">
+                          <div class="card-body">
+                              <i class="fa fa-search fa-3x text-muted mb-3"></i>
+                              <h5 class="fw-bold">No Materials Found</h5>
+                              <p class="text-muted">Materials will appear here when suppliers add active listings.</p>
+                              <a href="{{ route('listing') }}" class="btn btn-outline-success">
+                                  View All Materials
                               </a>
                           </div>
-                      </article>
-                  @empty
-                      <div class="text-center w-100 py-5 text-muted">
-                          No suppliers are available right now.
                       </div>
-                  @endforelse
-
-              </div>
-
-              <button class="maseco-supplier-nav next" type="button"
-                      @if($suppliers->isEmpty()) disabled @endif
-                      aria-label="Next suppliers">
-                  <i class="bi bi-chevron-right"></i>
-              </button>
-          </div>
-
-          <!-- Carousel progress -->
-          <div class="maseco-supplier-footer">
-              <div class="maseco-supplier-progress">
-                  <span id="masecoSupplierProgress"></span>
-              </div>
-              <span id="masecoSupplierCount">{{ $suppliers->isEmpty() ? '00 — 00' : '01 — ' . str_pad((string) min(4, $suppliers->count()), 2, '0', STR_PAD_LEFT) }}</span>
+                  </div>
+              @endforelse
           </div>
 
       </div>
