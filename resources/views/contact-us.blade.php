@@ -43,7 +43,6 @@
         <div class="inner-banner-heading position-relative z-1 text-center text-white">
          
           <h1>Contact us</h1>
-          <p class="text-white mb-0">Maseco connects fashion designers with sustainable materials, trusted manufacturing partners, and AI-powered solutions to make fashion sourcing smarter, simpler, and more responsible.</p>
         </div>
         
       </div>
@@ -169,22 +168,7 @@
 
                     <div class="row g-3">
 
-                        <div class="col-md-6">
-                            <div class="d-flex align-items-start gap-3">
-                                <div class="contact-icon">
-                                    <i class="fas fa-phone"></i>
-                                </div>
-                                <div>
-                                    <p class="text-secondary mb-1"
-                                       style="font-size:13px;">Call Us</p>
-                                    <!-- <a href="tel:+18000016555"
-                                       class="text-decoration-none text-dark"
-                                       style="font-size:14px;">
-                                        +1 800-001-6555
-                                    </a> -->
-                                </div>
-                            </div>
-                        </div>
+                        
 
                         <div class="col-md-6">
                             <div class="d-flex align-items-start gap-3">
@@ -203,7 +187,7 @@
                             </div>
                         </div>
 
-                        <div class="col-12">
+                        <div class="col-md-6">
                             <div class="d-flex align-items-start gap-3">
                                 <div class="contact-icon">
                                     <i class="fas fa-map-marker-alt"></i>

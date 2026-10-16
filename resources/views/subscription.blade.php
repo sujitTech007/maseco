@@ -8,7 +8,6 @@
         <div class="inner-banner-heading position-relative z-1 text-center text-white">
          
           <h1>Subscription</h1>
-          <p class="text-white mb-0">Maseco connects fashion designers with sustainable materials, trusted manufacturing partners, and AI-powered solutions to make fashion sourcing smarter, simpler, and more responsible.</p>
         </div>
         
       </div>
