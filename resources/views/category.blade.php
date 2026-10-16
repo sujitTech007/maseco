@@ -208,9 +208,7 @@
                                 Explore category
                             </span>
 
-                            <span class="category-arrow">
-                                <i class="fas fa-arrow-right"></i>
-                            </span>
+                           
                         </div>
                     </div>
 
