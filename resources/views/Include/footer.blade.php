@@ -24,7 +24,7 @@
 
               <div class="row">
 
-                <div class="col-lg-5 p-lg-0">
+                <div class="col-lg-7 p-lg-0">
 
                   <div class="footer-items">
 
@@ -42,29 +42,9 @@
 
                 </div>
 
-                <div class="col-lg-3 p-lg-0">
+               
 
-                  <div class="footer-items">
-
-                    <i class="fa-solid fa-mobile-retro"></i>
-
-                    <div class="footer-items-info">
-
-                      <h4>call Us On</h4>
-
-                      <!-- <a href="tel:+180045647824">
-
-                        <span>+1800-001-6555</span>
-
-                      </a> -->
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div class="col-lg-4 p-lg-0">
+                <div class="col-lg-5 p-lg-0">
 
                   <div class="footer-items">
 
