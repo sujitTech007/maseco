@@ -4,18 +4,8 @@
 <div class="page-content orders-page">
 
     <!-- Page Header -->
-    <div class="page-title-head d-flex align-items-center gap-2">
-        <!-- <div class="flex-grow-1">
-            <h3 class="orders-heading">Orders</h3>
-
-            <div class="orders-breadcrumb">
-                <a href="https://maseco.ca/UAT/admin/dashboard">Dashboard</a>
-                <span class="separator">›</span>
-                <span class="current">Orders</span>
-            </div>
-        </div> -->
-    </div>
-
+ 
+    
     <div class="page-container p-3">
 
         @php
@@ -32,9 +22,7 @@
             })->count();
         @endphp
 
-        <p class="orders-intro">
-            Monitor order activity, payment status, and order dates.
-        </p>
+       
 
         <!-- Summary -->
         <div class="orders-summary">

@@ -133,7 +133,7 @@
                                         <form
                                             action="{{ route('admin.category.destroy', $category->id) }}"
                                             method="POST"
-                                            class="d-inline"
+                                            class="d-inline mb-0"
                                             onsubmit="return confirm('Delete this category?')"
                                         >
                                             @csrf

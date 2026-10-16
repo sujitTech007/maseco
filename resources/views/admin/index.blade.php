@@ -36,7 +36,7 @@
 
             <div class="col-12 col-sm-6 col-xl-3">
 
-              <div class="card h-100 text-center shadow">
+              <div class="card  text-center shadow">
 
                 <div class="card-body custom-card-body card-body-users">
 
@@ -76,7 +76,7 @@
 
             <div class="col-12 col-sm-6 col-xl-3">
 
-              <div class="card h-100 text-center shadow">
+              <div class="card  text-center shadow">
 
                 <div class="card-body custom-card-body card-body-growth">
 
@@ -112,7 +112,7 @@
 
             <div class="col-12 col-sm-6 col-xl-3">
 
-              <div class="card h-100 text-center shadow">
+              <div class="card  text-center shadow">
 
                 <div class="card-body custom-card-body card-body-rating">
 
@@ -148,7 +148,7 @@
 
             <div class="col-12 col-sm-6 col-xl-3">
 
-              <div class="card h-100 text-center shadow">
+              <div class="card  text-center shadow">
 
                 <div class="card-body custom-card-body card-body-uptime">
 
@@ -198,7 +198,7 @@
 
             <div class="col-12 col-sm-6 col-xl-3">
 
-              <div class="card h-100 text-center shadow">
+              <div class="card  text-center shadow">
 
                 <div class="card-body custom-card-body card-body-users">
 
@@ -238,7 +238,7 @@
 
             <div class="col-12 col-sm-6 col-xl-3">
 
-              <div class="card h-100 text-center shadow">
+              <div class="card  text-center shadow">
 
                 <div class="card-body custom-card-body card-body-growth">
 
@@ -274,7 +274,7 @@
 
             <div class="col-12 col-sm-6 col-xl-3">
 
-              <div class="card h-100 text-center shadow">
+              <div class="card  text-center shadow">
 
                 <div class="card-body custom-card-body card-body-rating">
 
@@ -319,7 +319,7 @@
       </div>
 
     </div>
-    <div class="row mt-3 g-3 dashboard-analytics">
+    <div class="row mt-1 g-3 dashboard-analytics">
 
      {{-- Platform Overview Chart --}}
 <div class="col-lg-8 col-12">
