@@ -43,6 +43,7 @@
 
         <link href="{{ asset('assets/admin/css/custom.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('assets/admin/css/admin.css') }}" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 
 
@@ -153,7 +154,7 @@
                                                         </svg>
                                                     </span>
 
-                                                    <span class="menu-text"> Designer </span>
+                                                    <span class="menu-text">Buyer</span>
 
                                                 </a>
 

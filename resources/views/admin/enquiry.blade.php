@@ -7,7 +7,7 @@
 <div class="page-content enquiry-page">
 
     {{-- Page Heading --}}
-    <div class="enquiry-page-header">
+    <div class="enquiry-page-header ps-3">
         <h3>Enquiry</h3>
 
         <div class="enquiry-breadcrumb">

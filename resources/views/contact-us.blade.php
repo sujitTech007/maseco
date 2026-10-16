@@ -177,11 +177,11 @@
                                 <div>
                                     <p class="text-secondary mb-1"
                                        style="font-size:13px;">Call Us</p>
-                                    <a href="tel:+18000016555"
+                                    <!-- <a href="tel:+18000016555"
                                        class="text-decoration-none text-dark"
                                        style="font-size:14px;">
                                         +1 800-001-6555
-                                    </a>
+                                    </a> -->
                                 </div>
                             </div>
                         </div>
@@ -194,10 +194,10 @@
                                 <div>
                                     <p class="text-secondary mb-1"
                                        style="font-size:13px;">Email Us</p>
-                                    <a href="mailto:connect@maseco.ca"
+                                    <a href="mailto:info@maseco.ca"
                                        class="text-decoration-none text-dark"
                                        style="font-size:14px;overflow-wrap:anywhere;">
-                                        connect@maseco.ca
+                                        info@maseco.ca
                                     </a>
                                 </div>
                             </div>

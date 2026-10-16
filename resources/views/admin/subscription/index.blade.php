@@ -94,7 +94,7 @@
                     <td>
                         <div class="d-flex justify-content-center align-items-center gap-2">
 
-                        <a href="{{ route('admin.subscription.edit', $plan->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="{{ route('admin.subscription.edit', $plan->id) }}" class="btn btn-sm btn-warning"> <i class="fas fa-edit"></i></a>
 
                         <form action="{{ route('admin.subscription.destroy', $plan->id) }}" method="POST" class="formplan mb-0">
 
@@ -102,7 +102,7 @@
 
                             @method('DELETE')
 
-                            <button type="submit" class="btn btn-sm btn-danger"  onclick="return confirm('Delete this plan?')"  >Delete</button>
+                            <button type="submit" class="btn btn-sm btn-danger"  onclick="return confirm('Delete this plan?')"  > <i class="fas fa-trash-alt"></i></button>
 
                         </form>
                         </div>

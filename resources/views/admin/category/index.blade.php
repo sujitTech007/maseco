@@ -81,7 +81,7 @@
 
                         <td>
 
-                            <a href="{{ route('admin.category.edit', $category->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="{{ route('admin.category.edit', $category->id) }}" class="btn btn-sm btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
 
                             <form action="{{ route('admin.category.destroy', $category->id) }}" method="POST" style="display:inline-block;">
 
@@ -89,7 +89,7 @@
 
                                 @method('DELETE')
 
-                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this category?')">Delete</button>
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this category?')"><i class="fa-solid fa-trash"></i></button>
 
                             </form>
 

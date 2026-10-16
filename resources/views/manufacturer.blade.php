@@ -216,7 +216,7 @@ i.fas.fa-phone.fa-rotate-90 {
     color: #fff;
     border: 1px solid #2DAC92;
     font-size: 13px;
-    padding: 9px 8px;
+    padding: 15px 0px;
 }
 
 .manufacturer-primary-btn:hover {

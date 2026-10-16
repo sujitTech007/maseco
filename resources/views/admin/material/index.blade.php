@@ -36,7 +36,7 @@
             <div class="filter-field filter-status">
                 <label for="material-status">Status</label>
                 <select name="status" id="material-status" class="form-control">
-                    <option value="">All Statuses</option>
+                    <option value="">All Status</option>
                     <option value="1" @if(request('status')==='1') selected @endif>
                         Active
                     </option>

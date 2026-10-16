@@ -688,8 +688,8 @@
 }
 
 .meetingPpage .supplier-status-toggle:checked {
-    background-color: #a5ad22;
-    border-color: #a5ad22;
+    background-color: #2dac92;
+    border-color: #2dac92;
 }
 
 .meetingPpage .supplier-status-toggle:focus {
@@ -938,8 +938,8 @@
 }
 
 .meetingPpage .manufacturer-status-toggle:checked {
-    background-color: #a5ad22;
-    border-color: #a5ad22;
+    background-color: #2dac92;
+    border-color: #2dac92;
 }
 
 .meetingPpage .manufacturer-status-toggle:focus {
