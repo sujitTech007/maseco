@@ -415,6 +415,9 @@ p {
     font-size: 12px;
 }
 
+.primary-text-color{
+    color: var(--primary-color);
+}
 .theme_link {
     display: inline-flex;
     align-items: center;

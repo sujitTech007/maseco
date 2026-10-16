@@ -4,24 +4,17 @@
 
    
 <!-- Material Detail Banner -->
-<section class="py-4 text-white" style="background:#263b3a;">
+ <section class="banner inner-banner py-3 py-md-5" style="background-image: url({{ asset('assets/images/homepage-banner.webp') }});">
     <div class="container">
-        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
-            <div>
-                <p class="mb-1" style="font-size:13px;color:#b9ddd4;">
-                    <a href="{{ route('home') }}" class="text-white text-decoration-none">Home</a>
-                    / Materials / Details
-                </p>
-                <h1 class="h3 fw-bold mb-0">Material Details</h1>
-            </div>
-            <a href="{{ url()->previous() }}"
-               class="btn btn-outline-light btn-sm">
-                <i class="fas fa-arrow-left me-1"></i> Back to Listing
-            </a>
+      <div class="row">
+        <div class="inner-banner-heading position-relative z-1 text-center text-white">
+         
+          <h1>Material details</h1>
         </div>
+        
+      </div>
     </div>
-</section>
-
+  </section>
 <!-- Material Detail -->
 <section class="py-5" style="background:#f6f8f7;">
     <div class="container">

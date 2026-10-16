@@ -2,17 +2,7 @@
 
     <main>
 
-         <section class="banner inner-banner py-3 py-md-5" style="background-image: url({{ asset('assets/images/homepage-banner.webp') }});">
-    <div class="container">
-      <div class="row">
-        <div class="inner-banner-heading position-relative z-1 text-center text-white">
-         
-          <h1>Material list</h1>
-        </div>
-        
-      </div>
-    </div>
-  </section>
+     
 
 
 <section class="listing-page py-5 bg-light">
@@ -248,9 +238,9 @@
                                         </p>
                                     </div>
 
-                                    <div class="mt-auto">
+                                    <div class="mt-auto d-flex gap-2">
                                         <a href="{{ route('listing.details', $material->id) }}"
-                                           class="btn btn-outline-success w-100 mb-2">
+                                           class="btn theme_btn text-white">
                                             View Details
                                             <i class="fa fa-arrow-right ms-1"></i>
                                         </a>
@@ -263,7 +253,7 @@
                                             @endphp
 
                                             <button type="button"
-                                                class="btn btn-outline-success { w-100"
+                                                class="btn btn-outline-success"
                                                 data-bs-toggle="modal"
                                                 data-bs-target="#enquiryModal"
                                                 data-material-id="{{ $material->id }}"
@@ -271,7 +261,7 @@
                                                 data-material-image="{{ asset('public/' . $material->image) }}"
                                                 data-material-price="{{ number_format($material->price, 2, '.', '') }}"
                                                 data-material-unit="{{ $material->unit }}"
-                                                data-material-supplier="{{ $supplierName }}"
+                                                data-material-supplier="{{ optional($material->supplier)->company_name ?? optional($material->supplier)->name ?? optional($material->manufacturer)->company_name ?? optional($material->manufacturer)->name ?? 'Supplier' }}"
                                                 data-material-location="{{ $material->location ?? '-' }}">
                                                 <i class="fa fa-envelope me-2"></i>
                                                 Contact {{ $contactType }}
