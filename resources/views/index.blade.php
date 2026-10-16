@@ -775,11 +775,11 @@
                         towards smarter production — all in one place.
                     </p>
 
-                    <a href="{{ url('/marketplace') }}"
+                    <!-- <a href="{{ url('/marketplace') }}"
                        class="theme_link">
                         Explore the marketplace
                         
-                    </a>
+                    </a> -->
                 </div>
             </div>
 
@@ -958,10 +958,10 @@
 
                 </div>
 
-                <a href="{{ url('/marketplace') }}" class="theme_link">
+                <!-- <a href="{{ url('/marketplace') }}" class="theme_link">
                     Explore the marketplace
                     <i class="bi bi-arrow-up-right"></i>
-                </a>
+                </a> -->
             </div>
 
         </div>
@@ -1171,10 +1171,10 @@
 
 
 
-  <section class="py-5" id="how-it-works">
+  <!-- <section class="py-5" id="how-it-works">
     <div class="container py-lg-4">
 
-      <!-- Heading -->
+      
       <div class="row align-items-center mb-4">
         <div class="col-lg-7">
           <span class="text-success small fw-bold text-uppercase">
@@ -1188,15 +1188,10 @@
             manage your textile journey in one place.
           </p>
         </div>
-        <!-- <div class="col-lg-5 text-lg-end">
-          <a href="{{ url('/marketplace') }}"
-            class="btn btn-success btn-sm px-4">
-            Explore Marketplace <i class="fa fa-arrow-right ms-2"></i>
-          </a>
-        </div> -->
+       
       </div>
 
-      <!-- Workflow slider -->
+     
       <div class="position-relative">
 
         <button type="button" class="btn btn-light shadow-sm rounded-circle
@@ -1310,7 +1305,7 @@
         </button>
       </div>
 
-      <!-- Slider indicators -->
+      
       <div class="d-flex justify-content-center gap-2 mt-4"
         id="workflowDots">
         @foreach($workflow as $index => $item)
@@ -1322,7 +1317,7 @@
         @endforeach
       </div>
 
-      <!-- Trust banner -->
+      
       <div class="row g-3 align-items-center bg-white rounded-4 shadow-sm p-4 mt-5">
         <div class="col-lg-4">
           <h3 class="h5 fw-bold mb-2">
@@ -1360,7 +1355,7 @@
       </div>
 
     </div>
-  </section>
+  </section> -->
 
 
 
