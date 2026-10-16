@@ -1,36 +1,5 @@
 @include('Include.header')
 
-<style>
-  /* Keep the method button static (no hover visual change) */
-  #paymentModal .btn-no-hover:hover,
-  #paymentModal .btn-no-hover:focus,
-  #paymentModal .btn-no-hover:active {
-    background-color: #198754 !important;
-    border-color: #198754 !important;
-    color: #ffffff !important;
-    box-shadow: none !important;
-  }
-
-  /* Overlay for processing */
-  #paymentModal .modal-content {
-    position: relative;
-  }
-
-  #paymentProcessingOverlay {
-    background: rgba(255, 255, 255, 0.85);
-    z-index: 10;
-    display: none;
-    position: absolute;
-    inset: 0;
-    align-items: center;
-    justify-content: center;
-  }
-
-  #paymentProcessingOverlay .spinner-border {
-    width: 3rem;
-    height: 3rem;
-  }
-</style>
 
 <main>
 
@@ -156,7 +125,8 @@
       </div>
     </div>
   </section> -->
-  <section class="maseco-pricing py-5" id="subscription">
+  
+<section class="maseco-pricing py-3 py-md-5" id="subscription">
     <div class="container">
 
         <!-- Heading -->
@@ -170,7 +140,7 @@
         </div>
 
         <!-- Plans -->
-        <div class="row g-4 align-items-stretch">
+        <div class="row g-4 align-items-stretch pricing_row">
 
             <!-- Basic -->
             <div class="col-lg-4">
@@ -193,15 +163,15 @@
                         <li><i class="bi bi-check-circle-fill"></i> Discover sourcing options</li>
                     </ul>
 
-                    <a href="{{ url('/marketplace') }}" class="plan-button">
-                        Get started <i class="bi bi-arrow-right"></i>
+                    <a href="{{ route('subscription.plan') }}" class="plan-button">
+                        Get started 
                     </a>
                 </article>
             </div>
 
             <!-- Premium -->
             <div class="col-lg-4">
-                <article class="maseco-plan maseco-plan-featured shadow bg-success bg-opacity-10">
+                <article class="maseco-plan maseco-plan-featured bg-success bg-opacity-10 shadow">
                     <span class="plan-popular">MOST POPULAR</span>
 
                     <div class="plan-icon">
@@ -224,8 +194,8 @@
                         <li><i class="bi bi-check-circle-fill"></i> Supplier and vendor matching</li>
                     </ul>
 
-                    <a href="{{ url('/marketplace') }}" class="plan-button plan-button-primary">
-                        Explore Premium <i class="bi bi-arrow-right"></i>
+                    <a href="{{ route('subscription.plan') }}" class="plan-button plan-button-primary text-white">
+                        Explore Premium 
                     </a>
                 </article>
             </div>
@@ -253,12 +223,9 @@
                         <li><i class="bi bi-check-circle-fill"></i> Advanced production workflows</li>
                     </ul>
 
-                    <!-- <p class="plan-note">
-                        Additional commission may apply based on services used.
-                    </p> -->
-
-                    <a href="{{ url('/contact-us') }}" class="plan-button">
-                        Contact our team <i class="bi bi-arrow-right"></i>
+                    
+                    <a href="{{ route('subscription.plan') }}" class="plan-button">
+                        Contact our team 
                     </a>
                 </article>
             </div>
@@ -266,7 +233,6 @@
         </div>
     </div>
 </section>
-
 </main>
 
 {{-- ================== STRIPE PAYMENT MODAL ================== --}}

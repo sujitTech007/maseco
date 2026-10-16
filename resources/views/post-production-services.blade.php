@@ -6,139 +6,168 @@
 
 
 
-    <section class="banner inner-banner" style="background-image: url({{ asset('assets/images/breadcumb-banner.webp)')}};">
+<!-- Main Content -->
+<section class="post-section post-production-section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-11">
 
-        <div class="container">
+                <article class="post-content">
+                    <img
+                        src="{{ asset('assets/images/material-1.png') }}"
+                        alt="Textile material and fabric quality"
+                        class="post-image"
+                    >
 
-            <div class="row">
+                    <div class="post-body">
 
-                <div class="inner-banner-heading">
+                        <!-- Post Meta -->
+                        <div class="d-flex flex-wrap align-items-center
+                                    gap-3 gap-md-4 mb-4 post-meta">
+                            <span>
+                                <i class="bi bi-person-circle me-2"></i>
+                                William@maseco.com
+                            </span>
 
-                    <h1>Post Production Services</h1>
+                            <span>
+                                <i class="bi bi-tag me-2"></i>
+                                Home Textiles
+                            </span>
 
-                </div>
+                            <span>
+                                <i class="bi bi-calendar3 me-2"></i>
+                                May 24, 2025
+                            </span>
+                        </div>
 
-                <div class="breadcrumb-container">
+                        <!-- Introduction -->
+                        <h2 class="mb-3">
+                            Smarter Post Production for Superior Textiles
+                        </h2>
 
-                    <ol class="breadcrumb">
+                        <p>
+                            Maseco’s Post Production Services optimize the
+                            final stages of textile manufacturing, ensuring
+                            superior quality, consistency, and finish. Our
+                            AI-driven approach helps identify improvements,
+                            reduce defects, and enhance product durability.
+                        </p>
 
-                        <li class="breadcrumb-item">
+                        <p class="mb-5">
+                            By integrating advanced post-production
+                            techniques, we help manufacturers refine
+                            textures, colors, and finishes while maintaining
+                            eco-friendly and cost-effective processes.
+                        </p>
 
-                            <a href="{{ route('home') }}"><i class="fas fa-home mr-2"></i>Home</a>
+                        <!-- Services Heading -->
+                        <div class="mb-4">
+                            <span class="service-number">
+                                WHAT WE DO
+                            </span>
+                            <h2 class="mt-2 mb-2">
+                                Our Post Production Services
+                            </h2>
+                            <p class="mb-0">
+                                From inspection to delivery, we help ensure
+                                every product meets your quality standards.
+                            </p>
+                        </div>
 
-                        </li>
+                        <!-- Service Cards -->
+                        <div class="row g-4">
 
-                        <li class="breadcrumb-item active">Post Production Services</li>
+                            <div class="col-md-6">
+                                <div class="service_card">
+                                    <div class="service-icon">
+                                        <i class="bi bi-search"></i>
+                                    </div>
+                                    
+                                    <h5 class="fw-bold mb-3 fs-5 primary-text-color">
+                                        Quality Control & Inspection
+                                    </h5>
+                                    <p class="mb-0">
+                                        AI-assisted quality checks help
+                                        identify defects early and maintain
+                                        consistent standards across textile
+                                        batches.
+                                    </p>
+                                </div>
+                            </div>
 
-                    </ol>
+                            <div class="col-md-6">
+                                <div class="service_card">
+                                    <div class="service-icon">
+                                        <i class="bi bi-layers"></i>
+                                    </div>
+                                    
+                                    <h5 class="fw-bold mb-3 fs-5 primary-text-color">
+                                        Finishing & Treatment
+                                    </h5>
+                                    <p class="mb-0">
+                                        Specialized washing, dyeing, and
+                                        finishing processes improve fabric
+                                        texture, appearance, and durability.
+                                    </p>
+                                </div>
+                            </div>
 
-                </div>
+                            <div class="col-md-6">
+                                <div class="service_card">
+                                    <div class="service-icon">
+                                        <i class="bi bi-box-seam"></i>
+                                    </div>
+                                    
+                                    <h5 class="fw-bold mb-3 fs-5 primary-text-color">
+                                        Packaging & Labeling
+                                    </h5>
+                                    <p class="mb-0">
+                                        Accurate labeling and thoughtful
+                                        packaging prepare textile products
+                                        for presentation and dispatch.
+                                    </p>
+                                </div>
+                            </div>
 
-            </div>
+                            <div class="col-md-6">
+                                <div class="service_card">
+                                    <div class="service-icon">
+                                        <i class="bi bi-truck"></i>
+                                    </div>
+                                    
+                                    <h5 class="fw-bold mb-3 fs-5 primary-text-color">
+                                        Logistics & Delivery Support
+                                    </h5>
+                                    <p class="mb-0">
+                                        Efficient handling and delivery
+                                        coordination help maintain product
+                                        quality from factory to client.
+                                    </p>
+                                </div>
+                            </div>
 
-        </div>
+                        </div>
 
-    </section>
-
-
-
-    <section class="listing-details-page pt-5">
-
-        <div class="container">
-
-            <div class="row">                    
-
-                <div class="listings-details col-md-12">
-
-                   <div class="details-thumb">
-
-                    <img src="{{ asset('assets/images/material-1.png')}}" alt="">
-
-                   </div>
-
-                   <div class="blog-categories">
-
-                    <ul>
-
-                        <li><a href="#"><i class="fa fa-user"></i> William@maseco.com</a></li>
-
-                        <li><a href="#">Home Textiles</a></li>
-
-                        <li>MAY 24, 2025</li>
-
-                      </ul>
-
-                   </div>
-
-                   <div class="bolg-title">
-
-
-
-                   <p>
-
-                       Maseco’s Post Production Services optimize the final stages of textile manufacturing, ensuring superior quality, consistency, and finish. Our AI-driven approach helps in identifying improvements, reducing defects, and enhancing product durability.
-
-                   </p>
-
-                   <p>
-
-                       By integrating advanced post production techniques, we support manufacturers in refining textures, colors, and finishes while maintaining eco-friendly and cost-effective processes.
-
-                   </p>   
-
-                   </div>
-
-
-
-                    <div class="bolg-title">
-
-                        <h2 class="material-types">Key Post Production Services We Offer</h2>
+                        <!-- Closing Section -->
+                        <div class="mt-5 p-4 rounded-3"
+                             style="background:#edf5f0;">
+                            <h2 class="h4 mb-2">
+                                Quality That Completes Every Product
+                            </h2>
+                            <p class="mb-0">
+                                Maseco supports textile manufacturers with
+                                quality-focused post-production solutions
+                                designed for consistency and efficiency.
+                            </p>
+                        </div>
 
                     </div>
-
-
-
-                     <div class="bolg-title">
-
-                        <h2>01. Quality Control & Inspection</h2>
-
-                        <p>We implement AI-assisted quality checks to ensure every textile product meets high standards, identifying defects early and maintaining consistency across batches.</p>
-
-                   </div>
-
-                   <div class="bolg-title">
-
-                        <h2>02. Finishing & Treatment</h2>
-
-                        <p>Our services include advanced finishing processes such as washing, dyeing, and treatments that enhance fabric texture, appearance, and longevity.</p>
-
-                   </div>
-
-                   <div class="bolg-title">
-
-                        <h2>03. Packaging & Labeling</h2>
-
-                        <p>AI insights guide sustainable packaging and accurate labeling, ensuring products are presentation-ready and aligned with environmental standards.</p>
-
-                   </div>
-
-
-
-                    <div class="bolg-title">
-
-                        <h2>04. Logistics & Delivery Support</h2>
-
-                        <p>Maseco optimizes post production logistics, ensuring timely delivery and efficient handling to maintain product quality from factory to client.</p>
-
-                   </div>
-
-                </div>
+                </article>
 
             </div>
-
         </div>
-
-    </section>
+    </div>
+</section>
 
 
 

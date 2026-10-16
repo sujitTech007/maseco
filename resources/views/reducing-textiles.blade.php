@@ -235,7 +235,7 @@
                         <i class="bi bi-search fs-2 mb-3"
                            style="color:rgba(45,172,146,1);"></i>
                         <h5 class="h6 fw-bold">Advanced Search & Filters</h5>
-                        <p class="text-secondary small mb-0">
+                        <p class="text-secondary mb-0">
                             Find suppliers using search, MOQ filters
                             and certification details.
                         </p>
@@ -247,7 +247,7 @@
                         <i class="bi bi-people fs-2 mb-3"
                            style="color:rgba(45,172,146,1);"></i>
                         <h5 class="h6 fw-bold">Supplier Comparison</h5>
-                        <p class="text-secondary small mb-0">
+                        <p class="text-secondary mb-0">
                             Compare supplier details, pricing and
                             sustainability credentials.
                         </p>
@@ -259,7 +259,7 @@
                         <i class="bi bi-patch-check fs-2 mb-3"
                            style="color:rgba(45,172,146,1);"></i>
                         <h5 class="h6 fw-bold">Eco-Certification Badges</h5>
-                        <p class="text-secondary small mb-0">
+                        <p class="text-secondary mb-0">
                             Identify suppliers with relevant
                             eco-certification badges.
                         </p>
@@ -271,7 +271,7 @@
                         <i class="bi bi-heart fs-2 mb-3"
                            style="color:rgba(45,172,146,1);"></i>
                         <h5 class="h6 fw-bold">Saved Suppliers</h5>
-                        <p class="text-secondary small mb-0">
+                        <p class="text-secondary mb-0">
                             Save favorite suppliers and listings
                             for quick access.
                         </p>
@@ -308,27 +308,31 @@
                 <div class="row g-3 mt-2">
 
                     <div class="col-sm-6">
-                        <i class="bi bi-recycle fs-4"
-                           style="color:rgba(45,172,146,1);"></i>
-                        <h6 class="mt-2">Recycled Textile Marketplace</h6>
+                        <div class="d-flex align-items-center gap-2">
+                        <div class="icon_box"><i class="bi bi-recycle"></i></div>
+                        <h6 class="mt-2 fs-6">Recycled Textile Marketplace</h6>
+                    </div>
                     </div>
 
                     <div class="col-sm-6">
-                        <i class="bi bi-heart fs-4"
-                           style="color:rgba(45,172,146,1);"></i>
-                        <h6 class="mt-2">Textile Donation Requests</h6>
+                        <div class="d-flex align-items-center gap-2">
+                        <div class="icon_box"><i class="bi bi-heart"></i></div>
+                        <h6 class="mt-2 fs-6">Textile Donation Requests</h6>
+                    </div>
                     </div>
 
                     <div class="col-sm-6">
-                        <i class="bi bi-arrow-left-right fs-4"
-                           style="color:rgba(45,172,146,1);"></i>
-                        <h6 class="mt-2">Waste Material Exchange</h6>
+                        <div class="d-flex align-items-center gap-2">
+                        <div class="icon_box"><i class="bi bi-arrow-left-right"></i></div>
+                        <h6 class="mt-2 fs-6">Waste Material Exchange</h6>
+                    </div>
                     </div>
 
                     <div class="col-sm-6">
-                        <i class="bi bi-bar-chart fs-4"
-                           style="color:rgba(45,172,146,1);"></i>
-                        <h6 class="mt-2">Sustainability Score Tagging</h6>
+                        <div class="d-flex align-items-center gap-2">
+                        <div class="icon_box"><i class="bi bi-bar-chart"></i></div>
+                        <h6 class="mt-2 fs-6">Sustainability Score Tagging</h6>
+                    </div>
                     </div>
 
                 </div>
