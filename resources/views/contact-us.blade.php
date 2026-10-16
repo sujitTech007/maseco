@@ -37,18 +37,18 @@
 <main>
   
 <!-- Contact Banner -->
-<section class="banner inner-banner" style="background-image: url({{ asset('assets/images/breadcumb-banner.webp)')}};">
+  <section class="banner inner-banner py-3 py-md-5" style="background-image: url({{ asset('assets/images/homepage-banner.webp') }});">
     <div class="container">
-        <!-- <p class="mb-2" style="font-size:13px;color:#c4e4dc;">
-            <a href="{{ route('home') }}" class="text-white text-decoration-none">Home</a>
-            / Contact Us
-        </p> -->
-        <h1 class="fw-bold mb-2 text-white" style="font-size:30px;">Contact Maseco</h1>
-        <p class="mb-0" style="font-size:14px;color:#e0e9e7;">
-            Connect with our team for information, business enquiries, and support.
-        </p>
+      <div class="row">
+        <div class="inner-banner-heading position-relative z-1 text-center text-white">
+         
+          <h1>Contact us</h1>
+          <p class="text-white mb-0">Maseco connects fashion designers with sustainable materials, trusted manufacturing partners, and AI-powered solutions to make fashion sourcing smarter, simpler, and more responsible.</p>
+        </div>
+        
+      </div>
     </div>
-</section>
+  </section>
 
 <!-- Contact Section -->
 <section class="py-5" style="background:#f6f8f7;">

@@ -2,20 +2,15 @@
 
 <main>
 
-  <section class="banner inner-banner" style="background-image:  url({{ asset('assets/images/inner-banner.jpg)')}};">
+   <section class="banner inner-banner py-3 py-md-5" style="background-image: url({{ asset('assets/images/homepage-banner.webp') }});">
     <div class="container">
       <div class="row">
-        <div class="inner-banner-heading">
+        <div class="inner-banner-heading position-relative z-1 text-center text-white">
+         
           <h1>Subscription</h1>
+          <p class="text-white mb-0">Maseco connects fashion designers with sustainable materials, trusted manufacturing partners, and AI-powered solutions to make fashion sourcing smarter, simpler, and more responsible.</p>
         </div>
-        <div class="breadcrumb-container">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <a href="{{ route('home') }}"><i class="fas fa-home mr-2"></i>Home</a>
-            </li>
-            <li class="breadcrumb-item active">About Us</li>
-          </ol>
-        </div>
+        
       </div>
     </div>
   </section>

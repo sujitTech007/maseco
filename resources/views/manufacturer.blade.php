@@ -254,33 +254,18 @@ i.fas.fa-phone.fa-rotate-90 {
 
   
 <!-- Manufacturer Page Header -->
-<section class="py-4 text-white" style="background:#263b3a;">
+  <section class="banner inner-banner py-3 py-md-5" style="background-image: url({{ asset('assets/images/homepage-banner.webp') }});">
     <div class="container">
-        <!-- <p class="mb-2" style="font-size:13px;color:#c4e4dc;">
-            <a href="{{ route('home') }}" class="text-white text-decoration-none">
-                <i class="fas fa-home me-1"></i> Home
-            </a>
-            / Manufacturers
-        </p> -->
-
-        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
-            <div>
-                <h1 class="fw-bold mb-2 text-white" style="font-size:28px;">
-                    Manufacturers
-                </h1>
-                <p class="mb-0" style="font-size:14px;color:#e0e9e7;">
-                    Explore manufacturers and connect directly with businesses.
-                </p>
-            </div>
-
-            <div class="rounded-3 px-3 py-2"
-                 style="background:rgba(255,255,255,.1);font-size:14px;">
-                <i class="fas fa-industry me-2"></i>
-                {{ $manufacturers->count() }} Manufacturers
-            </div>
+      <div class="row">
+        <div class="inner-banner-heading position-relative z-1 text-center text-white">
+         
+          <h1>Manufacturer</h1>
+          <p class="text-white mb-0">Maseco connects fashion designers with sustainable materials, trusted manufacturing partners, and AI-powered solutions to make fashion sourcing smarter, simpler, and more responsible.</p>
         </div>
+        
+      </div>
     </div>
-</section>
+  </section>
 
 <!-- Manufacturer Directory -->
 <section class="py-5" style="background:#f6f8f7;">

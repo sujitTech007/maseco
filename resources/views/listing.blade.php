@@ -2,16 +2,18 @@
 
     <main>
 
-        <section class="banner inner-banner" style="background-image: url({{ asset('assets/images/breadcumb-banner.webp)')}};">
-            <div class="container">
-                <div class="row">
-                    <div class="inner-banner-heading" data-aos="zoom-in">
-                        <h1>Material Listing</h1>
-                    </div>
-                    
-                </div>
-            </div>
-        </section>
+         <section class="banner inner-banner py-3 py-md-5" style="background-image: url({{ asset('assets/images/homepage-banner.webp') }});">
+    <div class="container">
+      <div class="row">
+        <div class="inner-banner-heading position-relative z-1 text-center text-white">
+         
+          <h1>Material list</h1>
+          <p class="text-white mb-0">Maseco connects fashion designers with sustainable materials, trusted manufacturing partners, and AI-powered solutions to make fashion sourcing smarter, simpler, and more responsible.</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
 
 
 <section class="listing-page py-5 bg-light">

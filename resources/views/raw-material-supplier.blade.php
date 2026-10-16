@@ -3,34 +3,19 @@
 <main>  
 
 <!-- Supplier Page Header -->
-<section class="banner inner-banner" style="background-image: url({{ asset('assets/images/breadcumb-banner.webp)')}};">
+
+  <section class="banner inner-banner py-3 py-md-5" style="background-image: url({{ asset('assets/images/homepage-banner.webp') }});">
     <div class="container">
-        <!-- <p class="mb-2" style="font-size:13px;color:#c4e4dc;">
-            <a href="{{ route('home') }}" class="text-white text-decoration-none">
-                <i class="fas fa-home me-1"></i> Home
-            </a>
-            / Raw Material Suppliers
-        </p> -->
-
-        <div class="d-flex flex-wrap justify-content-center align-items-center gap-3">
-            <div>
-                <h1 class="fw-bold mb-2 text-white" style="font-size:28px;">
-                    Raw Material Suppliers
-                </h1>
-                <p class="mb-0" style="font-size:14px;color:#e0e9e7;">
-                    Explore supplier contacts and connect with businesses for your material requirements.
-                </p>
-            </div>
-
-            <!-- <div class="rounded-3 px-3 py-2"
-                 style="background:rgba(255,255,255,.1);font-size:14px;">
-                <i class="fas fa-building me-2"></i>
-                {{ $suppliers->count() }} Suppliers
-            </div> -->
+      <div class="row">
+        <div class="inner-banner-heading position-relative z-1 text-center text-white">
+         
+          <h1>Raw material supplier</h1>
+          <p class="text-white mb-0">Maseco connects fashion designers with sustainable materials, trusted manufacturing partners, and AI-powered solutions to make fashion sourcing smarter, simpler, and more responsible.</p>
         </div>
+        
+      </div>
     </div>
-</section>
-
+  </section>
 <!-- Supplier Directory -->
 <section class="py-5" style="background:#f6f8f7;">
     <div class="container">
