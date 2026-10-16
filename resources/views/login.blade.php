@@ -428,7 +428,7 @@ input:-webkit-autofill:focus {
 
                             <div class="login-benefit">
                                 <div class="login-benefit-icon">
-                                    <i class="fa fa-handshake-o" aria-hidden="true"></i>
+                                    <i class="fa fa-handshake" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h6>Trusted Connections</h6>
