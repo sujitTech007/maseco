@@ -388,322 +388,145 @@
   </section>
 
 
-<section class="maseco-featured py-5" id="featured-suppliers">
-    <div class="container">
+  <section class="maseco-featured py-5" id="featured-suppliers">
+      <div class="container">
 
-        <!-- Heading -->
-        <div class="maseco-featured-heading">
-            <div>
-                <span class="maseco-featured-eyebrow">
-                    <i class="bi bi-leaf-fill"></i> SUSTAINABLE SOURCING
-                </span>
-                <h2>Featured <span>textile suppliers</span></h2>
-                <p>Discover trusted partners for responsible textile sourcing.</p>
-            </div>
+          <!-- Heading -->
+          <div class="maseco-featured-heading">
+              <div>
+                  <span class="maseco-featured-eyebrow">
+                      <i class="bi bi-leaf-fill"></i> SUSTAINABLE SOURCING
+                  </span>
+                  <h2>Featured <span>textile suppliers</span></h2>
+                  <p>Discover trusted partners for responsible textile sourcing.</p>
+              </div>
 
-            <a href="{{ url('/marketplace') }}" class="maseco-view-all">
-                View all suppliers 
-            </a>
-        </div>
+              <a href="{{ route('raw.material.supplier') }}" class="maseco-view-all">
+                  View all suppliers
+              </a>
+          </div>
 
-        <!-- Supplier carousel -->
-        <div class="maseco-supplier-carousel">
+          <!-- Supplier carousel -->
+          <div class="maseco-supplier-carousel">
 
-            <button class="maseco-supplier-nav prev" type="button"
-                    aria-label="Previous suppliers">
-                <i class="bi bi-chevron-left"></i>
-            </button>
+              <button class="maseco-supplier-nav prev" type="button"
+                      @if($suppliers->isEmpty()) disabled @endif
+                      aria-label="Previous suppliers">
+                  <i class="bi bi-chevron-left"></i>
+              </button>
 
-            <div class="maseco-supplier-track" id="masecoSupplierTrack">
+              <div class="maseco-supplier-track" id="masecoSupplierTrack">
 
-                <!-- Supplier 1 -->
-                <article class="maseco-supplier-card">
-                    <div class="maseco-supplier-photo">
-                        <img src="{{ asset('assets/images/sustainable-materials.png') }}"
-                             alt="GreenTextiles organic textile materials"
-                             loading="lazy">
+                  @forelse($suppliers as $supplier)
+                      @php
+                          $supplierMaterials = $supplier->materials;
+                          $primaryMaterial = $supplierMaterials->first();
+                          $supplierName = $supplier->company_name ?: ($supplier->business_name ?: ($supplier->name ?: 'Textile supplier'));
+                          $supplierLocation = collect([$supplier->state, $supplier->country])->filter()->implode(', ');
+                          $materialCategories = $supplierMaterials
+                              ->map(function ($material) {
+                                  return $material->category ?: $material->sub_category;
+                              })
+                              ->filter()
+                              ->unique()
+                              ->take(2);
+                          $materialCertifications = $supplierMaterials
+                              ->pluck('certification')
+                              ->filter()
+                              ->unique()
+                              ->take(2);
+                          $supplierImage = $primaryMaterial && $primaryMaterial->image
+                              ? asset($primaryMaterial->image)
+                              : asset('assets/images/sustainable-materials.png');
+                          $minimumOrder = $primaryMaterial && $primaryMaterial->moq !== null && $primaryMaterial->moq !== ''
+                              ? $primaryMaterial->moq . ($primaryMaterial->unit ? ' ' . $primaryMaterial->unit : '')
+                              : 'Not specified';
+                      @endphp
 
-                        <span class="maseco-verified">
-                            <i class="bi bi-patch-check-fill"></i> Supplier
-                        </span>
+                      <article class="maseco-supplier-card">
+                          <div class="maseco-supplier-photo">
+                              <img src="{{ $supplierImage }}"
+                                  alt="{{ $supplierName }}"
+                                  loading="lazy">
 
-                        <button class="maseco-favorite" type="button"
-                                aria-label="Add GreenTextiles Co. to favourites"
-                                aria-pressed="false">
-                            <i class="bi bi-heart"></i>
-                        </button>
-                    </div>
+                              <span class="maseco-verified">
+                                  <i class="bi bi-patch-check-fill"></i> Supplier
+                              </span>
 
-                    <div class="maseco-supplier-details">
-                        <h3>GreenTextiles Co.</h3>
+                              <button class="maseco-favorite" type="button"
+                                      aria-label="Add {{ $supplierName }} to favourites"
+                                      aria-pressed="false">
+                                  <i class="bi bi-heart"></i>
+                              </button>
+                          </div>
 
-                        <p class="maseco-supplier-location">
-                            <i class="bi bi-geo-alt-fill"></i>
-                            Bangladesh
-                        </p>
+                          <div class="maseco-supplier-details">
+                              <h3 class="maseco-supplier-name">{{ $supplierName }}</h3>
 
-                        <div class="maseco-supplier-meta">
-                            <span><i class="bi bi-box-seam-fill"></i> Organic textiles</span>
-                            <span><i class="bi bi-bounding-box"></i> MOQ: 500 kg</span>
-                        </div>
+                              <p class="maseco-supplier-location">
+                                  <i class="bi bi-geo-alt-fill"></i>
+                                  {{ $supplierLocation ?: 'Location not provided' }}
+                              </p>
 
-                        <div class="maseco-supplier-price-row">
-                            <div class="maseco-supplier-moq">
-                                <small>MINIMUM ORDER</small>
-                                <strong>500 kg</strong>
-                            </div>
-                            <div class="maseco-supplier-rating">
-                                <i class="bi bi-star-fill"></i>
-                                <strong>4.8</strong>
-                                <small>(24 reviews)</small>
-                            </div>
-                        </div>
+                              <div class="maseco-supplier-meta">
+                                  <span><i class="bi bi-box-seam-fill"></i> {{ $primaryMaterial ? ($primaryMaterial->category ?: ($primaryMaterial->sub_category ?: $primaryMaterial->name)) : ($supplier->business_type ?: 'Textile supplier') }}</span>
+                                  <span><i class="bi bi-bounding-box"></i> MOQ: {{ $minimumOrder }}</span>
+                              </div>
 
-                        <div class="maseco-supplier-benefits">
-                            <span><i class="bi bi-leaf-fill"></i> Organic cotton</span>
-                            <span><i class="bi bi-check-circle-fill"></i> Linen & hemp</span>
-                        </div>
+                              <div class="maseco-supplier-price-row">
+                                  <div class="maseco-supplier-moq">
+                                      <small>MINIMUM ORDER</small>
+                                      <strong>{{ $minimumOrder }}</strong>
+                                  </div>
+                                  <div class="maseco-supplier-rating">
+                                      <i class="bi bi-box-seam-fill"></i>
+                                      <strong>{{ $supplierMaterials->count() }}</strong>
+                                      <small>{{ $supplierMaterials->count() === 1 ? 'material' : 'materials' }}</small>
+                                  </div>
+                              </div>
 
-                        <a href="{{ url('/marketplace') }}" class="maseco-supplier-button">
-                            View details 
-                        </a>
-                    </div>
-                </article>
+                              <div class="maseco-supplier-benefits">
+                                  @forelse($materialCertifications as $certification)
+                                      <span><i class="bi bi-check-circle-fill"></i> {{ $certification }}</span>
+                                  @empty
+                                      @forelse($materialCategories as $category)
+                                          <span><i class="bi bi-leaf-fill"></i> {{ $category }}</span>
+                                      @empty
+                                          <span><i class="bi bi-info-circle-fill"></i> No materials listed yet</span>
+                                      @endforelse
+                                  @endforelse
+                              </div>
 
-                <!-- Supplier 2 -->
-                <article class="maseco-supplier-card">
-                    <div class="maseco-supplier-photo">
-                        <img src="{{ asset('assets/images/manufacture.png') }}"
-                             alt="Sunrise Fabrics textile manufacturing"
-                             loading="lazy">
+                              <a href="{{ $primaryMaterial ? route('listing.details', $primaryMaterial->id) : route('raw.material.supplier') }}" class="maseco-supplier-button">
+                                  View details
+                              </a>
+                          </div>
+                      </article>
+                  @empty
+                      <div class="text-center w-100 py-5 text-muted">
+                          No suppliers are available right now.
+                      </div>
+                  @endforelse
 
-                        <span class="maseco-verified">
-                            <i class="bi bi-patch-check-fill"></i> Supplier
-                        </span>
+              </div>
 
-                        <button class="maseco-favorite" type="button"
-                                aria-label="Add Sunrise Fabrics to favourites"
-                                aria-pressed="false">
-                            <i class="bi bi-heart"></i>
-                        </button>
-                    </div>
+              <button class="maseco-supplier-nav next" type="button"
+                      @if($suppliers->isEmpty()) disabled @endif
+                      aria-label="Next suppliers">
+                  <i class="bi bi-chevron-right"></i>
+              </button>
+          </div>
 
-                    <div class="maseco-supplier-details">
-                        <h3>Sunrise Fabrics</h3>
+          <!-- Carousel progress -->
+          <div class="maseco-supplier-footer">
+              <div class="maseco-supplier-progress">
+                  <span id="masecoSupplierProgress"></span>
+              </div>
+              <span id="masecoSupplierCount">{{ $suppliers->isEmpty() ? '00 — 00' : '01 — ' . str_pad((string) min(4, $suppliers->count()), 2, '0', STR_PAD_LEFT) }}</span>
+          </div>
 
-                        <p class="maseco-supplier-location">
-                            <i class="bi bi-geo-alt-fill"></i>
-                            India
-                        </p>
-
-                        <div class="maseco-supplier-meta">
-                            <span><i class="bi bi-recycle"></i> Recycled fabrics</span>
-                            <span><i class="bi bi-bounding-box"></i> MOQ: 300 kg</span>
-                        </div>
-
-                        <div class="maseco-supplier-price-row">
-                            <div class="maseco-supplier-moq">
-                                <small>MINIMUM ORDER</small>
-                                <strong>300 kg</strong>
-                            </div>
-                            <div class="maseco-supplier-rating">
-                                <i class="bi bi-star-fill"></i>
-                                <strong>4.7</strong>
-                                <small>(18 reviews)</small>
-                            </div>
-                        </div>
-
-                        <div class="maseco-supplier-benefits">
-                            <span><i class="bi bi-recycle"></i> Recycled polyester</span>
-                            <span><i class="bi bi-check-circle-fill"></i> Cotton & knits</span>
-                        </div>
-
-                        <a href="{{ url('/marketplace') }}" class="maseco-supplier-button">
-                            View details 
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Supplier 3 -->
-                <article class="maseco-supplier-card">
-                    <div class="maseco-supplier-photo">
-                        <img src="{{ asset('assets/images/logistics.png') }}"
-                             alt="EcoWeave sustainable linen and modal textiles"
-                             loading="lazy">
-
-                        <span class="maseco-verified">
-                            <i class="bi bi-patch-check-fill"></i> Supplier
-                        </span>
-
-                        <button class="maseco-favorite" type="button"
-                                aria-label="Add EcoWeave Ltd. to favourites"
-                                aria-pressed="false">
-                            <i class="bi bi-heart"></i>
-                        </button>
-                    </div>
-
-                    <div class="maseco-supplier-details">
-                        <h3>EcoWeave Ltd.</h3>
-
-                        <p class="maseco-supplier-location">
-                            <i class="bi bi-geo-alt-fill"></i>
-                            Turkey
-                        </p>
-
-                        <div class="maseco-supplier-meta">
-                            <span><i class="bi bi-flower1"></i> Natural fabrics</span>
-                            <span><i class="bi bi-bounding-box"></i> MOQ: 1,000 kg</span>
-                        </div>
-
-                        <div class="maseco-supplier-price-row">
-                            <div class="maseco-supplier-moq">
-                                <small>MINIMUM ORDER</small>
-                                <strong>1,000 kg</strong>
-                            </div>
-                            <div class="maseco-supplier-rating">
-                                <i class="bi bi-star-fill"></i>
-                                <strong>4.6</strong>
-                                <small>(22 reviews)</small>
-                            </div>
-                        </div>
-
-                        <div class="maseco-supplier-benefits">
-                            <span><i class="bi bi-leaf-fill"></i> Linen</span>
-                            <span><i class="bi bi-check-circle-fill"></i> Tencel & modal</span>
-                        </div>
-
-                        <a href="{{ url('/marketplace') }}" class="maseco-supplier-button">
-                            View details 
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Supplier 4 -->
-                <article class="maseco-supplier-card">
-                    <div class="maseco-supplier-photo">
-                        <img src="{{ asset('assets/images/sustainable-journey-img.webp') }}"
-                             alt="Global Textiles woven fabrics"
-                             loading="lazy">
-
-                        <span class="maseco-verified">
-                            <i class="bi bi-patch-check-fill"></i> Supplier
-                        </span>
-
-                        <button class="maseco-favorite" type="button"
-                                aria-label="Add Global Textiles to favourites"
-                                aria-pressed="false">
-                            <i class="bi bi-heart"></i>
-                        </button>
-                    </div>
-
-                    <div class="maseco-supplier-details">
-                        <h3>Global Textiles</h3>
-
-                        <p class="maseco-supplier-location">
-                            <i class="bi bi-geo-alt-fill"></i>
-                            China
-                        </p>
-
-                        <div class="maseco-supplier-meta">
-                            <span><i class="bi bi-layers-fill"></i> Woven fabrics</span>
-                            <span><i class="bi bi-bounding-box"></i> MOQ: 500 kg</span>
-                        </div>
-
-                        <div class="maseco-supplier-price-row">
-                            <div class="maseco-supplier-moq">
-                                <small>MINIMUM ORDER</small>
-                                <strong>500 kg</strong>
-                            </div>
-                            <div class="maseco-supplier-rating">
-                                <i class="bi bi-star-fill"></i>
-                                <strong>4.5</strong>
-                                <small>(27 reviews)</small>
-                            </div>
-                        </div>
-
-                        <div class="maseco-supplier-benefits">
-                            <span><i class="bi bi-layers-fill"></i> Polyester</span>
-                            <span><i class="bi bi-check-circle-fill"></i> Nylon & wovens</span>
-                        </div>
-
-                        <a href="{{ url('/marketplace') }}" class="maseco-supplier-button">
-                            View details 
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Supplier 5 -->
-                <article class="maseco-supplier-card">
-                    <div class="maseco-supplier-photo">
-                        <img src="{{ asset('assets/images/manufacture.png') }}"
-                             alt="Pure Fibers organic and recycled fibres"
-                             loading="lazy">
-
-                        <span class="maseco-verified">
-                            <i class="bi bi-patch-check-fill"></i> Supplier
-                        </span>
-
-                        <button class="maseco-favorite" type="button"
-                                aria-label="Add Pure Fibers Co. to favourites"
-                                aria-pressed="false">
-                            <i class="bi bi-heart"></i>
-                        </button>
-                    </div>
-
-                    <div class="maseco-supplier-details">
-                        <h3>Pure Fibers Co.</h3>
-
-                        <p class="maseco-supplier-location">
-                            <i class="bi bi-geo-alt-fill"></i>
-                            Pakistan
-                        </p>
-
-                        <div class="maseco-supplier-meta">
-                            <span><i class="bi bi-leaf-fill"></i> Eco fibres</span>
-                            <span><i class="bi bi-bounding-box"></i> MOQ: 200 kg</span>
-                        </div>
-
-                        <div class="maseco-supplier-price-row">
-                            <div class="maseco-supplier-moq">
-                                <small>MINIMUM ORDER</small>
-                                <strong>200 kg</strong>
-                            </div>
-                            <div class="maseco-supplier-rating">
-                                <i class="bi bi-star-fill"></i>
-                                <strong>4.6</strong>
-                                <small>(16 reviews)</small>
-                            </div>
-                        </div>
-
-                        <div class="maseco-supplier-benefits">
-                            <span><i class="bi bi-leaf-fill"></i> Organic cotton</span>
-                            <span><i class="bi bi-check-circle-fill"></i> Bamboo & recycled</span>
-                        </div>
-
-                        <a href="{{ url('/marketplace') }}" class="maseco-supplier-button">
-                            View details 
-                        </a>
-                    </div>
-                </article>
-
-            </div>
-
-            <button class="maseco-supplier-nav next" type="button"
-                    aria-label="Next suppliers">
-                <i class="bi bi-chevron-right"></i>
-            </button>
-        </div>
-
-        <!-- Carousel progress -->
-        <div class="maseco-supplier-footer">
-            <div class="maseco-supplier-progress">
-                <span id="masecoSupplierProgress"></span>
-            </div>
-            <span id="masecoSupplierCount">01 — 05</span>
-        </div>
-
-    </div>
-</section>
+      </div>
+  </section>
 
   <script>
     function toggleSupplierFavorite(button) {
@@ -775,11 +598,11 @@
                         towards smarter production — all in one place.
                     </p>
 
-                    <a href="{{ url('/marketplace') }}"
+                    <!-- <a href="{{ url('/marketplace') }}"
                        class="theme_link">
                         Explore the marketplace
                         
-                    </a>
+                    </a> -->
                 </div>
             </div>
 
@@ -958,10 +781,10 @@
 
                 </div>
 
-                <a href="{{ url('/marketplace') }}" class="theme_link">
+                <!-- <a href="{{ url('/marketplace') }}" class="theme_link">
                     Explore the marketplace
                     <i class="bi bi-arrow-up-right"></i>
-                </a>
+                </a> -->
             </div>
 
         </div>
@@ -1171,10 +994,10 @@
 
 
 
-  <section class="py-5" id="how-it-works">
+  <!-- <section class="py-5" id="how-it-works">
     <div class="container py-lg-4">
 
-      <!-- Heading -->
+      
       <div class="row align-items-center mb-4">
         <div class="col-lg-7">
           <span class="text-success small fw-bold text-uppercase">
@@ -1188,15 +1011,10 @@
             manage your textile journey in one place.
           </p>
         </div>
-        <!-- <div class="col-lg-5 text-lg-end">
-          <a href="{{ url('/marketplace') }}"
-            class="btn btn-success btn-sm px-4">
-            Explore Marketplace <i class="fa fa-arrow-right ms-2"></i>
-          </a>
-        </div> -->
+       
       </div>
 
-      <!-- Workflow slider -->
+     
       <div class="position-relative">
 
         <button type="button" class="btn btn-light shadow-sm rounded-circle
@@ -1310,7 +1128,7 @@
         </button>
       </div>
 
-      <!-- Slider indicators -->
+      
       <div class="d-flex justify-content-center gap-2 mt-4"
         id="workflowDots">
         @foreach($workflow as $index => $item)
@@ -1322,7 +1140,7 @@
         @endforeach
       </div>
 
-      <!-- Trust banner -->
+      
       <div class="row g-3 align-items-center bg-white rounded-4 shadow-sm p-4 mt-5">
         <div class="col-lg-4">
           <h3 class="h5 fw-bold mb-2">
@@ -1360,7 +1178,7 @@
       </div>
 
     </div>
-  </section>
+  </section> -->
 
 
 
@@ -1979,21 +1797,23 @@
     });
 
     // 4. Clear all selected suppliers
-    clearCompare.addEventListener('click', function() {
-      compareButtons.forEach(function(button) {
-        button.setAttribute('aria-pressed', 'false');
+    if (clearCompare) {
+      clearCompare.addEventListener('click', function() {
+        compareButtons.forEach(function(button) {
+          button.setAttribute('aria-pressed', 'false');
 
-        const icon = button.querySelector('i');
-        if (icon) {
-          icon.className = 'bi bi-arrow-left-right me-1';
-        }
+          const icon = button.querySelector('i');
+          if (icon) {
+            icon.className = 'bi bi-arrow-left-right me-1';
+          }
 
-        button.lastChild.textContent = ' Compare';
+          button.lastChild.textContent = ' Compare';
+        });
+
+        updateCompareStatus();
+        compareBar.removeAttribute('aria-label');
       });
-
-      updateCompareStatus();
-      compareBar.removeAttribute('aria-label');
-    });
+    }
   });
 </script>
 
@@ -2081,23 +1901,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     track.addEventListener('scroll', updateCarousel, { passive: true });
     window.addEventListener('resize', updateCarousel);
-
-    // Favourite button toggle (visual only; no backend storage)
-    document.querySelectorAll('.maseco-favorite').forEach(function (button) {
-        button.addEventListener('click', function () {
-            const isFavorite = this.getAttribute('aria-pressed') === 'true';
-
-            this.setAttribute('aria-pressed', String(!isFavorite));
-            this.classList.toggle('is-favorite', !isFavorite);
-
-            const icon = this.querySelector('i');
-
-            if (icon) {
-                icon.classList.toggle('bi-heart', isFavorite);
-                icon.classList.toggle('bi-heart-fill', !isFavorite);
-            }
-        });
-    });
 
     updateCarousel();
 });

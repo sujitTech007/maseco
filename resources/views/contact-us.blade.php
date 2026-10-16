@@ -37,18 +37,17 @@
 <main>
   
 <!-- Contact Banner -->
-<section class="banner inner-banner" style="background-image: url({{ asset('assets/images/breadcumb-banner.webp)')}};">
+  <section class="banner inner-banner py-3 py-md-5" style="background-image: url({{ asset('assets/images/homepage-banner.webp') }});">
     <div class="container">
-        <!-- <p class="mb-2" style="font-size:13px;color:#c4e4dc;">
-            <a href="{{ route('home') }}" class="text-white text-decoration-none">Home</a>
-            / Contact Us
-        </p> -->
-        <h1 class="fw-bold mb-2 text-white" style="font-size:30px;">Contact Maseco</h1>
-        <p class="mb-0" style="font-size:14px;color:#e0e9e7;">
-            Connect with our team for information, business enquiries, and support.
-        </p>
+      <div class="row">
+        <div class="inner-banner-heading position-relative z-1 text-center text-white">
+         
+          <h1>Contact us</h1>
+        </div>
+        
+      </div>
     </div>
-</section>
+  </section>
 
 <!-- Contact Section -->
 <section class="py-5" style="background:#f6f8f7;">
@@ -169,22 +168,7 @@
 
                     <div class="row g-3">
 
-                        <div class="col-md-6">
-                            <div class="d-flex align-items-start gap-3">
-                                <div class="contact-icon">
-                                    <i class="fas fa-phone"></i>
-                                </div>
-                                <div>
-                                    <p class="text-secondary mb-1"
-                                       style="font-size:13px;">Call Us</p>
-                                    <!-- <a href="tel:+18000016555"
-                                       class="text-decoration-none text-dark"
-                                       style="font-size:14px;">
-                                        +1 800-001-6555
-                                    </a> -->
-                                </div>
-                            </div>
-                        </div>
+                        
 
                         <div class="col-md-6">
                             <div class="d-flex align-items-start gap-3">
@@ -203,7 +187,7 @@
                             </div>
                         </div>
 
-                        <div class="col-12">
+                        <div class="col-md-6">
                             <div class="d-flex align-items-start gap-3">
                                 <div class="contact-icon">
                                     <i class="fas fa-map-marker-alt"></i>

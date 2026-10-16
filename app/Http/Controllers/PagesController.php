@@ -29,7 +29,11 @@ class PagesController extends Controller
 
         $plans = \App\Models\SubscriptionPlan::where('status', 'active')->get();
 
-        return view('index', compact('plans'));
+        $suppliers = Supplier::with(['materials' => function ($query) {
+            $query->where('status', 'active');
+        }])->get();
+
+        return view('index', compact('plans', 'suppliers'));
     }
 
     public function aboutUs()

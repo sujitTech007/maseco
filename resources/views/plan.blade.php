@@ -3,39 +3,16 @@
 
 <main>
 
-
-  <section class="banner inner-banner" style="background-image: url({{ asset('assets/images/breadcumb-banner.webp)')}};">
-
+ <section class="banner inner-banner py-3 py-md-5" style="background-image: url({{ asset('assets/images/homepage-banner.webp') }});">
     <div class="container">
-
       <div class="row">
-
-        <div class="inner-banner-heading" data-aos="zoom-in">
-
-          <h1>Subscription Plan</h1>
-
+        <div class="inner-banner-heading position-relative z-1 text-center text-white">
+         
+          <h1>Subscription</h1>
         </div>
-
-        <!-- <div class="breadcrumb-container">
-
-          <ol class="breadcrumb" data-aos="fade-up">
-
-            <li class="breadcrumb-item">
-
-              <a href="{{ route('home') }}"><i class="fas fa-home mr-2"></i>Home</a>
-
-            </li>
-
-            <li class="breadcrumb-item active">Subscription Plan </li>
-
-          </ol>
-
-        </div> -->
-
+        
       </div>
-
     </div>
-
   </section>
   <!-- <section class="price-section py-5">
     <div class="container">
@@ -130,7 +107,7 @@
     <div class="container">
 
         <!-- Heading -->
-        <div class="pricing-heading text-center">
+        <div class="pricing-heading text-center mb-3">
             <span class="pricing-eyebrow">OUR SUBSCRIPTION</span>
             <h2>Choose the right plan for your sourcing journey</h2>
             <p>

@@ -4236,7 +4236,7 @@ padding: 10px;
 }
 
 .plan-button-primary {
-    /* color: #fff; */
+    color: #fff;
     background: var(--maseco-green);
     border-color: var(--maseco-green);
 }

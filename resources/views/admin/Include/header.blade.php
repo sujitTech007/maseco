@@ -63,31 +63,34 @@
 
         <script src="{{ asset('assets/admin/js/chart.js') }}"></script>
 
-      <style>
-      /* Sidebar visible by default */
-.sidenav-menu {
-    display: block !important;
-    /* position: fixed; */
-    top: 0;
-    left: 0;
-    bottom: 0;
-    /* width: 260px; */
-    z-index: 1040;
-    overflow-y: auto;
-    /* transition: transform 0.3s ease; */
-}
+        <style>
+            /* Sidebar visible by default */
+            .sidenav-menu {
+                display: block !important;
+                /* position: fixed; */
+                top: 0;
+                left: 0;
+                bottom: 0;
+                /* width: 260px; */
+                z-index: 1040;
+                overflow-y: auto;
+                /* transition: transform 0.3s ease; */
+            }
 
-/* Hide sidebar when closed */
-/* body.sidebar-closed .sidenav-menu {
+            /* Hide sidebar when closed */
+            /* body.sidebar-closed .sidenav-menu {
     transform: translateX(-100%);
 } */
 
-/* Let the dashboard use the available width */
-/* body.sidebar-closed .content-page {
+            /* Let the dashboard use the available width */
+            /* body.sidebar-closed .content-page {
     margin-left: 0 !important;
     width: 100% !important;
 } */
-      </style>
+
+    
+
+        </style>
 
     </head>
 
@@ -475,26 +478,26 @@
 
                         <!-- Sidebar Menu Toggle Button -->
 
-                      <button type="button" class="sidenav-toggle-button px-2"
-        aria-label="Toggle sidebar">
-    <i class="ri-menu-2-line fs-24"></i>
-</button>
+                        <!-- <button type="button" class="sidenav-toggle-button px-2"
+                            aria-label="Toggle sidebar">
+                            <i class="ri-menu-2-line fs-24"></i>
+                        </button> -->
 
 
 
                         <!-- Horizontal Menu Toggle Button -->
 
-                        <button class="topnav-toggle-button px-2" data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
+                        <!-- <button class="topnav-toggle-button px-2" data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
 
                             <i class="ri-menu-2-line fs-24"></i>
 
-                        </button>
+                        </button> -->
 
 
 
                         <!-- Search for small devices -->
 
-                        <div class="topbar-item d-flex d-xl-none">
+                        <!-- <div class="topbar-item d-flex d-xl-none">
 
                             <button class="topbar-link" data-bs-toggle="modal" data-bs-target="#searchModal" type="button">
 
@@ -502,7 +505,7 @@
 
                             </button>
 
-                        </div>
+                        </div> -->
 
 
 
@@ -583,7 +586,7 @@
 
                                     <!-- item-->
 
-                                   
+
                                     <a href="{{ route('admin.profile') }}" class="dropdown-item">
                                         <i class="ri-mail-line me-1 fs-16 align-middle"></i>
                                         <span class="align-middle">profile</span>
@@ -620,19 +623,25 @@
                 });
             </script>
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const buttons = document.querySelectorAll('.sidenav-toggle-button');
 
-    buttons.forEach(function (button) {
+<!-- <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const toggleButtons = document.querySelectorAll('.sidenav-toggle-button');
+
+    toggleButtons.forEach(function (button) {
         button.addEventListener('click', function (event) {
             event.preventDefault();
 
-            document.body.classList.toggle('sidebar-closed');
+            document.documentElement.classList.toggle('sidebar-collapsed');
 
-            const closed = document.body.classList.contains('sidebar-closed');
-            button.setAttribute('aria-expanded', String(!closed));
+            const isCollapsed = document.documentElement.classList.contains('sidebar-collapsed');
+
+            toggleButtons.forEach(function (btn) {
+                btn.setAttribute('aria-expanded', String(!isCollapsed));
+            });
+
+            console.log('Sidebar collapsed:', isCollapsed);
         });
     });
 });
-</script>
+</script> -->

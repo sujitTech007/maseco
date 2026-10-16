@@ -302,12 +302,12 @@
         <div class="row">
           <div class="col-lg-5 col-md-12 border-end">
             <div class=" text-left mb-3">
-              <img src="{{ asset('public/' . $material->image) }}" class="img-fluid mb-3" alt="{{ $material->name }}">
+              <img id="enquiry-material-image" src="{{ asset('assets/images/blog-thumb-1.jpeg') }}" class="img-fluid mb-3" alt="Material">
               <div class=" detail-popup text-left mb-3">
-                <h6>{{ $material->name }}</h6>
-                <p class="mb-1"><strong>$ {{ number_format($material->price, 2) }}/{{ $material->unit }}</strong></p>
-                <p class="mb-1">{{ optional($material->supplier)->company_name ?? optional($material->supplier)->name ?? 'Supplier' }}</p>
-                <p class="mb-1">{{ $material->location ?? '-' }}</p>
+                <h6 id="enquiry-material-title"></h6>
+                <p class="mb-1"><strong id="enquiry-material-price"></strong></p>
+                <p class="mb-1" id="enquiry-material-supplier"></p>
+                <p class="mb-1" id="enquiry-material-location"></p>
                 
               </div>
             </div>
@@ -320,10 +320,10 @@
                             @guest
                                 <div class="alert alert-warning">Please <a href="{{ route('login') }}">login</a> to submit an enquiry.</div>
                             @endguest
-                            <input type="hidden" name="material_id" id="enquiry-material-id" value="{{ $material->id }}">
+                            <input type="hidden" name="material_id" id="enquiry-material-id" value="">
                             <div class="mb-3">
                                 <label class="form-label">Material</label>
-                                <input type="text" id="enquiry-material-name" value="{{ $material->name }}" class="form-control" disabled>
+                                <input type="text" id="enquiry-material-name" value="" class="form-control" disabled>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Quantity</label>
@@ -358,10 +358,21 @@
             const enquiryModal = document.getElementById('enquiryModal');
             enquiryModal && enquiryModal.addEventListener('show.bs.modal', event => {
                 const button = event.relatedTarget;
-                const id = button.getAttribute('data-material-id');
-                const name = button.getAttribute('data-material-name');
-                document.getElementById('enquiry-material-id').value = id;
-                document.getElementById('enquiry-material-name').value = name;
+                if (!button) return;
+
+                const material = button.dataset;
+                document.getElementById('enquiry-material-id').value = material.materialId;
+                document.getElementById('enquiry-material-name').value = material.materialName;
+                document.getElementById('enquiry-material-image').src =
+                    material.materialImage || "{{ asset('assets/images/blog-thumb-1.jpeg') }}";
+                document.getElementById('enquiry-material-image').alt = material.materialName;
+                document.getElementById('enquiry-material-title').textContent = material.materialName;
+                document.getElementById('enquiry-material-price').textContent =
+                    '$ ' + material.materialPrice + '/' + material.materialUnit;
+                document.getElementById('enquiry-material-supplier').textContent =
+                    material.materialSupplier;
+                document.getElementById('enquiry-material-location').textContent =
+                    material.materialLocation;
             });
         </script>
     </main>

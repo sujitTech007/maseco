@@ -2,7 +2,7 @@
 
 <div class="page-content p-4">
 
-   <div class="breadcrumb-wrapper mb-3" style="font-size: 15px; font-weight: 500;">
+<div class="breadcrumb-wrapper mb-3" style="font-size: 15px; font-weight: 500;">
       <h3 class="mb-1">Edit Material </h3>
 
       <a href="https://maseco.ca/UAT/manufacturer/dashboard" style="color:#555; text-decoration:none;">
@@ -18,6 +18,9 @@
       </span>
 
     </div>
+
+  <div class="bg-white shadow-sm rounded-4 p-4">
+
   <form method="POST" action="{{ route('manufacturer.material.update', $material->id) }}" enctype="multipart/form-data">
 
     @csrf
@@ -30,7 +33,7 @@
 
         <div class="form-group mb-3">
 
-          <label>Material Name</label>
+          <label class="form-label fw-semibold small">Material Name</label>
 
           <input type="text" class="form-control" name="name" required value="{{ old('name', $material->name) }}">
 
@@ -42,7 +45,7 @@
 
         <div class="form-group mb-3">
 
-          <label>Material Code / SKU</label>
+          <label class="form-label fw-semibold small">Material Code / SKU</label>
 
           <input type="text" class="form-control" name="sku" required value="{{ old('sku', $material->sku) }}">
 
@@ -54,9 +57,9 @@
 
         <div class="form-group mb-3">
 
-          <label>Category / Type</label>
+          <label class="form-label fw-semibold small">Category / Type</label>
 
-          <select class="form-control" name="category" required>
+          <select class="form-select" name="category" required>
 
             <option disabled>Select Category</option>
 
@@ -80,9 +83,9 @@
 
         <div class="form-group mb-3">
 
-          <label>Sub-Category (Optional)</label>
+          <label class="form-label fw-semibold small">Sub-Category (Optional)</label>
 
-          <select class="form-control" name="subCategory">
+          <select class="form-select" name="subCategory">
 
             <option disabled>Select Sub-Category</option>
 
@@ -100,11 +103,13 @@
 
       </div>
 
+      <div class="col-12"><hr class="mt-0 mb-3 text-muted"></div>
+
       <div class="col-md-6">
 
         <div class="form-group mb-3">
 
-          <label>Material Grade / Quality</label>
+          <label class="form-label fw-semibold small">Material Grade / Quality</label>
 
           <input type="text" class="form-control" name="grade" value="{{ old('grade', $material->grade) }}">
 
@@ -116,7 +121,7 @@
 
         <div class="form-group mb-3">
 
-          <label>Strength / Durability</label>
+          <label class="form-label fw-semibold small">Strength / Durability</label>
 
           <input type="text" class="form-control" name="strength" value="{{ old('strength', $material->strength) }}">
 
@@ -128,7 +133,7 @@
 
         <div class="form-group mb-3">
 
-          <label>Size / Dimensions</label>
+          <label class="form-label fw-semibold small">Size / Dimensions</label>
 
           <input type="text" class="form-control" name="size" value="{{ old('size', $material->size) }}">
 
@@ -140,13 +145,13 @@
 
         <div class="form-group mb-3">
 
-          <label>Weight / Unit</label>
+          <label class="form-label fw-semibold small">Weight / Unit</label>
 
           <div class="input-group">
 
             <input type="number" class="form-control" name="weight" value="{{ old('weight', $material->weight) }}">
 
-            <select class="form-control" name="unit">
+            <select class="form-select" name="unit">
 
               <option value="Kg" @if(old('unit', $material->unit)==='Kg') selected @endif>Kg</option>
 
@@ -164,11 +169,13 @@
 
       </div>
 
+      <div class="col-12"><hr class="mt-0 mb-3 text-muted"></div>
+
       <div class="col-md-4">
 
         <div class="form-group mb-3">
 
-          <label>Price per Unit</label>
+          <label class="form-label fw-semibold small">Price per Unit</label>
 
           <input type="number" class="form-control" name="price" value="{{ old('price', $material->price) }}">
 
@@ -180,7 +187,7 @@
 
         <div class="form-group mb-3">
 
-          <label>Minimum Order Qty (MOQ)</label>
+          <label class="form-label fw-semibold small">Minimum Order Qty (MOQ)</label>
 
           <input type="number" class="form-control" name="moq" value="{{ old('moq', $material->moq) }}">
 
@@ -192,7 +199,7 @@
 
         <div class="form-group mb-3">
 
-          <label>Available Stock / Capacity</label>
+          <label class="form-label fw-semibold small">Available Stock / Capacity</label>
 
           <input type="number" class="form-control" name="stock" value="{{ old('stock', $material->stock) }}">
 
@@ -200,11 +207,13 @@
 
       </div>
 
+      <div class="col-12"><hr class="mt-0 mb-3 text-muted"></div>
+
       <div class="col-md-6">
 
         <div class="form-group mb-3">
 
-          <label>Supplier Name</label>
+          <label class="form-label fw-semibold small">Supplier Name</label>
 
           <input type="text" class="form-control" name="supplier" value="{{ old('supplier', $material->supplier) }}">
 
@@ -216,7 +225,7 @@
 
         <div class="form-group mb-3">
 
-          <label>Location</label>
+          <label class="form-label fw-semibold small">Location</label>
 
           <input type="text" class="form-control" name="location" value="{{ old('location', $material->location) }}">
 
@@ -228,7 +237,7 @@
 
         <div class="form-group mb-3">
 
-          <label>Lead Time / Delivery Days</label>
+          <label class="form-label fw-semibold small">Lead Time / Delivery Days</label>
 
           <input type="number" class="form-control" name="leadTime" value="{{ old('leadTime', $material->lead_time) }}">
 
@@ -240,7 +249,7 @@
 
         <div class="form-group mb-3">
 
-          <label>Certification / Standard (Optional)</label>
+          <label class="form-label fw-semibold small">Certification / Standard (Optional)</label>
 
           <input type="text" class="form-control" name="certification" value="{{ old('certification', $material->certification) }}">
 
@@ -248,11 +257,13 @@
 
       </div>
 
+      <div class="col-12"><hr class="mt-0 mb-3 text-muted"></div>
+
       <div class="col-md-12">
 
         <div class="form-group mb-3">
 
-          <label>Safety / Handling Instructions (Optional)</label>
+          <label class="form-label fw-semibold small">Safety / Handling Instructions (Optional)</label>
 
           <textarea class="form-control" name="safety" rows="3">{{ old('safety', $material->safety) }}</textarea>
 
@@ -264,7 +275,7 @@
 
         <div class="form-group mb-3">
 
-          <label>Description</label>
+          <label class="form-label fw-semibold small">Description</label>
 
           <textarea class="form-control" name="description" rows="3">{{ old('description', $material->description) }}</textarea>
 
@@ -272,11 +283,13 @@
 
       </div>
 
+      <div class="col-12"><hr class="mt-0 mb-3 text-muted"></div>
+
       <div class="col-md-6">
 
         <div class="form-group mb-3">
 
-          <label>Upload Material Image</label>
+          <label class="form-label fw-semibold small">Upload Material Image</label>
 
           <input type="file" class="form-control" name="image" accept="image">
 
@@ -284,15 +297,13 @@
 
       </div>
 
-      
-
       <div class="col-md-6">
 
         <div class="form-group mb-3">
 
-          <label>Status</label>
+          <label class="form-label fw-semibold small">Status</label>
 
-          <select class="form-control" name="status">
+          <select class="form-select" name="status">
 
             <option value="active" @if(old('status', $material->status)==='active') selected @endif>Active</option>
 
@@ -306,21 +317,18 @@
 
     </div>
 
-    <div class="row mt-4">
+    <div class="d-flex flex-wrap gap-2 border-top pt-3 mt-2">
 
-      <div class="col-md-6">
+      <button type="submit" class="btn btn-success px-4">Update Material</button>
 
-        <button type="submit" class="btn btn-success">Update Material</button>
-
-        <a href="{{ route('manufacturer.material') }}" class="btn btn-secondary cncl">Cancel</a>
-
-      </div>
+      <a href="{{ route('manufacturer.material') }}" class="btn btn-outline-secondary px-4 cncl">Cancel</a>
 
     </div>
 
   </form>
 
+  </div>
+
 </div>
 
 @include('manufacturer.Include.footer')
-
