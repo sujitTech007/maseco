@@ -179,7 +179,7 @@
             @foreach($categories as $category)
             <div class="col-6 col-md-4 col-lg-3 col-xl-3">
 
-                <a href="{{ url('listing?category=' . $category->id) }}"
+                <a href="{{ route('listing', ['category' => $category->name]) }}"
                    class="category-card d-block text-decoration-none h-100">
 
                     <!-- Image -->
