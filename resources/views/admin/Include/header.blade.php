@@ -583,64 +583,10 @@
 
                                     <!-- item-->
 
-                                    <a href="{{ route('admin.dashboard') }}" class="dropdown-item">
-                                        <i class="ri-dashboard-line me-1 fs-16 align-middle"></i>
-                                        <span class="align-middle">Dashboard</span>
-                                    </a>
-
-                                    <a href="{{ route('admin.buyer') }}" class="dropdown-item">
-                                        <i class="ri-user-search-line me-1 fs-16 align-middle"></i>
-                                        <span class="align-middle">Designer</span>
-                                    </a>
-
-                                    <a href="{{ route('admin.seller') }}" class="dropdown-item">
-                                        <i class="ri-store-2-line me-1 fs-16 align-middle"></i>
-                                        <span class="align-middle">Supplier</span>
-                                    </a>
-
-                                    <a href="{{ route('admin.manufacturer') }}" class="dropdown-item">
-                                        <i class="ri-building-4-line me-1 fs-16 align-middle"></i>
-                                        <span class="align-middle">Manufacturer</span>
-                                    </a>
-
-                                    <a href="{{ route('admin.category.index') }}" class="dropdown-item">
-                                        <i class="ri-grid-line me-1 fs-16 align-middle"></i>
-                                        <span class="align-middle">Category</span>
-                                    </a>
-
-                                    <a href="{{ route('admin.material') }}" class="dropdown-item">
-                                        <i class="ri-stack-line me-1 fs-16 align-middle"></i>
-                                        <span class="align-middle">Materials</span>
-                                    </a>
-
-                                    <a href="{{ route('admin.orders') }}" class="dropdown-item">
-                                        <i class="ri-shopping-cart-line me-1 fs-16 align-middle"></i>
-                                        <span class="align-middle">Orders</span>
-                                    </a>
-
-                                    <a href="{{ route('admin.subscription.index') }}" class="dropdown-item">
-                                        <i class="ri-vip-crown-line me-1 fs-16 align-middle"></i>
-                                        <span class="align-middle">Subscription Plans</span>
-                                    </a>
-
-                                    <a href="{{ route('admin.enquiry') }}" class="dropdown-item">
-                                        <i class="ri-question-answer-line me-1 fs-16 align-middle"></i>
-                                        <span class="align-middle">Enquiry</span>
-                                    </a>
-
-                                    <a href="{{ route('admin.payment') }}" class="dropdown-item">
-                                        <i class="ri-secure-payment-line me-1 fs-16 align-middle"></i>
-                                        <span class="align-middle">Payment</span>
-                                    </a>
-
-                                    <a href="{{ route('admin.contact.list') }}" class="dropdown-item">
-                                        <i class="ri-contacts-line me-1 fs-16 align-middle"></i>
-                                        <span class="align-middle">Contact Us</span>
-                                    </a>
-
-                                    <a href="{{ route('admin.newsletter.list') }}" class="dropdown-item">
+                                   
+                                    <a href="{{ route('admin.profile') }}" class="dropdown-item">
                                         <i class="ri-mail-line me-1 fs-16 align-middle"></i>
-                                        <span class="align-middle">Newsletter</span>
+                                        <span class="align-middle">profile</span>
                                     </a>
 
                                     <div class="dropdown-divider"></div>
