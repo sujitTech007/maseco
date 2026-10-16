@@ -1,18 +1,55 @@
 @include('seller.Include.header')
 
+<style>
+  .ud-scroll {
+    overflow-x: auto;
+  }
+
+  .ud-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    border: 0 !important;
+    background: transparent;
+  }
+
+  .ud-table th,
+  .ud-table td {
+    border: 0 !important;
+    border-bottom: 1px solid #eef0f3 !important;
+    padding: .9rem 1rem !important;
+    text-align: left;
+    vertical-align: middle;
+    background: transparent;
+    box-shadow: none !important;
+  }
+
+  .ud-table thead {
+    background-color: rgb(76 76 92);
+  }
+
+  .ud-table th {
+    color: #fff;
+    font-weight: 700;
+    font-size: .85rem;
+  }
+
+  .ud-table tbody tr:last-child td {
+    border-bottom: 0 !important;
+  }
+
+  .ud-table tbody tr:hover td {
+    background: #f3faf8 !important;
+  }
+</style>
+
 <body>
 
   <!-- Begin page -->
 
   <div class="wrapper active">
 
-
-
     <div class="page-content">
-
-
-
-
 
       <div class="page-title-head d-flex align-items-center gap-2">
 
@@ -36,23 +73,9 @@
           </div>
         </div>
 
-
-
-
-
       </div>
 
-
-
-
-
-
-
-
-
       <div class="page-container p-3">
-
-
 
         <div class="meetingPpage">
 
@@ -60,43 +83,38 @@
 
             <div class="col-md-12">
 
+              <div class="ud-table-wrap bg-white shadow-sm rounded-4 overflow-hidden">
 
-
-              <div class="card" style="border-radius:20px !important">
-
-                <div class="card-header d-flex flex-wrap align-items-center gap-2">
-
-                  <h4 class="header-title me-auto">Plans</h4>
-
+                <div class="px-3 py-3 border-bottom">
+                  <h5 class="header-title fw-bold mb-1">Plans</h5>
+                  <p class="text-muted small mb-0">Add a plan and review the plans listed on your account.</p>
                 </div>
-
-
 
                 <!-- Form Row Start -->
 
-                <form id="planForm" class="mb-4">
+                <form id="planForm" class="px-3 py-3 border-bottom bg-light rounded-0">
 
-                  <div class="row g-2 align-items-end p-2">
+                  <div class="row g-3 align-items-end">
 
-                    <div class="col-md-3">
+                    <div class="col-lg-3 col-md-6">
 
-                      <label class="form-label">Name</label>
+                      <label class="form-label fw-semibold small">Name</label>
 
                       <input type="text" class="form-control" id="name" placeholder="Enter Name" required>
 
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-lg-3 col-md-6">
 
-                      <label class="form-label">Features</label>
+                      <label class="form-label fw-semibold small">Features</label>
 
                       <input type="text" class="form-control" id="features" placeholder="Enter Features" required>
 
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="col-lg-2 col-md-4">
 
-                      <label class="form-label">Plans</label>
+                      <label class="form-label fw-semibold small">Plans</label>
 
                       <select class="form-select" id="plans" required>
 
@@ -112,17 +130,17 @@
 
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="col-lg-2 col-md-4">
 
-                      <label class="form-label">Call Limit</label>
+                      <label class="form-label fw-semibold small">Call Limit</label>
 
                       <input type="number" class="form-control" id="callLimit" placeholder="Enter Limit" required>
 
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="col-lg-2 col-md-4">
 
-                      <button type="submit" class="btn btn-primary w-100 smtplan">Submit</button>
+                      <button type="submit" class="btn btn-success w-100 smtplan">Submit</button>
 
                     </div>
 
@@ -132,166 +150,109 @@
 
                 <!-- Form Row End -->
 
+                <div class="ud-scroll">
 
+                  <table class="ud-table">
 
+                    <thead>
 
+                      <tr>
 
-                <div class="card tableCustom mb-0" style="border-radius:20px !important">
+                        <th>Sr No.</th>
 
+                        <th>Name</th>
 
+                        <th>Features</th>
 
+                        <th>Plans</th>
 
+                        <th>Enquiry</th>
 
+                      </tr>
 
+                    </thead>
 
-                  <div class="table-responsive" style="border-bottom-left-radius: 20px !important;border-bottom-right-radius: 20px !important;border-top-left-radius: 0;border-top-right-radius: 0;
-                                ">
+                    <tbody>
 
-                    <table class="table table-bordered text-center">
+                      <tr>
 
-                      <thead>
+                        <td class="text-muted">1.</td>
 
-                        <tr>
+                        <td class="fw-semibold">Raw Material Suppliers</td>
 
-                          <th>Sr No.</th>
+                        <td>No </td>
 
-                          <th>Name</th>
+                        <td>Yes</td>
 
+                        <td>10</td>
 
+                      </tr>
 
-                          <th>Features</th>
+                      <tr>
 
-                          <th>Plans</th>
+                        <td class="text-muted">2.</td>
 
-                          <th>Enquiry</th>
+                        <td class="fw-semibold">Raw Material Suppliers</td>
 
-                        </tr>
+                        <td>No </td>
 
-                      </thead>
+                        <td>Yes</td>
 
-                      <tbody>
+                        <td>10</td>
 
-                        <tr>
+                      </tr>
 
-                          <td>1.</td>
+                      <tr>
 
-                          <td>Raw Material Suppliers</td>
+                        <td class="text-muted">3.</td>
 
-                          <td>No </td>
+                        <td class="fw-semibold">Raw Material Suppliers</td>
 
-                          <td>Yes</td>
+                        <td>No </td>
 
-                          <td>10</td>
+                        <td>Yes</td>
 
-                        </tr>
+                        <td>10</td>
 
-                        <tr>
+                      </tr>
 
-                          <td>2.</td>
+                      <tr>
 
-                          <td>Raw Material Suppliers</td>
+                        <td class="text-muted">4.</td>
 
-                          <td>No </td>
+                        <td class="fw-semibold">Raw Material Suppliers</td>
 
-                          <td>Yes</td>
+                        <td>No </td>
 
-                          <td>10</td>
+                        <td>Yes</td>
 
-                        </tr>
+                        <td>10</td>
 
-                        <tr>
+                      </tr>
 
-                          <td>3.</td>
+                    </tbody>
 
-                          <td>Raw Material Suppliers</td>
+                  </table>
 
-                          <td>No </td>
-
-                          <td>Yes</td>
-
-                          <td>10</td>
-
-                        </tr>
-
-                        <tr>
-
-                          <td>4.</td>
-
-                          <td>Raw Material Suppliers</td>
-
-                          <td>No </td>
-
-                          <td>Yes</td>
-
-                          <td>10</td>
-
-                        </tr>
-
-
-
-                      </tbody>
-
-                    </table>
-
-
-
-
-
-
-
-                    <!-- end table -->
-
-                  </div>
-
-
-
-
+                  <!-- end table -->
 
                 </div>
 
-
-
-
-
               </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+              <div
+                class="bg-white shadow-sm rounded-4 p-3 mt-3 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+                <div>
+                  <h6 class="fw-bold mb-1">Need help?</h6>
+                  <p class="text-muted small mb-0">Questions about plans or limits? Email connect@maseco.ca.</p>
+                </div>
+                <a href="{{ url('contact-us') }}" class="btn btn-outline-success btn-sm px-3">Contact us</a>
+              </div>
 
             </div>
 
-
-
           </div>
-
         </div>
-
-
-
-
 
       </div> <!-- container -->
 
