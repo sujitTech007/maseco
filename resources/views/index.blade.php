@@ -3,25 +3,25 @@
 <main>
 
 
-  <section class="position-relative text-white overflow-hidden"
-    style="background: #073b35;">
+  <section class="position-relative text-white overflow-hidden section_hero" tyle="background: #073b35;">
+    <img src="{{ asset('assets/images/homepage-banner.webp') }}" class="w-100 h-100 position-absolute object-fit-cover" alt="banner">
 
     <!-- Background image and overlay -->
-    <div class="position-absolute top-0 start-0 w-100 h-100"
+    <!-- <div class="position-absolute top-0 start-0 w-100 h-100"
       style="background:     linear-gradient(
         90deg,
         rgba(15, 35, 29, 0.68) 0%,
         rgba(15, 35, 29, 0.48) 45%,
         rgba(15, 35, 29, 0.12) 100%
     ), url('{{ asset('assets/images/homepage-banner.webp') }}') center/cover no-repeat;">
-    </div>
+    </div> -->
 
-    <div class="container position-relative py-4 py-lg-5">
+    <div class="container position-relative py-4 py-lg-5 z-1">
 
       <div class="row">
         <div class="col-lg-10">
 
-          <span class="text-uppercase small fw-bold text-success-emphasis">
+          <span class="text-uppercase small fw-bold text-white">
             Canada's Textile Sourcing & Sustainability Platform
           </span>
 
@@ -98,7 +98,7 @@
               <div>
                 <div class="d-flex gap-2">
                   <button type="submit"
-                    class="btn btn-success  flex-grow-1 fw-semibold text-nowrap p-3">
+                    class="btn theme_btn">
                     <i class="fa fa-search me-1"></i> Search
                   </button>
 
@@ -118,7 +118,7 @@
     </div>
   </section>
 
-<section class="maseco-advantages-section py-5">
+<section class="maseco-advantages-section py-3">
     <div class="container">
 
       
@@ -128,7 +128,7 @@
 
             <!-- Verified Suppliers -->
             <div class="col-12 col-sm-6 col-xl-3">
-                <div class="maseco-advantage-card bg-danger bg-opacity-10">
+                <div class="maseco-advantage-card">
                     <div class="maseco-advantage-icon bg-danger bg-opacity-10">
                         <i class="fa fa-shield text-danger"></i>
                     </div>
@@ -142,7 +142,7 @@
 
             <!-- Advanced Search -->
             <div class="col-12 col-sm-6 col-xl-3">
-                <div class="maseco-advantage-card bg-warning bg-opacity-10">
+                <div class="maseco-advantage-card">
                     <div class="maseco-advantage-icon bg-warning bg-opacity-10">
                         <i class="fa fa-sliders text-warning"></i>
                     </div>
@@ -156,7 +156,7 @@
 
             <!-- Sustainable Textiles -->
             <div class="col-12 col-sm-6 col-xl-3">
-                <div class="maseco-advantage-card bg-secondary bg-opacity-10">
+                <div class="maseco-advantage-card">
                     <div class="maseco-advantage-icon bg-secondary bg-opacity-10">
                         <i class="fa fa-leaf text-white"></i>
                     </div>
@@ -170,7 +170,7 @@
 
             <!-- Buyer-Seller Support -->
             <div class="col-12 col-sm-6 col-xl-3">
-                <div class="maseco-advantage-card bg-success bg-opacity-10">
+                <div class="maseco-advantage-card">
                     <div class="maseco-advantage-icon bg-success bg-opacity-10">
                         <i class="fa fa-comments text-success"></i>
                     </div>
@@ -220,7 +220,7 @@
                     <a href="{{ route('about.us') }}"
                        class="maseco-about-button">
                         Explore the marketplace
-                        <i class="bi bi-arrow-right"></i>
+                        
                     </a>
 
                 </div>
@@ -228,7 +228,7 @@
 
             <!-- Right: Textile image and capability strip -->
             <div class="col-lg-7">
-                <div class="maseco-about-visual">
+                <div class="maseco-about-visual position-relative">
 
                     <img
                         src="{{ asset('assets/images/about-us.webp') }}"
@@ -304,14 +304,14 @@
               <i class="fa-solid fa-globe"></i>
             </div>
 
-            <h3>Supplier<br>Discovery</h3>
+            <h3>Supplier Discovery</h3>
 
-            <p>
+            <p class="mt-2 mb-3">
               Discover textile manufacturers and suppliers
               that match your sourcing requirements.
             </p>
 
-            <a href="{{ url('/marketplace') }}" class="service-button">
+            <a href="{{ url('/marketplace') }}" class="btn theme_btn rounded-5">
               Explore suppliers
               <i class="fa-solid fa-arrow-right"></i>
             </a>
@@ -325,15 +325,15 @@
               <i class="fa-solid fa-leaf"></i>
             </div>
 
-            <h3>Sustainable<br>Materials</h3>
+            <h3>Sustainable Materials</h3>
 
-            <p>
+            <p class="mt-2 mb-3">
               Explore eco-conscious fabrics and materials
               for more responsible textile production.
             </p>
 
             <a href="{{ url('/marketplace') }}?eco_certified=1"
-              class="service-button">
+              class="btn theme_btn rounded-5">
               Explore materials
               <i class="fa-solid fa-arrow-right"></i>
             </a>
@@ -347,14 +347,14 @@
               <i class="fa-solid fa-scale-balanced"></i>
             </div>
 
-            <h3>Compare &amp;<br>Connect</h3>
+            <h3>Compare &amp; Connect</h3>
 
-            <p>
+            <p class="mt-2 mb-3">
               Review supplier options, compare your sourcing
               needs, and find the right business partner.
             </p>
 
-            <a href="{{ url('/marketplace') }}" class="service-button">
+            <a href="{{ url('/marketplace') }}" class="btn theme_btn rounded-5">
               Find your match
               <i class="fa-solid fa-arrow-right"></i>
             </a>
@@ -368,14 +368,14 @@
               <i class="fa-solid fa-handshake"></i>
             </div>
 
-            <h3>Business<br>Communication</h3>
+            <h3>Business Communication</h3>
 
-            <p>
+            <p class="mt-2 mb-3">
               Connect with textile businesses to discuss
               requirements and build lasting relationships.
             </p>
 
-            <a href="{{ url('/contact-us') }}" class="service-button">
+            <a href="{{ url('/contact-us') }}" class="btn theme_btn rounded-5">
               Get in touch
               <i class="fa-solid fa-arrow-right"></i>
             </a>
@@ -402,7 +402,7 @@
             </div>
 
             <a href="{{ url('/marketplace') }}" class="maseco-view-all">
-                View all suppliers <i class="bi bi-arrow-right"></i>
+                View all suppliers 
             </a>
         </div>
 
@@ -465,7 +465,7 @@
                         </div>
 
                         <a href="{{ url('/marketplace') }}" class="maseco-supplier-button">
-                            View details <i class="bi bi-arrow-right"></i>
+                            View details 
                         </a>
                     </div>
                 </article>
@@ -519,7 +519,7 @@
                         </div>
 
                         <a href="{{ url('/marketplace') }}" class="maseco-supplier-button">
-                            View details <i class="bi bi-arrow-right"></i>
+                            View details 
                         </a>
                     </div>
                 </article>
@@ -573,7 +573,7 @@
                         </div>
 
                         <a href="{{ url('/marketplace') }}" class="maseco-supplier-button">
-                            View details <i class="bi bi-arrow-right"></i>
+                            View details 
                         </a>
                     </div>
                 </article>
@@ -627,7 +627,7 @@
                         </div>
 
                         <a href="{{ url('/marketplace') }}" class="maseco-supplier-button">
-                            View details <i class="bi bi-arrow-right"></i>
+                            View details 
                         </a>
                     </div>
                 </article>
@@ -681,7 +681,7 @@
                         </div>
 
                         <a href="{{ url('/marketplace') }}" class="maseco-supplier-button">
-                            View details <i class="bi bi-arrow-right"></i>
+                            View details 
                         </a>
                     </div>
                 </article>
@@ -753,7 +753,425 @@
 
 
 
-  <section class="py-5 bg-light" id="how-it-works">
+
+  <section class="maseco-process">
+    <div class="container">
+        <div class="row align-items-center g-4 g-lg-5">
+
+            <!-- Left introduction -->
+            <div class="col-lg-3">
+                <div class="process-intro">
+                    <span class="process-eyebrow">
+                        <span></span> OUR PROCESS
+                    </span>
+
+                    <h2>Better sourcing.<br>
+                        <span>Greater impact.</span>
+                    </h2>
+
+                    <p>
+                        Maseco helps fashion businesses discover sustainable
+                        materials, connect with trusted suppliers and move
+                        towards smarter production — all in one place.
+                    </p>
+
+                    <a href="{{ url('/marketplace') }}"
+                       class="theme_link">
+                        Explore the marketplace
+                        
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right process steps -->
+            <div class="col-lg-9">
+                <div class="process-steps">
+
+                    <article class="process-step">
+                        <div class="process-image">
+                            <img
+                                src="{{ asset('assets/images/sustainable-img.webp') }}"
+                                alt="Sustainable textile materials"
+                                loading="lazy">
+                            <span class="process-number">01</span>
+                        </div>
+
+                        <h3>Discover Materials</h3>
+                        <p>
+                            Explore textile materials and find suitable
+                            options for your sourcing needs.
+                        </p>
+                    </article>
+
+                    <div class="process-arrow">
+                        
+                    </div>
+
+                    <article class="process-step">
+                        <div class="process-image">
+                            <img
+                                src="{{ asset('assets/images/Sustainable-journey-img.webp') }}"
+                                alt="Textile manufacturing and supplier connections"
+                                loading="lazy">
+                            <span class="process-number">02</span>
+                        </div>
+
+                        <h3>Connect with Suppliers</h3>
+                        <p>
+                            Discover potential partners and build
+                            relationships for your business.
+                        </p>
+                    </article>
+
+                    <div class="process-arrow">
+                        
+                    </div>
+
+                    <article class="process-step">
+                        <div class="process-image">
+                            <img
+                                src="{{ asset('assets/images/service-box.webp') }}"
+                                alt="Textile design and material planning"
+                                loading="lazy">
+                            <span class="process-number">03</span>
+                        </div>
+
+                        <h3>Design with AI</h3>
+                        <p>
+                            Explore AI-assisted design and material
+                            recommendations as they become available.
+                        </p>
+                    </article>
+
+                    <div class="process-arrow">
+                        
+                    </div>
+
+                    <article class="process-step">
+                        <div class="process-image">
+                            <img
+                                src="{{ asset('assets/images/testimonial-img.webp') }}"
+                                alt="Textile production and logistics"
+                                loading="lazy">
+                            <span class="process-number">04</span>
+                        </div>
+
+                        <h3>Scale Production</h3>
+                        <p>
+                            Work towards a smoother production journey
+                            with manufacturing and post-production support.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+  <section class="maseco-journey">
+    <div class="container">
+
+        <!-- Section heading -->
+        <div class="journey-heading">
+            <span class="journey-eyebrow">
+                <i class="bi bi-leaf"></i> THE MASECO JOURNEY
+            </span>
+            <h2>A Smarter Way to Source Textiles</h2>
+            <p>
+                From finding the right materials to connecting with manufacturing
+                partners, Maseco brings your sourcing journey together.
+            </p>
+        </div>
+
+        <div class="row align-items-center g-4 g-lg-5">
+
+            <!-- Left: Image -->
+            <div class="col-lg-5">
+                <div class="journey-visual">
+                    <img
+                        src="{{ asset('assets/images/sustainable-img.webp') }}"
+                        alt="Textile materials and sustainable fabric sourcing"
+                        loading="lazy"
+                    >
+
+                    <div class="journey-image-caption">
+                        <span class="journey-caption-icon">
+                            <i class="bi bi-recycle"></i>
+                        </span>
+                        <div>
+                            <strong>Better sourcing starts here.</strong>
+                            <p>Materials, partners and smarter decisions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Rollout steps -->
+            <div class="col-lg-7">
+                <div class="journey-steps">
+
+                    <!-- Step 01 -->
+                    <article class="journey-step">
+                        <div class="journey-step-number">01</div>
+                        <div class="journey-step-content">
+                            <span class="journey-step-label">DISCOVER</span>
+                            <h3>Find Sustainable Materials</h3>
+                            <p>
+                                Explore textile materials and supplier options
+                                in one place. Compare available materials and
+                                identify the right fit for your business.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Step 02 -->
+                    <article class="journey-step">
+                        <div class="journey-step-number">02</div>
+                        <div class="journey-step-content">
+                            <span class="journey-step-label">CONNECT</span>
+                            <h3>Meet Manufacturing Partners</h3>
+                            <p>
+                                Discover potential suppliers and manufacturing
+                                partners based on your material requirements
+                                and production needs.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Step 03 -->
+                    <article class="journey-step">
+                        <div class="journey-step-number">03</div>
+                        <div class="journey-step-content">
+                            <span class="journey-step-label">GROW</span>
+                            <h3>Move Towards Smarter Production</h3>
+                            <p>
+                                Build a more informed sourcing process with
+                                sustainable material choices and access to
+                                Maseco's evolving sourcing and design solutions.
+                            </p>
+                        </div>
+                    </article>
+
+                </div>
+
+                <a href="{{ url('/marketplace') }}" class="theme_link">
+                    Explore the marketplace
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+  <!-- <section class="price-section py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <div class="section-heading">
+            <span class="needle-heading text-uppercase d-block needleIcon">Our subscription</span>
+            <h2>Find Your Perfect Plan</h2>
+            <p>Discover the ideal plan to fuel your business growth. Our pricing options are carefully crafted to
+              cater to businesses.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-4">
+
+        @foreach($plans as $plan)
+        <div class="col-lg-4 col-md-4">
+          <div class="pricebox" data-aos-duration="{{ 500 + ($loop->index * 300) }}">
+            <div class="priceboxIcon">
+              @php
+              $icon = 'basic-icon.svg';
+              if(stripos($plan->name, 'premium') !== false) $icon = 'premium-icon.svg';
+              elseif(stripos($plan->name, 'pro') !== false) $icon = 'pro-icon.svg';
+              @endphp
+              <img src="assets/images/icon/{{ $icon }}" alt="">
+            </div>
+            <div class="price-content">
+              <h5>{{ $plan->name }}</h5>
+              <p class="price-text">{{ $plan->description ?? '' }}</p>
+              <h2 class="price">
+                @if($plan->price == 0)
+                Free
+                @else
+                <span class="dollar">$</span>{{ rtrim(rtrim(number_format($plan->price, 2, '.', ''), '0'), '.') }}
+                <span class="price-month">/ {{ $plan->duration }}</span>
+                @endif
+                @if($plan->commission)
+                <span class="pricebox-comment">+ Commission = {{ $plan->commission }}</span>
+                @endif
+              </h2>
+              @php
+              $features = $plan->features;
+              if(is_array($features)) {
+              $features = implode("\n", $features);
+              }
+              if(is_string($features)) {
+              $decoded = json_decode($features, true);
+              if(is_array($decoded)) {
+              $features = $decoded;
+              } else {
+              $features = preg_split('/\r?\n/', $features);
+              }
+              }
+              @endphp
+              @if($features && is_array($features))
+              <ul class="list-info">
+                @foreach($features as $feature)
+                @php
+                $feature = trim($feature);
+                if(substr($feature, -1) === '+') {
+                $feature = rtrim($feature, '+ ');
+                }
+                @endphp
+                @if($feature !== '')
+                <li><i class="fa-solid fa-square-up-right"></i><span>{{ $feature }}</span></li>
+                @endif
+                @endforeach
+              </ul>
+              @endif
+              <div class="getStarted-btn">
+                @if(Auth::guard('supplier')->check() || Auth::guard('manufacturer')->check())
+                <button class="theme-btn disabled" disabled>Not Available</button>
+                @else
+                <button class="theme-btn purchase-btn"
+                  data-plan-id="{{ $plan->id }}"
+                  data-plan-name="{{ $plan->name }}"
+                  data-plan-price="{{ $plan->price }}"
+                  data-plan-duration="{{ $plan->duration }}"
+                  onclick="handlePlanChooseFromButton(this)">
+                  Get Started
+                </button>
+                @endif
+              </div>
+            </div>
+          </div>
+        </div>
+        @endforeach
+      </div>
+    </div>
+  </section> -->
+
+  
+<section class="maseco-pricing py-3 py-md-5" id="subscription">
+    <div class="container">
+
+        <!-- Heading -->
+        <div class="pricing-heading text-center">
+            <span class="pricing-eyebrow">OUR SUBSCRIPTION</span>
+            <h2>Choose the right plan for your sourcing journey</h2>
+            <p>
+                Access textile suppliers, sustainable materials and production
+                solutions — all in one place.
+            </p>
+        </div>
+
+        <!-- Plans -->
+        <div class="row g-4 align-items-stretch pricing_row">
+
+            <!-- Basic -->
+            <div class="col-lg-4">
+                <article class="maseco-plan shadow">
+                    <div class="plan-icon">
+                        <i class="bi bi-leaf"></i>
+                    </div>
+
+                    <h3>Basic</h3>
+                    <div class="plan-price">Free</div>
+                    <p class="plan-description">
+                        Explore the Maseco supplier marketplace.
+                    </p>
+
+                    <hr>
+
+                    <ul class="plan-features">
+                        <li><i class="bi bi-check-circle-fill"></i> Browse textile suppliers</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Explore materials and categories</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Discover sourcing options</li>
+                    </ul>
+
+                    <a href="{{ route('subscription.plan') }}" class="plan-button">
+                        Get started 
+                    </a>
+                </article>
+            </div>
+
+            <!-- Premium -->
+            <div class="col-lg-4">
+                <article class="maseco-plan maseco-plan-featured bg-success bg-opacity-10 shadow">
+                    <span class="plan-popular">MOST POPULAR</span>
+
+                    <div class="plan-icon">
+                        <i class="bi bi-stars"></i>
+                    </div>
+
+                    <h3>Premium</h3>
+                    <div class="plan-price">
+                        $69 <span>/ month</span>
+                    </div>
+                    <p class="plan-description">
+                        For teams ready to source smarter.
+                    </p>
+
+                    <hr>
+
+                    <ul class="plan-features">
+                        <li><i class="bi bi-check-circle-fill"></i> Everything in Basic</li>
+                        <li><i class="bi bi-check-circle-fill"></i> AI-powered sourcing insights</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Supplier and vendor matching</li>
+                    </ul>
+
+                    <a href="{{ route('subscription.plan') }}" class="plan-button plan-button-primary text-white">
+                        Explore Premium 
+                    </a>
+                </article>
+            </div>
+
+            <!-- Pro -->
+            <div class="col-lg-4">
+                <article class="maseco-plan shadow">
+                    <div class="plan-icon">
+                        <i class="bi bi-buildings"></i>
+                    </div>
+
+                    <h3>Pro</h3>
+                    <div class="plan-price">
+                        $299 <span>/ month</span>
+                    </div>
+                    <p class="plan-description">
+                        For growing production teams.
+                    </p>
+
+                    <hr>
+
+                    <ul class="plan-features">
+                        <li><i class="bi bi-check-circle-fill"></i> Everything in Premium</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Post-production support</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Advanced production workflows</li>
+                    </ul>
+
+                    
+                    <a href="{{ route('subscription.plan') }}" class="plan-button">
+                        Contact our team 
+                    </a>
+                </article>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+  <section class="py-5" id="how-it-works">
     <div class="container py-lg-4">
 
       <!-- Heading -->
@@ -855,15 +1273,15 @@
                     {{ $item['title'] }}
                   </h3>
 
-                  <p class="small fw-semibold text-success mb-2">
+                  <p class="fw-semibold text-success mb-2">
                     {{ $item['subtitle'] }}
                   </p>
 
-                  <p class="small text-secondary">
+                  <p class="text-secondary">
                     {{ $item['description'] }}
                   </p>
 
-                  <ul class="list-unstyled small text-secondary mb-4">
+                  <ul class="list-unstyled text-secondary mb-4">
                     @foreach($item['points'] as $point)
                     <li class="mb-2">
                       <i class="fa fa-check-circle text-success me-2"></i>
@@ -873,7 +1291,7 @@
                   </ul>
 
                   <a href="{{ url('/marketplace') }}"
-                    class="small fw-semibold text-success text-decoration-none">
+                    class="btn theme_btn rounded-5">
                     Learn More <i class="fa fa-arrow-right ms-1"></i>
                   </a>
                 </div>
@@ -911,31 +1329,31 @@
             <i class="fa fa-leaf text-success me-2"></i>
             Sustainable Sourcing
           </h3>
-          <p class="small text-secondary mb-0">
+          <p class="text-secondary mb-0">
             Connect with textile partners and explore more
             sustainable sourcing opportunities.
           </p>
         </div>
 
        
-<div class="col-6 col-lg-3">
-    <div class="d-flex align-items-center gap-2 p-3 rounded-3 border supplier-benefit-card">
-        <i class="fa fa-shield text-success fs-5"></i>
-        <span class="small fw-semibold">Supplier Verification</span>
-    </div>
-</div>
+        <div class="col-6 col-lg-3">
+            <div class="d-flex align-items-center gap-2 p-3 rounded-3 border supplier-benefit-card">
+                <i class="fa fa-shield text-success fs-5"></i>
+                <span class="fs-14 fw-semibold">Supplier Verification</span>
+            </div>
+        </div>
 
-<div class="col-6 col-lg-2">
-    <div class="d-flex align-items-center gap-2 p-3 rounded-3 border supplier-benefit-card">
-        <i class="fa fa-recycle text-success fs-5"></i>
-        <span class="small fw-semibold">Eco-conscious Options</span>
-    </div>
-</div>
+        <div class="col-6 col-lg-3">
+            <div class="d-flex align-items-center gap-2 p-3 rounded-3 border supplier-benefit-card">
+                <i class="fa fa-recycle text-success fs-5"></i>
+                <span class="fs-14 fw-semibold">Eco-conscious Options</span>
+            </div>
+        </div>
 
 
-        <div class="col-lg-3 text-lg-end">
+        <div class="col-lg-2 text-lg-end">
           <a href="{{ url('/marketplace') }}"
-            class="btn btn-success btn-sm px-4">
+            class="btn theme_btn px-4">
             Get Started <i class="fa fa-arrow-right ms-1"></i>
           </a>
         </div>
@@ -943,644 +1361,6 @@
 
     </div>
   </section>
-
-
-  <!-- 
-  <section class="services py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="section-heading">
-            <span class="needle-heading text-uppercase d-block needleIcon">Our Services</span>
-            <h2>Exploring the Role of Textiles</h2>
-            <p>Textiles are materials made from fibers or yarn, and they are used to create widetest range of products
-              such as clothing and industrial goods.</p>
-          </div>
-        </div>
-        <div class="col-md-4 px-lg-5 px-md-3 px-sm-0">
-          <div class="serviceBox">
-            <div class="serviceBox-media">
-              <img decoding="async" src="{{ asset('assets/images/fabric-thumb.png')}}" alt="raw material suppliers">
-            </div>
-            <div class="serviceBox-info">
-              <div class="serviceBox-icon">
-                <img src="assets/images/raw-material-icon.svg" alt="">
-              </div>
-              <h4>raw material suppliers</h4>
-              <p>This type of database is invaluable for businesses aiming to reduce their environmental footprint</p>
-              <div class="section-button mt-2 d-block">
-                <a href="{{ url('raw-material-supplier') }}" class="theme-btn">Read More <i class="fa fa-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="serviceList">
-            <ul>
-              <li>
-                <div class="iconThumb">
-                  <img src="{{ asset('assets/images/icon/fabric.png')}}" alt="">
-                </div>
-                <h4>raw material suppliers</h4>
-              </li>
-              <li>
-                <div class="iconThumb">
-                  <img src="{{ asset('assets/images/icon/textile.png')}}" alt="">
-                </div>
-                <h4>Reducing textiles</h4>
-              </li>
-              <li>
-                <div class="iconThumb">
-                  <img src="{{ asset('assets/images/icon/machine-learning.png')}}" alt="">
-                </div>
-                <h4>AI Driven suggestions</h4>
-              </li>
-              <li>
-                <div class="iconThumb">
-                  <img src="{{ asset('assets/images/icon/fabrication.png')}}" alt="">
-                </div>
-                <h4>Manufacturers</h4>
-              </li>
-
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-   -->
-  <!-- Our Services Section -->
-
-
-
-  <!-- End Our Services Section -->
-
-
-  <!-- <section class="process-section py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <div class="section-heading text-white">
-            <span class="needle-heading text-uppercase d-block needleIcon">Brands That Trust Maseco</span>
-            <h2 class="text-white">We Give Top Production From
-              Every Angle</h2>
-            <p>Maseco is a sustainability-driven fashion solutions provider, empowering designers with responsible
-              sourcing, ethical manufacturing, and AI-powered design insights.</p>
-          </div>
-        </div>
-      </div>
-      <div class="process-box">
-        <div class="row">
-          <div class="col-md-3 mb- ">
-            <div class="circle-progress-bar" data-size="180" data-thickness="5" data-skill-level="65"
-              data-empty-color="#fff" data-fill-color="#2DAC92">
-              <span class="progress-count">65%</span>
-            </div>
-            <div class="processBox">
-              <h4 class="text-white">febric design</h4>
-              <p class="text-white">From Handcrafted such as using organic Textiles Production</p>
-            </div>
-          </div>
-          <div class="col-md-3 mb-">
-            <div class="circle-progress-bar" data-size="180" data-thickness="5" data-skill-level="75"
-              data-empty-color="#fff" data-fill-color="#2DAC92">
-              <span class="progress-count">75%</span>
-            </div>
-            <div class="processBox">
-              <h4 class="text-white">trusted clients</h4>
-              <p class="text-white">From Handcrafted such as using organic Textiles Production</p>
-            </div>
-          </div>
-          <div class="col-md-3 mb-">
-            <div class="circle-progress-bar" data-size="180" data-thickness="5" data-skill-level="80"
-              data-empty-color="#fff" data-fill-color="#2DAC92">
-              <span class="progress-count">80%</span>
-            </div>
-            <div class="processBox">
-              <h4 class="text-white">experience years</h4>
-              <p class="text-white">From Handcrafted such as using organic Textiles Production</p>
-            </div>
-          </div>
-          <div class="col-md-3 mb-">
-            <div class="circle-progress-bar" data-size="180" data-thickness="5" data-skill-level="70"
-              data-empty-color="#fff" data-fill-color="#2DAC92">
-              <span class="progress-count">70%</span>
-            </div>
-            <div class="processBox">
-              <h4 class="text-white">visited confernance</h4>
-              <p class="text-white">From Handcrafted such as using organic Textiles Production</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
-  <section class="maseco-process">
-    <div class="container">
-        <div class="row align-items-center g-4 g-lg-5">
-
-            <!-- Left introduction -->
-            <div class="col-lg-3">
-                <div class="process-intro">
-                    <span class="process-eyebrow">
-                        <span></span> OUR PROCESS
-                    </span>
-
-                    <h2>Better sourcing.<br>
-                        <span>Greater impact.</span>
-                    </h2>
-
-                    <p>
-                        Maseco helps fashion businesses discover sustainable
-                        materials, connect with trusted suppliers and move
-                        towards smarter production — all in one place.
-                    </p>
-
-                    <a href="{{ url('/marketplace') }}"
-                       class="process-cta">
-                        Explore the marketplace
-                        <i class="bi bi-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Right process steps -->
-            <div class="col-lg-9">
-                <div class="process-steps">
-
-                    <article class="process-step">
-                        <div class="process-image">
-                            <img
-                                src="{{ asset('assets/images/sustainable-img.webp') }}"
-                                alt="Sustainable textile materials"
-                                loading="lazy">
-                            <span class="process-number">01</span>
-                        </div>
-
-                        <h3>Discover Materials</h3>
-                        <p>
-                            Explore textile materials and find suitable
-                            options for your sourcing needs.
-                        </p>
-                    </article>
-
-                    <div class="process-arrow">
-                        <i class="bi bi-arrow-right"></i>
-                    </div>
-
-                    <article class="process-step">
-                        <div class="process-image">
-                            <img
-                                src="{{ asset('assets/images/Sustainable-journey-img.webp') }}"
-                                alt="Textile manufacturing and supplier connections"
-                                loading="lazy">
-                            <span class="process-number">02</span>
-                        </div>
-
-                        <h3>Connect with Suppliers</h3>
-                        <p>
-                            Discover potential partners and build
-                            relationships for your business.
-                        </p>
-                    </article>
-
-                    <div class="process-arrow">
-                        <i class="bi bi-arrow-right"></i>
-                    </div>
-
-                    <article class="process-step">
-                        <div class="process-image">
-                            <img
-                                src="{{ asset('assets/images/service-box.webp') }}"
-                                alt="Textile design and material planning"
-                                loading="lazy">
-                            <span class="process-number">03</span>
-                        </div>
-
-                        <h3>Design with AI</h3>
-                        <p>
-                            Explore AI-assisted design and material
-                            recommendations as they become available.
-                        </p>
-                    </article>
-
-                    <div class="process-arrow">
-                        <i class="bi bi-arrow-right"></i>
-                    </div>
-
-                    <article class="process-step">
-                        <div class="process-image">
-                            <img
-                                src="{{ asset('assets/images/testimonial-img.webp') }}"
-                                alt="Textile production and logistics"
-                                loading="lazy">
-                            <span class="process-number">04</span>
-                        </div>
-
-                        <h3>Scale Production</h3>
-                        <p>
-                            Work towards a smoother production journey
-                            with manufacturing and post-production support.
-                        </p>
-                    </article>
-
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-  <!-- <section class="production py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <div class="section-heading">
-            <span class="needle-heading text-uppercase d-block needleIcon">Sustainable Journey</span>
-            <h2>Sustainable Fashion Business with Maseco</h2>
-            <p>Maseco is a sustainability-driven fashion solutions provider, empowering designers with responsible
-              sourcing, ethical manufacturing, and AI-powered design insights.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container position-relative mt-5">
-      <div class="border-line"></div>
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="timelines">
-            <div class="timeline">
-              <div class="timeline-states">
-                <div class="timeline-state">
-                  <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-6">
-                      <div class="timeline-image">
-                        <img decoding="async" src="{{ asset('assets/images/sustainable-materials.png')}}" alt="images"
-                          style="visibility: visible; animation-name: fadeInLeft;">
-                      </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                      <div class="timeline-details position-relative">
-                        <div class="timeline-content">
-                          <h3>01. Source Ethical & Sustainable Materials</h3>
-                          <p>There are many variations of passages of Lorem Ipsum available, the majority have
-                            suffered alteration in some form, by injected humour, or randomised words which don't look
-                            even slightly believable. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                          <div class="section-button mt-2 d-block">
-                            <a href="{{ url('about-us') }}" class="theme-btn">Read More <i class="fa fa-arrow-right"></i></a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="dot-circle" data-aos="zoom-in"></div>
-                </div>
-                <div class="timeline-state">
-                  <div class="row align-items-center flex-column-reverse flex-md-row">
-                    <div class="col-lg-6 col-md-6">
-                      <div class="timeline-content">
-                        <h3>02. Manufacture with Trusted Partners</h3>
-                        <p>There are many variations of passages of Lorem Ipsum available, the majority have suffered
-                          alteration in some form, by injected humour, or randomised words which don't look even
-                          slightly believable. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <div class="section-button mt-2 d-block">
-                          <a href="{{ url('about-us') }}" class="theme-btn">Read More <i class="fa fa-arrow-right"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                      <div class="timeline-image">
-                        <img decoding="async" src="{{ asset('assets/images/manufacture.png')}}" class="wow  fadeInRight animated"
-                          alt="images" style="visibility: visible; animation-name: fadeInRight;">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="dot-circle" data-aos="zoom-in"></div>
-                </div>
-                <div class="timeline-state">
-                  <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-6">
-                      <div class="timeline-image">
-                        <img decoding="async" src="{{ asset('assets/images/logistics.png')}}" alt="images">
-                      </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                      <div class="timeline-content">
-                        <h3>03.Simplify Logistics & Design</h3>
-                        <p>There are many variations of passages of Lorem Ipsum available, the majority have suffered
-                          alteration in some form, by injected humour, or randomised words which don't look even
-                          slightly believable. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <div class="section-button mt-2 d-block">
-                          <a href="{{ url('about-us') }}" class="theme-btn">Read More <i class="fa fa-arrow-right"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="dot-circle" data-aos="zoom-in"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
-
-  <section class="maseco-journey">
-    <div class="container">
-
-        <!-- Section heading -->
-        <div class="journey-heading">
-            <span class="journey-eyebrow">
-                <i class="bi bi-leaf"></i> THE MASECO JOURNEY
-            </span>
-            <h2>A Smarter Way to Source Textiles</h2>
-            <p>
-                From finding the right materials to connecting with manufacturing
-                partners, Maseco brings your sourcing journey together.
-            </p>
-        </div>
-
-        <div class="row align-items-center g-4 g-lg-5">
-
-            <!-- Left: Image -->
-            <div class="col-lg-5">
-                <div class="journey-visual">
-                    <img
-                        src="{{ asset('assets/images/sustainable-img.webp') }}"
-                        alt="Textile materials and sustainable fabric sourcing"
-                        loading="lazy"
-                    >
-
-                    <div class="journey-image-caption">
-                        <span class="journey-caption-icon">
-                            <i class="bi bi-recycle"></i>
-                        </span>
-                        <div>
-                            <strong>Better sourcing starts here.</strong>
-                            <p>Materials, partners and smarter decisions.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right: Rollout steps -->
-            <div class="col-lg-7">
-                <div class="journey-steps">
-
-                    <!-- Step 01 -->
-                    <article class="journey-step">
-                        <div class="journey-step-number">01</div>
-                        <div class="journey-step-content">
-                            <span class="journey-step-label">DISCOVER</span>
-                            <h3>Find Sustainable Materials</h3>
-                            <p>
-                                Explore textile materials and supplier options
-                                in one place. Compare available materials and
-                                identify the right fit for your business.
-                            </p>
-                        </div>
-                    </article>
-
-                    <!-- Step 02 -->
-                    <article class="journey-step">
-                        <div class="journey-step-number">02</div>
-                        <div class="journey-step-content">
-                            <span class="journey-step-label">CONNECT</span>
-                            <h3>Meet Manufacturing Partners</h3>
-                            <p>
-                                Discover potential suppliers and manufacturing
-                                partners based on your material requirements
-                                and production needs.
-                            </p>
-                        </div>
-                    </article>
-
-                    <!-- Step 03 -->
-                    <article class="journey-step">
-                        <div class="journey-step-number">03</div>
-                        <div class="journey-step-content">
-                            <span class="journey-step-label">GROW</span>
-                            <h3>Move Towards Smarter Production</h3>
-                            <p>
-                                Build a more informed sourcing process with
-                                sustainable material choices and access to
-                                Maseco's evolving sourcing and design solutions.
-                            </p>
-                        </div>
-                    </article>
-
-                </div>
-
-                <a href="{{ url('/marketplace') }}" class="journey-link">
-                    Explore the marketplace
-                    <i class="bi bi-arrow-up-right"></i>
-                </a>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-  <!-- <section class="price-section py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <div class="section-heading">
-            <span class="needle-heading text-uppercase d-block needleIcon">Our subscription</span>
-            <h2>Find Your Perfect Plan</h2>
-            <p>Discover the ideal plan to fuel your business growth. Our pricing options are carefully crafted to
-              cater to businesses.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row justify-content-center mt-4">
-
-        @foreach($plans as $plan)
-        <div class="col-lg-4 col-md-4">
-          <div class="pricebox" data-aos-duration="{{ 500 + ($loop->index * 300) }}">
-            <div class="priceboxIcon">
-              @php
-              $icon = 'basic-icon.svg';
-              if(stripos($plan->name, 'premium') !== false) $icon = 'premium-icon.svg';
-              elseif(stripos($plan->name, 'pro') !== false) $icon = 'pro-icon.svg';
-              @endphp
-              <img src="assets/images/icon/{{ $icon }}" alt="">
-            </div>
-            <div class="price-content">
-              <h5>{{ $plan->name }}</h5>
-              <p class="price-text">{{ $plan->description ?? '' }}</p>
-              <h2 class="price">
-                @if($plan->price == 0)
-                Free
-                @else
-                <span class="dollar">$</span>{{ rtrim(rtrim(number_format($plan->price, 2, '.', ''), '0'), '.') }}
-                <span class="price-month">/ {{ $plan->duration }}</span>
-                @endif
-                @if($plan->commission)
-                <span class="pricebox-comment">+ Commission = {{ $plan->commission }}</span>
-                @endif
-              </h2>
-              @php
-              $features = $plan->features;
-              if(is_array($features)) {
-              $features = implode("\n", $features);
-              }
-              if(is_string($features)) {
-              $decoded = json_decode($features, true);
-              if(is_array($decoded)) {
-              $features = $decoded;
-              } else {
-              $features = preg_split('/\r?\n/', $features);
-              }
-              }
-              @endphp
-              @if($features && is_array($features))
-              <ul class="list-info">
-                @foreach($features as $feature)
-                @php
-                $feature = trim($feature);
-                if(substr($feature, -1) === '+') {
-                $feature = rtrim($feature, '+ ');
-                }
-                @endphp
-                @if($feature !== '')
-                <li><i class="fa-solid fa-square-up-right"></i><span>{{ $feature }}</span></li>
-                @endif
-                @endforeach
-              </ul>
-              @endif
-              <div class="getStarted-btn">
-                @if(Auth::guard('supplier')->check() || Auth::guard('manufacturer')->check())
-                <button class="theme-btn disabled" disabled>Not Available</button>
-                @else
-                <button class="theme-btn purchase-btn"
-                  data-plan-id="{{ $plan->id }}"
-                  data-plan-name="{{ $plan->name }}"
-                  data-plan-price="{{ $plan->price }}"
-                  data-plan-duration="{{ $plan->duration }}"
-                  onclick="handlePlanChooseFromButton(this)">
-                  Get Started
-                </button>
-                @endif
-              </div>
-            </div>
-          </div>
-        </div>
-        @endforeach
-      </div>
-    </div>
-  </section> -->
-
-  
-<section class="maseco-pricing py-5" id="subscription">
-    <div class="container">
-
-        <!-- Heading -->
-        <div class="pricing-heading text-center">
-            <span class="pricing-eyebrow">OUR SUBSCRIPTION</span>
-            <h2>Choose the right plan for your sourcing journey</h2>
-            <p>
-                Access textile suppliers, sustainable materials and production
-                solutions — all in one place.
-            </p>
-        </div>
-
-        <!-- Plans -->
-        <div class="row g-4 align-items-stretch">
-
-            <!-- Basic -->
-            <div class="col-lg-4">
-                <article class="maseco-plan shadow">
-                    <div class="plan-icon">
-                        <i class="bi bi-leaf"></i>
-                    </div>
-
-                    <h3>Basic</h3>
-                    <div class="plan-price">Free</div>
-                    <p class="plan-description">
-                        Explore the Maseco supplier marketplace.
-                    </p>
-
-                    <hr>
-
-                    <ul class="plan-features">
-                        <li><i class="bi bi-check-circle-fill"></i> Browse textile suppliers</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Explore materials and categories</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Discover sourcing options</li>
-                    </ul>
-
-                    <a href="{{ route('subscription.plan') }}" class="plan-button">
-                        Get started <i class="bi bi-arrow-right"></i>
-                    </a>
-                </article>
-            </div>
-
-            <!-- Premium -->
-            <div class="col-lg-4">
-                <article class="maseco-plan maseco-plan-featured bg-success bg-opacity-10 shadow">
-                    <span class="plan-popular">MOST POPULAR</span>
-
-                    <div class="plan-icon">
-                        <i class="bi bi-stars"></i>
-                    </div>
-
-                    <h3>Premium</h3>
-                    <div class="plan-price">
-                        $69 <span>/ month</span>
-                    </div>
-                    <p class="plan-description">
-                        For teams ready to source smarter.
-                    </p>
-
-                    <hr>
-
-                    <ul class="plan-features">
-                        <li><i class="bi bi-check-circle-fill"></i> Everything in Basic</li>
-                        <li><i class="bi bi-check-circle-fill"></i> AI-powered sourcing insights</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Supplier and vendor matching</li>
-                    </ul>
-
-                    <a href="{{ route('subscription.plan') }}" class="plan-button plan-button-primary">
-                        Explore Premium <i class="bi bi-arrow-right"></i>
-                    </a>
-                </article>
-            </div>
-
-            <!-- Pro -->
-            <div class="col-lg-4">
-                <article class="maseco-plan shadow">
-                    <div class="plan-icon">
-                        <i class="bi bi-buildings"></i>
-                    </div>
-
-                    <h3>Pro</h3>
-                    <div class="plan-price">
-                        $299 <span>/ month</span>
-                    </div>
-                    <p class="plan-description">
-                        For growing production teams.
-                    </p>
-
-                    <hr>
-
-                    <ul class="plan-features">
-                        <li><i class="bi bi-check-circle-fill"></i> Everything in Premium</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Post-production support</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Advanced production workflows</li>
-                    </ul>
-
-                    
-                    <a href="{{ route('subscription.plan') }}" class="plan-button">
-                        Contact our team <i class="bi bi-arrow-right"></i>
-                    </a>
-                </article>
-            </div>
-
-        </div>
-    </div>
-</section>
 
 
 
@@ -1638,7 +1418,7 @@
     </div>
   </section> -->
 
-<section class="testimonial py-5 mb-5">
+<section class="testimonial py-5">
     <div class="container">
 
         <!-- Section Heading -->
@@ -1672,7 +1452,7 @@
                            style="color: rgba(45, 172, 146, 0.25);"></i>
                     </div>
 
-                    <p class="text-secondary lh-lg mb-4">
+                    <p>
                         Maseco made our sourcing process easier and more efficient.
                         The experience was smooth, and the team was very helpful.
                     </p>
@@ -1686,7 +1466,7 @@
 
                         <div>
                             <h6 class="mb-1 fw-semibold">Alex John Martin</h6>
-                            <small class="text-muted">Business Client</small>
+                            <small class="text-muted fs-12">Business Client</small>
                         </div>
                     </div>
 
@@ -1709,7 +1489,7 @@
                            style="color: rgba(45, 172, 146, 0.25);"></i>
                     </div>
 
-                    <p class="text-secondary lh-lg mb-4">
+                    <p>
                         We appreciate the quality and professionalism.
                         Communication was clear, and the overall experience
                         was excellent.
@@ -1724,7 +1504,7 @@
 
                         <div>
                             <h6 class="mb-1 fw-semibold">Sarah Williams</h6>
-                            <small class="text-muted">Verified Client</small>
+                            <small class="text-muted fs-12">Verified Client</small>
                         </div>
                     </div>
 
@@ -1747,7 +1527,7 @@
                            style="color: rgba(45, 172, 146, 0.25);"></i>
                     </div>
 
-                    <p class="text-secondary lh-lg mb-4">
+                    <p>
                         The team was responsive and professional throughout
                         the process. We look forward to continuing our
                         business relationship.
@@ -1762,7 +1542,7 @@
 
                         <div>
                             <h6 class="mb-1 fw-semibold">Michael Brown</h6>
-                            <small class="text-muted">Business Client</small>
+                            <small class="text-muted fs-12">Business Client</small>
                         </div>
                     </div>
 

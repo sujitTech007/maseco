@@ -5,17 +5,15 @@ Footer
 
 
 .footer{
-    /* background: url(../images/footer-bg.jpg) no-repeat center center / cover; */
-    background-color: #243F38 !important;
+	background: linear-gradient(110deg, #174F43 0%, #238B70 55%, #43B99A 100%);
+
+
 
     position: relative;
 
 }
 
 
-.footer {
-	margin-top: 60px;
-}
 
 footer p{
 	color: var(--white-color);
@@ -25,7 +23,7 @@ footer p{
 
 
 footer .footer-top {
-	padding: 20px 0 30px;
+	padding: 40px 0 30px;
 	position: relative;
 	z-index: 9;
 }
@@ -35,7 +33,10 @@ footer .footer-style-1 .footer-top {
 }
 
 footer .widget:first-child {
-	margin-bottom: 45px;
+	margin-bottom: 10px;
+}
+footer .copyright-footer li a{
+	font-size: 14px;
 }
 
 
@@ -212,7 +213,7 @@ footer .widget.opening-hours ul.time li {
 }
 
 footer .copyright-footer {
-	padding: 15px 0;
+	padding: 10px 0;
 	position: relative;
 	border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -243,11 +244,11 @@ footer .widget {
 
 footer .widget .footer-title {
 
-	font-size: 25px;
+	font-size: 20px;
 	font-weight: bold;
     color: var(--white-color);
 	text-transform: capitalize;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 footer .widget ul{
@@ -258,6 +259,7 @@ footer .widget ul#menu-useful-links li a,
 footer .widget ul#menu-textile-service li a {
 	padding-left: 24px;
     position: relative;
+	font-size: 14px;
 }
 
 footer .widget ul#menu-useful-links li a:before,
@@ -343,7 +345,7 @@ footer .footer-recent-post:last-child {
 }
 
 footer .widget ul li {
-	margin: 0 0 15px 0;
+	margin: 0 0 10px 0;
 }
 
 footer .widget ul li:last-child {
@@ -411,9 +413,7 @@ footer .footer-social ul li a {
 		padding: 30px;
 		border-radius: 10px 10px 0 0;
 	}
-	footer .widget:first-child {
-		margin-bottom: 20px;
-	}
+	
 	footer .widget ul,
 	footer .widget .footer-title{
 		margin-bottom: 10px;

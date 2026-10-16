@@ -1,6 +1,5 @@
 section.inner-banner {
 
-    height: 150px;
 
     background-size: cover;
 
@@ -19,44 +18,16 @@ section.inner-banner {
 
 
 section.inner-banner:before{
-
-    content: '';
-
-    width: 100%;
-
-    height: 100%;
-
-    background: rgba(39, 43, 54, 0.8);
-
-    position: absolute;
-
-    left: 0;
-
-    right: 0;
-
-    top: 0;
-
-}
-
-section.inner-banner .container {
-
-    position: absolute;
-
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    left: 0;
-
-    right: 0;
-
-    margin: 0 auto;
-
-    text-align: center;
+background: #238B70;
+background: linear-gradient(90deg, rgba(35, 139, 112, 0.8) 50%, rgba(67, 185, 154, 0.95) 100%);
 
 }
 
 
+section.inner-banner .inner-banner-heading{
+max-width: 850px;
+margin: 0 auto;
+}
 
 section.inner-banner h1{
 
@@ -1917,10 +1888,6 @@ form[action*="marketplace"] .form-label {
     color: #344e45;
 }
 
-form[action*="marketplace"] .btn {
-    font-size: 12px;
-    border-radius: 6px;
-}
 
 #workflowTrack {
     transition: transform .4s ease;
@@ -2623,7 +2590,7 @@ form[action*="marketplace"] .btn {
     border: 1px solid #dcebe5;
     border-radius: 50%;
     background: #fff;
-    color: #183d35;
+    color: var(--primary-color);
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
     display: flex;
     align-items: center;
@@ -2720,7 +2687,7 @@ form[action*="marketplace"] .btn {
 .maseco-services {
     padding: 95px 0 100px;
     background: #f3f5ef;
-    color: #183d35;
+    color: var(--primary-color);
     overflow: hidden;
 }
 
@@ -2749,7 +2716,7 @@ form[action*="marketplace"] .btn {
 
 .services-heading h2 {
     margin: 0;
-    color: #183d35;
+    color: var(--primary-color);
     font-size: clamp(34px, 3.4vw, 52px);
     font-weight: 700;
     line-height: 1.12;
@@ -2778,15 +2745,15 @@ form[action*="marketplace"] .btn {
     --bs-gutter-y: 22px;
 }
 
+
 .service-card {
     display: flex;
     flex-direction: column;
     height: 100%;
-    min-height: 350px;
-    padding: 27px 25px 25px;
+    padding: 20px;
     background: #fff;
     border: 1px solid rgba(24, 61, 53, 0.035);
-    border-radius: 25px;
+    border-radius: 20px;
     transition:
         transform 0.25s ease,
         box-shadow 0.25s ease;
@@ -2807,7 +2774,7 @@ form[action*="marketplace"] .btn {
     height: 52px;
     margin-bottom: 38px;
     border-radius: 50%;
-    color: #183d35;
+    color: var(--primary-color);
     font-size: 22px;
     flex-shrink: 0;
 }
@@ -2831,55 +2798,12 @@ form[action*="marketplace"] .btn {
 /* Card content */
 
 .service-card h3 {
-    margin: 0 0 20px;
-    color: #183d35;
-    font-size: 25px;
-    font-weight: 700;
-    line-height: 1.12;
-    letter-spacing: -0.8px;
+    color: var(--primary-color);
+    font-size: 22px;
 }
 
-.service-card p {
-    margin: 0 0 25px;
-    color: #435349;
-    font-size: 13px;
-    line-height: 1.55;
-}
-
-/* Card button */
-
-.service-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    align-self: flex-start;
-    margin-top: auto;
-    padding: 11px 18px;
-    background: #183d35;
-    border: 1px solid #183d35;
-    border-radius: 30px;
-    color: #fff;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 1.2;
-    text-decoration: none;
-    transition: background 0.2s ease, border-color 0.2s ease;
-}
-
-.service-button i {
-    font-size: 10px;
-    transition: transform 0.2s ease;
-}
-
-.service-button:hover {
-    background: #2dac92;
-    border-color: #2dac92;
-    color: #fff;
-}
-
-.service-button:hover i {
-    transform: translateX(3px);
+.maseco-services .service-card a.btn.theme_btn {
+    width: max-content;
 }
 
 /* Tablet */
@@ -2903,9 +2827,7 @@ form[action*="marketplace"] .btn {
         margin-bottom: 30px;
     }
 
-    .service-card h3 {
-        font-size: 23px;
-    }
+
 }
 
 /* Mobile */
@@ -2935,27 +2857,10 @@ form[action*="marketplace"] .btn {
         --bs-gutter-y: 14px;
     }
 
-    .service-card {
-        min-height: 320px;
-        padding: 23px 20px;
-        border-radius: 20px;
-    }
+  
 
-    .service-icon {
-        width: 46px;
-        height: 46px;
-        margin-bottom: 28px;
-        font-size: 19px;
-    }
+    
 
-    .service-card h3 {
-        font-size: 22px;
-        margin-bottom: 15px;
-    }
-
-    .service-card p {
-        font-size: 12px;
-    }
 }
 
 /* Accessibility */
@@ -2980,13 +2885,13 @@ form[action*="marketplace"] .btn {
 }
 
 .maseco-services .service-icon {
-    position: relative;
+      position: relative;
     top: 0;
     margin-top: 0;
-    margin-bottom: 38px;
+    margin-bottom: 10px;
     flex-shrink: 0;
-    width: 52px;
-    height: 52px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -3025,7 +2930,7 @@ padding: 10px;
 /* ===== Maseco Featured Suppliers ===== */
 .maseco-featured {
     --maseco-green: #2DAC92;
-    --maseco-green-dark: #183D35;
+    --maseco-green-dark: var(--primary-color);
     --maseco-text: #244B70;
     --maseco-muted: #75899D;
     --maseco-border: #DFE9EF;
@@ -3473,7 +3378,7 @@ padding: 10px;
         scroll-behavior: auto;
     }
 }
-```css
+
 /* ================================
    Maseco About Section
 ================================ */
@@ -3508,7 +3413,7 @@ padding: 10px;
 .maseco-about-title {
     max-width: 520px;
     margin: 0 0 22px;
-    color: #183d35;
+    color: var(--primary-color);
     font-size: clamp(34px, 3.2vw, 48px);
     font-weight: 750;
     line-height: 1.14;
@@ -3568,13 +3473,7 @@ padding: 10px;
     transform: translateX(4px);
 }
 
-/* Right image */
 
-.maseco-about-visual {
-    position: relative;
-    min-width: 0;
-    padding-bottom: 40px;
-}
 
 .maseco-about-photo {
     display: block;
@@ -3712,7 +3611,7 @@ padding: 10px;
 .maseco-journey {
     padding: 85px 0;
     background: #ffffff;
-    color: #183d35;
+    color: var(--primary-color);
 }
 
 .maseco-journey .journey-heading {
@@ -3734,7 +3633,7 @@ padding: 10px;
 
 .maseco-journey .journey-heading h2 {
     margin: 0 0 13px;
-    color: #183d35;
+    color: var(--primary-color);
     font-size: clamp(27px, 3vw, 38px);
     font-weight: 700;
     line-height: 1.2;
@@ -3803,7 +3702,7 @@ padding: 10px;
 
 .maseco-journey .journey-image-caption strong {
     display: block;
-    color: #183d35;
+    color: var(--primary-color);
     font-size: 13px;
     font-weight: 700;
 }
@@ -3853,45 +3752,19 @@ padding: 10px;
     display: block;
     margin-bottom: 6px;
     color: #2DAC92;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.3px;
+    font-size: 12px;
 }
 
 .maseco-journey .journey-step h3 {
-    margin: 0 0 9px;
-    color: #183d35;
-    font-size: 19px;
-    font-weight: 650;
-    line-height: 1.4;
+    margin: 0 0 10px;
+    color: var(--primary-color);
+    font-size: 22px;
 }
 
-.maseco-journey .journey-step p {
-    max-width: 500px;
-    margin: 0;
-    color: #718078;
-    font-size: 13px;
-    line-height: 1.85;
-}
+
 
 /* Link */
 
-.maseco-journey .journey-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 25px;
-    color: #248f7a;
-    font-size: 13px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: gap 0.2s ease;
-}
-
-.maseco-journey .journey-link:hover {
-    gap: 15px;
-    color: #183d35;
-}
 
 /* Tablet */
 
@@ -3966,7 +3839,7 @@ padding: 10px;
 .maseco-process {
     padding: 82px 0;
     background: #f2f8f5;
-    color: #183d35;
+    color: var(--primary-color);
     overflow: hidden;
 }
 
@@ -3995,7 +3868,7 @@ padding: 10px;
 
 .maseco-process .process-intro h2 {
     margin: 0 0 16px;
-    color: #183d35;
+    color: var(--primary-color);
     font-size: clamp(27px, 2.5vw, 36px);
     font-weight: 700;
     line-height: 1.18;
@@ -4006,12 +3879,7 @@ padding: 10px;
     color: #2DAC92;
 }
 
-.maseco-process .process-intro p {
-    margin: 0 0 23px;
-    color: #63766d;
-    font-size: 13px;
-    line-height: 1.9;
-}
+
 
 .maseco-process .process-cta {
     display: inline-flex;
@@ -4091,18 +3959,12 @@ padding: 10px;
 
 .maseco-process .process-step h3 {
     margin: 0 0 8px;
-    color: #183d35;
-    font-size: 14px;
+    color: var(--primary-color);
+    font-size: 18px;
     font-weight: 700;
     line-height: 1.5;
 }
 
-.maseco-process .process-step p {
-    margin: 0;
-    color: #657970;
-    font-size: 12px;
-    line-height: 1.8;
-}
 
 .maseco-process .process-arrow {
     display: flex;
@@ -4130,9 +3992,6 @@ padding: 10px;
         gap: 10px;
     }
 
-    .maseco-process .process-step h3 {
-        font-size: 13px;
-    }
 
     .maseco-process .process-arrow {
         font-size: 14px;
@@ -4164,9 +4023,7 @@ padding: 10px;
         font-size: 11px;
     }
 
-    .maseco-process .process-step h3 {
-        font-size: 14px;
-    }
+   
 
     .maseco-process .process-step p {
         font-size: 12px;
@@ -4180,22 +4037,25 @@ padding: 10px;
         transition: none !important;
     }
 }
-```css
+
 /* Maseco subscription section */
 .maseco-pricing {
     --maseco-green: #2DAC92;
-    --maseco-dark: #183d35;
+    --maseco-dark: var(--primary-color);
     --maseco-muted: #687d78;
     --maseco-border: #dce8e3;
 
     background: #f5f8f5;
-    padding: 85px 0 !important;
     color: var(--maseco-dark);
+}
+.pricing_row{
+    max-width: 1050px;
+    margin: 0 auto;
 }
 
 .pricing-heading {
     max-width: 760px;
-    margin: 0 auto 48px;
+    margin: 0 auto;
 }
 
 .pricing-eyebrow {
@@ -4465,7 +4325,7 @@ padding: 10px;
 
 .price-section .section-heading h2 {
     margin: 0 0 15px;
-    color: #183d35;
+    color: var(--primary-color);
     font-size: clamp(30px, 3vw, 42px);
     font-weight: 700;
     line-height: 1.2;
@@ -4544,7 +4404,7 @@ padding: 10px;
 /* Plan title */
 .price-section .price-content h5 {
     margin: 0 0 12px;
-    color: #183d35;
+    color: var(--primary-color);
     font-size: 23px;
     font-weight: 700;
     line-height: 1.4;
@@ -4568,7 +4428,7 @@ padding: 10px;
     margin: 0 0 22px;
     padding-bottom: 22px;
     border-bottom: 1px solid #e1eae5;
-    color: #183d35;
+    color: var(--primary-color);
     font-size: 43px;
     font-weight: 750;
     line-height: 1.2;
@@ -4664,8 +4524,8 @@ padding: 10px;
 /* Hover: dark green */
 .price-section .getStarted-btn .theme-btn:hover,
 .price-section .getStarted-btn .theme-btn:focus-visible {
-    background: #183d35;
-    border-color: #183d35;
+    background: var(--primary-color);
+    border-color: var(--primary-color);
     color: #ffffff;
     transform: translateY(-1px);
 }
@@ -4680,8 +4540,8 @@ padding: 10px;
 /* Premium button hover */
 .price-section .getStarted-btn .theme-btn.active:hover,
 .price-section .getStarted-btn .theme-btn.active:focus-visible {
-    background: #183d35;
-    border-color: #183d35;
+    background: var(--primary-color);
+    border-color: var(--primary-color);
     color: #ffffff;
 }
 
@@ -4739,7 +4599,7 @@ padding: 10px;
 .supplier-benefit-card {
     background: #f3faf7;
     border-color: #e0eee8 !important;
-    color: #183d35;
+    color: var(--primary-color);
     min-height: 65px;
     transition: all 0.25s ease;
 }
@@ -4753,7 +4613,6 @@ padding: 10px;
 
 
 
-```css
 /* ================================
    MASECO ADVANTAGES SECTION
 ================================ */
@@ -4787,7 +4646,7 @@ padding: 10px;
 
 .maseco-advantages-heading h2 {
     margin: 0 0 14px;
-    color: #183d35;
+    color: var(--primary-color);
     font-size: clamp(32px, 3vw, 48px);
     font-weight: 750;
     line-height: 1.2;
@@ -4850,7 +4709,7 @@ padding: 10px;
 
 .maseco-advantage-content h5 {
     margin: 0;
-    color: #183d35;
+    color: var(--primary-color);
     font-size: 17px;
 }
 
@@ -4961,7 +4820,7 @@ padding: 10px;
 }
 
 .material-detail-page button:hover {
-    background-color: #248f7b !important;
+    background-color: var(--primary-color) !important;
 }
 
 @media (max-width: 576px) {
@@ -5048,14 +4907,6 @@ padding: 10px;
     color:rgba(45, 172, 146, 1);
 }
 
-.theme_btn{
-    background: rgba(45, 172, 146, 1);;
-}
-.theme_btn:hover{
-    color: #fff;
-    background: rgba(45, 172, 146, 1);;
-}
-
 
 
 .testimonial {
@@ -5071,12 +4922,10 @@ padding: 10px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
 }
 
-.testimonial-box p {
-    font-size: 14px;
-}
 
 .testimonial-box h6 {
-    font-size: 15px;
+    font-size: 18px;
+    color: var(--primary-color);
 }
 
 /* Slick slider spacing */
@@ -5140,4 +4989,232 @@ form .form-control, form .form-select {
 form .form-label {
     font-size: 14px;
     font-weight: bold;
+}
+
+
+    .agent-box {
+
+      background: #2dac92;
+
+      color: #fff
+
+    }
+
+
+
+    .agent-box .agent-ratings {
+
+      position: absolute;
+
+      left: 0;
+
+      right: 0;
+
+      bottom: 0;
+
+      padding: 0 16px;
+
+      z-index: 2;
+
+    }
+
+
+
+    .agent-box .agent-img {
+
+      position: relative;
+
+    }
+
+
+
+    .agent-box .label {
+
+      display: inline-block;
+
+      padding: 8px 14px;
+
+      color: #fff;
+
+      font-size: 14px;
+
+      border-radius: 3px 3px 0 0;
+
+      background: #607D8B;
+    font-weight: 600;
+
+    }
+
+
+
+    .agent-box .agent-title {
+
+      margin-top: 5px;
+
+      margin-bottom: 0;
+
+      color: #fff;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+
+      display: -webkit-box;
+
+      -webkit-line-clamp: 1;
+
+      -webkit-box-orient: vertical;
+
+    }
+
+
+
+    .agent-box .agent-title a {
+    color: #fff;
+    text-transform: capitalize;
+    font-family: 'Rajdhani';
+}
+
+
+
+    .agent-info li {
+
+      padding: 5px 0
+
+    }
+
+
+
+  .agent-info li a {
+    color: #fff;
+    font-family: var(--font-rajdhani);
+}
+
+i.fas.fa-envelope {
+    background: white;
+    padding: 7px;
+    border-radius: 50%;
+    color: #2dac92;
+}
+i.fas.fa-phone.fa-rotate-90 {
+  background: white;
+    padding: 7px;
+    border-radius: 50%;
+    color: #2dac92;
+}
+
+
+    .btn-text {
+
+      font-size: 16px;
+
+      color: #fff;
+
+      padding-bottom: 10px;
+
+      display: block;
+
+    }
+
+    b, strong {
+    font-weight: bolder;
+    color: #2dac92;
+    font-size: 19px;
+    padding: 0px 0px 5px;
+    border-bottom: 2px solid green;
+}
+
+
+.supplier-directory-card {
+    overflow: hidden;
+    transition: box-shadow .2s ease, transform .2s ease;
+}
+
+.supplier-directory-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(38, 59, 58, .08);
+}
+
+.supplier-avatar {
+    width: 68px;
+    height: 68px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: #f1f5f3; */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.supplier-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.supplier-name {
+    color: var(--primary-color);
+    font-size: 18px;
+    overflow-wrap: anywhere;
+}
+
+.supplier-contact-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.supplier-contact-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    background: #e7f5ef;
+    border-radius: 8px;
+}
+
+.supplier-contact-link:hover {
+    color: #2DAC92;
+}
+
+.supplier-primary-btn {
+    background: #2DAC92;
+    color: #fff;
+    border: 1px solid #2DAC92;
+    font-size: 13px;
+    padding: 15px 0px;
+}
+
+.supplier-primary-btn:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.supplier-secondary-btn {
+    background: #fff;
+    color: #2DAC92;
+    border: 1px solid #2DAC92;
+    font-size: 13px;
+    padding: 9px 8px;
+}
+
+.supplier-secondary-btn:hover {
+    background: #e7f5ef;
+    color: var(--primary-color);
+}
+
+@media (max-width: 575px) {
+    .supplier-avatar {
+        width: 58px;
+        height: 58px;
+    }
+
+    .supplier-directory-card .p-3 {
+        padding: 14px !important;
+    }
 }
