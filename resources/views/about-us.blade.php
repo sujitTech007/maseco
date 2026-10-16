@@ -83,7 +83,7 @@
                 <div class="maseco-about-visual position-relative">
 
                     <img
-                        src="{{ asset('assets/images/manufacture.png') }}"
+                        src="{{ asset('assets/images/about-us.webp') }}"
                         alt="Textile manufacturing and fabric production"
                         class="maseco-about-photo"
                         loading="lazy"
