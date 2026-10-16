@@ -169,6 +169,16 @@
                 <div class="row g-4">
 
                     @forelse($materials as $material)
+                        @php
+                            $supplierAccount = $material->getRelation('supplier');
+                            $manufacturerAccount = $material->getRelation('manufacturer');
+                            $supplierName = optional($supplierAccount)->company_name
+                                ?: (optional($supplierAccount)->business_name
+                                    ?: (optional($supplierAccount)->name
+                                        ?: ($material->supplier ?: optional($manufacturerAccount)->company_name
+                                            ?: optional($manufacturerAccount)->name
+                                            ?: 'Supplier')));
+                        @endphp
                         <div class="col-xl-4 col-lg-6 col-md-12 col-sm-6">
 
                             <div class="card material-card h-100 border-0 shadow-sm">
@@ -215,8 +225,8 @@
 
                                         <p class="mb-2 text-muted">
                                             <i class="fa fa-building text_color_primary me-2"></i>
-                                            <span class="text-dark fw-semibold">Brand:</span>
-                                            {{ is_string($material->supplier) ? $material->supplier : (optional($material->supplier)->company_name ?? 'N/A') }}
+                                            <span class="text-dark fw-semibold">Supplier:</span>
+                                            {{ $supplierName }}
                                         </p>
 
                                         <p class="mb-0 text-muted">
@@ -247,8 +257,13 @@
                                                 data-bs-toggle="modal"
                                                 data-bs-target="#enquiryModal"
                                                 data-material-id="{{ $material->id }}"
-                                                data-material-name="{{ $material->name }}">
-                                                <i class="fa fa-envelope"></i>
+                                                data-material-name="{{ $material->name }}"
+                                                data-material-image="{{ asset('public/' . $material->image) }}"
+                                                data-material-price="{{ number_format($material->price, 2, '.', '') }}"
+                                                data-material-unit="{{ $material->unit }}"
+                                                data-material-supplier="{{ optional($material->supplier)->company_name ?? optional($material->supplier)->name ?? optional($material->manufacturer)->company_name ?? optional($material->manufacturer)->name ?? 'Supplier' }}"
+                                                data-material-location="{{ $material->location ?? '-' }}">
+                                                <i class="fa fa-envelope me-2"></i>
                                                 Contact {{ $contactType }}
                                             </button>
                                         @endif
