@@ -5,7 +5,7 @@
 <div class="page-content materials-page">
 
     <!-- Page Header -->
-    <div class="materials-page-header container">
+    <!-- <div class="materials-page-header container">
         <div class="breadcrumb-wrapper">
             <h3>Materials</h3>
             <div class="breadcrumb-links">
@@ -14,7 +14,7 @@
                 <span class="current">Materials</span>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="page-container p-3">
     <!-- Search and Filter -->

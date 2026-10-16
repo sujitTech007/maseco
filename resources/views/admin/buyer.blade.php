@@ -3,204 +3,160 @@
 <!-- Begin page -->
 
 
-
-<div class="page-content">
-
-
-
-
-
-  <div class="page-title-head d-flex align-items-center gap-2">
-
-    <div class="flex-grow-1">
-
-      <div class="breadcrumb-wrapper mb-1" style="font-size: 15px; font-weight: 500;">
-        <h3 class="mb-1">Buyer</h3>
-
-        <a href="https://maseco.ca/UAT/admin/dashboard" style="color:#555; text-decoration:none;">
-          Dashboard
-        </a>
-
-        <span style="padding:0 6px; color:#999; font-size:14px;">
-          ▶
-        </span>
-
-        <span style="color:#2DAC92;">
-          Buyer
-        </span>
-
-      </div>
-    </div>
-
-  </div>
-
-  <div class="page-container p-3">
-
-
-
-    <div class="meetingPpage">
-
-      <div class="row">
-
-        <div class="col-md-12">
-
-
-
-          <div class="card" style="
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-    padding: 0px;
-    border-radius: 20px;
-">
-
-
-
-
-            <div class="card-body p-0 tableCustom">
-
-
-
-              <div class="table-responsive pt-2">
-                                  <div class="dt-layout-row">
-
-                    <div class="dt-layout-cell dt-layout-start">
-
-
-
+<div class="page-content buyer-page">
+    <!-- <div class="page-title-head d-flex align-items-center gap-2">
+        <div class="flex-grow-1">
+            <div class="buyer-heading">
+                <div>
+                    <div class="buyer-breadcrumb">
+                        <a href="https://maseco.ca/UAT/admin/dashboard">Dashboard</a>
+                        <span class="mx-2">/</span>
+                        <span class="current">Buyer Management</span>
                     </div>
-
-                    <div class="dt-layout-cell dt-layout-end">
-
-                      <div class="dt-search"><label for="dt-search-0">Search:</label><input type="search" class="dt-input" id="dt-search-0" placeholder="" aria-controls="complex-header-datatable"></div>
-
-                    </div>
-
-                  </div>
-
-                <table class="table table-custom table-centered table-sm table-nowrap table-hover mb-0 dataTable" style="width: 100%;">
-
-
-
-                  <thead>
-
-                    <tr>
-
-                      <th>S No.</th>
-
-                      <th>Name</th>
-
-                      <th>Email</th>
-
-                      <th>Mobile </th>
-
-                      <th>Status</th>
-
-                      <th>Actions</th>
-
-                    </tr>
-
-                  </thead>
-
-                  <tbody>
-
-                    @foreach($users as $user)
-
-                    <tr>
-
-                      <td>
-
-                        <h5 class="fs-14 mt-1 fw-normal">{{ $loop->iteration }}</h5>
-
-                      </td>
-
-
-
-                      <td>
-
-                        <div class="d-flex align-items-center">
-
-
-
-                          <div>
-
-                            <h5 class="fs-14 mt-1">{{ $user->name }}</h5>
-
-                          </div>
-
-                        </div>
-
-                      </td>
-
-                      <td>
-
-                        <h5 class="fs-14 mt-1 fw-normal">{{ $user->email }}</h5>
-
-                      </td>
-
-                      <td>
-
-                        <h5 class="fs-14 mt-1 fw-normal">{{ $user->phone }}</h5>
-
-                      </td>
-
-
-
-                      <td>
-
-                        <div class="form-check form-switch">
-
-                          <input class="form-check-input user-status-toggle" type="checkbox" data-id="{{ $user->id }}" {{ $user->status == '1' ? 'checked' : '' }}>
-
-                          <span class="badge bg-{{ $user->status == '1' ? 'success' : 'danger' }} ms-2">{{ $user->status == '1' ? 'Active' : 'Inactive' }}</span>
-
-                        </div>
-
-                      </td>
-
-                      <td>
-
-                        <div class="actionBtn">
-
-                          <a href="javascript:void(0);" class="dropdown-item viewBtn" data-user='@json($user)'><i class="ri-eye-line"></i></a>
-
-                        </div>
-
-                      </td>
-
-                    </tr>
-
-                    @endforeach
-
-                    <!-- More rows as needed -->
-
-                  </tbody>
-
-                </table>
-
-
-
-              </div> <!-- end table-responsive-->
-
-
-
-            </div> <!-- end card-body-->
-
-          </div>
-
+                    <h3>Buyer Management</h3>
+                    <p class="buyer-subtitle">
+                        Manage buyer accounts and monitor account activity.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="page-container p-3">
+       @php
+    $buyerTotal = $users->count();
+    $buyerActive = $users->where('status', '1')->count();
+    $buyerInactive = $buyerTotal - $buyerActive;
+@endphp
+
+        <div class="buyer-overview">
+            <div class="buyer-stat">
+                <div class="buyer-stat-icon">
+                    <i class="ri-group-line"></i>
+                </div>
+                <div>
+                    <div class="buyer-stat-label">Total Buyers</div>
+                    <h4 class="buyer-stat-value">{{ $buyerTotal }}</h4>
+                </div>
+            </div>
+
+            <div class="buyer-stat">
+                <div class="buyer-stat-icon">
+                    <i class="ri-user-follow-line"></i>
+                </div>
+                <div>
+                    <div class="buyer-stat-label">Active Buyers</div>
+                    <h4 class="buyer-stat-value">{{ $buyerActive }}</h4>
+                </div>
+            </div>
+
+            <div class="buyer-stat">
+                <div class="buyer-stat-icon">
+                    <i class="ri-user-unfollow-line"></i>
+                </div>
+                <div>
+                    <div class="buyer-stat-label">Inactive Buyers</div>
+                    <h4 class="buyer-stat-value">{{ $buyerInactive }}</h4>
+                </div>
+            </div>
         </div>
 
+        <div class="buyer-panel">
+            <div class="buyer-panel-header">
+                <div>
+                    <h5>Registered Buyers</h5>
+                    <p>View buyer details and manage account status.</p>
+                </div>
 
+                <div class="buyer-search-wrap">
+                    <i class="ri-search-line"></i>
+                    <input
+                        type="search"
+                        class="dt-input buyer-search"
+                        id="dt-search-0"
+                        placeholder="Search buyers..."
+                        aria-label="Search buyers"
+                        aria-controls="complex-header-datatable"
+                    >
+                </div>
+            </div>
 
-      </div>
+            <div class="buyer-table-wrap">
+                <table class="table table-custom table-centered table-sm table-hover mb-0 dataTable"
+                       id="complex-header-datatable"
+                       style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>S No.</th>
+                            <th>Buyer</th>
+                            <th>Email</th>
+                            <th>Mobile</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
 
+                    <tbody>
+                        @forelse($users as $user)
+                            <tr>
+                                <td>
+                                    <p class="buyer-cell-text">{{ $loop->iteration }}</p>
+                                </td>
+
+                                <td>
+                                    <p class="buyer-name">{{ $user->name }}</p>
+                                </td>
+
+                                <td>
+                                    <p class="buyer-cell-text">{{ $user->email }}</p>
+                                </td>
+
+                                <td>
+                                    <p class="buyer-cell-text">{{ $user->phone }}</p>
+                                </td>
+
+                                <td>
+                                    <div class="d-flex align-items-center flex-wrap">
+                                        <div class="form-check form-switch mb-0">
+                                            <input
+                                                class="form-check-input user-status-toggle"
+                                                type="checkbox"
+                                                data-id="{{ $user->id }}"
+                                                {{ $user->status == '1' ? 'checked' : '' }}
+                                            >
+                                        </div>
+
+                                        <span class="buyer-status {{ $user->status == '1' ? 'bg-success' : 'bg-danger' }}">
+                                            {{ $user->status == '1' ? 'Active' : 'Inactive' }}
+                                        </span>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="actionBtn">
+                                        <a href="javascript:void(0);"
+                                           class="dropdown-item viewBtn"
+                                           data-user='@json($user)'
+                                           aria-label="View buyer {{ $user->name }}"
+                                           title="View buyer details">
+                                            <i class="ri-eye-line"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="6" class="buyer-empty">
+                                    No buyers found.
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-
-
-
-
-
-  </div> <!-- container -->
-
-
+</div>
 
   <!-- User Details Modal -->
 

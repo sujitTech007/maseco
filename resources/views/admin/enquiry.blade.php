@@ -3,55 +3,125 @@
 <!-- Begin page -->
 
 
-
 <div class="page-content enquiry-page">
 
     {{-- Page Heading --}}
-    <div class="enquiry-page-header ps-3">
-        <h3>Enquiry</h3>
-
-        <div class="enquiry-breadcrumb">
-            <a href="{{ url('/admin/dashboard') }}">Dashboard</a>
-            <span class="breadcrumb-arrow">▶</span>
-            <span class="current">Enquiry</span>
+    <!-- <div class="enquiry-page-header">
+        <div>
+            <h3>Enquiries</h3>
+            <div class="enquiry-breadcrumb">
+                <a href="{{ url('/admin/dashboard') }}">Dashboard</a>
+                <span>›</span>
+                <span class="current">Enquiries</span>
+            </div>
         </div>
-    </div>
+    </div> -->
 
-    <div class="enquiry-container page-container p-3">
+    @php
+        $enquiryCollection = collect($enquiries ?? []);
+
+        $pendingCount = $enquiryCollection->filter(function ($item) {
+            return strtolower((string) ($item->status ?? 'pending')) === 'pending';
+        })->count();
+
+        $inProgressCount = $enquiryCollection->filter(function ($item) {
+            return in_array(
+                strtolower((string) ($item->status ?? '')),
+                ['in progress', 'processing', 'reviewing']
+            );
+        })->count();
+
+        $completedCount = $enquiryCollection->filter(function ($item) {
+            return in_array(
+                strtolower((string) ($item->status ?? '')),
+                ['completed', 'approved', 'resolved', 'closed']
+            );
+        })->count();
+    @endphp
+
+    <div class="enquiry-container page-container">
+
+        {{-- Summary --}}
+        <div class="row g-3 enquiry-summary">
+
+            <div class="col-12 col-sm-6 col-xl-4">
+                <div class="enquiry-stat">
+                    <div class="enquiry-stat-icon total">
+                        <i class="ri-file-list-3-line"></i>
+                    </div>
+                    <div>
+                        <p>Total Enquiries</p>
+                        <h4>{{ $enquiryCollection->count() }}</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-xl-4">
+                <div class="enquiry-stat">
+                    <div class="enquiry-stat-icon pending">
+                        <i class="ri-time-line"></i>
+                    </div>
+                    <div>
+                        <p>Pending</p>
+                        <h4>{{ $pendingCount }}</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-xl-4">
+                <div class="enquiry-stat">
+                    <div class="enquiry-stat-icon completed">
+                        <i class="ri-checkbox-circle-line"></i>
+                    </div>
+                    <div>
+                        <p>Completed</p>
+                        <h4>{{ $completedCount }}</h4>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
         {{-- Enquiry Table Card --}}
         <div class="enquiry-card">
+
+            <div class="enquiry-card-heading">
+                <div>
+                    <h5>All Enquiries</h5>
+                    <p>Review buyer requests, materials and expected prices.</p>
+                </div>
+
+                <span class="enquiry-total-label">
+                    {{ $enquiryCollection->count() }}
+                    {{ $enquiryCollection->count() === 1 ? 'record' : 'records' }}
+                </span>
+            </div>
 
             {{-- Table Controls --}}
             <div class="enquiry-table-controls">
 
                 <div class="enquiry-length">
-                    <label for="dt-length-0">Show</label>
+                    <label for="enquiry-page-size">Show</label>
 
-                    <select
-                        aria-controls="textile-enquiry-table"
-                        class="dt-input"
-                        id="dt-length-0"
-                    >
+                    <select class="enquiry-control"
+                            id="enquiry-page-size">
                         <option value="10">10</option>
                         <option value="25">25</option>
                         <option value="50">50</option>
                         <option value="100">100</option>
+                        <option value="all">All</option>
                     </select>
 
                     <span>entries</span>
                 </div>
 
                 <div class="enquiry-search">
-                    <label for="dt-search-0">Search</label>
-
-                    <input
-                        type="search"
-                        class="dt-input"
-                        id="dt-search-0"
-                        placeholder="Search enquiries..."
-                        aria-controls="textile-enquiry-table"
-                    >
+                    <i class="ri-search-line"></i>
+                    <input type="search"
+                           class="enquiry-control"
+                           id="enquiry-search-input"
+                           placeholder="Search enquiries..."
+                           aria-label="Search enquiries">
                 </div>
 
             </div>
@@ -59,94 +129,227 @@
             {{-- Table --}}
             <div class="table-responsive enquiry-table-wrapper">
 
-                <table
-                    class="table table-custom table-centered table-hover mb-0 dataTable"
-                    id="textile-enquiry-table"
-                    style="width: 100%;"
-                >
+                <table class="table enquiry-table align-middle mb-0"
+                       id="textile-enquiry-table">
 
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>User</th>
+                            <th>Enquiry ID</th>
+                            <th>Buyer</th>
                             <th>Material</th>
                             <th>Quantity</th>
                             <th>Expected Price</th>
                             <th>Status</th>
-                            <th>Date</th>
+                            <th>Date Submitted</th>
                         </tr>
                     </thead>
 
-                    <tbody>
-                        @foreach(($enquiries ?? []) as $e)
-                        <tr>
+                    <tbody id="enquiry-table-body">
+                        @forelse(($enquiries ?? []) as $e)
+                            @php
+                                $enquiryStatus = strtolower(trim((string) ($e->status ?? 'pending')));
 
-                            <td>
-                                <span class="enquiry-id">
-                                    {{ $e->id }}
-                                </span>
-                            </td>
+                                $statusClass = match ($enquiryStatus) {
+                                    'pending' => 'pending',
+                                    'in progress', 'processing', 'reviewing' => 'progress',
+                                    'completed', 'approved', 'resolved', 'closed' => 'completed',
+                                    'rejected', 'cancelled', 'declined' => 'rejected',
+                                    default => 'other',
+                                };
 
-                            <td>
-                                <span class="enquiry-user">
-                                    {{ optional($e->user)->name ?? 'User #'.$e->user_id }}
-                                </span>
-                            </td>
+                                $materialName = optional(
+                                    \App\Models\Material::find($e->material_id)
+                                )->name ?? '-';
 
-                            <td>
-                                {{ optional(\App\Models\Material::find($e->material_id))->name ?? '-' }}
-                            </td>
+                                $buyerName = optional($e->user)->name
+                                    ?? 'User #'.$e->user_id;
 
-                            <td>
-                                {{ $e->quantity ?? '-' }}
-                            </td>
+                                $submittedDate = $e->created_at?->format('d M Y') ?? '-';
+                            @endphp
 
-                            <td>
-                                <span class="enquiry-price">
-                                    ${{ number_format($e->expected_price ?? 0, 2) }}
-                                </span>
-                            </td>
+                            <tr class="enquiry-data-row">
+                                <td data-label="Enquiry ID">
+                                    <span class="enquiry-id">#{{ $e->id }}</span>
+                                </td>
 
-                            <td>
-                                @php
-                                    $enquiryStatus = strtolower($e->status ?? 'pending');
-                                @endphp
+                                <td data-label="Buyer">
+                                    <div class="enquiry-buyer">
+                                        <span class="enquiry-avatar">
+                                            {{ strtoupper(substr($buyerName, 0, 1)) }}
+                                        </span>
+                                        <span class="enquiry-user">{{ $buyerName }}</span>
+                                    </div>
+                                </td>
 
-                                <span class="enquiry-status status-{{ $enquiryStatus }}">
-                                    {{ ucfirst($enquiryStatus) }}
-                                </span>
-                            </td>
+                                <td data-label="Material">
+                                    <span class="enquiry-material">{{ $materialName }}</span>
+                                </td>
 
-                            <td>
-                                <span class="enquiry-date">
-                                    {{ $e->created_at?->format('d M Y') ?? '-' }}
-                                </span>
-                            </td>
+                                <td data-label="Quantity">
+                                    {{ $e->quantity ?? '-' }}
+                                </td>
 
-                        </tr>
-                        @endforeach
+                                <td data-label="Expected Price">
+                                    <span class="enquiry-price">
+                                        ${{ number_format((float) ($e->expected_price ?? 0), 2) }}
+                                    </span>
+                                </td>
+
+                                <td data-label="Status">
+                                    <span class="enquiry-status status-{{ $statusClass }}">
+                                        <span class="status-dot"></span>
+                                        {{ ucfirst($enquiryStatus) }}
+                                    </span>
+                                </td>
+
+                                <td data-label="Date Submitted">
+                                    <span class="enquiry-date">{{ $submittedDate }}</span>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr class="enquiry-empty-row">
+                                <td colspan="7">
+                                    <div class="enquiry-empty">
+                                        <i class="ri-inbox-line"></i>
+                                        <h5>No enquiries yet</h5>
+                                        <p>Buyer enquiries will appear here when submitted.</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforelse
                     </tbody>
 
                 </table>
 
-                @if(count($enquiries ?? []) === 0)
-                    <div class="enquiry-empty">
-                        No enquiries found.
-                    </div>
-                @endif
+                <div class="enquiry-no-results" id="enquiry-no-results" hidden>
+                    <i class="ri-search-line"></i>
+                    <p>No enquiries match your search.</p>
+                </div>
 
             </div>
 
-            <!-- {{-- Footer: DataTables can populate its own information and pagination here --}}
+            {{-- Table Footer --}}
             <div class="enquiry-table-footer">
-                <div id="complex-header-datatable_info" class="dt-info"></div>
-                <div class="dt-paging"></div>
-            </div> -->
+                <span id="enquiry-table-info">Showing 0 entries</span>
+
+                <div class="enquiry-pagination" id="enquiry-pagination"></div>
+            </div>
 
         </div>
-
     </div>
-
 </div>
 
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const page = document.querySelector('.enquiry-page');
+    if (!page) return;
+
+    const tableBody = page.querySelector('#enquiry-table-body');
+    const searchInput = page.querySelector('#enquiry-search-input');
+    const pageSizeSelect = page.querySelector('#enquiry-page-size');
+    const info = page.querySelector('#enquiry-table-info');
+    const pagination = page.querySelector('#enquiry-pagination');
+    const noResults = page.querySelector('#enquiry-no-results');
+
+    if (!tableBody || !searchInput || !pageSizeSelect || !info || !pagination) {
+        return;
+    }
+
+    const rows = Array.from(
+        tableBody.querySelectorAll('tr.enquiry-data-row')
+    );
+
+    let currentPage = 1;
+
+    function renderTable() {
+        const query = searchInput.value.trim().toLowerCase();
+
+        const filteredRows = rows.filter(function (row) {
+            return row.textContent.toLowerCase().includes(query);
+        });
+
+        const pageSize = pageSizeSelect.value === 'all'
+            ? Math.max(filteredRows.length, 1)
+            : parseInt(pageSizeSelect.value, 10);
+
+        const total = filteredRows.length;
+        const totalPages = Math.max(1, Math.ceil(total / pageSize));
+
+        currentPage = Math.min(currentPage, totalPages);
+
+        const startIndex = (currentPage - 1) * pageSize;
+        const endIndex = Math.min(startIndex + pageSize, total);
+
+        rows.forEach(function (row) {
+            row.hidden = true;
+        });
+
+        filteredRows.slice(startIndex, endIndex).forEach(function (row) {
+            row.hidden = false;
+        });
+
+        if (noResults) {
+            noResults.hidden = total !== 0 || rows.length === 0;
+        }
+
+        if (total === 0) {
+            info.textContent = 'Showing 0 entries';
+        } else {
+            info.textContent =
+                'Showing ' + (startIndex + 1) +
+                ' to ' + endIndex +
+                ' of ' + total + ' entries';
+        }
+
+        pagination.replaceChildren();
+
+        function addButton(label, pageNumber, disabled, active) {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.textContent = label;
+            button.disabled = disabled;
+
+            if (active) button.classList.add('active');
+
+            button.addEventListener('click', function () {
+                currentPage = pageNumber;
+                renderTable();
+            });
+
+            pagination.appendChild(button);
+        }
+
+        addButton('‹', Math.max(1, currentPage - 1), currentPage === 1, false);
+
+        for (let number = 1; number <= totalPages; number++) {
+            addButton(
+                String(number),
+                number,
+                false,
+                number === currentPage
+            );
+        }
+
+        addButton(
+            '›',
+            Math.min(totalPages, currentPage + 1),
+            currentPage === totalPages || total === 0,
+            false
+        );
+    }
+
+    searchInput.addEventListener('input', function () {
+        currentPage = 1;
+        renderTable();
+    });
+
+    pageSizeSelect.addEventListener('change', function () {
+        currentPage = 1;
+        renderTable();
+    });
+
+    renderTable();
+});
+</script>
 @include('admin.Include.footer')

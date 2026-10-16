@@ -1,242 +1,174 @@
 @include('admin.Include.header')
 
 
-
-<div class="page-content">
-
-
-
-
-
-  <div class="page-title-head d-flex align-items-center gap-2">
-
-    <div class="flex-grow-1">
-
-      <div class="breadcrumb-wrapper mb-1" style="font-size: 15px; font-weight: 500;">
-        <h3 class="mb-1">Seller</h3>
-
-        <a href="https://maseco.ca/UAT/admin/dashboard" style="color:#555; text-decoration:none;">
-          Dashboard
-        </a>
-
-        <span style="padding:0 6px; color:#999; font-size:14px;">
-          ▶
-        </span>
-
-        <span style="color:#2DAC92;">
-          Seller
-        </span>
-
-      </div>
-    </div>
-
-  </div>
-
-  <div class="page-container p-3">
-
-    <div class="meetingPpage">
-
-      <div class="row">
-
-        <div class="col-md-12">
-
-
-
-          <div class="card" style="
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-    padding: 0px;
-    border-radius: 20px;
-">
-
-
-
-            <div class="card tableCustom mb-0" style="
-    box-shadow: 0 0 2px rgb(0 0 0 / 0%);
-    padding: 0px;
-    border-radius: 20px;
-">
-
-
-
-              <div class="table-responsive">
-
-               <div class="dt-layout-row">
-
-                    <div class="dt-layout-cell dt-layout-start">
-
-
-                    </div>
-
-                    <div class="dt-layout-cell dt-layout-end">
-
-                      <div class="dt-search"><label for="dt-search-0">Search:</label><input type="search" class="dt-input" id="dt-search-0" placeholder="" aria-controls="complex-header-datatable"></div>
-
-                    </div>
-
-                  </div>
-                <table class="table table-custom table-centered table-sm table-nowrap table-hover mb-0 dataTable" style="width: 100%;">
-
-                 
-
-                  <thead>
-
-                    <tr>
-                      <th>S No.</th>
-                      <th>Name</th>
-
-                      <th>Email</th>
-
-                      <th>Mobile No</th>
-
-                      <th>Company Name</th>
-
-                      <th>Status</th>
-
-                      <th>Actions</th>
-
-                    </tr>
-
-                  </thead>
-
-                  <tbody>
-
-                    @foreach($suppliers as $supplier)
-
-                    <tr>
-                      <td>
-
-                        <h5 class="fs-14 mt-1 fw-normal">{{ $loop->iteration }}</h5>
-
-                      </td>
-                      <td>
-
-                        <div class="d-flex align-items-center">
-
-
-
-                          <div>
-
-                            <h5 class="fs-14 mt-1">{{ $supplier->name }}</h5>
-
-                          </div>
-
-                        </div>
-
-                      </td>
-
-                      <td>
-
-                        <h5 class="fs-14 mt-1 fw-normal">{{ $supplier->email }}</h5>
-
-                      </td>
-
-                      <td>
-
-                        <h5 class="fs-14 mt-1 fw-normal">{{ $supplier->phone }}</h5>
-
-                      </td>
-
-                      <td>
-
-                        <h5 class="fs-14 mt-1 fw-normal">{{ $supplier->company_name }}</h5>
-
-                      </td>
-
-
-
-                      <td>
-
-                        <div class="form-check form-switch">
-
-                          <input class="form-check-input supplier-status-toggle" type="checkbox" data-id="{{ $supplier->id }}" {{ $supplier->status == '1' ? 'checked' : '' }}>
-
-                          <span class="badge bg-{{ $supplier->status == '1' ? 'success' : 'danger' }} ms-2">{{ $supplier->status == '1' ? 'Active' : 'Inactive' }}</span>
-
-                        </div>
-
-                      </td>
-
-                      <td>
-
-                        <div class="actionBtn">
-
-                          <a href="javascript:void(0);" class="dropdown-item viewSupplierBtn" data-supplier='@json($supplier)'><i class="ri-eye-line"></i></a>
-
-                        </div>
-
-                      </td>
-
-                    </tr>
-
-                    @endforeach
-
-                    <!-- More rows as needed -->
-
-                  </tbody>
-
-                </table>
-
-
-
-
-
-                <!-- end table -->
-
-              </div>
-
-
-
-
-
+<div class="page-content seller-page">
+
+    <!-- <div class="page-title-head d-flex align-items-center gap-2">
+        <div class="flex-grow-1">
+            <div class="seller-heading">
+                <div class="seller-breadcrumb">
+                    <a href="https://maseco.ca/UAT/admin/dashboard">Dashboard</a>
+                    <span class="mx-2">/</span>
+                    <span class="current">Seller Management</span>
+                </div>
+
+                <h3>Seller Management</h3>
+                <p class="seller-subtitle">
+                    Manage seller accounts and monitor supplier activity.
+                </p>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="page-container p-3">
+
+        @php
+            $sellerTotal = $suppliers->count();
+            $sellerActive = $suppliers->where('status', '1')->count();
+            $sellerInactive = $sellerTotal - $sellerActive;
+        @endphp
+
+        <div class="seller-overview">
+
+            <div class="seller-stat">
+                <div class="seller-stat-icon">
+                    <i class="ri-store-2-line"></i>
+                </div>
+                <div>
+                    <div class="seller-stat-label">Total Sellers</div>
+                    <h4 class="seller-stat-value">{{ $sellerTotal }}</h4>
+                </div>
             </div>
 
+            <div class="seller-stat">
+                <div class="seller-stat-icon">
+                    <i class="ri-user-follow-line"></i>
+                </div>
+                <div>
+                    <div class="seller-stat-label">Active Sellers</div>
+                    <h4 class="seller-stat-value">{{ $sellerActive }}</h4>
+                </div>
+            </div>
 
-
-
-
-          </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            <div class="seller-stat">
+                <div class="seller-stat-icon">
+                    <i class="ri-user-unfollow-line"></i>
+                </div>
+                <div>
+                    <div class="seller-stat-label">Inactive Sellers</div>
+                    <h4 class="seller-stat-value">{{ $sellerInactive }}</h4>
+                </div>
+            </div>
 
         </div>
 
+        <div class="seller-panel">
 
+            <div class="seller-panel-header">
+                <div>
+                    <h5>Registered Sellers</h5>
+                    <p>Review seller details and manage account status.</p>
+                </div>
 
-      </div>
+                <div class="seller-search-wrap">
+                    <i class="ri-search-line"></i>
+                    <input
+                        type="search"
+                        class="dt-input seller-search"
+                        id="dt-search-0"
+                        placeholder="Search sellers..."
+                        aria-label="Search sellers"
+                        aria-controls="complex-header-datatable"
+                    >
+                </div>
+            </div>
 
+            <div class="seller-table-wrap">
+                <table
+                    class="table table-custom table-centered table-sm table-hover mb-0 dataTable"
+                    id="complex-header-datatable"
+                    style="width: 100%;"
+                >
+                    <thead>
+                        <tr>
+                            <th>S No.</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Mobile No.</th>
+                            <th>Company Name</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @forelse($suppliers as $supplier)
+                            <tr>
+                                <td>
+                                    <p class="seller-cell-text">{{ $loop->iteration }}</p>
+                                </td>
+
+                                <td>
+                                    <p class="seller-name">{{ $supplier->name }}</p>
+                                </td>
+
+                                <td>
+                                    <p class="seller-cell-text">{{ $supplier->email }}</p>
+                                </td>
+
+                                <td>
+                                    <p class="seller-cell-text">{{ $supplier->phone }}</p>
+                                </td>
+
+                                <td>
+                                    <p class="seller-cell-text">{{ $supplier->company_name }}</p>
+                                </td>
+
+                                <td>
+                                    <div class="d-flex align-items-center flex-wrap">
+                                        <div class="form-check form-switch mb-0">
+                                            <input
+                                                class="form-check-input supplier-status-toggle"
+                                                type="checkbox"
+                                                data-id="{{ $supplier->id }}"
+                                                {{ $supplier->status == '1' ? 'checked' : '' }}
+                                            >
+                                        </div>
+
+                                        <span class="seller-status {{ $supplier->status == '1' ? 'bg-success' : 'bg-danger' }}">
+                                            {{ $supplier->status == '1' ? 'Active' : 'Inactive' }}
+                                        </span>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="actionBtn">
+                                        <a
+                                            href="javascript:void(0);"
+                                            class="dropdown-item viewSupplierBtn"
+                                            data-supplier='@json($supplier)'
+                                            aria-label="View seller {{ $supplier->name }}"
+                                            title="View seller details"
+                                        >
+                                            <i class="ri-eye-line"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="7" class="seller-empty">
+                                    No sellers found.
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
     </div>
-
-
-
-
-
-  </div> <!-- container -->
-
-
+</div>
 
 
 

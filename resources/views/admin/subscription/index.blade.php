@@ -1,124 +1,234 @@
 @include('admin.Include.header')
+<div class="page-content subscription-page">
+    <div class="container-fluid px-3 px-lg-4">
 
-<div class="page-content">
+        {{-- Page Heading --}}
+        <div class="subscription-heading">
+            <div>
+                <h3>Subscription Plans</h3>
+                <div class="subscription-breadcrumb">
+                    <a href="{{ url('/admin/dashboard') }}">Dashboard</a>
+                    <span>›</span>
+                    <span class="current">Subscription Plans</span>
+                </div>
+            </div>
 
-
-
-    <div class="container mt-0">
-
-        <div class="breadcrumb-wrapper mb-3" style="font-size: 15px; font-weight: 500;">
-            <h3 class="mb-1">Subscription Plans</h3>
-
-            <a href="https://maseco.ca/UAT/admin/dashboard" style="color:#555; text-decoration:none;">
-                Dashboard
+            <a href="{{ route('admin.subscription.create') }}"
+               class="btn subscription-add-btn">
+                <i class="fas fa-plus me-2"></i> Add Plan
             </a>
-
-            <span style="padding:0 6px; color:#999; font-size:14px;">
-                ▶
-            </span>
-
-            <span style="color:#2DAC92;">
-                Subscripton Plans
-            </span>
-
         </div>
-        <a href="{{ route('admin.subscription.create') }}" class="btn btn-primary mb-3 addpln">Add Plan</a>
 
+        {{-- Success Message --}}
         @if(session('success'))
-
-        <div class="alert alert-success">{{ session('success') }}</div>
-
+            <div class="alert alert-success subscription-alert">
+                <i class="fas fa-check-circle me-2"></i>
+                {{ session('success') }}
+            </div>
         @endif
 
-        <table class="table table-bordered" style="
-    background: white;
-    
- box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);">
+        {{-- Summary Cards --}}
+        @php
+            $subscriptionPlans = collect($plans);
+            $activePlans = $subscriptionPlans->filter(function ($plan) {
+                return strtolower((string) $plan->status) === 'active';
+            })->count();
 
-            <thead>
+            $inactivePlans = $subscriptionPlans->count() - $activePlans;
+        @endphp
 
-                <tr>
+        <div class="row g-3 mb-4">
+            <div class="col-12 col-sm-6 col-xl-4">
+                <div class="subscription-stat">
+                    <div class="subscription-stat-icon total">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div>
+                        <p>Total Plans</p>
+                        <h4>{{ $subscriptionPlans->count() }}</h4>
+                    </div>
+                </div>
+            </div>
 
-                    <th>ID</th>
+            <div class="col-12 col-sm-6 col-xl-4">
+                <div class="subscription-stat">
+                    <div class="subscription-stat-icon active">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <p>Active Plans</p>
+                        <h4>{{ $activePlans }}</h4>
+                    </div>
+                </div>
+            </div>
 
-                    <th>Name</th>
+            <div class="col-12 col-sm-6 col-xl-4">
+                <div class="subscription-stat">
+                    <div class="subscription-stat-icon inactive">
+                        <i class="fas fa-pause-circle"></i>
+                    </div>
+                    <div>
+                        <p>Inactive Plans</p>
+                        <h4>{{ $inactivePlans }}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                    <th>Price</th>
+        {{-- Plans Table --}}
+        <div class="subscription-table-card">
+            <div class="subscription-table-header">
+                <div>
+                    <h5>All Subscription Plans</h5>
+                    <p>Manage plan pricing, features and commission rates.</p>
+                </div>
 
-                    <th>Duration</th>
+                <div class="subscription-count">
+                    {{ $subscriptionPlans->count() }}
+                    {{ $subscriptionPlans->count() === 1 ? 'plan' : 'plans' }}
+                </div>
+            </div>
 
-                    <th>Features</th>
+            <div class="table-responsive">
+                <table class="table subscription-table align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Plan Details</th>
+                            <th>Price</th>
+                            <th>Duration</th>
+                            <th>Features</th>
+                            <th>Commission</th>
+                            <th>Status</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
 
-                    <th>Commission</th>
+                    <tbody>
+                        @forelse($plans as $plan)
+                            @php
+                                $planStatus = strtolower((string) $plan->status);
+                                $statusClass = $planStatus === 'active'
+                                    ? 'status-active'
+                                    : ($planStatus === 'inactive'
+                                        ? 'status-inactive'
+                                        : 'status-other');
 
-                    <th>Status</th>
+                                $features = is_array($plan->features)
+                                    ? $plan->features
+                                    : (is_string($plan->features)
+                                        ? (json_decode($plan->features, true) ?: [])
+                                        : []);
+                            @endphp
 
-                    <th>Actions</th>
+                            <tr>
+                                <td>
+                                    <span class="subscription-id">#{{ $plan->id }}</span>
+                                </td>
 
-                </tr>
+                                <td>
+                                    <div class="plan-name">
+                                        <span class="plan-name-icon">
+                                            <i class="fas fa-cube"></i>
+                                        </span>
+                                        <span>{{ $plan->name }}</span>
+                                    </div>
+                                </td>
 
-            </thead>
+                                <td>
+                                    <div class="plan-price">
+                                        ${{ number_format((float) $plan->price, 2) }}
+                                    </div>
+                                </td>
 
-            <tbody>
+                                <td>
+                                    <span class="plan-duration">
+                                        {{ ucfirst($plan->duration) }}
+                                    </span>
+                                </td>
 
-                @foreach($plans as $plan)
+                                <td>
+                                    @if(count($features))
+                                        <ul class="plan-features">
+                                            @foreach(array_slice($features, 0, 3) as $feature)
+                                                <li>
+                                                    <i class="fas fa-check"></i>
+                                                    {{ $feature }}
+                                                </li>
+                                            @endforeach
+                                        </ul>
 
-                <tr>
+                                        @if(count($features) > 3)
+                                            <span class="more-features">
+                                                +{{ count($features) - 3 }} more
+                                            </span>
+                                        @endif
+                                    @else
+                                        <span class="text-muted">No features listed</span>
+                                    @endif
+                                </td>
 
-                    <td>{{ $plan->id }}</td>
+                                <td>
+                                    <span class="commission-value">
+                                        {{ $plan->commission }}%
+                                    </span>
+                                </td>
 
-                    <td>{{ $plan->name }}</td>
+                                <td>
+                                    <span class="plan-status {{ $statusClass }}">
+                                        <span></span>
+                                        {{ ucfirst($plan->status) }}
+                                    </span>
+                                </td>
 
-                    <td>${{ $plan->price }}</td>
+                                <td>
+                                    <div class="subscription-actions">
+                                        <a href="{{ route('admin.subscription.edit', $plan->id) }}"
+                                           class="subscription-action edit"
+                                           title="Edit plan"
+                                           aria-label="Edit plan">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
 
-                    <td>{{ ucfirst($plan->duration) }}</td>
+                                        <form action="{{ route('admin.subscription.destroy', $plan->id) }}"
+                                              method="POST"
+                                              class="mb-0"
+                                              onsubmit="return confirm('Delete this plan?')">
+                                            @csrf
+                                            @method('DELETE')
 
-                    <td>
-
-                        <ul>
-
-                            @foreach($plan->features as $feature)
-
-                            <li>{{ $feature }}</li>
-
-                            @endforeach
-
-                        </ul>
-
-                    </td>
-
-                    <td>{{ $plan->commission }}</td>
-
-                    <td>{{ ucfirst($plan->status) }}</td>
-
-                    <td>
-                        <div class="d-flex justify-content-center align-items-center gap-2">
-
-                        <a href="{{ route('admin.subscription.edit', $plan->id) }}" class="btn btn-sm btn-warning"> <i class="fas fa-edit"></i></a>
-
-                        <form action="{{ route('admin.subscription.destroy', $plan->id) }}" method="POST" class="formplan mb-0">
-
-                            @csrf
-
-                            @method('DELETE')
-
-                            <button type="submit" class="btn btn-sm btn-danger"  onclick="return confirm('Delete this plan?')"  > <i class="fas fa-trash-alt"></i></button>
-
-                        </form>
-                        </div>
-
-                    </td>
-
-                </tr>
-
-                @endforeach
-
-            </tbody>
-
-        </table>
+                                            <button type="submit"
+                                                    class="subscription-action delete"
+                                                    title="Delete plan"
+                                                    aria-label="Delete plan">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="8">
+                                    <div class="subscription-empty">
+                                        <i class="fas fa-layer-group"></i>
+                                        <h5>No subscription plans yet</h5>
+                                        <p>Create your first plan to get started.</p>
+                                        <a href="{{ route('admin.subscription.create') }}"
+                                           class="btn subscription-add-btn">
+                                            <i class="fas fa-plus me-2"></i> Add Plan
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
     </div>
-
 </div>
+
 
 @include('admin.Include.footer')

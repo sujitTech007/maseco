@@ -2,188 +2,172 @@
 
 
 
-<div class="page-content">
-  <div class="page-title-head d-flex align-items-center gap-2">
-
-    <div class="flex-grow-1">
-
-      <div class="breadcrumb-wrapper mb-1" style="font-size: 15px; font-weight: 500;">
-        <h3 class="mb-1">Manufacturer</h3>
-
-        <a href="https://maseco.ca/UAT/admin/dashboard" style="color:#555; text-decoration:none;">
-          Dashboard
-        </a>
-
-        <span style="padding:0 6px; color:#999; font-size:14px;">
-          ▶
-        </span>
-
-        <span style="color:#2DAC92;">
-          Manufacturer
-        </span>
-
-      </div>
-    </div>
-
-  </div>
-
-  <div class="page-container p-3">
-
-    <div class="meetingPpage">
-
-      <div class="row">
-
-        <div class="col-md-12">
-
-
-
-          <div class="card" style="
-    box-shadow: 0 0 2px rgb(0 0 0 / 0%);
-    padding: 0px;
-    border-radius: 20px;
-">
-
-            
-
-            <div class="card tableCustom mb-0">
-
-
-
-              <div class="table-responsive">
-                <div class="dt-layout-row">
-
-                    <div class="dt-layout-cell dt-layout-start">
-
-                      
-
-                    </div>
-
-                    <div class="dt-layout-cell dt-layout-end">
-
-                      <div class="dt-search"><label for="dt-search-0">Search:</label>
-                      
-                      <input type="search" class="dt-input" id="dt-search-0" placeholder="" aria-controls="complex-header-datatable">
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                <table class="table table-custom table-centered table-sm table-nowrap table-hover mb-0 dataTable" style="width: 100%;">
-
-                  
-
-                  <thead style="background:#F7F7F7 !important">
-
-                    <tr>
-
-                          <th>S No.</th>
- 
-                      <th>Name</th>
-
-                      <th>Email</th>
-
-                      <th>Mobile No</th>
-
-                      <th>Company Name</th>
-
-                      <th>Status</th>
-
-                      <th>Actions</th>
-
-                    </tr>
-
-                  </thead>
-
-                  <tbody>
-
-                    @foreach($manufacturers as $manufacturer)
-
-                    <tr>
-                        <td>
-
-                        <h5 class="fs-14 mt-1 fw-normal">{{ $loop->iteration }}</h5>
-
-                      </td>
-                      
-
-                      <td>
-
-                        <div class="d-flex align-items-center">
-
-
-
-                          <div>
-
-                            <h5 class="fs-14 mt-1">{{ $manufacturer->name }}</h5>
-
-                          </div>
-
-                        </div>
-
-                      </td>
-
-                      <td>
-
-                        <h5 class="fs-14 mt-1 fw-normal">{{ $manufacturer->email }}</h5>
-
-                      </td>
-
-                      <td>
-
-                        <h5 class="fs-14 mt-1 fw-normal">{{ $manufacturer->phone }}</h5>
-
-                      </td>
-
-                      <td>
-
-                        <h5 class="fs-14 mt-1 fw-normal">{{ $manufacturer->company_name }}</h5>
-
-                      </td>
-
-
-
-                      <td>
-
-                        <div class="form-check form-switch">
-
-                          <input class="form-check-input manufacturer-status-toggle" type="checkbox" data-id="{{ $manufacturer->id }}" {{ $manufacturer->status == '1' ? 'checked' : '' }}>
-
-                          <span class="badge bg-{{ $manufacturer->status == '1' ? 'success' : 'danger' }} ms-2">{{ $manufacturer->status == '1' ? 'Active' : 'Inactive' }}</span>
-
-                        </div>
-
-                      </td>
-
-                      <td>
-
-                        <div class="actionBtn">
-
-                          <a href="javascript:void(0);" class="dropdown-item viewManufacturerBtn" data-manufacturer='@json($manufacturer)'><i class="ri-eye-line"></i></a>
-
-                        </div>
-
-                      </td>
-
-                    </tr>
-
-                    @endforeach
-
-                    <!-- More rows as needed -->
-
-                  </tbody>
-
-                </table><!-- end table -->
-
-              </div>
+<div class="page-content manufacturer-page">
+<!-- 
+    <div class="page-title-head d-flex align-items-center gap-2">
+        <div class="flex-grow-1">
+            <h3 class="manufacturer-heading">Manufacturer</h3>
+
+            <div class="manufacturer-breadcrumb">
+                <a href="{{ url('/admin/dashboard') }}">Dashboard</a>
+                <span class="separator">›</span>
+                <span class="current">Manufacturer</span>
             </div>
-          </div>
+        </div>
+    </div> -->
+
+    <div class="page-container p-3">
+
+        @php
+            $manufacturerTotal = $manufacturers->count();
+            $manufacturerActive = $manufacturers->where('status', '1')->count();
+            $manufacturerInactive = $manufacturerTotal - $manufacturerActive;
+        @endphp
+
+        <div class="manufacturer-summary">
+
+            <div class="summary-card">
+                <div class="summary-icon">
+                    <i class="ri-building-4-line"></i>
+                </div>
+                <div>
+                    <p class="summary-label">Total Manufacturers</p>
+                    <h4 class="summary-number">{{ $manufacturerTotal }}</h4>
+                </div>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-icon">
+                    <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <div>
+                    <p class="summary-label">Active Manufacturers</p>
+                    <h4 class="summary-number">{{ $manufacturerActive }}</h4>
+                </div>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-icon">
+                    <i class="ri-user-unfollow-line"></i>
+                </div>
+                <div>
+                    <p class="summary-label">Inactive Manufacturers</p>
+                    <h4 class="summary-number">{{ $manufacturerInactive }}</h4>
+                </div>
+            </div>
 
         </div>
-      </div>
-    </div>
-  </div> <!-- container -->
 
+        <div class="manufacturer-table-card">
+
+            <div class="table-card-header">
+                <div>
+                    <h4 class="table-card-title">Manufacturer Directory</h4>
+                    <p class="table-card-subtitle">
+                        View manufacturer details and manage account status.
+                    </p>
+                </div>
+
+                <div class="manufacturer-search">
+                    <i class="ri-search-line"></i>
+                    <input
+                        type="search"
+                        id="manufacturer-search"
+                        placeholder="Search manufacturers..."
+                        aria-label="Search manufacturers"
+                    >
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table manufacturer-table table-hover mb-0"
+                       id="manufacturer-directory-table"
+                       style="width:100%;">
+
+                    <thead>
+                        <tr>
+                            <th>S No.</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Mobile No.</th>
+                            <th>Company Name</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @forelse($manufacturers as $manufacturer)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+
+                                <td>
+                                    <h5 class="manufacturer-name">
+                                        {{ $manufacturer->name }}
+                                    </h5>
+                                </td>
+
+                                <td>
+                                    <span class="manufacturer-email">
+                                        {{ $manufacturer->email }}
+                                    </span>
+                                </td>
+
+                                <td>{{ $manufacturer->phone }}</td>
+
+                                <td>
+                                    <span class="manufacturer-company">
+                                        {{ $manufacturer->company_name }}
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <div class="manufacturer-status">
+                                        <div class="form-check form-switch">
+                                            <input
+                                                class="form-check-input manufacturer-status-toggle"
+                                                type="checkbox"
+                                                data-id="{{ $manufacturer->id }}"
+                                                aria-label="Toggle status for {{ $manufacturer->name }}"
+                                                {{ $manufacturer->status == '1' ? 'checked' : '' }}
+                                            >
+                                        </div>
+
+                                        <span class="status-label {{ $manufacturer->status == '1' ? 'active' : 'inactive' }}">
+                                            {{ $manufacturer->status == '1' ? 'Active' : 'Inactive' }}
+                                        </span>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="actionBtn">
+                                        <a
+                                            href="javascript:void(0);"
+                                            class="manufacturer-view-btn viewManufacturerBtn"
+                                            data-manufacturer='@json($manufacturer)'
+                                            title="View manufacturer"
+                                            aria-label="View {{ $manufacturer->name }}"
+                                        >
+                                            <i class="ri-eye-line"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="7" class="manufacturer-empty">
+                                    No manufacturers found.
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 
   @include('admin.Include.footer')
@@ -345,4 +329,32 @@
 
   // Works for typing + clear (✖) icon
   searchInput.addEventListener('input', filterTable);
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('manufacturer-search');
+        const table = document.getElementById('manufacturer-directory-table');
+
+        if (!searchInput || !table) {
+            return;
+        }
+
+        // Use simple client-side search without changing existing backend behavior.
+        searchInput.addEventListener('input', function () {
+            const searchTerm = this.value.toLowerCase().trim();
+            const rows = table.querySelectorAll('tbody tr');
+
+            rows.forEach(function (row) {
+                const isEmptyRow = row.querySelector('.manufacturer-empty');
+
+                if (isEmptyRow) {
+                    return;
+                }
+
+                row.style.display = row.textContent.toLowerCase().includes(searchTerm)
+                    ? ''
+                    : 'none';
+            });
+        });
+    });
 </script>

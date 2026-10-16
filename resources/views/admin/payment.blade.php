@@ -1,479 +1,375 @@
 @include('admin.Include.header')
 
 
+<div class="page-content payments-page">
 
-<div class="page-content">
+    {{-- Page Heading --}}
+    <!-- <div class="payments-heading">
+        <div>
+            <h3>Payments</h3>
+            <div class="payments-breadcrumb">
+                <a href="{{ url('/admin/dashboard') }}">Dashboard</a>
+                <span>›</span>
+                <span class="current">Payments</span>
+            </div>
+        </div>
+    </div> -->
 
+    @php
+        $paymentCollection = collect($payments ?? []);
 
+        $paidPayments = $paymentCollection->filter(function ($payment) {
+            return strtolower((string) $payment->status) === 'paid';
+        });
 
+        $pendingPayments = $paymentCollection->filter(function ($payment) {
+            return strtolower((string) $payment->status) === 'pending';
+        });
 
-    <div class="flex-grow-1">
+        $failedPayments = $paymentCollection->filter(function ($payment) {
+            return in_array(
+                strtolower((string) $payment->status),
+                ['failed', 'cancelled', 'rejected']
+            );
+        });
 
-        <div class="breadcrumb-wrapper mb-3" style="font-size: 15px; font-weight: 500;">
-            <h3 class="mb-1">Payments</h3>
+        $paidAmount = $paidPayments->sum(function ($payment) {
+            return (float) ($payment->amount ?? 0);
+        });
+    @endphp
 
-            <a href="https://maseco.ca/UAT/admin/dashboard" style="color:#555; text-decoration:none;">
-                Dashboard
-            </a>
+    <div class="payments-container">
 
-            <span style="padding:0 6px; color:#999; font-size:14px;">
-                ▶
-            </span>
+        {{-- Summary Cards --}}
+        <div class="row g-3 payments-summary">
 
-            <span style="color:#2DAC92;">
-                Payments
-            </span>
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="payment-stat">
+                    <div class="payment-stat-icon total">
+                        <i class="ri-wallet-3-line"></i>
+                    </div>
+                    <div>
+                        <p>Total Payments</p>
+                        <h4>{{ $paymentCollection->count() }}</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="payment-stat">
+                    <div class="payment-stat-icon paid">
+                        <i class="ri-checkbox-circle-line"></i>
+                    </div>
+                    <div>
+                        <p>Paid Transactions</p>
+                        <h4>{{ $paidPayments->count() }}</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="payment-stat">
+                    <div class="payment-stat-icon pending">
+                        <i class="ri-time-line"></i>
+                    </div>
+                    <div>
+                        <p>Pending Payments</p>
+                        <h4>{{ $pendingPayments->count() }}</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="payment-stat">
+                    <div class="payment-stat-icon failed">
+                        <i class="ri-error-warning-line"></i>
+                    </div>
+                    <div>
+                        <p>Failed Payments</p>
+                        <h4>{{ $failedPayments->count() }}</h4>
+                    </div>
+                </div>
+            </div>
 
         </div>
-        </h4>
 
-    </div>
-    <div class="page-container p-3">
-    <div class="meetingPpage">
+        {{-- Payments Table --}}
+        <div class="payments-card">
 
-        <div class="row">
-
-            <div class="col-md-12">
-
-
-
-                <div class="card" style="background: white;box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);    border-radius: 20px;">
-
-
-
-
-
-
-                    <div class="card-body p-0 tableCustom">
-
-
-
-                        <div class="table-responsive pt-2">
-
-                            <div id="complex-header-datatable_wrapper" class="dt-container dt-empty-footer">
-
-                                <div class="dt-layout-row">
-
-                                    <div class="dt-layout-cell dt-layout-start">
-
-                                        <div class="dt-length"><select aria-controls="complex-header-datatable"
-
-                                                class="dt-input" id="dt-length-0">
-
-                                                <option value="10">10</option>
-
-                                                <option value="25">25</option>
-
-                                                <option value="50">50</option>
-
-                                                <option value="100">100</option>
-
-                                            </select><label for="dt-length-0"> entries per page</label></div>
-
-                                    </div>
-
-                                    <div class="dt-layout-cell dt-layout-end">
-
-                                        <div class="dt-search"><label for="dt-search-0">Search:</label><input
-
-                                                type="search" class="dt-input" id="dt-search-0" placeholder=""
-
-                                                aria-controls="complex-header-datatable"></div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="dt-layout-row dt-layout-table">
-
-                                    <div class="dt-layout-cell  dt-layout-full">
-
-                                        <table class="table table-custom table-centered table-sm table-nowrap table-hover mb-0 dataTable" id="payment-table" style="width: 100%;">
-
-                                            <thead>
-
-                                                <tr>
-
-                                                    <th>ID</th>
-
-                                                    <th>Order</th>
-
-                                                    <th>User</th>
-
-                                                    <th>Status</th>
-
-                                                    <th>Amount</th>
-
-                                                    <th>Provider</th>
-
-                                                    <th>Transaction</th>
-
-                                                    <th>Date/Time</th>
-
-                                                </tr>
-
-                                            </thead>
-
-                                            <tbody>
-
-                                                @foreach(($payments ?? []) as $p)
-
-                                                <tr>
-
-                                                    <td>{{ $p->id }}</td>
-
-                                                    <td>#{{ $p->order_id }}</td>
-
-                                                    <td>{{ optional(optional($p->order)->user)->name ?? 'User #'.optional($p->order)->user_id }}</td>
-
-                                                    <td><span class="badge bg-{{ $p->status==='paid'?'success':'warning' }}">{{ ucfirst($p->status) }}</span></td>
-
-                                                    <td>${{ number_format($p->amount, 2) }}</td>
-
-                                                    <td>{{ strtoupper($p->provider ?? '-') }}</td>
-
-                                                    <td><code>{{ $p->transaction_id ?? '-' }}</code></td>
-
-                                                    <td>{{ $p->created_at->format('d M Y H:i') }}</td>
-
-                                                </tr>
-
-                                                @endforeach
-
-                                            </tbody>
-
-                                        </table>
-
-
-
-                                    </div>
-
-                                </div>
-
-                                <div class="dt-layout-row">
-
-                                    <div class="dt-layout-cell dt-layout-start">
-
-                                        <div class="dt-info" aria-live="polite"
-
-                                            id="complex-header-datatable_info" role="status">Showing 1 to 3 of 3
-
-                                            entries</div>
-
-                                    </div>
-
-                                    <div class="dt-layout-cell dt-layout-end">
-
-                                        <div class="dt-paging">
-
-                                            <nav aria-label="pagination"><button
-
-                                                    class="dt-paging-button disabled first" role="link"
-
-                                                    type="button" aria-controls="complex-header-datatable"
-
-                                                    aria-disabled="true" aria-label="First" data-dt-idx="first"
-
-                                                    tabindex="-1">«</button><button
-
-                                                    class="dt-paging-button disabled previous" role="link"
-
-                                                    type="button" aria-controls="complex-header-datatable"
-
-                                                    aria-disabled="true" aria-label="Previous"
-
-                                                    data-dt-idx="previous" tabindex="-1">‹</button><button
-
-                                                    class="dt-paging-button current" role="link" type="button"
-
-                                                    aria-controls="complex-header-datatable" aria-current="page"
-
-                                                    data-dt-idx="0">1</button><button
-
-                                                    class="dt-paging-button disabled next" role="link"
-
-                                                    type="button" aria-controls="complex-header-datatable"
-
-                                                    aria-disabled="true" aria-label="Next" data-dt-idx="next"
-
-                                                    tabindex="-1">›</button><button
-
-                                                    class="dt-paging-button disabled last" role="link"
-
-                                                    type="button" aria-controls="complex-header-datatable"
-
-                                                    aria-disabled="true" aria-label="Last" data-dt-idx="last"
-
-                                                    tabindex="-1">»</button></nav>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="dt-autosize" style="width: 100%; height: 0px;"></div>
-
-                            </div>
-
-
-
-                        </div> <!-- end table-responsive-->
-
-
-
-                    </div> <!-- end card-body-->
-
-
-
-
-
-
+            <div class="payments-card-heading">
+                <div>
+                    <h5>Payment Transactions</h5>
+                    <p>Review payment status, amounts and transaction references.</p>
                 </div>
 
+                <span class="payments-record-count">
+                    {{ $paymentCollection->count() }}
+                    {{ $paymentCollection->count() === 1 ? 'record' : 'records' }}
+                </span>
+            </div>
 
+            {{-- Table Controls --}}
+            <div class="payments-controls">
 
+                <div class="payments-page-size">
+                    <label for="payments-page-size">Show</label>
 
+                    <select id="payments-page-size" class="payments-input">
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="all">All</option>
+                    </select>
 
+                    <span>entries</span>
+                </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                <div class="payments-search">
+                    <i class="ri-search-line"></i>
+                    <input type="search"
+                           id="payments-search-input"
+                           class="payments-input"
+                           placeholder="Search payments..."
+                           aria-label="Search payments">
+                </div>
 
             </div>
 
+            {{-- Table --}}
+            <div class="table-responsive payments-table-wrapper">
 
+                <table class="table payments-table align-middle mb-0"
+                       id="payment-table">
+
+                    <thead>
+                        <tr>
+                            <th>Payment ID</th>
+                            <th>Order</th>
+                            <th>Customer</th>
+                            <th>Status</th>
+                            <th>Amount</th>
+                            <th>Provider</th>
+                            <th>Transaction ID</th>
+                            <th>Date &amp; Time</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="payments-table-body">
+
+                        @forelse(($payments ?? []) as $p)
+
+                            @php
+                                $paymentStatus = strtolower(
+                                    trim((string) ($p->status ?? 'pending'))
+                                );
+
+                                $paymentStatusClass = match ($paymentStatus) {
+                                    'paid', 'completed', 'success', 'successful' => 'paid',
+                                    'pending', 'processing' => 'pending',
+                                    'failed', 'cancelled', 'rejected' => 'failed',
+                                    'refunded' => 'refunded',
+                                    default => 'other',
+                                };
+
+                                $order = $p->order;
+                                $customerName = optional($order?->user)->name
+                                    ?? 'User #'.($order?->user_id ?? '—');
+
+                                $providerName = strtoupper(
+                                    (string) ($p->provider ?? '—')
+                                );
+
+                                $transactionId = $p->transaction_id ?? '—';
+                            @endphp
+
+                            <tr class="payment-data-row">
+
+                                <td data-label="Payment ID">
+                                    <span class="payment-id">
+                                        #{{ $p->id }}
+                                    </span>
+                                </td>
+
+                                <td data-label="Order">
+                                    <span class="payment-order">
+                                        #{{ $p->order_id ?? '—' }}
+                                    </span>
+                                </td>
+
+                                <td data-label="Customer">
+                                    <div class="payment-customer">
+                                        <span class="payment-avatar">
+                                            {{ strtoupper(substr($customerName, 0, 1)) }}
+                                        </span>
+                                        <span class="payment-customer-name">
+                                            {{ $customerName }}
+                                        </span>
+                                    </div>
+                                </td>
+
+                                <td data-label="Status">
+                                    <span class="payment-status status-{{ $paymentStatusClass }}">
+                                        <span class="payment-status-dot"></span>
+                                        {{ ucfirst($paymentStatus) }}
+                                    </span>
+                                </td>
+
+                                <td data-label="Amount">
+                                    <span class="payment-amount">
+                                        ${{ number_format((float) ($p->amount ?? 0), 2) }}
+                                    </span>
+                                </td>
+
+                                <td data-label="Provider">
+                                    <span class="payment-provider">
+                                        {{ $providerName }}
+                                    </span>
+                                </td>
+
+                                <td data-label="Transaction ID">
+                                    <code class="payment-transaction">
+                                        {{ $transactionId }}
+                                    </code>
+                                </td>
+
+                                <td data-label="Date &amp; Time">
+                                    <span class="payment-date">
+                                        {{ $p->created_at?->format('d M Y, H:i') ?? '—' }}
+                                    </span>
+                                </td>
+
+                            </tr>
+
+                        @empty
+
+                            <tr class="payment-empty-row">
+                                <td colspan="8">
+                                    <div class="payments-empty">
+                                        <i class="ri-wallet-3-line"></i>
+                                        <h5>No payment records yet</h5>
+                                        <p>Payment transactions will appear here when available.</p>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        @endforelse
+
+                    </tbody>
+                </table>
+
+                <div class="payments-no-results" id="payments-no-results" hidden>
+                    <i class="ri-search-line"></i>
+                    <p>No payments match your search.</p>
+                </div>
+
+            </div>
+
+            {{-- Table Footer --}}
+            <div class="payments-table-footer">
+                <span id="payments-table-info">Showing 0 entries</span>
+                <div class="payments-pagination" id="payments-pagination"></div>
+            </div>
 
         </div>
-
     </div>
-    </div>
+</div>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const page = document.querySelector('.payments-page');
+    if (!page) return;
 
+    const tbody = page.querySelector('#payments-table-body');
+    const search = page.querySelector('#payments-search-input');
+    const sizeSelect = page.querySelector('#payments-page-size');
+    const info = page.querySelector('#payments-table-info');
+    const pagination = page.querySelector('#payments-pagination');
+    const noResults = page.querySelector('#payments-no-results');
 
-    <!-- <div class="myaccountPage p-4">
+    if (!tbody || !search || !sizeSelect || !info || !pagination) return;
 
-                <div class="d-flex align-items-center justify-content-between">
+    const rows = Array.from(tbody.querySelectorAll('.payment-data-row'));
+    let currentPage = 1;
 
-                    <div class="userProfile">
+    function renderTable() {
+        const query = search.value.trim().toLowerCase();
 
-                        <div class="userThumb">
+        const filtered = rows.filter(function (row) {
+            return row.textContent.toLowerCase().includes(query);
+        });
 
-                            <img src="assets/images/user.png" alt="">
+        const pageSize = sizeSelect.value === 'all'
+            ? Math.max(filtered.length, 1)
+            : parseInt(sizeSelect.value, 10);
 
-                        </div>
+        const total = filtered.length;
+        const totalPages = Math.max(1, Math.ceil(total / pageSize));
 
-                        <div class="userName">
+        currentPage = Math.min(currentPage, totalPages);
 
-                            <h3>Alexa Rawles</h3>
+        const start = (currentPage - 1) * pageSize;
+        const end = Math.min(start + pageSize, total);
 
-                            <p><i class="ri-mail-line"></i> alexarawles@gmail.com</p>
+        rows.forEach(function (row) {
+            row.hidden = true;
+        });
 
-                        </div>
+        filtered.slice(start, end).forEach(function (row) {
+            row.hidden = false;
+        });
 
-                    </div>
+        if (noResults) {
+            noResults.hidden = total !== 0 || rows.length === 0;
+        }
 
-                    <div class="editBtn">
+        info.textContent = total === 0
+            ? 'Showing 0 entries'
+            : 'Showing ' + (start + 1) + ' to ' + end + ' of ' + total + ' entries';
 
-                        <button class="lab-btn"><i class="ri-pencil-line"></i> Edit</button>
+        pagination.replaceChildren();
 
-                    </div>
+        function addButton(label, targetPage, disabled, active) {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.textContent = label;
+            button.disabled = disabled;
 
-                </div>
+            if (active) button.classList.add('active');
 
-                <div class="dashboardForms py-5"> 
+            button.addEventListener('click', function () {
+                currentPage = targetPage;
+                renderTable();
+            });
 
-                    <form id="survey-form">
+            pagination.appendChild(button);
+        }
 
-                        <div class="row">
+        addButton('‹', Math.max(1, currentPage - 1), currentPage === 1, false);
 
-                            <div class="col-md-6">
+        for (let number = 1; number <= totalPages; number++) {
+            addButton(String(number), number, false, number === currentPage);
+        }
 
-                                <div class="form-group">
+        addButton(
+            '›',
+            Math.min(totalPages, currentPage + 1),
+            currentPage === totalPages || total === 0,
+            false
+        );
+    }
 
-                                    <label id="name-label" for="name">First Name</label>
+    search.addEventListener('input', function () {
+        currentPage = 1;
+        renderTable();
+    });
 
-                                    <input type="text" name="name" id="name" placeholder="Enter First Name" class="form-control" required>
+    sizeSelect.addEventListener('change', function () {
+        currentPage = 1;
+        renderTable();
+    });
 
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-
-                                    <label id="name-label" for="lastname">Last Name</label>
-
-                                    <input type="text" name="name" id="name" placeholder="Enter Last Name" class="form-control" required>
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-
-                                    <label id="email-label" for="email">Email</label>
-
-                                    <input type="email" name="email" id="email" placeholder="Enter your email" class="form-control" required>
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-
-                                    <label id="email-label" for="phone">Phone No</label>
-
-                                    <input type="number" name="phone" id="email" placeholder="Enter your Phone" class="form-control" required>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        
-
-                        <div class="row">                            
-
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-
-                                    <label>Country</label>
-
-                                    <select id="dropdown" name="role" class="form-control" required>
-
-                                        <option value="United States">United States</option>
-
-                                        <option value="Afghanistan">Afghanistan</option>
-
-                                        <option value="Albania">Albania</option>
-
-                                        <option value="Algeria">Algeria</option>
-
-                                        <option value="American Samoa">American Samoa</option>
-
-                                        <option value="Andorra">Andorra</option>
-
-                                        <option value="Angola">Angola</option>
-
-                                        <option value="Anguilla">Anguilla</option>
-
-                                        <option value="Antartica">Antarctica</option>
-
-                                        <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-
-                                        <option value="Argentina">Argentina</option>
-
-                                        <option value="Armenia">Armenia</option>
-
-                                    </select>
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-
-                                    <label>State</label>
-
-                                    <select id="dropdown" name="role" class="form-control" required>
-
-                                        <option disabled selected value>Select</option>
-
-                                        <option value="United States">United States</option>
-
-                                        <option value="Afghanistan">Afghanistan</option>
-
-                                        <option value="Albania">Albania</option>
-
-                                        <option value="Algeria">Algeria</option>
-
-                                        <option value="American Samoa">American Samoa</option>
-
-                                        <option value="Andorra">Andorra</option>
-
-                                        <option value="Angola">Angola</option>
-
-                                        <option value="Anguilla">Anguilla</option>
-
-                                        <option value="Antartica">Antarctica</option>
-
-                                        <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-
-                                        <option value="Argentina">Argentina</option>
-
-                                        <option value="Armenia">Armenia</option>
-
-                                    </select>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        
-
-                       
-
-            
-
-            
-
-                       
-
-                        
-
-                        <div class="row">
-
-                            <div class="col-md-4 mt-3">
-
-                                <button type="submit" id="submit" class="lab-btn">Submit</button>
-
-                            </div>
-
-                        </div>
-
-            
-
-                    </form>
-
-                </div>
-
-               </div> -->
-
-
-
-
-
-
-
-</div> <!-- container -->
-
+    renderTable();
+});
+</script>
 @include('admin.Include.footer')

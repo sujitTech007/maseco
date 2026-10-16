@@ -63,6 +63,32 @@
 
         <script src="{{ asset('assets/admin/js/chart.js') }}"></script>
 
+      <style>
+      /* Sidebar visible by default */
+.sidenav-menu {
+    display: block !important;
+    /* position: fixed; */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    /* width: 260px; */
+    z-index: 1040;
+    overflow-y: auto;
+    /* transition: transform 0.3s ease; */
+}
+
+/* Hide sidebar when closed */
+/* body.sidebar-closed .sidenav-menu {
+    transform: translateX(-100%);
+} */
+
+/* Let the dashboard use the available width */
+/* body.sidebar-closed .content-page {
+    margin-left: 0 !important;
+    width: 100% !important;
+} */
+      </style>
+
     </head>
 
 
@@ -449,11 +475,10 @@
 
                         <!-- Sidebar Menu Toggle Button -->
 
-                        <button class="sidenav-toggle-button px-2">
-
-                            <i class="ri-menu-2-line fs-24"></i>
-
-                        </button>
+                      <button type="button" class="sidenav-toggle-button px-2"
+        aria-label="Toggle sidebar">
+    <i class="ri-menu-2-line fs-24"></i>
+</button>
 
 
 
@@ -558,72 +583,72 @@
 
                                     <!-- item-->
 
-                                   <a href="{{ route('admin.dashboard') }}" class="dropdown-item">
-    <i class="ri-dashboard-line me-1 fs-16 align-middle"></i>
-    <span class="align-middle">Dashboard</span>
-</a>
+                                    <a href="{{ route('admin.dashboard') }}" class="dropdown-item">
+                                        <i class="ri-dashboard-line me-1 fs-16 align-middle"></i>
+                                        <span class="align-middle">Dashboard</span>
+                                    </a>
 
-<a href="{{ route('admin.buyer') }}" class="dropdown-item">
-    <i class="ri-user-search-line me-1 fs-16 align-middle"></i>
-    <span class="align-middle">Designer</span>
-</a>
+                                    <a href="{{ route('admin.buyer') }}" class="dropdown-item">
+                                        <i class="ri-user-search-line me-1 fs-16 align-middle"></i>
+                                        <span class="align-middle">Designer</span>
+                                    </a>
 
-<a href="{{ route('admin.seller') }}" class="dropdown-item">
-    <i class="ri-store-2-line me-1 fs-16 align-middle"></i>
-    <span class="align-middle">Supplier</span>
-</a>
+                                    <a href="{{ route('admin.seller') }}" class="dropdown-item">
+                                        <i class="ri-store-2-line me-1 fs-16 align-middle"></i>
+                                        <span class="align-middle">Supplier</span>
+                                    </a>
 
-<a href="{{ route('admin.manufacturer') }}" class="dropdown-item">
-    <i class="ri-building-4-line me-1 fs-16 align-middle"></i>
-    <span class="align-middle">Manufacturer</span>
-</a>
+                                    <a href="{{ route('admin.manufacturer') }}" class="dropdown-item">
+                                        <i class="ri-building-4-line me-1 fs-16 align-middle"></i>
+                                        <span class="align-middle">Manufacturer</span>
+                                    </a>
 
-<a href="{{ route('admin.category.index') }}" class="dropdown-item">
-    <i class="ri-grid-line me-1 fs-16 align-middle"></i>
-    <span class="align-middle">Category</span>
-</a>
+                                    <a href="{{ route('admin.category.index') }}" class="dropdown-item">
+                                        <i class="ri-grid-line me-1 fs-16 align-middle"></i>
+                                        <span class="align-middle">Category</span>
+                                    </a>
 
-<a href="{{ route('admin.material') }}" class="dropdown-item">
-    <i class="ri-stack-line me-1 fs-16 align-middle"></i>
-    <span class="align-middle">Materials</span>
-</a>
+                                    <a href="{{ route('admin.material') }}" class="dropdown-item">
+                                        <i class="ri-stack-line me-1 fs-16 align-middle"></i>
+                                        <span class="align-middle">Materials</span>
+                                    </a>
 
-<a href="{{ route('admin.orders') }}" class="dropdown-item">
-    <i class="ri-shopping-cart-line me-1 fs-16 align-middle"></i>
-    <span class="align-middle">Orders</span>
-</a>
+                                    <a href="{{ route('admin.orders') }}" class="dropdown-item">
+                                        <i class="ri-shopping-cart-line me-1 fs-16 align-middle"></i>
+                                        <span class="align-middle">Orders</span>
+                                    </a>
 
-<a href="{{ route('admin.subscription.index') }}" class="dropdown-item">
-    <i class="ri-vip-crown-line me-1 fs-16 align-middle"></i>
-    <span class="align-middle">Subscription Plans</span>
-</a>
+                                    <a href="{{ route('admin.subscription.index') }}" class="dropdown-item">
+                                        <i class="ri-vip-crown-line me-1 fs-16 align-middle"></i>
+                                        <span class="align-middle">Subscription Plans</span>
+                                    </a>
 
-<a href="{{ route('admin.enquiry') }}" class="dropdown-item">
-    <i class="ri-question-answer-line me-1 fs-16 align-middle"></i>
-    <span class="align-middle">Enquiry</span>
-</a>
+                                    <a href="{{ route('admin.enquiry') }}" class="dropdown-item">
+                                        <i class="ri-question-answer-line me-1 fs-16 align-middle"></i>
+                                        <span class="align-middle">Enquiry</span>
+                                    </a>
 
-<a href="{{ route('admin.payment') }}" class="dropdown-item">
-    <i class="ri-secure-payment-line me-1 fs-16 align-middle"></i>
-    <span class="align-middle">Payment</span>
-</a>
+                                    <a href="{{ route('admin.payment') }}" class="dropdown-item">
+                                        <i class="ri-secure-payment-line me-1 fs-16 align-middle"></i>
+                                        <span class="align-middle">Payment</span>
+                                    </a>
 
-<a href="{{ route('admin.contact.list') }}" class="dropdown-item">
-    <i class="ri-contacts-line me-1 fs-16 align-middle"></i>
-    <span class="align-middle">Contact Us</span>
-</a>
+                                    <a href="{{ route('admin.contact.list') }}" class="dropdown-item">
+                                        <i class="ri-contacts-line me-1 fs-16 align-middle"></i>
+                                        <span class="align-middle">Contact Us</span>
+                                    </a>
 
-<a href="{{ route('admin.newsletter.list') }}" class="dropdown-item">
-    <i class="ri-mail-line me-1 fs-16 align-middle"></i>
-    <span class="align-middle">Newsletter</span>
-</a>
+                                    <a href="{{ route('admin.newsletter.list') }}" class="dropdown-item">
+                                        <i class="ri-mail-line me-1 fs-16 align-middle"></i>
+                                        <span class="align-middle">Newsletter</span>
+                                    </a>
 
-<div class="dropdown-divider"></div>
+                                    <div class="dropdown-divider"></div>
 
-<a href="{{ route('admin.logout') }}" class="dropdown-item fw-semibold text-danger">
-    <i class="ri-logout-box-line me-1 fs-16 align-middle"></i>
-    <span class="align-middle">Log Out</span>
-</a>
+                                    <a href="{{ route('admin.logout') }}" class="dropdown-item fw-semibold text-danger">
+                                        <i class="ri-logout-box-line me-1 fs-16 align-middle"></i>
+                                        <span class="align-middle">Log Out</span>
+                                    </a>
 
 
                                 </div>
@@ -648,5 +673,20 @@
                     });
                 });
             </script>
-          
-      
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const buttons = document.querySelectorAll('.sidenav-toggle-button');
+
+    buttons.forEach(function (button) {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            document.body.classList.toggle('sidebar-closed');
+
+            const closed = document.body.classList.contains('sidebar-closed');
+            button.setAttribute('aria-expanded', String(!closed));
+        });
+    });
+});
+</script>
