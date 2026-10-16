@@ -1,41 +1,115 @@
 @include('manufacturer.Include.header')
 
+<style>
+    .ud-scroll {
+        overflow-x: auto;
+    }
+
+    .ud-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0;
+        border: 0 !important;
+        background: transparent;
+    }
+
+    .ud-table th,
+    .ud-table td {
+        border: 0 !important;
+        border-bottom: 1px solid #eef0f3 !important;
+        padding: .9rem 1rem !important;
+        text-align: left;
+        vertical-align: middle;
+        background: transparent;
+        box-shadow: none !important;
+    }
+
+    .ud-table thead {
+        background-color: rgb(76 76 92);
+    }
+
+    .ud-table th {
+        color: #fff;
+        font-weight: 700;
+        font-size: .85rem;
+    }
+
+    .ud-table tbody tr:last-child td {
+        border-bottom: 0 !important;
+    }
+
+    .ud-table tbody tr:hover td {
+        background: #f3faf8 !important;
+    }
+
+    .ud-table td.text-center {
+        text-align: center !important;
+    }
+
+    .ud-st {
+        font-size: .8rem;
+        font-weight: 600;
+        padding: .3rem .7rem;
+    }
+
+    .ud-st::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: currentColor;
+        margin-right: .4rem;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .ud-st-success {
+        background: #e6f4ec;
+        color: #198754;
+    }
+
+    .ud-st-warning {
+        background: #fff4d6;
+        color: #a06a00;
+    }
+
+    .ud-st-danger {
+        background: #fde8e8;
+        color: #c0392b;
+    }
+
+    .ud-st-secondary {
+        background: #eceff3;
+        color: #5f6b7a;
+    }
+</style>
+
+@php
+    $manu = Auth::guard('manufacturer')->user();
+
+    $enquiries = \App\Models\Enquiry::where('manufacturer_id', $manu->id)->latest()->get();
+
+    // TEMP DEMO DATA: only shows when the list is empty, APP_DEBUG is true and the URL has ?demo=1. Delete before launch.
+    $rows = $enquiries;
+    if ($rows->isEmpty() && config('app.debug') && request()->boolean('demo')) {
+        $rows = collect([
+            (object) ['id' => 21, 'user' => (object) ['name' => 'Northwind Apparel'], 'user_id' => 5, 'demo_material' => 'Organic Cotton Fabric', 'quantity' => 500, 'expected_price' => 2500, 'status' => 'pending', 'created_at' => now()->subDays(1)],
+            (object) ['id' => 20, 'user' => (object) ['name' => 'Greenleaf Studio'], 'user_id' => 8, 'demo_material' => 'GOTS Linen', 'quantity' => 300, 'expected_price' => 1800, 'status' => 'approved', 'created_at' => now()->subDays(6)],
+            (object) ['id' => 19, 'user' => (object) ['name' => 'Maple & Thread'], 'user_id' => 9, 'demo_material' => 'Recycled Polyester Yarn', 'quantity' => 1200, 'expected_price' => 950, 'status' => 'pending', 'created_at' => now()->subDays(18)],
+            (object) ['id' => 18, 'user' => (object) ['name' => 'Harbour Active'], 'user_id' => 12, 'demo_material' => 'Hemp Blend Denim', 'quantity' => 50, 'expected_price' => 420, 'status' => 'rejected', 'created_at' => now()->subDays(43)],
+        ]);
+    }
+@endphp
+
 <!-- Begin page -->
 
 <div class="wrapper active">
 
-
-
-    <!-- Menu -->
-
-
-
-    <!-- Topbar Start -->
-
-
-
-    <!-- Topbar End -->
-
-
-
-
-
-
-
-
-
-
-
     <!-- ============================================================== -->
-
     <!-- Start Page Content here -->
-
     <!-- ============================================================== -->
-
-
 
     <div class="page-content">
-
 
         <div class="breadcrumb-wrapper mb-1" style="font-size: 15px; font-weight: 500;">
             <h3 class="mb-1">RFQ Management </h3>
@@ -54,180 +128,201 @@
 
         </div>
 
-
         <div class="meetingPpage">
 
             <div class="row">
 
                 <div class="col-md-12">
 
+                    <div class="ud-table-wrap bg-white shadow-sm rounded-4 overflow-hidden mt-4">
 
-
-                    <div class="card mt-4" style="border-bottom-left-radius: 10px !important;border-bottom-right-radius: 10px !important;border-top-left-radius: 10px;border-top-right-radius: 10px; 0;">
-
-                        <div class="card-header d-flex justify-content-between align-items-center">
-
-                            <h4 class="mb-0">RFQ Management</h4>
-
-                            <!-- <a href="new-rfq.php">
-
-                                <button class="btn btn-primary btn-sm">+ New RFQ</button>
-
-
-
-                            </a> -->
-
+                        <div class="px-3 py-3 border-bottom">
+                            <h5 class="fw-bold mb-1">RFQ Management</h5>
+                            <p class="text-muted small mb-0">Review buyer requests and approve them to create an order.
+                            </p>
                         </div>
 
-                        <div class="card-body">
+                        <div class="ud-scroll">
 
-                            <div class="table-responsive" style="border-bottom-left-radius: 10px !important;border-bottom-right-radius: 10px !important;border-top-left-radius: 10;border-top-right-radius: 10px; 0;">
+                            <table class="ud-table" id="rfqTable">
 
-                                <table class="table table-bordered text-center align-middle" id="rfqTable">
+                                <thead>
 
-                                    <thead class="table" style="background:#E7E7E7 !important">
+                                    <tr>
 
-                                        <tr>
+                                        <th>ID</th>
 
-                                            <th>ID</th>
+                                        <th>Buyer</th>
 
-                                            <th>Buyer</th>
+                                        <th>Material</th>
 
-                                            <th>Material</th>
+                                        <th>Quantity</th>
 
-                                            <th>Quantity</th>
+                                        <th>Expected Price</th>
 
-                                            <th>Expected Price</th>
+                                        <th>Date</th>
 
-                                            <th>Date</th>
+                                        <th>Status</th>
 
-                                            <th>Status</th>
+                                        <th>Action</th>
 
-                                            <th>Action</th>
+                                    </tr>
 
-                                        </tr>
+                                </thead>
 
-                                    </thead>
+                                <tbody>
 
-                                    <tbody>
+                                    @forelse($rows as $eq)
 
                                         @php
-
-                                        $manu = Auth::guard('manufacturer')->user();
-
-                                        $enquiries = \App\Models\Enquiry::where('manufacturer_id', $manu->id)->latest()->get();
-
+                                            $st = [
+                                                'approved' => 'success',
+                                                'rejected' => 'danger',
+                                                'cancelled' => 'danger',
+                                            ][strtolower($eq->status)] ?? 'warning';
                                         @endphp
-
-                                        @foreach($enquiries as $eq)
 
                                         <tr>
 
-                                            <td>{{ $eq->id }}</td>
+                                            <td class="text-muted">{{ $eq->id }}</td>
 
-                                            <td>{{ optional($eq->user)->name ?? 'User #'.$eq->user_id }}</td>
+                                            <td class="fw-semibold">{{ optional($eq->user)->name ?? 'User #' . $eq->user_id }}
+                                            </td>
 
-                                            <td>{{ optional(\App\Models\Material::find($eq->material_id))->name }}</td>
+                                            <td>{{ $eq->demo_material ?? optional(\App\Models\Material::find($eq->material_id))->name }}
+                                            </td>
 
                                             <td>{{ $eq->quantity ?? '-' }}</td>
 
-                                            <td>${{ number_format($eq->expected_price ?? 0, 2) }}</td>
+                                            <td class="fw-semibold text-nowrap">
+                                                ${{ number_format($eq->expected_price ?? 0, 2) }}</td>
 
-                                            <td>{{ $eq->created_at?->format('d M Y') }}</td>
+                                            <td class="text-nowrap text-muted">{{ $eq->created_at?->format('d M Y') }}</td>
 
-                                            <td><span class="badge bg-{{ $eq->status === 'approved' ? 'success' : 'warning' }}">{{ ucfirst($eq->status) }}</span></td>
+                                            <td><span
+                                                    class="ud-st ud-st-{{ $st }} rounded-pill d-inline-block text-nowrap">{{ ucfirst($eq->status) }}</span>
+                                            </td>
 
                                             <td>
 
-                                                 @if($eq->status !== 'approved')
+                                                @if($eq->status !== 'approved')
 
-                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#approveModal{{ $eq->id }}">Approve & Create Order</button>
-
-
-
-                                                <!-- Approve Modal -->
-
-                                                <div class="modal fade" id="approveModal{{ $eq->id }}" tabindex="-1" aria-hidden="true">
-
-                                                    <div class="modal-dialog">
-
-                                                        <div class="modal-content">
-
-                                                            <div class="modal-header">
-
-                                                                <h5 class="modal-title">Approve RFQ #{{ $eq->id }}</h5>
-
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
-                                                            </div>
-
-                                                            <form method="POST" action="{{ route('manufacturer.enquiry.approve', $eq->id) }}">
-
-                                                                @csrf
-
-                                                                <div class="modal-body text-start">
-
-                                                                    <div class="mb-3">
-
-                                                                        <label class="form-label">Quantity</label>
-
-                                                                        <input type="number" step="0.01" name="quantity" class="form-control" value="{{ $eq->quantity }}" required>
-
-                                                                    </div>
-
-                                                                    <div class="mb-3">
-
-                                                                        <label class="form-label">Order Amount ($)</label>
-
-                                                                        <input type="number" step="0.01" name="amount" class="form-control" value="{{ $eq->expected_price ?? 0 }}" required>
-
-                                                                    </div>
-
-                                                                    <small class="text-muted">This will approve the enquiry and create an order for the buyer.</small>
-
-                                                                </div>
-
-                                                                <div class="modal-footer">
-
-                                                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-
-                                                                    <button type="submit" class="btn btn-primary">Confirm & Create</button>
-
-                                                                </div>
-
-                                                            </form>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
+                                                    <button class="btn btn-sm btn-success px-3 text-nowrap"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#approveModal{{ $eq->id }}">Approve & Create
+                                                        Order</button>
 
                                                 @else
 
-                                                Approved
+                                                    <span class="text-success fw-semibold">Approved</span>
 
                                                 @endif
-                                                
-                                                
-                                                
-                                                
-                                                
 
                                             </td>
 
                                         </tr>
 
-                                        @endforeach
+                                    @empty
 
-                                    </tbody>
+                                        <tr>
 
-                                </table>
+                                            <td colspan="8" class="text-center text-muted">
+                                                <div>No RFQs found.</div>
+                                                <div class="small">Requests from buyers will appear here.</div>
+                                            </td>
 
-                            </div>
+                                        </tr>
+
+                                    @endforelse
+
+                                </tbody>
+
+                            </table>
 
                         </div>
 
+                    </div>
+
+                    {{-- Approve modals (kept outside the table so row hover and scrolling don't affect them) --}}
+                    @foreach($rows as $eq)
+
+                        @if($eq->status !== 'approved')
+
+                            <!-- Approve Modal -->
+
+                            <div class="modal fade" id="approveModal{{ $eq->id }}" tabindex="-1" aria-hidden="true">
+
+                                <div class="modal-dialog">
+
+                                    <div class="modal-content">
+
+                                        <div class="modal-header">
+
+                                            <h5 class="modal-title">Approve RFQ #{{ $eq->id }}</h5>
+
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+
+                                        </div>
+
+                                        <form method="POST" action="{{ route('manufacturer.enquiry.approve', $eq->id) }}">
+
+                                            @csrf
+
+                                            <div class="modal-body text-start">
+
+                                                <div class="mb-3">
+
+                                                    <label class="form-label">Quantity</label>
+
+                                                    <input type="number" step="0.01" name="quantity" class="form-control"
+                                                        value="{{ $eq->quantity }}" required>
+
+                                                </div>
+
+                                                <div class="mb-3">
+
+                                                    <label class="form-label">Order Amount ($)</label>
+
+                                                    <input type="number" step="0.01" name="amount" class="form-control"
+                                                        value="{{ $eq->expected_price ?? 0 }}" required>
+
+                                                </div>
+
+                                                <small class="text-muted">This will approve the enquiry and create an order for
+                                                    the buyer.</small>
+
+                                            </div>
+
+                                            <div class="modal-footer">
+
+                                                <button type="button" class="btn btn-light"
+                                                    data-bs-dismiss="modal">Cancel</button>
+
+                                                <button type="submit" class="btn btn-success">Confirm & Create</button>
+
+                                            </div>
+
+                                        </form>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        @endif
+
+                    @endforeach
+
+                    <div
+                        class="bg-white shadow-sm rounded-4 p-3 mt-3 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+                        <div>
+                            <h6 class="fw-bold mb-1">Need help?</h6>
+                            <p class="text-muted small mb-0">Questions about an RFQ or creating an order? Email
+                                connect@maseco.ca.</p>
+                        </div>
+                        <a href="{{ url('contact-us') }}" class="btn btn-outline-success btn-sm px-3">Contact us</a>
                     </div>
 
                 </div>
@@ -235,10 +330,6 @@
             </div>
 
         </div>
-
-
-
-
 
     </div> <!-- container -->
 
