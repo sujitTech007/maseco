@@ -109,7 +109,7 @@
         <!-- Heading -->
         <div class="pricing-heading text-center mb-3">
             <span class="pricing-eyebrow">OUR SUBSCRIPTION</span>
-            <h2>Choose the right plan for your sourcing journey</h2>
+            <h2 class="section-title-h2 mb-2 primary-text-color">Choose the right plan for your sourcing journey</h2>
             <p>
                 Access textile suppliers, sustainable materials and production
                 solutions — all in one place.

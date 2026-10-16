@@ -115,8 +115,8 @@ footer .footer-items-info{
 	padding-left: 10px;
 }
 footer .footer-items h4 {
-	font-size: 25px;
-	font-weight: bold;
+	font-size: 17px;
+	font-weight: 600;
 	width: 100%;
 	text-transform: capitalize;
 }
@@ -244,7 +244,7 @@ footer .widget {
 
 footer .widget .footer-title {
 
-	font-size: 20px;
+	font-size: 18px;
 	font-weight: bold;
     color: var(--white-color);
 	text-transform: capitalize;

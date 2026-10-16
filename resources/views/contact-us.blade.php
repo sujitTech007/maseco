@@ -64,8 +64,7 @@
                         Get In Touch
                     </span>
 
-                    <h2 class="fw-bold mt-2 mb-2"
-                        style="font-size:26px;color:#263b3a;">
+                    <h2 class="section-title-h2 mb-2 primary-text-color">
                         Let's Start a Conversation
                     </h2>
 
@@ -148,8 +147,7 @@
 
                             <div class="col-12">
                                 <button type="submit"
-                                        class="btn text-white w-100 py-2 theme_btn"
-                                        style="background:#2DAC92;font-size:14px;">
+                                        class="btn text-white w-100 theme_btn py-3 fw-bold">
                                     Send Enquiry
                                     <i class="fas fa-arrow-right ms-2"></i>
                                 </button>
@@ -217,8 +215,7 @@
                             Find Us
                         </span>
 
-                        <h4 class="fw-bold mt-2 mb-2"
-                            style="font-size:21px;color:#263b3a;">
+                        <h4 class="section-title-h2 mb-2 fs-5 primary-text-color">
                             Visit Our Office
                         </h4>
 

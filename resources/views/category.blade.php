@@ -159,7 +159,7 @@
         <!-- Section Heading -->
         <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
             <div>
-                <h2 class="fw-bold mb-1" style="font-size:22px;color:#263b3a;">
+                <h2 class="section-title-h2 mb-2 primary-text-color">
                     Material Categories
                 </h2>
                 <p class="text-secondary mb-0" style="font-size:13px;">

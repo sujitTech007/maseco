@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap');
 @font-face {
 
     font-family: 'Rajdhani';
@@ -599,7 +600,7 @@ h6 {
 
     line-height: 1.2;
 
-    font-family: var(--font-rajdhani);
+    font-family: "Google Sans Flex", sans-serif;
 
     word-break: break-word;
 
@@ -607,9 +608,7 @@ h6 {
 
     color: var(--black-color);
 
-    margin-top: 0 !important;
-
-    font-weight: bold !important;
+    font-weight: bold ;
 
 }
 
@@ -662,6 +661,10 @@ h6 {
 }
 
 
+.container{
+    max-width: 1170px;
+}
+
 
 main,
 
@@ -687,6 +690,11 @@ hgroup {
 
 }
 
+.section-title-h2{       
+    letter-spacing: -0.5px;
+    font-weight: 700;
+    font-size: 30px;
+}
 
 
 textarea {
@@ -959,7 +967,6 @@ ease-in-out;
 
     z-index: 1  !important;
 
-    font-weight: 700  !important;
 
     border-radius: 10px  !important;
 
@@ -975,9 +982,11 @@ ease-in-out;
 
 .theme-btn{
 
-    font-size: 15px;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    font-weight: 500;
 
-    font-family: var(--font-rajdhani) !important;
+   font-family: "Google Sans Flex", sans-serif;
 
     color: var(--white-color) !important;
 
@@ -985,7 +994,7 @@ ease-in-out;
 
     border: 1px solid var(--primary-color) !important;
 
-    padding: 10px 25px  !important;
+    padding: 10px 20px  !important;
 
     -webkit-transition: all 0.3s 
 
@@ -999,7 +1008,7 @@ ease-in-out;
 
     z-index: 1  !important;
 
-    font-weight: 700  !important;
+    font-weight: 500  !important;
 
     border-radius: 10px  !important;
 

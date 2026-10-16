@@ -41,7 +41,7 @@
                         </div>
 
                         <!-- Introduction -->
-                        <h2 class="mb-3">
+                        <h2 class="section-title-h2 mb-2 primary-text-color">
                             Smarter Post Production for Superior Textiles
                         </h2>
 

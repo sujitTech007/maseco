@@ -56,7 +56,7 @@
                         ABOUT MASECO
                     </span>
 
-                    <h2 class="maseco-about-title">
+                    <h2 class="section-title-h2 mb-2 primary-text-color">
                         A better way to
                         <span>source textiles.</span>
                     </h2>
@@ -344,7 +344,7 @@
             <span class="journey-eyebrow">
                 <i class="bi bi-leaf"></i> THE MASECO JOURNEY
             </span>
-            <h2>A Smarter Way to Source Textiles</h2>
+            <h2 class="section-title-h2 mb-2">A Smarter Way to Source Textiles</h2>
             <p>
                 From finding the right materials to connecting with manufacturing
                 partners, Maseco brings your sourcing journey together.
@@ -547,7 +547,7 @@
                   style="color: rgba(45, 172, 146, 1);">
                 <i class="fa-solid fa-quote-left me-2"></i>Testimonials
             </span>
-            <h2 class="fw-semibold mb-2">What Our Happy Clients Say</h2>
+            <h2 class="section-title-h2 mb-2">What Our Happy Clients Say</h2>
             <p class="text-muted mb-0">
                 Trusted experiences from our valued clients.
             </p>

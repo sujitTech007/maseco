@@ -170,12 +170,12 @@ header ul.navbar-nav{
 
 header ul.navbar-nav li a {
 	color: var(--black-color);
-	font-size: 16px;
+	font-size: 15px;
 	text-transform: capitalize;
 	font-weight: 600;
   padding: 30px 5px;
   display: block;
-  font-family: var(--font-rajdhani);
+  font-family: "Google Sans Flex", sans-serif;
 }
 
 header ul.navbar-nav li a:focus,
@@ -220,12 +220,12 @@ header li .sub-menu li {
 
 
 header .headerNav li .sub-menu li a {
-	text-transform: capitalize;
-    padding: 10px 15px;
+	    text-transform: capitalize;
+    padding: 8px 10px;
     display: block;
     color: var(--black-color);
-    font-size: 17px;
-	border-bottom: 1px solid var(--light-grey);
+    font-size: 14px;
+    border-bottom: 1px solid var(--light-grey);
 }
 header .headerNav li .sub-menu li:hover a{
 	background-color: var(--primary-color);

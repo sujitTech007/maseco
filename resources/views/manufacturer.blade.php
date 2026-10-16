@@ -102,7 +102,7 @@ font-size:20px;
     .agent-info li a {
 
       color: #fff;
-          font-family: var(--font-rajdhani);
+          font-family: "Google Sans Flex", sans-serif;
 
 
     }

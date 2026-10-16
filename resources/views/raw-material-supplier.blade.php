@@ -22,7 +22,7 @@
         <!-- Directory Intro -->
         <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
             <div>
-                <h2 class="fw-bold mb-1" style="font-size:21px;color:#263b3a;">
+               <h2 class="section-title-h2 mb-2 primary-text-color">
                     Supplier Directory
                 </h2>
                 <p class="text-secondary mb-0">

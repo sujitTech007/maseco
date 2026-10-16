@@ -27,7 +27,7 @@
 
           <h1 class="display-5 fw-bold mt-2 mb-3 text-white">
             Find the Right Textile Suppliers
-            <span class="d-block text-success">
+            <span class="d-block primary-text-color">
               for Your Business
             </span>
           </h1>
@@ -172,7 +172,7 @@
             <div class="col-12 col-sm-6 col-xl-3">
                 <div class="maseco-advantage-card">
                     <div class="maseco-advantage-icon bg-success bg-opacity-10">
-                        <i class="fa fa-comments text-success"></i>
+                        <i class="fa fa-comments primary-text-color"></i>
                     </div>
 
                     <div class="maseco-advantage-content">
@@ -200,7 +200,7 @@
                         ABOUT MASECO
                     </span>
 
-                    <h2 class="maseco-about-title">
+                    <h2 class="section-title-h2 primary-text-color mb-2">
                         A better way to
                         <span>source textiles.</span>
                     </h2>
@@ -274,10 +274,10 @@
     <div class="container">
 
       <!-- Section Intro -->
-      <div class="services-intro">
+      <div class="services-intro mb-4">
         <div class="services-heading">
           <span class="services-eyebrow">WHAT WE OFFER</span>
-          <h2>Everything you need to<br>source better textiles.</h2>
+          <h2 class="section-title-h2 primary-text-color mb-2">Everything you need to<br>source better textiles.</h2>
         </div>
 
         <div class="services-description">
@@ -397,7 +397,7 @@
                   <span class="maseco-featured-eyebrow">
                       <i class="bi bi-leaf-fill"></i> SUSTAINABLE SOURCING
                   </span>
-                  <h2>Featured <span>textile suppliers</span></h2>
+                  <h2 class="section-title-h2 mb-2">Featured <span class="primary-text-color">textile suppliers</span></h2>
                   <p>Discover trusted partners for responsible textile sourcing.</p>
               </div>
 
@@ -588,8 +588,8 @@
                         <span></span> OUR PROCESS
                     </span>
 
-                    <h2>Better sourcing.<br>
-                        <span>Greater impact.</span>
+                    <h2 class="section-title-h2 mb-2">Better sourcing.<br>
+                        <span class="primary-text-color">Greater impact.</span>
                     </h2>
 
                     <p>
@@ -703,7 +703,8 @@
             <span class="journey-eyebrow">
                 <i class="bi bi-leaf"></i> THE MASECO JOURNEY
             </span>
-            <h2>A Smarter Way to Source Textiles</h2>
+            
+            <h2 class="section-title-h2 mb-2 primary-text-color">A Smarter Way to Source Textiles</h2>
             <p>
                 From finding the right materials to connecting with manufacturing
                 partners, Maseco brings your sourcing journey together.
@@ -890,7 +891,7 @@
         <!-- Heading -->
         <div class="pricing-heading text-center">
             <span class="pricing-eyebrow">OUR SUBSCRIPTION</span>
-            <h2>Choose the right plan for your sourcing journey</h2>
+            <h2 class="section-title-h2 mb-2 primary-text-color">Choose the right plan for your sourcing journey</h2>
             <p>
                 Access textile suppliers, sustainable materials and production
                 solutions — all in one place.
@@ -1000,11 +1001,11 @@
       
       <div class="row align-items-center mb-4">
         <div class="col-lg-7">
-          <span class="text-success small fw-bold text-uppercase">
+          <span class="primary-text-color small fw-bold text-uppercase">
             Your Sourcing Journey
           </span>
           <h2 class="display-6 fw-bold mt-2">
-            How <span class="text-success">Maseco</span> Works
+            How <span class="primary-text-color">Maseco</span> Works
           </h2>
           <p class="text-secondary">
             From finding the right supplier to tracking production,
@@ -1021,7 +1022,7 @@
                     position-absolute top-50 start-0 translate-middle-y"
           id="workflowPrev" aria-label="Previous steps"
           style="z-index:2">
-          <i class="fa fa-chevron-left text-success"></i>
+          <i class="fa fa-chevron-left primary-text-color"></i>
         </button>
 
         <div class="overflow-hidden mx-3 mx-md-4">
@@ -1091,7 +1092,7 @@
                     {{ $item['title'] }}
                   </h3>
 
-                  <p class="fw-semibold text-success mb-2">
+                  <p class="fw-semibold primary-text-color mb-2">
                     {{ $item['subtitle'] }}
                   </p>
 
@@ -1102,7 +1103,7 @@
                   <ul class="list-unstyled text-secondary mb-4">
                     @foreach($item['points'] as $point)
                     <li class="mb-2">
-                      <i class="fa fa-check-circle text-success me-2"></i>
+                      <i class="fa fa-check-circle primary-text-color me-2"></i>
                       {{ $point }}
                     </li>
                     @endforeach
@@ -1124,7 +1125,7 @@
                     position-absolute top-50 end-0 translate-middle-y"
           id="workflowNext" aria-label="Next steps"
           style="z-index:2">
-          <i class="fa fa-chevron-right text-success"></i>
+          <i class="fa fa-chevron-right primary-text-color"></i>
         </button>
       </div>
 
@@ -1144,7 +1145,7 @@
       <div class="row g-3 align-items-center bg-white rounded-4 shadow-sm p-4 mt-5">
         <div class="col-lg-4">
           <h3 class="h5 fw-bold mb-2">
-            <i class="fa fa-leaf text-success me-2"></i>
+            <i class="fa fa-leaf primary-text-color me-2"></i>
             Sustainable Sourcing
           </h3>
           <p class="text-secondary mb-0">
@@ -1156,14 +1157,14 @@
        
         <div class="col-6 col-lg-3">
             <div class="d-flex align-items-center gap-2 p-3 rounded-3 border supplier-benefit-card">
-                <i class="fa fa-shield text-success fs-5"></i>
+                <i class="fa fa-shield primary-text-color fs-5"></i>
                 <span class="fs-14 fw-semibold">Supplier Verification</span>
             </div>
         </div>
 
         <div class="col-6 col-lg-3">
             <div class="d-flex align-items-center gap-2 p-3 rounded-3 border supplier-benefit-card">
-                <i class="fa fa-recycle text-success fs-5"></i>
+                <i class="fa fa-recycle primary-text-color fs-5"></i>
                 <span class="fs-14 fw-semibold">Eco-conscious Options</span>
             </div>
         </div>
@@ -1187,7 +1188,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content rounded-4 shadow-lg">
         <!-- <div id="paymentProcessingOverlay" class="d-flex">
-        <div class="spinner-border text-success"></div>
+        <div class="spinner-border primary-text-color"></div>
       </div> -->
         <div class="modal-header border-0">
           <h5 class="modal-title fw-bold">Checkout</h5>
@@ -1236,16 +1237,15 @@
     </div>
   </section> -->
 
-<section class="testimonial py-5">
+<section class="testimonial py-5 bg-white">
     <div class="container">
 
         <!-- Section Heading -->
         <div class="text-center mb-5">
-            <span class="text-uppercase small fw-semibold d-block mb-2"
-                  style="color: rgba(45, 172, 146, 1);">
+            <span class="text-uppercase small fw-semibold d-block mb-2 primary-text-color">
                 <i class="fa-solid fa-quote-left me-2"></i>Testimonials
             </span>
-            <h2 class="fw-semibold mb-2">What Our Happy Clients Say</h2>
+             <h2 class="section-title-h2 mb-2">What Our Happy Clients Say</h2>
             <p class="text-muted mb-0">
                 Trusted experiences from our valued clients.
             </p>

@@ -2702,7 +2702,6 @@ form[action*="marketplace"] .form-label {
     grid-template-columns: 1fr 1fr;
     gap: 70px;
     align-items: start;
-    margin-bottom: 75px;
 }
 
 .services-eyebrow {
@@ -2712,15 +2711,6 @@ form[action*="marketplace"] .form-label {
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 2px;
-}
-
-.services-heading h2 {
-    margin: 0;
-    color: var(--primary-color);
-    font-size: clamp(34px, 3.4vw, 52px);
-    font-weight: 700;
-    line-height: 1.12;
-    letter-spacing: -1.8px;
 }
 
 .services-description {
@@ -2799,7 +2789,7 @@ form[action*="marketplace"] .form-label {
 
 .service-card h3 {
     color: var(--primary-color);
-    font-size: 22px;
+    font-size: 18px;
 }
 
 .maseco-services .service-card a.btn.theme_btn {
@@ -2935,7 +2925,6 @@ padding: 10px;
     --maseco-muted: #75899D;
     --maseco-border: #DFE9EF;
 
-    background: #F5F9FB;
     overflow: hidden;
 }
 
@@ -2958,17 +2947,7 @@ padding: 10px;
     letter-spacing: 1.5px;
 }
 
-.maseco-featured-heading h2 {
-    margin: 10px 0 7px;
-    color: var(--maseco-green-dark);
-    font-size: clamp(25px, 2.2vw, 34px);
-    font-weight: 750;
-    letter-spacing: -0.8px;
-}
 
-.maseco-featured-heading h2 span {
-    color: var(--maseco-green);
-}
 
 .maseco-featured-heading p {
     margin: 0;
@@ -3100,12 +3079,10 @@ padding: 10px;
 }
 
 .maseco-supplier-details h3 {
-    margin: 0 0 7px;
-    color: var(--maseco-text);
+    margin: 0 0 10px;
+    color: var(--primary-color);
     font-size: 18px;
-    line-height: 1.35;
-    font-weight: 750;
-    letter-spacing: -0.35px;
+    letter-spacing: -0.5px;
 }
 
 .maseco-supplier-location {
@@ -3120,7 +3097,7 @@ padding: 10px;
 .maseco-supplier-location i,
 .maseco-supplier-meta i,
 .maseco-supplier-benefits i {
-    color: #2996E8;
+    color: var(--primary-color);
     font-size: 13px;
 }
 
@@ -3164,9 +3141,8 @@ padding: 10px;
 }
 
 .maseco-supplier-moq strong {
-    color: var(--maseco-text);
-    font-size: 19px;
-    font-weight: 800;
+    color: var(--primary-color);
+    font-size: 16px;
 }
 
 .maseco-supplier-rating {
@@ -3410,28 +3386,10 @@ padding: 10px;
     text-transform: uppercase;
 }
 
-.maseco-about-title {
-    max-width: 520px;
-    margin: 0 0 22px;
-    color: var(--primary-color);
-    font-size: clamp(34px, 3.2vw, 48px);
-    font-weight: 750;
-    line-height: 1.14;
-    letter-spacing: -1.4px;
-}
 
-.maseco-about-title span {
-    display: inline;
-    color: #2DAC92;
-}
 
-.maseco-about-description {
-    max-width: 510px;
-    margin-bottom: 16px;
-    color: #62736e;
-    font-size: 15px;
-    line-height: 1.85;
-}
+
+
 
 .maseco-about-secondary {
     margin-bottom: 27px;
@@ -3630,24 +3588,6 @@ padding: 10px;
     font-weight: 700;
     letter-spacing: 1.5px;
 }
-
-.maseco-journey .journey-heading h2 {
-    margin: 0 0 13px;
-    color: var(--primary-color);
-    font-size: clamp(27px, 3vw, 38px);
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.8px;
-}
-
-.maseco-journey .journey-heading p {
-    max-width: 570px;
-    margin: 0 auto;
-    color: #718078;
-    font-size: 14px;
-    line-height: 1.8;
-}
-
 /* Image */
 
 .maseco-journey .journey-visual {
@@ -3758,7 +3698,7 @@ padding: 10px;
 .maseco-journey .journey-step h3 {
     margin: 0 0 10px;
     color: var(--primary-color);
-    font-size: 22px;
+    font-size: 20px;
 }
 
 
@@ -3866,18 +3806,7 @@ padding: 10px;
     background: #2DAC92;
 }
 
-.maseco-process .process-intro h2 {
-    margin: 0 0 16px;
-    color: var(--primary-color);
-    font-size: clamp(27px, 2.5vw, 36px);
-    font-weight: 700;
-    line-height: 1.18;
-    letter-spacing: -0.8px;
-}
 
-.maseco-process .process-intro h2 span {
-    color: #2DAC92;
-}
 
 
 
@@ -4067,21 +3996,7 @@ padding: 10px;
     letter-spacing: 2px;
 }
 
-.pricing-heading h2 {
-    margin-bottom: 14px;
-    color: var(--maseco-dark);
-    font-size: 35px;
-    font-weight: 600;
-    line-height: 1.2;
-}
 
-.pricing-heading p {
-    max-width: 650px;
-    margin: 0 auto;
-    color: var(--maseco-muted);
-    font-size: 16px;
-    line-height: 1.7;
-}
 
 /* Plan layout */
 .maseco-plan {
@@ -4124,10 +4039,10 @@ padding: 10px;
 
 .plan-price {
     margin-bottom: 8px;
-    color: #142f2a;
-    font-size: 30px;
-    font-weight: 750;
-    line-height: 1.2;
+    color: var(--primary-color);
+    font-size: 35px;
+     font-family: "Google Sans Flex", sans-serif;
+     font-weight: 700;
 }
 
 .plan-price span {
@@ -4710,7 +4625,8 @@ padding: 10px;
 .maseco-advantage-content h5 {
     margin: 0;
     color: var(--primary-color);
-    font-size: 17px;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 .maseco-advantage-content p {
@@ -4915,9 +4831,6 @@ padding: 10px;
 
 
 
-.testimonial {
-    background: #f2f8f5;
-}
 
 .testimonial-box {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -4972,14 +4885,14 @@ padding: 10px;
     background: rgba(45, 172, 146, 1);
 }
 .supplier-avatar {
-    width: 68px;
-    height: 68px;
+    width: 65px;
+    height: 65px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background: #f1f5f3; */
-    border-radius: 10px;
+    background: #f1f5f3;
+    border-radius: 50px;
     overflow: hidden;
 }
 
@@ -4987,6 +4900,7 @@ padding: 10px;
     width: 100%;
     height: 100%;
     object-fit: contain;
+    filter: opacity(0.5);
 }
 form .form-control, form .form-select {
     padding: 14px;
@@ -5093,7 +5007,7 @@ form .form-label {
 
   .agent-info li a {
     color: #fff;
-    font-family: var(--font-rajdhani);
+    font-family: "Google Sans Flex", sans-serif;
 }
 
 i.fas.fa-envelope {
@@ -5141,23 +5055,6 @@ i.fas.fa-phone.fa-rotate-90 {
     box-shadow: 0 8px 24px rgba(38, 59, 58, .08);
 }
 
-.supplier-avatar {
-    width: 68px;
-    height: 68px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* background: #f1f5f3; */
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.supplier-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
 
 .supplier-name {
     color: var(--primary-color);
@@ -5214,16 +5111,7 @@ i.fas.fa-phone.fa-rotate-90 {
     color: var(--primary-color);
 }
 
-@media (max-width: 575px) {
-    .supplier-avatar {
-        width: 58px;
-        height: 58px;
-    }
 
-    .supplier-directory-card .p-3 {
-        padding: 14px !important;
-    }
-}
 
 .icon_box i{
        background: rgb(151 241 195 / 60%);
@@ -5262,17 +5150,7 @@ i.fas.fa-phone.fa-rotate-90 {
         color: #287968;
     }
 
-    .post-body h2 {
-        color: #183f38;
-        font-size: 25px;
-        font-weight: 700;
-    }
-
-    .post-body p {
-        color: #687771;
-        line-height: 1.85;
-    }
-
+  
     .service_card {
         height: 100%;
         padding: 25px;

@@ -11,7 +11,7 @@
         {{-- Page Heading --}}
         <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
             <div>
-                <h2 class="fw-bold mb-1">Explore Materials</h2>
+                <h2 class="section-title-h2 mb-2">Explore Materials</h2>
                 <p class="text-muted mb-0">
                     Find the right materials for your business
                 </p>

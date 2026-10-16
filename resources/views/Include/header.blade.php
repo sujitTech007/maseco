@@ -439,12 +439,12 @@
 
 
 
-                      <li class="menu-item {{ request()->routeIs('category') ? 'current-menu-item' : '' }}"
+                      <!-- <li class="menu-item {{ request()->routeIs('category') ? 'current-menu-item' : '' }}"
                         data-aos="fade-in">
 
                         <a href="{{ route('category') }}">Category</a>
 
-                      </li>
+                      </li> -->
 
                       <li class="menu-item {{ request()->routeIs('contact.us') ? 'current-menu-item' : '' }}"
                         data-aos="fade-in">

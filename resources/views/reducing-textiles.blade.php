@@ -147,7 +147,7 @@
                     Our Approach
                 </p>
 
-                <h2 class="h3 fw-bold">
+                <h2 class="section-title-h2 mb-2 primary-text-color">
                     Turning Textile Waste into New Opportunities
                 </h2>
 
@@ -197,7 +197,7 @@
                     Marketplace Features
                 </p>
 
-                <h2 class="h3 fw-bold">
+                <h2 class="section-title-h2 mb-2 primary-text-color">
                     Everything You Need in One Place
                 </h2>
 
@@ -274,7 +274,7 @@
                     Circular Economy
                 </p>
 
-                <h2 class="h3 fw-bold">
+                <h2 class="section-title-h2 mb-2">
                     Give Textile Materials a Second Life
                 </h2>
 

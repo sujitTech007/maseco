@@ -133,7 +133,7 @@
                     <i class="bi bi-stars me-2"></i>Smart Recommendations
                 </p>
 
-                <h2 class="fw-bold mb-2">AI-Driven Suggestions</h2>
+                <h2 class="section-title-h2 mb-2 primary-text-color">AI-Driven Suggestions</h2>
 
                 <p class="text-secondary mb-0">
                     Discover relevant suppliers, textile materials and
@@ -172,9 +172,9 @@
                             </span>
                         </div>
 
-                        <h5 class="fw-bold">Recommended Suppliers</h5>
+                        <h5 class="fw-bold fs-5 mb-2">Recommended Suppliers</h5>
 
-                        <p class="text-secondary small">
+                        <p class="text-secondary">
                             Explore suppliers that match your textile
                             requirements and sourcing preferences.
                         </p>
@@ -197,8 +197,7 @@
                             </li>
                         </ul>
 
-                        <a href="#" class="text-decoration-none fw-semibold"
-                           style="color:rgba(45,172,146,1);">
+                        <a href="#" class="theme_link mt-1">
                             Explore Suppliers <i class="bi bi-arrow-right ms-1"></i>
                         </a>
 
@@ -223,9 +222,9 @@
                             </span>
                         </div>
 
-                        <h5 class="fw-bold">Textile Alternatives</h5>
+                        <h5 class="fw-bold fs-5 mb-2">Textile Alternatives</h5>
 
-                        <p class="text-secondary small">
+                        <p class="text-secondary">
                             Find alternative and recycled materials
                             that may suit your sourcing needs.
                         </p>
@@ -248,8 +247,7 @@
                             </li>
                         </ul>
 
-                        <a href="#" class="text-decoration-none fw-semibold"
-                           style="color:rgba(45,172,146,1);">
+                        <a href="#" class="theme_link mt-1">
                             Explore Materials <i class="bi bi-arrow-right ms-1"></i>
                         </a>
 
@@ -274,9 +272,9 @@
                             </span>
                         </div>
 
-                        <h5 class="fw-bold">Eco-Friendly Alternatives</h5>
+                        <h5 class="fw-bold fs-5 mb-2">Eco-Friendly Alternatives</h5>
 
-                        <p class="text-secondary small">
+                        <p class="text-secondary">
                             Discover material reuse and recycling
                             opportunities across the textile marketplace.
                         </p>
@@ -299,8 +297,7 @@
                             </li>
                         </ul>
 
-                        <a href="#" class="text-decoration-none fw-semibold"
-                           style="color:rgba(45,172,146,1);">
+                        <a href="#" class="theme_link mt-1">
                             Explore Alternatives
                             <i class="bi bi-arrow-right ms-1"></i>
                         </a>
