@@ -187,7 +187,7 @@
                                            class="subscription-action edit"
                                            title="Edit plan"
                                            aria-label="Edit plan">
-                                            <i class="fas fa-pen"></i>
+                                           <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
 
                                         <form action="{{ route('admin.subscription.destroy', $plan->id) }}"
@@ -201,7 +201,7 @@
                                                     class="subscription-action delete"
                                                     title="Delete plan"
                                                     aria-label="Delete plan">
-                                                <i class="fas fa-trash-alt"></i>
+                                               <i class="fa-solid fa-trash"></i>
                                             </button>
                                         </form>
                                     </div>

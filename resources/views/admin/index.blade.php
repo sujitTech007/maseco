@@ -5,7 +5,7 @@
 
 
 
-
+<!-- 
   <div class="page-title-head d-flex align-items-center gap-2">
 
     <div class="flex-grow-1">
@@ -14,7 +14,7 @@
 
     </div>
 
-  </div>
+  </div> -->
 
 
 
