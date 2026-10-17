@@ -63,34 +63,7 @@
 
         <script src="{{ asset('assets/admin/js/chart.js') }}"></script>
 
-        <style>
-            /* Sidebar visible by default */
-            .sidenav-menu {
-                display: block !important;
-                /* position: fixed; */
-                top: 0;
-                left: 0;
-                bottom: 0;
-                /* width: 260px; */
-                z-index: 1040;
-                overflow-y: auto;
-                /* transition: transform 0.3s ease; */
-            }
-
-            /* Hide sidebar when closed */
-            /* body.sidebar-closed .sidenav-menu {
-    transform: translateX(-100%);
-} */
-
-            /* Let the dashboard use the available width */
-            /* body.sidebar-closed .content-page {
-    margin-left: 0 !important;
-    width: 100% !important;
-} */
-
-    
-
-        </style>
+       
 
     </head>
 
@@ -147,6 +120,8 @@
 
 
                                         <!--- Sidenav Menu -->
+                                        
+
 
                                         <ul class="side-nav">
                                             <li class="side-nav-item {{ Route::is('admin.dashboard') ? 'active' : '' }}">
@@ -172,15 +147,7 @@
 
                                                 <a href="{{ route('admin.buyer') }}" class="side-nav-link {{ Route::is('admin.buyer') ? 'active' : '' }}">
 
-                                                    <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true">
-                                                            <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                                <circle cx="32" cy="32" r="18" />
-                                                                <circle cx="32" cy="32" r="12" fill="none" />
-                                                                <path d="M44 20l10-6" />
-                                                                <path d="M20 44l-8 6" />
-                                                                <path d="M38 26 L46 18" stroke-dasharray="3 3" />
-                                                            </g>
-                                                        </svg>
+                                                    <span class="menu-icon"><i class="fa-solid fa-user"></i>
                                                     </span>
 
                                                     <span class="menu-text">Buyer</span>
@@ -195,15 +162,7 @@
 
                                                 <a href="{{ route('admin.seller') }}" class="side-nav-link {{ Route::is('admin.seller') ? 'active' : '' }}">
 
-                                                    <span class="menu-icon"><svg width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                                            <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
-                                                            <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
-                                                            <path d="M10 6h4"></path>
-                                                            <path d="M6.5 10v4"></path>
-                                                            <path d="M17.5 10v4"></path>
-                                                            <path d="M10 17h4"></path>
-                                                            <circle cx="12" cy="12" r="2.2"></circle>
-                                                        </svg>
+                                                    <span class="menu-icon"><i class="fa-solid fa-users"></i>
                                                     </span>
 
                                                     <span class="menu-text"> Supplier
@@ -218,25 +177,7 @@
 
                                                 <a href="{{ route('admin.manufacturer') }}" class="side-nav-link {{ Route::is('admin.manufacturer') ? 'active' : '' }}">
 
-                                                    <span class="menu-icon"><svg width="70" height="70" viewBox="0 0 24 24" fill="none"
-                                                            stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-
-                                                            <!-- Factory building -->
-                                                            <path d="M3 21V10l4 3 4-3v11" />
-                                                            <rect x="11" y="14" width="10" height="7" rx="1.5" />
-
-                                                            <!-- Chimneys -->
-                                                            <path d="M7 10V6" />
-                                                            <path d="M11 10V5" />
-
-                                                            <!-- Smoke -->
-                                                            <path d="M7 6c0-1 .8-2 2-2 1.2 0 2 .8 2 1.6" />
-
-                                                            <!-- Conveyor belt -->
-                                                            <rect x="4" y="18" width="6" height="2" rx="1" />
-                                                            <circle cx="6" cy="20" r="1" />
-                                                            <circle cx="9" cy="20" r="1" />
-                                                        </svg>
+                                                    <span class="menu-icon"><i class="fa-solid fa-industry"></i>
                                                     </span>
 
                                                     <span class="menu-text"> Manufaturer
@@ -253,13 +194,7 @@
 
                                                 <a href="{{ route('admin.category.index') }}" class="side-nav-link {{ Route::is('admin.category.*') ? 'active' : '' }}">
 
-                                                    <span class="menu-icon"><svg width="70" height="70" viewBox="0 0 24 24" fill="none"
-                                                            stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                                            <rect x="3" y="3" width="7" height="7" rx="2" />
-                                                            <rect x="14" y="3" width="7" height="7" rx="2" />
-                                                            <rect x="3" y="14" width="7" height="7" rx="2" />
-                                                            <rect x="14" y="14" width="7" height="7" rx="2" />
-                                                        </svg>
+                                                    <span class="menu-icon"><i class="fa-solid fa-table-cells-large"></i>
                                                     </span>
 
                                                     <span class="menu-text"> Category
@@ -276,17 +211,7 @@
 
                                                 <a href="{{ route('admin.material') }}" class="side-nav-link {{ Route::is('admin.material') ? 'active' : '' }}">
 
-                                                    <span class="menu-icon"><svg width="70" height="70" viewBox="0 0 24 24" fill="none"
-                                                            stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-
-                                                            <!-- Fabric roll -->
-                                                            <circle cx="7" cy="12" r="3.5" />
-                                                            <path d="M10.5 12h9.5" />
-
-                                                            <!-- Roll texture lines -->
-                                                            <path d="M6 9.5c1.5 0 2.5 1 2.5 2.5s-1 2.5-2.5 2.5" />
-                                                            <path d="M3.5 12h0.1" />
-                                                        </svg>
+                                                    <span class="menu-icon"><i class="fa-solid fa-layer-group"></i>
                                                     </span>
 
                                                     <span class="menu-text"> Materials
@@ -301,16 +226,7 @@
 
                                                 <a href="{{ route('admin.orders') }}" class="side-nav-link {{ Route::is('admin.orders') ? 'active' : '' }}">
 
-                                                    <span class="menu-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-
-                                                            <!-- Cart -->
-                                                            <circle cx="9" cy="21" r="1"></circle>
-                                                            <circle cx="20" cy="21" r="1"></circle>
-                                                            <path d="M1 1h4l2.6 12.4A2 2 0 0 0 9.6 15h9.8a2 2 0 0 0 1.9-1.4L23 6H6"></path>
-
-                                                            <!-- Centered Tick -->
-                                                            <path d="M10.5 10.5l2 2l3 -3"></path>
-                                                        </svg></span>
+                                                    <span class="menu-icon"><i class="fa-solid fa-layer-group"></i></span>
 
                                                     <span class="menu-text"> Orders
 
@@ -324,13 +240,7 @@
 
                                                 <a href="{{ route('admin.subscription.index') }}" class="side-nav-link {{ Route::is('admin.subscription.index') ? 'active' : '' }}">
 
-                                                    <span class="menu-icon"><svg width="70" height="70" viewBox="0 0 24 24" fill="none"
-                                                            stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                                            <rect x="5" y="3" width="14" height="18" rx="2" />
-                                                            <path d="M9 7h6" />
-                                                            <path d="M9 11h6" />
-                                                            <path d="M9 15h4" />
-                                                        </svg>
+                                                    <span class="menu-icon"><i class="fa-solid fa-rectangle-list"></i>
                                                     </span>
 
                                                     <span class="menu-text"> Subscription Plans
@@ -345,12 +255,7 @@
 
                                                 <a href="{{ route('admin.enquiry') }}" class="side-nav-link {{ Route::is('admin.enquiry') ? 'active' : '' }}">
 
-                                                    <span class="menu-icon"><svg width="70" height="70" viewBox="0 0 24 24" fill="none"
-                                                            stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                                            <path d="M3 5h18v10H8l-5 4V5z" />
-                                                            <path d="M12 8.5c0-.8.6-1.5 1.4-1.5S15 7.7 15 8.5 14.4 10 13.4 10" />
-                                                            <circle cx="13.4" cy="13" r="1" />
-                                                        </svg>
+                                                    <span class="menu-icon"><i class="fa-solid fa-message"></i>
                                                     </span>
 
                                                     <span class="menu-text"> Enquiry
@@ -365,11 +270,7 @@
 
                                                 <a href="{{ route('admin.payment') }}" class="side-nav-link {{ Route::is('admin.payment') ? 'active' : '' }}">
 
-                                                    <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="48" height="48">
-
-                                                            <path d="M2 5C2 3.89543 2.89543 3 4 3H20C21.1046 3 22 3.89543 22 5V19C22 20.1046 21.1046 21 20 21H4C2.89543 21 2 20.1046 2 19V5ZM20 5H4V7H20V5ZM4 19H20V10H4V19ZM6 12H8V14H6V12ZM10 12H12V14H10V12Z" />
-
-                                                        </svg>
+                                                    <span class="menu-icon"><i class="fa-solid fa-credit-card"></i>
 
                                                     </span>
 
@@ -386,12 +287,7 @@
                                                 <a href="{{ route('admin.contact.list') }}" class="side-nav-link {{ Route::is('admin.contact.list') ? 'active' : '' }}">
 
                                                     <span class="menu-icon">
-                                                        <svg width="70" height="70" viewBox="0 0 24 24" fill="none"
-                                                            stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                                            <path d="M4 3h16v14H7l-3 4V3z" />
-                                                            <path d="M8 7h8" />
-                                                            <path d="M8 11h5" />
-                                                        </svg>
+                                                       <i class="fa-solid fa-comment-dots"></i>
 
                                                     </span>
 
@@ -407,11 +303,7 @@
 
                                                 <a href="{{ route('admin.newsletter.list') }}" class="side-nav-link {{ Route::is('admin.newsletter.list') ? 'active' : '' }}">
 
-                                                    <span class="menu-icon"><svg width="70" height="70" viewBox="0 0 24 24" fill="none"
-                                                            stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                                            <rect x="3" y="5" width="18" height="14" rx="2" />
-                                                            <path d="M3 8l9 6 9-6" />
-                                                        </svg>
+                                                    <span class="menu-icon"><i class="fa-solid fa-envelope"></i>
 
 
                                                     </span>
@@ -427,11 +319,7 @@
                                             <li class="side-nav-item">
 
                                                 <a href="{{ route('admin.logout') }}" class="side-nav-link">
-                                                    <span class="menu-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="share" class="lucide lucide-share">
-                                                            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                                                            <polyline points="16 6 12 2 8 6"></polyline>
-                                                            <line x1="12" x2="12" y1="2" y2="15"></line>
-                                                        </svg></span>
+                                                    <span class="menu-icon"> <i class="fa-solid fa-arrow-right-from-bracket"></i></span>
 
                                                     <span class="menu-text"> Log Out </span>
 
@@ -440,6 +328,7 @@
                                             </li>
 
                                         </ul>
+                                        
 
 
 

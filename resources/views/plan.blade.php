@@ -103,6 +103,7 @@
     </div>
   </section> -->
   
+
 <section class="maseco-pricing py-3 py-md-5" id="subscription">
     <div class="container">
 
@@ -119,97 +120,135 @@
         <!-- Plans -->
         <div class="row g-4 align-items-stretch pricing_row">
 
-            <!-- Basic -->
+            @foreach($plans as $plan)
+
+            @php
+                $planName = strtolower($plan->name ?? '');
+
+                if (stripos($planName, 'premium') !== false) {
+                    $planIcon = 'bi-stars';
+                } elseif (stripos($planName, 'pro') !== false) {
+                    $planIcon = 'bi-buildings';
+                } else {
+                    $planIcon = 'bi-leaf';
+                }
+
+                $features = $plan->features;
+
+                if (is_array($features)) {
+                    // Features are already an array.
+                } elseif (is_string($features)) {
+                    $decoded = json_decode($features, true);
+
+                    if (is_array($decoded)) {
+                        $features = $decoded;
+                    } else {
+                        $features = preg_split('/\r?\n/', $features);
+                    }
+                } else {
+                    $features = [];
+                }
+
+                $features = is_array($features) ? $features : [];
+
+                $isPremium = stripos($plan->name ?? '', 'premium') !== false;
+            @endphp
+
             <div class="col-lg-4">
-                <article class="maseco-plan shadow">
+                <article class="maseco-plan {{ $isPremium ? 'maseco-plan-featured bg-success bg-opacity-10' : '' }} shadow">
+
+                    @if($isPremium)
+                        <span class="plan-popular">MOST POPULAR</span>
+                    @endif
+
                     <div class="plan-icon">
-                        <i class="bi bi-leaf"></i>
+                        <i class="bi {{ $planIcon }}"></i>
                     </div>
 
-                    <h3>Basic</h3>
-                    <div class="plan-price">Free</div>
-                    <p class="plan-description">
-                        Explore the Maseco supplier marketplace.
-                    </p>
+                    <h3>{{ $plan->name }}</h3>
 
-                    <hr>
-
-                    <ul class="plan-features">
-                        <li><i class="bi bi-check-circle-fill"></i> Browse textile suppliers</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Explore materials and categories</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Discover sourcing options</li>
-                    </ul>
-
-                    <a href="{{ route('subscription.plan') }}" class="plan-button">
-                        Get started 
-                    </a>
-                </article>
-            </div>
-
-            <!-- Premium -->
-            <div class="col-lg-4">
-                <article class="maseco-plan maseco-plan-featured bg-success bg-opacity-10 shadow">
-                    <span class="plan-popular">MOST POPULAR</span>
-
-                    <div class="plan-icon">
-                        <i class="bi bi-stars"></i>
-                    </div>
-
-                    <h3>Premium</h3>
                     <div class="plan-price">
-                        $69 <span>/ month</span>
+                        @if($plan->price == 0)
+                            Free
+                        @else
+                            ${{ rtrim(rtrim(number_format($plan->price, 2, '.', ''), '0'), '.') }}
+                            <span>/ {{ $plan->duration }}</span>
+                        @endif
                     </div>
+
                     <p class="plan-description">
-                        For teams ready to source smarter.
+                        {{ $plan->description ?? '' }}
                     </p>
+
+                    @if($plan->commission)
+                        <p class="plan-description">
+                            + Commission = {{ $plan->commission }}
+                        </p>
+                    @endif
 
                     <hr>
 
-                    <ul class="plan-features">
-                        <li><i class="bi bi-check-circle-fill"></i> Everything in Basic</li>
-                        <li><i class="bi bi-check-circle-fill"></i> AI-powered sourcing insights</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Supplier and vendor matching</li>
-                    </ul>
+                    @if(count($features))
+                        <ul class="plan-features">
+                            @foreach($features as $feature)
+                                @php
+                                    $feature = trim((string) $feature);
 
-                    <a href="{{ route('subscription.plan') }}" class="plan-button plan-button-primary text-white">
-                        Explore Premium 
-                    </a>
+                                    if (substr($feature, -1) === '+') {
+                                        $feature = rtrim($feature, '+ ');
+                                    }
+                                @endphp
+
+                                @if($feature !== '')
+                                    <li>
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        {{ $feature }}
+                                    </li>
+                                @endif
+                            @endforeach
+                        </ul>
+                    @endif
+
+                    <div class="getStarted-btn">
+                        @if(Auth::guard('supplier')->check() || Auth::guard('manufacturer')->check())
+
+                            <button type="button" class="plan-button" disabled>
+                                Not Available
+                            </button>
+
+                        @else
+
+                            <button
+                                type="button"
+                                class="plan-button {{ $isPremium ? 'plan-button-primary text-white' : '' }} purchase-btn"
+                                data-plan-id="{{ $plan->id }}"
+                                data-plan-name="{{ $plan->name }}"
+                                data-plan-price="{{ $plan->price }}"
+                                data-plan-duration="{{ $plan->duration }}"
+                                onclick="handlePlanChooseFromButton(this)">
+
+                                @if($plan->price == 0)
+                                    Get started
+                                @elseif($isPremium)
+                                    Explore Premium
+                                @else
+                                    Contact our team
+                                @endif
+
+                            </button>
+
+                        @endif
+                    </div>
+
                 </article>
             </div>
 
-            <!-- Pro -->
-            <div class="col-lg-4">
-                <article class="maseco-plan shadow">
-                    <div class="plan-icon">
-                        <i class="bi bi-buildings"></i>
-                    </div>
-
-                    <h3>Pro</h3>
-                    <div class="plan-price">
-                        $299 <span>/ month</span>
-                    </div>
-                    <p class="plan-description">
-                        For growing production teams.
-                    </p>
-
-                    <hr>
-
-                    <ul class="plan-features">
-                        <li><i class="bi bi-check-circle-fill"></i> Everything in Premium</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Post-production support</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Advanced production workflows</li>
-                    </ul>
-
-                    
-                    <a href="{{ route('subscription.plan') }}" class="plan-button">
-                        Contact our team 
-                    </a>
-                </article>
-            </div>
+            @endforeach
 
         </div>
     </div>
 </section>
+
 </main>
 
 {{-- ================== STRIPE PAYMENT MODAL ================== --}}
