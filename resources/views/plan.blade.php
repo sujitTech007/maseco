@@ -187,15 +187,15 @@
                         @endif
                     </div>
 
-                    <p class="plan-description">
+                    <!-- <p class="plan-description">
                         {{ $plan->description ?? '' }}
-                    </p>
+                    </p> -->
 
-                    @if($plan->commission)
+                    <!-- @if($plan->commission)
                         <p class="plan-description">
                             + Commission = {{ $plan->commission }}
                         </p>
-                    @endif
+                    @endif -->
 
                     <hr>
 
