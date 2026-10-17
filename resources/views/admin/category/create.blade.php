@@ -5,7 +5,7 @@
         <!-- Page Header -->
         <div class="category-create-header">
             <div>
-                <div class="category-breadcrumb">
+                <!-- <div class="category-breadcrumb">
                     <a href="{{ url('/admin/dashboard') }}">
                         <i class="ri-home-4-line"></i>
                         Dashboard
@@ -16,7 +16,7 @@
                     </a>
                     <i class="ri-arrow-right-s-line"></i>
                     <span>Add Category</span>
-                </div>
+                </div> -->
 
                 <h2>Add Category</h2>
                 <p>Create a category to help organize materials in the MASECO marketplace.</p>

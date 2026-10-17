@@ -76,7 +76,7 @@
                             <th>Name</th>
                             <th>Image</th>
                             <th>Status</th>
-                            <th>Actions</th>
+                            <th class="text-end">Actions</th>
                         </tr>
                     </thead>
 

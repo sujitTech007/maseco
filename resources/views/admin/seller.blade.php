@@ -174,45 +174,109 @@
 
   <!-- Supplier Details Modal -->
 
-  <div class="modal fade" id="supplierDetailsModal" tabindex="-1" aria-labelledby="supplierDetailsModalLabel" aria-hidden="true">
+ 
+<!-- Supplier Details Modal -->
+<div class="modal fade maseco-user-modal" id="supplierDetailsModal" tabindex="-1"
+    aria-labelledby="supplierDetailsModalLabel" aria-hidden="true">
 
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
 
-      <div class="modal-content">
+            <!-- Header -->
+            <div class="modal-header">
+                <div>
+                    <span class="user-modal-eyebrow">MASECO ADMIN</span>
+                    <h5 class="modal-title" id="supplierDetailsModalLabel">
+                        Supplier Details
+                    </h5>
+                </div>
 
-        <div class="modal-header">
+                <button type="button" class="btn-close"
+                    data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
 
-          <h5 class="modal-title" id="supplierDetailsModalLabel">Supplier Details</h5>
+            <!-- Body -->
+            <div class="modal-body">
 
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <!-- Supplier Profile -->
+                <div class="user-modal-profile">
+                    <div class="user-modal-avatar">
+                        <i class="ri-store-2-line"></i>
+                    </div>
+
+                    <div>
+                        <h6 id="modalSupplierName" class="user-modal-name">—</h6>
+                        <span class="user-modal-caption">Supplier Profile</span>
+                    </div>
+                </div>
+
+                <!-- Supplier Information -->
+                <div class="user-modal-details">
+
+                    <div class="user-detail-item">
+                        <div class="user-detail-icon">
+                            <i class="ri-mail-line"></i>
+                        </div>
+                        <div class="user-detail-content">
+                            <span>Email Address</span>
+                            <strong id="modalSupplierEmail">—</strong>
+                        </div>
+                    </div>
+
+                    <div class="user-detail-item">
+                        <div class="user-detail-icon">
+                            <i class="ri-phone-line"></i>
+                        </div>
+                        <div class="user-detail-content">
+                            <span>Phone Number</span>
+                            <strong id="modalSupplierPhone">—</strong>
+                        </div>
+                    </div>
+
+                    <div class="user-detail-item">
+                        <div class="user-detail-icon">
+                            <i class="ri-building-2-line"></i>
+                        </div>
+                        <div class="user-detail-content">
+                            <span>Company Name</span>
+                            <strong id="modalSupplierCompany">—</strong>
+                        </div>
+                    </div>
+
+                    <div class="user-detail-item">
+                        <div class="user-detail-icon">
+                            <i class="ri-shield-check-line"></i>
+                        </div>
+                        <div class="user-detail-content">
+                            <span>Account Status</span>
+                            <strong id="modalSupplierStatus">—</strong>
+                        </div>
+                    </div>
+
+                    <div class="user-detail-item">
+                        <div class="user-detail-icon">
+                            <i class="ri-calendar-line"></i>
+                        </div>
+                        <div class="user-detail-content">
+                            <span>Registered On</span>
+                            <strong id="modalSupplierCreated">—</strong>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="modal-footer">
+                <button type="button" class="user-modal-close-btn"
+                    data-bs-dismiss="modal">
+                    Close
+                </button>
+            </div>
 
         </div>
-
-        <div class="modal-body">
-
-          <ul class="list-group">
-
-            <li class="list-group-item"><strong>Name:</strong> <span id="modalSupplierName"></span></li>
-
-            <li class="list-group-item"><strong>Email:</strong> <span id="modalSupplierEmail"></span></li>
-
-            <li class="list-group-item"><strong>Phone:</strong> <span id="modalSupplierPhone"></span></li>
-
-            <li class="list-group-item"><strong>Company Name:</strong> <span id="modalSupplierCompany"></span></li>
-
-            <li class="list-group-item"><strong>Status:</strong> <span id="modalSupplierStatus"></span></li>
-
-            <li class="list-group-item"><strong>Created At:</strong> <span id="modalSupplierCreated"></span></li>
-
-          </ul>
-
-        </div>
-
-      </div>
-
     </div>
-
-  </div>
+</div>
 
   <script>
     document.querySelectorAll('.supplier-status-toggle').forEach(function(toggle) {

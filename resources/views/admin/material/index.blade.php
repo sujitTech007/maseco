@@ -175,8 +175,7 @@
                                     title="Edit Material"
                                     aria-label="Edit Material"
                                 >
-                                    <i class="ri-edit-line"></i>
-                                </a>
+<i class="fa-solid fa-pen-to-square"></i>                                </a>
 
                                 <form
                                     action="{{ route('admin.material.destroy', $material->id) }}"
@@ -193,7 +192,7 @@
                                         title="Delete Material"
                                         aria-label="Delete Material"
                                     >
-                                        <i class="ri-delete-bin-line"></i>
+                                       <i class="fa-solid fa-trash"></i>
                                     </button>
                                 </form>
 
