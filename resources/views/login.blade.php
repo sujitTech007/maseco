@@ -1,70 +1,132 @@
+
 @include('Include.header')
 
-<style>
-    .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
-    width: 125px !important;
-}
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/css/intlTelInput.css">
 
-.bootstrap-select .dropdown-toggle .filter-option-inner-inner {
-    overflow: hidden !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center;
-}
 
-.dropdown-menu.show {
-    display: block !important;
-    height: 200px !important;
-}
-.bootstrap-select .dropdown-menu li a span.text {
-    display: flex !important;
-    align-items: center !important;
-}
+<main>
+    <section class="login-page">
+        <div class="login-wrapper">
+            <div class="row g-0">
 
-.bs-searchbox .form-control {
-    margin-bottom: 0;
-    width: 100%;
-    float: none;
-    border: 1px solid lightgrey !important;
-}
+                <!-- Left: MASECO branding -->
+                <div class="col-md-6">
+                    <div class="login-brand" data-aos="fade-right">
 
-</style>
+                        <span class="login-eyebrow">WELCOME BACK TO MASECO</span>
 
-  <main>
-    <section class="sign-up-forms">
-      <div class="container">
-        <div class="form-wrapper">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form py-5">
-                <div class="form-heading">
-                  <h1 data-aos="fade-down">Login</h1>
-                  <p class="m-0" data-aos="fade-up">Login to access account</p>
-                </div>
-                <form class="verify-gcaptcha login-form mt-4" method="POST" action="{{ route('login.submit') }}">
-                  @csrf
-                  <div class="form-group mb-3" data-aos="zoom-in">
-                    <label class="mb-2">Login as:</label>
-                    <div class="d-flex gap-3 login-radio">
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="user_type" id="userTypeUser" value="user" checked>
-                        <label class="form-check-label" for="userTypeUser">User</label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="user_type" id="userTypeSupplier" value="supplier">
-                        <label class="form-check-label" for="userTypeSupplier">Supplier</label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="user_type" id="userTypeManufacturer" value="manufacturer">
-                        <label class="form-check-label" for="userTypeManufacturer">Manufacturer</label>
-                      </div>
+                        <h2 class="section-title-h2 mb-2 text-white">
+                            Source Better.
+                            <span>Build Smarter.</span>
+                            Grow Together.
+                        </h2>
+
+                        <p class="login-intro">
+                            Log in to your MASECO account and connect with
+                            suppliers and manufacturers for quality raw
+                            materials and smarter sourcing.
+                        </p>
+
+                        <div class="login-benefits">
+
+                            <div class="login-benefit">
+                                <div class="login-benefit-icon">
+                                    <i class="fa fa-cubes" aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                    <h6>Quality Raw Materials</h6>
+                                    <p>Discover materials for your business needs.</p>
+                                </div>
+                            </div>
+
+                            <div class="login-benefit">
+                                <div class="login-benefit-icon">
+                                    <i class="fa fa-handshake" aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                    <h6>Trusted Connections</h6>
+                                    <p>Connect with suppliers and manufacturers.</p>
+                                </div>
+                            </div>
+
+                            <div class="login-benefit">
+                                <div class="login-benefit-icon">
+                                    <i class="fa fa-leaf" aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                    <h6>Smarter Sourcing</h6>
+                                    <p>Make your sourcing process simpler.</p>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
-                  </div>
-                  <div class="form-group" data-aos="zoom-in">
-                    <fieldset>
-                      <legend>Phone Number</legend>
-                      <div class="frm_grp select_country">
-                                <select id="login_country_code" name="country_code" data-live-search="true" class="selectpicker">
+                </div>
+
+                <!-- Right: Login form -->
+                <div class="col-md-6">
+                    <div class="login-form-panel" data-aos="fade-left">
+
+                        <div class="login-form-heading">
+                            <h1>Login</h1>
+                            <p>Log in to access your MASECO account.</p>
+                        </div>
+
+                        <form class="verify-gcaptcha login-form"
+                              method="POST"
+                              action="{{ route('login.submit') }}"
+                              id="masecoLoginForm">
+
+                            @csrf
+
+                            <!-- Account type -->
+                            <div class="form-group">
+                                <label class="login-role-label">Login as:</label>
+
+                                <div class="d-flex login-radio">
+
+                                    <div class="form-check">
+                                        <input class="form-check-input"
+                                               type="radio"
+                                               name="user_type"
+                                               id="userTypeUser"
+                                               value="user"
+                                               checked>
+                                               
+                                        <label class="form-check-label"
+                                               for="userTypeUser">User</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input"
+                                               type="radio"
+                                               name="user_type"
+                                               id="userTypeSupplier"
+                                               value="supplier">
+                                        <label class="form-check-label"
+                                               for="userTypeSupplier">Supplier</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input"
+                                               type="radio"
+                                               name="user_type"
+                                               id="userTypeManufacturer"
+                                               value="manufacturer">
+                                        <label class="form-check-label"
+                                               for="userTypeManufacturer">Manufacturer</label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Phone number -->
+                            <div class="form-group">
+                                <fieldset>
+                                    <legend>Phone Number</legend>
+
+                                  <select id="login_country_code" name="country_code" data-live-search="true" class="selectpicker">
                                     <option data-content='<img src="https://flagcdn.com/16x12/af.png" class="me-1"> +93' value="+93">+93</option>
                                     <option data-content='<img src="https://flagcdn.com/16x12/al.png" class="me-1"> +355' value="+355">+355</option>
                                     <option data-content='<img src="https://flagcdn.com/16x12/dz.png" class="me-1"> +213' value="+213">+213</option>
@@ -289,53 +351,67 @@
                                     <option data-content='<img src="https://flagcdn.com/16x12/zw.png" class="me-1"> +263 ' value="+263">+263</option>
                                 </select>
                       <input class="form-control form--control bg-white" name="phone" type="tel" value="" placeholder="e.g. +1 234 567 8900" required>
-                      </div>
-                    </fieldset>
-                  </div>
-                  <div class="form-group position-relative" data-aos="zoom-in">
-                    <fieldset>
-                      <legend>Password</legend>
-                      <input class="form-control form--control bg-white" id="password-field" name="password" type="password" required placeholder="****">
-                      <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
-                    </fieldset>
-                  </div>
-                  <div class="text-end d-flex align-items-center justify-content-between" data-aos="zoom-in">
-                    <!-- <div class="form-group d-flex align-items-center m-0 checkbox">
-                      <input id="agree" name="agree" type="checkbox">
-                      <label for="agree" class="required ml-2">I agree with</label>
-                    </div> -->
-                    <a class="forget-text" href="{{ route('password.forgot') }}">Forgot password?</a>
-                  </div>
-                  <div class="form-group mt-4" data-aos="zoom-in">
-                    <button class="btn theme-btn w-100" type="submit">Login</button>
-                  </div>
-                  <p class="mb-0 text-center">Don't Have Any Account? <a href="{{ route('sign.up') }}">Signup</a></p>
-                  <!-- <fieldset class="or mt-4">
-                    <legend>Or login with</legend>
-                    <div class="login-with-social mt-4">
-                      <a href="#"><img src="{{ asset('assets/images/icon/facebook-icon.svg') }}" alt="facebook"></a>
-                      <a href="#"><img src="{{ asset('assets/images/icon/google-icon.svg') }}" alt="google"></a>
-                      <a href="#"><img src="{{ asset('assets/images/icon/apple-icon.svg') }}" alt="apple"></a>
+                                </fieldset>
+                            </div>
+
+                            <!-- Password -->
+                            <div class="form-group">
+                                <fieldset>
+                                    <legend>Password</legend>
+
+                                    <div class="login-password-wrap">
+                                        <input
+                                            class="form-control"
+                                            id="password-field"
+                                            name="password"
+                                            type="password"
+                                            autocomplete="current-password"
+                                            placeholder="Enter your password"
+                                            required>
+
+
+                                        <span
+                                            class="fa fa-eye login-password-toggle"
+                                            id="password-field"
+                                            role="button"
+                                            tabindex="0"
+                                            aria-label="Show password"
+                                            aria-controls="login-password">
+                                        </span>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+                            <!-- Forgot password -->
+                            <div class="d-flex align-items-center justify-content-end">
+                                <a class="login-forgot"
+                                   href="{{ route('password.forgot') }}">
+                                    Forgot password?
+                                </a>
+                            </div>
+
+                            <!-- Submit -->
+                            <div class="form-group mt-4 mb-0">
+                                <button class="login-submit" type="submit">
+                                    Login
+                                </button>
+                            </div>
+
+                            <p class="login-signup">
+                                Don't have an account?
+                                <a href="{{ route('sign.up') }}">Sign up</a>
+                            </p>
+
+                        </form>
                     </div>
-                  </fieldset> -->
-                </form>
-              </div>
+                </div>
+
             </div>
-            <div class="col-md-6" data-aos="fade-left">
-              <div class="form-image">
-                <img src="{{ asset('assets/images/form-thumb.jpeg') }}" alt="form image">
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </section>
+</main>
 
-
-  </main>
-
-  @include('Include.footer')
-
+@include('Include.footer')
 
    <script>
         $(document).ready(function() {
@@ -344,36 +420,4 @@
     </script>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
-
-    <!-- Bootstrap JS & jQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-
-
-
-  <script>
-    AOS.init({
-      duration: 1200,
-    });
-    
-  </script>      
-
-  <script>
-    $(".toggle-password").click(function() {
-
-$(this).toggleClass("fa-eye fa-eye-slash");
-var input = $($(this).attr("toggle"));
-if (input.attr("type") == "password") {
-  input.attr("type", "text");
-} else {
-  input.attr("type", "password");
-}
-});
-  </script>
-
