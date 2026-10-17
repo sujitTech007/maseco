@@ -133,23 +133,34 @@
                     $planIcon = 'bi-leaf';
                 }
 
-                $features = $plan->features;
+                $storedFeatures = $plan->features;
 
-                if (is_array($features)) {
-                    // Features are already an array.
-                } elseif (is_string($features)) {
-                    $decoded = json_decode($features, true);
-
-                    if (is_array($decoded)) {
-                        $features = $decoded;
-                    } else {
-                        $features = preg_split('/\r?\n/', $features);
-                    }
-                } else {
-                    $features = [];
+                if (is_string($storedFeatures)) {
+                    $decodedFeatures = json_decode($storedFeatures, true);
+                    $storedFeatures = is_array($decodedFeatures)
+                        ? $decodedFeatures
+                        : [$storedFeatures];
                 }
 
-                $features = is_array($features) ? $features : [];
+                $features = [];
+
+                foreach (is_array($storedFeatures) ? $storedFeatures : [] as $storedFeature) {
+                    if (!is_scalar($storedFeature)) {
+                        continue;
+                    }
+
+                    foreach (preg_split('/\r\n|\r|\n/', (string) $storedFeature) as $feature) {
+                        $feature = trim($feature);
+
+                        if (substr($feature, -1) === '+') {
+                            $feature = rtrim($feature, '+ ');
+                        }
+
+                        if ($feature !== '') {
+                            $features[] = $feature;
+                        }
+                    }
+                }
 
                 $isPremium = stripos($plan->name ?? '', 'premium') !== false;
             @endphp
@@ -191,20 +202,10 @@
                     @if(count($features))
                         <ul class="plan-features">
                             @foreach($features as $feature)
-                                @php
-                                    $feature = trim((string) $feature);
-
-                                    if (substr($feature, -1) === '+') {
-                                        $feature = rtrim($feature, '+ ');
-                                    }
-                                @endphp
-
-                                @if($feature !== '')
-                                    <li>
-                                        <i class="bi bi-check-circle-fill"></i>
-                                        {{ $feature }}
-                                    </li>
-                                @endif
+                                <li>
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    {{ $feature }}
+                                </li>
                             @endforeach
                         </ul>
                     @endif
