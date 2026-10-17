@@ -160,43 +160,98 @@
 
   <!-- User Details Modal -->
 
-  <div class="modal fade" id="userDetailsModal" tabindex="-1" aria-labelledby="userDetailsModalLabel" aria-hidden="true">
+  
+<!-- User Details Modal -->
+<div class="modal fade maseco-user-modal" id="userDetailsModal" tabindex="-1"
+    aria-labelledby="userDetailsModalLabel" aria-hidden="true">
 
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
 
-      <div class="modal-content">
+            <!-- Header -->
+            <div class="modal-header">
+                <div>
+                    <span class="user-modal-eyebrow">MASECO ADMIN</span>
+                    <h5 class="modal-title" id="userDetailsModalLabel">
+                        User Details
+                    </h5>
+                </div>
 
-        <div class="modal-header">
+                <button type="button" class="btn-close"
+                    data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
 
-          <h5 class="modal-title" id="userDetailsModalLabel">User Details</h5>
+            <!-- Body -->
+            <div class="modal-body">
 
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="user-modal-profile">
+                    <div class="user-modal-avatar">
+                        <i class="ri-user-line"></i>
+                    </div>
+
+                    <div>
+                        <h6 id="modalUserName" class="user-modal-name">—</h6>
+                        <span class="user-modal-caption">User Profile</span>
+                    </div>
+                </div>
+
+                <div class="user-modal-details">
+
+                    <div class="user-detail-item">
+                        <div class="user-detail-icon">
+                            <i class="ri-mail-line"></i>
+                        </div>
+                        <div class="user-detail-content">
+                            <span>Email Address</span>
+                            <strong id="modalUserEmail">—</strong>
+                        </div>
+                    </div>
+
+                    <div class="user-detail-item">
+                        <div class="user-detail-icon">
+                            <i class="ri-phone-line"></i>
+                        </div>
+                        <div class="user-detail-content">
+                            <span>Phone Number</span>
+                            <strong id="modalUserPhone">—</strong>
+                        </div>
+                    </div>
+
+                    <div class="user-detail-item">
+                        <div class="user-detail-icon">
+                            <i class="ri-shield-user-line"></i>
+                        </div>
+                        <div class="user-detail-content">
+                            <span>Account Status</span>
+                            <strong id="modalUserStatus">—</strong>
+                        </div>
+                    </div>
+
+                    <div class="user-detail-item">
+                        <div class="user-detail-icon">
+                            <i class="ri-calendar-line"></i>
+                        </div>
+                        <div class="user-detail-content">
+                            <span>Registered On</span>
+                            <strong id="modalUserCreated">—</strong>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="modal-footer">
+                <button type="button" class="user-modal-close-btn"
+                    data-bs-dismiss="modal">
+                    Close
+                </button>
+            </div>
 
         </div>
-
-        <div class="modal-body">
-
-          <ul class="list-group">
-
-            <li class="list-group-item"><strong>Name:</strong> <span id="modalUserName"></span></li>
-
-            <li class="list-group-item"><strong>Email:</strong> <span id="modalUserEmail"></span></li>
-
-            <li class="list-group-item"><strong>Phone:</strong> <span id="modalUserPhone"></span></li>
-
-            <li class="list-group-item"><strong>Status:</strong> <span id="modalUserStatus"></span></li>
-
-            <li class="list-group-item"><strong>Created At:</strong> <span id="modalUserCreated"></span></li>
-
-          </ul>
-
-        </div>
-
-      </div>
-
     </div>
+</div>
 
-  </div>
 
   <script>
     document.querySelectorAll('.user-status-toggle').forEach(function(toggle) {

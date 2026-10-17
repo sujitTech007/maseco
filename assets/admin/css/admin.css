@@ -1543,13 +1543,13 @@
 }
 
 .material-action-btn.edit {
-    color: #c38a20;
-    border: 1px solid #f1dfb5;
+    color: #2DAC92;
+    border: 1px solid #2DAC92;
 }
 
 .material-action-btn.edit:hover {
     background: #fff7e5;
-    border-color: #e7b54d;
+    border-color: #2DAC92;
 }
 
 .material-action-btn.delete {
@@ -2811,6 +2811,7 @@
         display: flex;
         align-items: center;
         gap: 8px;
+        justify-content: end;
     }
 
     .category-page .category-action-btn {
@@ -6207,3 +6208,473 @@
     }
 }
 
+
+/* MASECO Material Details */
+.maseco-material-view {
+    background: #f7f9f8;
+    min-height: 100%;
+}
+
+.maseco-material-view .material-page-title {
+    color: #263b35;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.maseco-material-view .material-breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 13px;
+    color: #2DAC92;
+}
+
+.maseco-material-view .material-breadcrumb a {
+    color: #77837e;
+    text-decoration: none;
+}
+
+.maseco-material-view .material-breadcrumb a:hover {
+    color: #2DAC92;
+}
+
+.maseco-material-view .material-breadcrumb i {
+    color: #a4afaa;
+    font-size: 16px;
+}
+
+.maseco-material-view .material-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 15px;
+    border: 1px solid #dfe8e4;
+    border-radius: 8px;
+    background: #fff;
+    color: #43564e;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.maseco-material-view .material-back-btn:hover {
+    border-color: #2DAC92;
+    color: #238c77;
+}
+
+.maseco-material-view .material-overview,
+.maseco-material-view .material-spec-card {
+    border: 1px solid #e7eeea;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 3px 14px rgba(31, 67, 55, 0.04) !important;
+}
+
+.maseco-material-view .material-overview .card-body {
+    padding: 26px;
+}
+
+.maseco-material-view .material-image-wrap {
+    overflow: hidden;
+    min-height: 280px;
+    height: 100%;
+    border-radius: 12px;
+    background: #f1f6f3;
+}
+
+.maseco-material-view .material-main-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 280px;
+    max-height: 360px;
+    object-fit: cover;
+}
+
+.maseco-material-view .material-category-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 10px;
+    border-radius: 6px;
+    background: #eaf7f2;
+    color: #238c77;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.maseco-material-view .material-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 10px;
+    border-radius: 20px;
+    background: #eaf7ef;
+    color: #24834c;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.maseco-material-view .status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #2caa65;
+}
+
+.maseco-material-view .material-name {
+    margin-bottom: 10px;
+    color: #273c35;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.maseco-material-view .material-description {
+    max-width: 620px;
+    margin-bottom: 18px;
+    color: #7b8882;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.maseco-material-view .material-price {
+    color: #2DAC92;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.maseco-material-view .material-price-unit {
+    color: #7b8882;
+    font-size: 13px;
+}
+
+.maseco-material-view .material-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    padding: 16px;
+    border: 1px solid #edf1ef;
+    border-radius: 10px;
+    background: #fbfcfb;
+}
+
+.maseco-material-view .material-summary-grid div,
+.maseco-material-view .material-spec-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.maseco-material-view .material-summary-grid span,
+.maseco-material-view .material-spec-item span {
+    color: #87928d;
+    font-size: 12px;
+}
+
+.maseco-material-view .material-summary-grid strong,
+.maseco-material-view .material-spec-item strong {
+    overflow-wrap: anywhere;
+    color: #354a41;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.maseco-material-view .material-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 40px;
+    padding: 9px 14px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.maseco-material-view .material-outline-btn {
+    border-color: #dce7e2;
+    background: #fff;
+    color: #43574e;
+}
+
+.maseco-material-view .material-outline-btn:hover {
+    border-color: #2DAC92;
+    color: #238c77;
+}
+
+.maseco-material-view .material-primary-btn {
+    border-color: #2DAC92;
+    background: #2DAC92;
+    color: #fff;
+}
+
+.maseco-material-view .material-primary-btn:hover {
+    border-color: #238c77;
+    background: #238c77;
+    color: #fff;
+}
+
+.maseco-material-view .material-section-heading h5 {
+    margin-bottom: 6px;
+    color: #293e36;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.maseco-material-view .material-section-heading p {
+    margin-bottom: 0;
+    color: #87928d;
+    font-size: 13px;
+}
+
+.maseco-material-view .material-spec-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0 24px;
+}
+
+.maseco-material-view .material-spec-item {
+    padding: 16px 0;
+    border-bottom: 1px solid #edf1ef;
+}
+
+.maseco-material-view .material-handling {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 10px;
+    background: #f0f8f5;
+}
+
+.maseco-material-view .material-handling-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    background: #d9f0e8;
+    color: #238c77;
+    font-size: 20px;
+}
+
+.maseco-material-view .material-handling h6 {
+    margin-bottom: 5px;
+    color: #354a41;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.maseco-material-view .material-handling p {
+    color: #73817a;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+@media (max-width: 991.98px) {
+    .maseco-material-view .material-spec-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .maseco-material-view .material-overview .card-body {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .maseco-material-view {
+        padding: 16px !important;
+    }
+
+    .maseco-material-view .material-page-title {
+        font-size: 21px;
+    }
+
+    .maseco-material-view .material-name {
+        font-size: 21px;
+    }
+
+    .maseco-material-view .material-image-wrap,
+    .maseco-material-view .material-main-image {
+        min-height: 220px;
+        max-height: 260px;
+    }
+
+    .maseco-material-view .material-summary-grid,
+    .maseco-material-view .material-spec-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .maseco-material-view .material-summary-grid {
+        padding: 12px;
+        gap: 15px 10px;
+    }
+
+    .maseco-material-view .material-overview .card-body,
+    .maseco-material-view .material-spec-card .card-body {
+        padding: 16px;
+    }
+}
+
+/* MASECO User Details Modal */
+.maseco-user-modal .modal-content {
+    border: 1px solid #e8efec;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 15px 45px rgba(31, 67, 55, 0.12);
+}
+
+.maseco-user-modal .modal-header {
+    padding: 22px 24px;
+    border-bottom: 1px solid #edf1ef;
+    background: #fff;
+}
+
+.maseco-user-modal .user-modal-eyebrow {
+    display: block;
+    margin-bottom: 5px;
+    color: #2DAC92;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+}
+
+.maseco-user-modal .modal-title {
+    color: #263b35;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.maseco-user-modal .modal-body {
+    padding: 24px;
+}
+
+.maseco-user-modal .user-modal-profile {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 17px;
+    margin-bottom: 22px;
+    border-radius: 12px;
+    background: #eff8f5;
+}
+
+.maseco-user-modal .user-modal-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: #2DAC92;
+    color: #fff;
+    font-size: 24px;
+}
+
+.maseco-user-modal .user-modal-name {
+    margin: 0 0 5px;
+    color: #263b35;
+    font-size: 16px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.maseco-user-modal .user-modal-caption {
+    color: #74827c;
+    font-size: 12px;
+}
+
+.maseco-user-modal .user-modal-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.maseco-user-modal .user-detail-item {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 14px 0;
+    border-bottom: 1px solid #edf1ef;
+}
+
+.maseco-user-modal .user-detail-item:last-child {
+    border-bottom: 0;
+}
+
+.maseco-user-modal .user-detail-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #f2f6f4;
+    color: #2DAC92;
+    font-size: 19px;
+}
+
+.maseco-user-modal .user-detail-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+}
+
+.maseco-user-modal .user-detail-content span {
+    color: #87928d;
+    font-size: 12px;
+}
+
+.maseco-user-modal .user-detail-content strong {
+    color: #35483f;
+    font-size: 13px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.maseco-user-modal .modal-footer {
+    padding: 14px 24px;
+    border-top: 1px solid #edf1ef;
+    background: #fafcfb;
+}
+
+.maseco-user-modal .user-modal-close-btn {
+    padding: 9px 22px;
+    border: 1px solid #dce7e2;
+    border-radius: 8px;
+    background: #fff;
+    color: #44564e;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.maseco-user-modal .user-modal-close-btn:hover {
+    border-color: #2DAC92;
+    background: #eff8f5;
+    color: #238c77;
+}
+
+@media (max-width: 575.98px) {
+    .maseco-user-modal .modal-body {
+        padding: 18px;
+    }
+
+    .maseco-user-modal .modal-header {
+        padding: 18px;
+    }
+
+    .maseco-user-modal .modal-footer {
+        padding: 12px 18px;
+    }
+}
