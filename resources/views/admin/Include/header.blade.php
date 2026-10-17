@@ -446,7 +446,7 @@
 
                                 <a class="topbar-link dropdown-toggle drop-arrow-none px-2" data-bs-toggle="dropdown" data-bs-offset="0,25" type="button" aria-haspopup="false" aria-expanded="false">
 
-                                    <img src="{{ asset('assets/images/user-image.jfif') }}" width="32" class="rounded-circle me-lg-2 d-flex userImage" alt="user-image">
+                                    <img src="{{ asset('assets/images/profile-icon.png') }}" width="32" class="rounded-circle me-lg-2 d-flex userImage" alt="user-image">
 
                                     <span class="d-lg-flex flex-column gap-1 d-none">
 
