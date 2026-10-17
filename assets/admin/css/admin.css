@@ -6678,3 +6678,407 @@
         padding: 12px 18px;
     }
 }
+
+/* MASECO Add Subscription Plan */
+
+.maseco-subscription-create {
+    padding: 26px 24px 40px;
+    background: #f7f9fb;
+    min-height: 100vh;
+    color: #263238;
+}
+
+.maseco-subscription-create .subscription-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.maseco-subscription-create .subscription-eyebrow {
+    display: inline-block;
+    color: #2DAC92;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 7px;
+}
+
+.maseco-subscription-create .subscription-page-title {
+    color: #202b33;
+    font-size: 27px;
+    font-weight: 700;
+    margin: 0 0 7px;
+}
+
+.maseco-subscription-create .subscription-page-subtitle {
+    color: #7b8790;
+    font-size: 14px;
+    margin: 0;
+}
+
+.maseco-subscription-create .subscription-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #34434a;
+    background: #fff;
+    border: 1px solid #e5ecea;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.maseco-subscription-create .subscription-back-link:hover {
+    color: #2DAC92;
+    border-color: #2DAC92;
+}
+
+.maseco-subscription-create .subscription-back-link i {
+    font-size: 17px;
+}
+
+.maseco-subscription-create .subscription-breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 13px;
+    color: #89949b;
+}
+
+.maseco-subscription-create .subscription-breadcrumb a {
+    color: #68777d;
+    text-decoration: none;
+}
+
+.maseco-subscription-create .subscription-breadcrumb a:hover {
+    color: #2DAC92;
+}
+
+.maseco-subscription-create .subscription-breadcrumb i {
+    font-size: 17px;
+    color: #a0aaaF;
+}
+
+.maseco-subscription-create .subscription-breadcrumb span {
+    color: #2DAC92;
+    font-weight: 600;
+}
+
+.maseco-subscription-create .subscription-form-card {
+    background: #fff;
+    border: 1px solid #e9efed;
+    border-radius: 13px;
+    box-shadow: 0 5px 22px rgba(25, 55, 48, 0.035);
+    overflow: hidden;
+}
+
+.maseco-subscription-create .subscription-card-heading {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 21px 24px;
+    border-bottom: 1px solid #edf1f0;
+}
+
+.maseco-subscription-create .subscription-heading-icon {
+    width: 43px;
+    height: 43px;
+    flex: 0 0 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e9f7f3;
+    color: #2DAC92;
+    border-radius: 10px;
+    font-size: 21px;
+}
+
+.maseco-subscription-create .subscription-card-heading h5 {
+    color: #25332f;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 5px;
+}
+
+.maseco-subscription-create .subscription-card-heading p {
+    color: #87918e;
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.maseco-subscription-create .subscription-form-body {
+    padding: 25px 24px;
+}
+
+.maseco-subscription-create .form-label {
+    display: block;
+    color: #34413d;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 9px;
+}
+
+.maseco-subscription-create .required-star {
+    color: #e45e5e;
+}
+
+.maseco-subscription-create .subscription-input {
+    min-height: 46px;
+    border: 1px solid #dfe8e5;
+    border-radius: 7px;
+    color: #34413d;
+    background-color: #fff;
+    font-size: 13px;
+    box-shadow: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.maseco-subscription-create .subscription-input::placeholder {
+    color: #a3adaa;
+}
+
+.maseco-subscription-create .subscription-input:focus {
+    border-color: #2DAC92;
+    box-shadow: 0 0 0 3px rgba(45, 172, 146, 0.11);
+    outline: none;
+}
+
+.maseco-subscription-create select.subscription-input {
+    padding-right: 35px;
+}
+
+.maseco-subscription-create .subscription-input-group {
+    display: flex;
+    align-items: stretch;
+}
+
+.maseco-subscription-create .input-prefix {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 42px;
+    padding: 0 12px;
+    color: #60716b;
+    background: #f4f8f6;
+    border: 1px solid #dfe8e5;
+    border-right: 0;
+    border-radius: 7px 0 0 7px;
+    font-size: 14px;
+}
+
+.maseco-subscription-create .subscription-input-group .subscription-input {
+    border-radius: 0 7px 7px 0;
+}
+
+.maseco-subscription-create .subscription-textarea {
+    min-height: 135px;
+    resize: vertical;
+    line-height: 1.7;
+    padding: 13px 14px;
+}
+
+.maseco-subscription-create .field-help {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    margin-top: 8px;
+    color: #8a9691;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.maseco-subscription-create .field-help i {
+    color: #2DAC92;
+    font-size: 15px;
+}
+
+.maseco-subscription-create .subscription-divider {
+    height: 1px;
+    background: #edf1f0;
+    margin: 25px 0;
+}
+
+.maseco-subscription-create .subscription-status-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: #f0f9f6;
+    border: 1px solid #dcefe8;
+    border-radius: 8px;
+    padding: 13px;
+    margin-top: 18px;
+}
+
+.maseco-subscription-create .subscription-status-note > i {
+    color: #2DAC92;
+    font-size: 19px;
+    margin-top: 1px;
+}
+
+.maseco-subscription-create .subscription-status-note strong {
+    display: block;
+    color: #2c5549;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.maseco-subscription-create .subscription-status-note p {
+    color: #71847d;
+    font-size: 11px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.maseco-subscription-create .subscription-preview {
+    padding: 20px;
+    margin-top: 24px;
+    background: linear-gradient(145deg, #f0faf7, #ffffff);
+    border: 1px solid #dcefe8;
+    border-radius: 10px;
+}
+
+.maseco-subscription-create .preview-label {
+    display: block;
+    color: #2DAC92;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    margin-bottom: 15px;
+}
+
+.maseco-subscription-create .subscription-preview h6 {
+    color: #263c35;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 12px;
+    overflow-wrap: anywhere;
+}
+
+.maseco-subscription-create .preview-price {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.maseco-subscription-create .preview-price span {
+    color: #243c34;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.maseco-subscription-create .preview-price small {
+    color: #84928c;
+    font-size: 12px;
+}
+
+.maseco-subscription-create .preview-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 11px;
+    color: #218468;
+    background: #e1f5ee;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.maseco-subscription-create .preview-status.is-inactive {
+    color: #916d2d;
+    background: #fff2d7;
+}
+
+.maseco-subscription-create .subscription-form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    margin-top: 18px;
+}
+
+.maseco-subscription-create .subscription-submit-btn {
+    min-height: 48px;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 12px 18px;
+    color: #fff;
+    background: #2DAC92;
+    border: 1px solid #2DAC92;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.maseco-subscription-create .subscription-submit-btn:hover {
+    color: #fff;
+    background: #238f79;
+    border-color: #238f79;
+    transform: translateY(-1px);
+}
+
+.maseco-subscription-create .subscription-submit-btn i {
+    font-size: 18px;
+}
+
+.maseco-subscription-create .subscription-cancel-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    color: #687770;
+    background: #fff;
+    border: 1px solid #e1e8e5;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.maseco-subscription-create .subscription-cancel-btn:hover {
+    color: #2DAC92;
+    border-color: #2DAC92;
+}
+
+@media (max-width: 991px) {
+    .maseco-subscription-create {
+        padding: 22px 16px 35px;
+    }
+
+    .maseco-subscription-create .subscription-settings-card {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 575px) {
+    .maseco-subscription-create {
+        padding: 18px 12px 28px;
+    }
+
+    .maseco-subscription-create .subscription-page-title {
+        font-size: 23px;
+    }
+
+    .maseco-subscription-create .subscription-card-heading {
+        padding: 18px;
+    }
+
+    .maseco-subscription-create .subscription-form-body {
+        padding: 20px 18px;
+    }
+
+    .maseco-subscription-create .subscription-back-link {
+        padding: 9px 12px;
+    }
+}
