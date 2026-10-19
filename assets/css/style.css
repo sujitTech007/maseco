@@ -1629,44 +1629,6 @@ a.btn.btn-primary {
 
 }
 
-.form-check {
-
-    display: block !important;
-
-    min-height: 1.5rem !important;
-
-    padding-left: 1.5em !important;
-
-    margin-bottom: .125rem !important;
-
-    display: flex !important;
-
-    justify-content: center !important;
-
-    align-items: center !important;
-
-    border: 1px solid green !important;
-
-    padding: 10px 33px !important;
-
-    margin: 0 !important;
-
-    border-radius: 10px;
-
-}
-
-
-
-.form-check-input[type=radio] {
-
-    border-radius: 50% !important;
-
-
-
-    margin-right: 10px !important;
-
-}
-
 
 
 button#verifyOtpBtn {
@@ -1767,20 +1729,6 @@ a.btn.btn-link {
         padding: 20px 0px !important;
     }
 
-    .form-check {
-        display: block !important;
-        min-height: 1.5rem !important;
-        padding-left: 1.5em !important;
-        margin-bottom: .125rem !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        border: 1px solid green !important;
-        padding: 0px 6px !important;
-        margin: 0 0 0px !important;
-
-        border-radius: 10px;
-    }
 
     .d-flex.gap-3.login-radio {
         display: flex !important;

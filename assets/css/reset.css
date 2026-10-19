@@ -982,7 +982,7 @@ ease-in-out;
 
 .theme-btn{
 
-    font-size: 13px;
+    font-size: 14px;
     letter-spacing: 0.5px;
     font-weight: 500;
 
@@ -1025,8 +1025,8 @@ ease-in-out;
   .theme-btn:hover{
 
     color: var(--primary-color);
-
     background: transparent;
+    border: 1px solid var(--primary-color);
 
   }
   .theme-btn.bg-transparent:hover {
