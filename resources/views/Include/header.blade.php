@@ -115,80 +115,10 @@
       
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-
+  
 
     <style>
-      /* small styling to mimic your .theme-btn */
-
-      .theme-btn {
-
-        padding: .45rem .9rem;
-
-        border-radius: .35rem;
-
-        border: 1px solid transparent;
-
-        text-decoration: none;
-
-        display: inline-block;
-
-      }
-
-
-
-      .theme-btn.bg-transparent {
-
-        background: transparent;
-
-        color: #333;
-
-        border-color: #ccc;
-
-      }
-
-
-
-      .theme-btn:not(.bg-transparent) {
-
-        background: #0d6efd;
-
-        color: white;
-
-      }
-
-
-
-      /* ensure dropdown is visible above other elements */
-
-      .dropdown-menu {
-
-        z-index: 2000;
-
-      }
-
-
-
-      .dropdown-item:hover {
-
-        color: #ffffff;
-
-        background-color: #53b69b;
-
-      }
-
-
-
-      .toast-container {
-
-        position: fixed;
-
-        top: 1rem;
-
-        right: 1rem;
-
-        z-index: 9999;
-
-      }
+     
     </style>
 
   </head>
