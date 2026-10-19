@@ -1,6 +1,5 @@
 
 @include('Include.header')
-<link rel="stylesheet" href="{{ asset('public/assets/css/bootstrap-select.min.css') }}">
 <main>
     <section class="login-page">
         <div class="login-wrapper">

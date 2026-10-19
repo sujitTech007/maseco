@@ -112,7 +112,11 @@
   <link rel="shortcut icon" href="{{ asset('public/assets/images/favicon.png') }}" type="image/png">
   <link rel="icon" href="{{ asset('public/assets/images/favicon.png') }}" type="image/png">
 
-  <link rel="stylesheet" href="{{ asset('public/assets/css/global.css') }}?v={{ time() }}">      
+  <link rel="stylesheet" href="{{ asset('public/assets/css/global.css') }}?v={{ time() }}">    
+  @if (Request::is('login', 'signup'))    
+  <link rel="stylesheet" href="{{ asset('public/assets/css/bootstrap-select.min.css') }}">
+@endif
+
 </head>
 
 

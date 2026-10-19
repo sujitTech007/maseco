@@ -3,6 +3,7 @@
         width: 100%;
         margin: auto;
         overflow: hidden;
+        background: #f0faf8;
     }
 
     /* Left branding panel - same style as signup */
@@ -139,6 +140,7 @@
         padding: 0 14px 8px;
         margin: 0;
         transition: border-color .2s ease;
+        background: #fff;
     }
 
     .login-form fieldset:focus-within {
@@ -460,3 +462,8 @@ position: absolute;
 }
 
 
+
+.agree-input-checked{
+    width: 20px;
+    height: 20px;
+}
