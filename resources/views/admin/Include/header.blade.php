@@ -194,10 +194,24 @@
 
                                                 <a href="{{ route('admin.material') }}" class="side-nav-link {{ Route::is('admin.material') ? 'active' : '' }}">
 
-                                                    <span class="menu-icon"><i class="fa-solid fa-layer-group"></i>
+                                                    <span class="menu-icon"><i class="fa-solid fa-cubes"></i>
                                                     </span>
 
                                                     <span class="menu-text"> Materials
+
+                                                    </span>
+
+                                                </a>
+
+                                            </li>
+                                             <li class="side-nav-item {{ Route::is('admin.enquiry') ? 'active' : '' }}">
+
+                                                <a href="{{ route('admin.enquiry') }}" class="side-nav-link {{ Route::is('admin.enquiry') ? 'active' : '' }}">
+
+                                                    <span class="menu-icon"><i class="fa-solid fa-message"></i>
+                                                    </span>
+
+                                                    <span class="menu-text"> Enquiry
 
                                                     </span>
 
@@ -234,20 +248,7 @@
 
                                             </li>
 
-                                            <li class="side-nav-item {{ Route::is('admin.enquiry') ? 'active' : '' }}">
-
-                                                <a href="{{ route('admin.enquiry') }}" class="side-nav-link {{ Route::is('admin.enquiry') ? 'active' : '' }}">
-
-                                                    <span class="menu-icon"><i class="fa-solid fa-message"></i>
-                                                    </span>
-
-                                                    <span class="menu-text"> Enquiry
-
-                                                    </span>
-
-                                                </a>
-
-                                            </li>
+                                           
 
                                             <li class="side-nav-item {{ Route::is('admin.payment') ? 'active' : '' }}">
 
