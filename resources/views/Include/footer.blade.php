@@ -14,7 +14,7 @@
 
               <div class="footer-img">
 
-                <img src="{{ asset('assets/images/footer-logo.png') }}" class="footer-logo" alt="logo">
+                <img src="{{ asset('public/assets/images/footer-logo.png') }}" class="footer-logo" alt="logo">
 
               </div>
 
@@ -298,12 +298,12 @@
 
 </div>
 
-<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-<script src="{{ asset('assets/js/slick.min.js') }}"></script>   
-<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/slick.min.js') }}"></script>   
+<script src="{{ asset('public/assets/js/bootstrap.bundle.min.js') }}"></script>
 
 @if (Request::is('login', 'signup'))
-    <script src="{{ asset('assets/js/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('public/assets/js/bootstrap-select.min.js') }}"></script>
 
     <script>
         $(document).ready(function () {
@@ -312,7 +312,7 @@
     </script>
 @endif
 
-<script src="{{ asset('assets/js/script.js') }}"></script>
+<script src="{{ asset('public/assets/js/script.js') }}"></script>
 
 
 

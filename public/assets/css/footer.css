@@ -1,0 +1,435 @@
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++
+Footer
+++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+.footer{
+	background: linear-gradient(110deg, #174F43 0%, #238B70 55%, #43B99A 100%);
+
+
+
+    position: relative;
+
+}
+
+
+
+footer p{
+	color: var(--white-color);
+}
+
+
+
+
+footer .footer-top {
+	padding: 40px 0 30px;
+	position: relative;
+	z-index: 9;
+}
+
+footer .footer-style-1 .footer-top {
+	padding-top: 0;
+}
+
+footer .widget:first-child {
+	margin-bottom: 10px;
+}
+footer .copyright-footer li a{
+	font-size: 14px;
+}
+
+
+/*======= Footer Top list =======*/
+footer .footer-bottom-list {
+	padding: 0 0 60px;
+	/* margin-top: -60px; */
+	position: relative;
+	z-index: 9;
+}
+
+footer .footer-bottom-list .row {
+	background: transparent;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+footer .footer-img {
+	background: var(--primary-color);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	border-radius: 5px;
+	padding:0 50px;
+	min-height: 110px;
+}
+
+footer .footer-bottom-list .row .col-lg-4:last-child {
+	border-right: none;
+}
+
+footer .footer-bottom-list .footer-items:before {
+	position: absolute;
+	right: 20px;
+	top: 50%;
+	content: "";
+	background: rgba(0, 0, 0, 0.1);
+	width: 1px;
+	height: 45%;
+	transform: translateY(-50%);
+}
+
+footer .footer-bottom-list .row .col-lg-4:last-child .footer-items:before {
+	display: none;
+}
+
+footer .footer-top .footer-bottom-list .footer-items {
+	padding: 20px;
+	display: flex;
+	align-items: center;
+	background: rgba(245, 245, 245, 1);
+
+	position: relative;
+	height: 100%;
+	min-height: 110px
+}
+
+footer .footer-top .footer-bottom-list .footer-items i {
+	align-self: center;
+	font-size: 24px;
+	color: var(--primary-color);
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	background: var(--white-color);
+	border-radius: 100%;
+	display: inline-block;
+	float: left;
+	text-align: center;
+	flex: none;
+}
+
+
+footer .footer-items-info{
+	padding-left: 10px;
+}
+footer .footer-items h4 {
+	font-size: 17px;
+	font-weight: 600;
+	width: 100%;
+	text-transform: capitalize;
+}
+
+footer .footer-items span{
+	color: var(--black-color);
+	font-size: 12px;
+}
+
+
+footer .footer-logo {
+	height: 30px;
+	width: auto;
+	object-fit: cover;
+}
+
+footer .footer-top .footer-usefull {
+	padding-left: 30px;
+}
+
+footer .footer-top .footer-address {
+	padding-right: 30px;
+}
+
+
+footer .widget .menu-useful-links-container ul.menu li a {
+	padding-left: 0;
+}
+
+/*+++++++++++ Subscribe++++++++++++++++*/
+.sign-up-form {
+	position: relative;
+}
+
+.sign-up-form label {
+	display: block;
+}
+
+
+.subscribe-from input.form-control::-webkit-input-placeholder {
+	color: var(--white-color);
+}
+
+.subscribe-from i {
+	position: absolute;
+	right: 15px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 20px;
+	transition: all 0.5s ease;
+	color: var(--white-color);
+}
+
+.subscribe-from input.submit:hover+i {
+	color: var(--white-color);
+}
+
+.subscribe-from input.submit {
+    background: transparent;
+    font-size: 0;
+    padding: 0;
+    width: 54px;
+    height: 54px;
+    position: absolute;
+    right: 0;
+    z-index: 9;
+    top: 0;
+    border: none;
+}
+
+.subscribe-from input.submit:hover+i {
+	color: var(--primary-color);
+}
+
+
+footer .widget.opening-hours,
+footer .widget.opening-hours:first-child {
+	margin-bottom: 5px;
+}
+
+footer .widget.opening-hours:last-child li {
+	margin-bottom: 0;
+	border: none;
+	padding: 0;
+}
+
+footer .widget.opening-hours ul.time li {
+	color: var(--white-color);
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+}
+
+footer .copyright-footer {
+	padding: 10px 0;
+	position: relative;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer .copyright-footer .copyright {
+	display: block;
+	color: var(--white-color);
+	font-size: 14px;
+}
+
+footer .copyright-footer .copyright a {
+	color: var(--white-color);
+}
+
+footer .copyright-footer .copyright a:hover {
+	color: var(--white-color);
+	text-decoration: underline;
+}
+
+/*===== Footer Widget =====*/
+footer .widget {
+	background: transparent;
+	padding: 0;
+	box-shadow: none;
+	border: none;
+	margin-bottom: 45px;
+}
+
+footer .widget .footer-title {
+
+	font-size: 18px;
+	font-weight: bold;
+    color: var(--white-color);
+	text-transform: capitalize;
+	margin-bottom: 10px;
+}
+
+footer .widget ul{
+	padding: 0;
+}
+
+footer .widget ul#menu-useful-links li a,
+footer .widget ul#menu-textile-service li a {
+	padding-left: 24px;
+    position: relative;
+	font-size: 14px;
+}
+
+footer .widget ul#menu-useful-links li a:before,
+footer .widget ul#menu-textile-service li a:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	font-size: 10px;
+	top: 10px;
+	color: inherit;
+	line-height: normal;
+	color: var(--primary-color);
+	width: 15px;
+	height: 2px;
+	background: var(--primary-color);
+}
+
+.footer-recent-post {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	padding-bottom: 15px;
+}
+
+.footer-recent-post:last-child {
+	margin-bottom: 0;
+	border: none;
+	padding: 0;
+}
+
+.footer-recent-post .footer-recent-post-media {
+	margin-right: 15px;
+}
+
+.footer-recent-post .footer-recent-post-media img {
+	width: 80px;
+	height: 80px;
+}
+
+.footer-recent-post .footer-recent-post-info {
+	flex: 1;
+	align-self: center;
+}
+
+.footer-recent-post .footer-recent-post-info .post-date {
+	font-family: var(--title-fonts);
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 22px;
+	text-transform: uppercase;
+	color: var(--primary-color);
+}
+
+.footer-recent-post .footer-recent-post-info .post-date i {
+	margin-right: 5px;
+}
+
+.footer-recent-post .footer-recent-post-info h6 {
+	font-size: 16px;
+	line-height: 24px;
+	margin-bottom: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+.footer-recent-post .footer-recent-post-info h6 a:hover {
+	color: var(--primary-color);
+}
+
+footer .footer-recent-post {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	padding-bottom: 15px;
+}
+
+footer .footer-recent-post:last-child {
+	border: none;
+	padding: 0;
+}
+
+footer .widget ul li {
+	margin: 0 0 10px 0;
+}
+
+footer .widget ul li:last-child {
+	margin-bottom: 0;
+}
+
+/*=========*/
+footer .widget ul.menu li a,
+footer .widget ul li a {
+	color: var(--white-color);
+}
+
+
+.footer-social ul{
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin: 0;
+}
+footer .footer-social ul li a {
+	padding: 0;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255, 255, 255, 0.1);
+	color: var(--white-color);
+	border-radius: 50px;
+
+
+}
+
+
+
+.subscribe-details p{
+	color: var(--white-color);
+}
+
+.subscribe-from {
+    background: rgba(255, 255, 255, 0.1);
+	padding: 5px;
+	border-radius: 5px;
+	overflow: hidden;
+	position: relative;
+}
+
+.subscribe-from .form-control {
+	background: transparent;
+    border: none;
+    color: var(--white-color);
+    padding: 10px;
+    height: auto;
+    line-height: initial;
+
+}
+.subscribe-from .form-control::placeholder{
+	color: var(--white-color);
+	font-size: 14px;
+}
+
+
+@media (max-width:768px){
+	footer .footer-img {
+		padding: 30px;
+		border-radius: 10px 10px 0 0;
+	}
+	
+	footer .widget ul,
+	footer .widget .footer-title{
+		margin-bottom: 10px;
+	}
+	.footer-social ul{
+		justify-content: center;
+		margin-bottom: 10px;
+	}
+	footer .footer-items h4{
+		font-size: 20px;
+	}
+	footer .footer-bottom-list .footer-items:before {
+		bottom: 0;
+		width: 100%;
+		height: 1px;
+		transform: inherit;
+		top: auto;
+	}
+}

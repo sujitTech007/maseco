@@ -14,7 +14,7 @@
 
                 <article class="post-content">
                     <img
-                        src="{{ asset('assets/images/material-1.png') }}"
+                        src="{{ asset('public/assets/images/material-1.png') }}"
                         alt="Textile material and fabric quality"
                         class="post-image"
                     >

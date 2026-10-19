@@ -317,7 +317,7 @@
         <div class="row">
           <div class="col-lg-5 col-md-12 border-end">
             <div class=" text-left mb-3">
-              <img id="enquiry-material-image" src="{{ asset('assets/images/blog-thumb-1.jpeg') }}" class="img-fluid mb-3" alt="Material">
+              <img id="enquiry-material-image" src="{{ asset('public/assets/images/blog-thumb-1.jpeg') }}" class="img-fluid mb-3" alt="Material">
               <div class=" detail-popup text-left mb-3">
                 <h6 id="enquiry-material-title"></h6>
                 <p class="mb-1"><strong id="enquiry-material-price"></strong></p>
@@ -379,7 +379,7 @@
                 document.getElementById('enquiry-material-id').value = material.materialId;
                 document.getElementById('enquiry-material-name').value = material.materialName;
                 document.getElementById('enquiry-material-image').src =
-                    material.materialImage || "{{ asset('assets/images/blog-thumb-1.jpeg') }}";
+                    material.materialImage || "{{ asset('public/assets/images/blog-thumb-1.jpeg') }}";
                 document.getElementById('enquiry-material-image').alt = material.materialName;
                 document.getElementById('enquiry-material-title').textContent = material.materialName;
                 document.getElementById('enquiry-material-price').textContent =

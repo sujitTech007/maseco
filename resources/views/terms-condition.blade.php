@@ -4,7 +4,7 @@
 
     <!-- Banner -->
     <section class="banner inner-banner d-flex align-items-center"
-        style="background-image:url('{{ asset('assets/images/inner-banner.jpg') }}');">
+        style="background-image:url('{{ asset('public/assets/images/inner-banner.jpg') }}');">
         <div class="container text-center">
             <h1 class="inner-title">Terms & Conditions</h1>
             <nav class="breadcrumb-wrapper">

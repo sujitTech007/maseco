@@ -8,7 +8,7 @@
 
   
 <!-- Category Page Header -->
-  <section class="banner inner-banner py-3 py-md-5" style="background-image: url({{ asset('assets/images/homepage-banner.webp') }});">
+  <section class="banner inner-banner py-3 py-md-5" style="background-image: url({{ asset('public/assets/images/homepage-banner.webp') }});">
     <div class="container">
       <div class="row">
         <div class="inner-banner-heading position-relative z-1 text-center text-white">
@@ -55,7 +55,7 @@
                             alt="{{ $category->name }}"
                             class="w-100 h-100"
                             loading="lazy"
-                            onerror="this.onerror=null;this.src='{{ asset('assets/images/blog-thumb-1.jpeg') }}';">
+                            onerror="this.onerror=null;this.src='{{ asset('public/assets/images/blog-thumb-1.jpeg') }}';">
 
                         <span class="category-count">
                             <i class="fas fa-layer-group me-1"></i>

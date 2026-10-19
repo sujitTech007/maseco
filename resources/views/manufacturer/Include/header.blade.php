@@ -168,7 +168,7 @@
 
                 <a href="{{ route('home') }}" class="logo">
 
-                    <img src="{{ asset('assets/images/logo.png') }}" alt="" height="100">
+                    <img src="{{ asset('public/assets/images/logo.png') }}" alt="" height="100">
 
                 </a>
 
