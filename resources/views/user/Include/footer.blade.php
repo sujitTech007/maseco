@@ -1,10 +1,5 @@
 
 
-            
-
-            <!-- end Footer -->
-
-
 
         </div>
 
@@ -706,27 +701,14 @@
 
 
 
-    <!-- Vendor js -->
 
-    <script src="{{ asset('public/assets/seller/js/vendor.min.js.download') }}"></script>
+    <script src="{{ asset('public/assets/js/vendor.min.js') }}"></script>
 
+    <script src="{{ asset('public/assets/js/app.js') }}"></script>
 
+    <script src="{{ asset('public/assets/js/apexcharts.min.js') }}"></script>
 
-    <!-- App js -->
-
-    <script src="{{ asset('public/assets/seller/js/app.js.download') }}"></script>
-
-
-
-    <!-- Apex Chart js -->
-
-    <script src="{{ asset('public/assets/js/apexcharts.min.js.download') }}"></script>
-
-
-
-    <!-- Projects Analytics Dashboard App js -->
-
-    <script src="{{ asset('public/assets/js/dashboard.js.download') }}"></script>
+    <script src="{{ asset('public/assets/js/dashboard.js') }}"></script>
 
 
 

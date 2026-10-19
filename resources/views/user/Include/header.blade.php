@@ -1,64 +1,23 @@
 <!DOCTYPE html>
 
-
-
 <html lang="en" data-sidenav-size="sm-hover-active" data-bs-theme="light" data-menu-color="light" data-topbar-color="brand">
-
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-
-
         <title>Dashboard</title>
-
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
-
         <meta content="Coderthemes" name="author">
 
-
-
         <!-- App favicon -->
-
         <link rel="shortcut icon" href="{{ asset('public/assets/images/favicon.ico') }}">
-
-
-
-        <!-- Vendor css -->
-
-        <link href="{{ asset('public/assets/seller/css/vendor.min.css') }}" rel="stylesheet" type="text/css">
-
-
-
-        <!-- App css -->
-
-        <link href="{{ asset('public/assets/seller/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style">
-
-
-
-        <!-- Icons css -->
-
-        <link href="{{ asset('public/assets/seller/css/icons.min.css') }}" rel="stylesheet" type="text/css">
-
-        <link href="{{ asset('public/assets/seller/css/custom.css') }}" rel="stylesheet" type="text/css">
-
-
-
-        <!-- Theme Config Js -->
-
-        <script src="{{ asset('public/assets/js/config.js.download') }}"></script>
-
+        <link href="{{ asset('public/assets/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    
+        <link href="{{ asset('public/assets/css/vendor.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('public/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style">
+        <link href="{{ asset('public/assets/css/custom.css') }}" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-
-
-
         <script type="text/javascript" src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-
-
+        <script src="{{ asset('public/assets/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('public/assets/js/chart.js') }}"></script>
 
     </head>
