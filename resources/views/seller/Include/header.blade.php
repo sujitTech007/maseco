@@ -1,12 +1,12 @@
-<!DOCTYPE php>
+<!DOCTYPE html>
 
 
 
-<php lang="en" data-sidenav-size="sm-hover-active" data-bs-theme="light" data-menu-color="light"
+<html lang="en" data-sidenav-size="sm-hover-active" data-bs-theme="light" data-menu-color="light"
     data-topbar-color="brand">
 
     <head>
-        <meta http-equiv="Content-Type" content="text/php; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
 
@@ -22,33 +22,33 @@
 
         <!-- App favicon -->
 
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <link rel="shortcut icon" href="{{ asset('public/assets/images/favicon.ico') }}">
 
 
 
         <!-- Vendor css -->
 
-        <link href="{{ asset('assets/seller/css/vendor.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('public/assets/seller/css/vendor.min.css') }}" rel="stylesheet" type="text/css">
 
 
 
         <!-- App css -->
 
-        <link href="{{ asset('assets/seller/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style">
+        <link href="{{ asset('public/assets/seller/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style">
 
 
 
         <!-- Icons css -->
 
-        <link href="{{ asset('assets/seller/css/icons.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('public/assets/seller/css/icons.min.css') }}" rel="stylesheet" type="text/css">
 
-        <link href="{{ asset('assets/seller/css/custom.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('public/assets/seller/css/custom.css') }}" rel="stylesheet" type="text/css">
 
 
 
         <!-- Theme Config Js -->
 
-        <script src="{{ asset('assets/js/config.js.download') }}"></script>
+        <script src="{{ asset('public/assets/js/config.js.download') }}"></script>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
@@ -60,7 +60,7 @@
 
 
 
-        <script src="{{ asset('assets/js/chart.js') }}"></script>
+        <script src="{{ asset('public/assets/js/chart.js') }}"></script>
 
     </head>
 

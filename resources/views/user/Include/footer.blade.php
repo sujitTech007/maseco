@@ -708,25 +708,25 @@
 
     <!-- Vendor js -->
 
-    <script src="{{ asset('assets/seller/js/vendor.min.js.download') }}"></script>
+    <script src="{{ asset('public/assets/seller/js/vendor.min.js.download') }}"></script>
 
 
 
     <!-- App js -->
 
-    <script src="{{ asset('assets/seller/js/app.js.download') }}"></script>
+    <script src="{{ asset('public/assets/seller/js/app.js.download') }}"></script>
 
 
 
     <!-- Apex Chart js -->
 
-    <script src="{{ asset('assets/js/apexcharts.min.js.download') }}"></script>
+    <script src="{{ asset('public/assets/js/apexcharts.min.js.download') }}"></script>
 
 
 
     <!-- Projects Analytics Dashboard App js -->
 
-    <script src="{{ asset('assets/js/dashboard.js.download') }}"></script>
+    <script src="{{ asset('public/assets/js/dashboard.js.download') }}"></script>
 
 
 
@@ -734,4 +734,4 @@
 
 
 
-</body></php>
+</body></html>

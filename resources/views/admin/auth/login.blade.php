@@ -1,9 +1,9 @@
-<!DOCTYPE php>
+<!DOCTYPE html>
 
-<php lang="en" data-sidenav-size="sm-hover-active" data-bs-theme="light" data-menu-color="light" data-topbar-color="brand">
+<html lang="en" data-sidenav-size="sm-hover-active" data-bs-theme="light" data-menu-color="light" data-topbar-color="brand">
 
     <head>
-        <meta http-equiv="Content-Type" content="text/php; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <title>Dashboard</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,12 +11,12 @@
         <meta content="Coderthemes" name="author">
 
         <!-- App favicon -->
-        <link rel="shortcut icon" href="{{ asset('assets/admin/images/favicon.ico') }}">
+        <link rel="shortcut icon" href="{{ asset('public/assets/admin/images/favicon.ico') }}">
 
         <!-- Vendor css -->
-        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('public/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
         
-        <link href="{{ asset('assets/css/admin-login.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('public/assets/css/admin-login.css') }}" rel="stylesheet" type="text/css">
 
        
     </head>
@@ -117,4 +117,4 @@
             }
         </script>
     </body>
-</php>
+</html>

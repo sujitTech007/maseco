@@ -416,7 +416,7 @@
                           <div class="material-image position-relative">
                               <a href="{{ route('listing.details', $material->id) }}">
                                   <img
-                                      src="{{ $material->image ? asset('public/' . $material->image) : asset('assets/images/blog-thumb-1.jpeg') }}"
+                                      src="{{ $material->image ? asset('public/' . $material->image) : asset('public/assets/images/blog-thumb-1.jpeg') }}"
                                       class="card-img-top"
                                       alt="{{ $material->name }}"
                                       loading="lazy">

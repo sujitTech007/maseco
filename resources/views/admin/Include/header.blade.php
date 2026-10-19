@@ -1,11 +1,11 @@
-<!DOCTYPE php>
+<!DOCTYPE html>
 
 
 
-<php lang="en" data-sidenav-size="sm-hover-active" data-bs-theme="light" data-menu-color="light" data-topbar-color="brand">
+<html lang="en" data-sidenav-size="sm-hover-active" data-bs-theme="light" data-menu-color="light" data-topbar-color="brand">
 
     <head>
-        <meta http-equiv="Content-Type" content="text/php; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
 
@@ -27,23 +27,23 @@
 
         <!-- App css -->
 
-        <link href="{{ asset('assets/admin/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style">
+        <link href="{{ asset('public/assets/admin/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style">
 
 
 
         <!-- Icons css -->
 
-        <link href="{{ asset('assets/admin/css/icons.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('public/assets/admin/css/icons.min.css') }}" rel="stylesheet" type="text/css">
 
-        <link href="{{ asset('assets/admin/css/custom.css') }}" rel="stylesheet" type="text/css">
-        <link href="{{ asset('assets/admin/css/admin.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('public/assets/admin/css/custom.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('public/assets/admin/css/admin.css') }}" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 
 
         <!-- Theme Config Js -->
 
-        <script src="{{ asset('assets/admin/js/config.js.download') }}"></script>
+        <script src="{{ asset('public/assets/admin/js/config.js.download') }}"></script>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
