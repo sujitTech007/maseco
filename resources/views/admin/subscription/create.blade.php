@@ -21,11 +21,11 @@
         </div>
 
         <!-- Breadcrumb -->
-        <div class="subscription-breadcrumb mb-4">
+        <!-- <div class="subscription-breadcrumb mb-4">
             <a href="{{ route('admin.dashboard') }}">Dashboard</a>
             <i class="ri-arrow-right-s-line"></i>
             <span>Add Subscription Plan</span>
-        </div>
+        </div> -->
 
         <form action="{{ route('admin.subscription.store') }}" method="POST">
             @csrf

@@ -45,9 +45,9 @@
         <div class="row g-3 enquiry-summary">
 
             <div class="col-12 col-sm-6 col-xl-4">
-                <div class="enquiry-stat">
-                    <div class="enquiry-stat-icon total">
-                        <i class="ri-file-list-3-line"></i>
+                <div class="enquiry-stat bg-danger bg-opacity-10">
+                    <div class="enquiry-stat-icon total bg-danger bg-opacity-10">
+                        <i class="ri-file-list-3-line text-danger"></i>
                     </div>
                     <div>
                         <p>Total Enquiries</p>
@@ -57,9 +57,9 @@
             </div>
 
             <div class="col-12 col-sm-6 col-xl-4">
-                <div class="enquiry-stat">
-                    <div class="enquiry-stat-icon pending">
-                        <i class="ri-time-line"></i>
+                <div class="enquiry-stat bg-warning bg-opacity-10">
+                    <div class="enquiry-stat-icon pending bg-warning bg-opacity-10">
+                        <i class="ri-time-line text-warning"></i>
                     </div>
                     <div>
                         <p>Pending</p>
@@ -69,9 +69,9 @@
             </div>
 
             <div class="col-12 col-sm-6 col-xl-4">
-                <div class="enquiry-stat">
-                    <div class="enquiry-stat-icon completed">
-                        <i class="ri-checkbox-circle-line"></i>
+                <div class="enquiry-stat bg-success bg-opacity-10">
+                    <div class="enquiry-stat-icon completed bg-success bg-opacity-10">
+                        <i class="ri-checkbox-circle-line text-success"></i>
                     </div>
                     <div>
                         <p>Completed</p>

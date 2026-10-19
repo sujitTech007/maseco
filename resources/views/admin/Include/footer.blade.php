@@ -352,8 +352,7 @@
        
     </div>
 
-    <!-- Vendor js -->
-    <script src="assets/js/vendor.min.js.download"></script>
+  
 
     <!-- App js -->
     <script src="assets/js/app.js.download"></script>

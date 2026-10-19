@@ -19,15 +19,9 @@
 
 
 
-        <!-- App favicon -->
-
-        <link rel="shortcut icon" href="{{ asset('assets/admin/images/favicon.ico') }}">
 
 
 
-        <!-- Vendor css -->
-
-        <link href="{{ asset('assets/admin/css/vendor.min.css') }}" rel="stylesheet" type="text/css">
 
 
 
@@ -52,18 +46,10 @@
         <script src="{{ asset('assets/admin/js/config.js.download') }}"></script>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-
-
-
-        <script type="text/javascript" src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
-
-
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-        <script src="{{ asset('assets/admin/js/chart.js') }}"></script>
 
-       
+
 
     </head>
 
@@ -120,7 +106,7 @@
 
 
                                         <!--- Sidenav Menu -->
-                                        
+
 
 
                                         <ul class="side-nav">
@@ -284,7 +270,7 @@
                                                 <a href="{{ route('admin.contact.list') }}" class="side-nav-link {{ Route::is('admin.contact.list') ? 'active' : '' }}">
 
                                                     <span class="menu-icon">
-                                                       <i class="fa-solid fa-comment-dots"></i>
+                                                        <i class="fa-solid fa-comment-dots"></i>
 
                                                     </span>
 
@@ -325,7 +311,7 @@
                                             </li>
 
                                         </ul>
-                                        
+
 
 
 
@@ -475,7 +461,7 @@
 
                                     <a href="{{ route('admin.profile') }}" class="dropdown-item">
                                         <i class="ri-mail-line me-1 fs-16 align-middle"></i>
-                                        <span class="align-middle">profile</span>
+                                        <span class="align-middle">Profile</span>
                                     </a>
 
                                     <div class="dropdown-divider"></div>
@@ -510,7 +496,7 @@
             </script>
 
 
-<!-- <script>
+            <!-- <script>
 document.addEventListener('DOMContentLoaded', function () {
     const toggleButtons = document.querySelectorAll('.sidenav-toggle-button');
 

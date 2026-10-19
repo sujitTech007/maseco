@@ -26,9 +26,9 @@
 
         <div class="manufacturer-summary">
 
-            <div class="summary-card">
-                <div class="summary-icon">
-                    <i class="ri-building-4-line"></i>
+            <div class="summary-card bg-danger bg-opacity-10">
+                <div class="summary-icon bg-danger bg-opacity-10">
+                    <i class="ri-building-4-line text-danger"></i>
                 </div>
                 <div>
                     <p class="summary-label">Total Manufacturers</p>
@@ -36,9 +36,9 @@
                 </div>
             </div>
 
-            <div class="summary-card">
-                <div class="summary-icon">
-                    <i class="ri-checkbox-circle-line"></i>
+            <div class="summary-card bg-warning bg-opacity-10">
+                <div class="summary-icon bg-warning bg-opacity-10">
+                    <i class="ri-checkbox-circle-line text-warning"></i>
                 </div>
                 <div>
                     <p class="summary-label">Active Manufacturers</p>
@@ -46,9 +46,9 @@
                 </div>
             </div>
 
-            <div class="summary-card">
-                <div class="summary-icon">
-                    <i class="ri-user-unfollow-line"></i>
+            <div class="summary-card bg-success bg-opacity-10">
+                <div class="summary-icon bg-success bg-opacity-10">
+                    <i class="ri-user-unfollow-line text-success"></i>
                 </div>
                 <div>
                     <p class="summary-label">Inactive Manufacturers</p>
@@ -201,7 +201,7 @@
             <div class="modal-body">
 
                 <!-- Manufacturer Profile -->
-                <div class="user-modal-profile">
+                <div class="user-modal-profile ">
                     <div class="user-modal-avatar">
                         <i class="ri-building-2-line"></i>
                     </div>

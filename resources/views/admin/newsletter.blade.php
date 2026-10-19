@@ -29,9 +29,9 @@
 
         {{-- Summary --}}
         <div class="newsletter-summary">
-            <div class="newsletter-stat">
-                <div class="newsletter-stat-icon">
-                    <i class="ri-mail-open-line"></i>
+            <div class="newsletter-stat bg-danger bg-opacity-10">
+                <div class="newsletter-stat-icon bg-danger bg-opacity-10">
+                    <i class="ri-mail-open-line text-danger"></i>
                 </div>
 
                 <div>
@@ -40,9 +40,9 @@
                 </div>
             </div>
 
-            <div class="newsletter-stat">
-                <div class="newsletter-stat-icon email">
-                    <i class="ri-mail-line"></i>
+            <div class="newsletter-stat bg-warning bg-opacity-10">
+                <div class="newsletter-stat-icon email bg-warning bg-opacity-10">
+                    <i class="ri-mail-line text-warning"></i>
                 </div>
 
                 <div>

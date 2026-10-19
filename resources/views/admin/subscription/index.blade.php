@@ -39,9 +39,9 @@
 
         <div class="row g-3 mb-4">
             <div class="col-12 col-sm-6 col-xl-4">
-                <div class="subscription-stat">
-                    <div class="subscription-stat-icon total">
-                        <i class="fas fa-layer-group"></i>
+                <div class="subscription-stat bg-danger bg-opacity-10">
+                    <div class="subscription-stat-icon total bg-danger bg-opacity-10">
+                        <i class="fas fa-layer-group text-danger"></i>
                     </div>
                     <div>
                         <p>Total Plans</p>
@@ -51,9 +51,9 @@
             </div>
 
             <div class="col-12 col-sm-6 col-xl-4">
-                <div class="subscription-stat">
-                    <div class="subscription-stat-icon active">
-                        <i class="fas fa-check-circle"></i>
+                <div class="subscription-stat bg-warning bg-opacity-10">
+                    <div class="subscription-stat-icon active bg-warning bg-opacity-10">
+                        <i class="fas fa-check-circle text-warning"></i>
                     </div>
                     <div>
                         <p>Active Plans</p>
@@ -63,9 +63,9 @@
             </div>
 
             <div class="col-12 col-sm-6 col-xl-4">
-                <div class="subscription-stat">
-                    <div class="subscription-stat-icon inactive">
-                        <i class="fas fa-pause-circle"></i>
+                <div class="subscription-stat bg-success bg-opacity-10">
+                    <div class="subscription-stat-icon inactive bg-success bg-opacity-10">
+                        <i class="fas fa-pause-circle text-success"></i>
                     </div>
                     <div>
                         <p>Inactive Plans</p>
