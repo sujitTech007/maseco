@@ -15,6 +15,7 @@
 
         <!-- Vendor css -->
         <link href="{{ asset('public/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('public/assets/css/all.min.css') }}" rel="stylesheet" type="text/css">
         
         <link href="{{ asset('public/assets/css/admin-login.css') }}" rel="stylesheet" type="text/css">
 
@@ -69,7 +70,7 @@
                     >
 
                     <span class="toggle-password" onclick="togglePassword()">
-                        <i class="ri-eye-line" id="eyeIcon"></i>
+                        <i class="fa-solid fa-eye" id="eyeIcon"></i>
                     </span>
                 </div>
 
@@ -83,7 +84,7 @@
                 </div>
 
                 <button type="submit" id="submit" class="lab-btn w-100">
-                    Submit <i class="ri-arrow-right-line ms-1"></i>
+                    Submit <i class="fa-solid fa-arrow-right ms-1"></i>
                 </button>
 
                 <div class="login-footer text-center mt-4">
@@ -107,12 +108,12 @@
 
                 if (passwordInput.type === "password") {
                     passwordInput.type = "text";
-                    eyeIcon.classList.remove("ri-eye-line");
-                    eyeIcon.classList.add("ri-eye-off-line");
+                    eyeIcon.classList.remove("fa-solid fa-eye");
+                    eyeIcon.classList.add("fa-solid fa-eye-slash");
                 } else {
                     passwordInput.type = "password";
-                    eyeIcon.classList.remove("ri-eye-off-line");
-                    eyeIcon.classList.add("ri-eye-line");
+                    eyeIcon.classList.remove("fa-solid fa-eye-slash");
+                    eyeIcon.classList.add("fa-solid fa-eye");
                 }
             }
         </script>

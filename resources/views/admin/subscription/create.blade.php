@@ -15,7 +15,7 @@
             </div>
 
             <a href="{{ route('admin.dashboard') }}" class="subscription-back-link">
-                <i class="ri-arrow-left-line"></i>
+                <i class="fa-solid fa-arrow-left"></i>
                 <span>Back to Dashboard</span>
             </a>
         </div>
@@ -23,7 +23,7 @@
         <!-- Breadcrumb -->
         <!-- <div class="subscription-breadcrumb mb-4">
             <a href="{{ route('admin.dashboard') }}">Dashboard</a>
-            <i class="ri-arrow-right-s-line"></i>
+            <i class="fa-solid fa-chevron-right"></i>
             <span>Add Subscription Plan</span>
         </div> -->
 
@@ -38,7 +38,7 @@
 
                         <div class="subscription-card-heading">
                             <div class="subscription-heading-icon">
-                                <i class="ri-price-tag-3-line"></i>
+                                <i class="fa-solid fa-tag"></i>
                             </div>
                             <div>
                                 <h5>Plan Information</h5>
@@ -123,7 +123,7 @@
                                     required
                                 >{{ old('features.0') }}</textarea>
                                 <div class="field-help">
-                                    <i class="ri-information-line"></i>
+                                    <i class="fa-solid fa-circle-info"></i>
                                     Enter each feature on a separate line.
                                 </div>
                                 @error('features')
@@ -160,7 +160,7 @@
 
                         <div class="subscription-card-heading">
                             <div class="subscription-heading-icon">
-                                <i class="ri-settings-3-line"></i>
+                                <i class="fa-solid fa-gear"></i>
                             </div>
                             <div>
                                 <h5>Plan Settings</h5>
@@ -185,7 +185,7 @@
                             </select>
 
                             <div class="subscription-status-note">
-                                <i class="ri-checkbox-circle-line"></i>
+                                <i class="fa-solid fa-circle-check"></i>
                                 <div>
                                     <strong>Active</strong>
                                     <p>Use the status field to control whether the plan is active in your application.</p>
@@ -208,7 +208,7 @@
 
                     <div class="subscription-form-actions">
                         <button type="submit" class="btn subscription-submit-btn">
-                            <i class="ri-check-line"></i>
+                            <i class="fa-solid fa-check"></i>
                             Create Subscription Plan
                         </button>
 

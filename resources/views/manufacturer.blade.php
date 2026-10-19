@@ -52,7 +52,7 @@
                             <div class="flex-grow-1 overflow-hidden">
                                 <span class="badge rounded-pill mb-2"
                                     style="background:#e4f5ef;color:#248f7b;font-size:11px;">
-                                    <i class="fas fa-industry me-1"></i>
+                                    <i class="fa-solid fa-industry me-1"></i>
                                     Manufacturer
                                 </span>
 
@@ -71,14 +71,14 @@
                         <div class="p-3">
 
                             <p class="text-secondary mb-3" style="font-size:13px;">
-                                <i class="fas fa-address-card me-2"
+                                <i class="fa-solid fa-address-card me-2"
                                     style="color:#2DAC92;"></i>
                                 Contact Information
                             </p>
 
                             <div class="manufacturer-contact-row mb-3">
                                 <div class="manufacturer-contact-icon">
-                                    <i class="fas fa-phone"></i>
+                                    <i class="fa-solid fa-phone"></i>
                                 </div>
 
                                 <div class="flex-grow-1 overflow-hidden">
@@ -103,7 +103,7 @@
 
                             <div class="manufacturer-contact-row mb-3">
                                 <div class="manufacturer-contact-icon">
-                                    <i class="fas fa-envelope"></i>
+                                    <i class="fa-solid fa-envelope"></i>
                                 </div>
 
                                 <div class="flex-grow-1 overflow-hidden">
@@ -132,7 +132,7 @@
                                 @if($manufacturer->phone)
                                 <a href="tel:{{ $manufacturer->phone }}"
                                     class="btn manufacturer-primary-btn flex-fill">
-                                    <i class="fas fa-phone me-1"></i>
+                                    <i class="fa-solid fa-phone me-1"></i>
                                     Call Manufacturer
                                 </a>
                                 @endif
@@ -140,7 +140,7 @@
                                 @if($manufacturer->email)
                                 <a href="mailto:{{ $manufacturer->email }}"
                                     class="btn manufacturer-secondary-btn flex-fill">
-                                    <i class="fas fa-envelope me-1"></i>
+                                    <i class="fa-solid fa-envelope me-1"></i>
                                     Email
                                 </a>
                                 @endif
@@ -154,7 +154,7 @@
                 @empty
                 <div class="col-12">
                     <div class="bg-white border rounded-3 text-center p-5">
-                        <i class="fas fa-industry mb-3"
+                        <i class="fa-solid fa-industry mb-3"
                             style="font-size:32px;color:#2DAC92;"></i>
 
                         <h5 class="fw-bold" style="font-size:18px;">

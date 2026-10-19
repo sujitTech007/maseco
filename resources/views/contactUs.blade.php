@@ -115,7 +115,7 @@
                                 <button type="submit"
                                         class="btn text-white w-100 theme-btn py-4 fw-bold">
                                     Send Enquiry
-                                    <i class="fas fa-arrow-right ms-2"></i>
+                                    <i class="fa-solid fa-arrow-right ms-2"></i>
                                 </button>
                             </div>
 
@@ -137,7 +137,7 @@
                         <div class="col-md-6">
                             <div class="d-flex align-items-start gap-3">
                                 <div class="contact-icon">
-                                    <i class="fas fa-envelope"></i>
+                                    <i class="fa-solid fa-envelope"></i>
                                 </div>
                                 <div>
                                     <p class="text-secondary mb-1"
@@ -154,7 +154,7 @@
                         <div class="col-md-6">
                             <div class="d-flex align-items-start gap-3">
                                 <div class="contact-icon">
-                                    <i class="fas fa-map-marker-alt"></i>
+                                    <i class="fa-solid fa-location-dot"></i>
                                 </div>
                                 <div>
                                     <p class="text-secondary mb-1"
@@ -208,14 +208,14 @@
                        rel="noopener noreferrer"
                        class="btn btn-outline-secondary w-100 mt-3"
                        style="font-size:14px;">
-                        <i class="fas fa-directions me-2"></i>
+                        <i class="fa-solid fa-route me-2"></i>
                         Get Directions
                     </a>
 
                     <div class="p-3 rounded-3 mt-3"
                          style="background:#eef8f4;">
                         <div class="d-flex gap-2 align-items-start">
-                            <i class="fas fa-info-circle mt-1"
+                            <i class="fa-solid fa-circle-info mt-1"
                                style="color:#2DAC92;"></i>
                             <p class="mb-0" style="font-size:13px;line-height:1.7;color:#47645b;">
                                 For business enquiries, please include accurate contact

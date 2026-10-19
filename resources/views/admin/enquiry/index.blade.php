@@ -47,7 +47,7 @@
             <div class="col-12 col-sm-6 col-xl-4">
                 <div class="enquiry-stat bg-danger bg-opacity-10">
                     <div class="enquiry-stat-icon total bg-danger bg-opacity-10">
-                        <i class="ri-file-list-3-line text-danger"></i>
+                        <i class="fa-solid fa-list text-danger"></i>
                     </div>
                     <div>
                         <p>Total Enquiries</p>
@@ -59,7 +59,7 @@
             <div class="col-12 col-sm-6 col-xl-4">
                 <div class="enquiry-stat bg-warning bg-opacity-10">
                     <div class="enquiry-stat-icon pending bg-warning bg-opacity-10">
-                        <i class="ri-time-line text-warning"></i>
+                        <i class="fa-solid fa-clock text-warning"></i>
                     </div>
                     <div>
                         <p>Pending</p>
@@ -71,7 +71,7 @@
             <div class="col-12 col-sm-6 col-xl-4">
                 <div class="enquiry-stat bg-success bg-opacity-10">
                     <div class="enquiry-stat-icon completed bg-success bg-opacity-10">
-                        <i class="ri-checkbox-circle-line text-success"></i>
+                        <i class="fa-solid fa-circle-check text-success"></i>
                     </div>
                     <div>
                         <p>Completed</p>
@@ -116,7 +116,7 @@
                 </div>
 
                 <div class="enquiry-search">
-                    <i class="ri-search-line"></i>
+                    <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="search"
                            class="enquiry-control"
                            id="enquiry-search-input"
@@ -210,7 +210,7 @@
                             <tr class="enquiry-empty-row">
                                 <td colspan="7">
                                     <div class="enquiry-empty">
-                                        <i class="ri-inbox-line"></i>
+                                        <i class="fa-solid fa-inbox"></i>
                                         <h5>No enquiries yet</h5>
                                         <p>Buyer enquiries will appear here when submitted.</p>
                                     </div>
@@ -222,7 +222,7 @@
                 </table>
 
                 <div class="enquiry-no-results" id="enquiry-no-results" hidden>
-                    <i class="ri-search-line"></i>
+                    <i class="fa-solid fa-magnifying-glass"></i>
                     <p>No enquiries match your search.</p>
                 </div>
 

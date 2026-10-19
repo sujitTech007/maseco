@@ -27,7 +27,7 @@
 
                             <div class="login-benefit">
                                 <div class="login-benefit-icon">
-                                    <i class="fa fa-cubes" aria-hidden="true"></i>
+                                    <i class="fa-solid fa-cubes" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h6>Quality Raw Materials</h6>
@@ -37,7 +37,7 @@
 
                             <div class="login-benefit">
                                 <div class="login-benefit-icon">
-                                    <i class="fa fa-handshake" aria-hidden="true"></i>
+                                    <i class="fa-solid fa-handshake" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h6>Trusted Connections</h6>
@@ -47,7 +47,7 @@
 
                             <div class="login-benefit">
                                 <div class="login-benefit-icon">
-                                    <i class="fa fa-leaf" aria-hidden="true"></i>
+                                    <i class="fa-solid fa-leaf" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h6>Smarter Sourcing</h6>
@@ -368,7 +368,7 @@
 
 
                                         <span
-                                            class="fa fa-eye login-password-toggle"
+                                            class="fa-solid fa-eye login-password-toggle"
                                             id="password-field"
                                             role="button"
                                             tabindex="0"

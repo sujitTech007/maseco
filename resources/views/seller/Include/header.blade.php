@@ -40,7 +40,7 @@
 
         <!-- Icons css -->
 
-        <link href="{{ asset('public/assets/seller/css/icons.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('public/assets/css/all.min.css') }}" rel="stylesheet" type="text/css">
 
         <link href="{{ asset('public/assets/seller/css/custom.css') }}" rel="stylesheet" type="text/css">
 
@@ -50,7 +50,6 @@
 
         <script src="{{ asset('public/assets/js/config.js.download') }}"></script>
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
 
 
@@ -178,7 +177,7 @@
 
                 <button class="button-close-fullsidebar">
 
-                    <i class="ri-close-line align-middle"></i>
+                    <i class="fa-solid fa-xmark align-middle"></i>
 
                 </button>
 
@@ -494,7 +493,7 @@
 
                         <button class="sidenav-toggle-button px-2">
 
-                            <i class="ri-menu-2-line fs-24"></i>
+                            <i class="fa-solid fa-bars fs-24"></i>
 
                         </button>
 
@@ -505,7 +504,7 @@
                         <button class="topnav-toggle-button px-2" data-bs-toggle="collapse"
                             data-bs-target="#topnav-menu-content">
 
-                            <i class="ri-menu-2-line fs-24"></i>
+                            <i class="fa-solid fa-bars fs-24"></i>
 
                         </button>
 
@@ -518,7 +517,7 @@
                             <button class="topbar-link" data-bs-toggle="modal" data-bs-target="#searchModal"
                                 type="button">
 
-                                <i class="ri-search-line fs-22"></i>
+                                <i class="fa-solid fa-magnifying-glass fs-22"></i>
 
                             </button>
 
@@ -573,7 +572,7 @@
                                 <a class="topbar-link dropdown-toggle drop-arrow-none px-2" data-bs-toggle="dropdown"
                                     data-bs-offset="0,25" type="button" aria-haspopup="false" aria-expanded="false">
 
-                                    <i class="ri-account-circle-line me-1 fs-20 align-middle"></i>
+                                    <i class="fa-solid fa-circle-user me-1 fs-20 align-middle"></i>
 
                                     <!-- <img src="assets/images/user.png" width="32" class="rounded-circle me-lg-2 d-flex userImage" alt="user-image"> -->
 
@@ -583,7 +582,7 @@
 
                                     </span>
 
-                                    <i class="ri-arrow-down-s-line d-none d-lg-block align-middle ms-2"></i>
+                                    <i class="fa-solid fa-chevron-down d-none d-lg-block align-middle ms-2"></i>
 
                                 </a>
 
@@ -602,34 +601,34 @@
                                     <!-- item-->
 
                                     <a href="{{ route('seller.dashboard') }}" class="dropdown-item">
-                                        <i class="ri-dashboard-line me-1 fs-16 align-middle"></i>
+                                        <i class="fa-solid fa-gauge me-1 fs-16 align-middle"></i>
                                         <span class="align-middle">Dashboard</span>
                                     </a>
 
                                     <a href="{{ route('seller.material') }}" class="dropdown-item">
-                                        <i class="ri-archive-line me-1 fs-16 align-middle"></i>
+                                        <i class="fa-solid fa-box-archive me-1 fs-16 align-middle"></i>
                                         <span class="align-middle">Material Management</span>
                                     </a>
 
                                     <a href="{{ route('seller.orders') }}" class="dropdown-item">
-                                        <i class="ri-shopping-cart-line me-1 fs-16 align-middle"></i>
+                                        <i class="fa-solid fa-cart-shopping me-1 fs-16 align-middle"></i>
                                         <span class="align-middle">Orders</span>
                                     </a>
 
                                     <a href="{{ route('seller.enquiry') }}" class="dropdown-item">
-                                        <i class="ri-file-search-line me-1 fs-16 align-middle"></i>
+                                        <i class="fa-solid fa-file-circle-question me-1 fs-16 align-middle"></i>
                                         <span class="align-middle">RFQ</span>
                                     </a>
 
                                     <a href="{{ route('seller.payment') }}" class="dropdown-item">
-                                        <i class="ri-wallet-3-line me-1 fs-16 align-middle"></i>
+                                        <i class="fa-solid fa-wallet me-1 fs-16 align-middle"></i>
                                         <span class="align-middle">Payment</span>
                                     </a>
 
                                     <div class="dropdown-divider"></div>
 
                                     <a href="{{ route('seller.profile') }}" class="dropdown-item">
-                                        <i class="ri-account-circle-line me-1 fs-16 align-middle"></i>
+                                        <i class="fa-solid fa-circle-user me-1 fs-16 align-middle"></i>
                                         <span class="align-middle">Profile</span>
                                     </a>
 
@@ -637,7 +636,7 @@
 
                                     <a href="{{ route('seller.logout') }}"
                                         class="dropdown-item fw-semibold text-danger">
-                                        <i class="ri-logout-box-line me-1 fs-16 align-middle"></i>
+                                        <i class="fa-solid fa-right-from-bracket me-1 fs-16 align-middle"></i>
                                         <span class="align-middle">Log Out</span>
                                     </a>
 

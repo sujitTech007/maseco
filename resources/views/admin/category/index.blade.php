@@ -21,21 +21,21 @@
             <p>Manage the categories used to organize marketplace materials.</p>
 
             <a href="{{ route('admin.category.create') }}" class="category-add-btn">
-                <i class="ri-add-line"></i>
+                <i class="fa-solid fa-plus"></i>
                 Add Category
             </a>
         </div>
 
         @if(session('success'))
             <div class="alert alert-success category-alert">
-                <i class="ri-checkbox-circle-line me-1"></i>
+                <i class="fa-solid fa-circle-check me-1"></i>
                 {{ session('success') }}
             </div>
         @endif
 
         <div class="category-summary">
             <div class="category-summary-icon">
-                <i class="ri-folders-line"></i>
+                <i class="fa-solid fa-folder-open"></i>
             </div>
 
             <div>
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="category-search">
-                    <i class="ri-search-line"></i>
+                    <i class="fa-solid fa-magnifying-glass"></i>
                     <input
                         type="search"
                         id="category-search-input"
@@ -101,7 +101,7 @@
                                         >
                                     @else
                                         <div class="category-no-image" title="No image">
-                                            <i class="ri-image-line"></i>
+                                            <i class="fa-solid fa-image"></i>
                                         </div>
                                     @endif
                                 </td>

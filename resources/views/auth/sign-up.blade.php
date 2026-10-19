@@ -28,7 +28,7 @@
 
                             <div class="login-benefit">
                                 <div class="login-benefit-icon">
-                                    <i class="fa fa-cubes" aria-hidden="true"></i>
+                                    <i class="fa-solid fa-cubes" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h6>Quality Raw Materials</h6>
@@ -38,7 +38,7 @@
 
                             <div class="login-benefit">
                                 <div class="login-benefit-icon">
-                                    <i class="fa fa-handshake" aria-hidden="true"></i>
+                                    <i class="fa-solid fa-handshake" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h6>Trusted Connections</h6>
@@ -48,7 +48,7 @@
 
                             <div class="login-benefit">
                                 <div class="login-benefit-icon">
-                                    <i class="fa fa-leaf" aria-hidden="true"></i>
+                                    <i class="fa-solid fa-leaf" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h6>Smarter Sourcing</h6>
@@ -420,7 +420,7 @@
                                                         class="password-toggle toggle-password"
                                                         data-target="password-field"
                                                         aria-label="Show password">
-                                                    <i class="far fa-eye"></i>
+                                                    <i class="fa-regular fa-eye"></i>
                                                 </button>
                                             </div>
                                         </fieldset>
@@ -445,7 +445,7 @@
                                                         class="password-toggle toggle-password"
                                                         data-target="confirm-password-field"
                                                         aria-label="Show password">
-                                                    <i class="far fa-eye"></i>
+                                                    <i class="fa-regular fa-eye"></i>
                                                 </button>
                                             </div>
                                         </fieldset>

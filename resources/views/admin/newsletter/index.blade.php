@@ -16,7 +16,7 @@
 
     @if(session('success'))
         <div class="newsletter-alert">
-            <i class="ri-checkbox-circle-line"></i>
+            <i class="fa-solid fa-circle-check"></i>
             {{ session('success') }}
         </div>
     @endif
@@ -31,7 +31,7 @@
         <div class="newsletter-summary">
             <div class="newsletter-stat bg-danger bg-opacity-10">
                 <div class="newsletter-stat-icon bg-danger bg-opacity-10">
-                    <i class="ri-mail-open-line text-danger"></i>
+                    <i class="fa-solid fa-envelope-open text-danger"></i>
                 </div>
 
                 <div>
@@ -42,7 +42,7 @@
 
             <div class="newsletter-stat bg-warning bg-opacity-10">
                 <div class="newsletter-stat-icon email bg-warning bg-opacity-10">
-                    <i class="ri-mail-line text-warning"></i>
+                    <i class="fa-solid fa-envelope text-warning"></i>
                 </div>
 
                 <div>
@@ -86,7 +86,7 @@
                 </div>
 
                 <div class="newsletter-search">
-                    <i class="ri-search-line"></i>
+                    <i class="fa-solid fa-magnifying-glass"></i>
 
                     <input type="search"
                            id="newsletter-search-input"
@@ -125,7 +125,7 @@
                                 <td data-label="Email Address">
                                     <div class="newsletter-email-cell">
                                         <span class="newsletter-avatar">
-                                            <i class="ri-mail-line"></i>
+                                            <i class="fa-solid fa-envelope"></i>
                                         </span>
 
                                         <a href="mailto:{{ $newsletter->email }}"
@@ -149,7 +149,7 @@
                             <tr>
                                 <td colspan="3">
                                     <div class="newsletter-empty">
-                                        <i class="ri-mail-open-line"></i>
+                                        <i class="fa-solid fa-envelope-open"></i>
                                         <h5>No subscribers yet</h5>
                                         <p>New newsletter email addresses will appear here.</p>
                                     </div>
@@ -165,7 +165,7 @@
                 <div class="newsletter-no-results"
                      id="newsletter-no-results"
                      hidden>
-                    <i class="ri-search-line"></i>
+                    <i class="fa-solid fa-magnifying-glass"></i>
                     <p>No subscribers match your search.</p>
                 </div>
 

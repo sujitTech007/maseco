@@ -32,7 +32,7 @@
 
             <div class="seller-stat bg-danger bg-opacity-10">
                 <div class="seller-stat-icon bg-danger bg-opacity-10">
-                    <i class="ri-store-2-line text-danger"></i>
+                    <i class="fa-solid fa-store text-danger"></i>
                 </div>
                 <div>
                     <div class="seller-stat-label">Total Sellers</div>
@@ -42,7 +42,7 @@
 
             <div class="seller-stat bg-warning bg-opacity-10">
                 <div class="seller-stat-icon bg-warning bg-opacity-10">
-                    <i class="ri-user-follow-line text-warning"></i>
+                    <i class="fa-solid fa-user-plus text-warning"></i>
                 </div>
                 <div>
                     <div class="seller-stat-label">Active Sellers</div>
@@ -52,7 +52,7 @@
 
             <div class="seller-stat bg-success bg-opacity-10">
                 <div class="seller-stat-icon bg-success bg-opacity-10">
-                    <i class="ri-user-unfollow-line text-success"></i>
+                    <i class="fa-solid fa-user-slash text-success"></i>
                 </div>
                 <div>
                     <div class="seller-stat-label">Inactive Sellers</div>
@@ -71,7 +71,7 @@
                 </div>
 
                 <div class="seller-search-wrap">
-                    <i class="ri-search-line"></i>
+                    <i class="fa-solid fa-magnifying-glass"></i>
                     <input
                         type="search"
                         class="dt-input seller-search"
@@ -150,7 +150,7 @@
                                             aria-label="View seller {{ $supplier->name }}"
                                             title="View seller details"
                                         >
-                                            <i class="ri-eye-line"></i>
+                                            <i class="fa-solid fa-eye"></i>
                                         </a>
                                     </div>
                                 </td>
@@ -201,7 +201,7 @@
                 <!-- Supplier Profile -->
                 <div class="user-modal-profile">
                     <div class="user-modal-avatar">
-                        <i class="ri-store-2-line"></i>
+                        <i class="fa-solid fa-store"></i>
                     </div>
 
                     <div>
@@ -215,7 +215,7 @@
 
                     <div class="user-detail-item">
                         <div class="user-detail-icon">
-                            <i class="ri-mail-line"></i>
+                            <i class="fa-solid fa-envelope"></i>
                         </div>
                         <div class="user-detail-content">
                             <span>Email Address</span>
@@ -225,7 +225,7 @@
 
                     <div class="user-detail-item">
                         <div class="user-detail-icon">
-                            <i class="ri-phone-line"></i>
+                            <i class="fa-solid fa-phone"></i>
                         </div>
                         <div class="user-detail-content">
                             <span>Phone Number</span>
@@ -235,7 +235,7 @@
 
                     <div class="user-detail-item">
                         <div class="user-detail-icon">
-                            <i class="ri-building-2-line"></i>
+                            <i class="fa-solid fa-building"></i>
                         </div>
                         <div class="user-detail-content">
                             <span>Company Name</span>
@@ -245,7 +245,7 @@
 
                     <div class="user-detail-item">
                         <div class="user-detail-icon">
-                            <i class="ri-shield-check-line"></i>
+                            <i class="fa-solid fa-shield"></i>
                         </div>
                         <div class="user-detail-content">
                             <span>Account Status</span>
@@ -255,7 +255,7 @@
 
                     <div class="user-detail-item">
                         <div class="user-detail-icon">
-                            <i class="ri-calendar-line"></i>
+                            <i class="fa-solid fa-calendar-days"></i>
                         </div>
                         <div class="user-detail-content">
                             <span>Registered On</span>

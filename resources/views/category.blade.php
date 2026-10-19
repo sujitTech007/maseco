@@ -58,7 +58,7 @@
                             onerror="this.onerror=null;this.src='{{ asset('public/assets/images/blog-thumb-1.jpeg') }}';">
 
                         <span class="category-count">
-                            <i class="fas fa-layer-group me-1"></i>
+                            <i class="fa-solid fa-layer-group me-1"></i>
                             Materials
                         </span>
                     </div>
@@ -86,7 +86,7 @@
 
         @if($categories->isEmpty())
             <div class="bg-white border rounded-3 text-center p-5">
-                <i class="fas fa-folder-open mb-3"
+                <i class="fa-solid fa-folder-open mb-3"
                    style="font-size:32px;color:#2DAC92;"></i>
                 <h3 style="font-size:18px;color:#263b3a;">
                     No categories available

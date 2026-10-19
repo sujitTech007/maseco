@@ -56,7 +56,7 @@
 
                   <div class="icon-box display-4 text-primary mb-2">
 
-                    <i class="bi bi-chat-left-text"></i>
+                    <i class="fa-solid fa-comment-dots"></i>
 
                   </div>
 
@@ -92,7 +92,7 @@
 
                   <div class="icon-box display-4 text-success mb-2">
 
-                    <i class="bi bi-bag-check"></i>
+                    <i class="fa-solid fa-bag-shopping"></i>
 
                   </div>
 
@@ -128,7 +128,7 @@
 
                   <div class="icon-box display-4 text-warning mb-2">
 
-                    <i class="bi bi-credit-card"></i>
+                    <i class="fa-solid fa-credit-card"></i>
 
                   </div>
 
@@ -164,7 +164,7 @@
 
                   <div class="icon-box display-4 text-danger mb-2">
 
-                    <i class="bi bi-currency-dollar"></i>
+                    <i class="fa-solid fa-dollar-sign"></i>
 
                   </div>
 
@@ -218,7 +218,7 @@
 
                   <div class="icon-box display-4 text-primary mb-2">
 
-                    <i class="bi bi-person-circle"></i>
+                    <i class="fa-solid fa-circle-user"></i>
 
                   </div>
 
@@ -254,7 +254,7 @@
 
                   <div class="icon-box display-4 text-success mb-2">
 
-                    <i class="bi bi-person-circle"></i>
+                    <i class="fa-solid fa-circle-user"></i>
 
                   </div>
 
@@ -290,7 +290,7 @@
 
                   <div class="icon-box display-4 text-warning mb-2">
 
-                    <i class="bi bi-person-circle"></i>
+                    <i class="fa-solid fa-circle-user"></i>
 
                   </div>
 

@@ -29,7 +29,7 @@
 
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <h5 class="fw-bold mb-0">
-                                <i class="fa fa-sliders me-2 text_color_primary"></i>
+                                <i class="fa-solid fa-sliders me-2 text_color_primary"></i>
                                 Filters
                             </h5>
                             <a href="{{ route('listing') }}"
@@ -45,7 +45,7 @@
                                 <label class="form-label fw-semibold">Search Materials</label>
                                 <div class="input-group">
                                     <span class="input-group-text bg-white">
-                                        <i class="fa fa-search text-muted"></i>
+                                        <i class="fa-solid fa-magnifying-glass text-muted"></i>
                                     </span>
                                     <input type="text" name="q"
                                         class="form-control"
@@ -151,7 +151,7 @@
                             </div>
 
                             <button type="submit" class="btn theme_btn{ w-100 py-2">
-                                <i class="fa fa-filter me-2"></i>Apply Filters
+                                <i class="fa-solid fa-filter me-2"></i>Apply Filters
                             </button>
 
                             <a href="{{ route('listing') }}"
@@ -193,7 +193,7 @@
                                     </a>
 
                                     <span class="badge bg-white text_color_primary position-absolute top-0 start-0 m-3 shadow-sm">
-                                        <i class="fa fa-check-circle me-1 fs-11"></i>
+                                        <i class="fa-solid fa-circle-check me-1 fs-11"></i>
                                         Verified Listing
                                     </span>
                                 </div>
@@ -219,18 +219,18 @@
 
                                     <div class="material-info mb-3">
                                         <p class="mb-2 text-muted">
-                                            <i class="fa fa-map-marker-alt text_color_primary me-2"></i>
+                                            <i class="fa-solid fa-location-dot text_color_primary me-2"></i>
                                             {{ $material->location ?: 'Location not specified' }}
                                         </p>
 
                                         <p class="mb-2 text-muted">
-                                            <i class="fa fa-building text_color_primary me-2"></i>
+                                            <i class="fa-solid fa-building text_color_primary me-2"></i>
                                             <span class="text-dark fw-semibold">Supplier:</span>
                                             {{ $supplierName }}
                                         </p>
 
                                         <p class="mb-0 text-muted">
-                                            <i class="fa fa-cubes text_color_primary me-2"></i>
+                                            <i class="fa-solid fa-cubes text_color_primary me-2"></i>
                                             <span class="text-dark fw-semibold">Grade / Size:</span>
                                             {{ $material->grade ?: '-' }}
                                             /
@@ -242,7 +242,7 @@
                                         <a href="{{ route('listing.details', $material->id) }}"
                                            class="btn theme_btn text-white">
                                             View Details
-                                            <i class="fa fa-arrow-right ms-1"></i>
+                                            <i class="fa-solid fa-arrow-right ms-1"></i>
                                         </a>
 
                                         @if(!Auth::guard('supplier')->check() && !Auth::guard('manufacturer')->check())
@@ -263,7 +263,7 @@
                                                 data-material-unit="{{ $material->unit }}"
                                                 data-material-supplier="{{ optional($material->supplier)->company_name ?? optional($material->supplier)->name ?? optional($material->manufacturer)->company_name ?? optional($material->manufacturer)->name ?? 'Supplier' }}"
                                                 data-material-location="{{ $material->location ?? '-' }}">
-                                                <i class="fa fa-envelope me-2"></i>
+                                                <i class="fa-solid fa-envelope me-2"></i>
                                                 Contact {{ $contactType }}
                                             </button>
                                         @endif
@@ -277,7 +277,7 @@
                         <div class="col-12">
                             <div class="card border-0 shadow-sm text-center py-5">
                                 <div class="card-body">
-                                    <i class="fa fa-search fa-3x text-muted mb-3"></i>
+                                    <i class="fa-solid fa-magnifying-glass fa-3x text-muted mb-3"></i>
                                     <h5 class="fw-bold">No Materials Found</h5>
                                     <p class="text-muted">
                                         Try changing your search or filter options.

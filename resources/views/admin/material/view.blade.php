@@ -11,15 +11,15 @@
 
             <div class="material-breadcrumb">
                 <a href="https://maseco.ca/UAT/admin/dashboard">Dashboard</a>
-                <i class="ri-arrow-right-s-line"></i>
+                <i class="fa-solid fa-chevron-right"></i>
                 <a href="raw-material-listing.php">Materials</a>
-                <i class="ri-arrow-right-s-line"></i>
+                <i class="fa-solid fa-chevron-right"></i>
                 <span>Material Details</span>
             </div>
         </div>
 
         <a href="raw-material-listing.php" class="material-back-btn">
-            <i class="ri-arrow-left-line"></i>
+            <i class="fa-solid fa-arrow-left"></i>
             Back to Materials
         </a>
     </div>
@@ -44,7 +44,7 @@
                 <div class="col-lg-8 col-md-7">
                     <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
                         <span class="material-category-tag">
-                            <i class="ri-leaf-line"></i>
+                            <i class="fa-solid fa-leaf"></i>
                             Fabric / Organic
                         </span>
 
@@ -93,13 +93,13 @@
                            target="_blank"
                            rel="noopener"
                            class="material-action-btn material-outline-btn">
-                            <i class="ri-file-pdf-line"></i>
+                            <i class="fa-solid fa-file-pdf"></i>
                             View Brochure
                         </a>
 
                         <a href="add-new-material.php?id=COT123"
                            class="material-action-btn material-primary-btn">
-                            <i class="ri-edit-line"></i>
+                            <i class="fa-solid fa-pen-to-square"></i>
                             Edit Material
                         </a>
                     </div>
@@ -174,7 +174,7 @@
 
             <div class="material-handling mt-4">
                 <div class="material-handling-icon">
-                    <i class="ri-shield-check-line"></i>
+                    <i class="fa-solid fa-shield"></i>
                 </div>
 
                 <div>

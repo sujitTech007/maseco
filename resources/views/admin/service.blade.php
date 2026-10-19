@@ -30,7 +30,7 @@
 
                                 <div class="d-flex flex-wrap flex-lg-nowrap gap-2">
                                     
-                                    <a href="add-plan.php" class="btn themeBtn"><i class="ri-add-line me-1"></i>Add New
+                                    <a href="add-plan.php" class="btn themeBtn"><i class="fa-solid fa-plus me-1"></i>Add New
                                     </a>
                                 </div><!-- end d-flex -->
                             </div>
@@ -60,7 +60,7 @@
             
             <td>
                 <a href="javascript:void(0);" class="btn btn-soft-primary btn-icon btn-sm rounded-circle">
-                    <i class="ri-pencil-line"></i>
+                    <i class="fa-solid fa-pencil"></i>
                 </a>
             </td>
         </tr>
@@ -71,7 +71,7 @@
             
             <td>
                 <a href="javascript:void(0);" class="btn btn-soft-primary btn-icon btn-sm rounded-circle">
-                    <i class="ri-pencil-line"></i>
+                    <i class="fa-solid fa-pencil"></i>
                 </a>
             </td>
         </tr>
@@ -82,7 +82,7 @@
              
             <td>
                 <a href="javascript:void(0);" class="btn btn-soft-primary btn-icon btn-sm rounded-circle">
-                    <i class="ri-pencil-line"></i>
+                    <i class="fa-solid fa-pencil"></i>
                 </a>
             </td>
         </tr>
@@ -93,7 +93,7 @@
             
             <td>
                 <a href="javascript:void(0);" class="btn btn-soft-primary btn-icon btn-sm rounded-circle">
-                    <i class="ri-pencil-line"></i>
+                    <i class="fa-solid fa-pencil"></i>
                 </a>
             </td>
         </tr>
@@ -104,7 +104,7 @@
              
             <td>
                 <a href="javascript:void(0);" class="btn btn-soft-primary btn-icon btn-sm rounded-circle">
-                    <i class="ri-pencil-line"></i>
+                    <i class="fa-solid fa-pencil"></i>
                 </a>
             </td>
         </tr>

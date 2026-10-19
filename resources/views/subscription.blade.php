@@ -35,7 +35,7 @@
             <div class="col-lg-4">
                 <article class="maseco-plan shadow">
                     <div class="plan-icon">
-                        <i class="bi bi-leaf"></i>
+                        <i class="fa-solid fa-leaf"></i>
                     </div>
 
                     <h3>Basic</h3>
@@ -47,9 +47,9 @@
                     <hr>
 
                     <ul class="plan-features">
-                        <li><i class="bi bi-check-circle-fill"></i> Browse textile suppliers</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Explore materials and categories</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Discover sourcing options</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Browse textile suppliers</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Explore materials and categories</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Discover sourcing options</li>
                     </ul>
 
                     <a href="{{ route('subscription.plan') }}" class="plan-button">
@@ -64,7 +64,7 @@
                     <span class="plan-popular">MOST POPULAR</span>
 
                     <div class="plan-icon">
-                        <i class="bi bi-stars"></i>
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
                     </div>
 
                     <h3>Premium</h3>
@@ -78,9 +78,9 @@
                     <hr>
 
                     <ul class="plan-features">
-                        <li><i class="bi bi-check-circle-fill"></i> Everything in Basic</li>
-                        <li><i class="bi bi-check-circle-fill"></i> AI-powered sourcing insights</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Supplier and vendor matching</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Everything in Basic</li>
+                        <li><i class="fa-solid fa-circle-check"></i> AI-powered sourcing insights</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Supplier and vendor matching</li>
                     </ul>
 
                     <a href="{{ route('subscription.plan') }}" class="plan-button plan-button-primary text-white">
@@ -93,7 +93,7 @@
             <div class="col-lg-4">
                 <article class="maseco-plan shadow">
                     <div class="plan-icon">
-                        <i class="bi bi-buildings"></i>
+                        <i class="fa-solid fa-city"></i>
                     </div>
 
                     <h3>Pro</h3>
@@ -107,9 +107,9 @@
                     <hr>
 
                     <ul class="plan-features">
-                        <li><i class="bi bi-check-circle-fill"></i> Everything in Premium</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Post-production support</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Advanced production workflows</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Everything in Premium</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Post-production support</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Advanced production workflows</li>
                     </ul>
 
                     

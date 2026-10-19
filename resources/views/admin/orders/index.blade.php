@@ -29,7 +29,7 @@
 
             <div class="orders-summary-card bg-danger bg-opacity-10">
                 <div class="orders-summary-icon bg-danger bg-opacity-10">
-                    <i class="ri-shopping-bag-3-line text-danger"></i>
+                    <i class="fa-solid fa-bag-shopping text-danger"></i>
                 </div>
                 <div>
                     <p class="orders-summary-label">Total Orders</p>
@@ -39,7 +39,7 @@
 
             <div class="orders-summary-card bg-warning bg-opacity-10">
                 <div class="orders-summary-icon pending bg-warning bg-opacity-10">
-                    <i class="ri-time-line text-warning"></i>
+                    <i class="fa-solid fa-clock text-warning"></i>
                 </div>
                 <div>
                     <p class="orders-summary-label">Pending Orders</p>
@@ -49,7 +49,7 @@
 
             <div class="orders-summary-card bg-success bg-opacity-10">
                 <div class="orders-summary-icon completed bg-success bg-opacity-10">
-                    <i class="ri-checkbox-circle-line text-success"></i>
+                    <i class="fa-solid fa-circle-check text-success"></i>
                 </div>
                 <div>
                     <p class="orders-summary-label">Completed Orders</p>
@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="orders-search">
-                    <i class="ri-search-line"></i>
+                    <i class="fa-solid fa-magnifying-glass"></i>
                     <input
                         type="search"
                         id="orders-search-input"
@@ -168,7 +168,7 @@
                         @empty
                             <tr>
                                 <td colspan="8" class="orders-empty">
-                                    <i class="ri-inbox-2-line"></i>
+                                    <i class="fa-solid fa-inbox"></i>
                                     <strong>No orders found</strong>
                                     There are currently no orders to display.
                                 </td>

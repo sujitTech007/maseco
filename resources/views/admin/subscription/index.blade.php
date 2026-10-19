@@ -15,14 +15,14 @@
 
             <a href="{{ route('admin.subscription.create') }}"
                class="btn subscription-add-btn">
-                <i class="fas fa-plus me-2"></i> Add Plan
+                <i class="fa-solid fa-plus me-2"></i> Add Plan
             </a>
         </div>
 
         {{-- Success Message --}}
         @if(session('success'))
             <div class="alert alert-success subscription-alert">
-                <i class="fas fa-check-circle me-2"></i>
+                <i class="fa-solid fa-circle-check me-2"></i>
                 {{ session('success') }}
             </div>
         @endif
@@ -41,7 +41,7 @@
             <div class="col-12 col-sm-6 col-xl-4">
                 <div class="subscription-stat bg-danger bg-opacity-10">
                     <div class="subscription-stat-icon total bg-danger bg-opacity-10">
-                        <i class="fas fa-layer-group text-danger"></i>
+                        <i class="fa-solid fa-layer-group text-danger"></i>
                     </div>
                     <div>
                         <p>Total Plans</p>
@@ -53,7 +53,7 @@
             <div class="col-12 col-sm-6 col-xl-4">
                 <div class="subscription-stat bg-warning bg-opacity-10">
                     <div class="subscription-stat-icon active bg-warning bg-opacity-10">
-                        <i class="fas fa-check-circle text-warning"></i>
+                        <i class="fa-solid fa-circle-check text-warning"></i>
                     </div>
                     <div>
                         <p>Active Plans</p>
@@ -65,7 +65,7 @@
             <div class="col-12 col-sm-6 col-xl-4">
                 <div class="subscription-stat bg-success bg-opacity-10">
                     <div class="subscription-stat-icon inactive bg-success bg-opacity-10">
-                        <i class="fas fa-pause-circle text-success"></i>
+                        <i class="fa-solid fa-circle-pause text-success"></i>
                     </div>
                     <div>
                         <p>Inactive Plans</p>
@@ -129,7 +129,7 @@
                                 <td>
                                     <div class="plan-name">
                                         <span class="plan-name-icon">
-                                            <i class="fas fa-cube"></i>
+                                            <i class="fa-solid fa-cube"></i>
                                         </span>
                                         <span>{{ $plan->name }}</span>
                                     </div>
@@ -152,7 +152,7 @@
                                         <ul class="plan-features">
                                             @foreach(array_slice($features, 0, 3) as $feature)
                                                 <li>
-                                                    <i class="fas fa-check"></i>
+                                                    <i class="fa-solid fa-check"></i>
                                                     {{ $feature }}
                                                 </li>
                                             @endforeach
@@ -211,12 +211,12 @@
                             <tr>
                                 <td colspan="8">
                                     <div class="subscription-empty">
-                                        <i class="fas fa-layer-group"></i>
+                                        <i class="fa-solid fa-layer-group"></i>
                                         <h5>No subscription plans yet</h5>
                                         <p>Create your first plan to get started.</p>
                                         <a href="{{ route('admin.subscription.create') }}"
                                            class="btn subscription-add-btn">
-                                            <i class="fas fa-plus me-2"></i> Add Plan
+                                            <i class="fa-solid fa-plus me-2"></i> Add Plan
                                         </a>
                                     </div>
                                 </td>

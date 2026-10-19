@@ -32,7 +32,7 @@
         <div class="buyer-overview">
             <div class="buyer-stat bg-danger bg-opacity-10">
                 <div class="buyer-stat-icon bg-danger bg-opacity-10">
-                    <i class="ri-group-line text-danger"></i>
+                    <i class="fa-solid fa-users text-danger"></i>
                 </div>
                 <div>
                     <div class="buyer-stat-label">Total Buyers</div>
@@ -42,7 +42,7 @@
 
             <div class="buyer-stat bg-warning bg-opacity-10">
                 <div class="buyer-stat-icon bg-warning bg-opacity-10">
-                    <i class="ri-user-follow-line text-warning"></i>
+                    <i class="fa-solid fa-user-plus text-warning"></i>
                 </div>
                 <div>
                     <div class="buyer-stat-label">Active Buyers</div>
@@ -52,7 +52,7 @@
 
             <div class="buyer-stat bg-success bg-opacity-10">
                 <div class="buyer-stat-icon bg-success bg-opacity-10">
-                    <i class="ri-user-unfollow-line text-success"></i>
+                    <i class="fa-solid fa-user-slash text-success"></i>
                 </div>
                 <div>
                     <div class="buyer-stat-label">Inactive Buyers</div>
@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="buyer-search-wrap">
-                    <i class="ri-search-line"></i>
+                    <i class="fa-solid fa-magnifying-glass"></i>
                     <input
                         type="search"
                         class="dt-input buyer-search"
@@ -139,7 +139,7 @@
                                            data-user='@json($user)'
                                            aria-label="View buyer {{ $user->name }}"
                                            title="View buyer details">
-                                            <i class="ri-eye-line"></i>
+                                            <i class="fa-solid fa-eye"></i>
                                         </a>
                                     </div>
                                 </td>
@@ -186,7 +186,7 @@
 
                 <div class="user-modal-profile">
                     <div class="user-modal-avatar">
-                        <i class="ri-user-line"></i>
+                        <i class="fa-solid fa-user"></i>
                     </div>
 
                     <div>
@@ -199,7 +199,7 @@
 
                     <div class="user-detail-item">
                         <div class="user-detail-icon">
-                            <i class="ri-mail-line"></i>
+                            <i class="fa-solid fa-envelope"></i>
                         </div>
                         <div class="user-detail-content">
                             <span>Email Address</span>
@@ -209,7 +209,7 @@
 
                     <div class="user-detail-item">
                         <div class="user-detail-icon">
-                            <i class="ri-phone-line"></i>
+                            <i class="fa-solid fa-phone"></i>
                         </div>
                         <div class="user-detail-content">
                             <span>Phone Number</span>
@@ -219,7 +219,7 @@
 
                     <div class="user-detail-item">
                         <div class="user-detail-icon">
-                            <i class="ri-shield-user-line"></i>
+                            <i class="fa-solid fa-user-shield"></i>
                         </div>
                         <div class="user-detail-content">
                             <span>Account Status</span>
@@ -229,7 +229,7 @@
 
                     <div class="user-detail-item">
                         <div class="user-detail-icon">
-                            <i class="ri-calendar-line"></i>
+                            <i class="fa-solid fa-calendar-days"></i>
                         </div>
                         <div class="user-detail-content">
                             <span>Registered On</span>

@@ -33,11 +33,9 @@
 
     <!-- Icons css -->
 
-    <link href="{{ asset('public/assets/admin/css/icons.min.css') }}" rel="stylesheet" type="text/css">
-
     <link href="{{ asset('public/assets/admin/css/custom.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('public/assets/admin/css/admin.css') }}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="{{ asset('public/assets/css/all.min.css') }}" rel="stylesheet" type="text/css">
 
 
 
@@ -45,7 +43,6 @@
 
     <script src="{{ asset('public/assets/admin/js/config.js.download') }}"></script>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
@@ -77,7 +74,7 @@
 
             <a href="{{ route('home') }}" class="logo">
 
-                    <img src="{{ asset('public/assets/images/maseco-logo.png') }}" alt="" style="width: 150px; height: auto;">
+                <img src="{{ asset('public/assets/images/maseco-logo.png') }}" alt="" style="width: 150px; height: auto;">
 
             </a>
 
@@ -87,7 +84,7 @@
 
             <button class="button-close-fullsidebar">
 
-                <i class="ri-close-line align-middle"></i>
+                <i class="fa-solid fa-xmark align-middle"></i>
 
             </button>
 
@@ -353,7 +350,7 @@
 
                     <!-- <button type="button" class="sidenav-toggle-button px-2"
                             aria-label="Toggle sidebar">
-                            <i class="ri-menu-2-line fs-24"></i>
+                            <i class="fa-solid fa-bars fs-24"></i>
                         </button> -->
 
 
@@ -362,7 +359,7 @@
 
                     <!-- <button class="topnav-toggle-button px-2" data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
 
-                            <i class="ri-menu-2-line fs-24"></i>
+                            <i class="fa-solid fa-bars fs-24"></i>
 
                         </button> -->
 
@@ -374,7 +371,7 @@
 
                             <button class="topbar-link" data-bs-toggle="modal" data-bs-target="#searchModal" type="button">
 
-                                <i class="ri-search-line fs-22"></i>
+                                <i class="fa-solid fa-magnifying-glass fs-22"></i>
 
                             </button>
 
@@ -441,7 +438,7 @@
 
                                 </span>
 
-                                <i class="ri-arrow-down-s-line d-none d-lg-block align-middle ms-2"></i>
+                                <i class="fa-solid fa-chevron-down d-none d-lg-block align-middle ms-2"></i>
 
                             </a>
 
@@ -461,14 +458,14 @@
 
 
                                 <a href="{{ route('admin.profile') }}" class="dropdown-item">
-                                    <i class="ri-mail-line me-1 fs-16 align-middle"></i>
+                                    <i class="fa-solid fa-envelope me-1 fs-16 align-middle"></i>
                                     <span class="align-middle">Profile</span>
                                 </a>
 
                                 <div class="dropdown-divider"></div>
 
                                 <a href="{{ route('admin.logout') }}" class="dropdown-item fw-semibold text-danger">
-                                    <i class="ri-logout-box-line me-1 fs-16 align-middle"></i>
+                                    <i class="fa-solid fa-right-from-bracket me-1 fs-16 align-middle"></i>
                                     <span class="align-middle">Log Out</span>
                                 </a>
 

@@ -48,7 +48,7 @@
 
             <div class="filter-actions">
                 <button type="submit" class="material-filter-btn">
-                    <i class="ri-equalizer-line"></i>
+                    <i class="fa-solid fa-sliders"></i>
                     Filter
                 </button>
 
@@ -109,7 +109,7 @@
                                 >
                             @else
                                 <div class="material-no-image">
-                                    <i class="ri-image-line"></i>
+                                    <i class="fa-solid fa-image"></i>
                                 </div>
                             @endif
                         </td>
@@ -166,7 +166,7 @@
                                     title="View Material"
                                     aria-label="View Material"
                                 >
-                                    <i class="ri-eye-line"></i>
+                                    <i class="fa-solid fa-eye"></i>
                                 </a>
 
                                 <a
@@ -204,7 +204,7 @@
                     <tr>
                         <td colspan="8">
                             <div class="materials-empty-state">
-                                <i class="ri-inbox-2-line"></i>
+                                <i class="fa-solid fa-inbox"></i>
                                 <h5>No materials found</h5>
                                 <p>Try changing your search or status filter.</p>
                             </div>

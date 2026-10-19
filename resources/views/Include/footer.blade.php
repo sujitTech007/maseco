@@ -243,11 +243,11 @@
 
               <ul>
 
-              <li><a href="https://www.facebook.com/masecotech"><i class="fab fa-facebook-f"></i></a></li>
+              <li><a href="https://www.facebook.com/masecotech"><i class="fa-brands fa-facebook-f"></i></a></li>
 
-<li><a href="https://www.instagram.com/masecotech/"><i class="fab fa-instagram"></i></a></li>
+<li><a href="https://www.instagram.com/masecotech/"><i class="fa-brands fa-instagram"></i></a></li>
 
-<li><a href="https://www.linkedin.com/company/masecotech/"><i class="fab fa-linkedin-in"></i></a></li>
+<li><a href="https://www.linkedin.com/company/masecotech/"><i class="fa-brands fa-linkedin-in"></i></a></li>
 
               </ul>
 

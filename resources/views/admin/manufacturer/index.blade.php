@@ -28,7 +28,7 @@
 
             <div class="summary-card bg-danger bg-opacity-10">
                 <div class="summary-icon bg-danger bg-opacity-10">
-                    <i class="ri-building-4-line text-danger"></i>
+                    <i class="fa-solid fa-building text-danger"></i>
                 </div>
                 <div>
                     <p class="summary-label">Total Manufacturers</p>
@@ -38,7 +38,7 @@
 
             <div class="summary-card bg-warning bg-opacity-10">
                 <div class="summary-icon bg-warning bg-opacity-10">
-                    <i class="ri-checkbox-circle-line text-warning"></i>
+                    <i class="fa-solid fa-circle-check text-warning"></i>
                 </div>
                 <div>
                     <p class="summary-label">Active Manufacturers</p>
@@ -48,7 +48,7 @@
 
             <div class="summary-card bg-success bg-opacity-10">
                 <div class="summary-icon bg-success bg-opacity-10">
-                    <i class="ri-user-unfollow-line text-success"></i>
+                    <i class="fa-solid fa-user-slash text-success"></i>
                 </div>
                 <div>
                     <p class="summary-label">Inactive Manufacturers</p>
@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="manufacturer-search">
-                    <i class="ri-search-line"></i>
+                    <i class="fa-solid fa-magnifying-glass"></i>
                     <input
                         type="search"
                         id="manufacturer-search"
@@ -148,7 +148,7 @@
                                             title="View manufacturer"
                                             aria-label="View {{ $manufacturer->name }}"
                                         >
-                                            <i class="ri-eye-line"></i>
+                                            <i class="fa-solid fa-eye"></i>
                                         </a>
                                     </div>
                                 </td>
@@ -203,7 +203,7 @@
                 <!-- Manufacturer Profile -->
                 <div class="user-modal-profile ">
                     <div class="user-modal-avatar">
-                        <i class="ri-building-2-line"></i>
+                        <i class="fa-solid fa-building"></i>
                     </div>
 
                     <div>
@@ -217,7 +217,7 @@
 
                     <div class="user-detail-item">
                         <div class="user-detail-icon">
-                            <i class="ri-mail-line"></i>
+                            <i class="fa-solid fa-envelope"></i>
                         </div>
                         <div class="user-detail-content">
                             <span>Email Address</span>
@@ -227,7 +227,7 @@
 
                     <div class="user-detail-item">
                         <div class="user-detail-icon">
-                            <i class="ri-phone-line"></i>
+                            <i class="fa-solid fa-phone"></i>
                         </div>
                         <div class="user-detail-content">
                             <span>Phone Number</span>
@@ -237,7 +237,7 @@
 
                     <div class="user-detail-item">
                         <div class="user-detail-icon">
-                            <i class="ri-building-line"></i>
+                            <i class="fa-solid fa-building"></i>
                         </div>
                         <div class="user-detail-content">
                             <span>Company Name</span>
@@ -247,7 +247,7 @@
 
                     <div class="user-detail-item">
                         <div class="user-detail-icon">
-                            <i class="ri-shield-check-line"></i>
+                            <i class="fa-solid fa-shield"></i>
                         </div>
                         <div class="user-detail-content">
                             <span>Account Status</span>
@@ -257,7 +257,7 @@
 
                     <div class="user-detail-item">
                         <div class="user-detail-icon">
-                            <i class="ri-calendar-line"></i>
+                            <i class="fa-solid fa-calendar-days"></i>
                         </div>
                         <div class="user-detail-content">
                             <span>Registered On</span>

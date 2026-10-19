@@ -25,17 +25,17 @@
                         <div class="d-flex flex-wrap align-items-center
                                     gap-3 gap-md-4 mb-4 post-meta">
                             <span>
-                                <i class="bi bi-person-circle me-2"></i>
+                                <i class="fa-solid fa-circle-user me-2"></i>
                                 William@maseco.com
                             </span>
 
                             <span>
-                                <i class="bi bi-tag me-2"></i>
+                                <i class="fa-solid fa-tag me-2"></i>
                                 Home Textiles
                             </span>
 
                             <span>
-                                <i class="bi bi-calendar3 me-2"></i>
+                                <i class="fa-solid fa-calendar-days me-2"></i>
                                 May 24, 2025
                             </span>
                         </div>

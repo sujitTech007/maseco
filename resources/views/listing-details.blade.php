@@ -51,7 +51,7 @@
 
                     <div class="d-flex align-items-center gap-2 mt-3"
                          style="font-size:13px;color:#687773;">
-                        <i class="fas fa-map-marker-alt" style="color:#2DAC92;"></i>
+                        <i class="fa-solid fa-location-dot" style="color:#2DAC92;"></i>
                         {{ $material->location ?? 'Location not specified' }}
                     </div>
                 </div>
@@ -142,7 +142,7 @@
                                 data-bs-target="#supplierModal"
                                 data-material-id="{{ $material->id }}"
                                 data-material-name="{{ $material->name }}">
-                                <i class="fas fa-envelope me-2"></i>
+                                <i class="fa-solid fa-envelope me-2"></i>
                                 Send Enquiry
                             </button>
                         @endif
@@ -151,7 +151,7 @@
                             <a href="tel:{{ optional($material->supplier)->phone }}"
                                class="btn btn-outline-secondary px-4 py-2"
                                style="font-size:14px;">
-                                <i class="fas fa-phone me-2"></i>Call Supplier
+                                <i class="fa-solid fa-phone me-2"></i>Call Supplier
                             </a>
                         @endif
                     </div>
@@ -224,7 +224,7 @@
                     <div class="mt-3 p-3 rounded-3"
                          style="background:#f0f8f5;">
                         <p class="mb-0" style="font-size:13px;color:#48665d;">
-                            <i class="fas fa-info-circle me-2" style="color:#2DAC92;"></i>
+                            <i class="fa-solid fa-circle-info me-2" style="color:#2DAC92;"></i>
                             Ask the supplier about minimum order quantity, availability,
                             delivery terms, and sustainability certifications before ordering.
                         </p>
@@ -248,7 +248,7 @@
                          style="background:#f6f8f7;">
                         <div class="d-flex align-items-center justify-content-center rounded-3"
                              style="width:46px;height:46px;flex-shrink:0;background:#e0f4ed;color:#2DAC92;">
-                            <i class="fas fa-building fa-lg"></i>
+                            <i class="fa-solid fa-building fa-lg"></i>
                         </div>
 
                         <div class="min-w-0">
@@ -258,7 +258,7 @@
                                     ?? 'Supplier' }}
                             </h6>
                             <p class="text-secondary mb-0" style="font-size:13px;">
-                                <i class="fas fa-map-marker-alt me-1"></i>
+                                <i class="fa-solid fa-location-dot me-1"></i>
                                 {{ $material->location ?? 'Location not specified' }}
                             </p>
                         </div>
@@ -299,7 +299,7 @@
                             data-bs-target="#supplierModal"
                             data-material-id="{{ $material->id }}"
                             data-material-name="{{ $material->name }}">
-                            Contact Supplier <i class="fas fa-arrow-right ms-2"></i>
+                            Contact Supplier <i class="fa-solid fa-arrow-right ms-2"></i>
                         </button>
                     @endif
 

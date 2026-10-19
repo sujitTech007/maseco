@@ -40,7 +40,7 @@
 
                         <ul>
 
-                            <li><a href="{{ route('login') }}"><i class="fa fa-user"></i> William@maseco.com</a></li>
+                            <li><a href="{{ route('login') }}"><i class="fa-solid fa-user"></i> William@maseco.com</a></li>
 
                             <li><a href="{{ route('login') }}">Home Textiles</a></li>
 
@@ -130,7 +130,7 @@
             <div class="col-lg-8">
                 <p class="text-uppercase small fw-semibold mb-2"
                    style="color:rgba(45,172,146,1);">
-                    <i class="bi bi-stars me-2"></i>Smart Recommendations
+                    <i class="fa-solid fa-wand-magic-sparkles me-2"></i>Smart Recommendations
                 </p>
 
                 <h2 class="section-title-h2 mb-2 primary-text-color">AI-Driven Suggestions</h2>
@@ -147,7 +147,7 @@
                                --bs-btn-border-color:rgba(45,172,146,1);
                                --bs-btn-hover-bg:rgba(45,172,146,1);
                                --bs-btn-hover-border-color:rgba(45,172,146,1);">
-                    <i class="bi bi-arrow-clockwise me-1"></i> Refresh Suggestions
+                    <i class="fa-solid fa-rotate-right me-1"></i> Refresh Suggestions
                 </button>
             </div>
         </div>
@@ -315,7 +315,7 @@
         <!-- AI Suggestion Notice -->
         <div class="mt-4 p-3 rounded-3 d-flex align-items-start gap-3"
              style="background:#f0faf8;">
-            <i class="bi bi-info-circle fs-5"
+            <i class="fa-solid fa-circle-info fs-5"
                style="color:rgba(45,172,146,1);"></i>
 
             <p class="small text-secondary mb-0">

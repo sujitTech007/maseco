@@ -126,11 +126,11 @@
                 $planName = strtolower($plan->name ?? '');
 
                 if (stripos($planName, 'premium') !== false) {
-                    $planIcon = 'bi-stars';
+                    $planIcon = 'fa-solid fa-wand-magic-sparkles';
                 } elseif (stripos($planName, 'pro') !== false) {
-                    $planIcon = 'bi-buildings';
+                    $planIcon = 'fa-solid fa-city';
                 } else {
-                    $planIcon = 'bi-leaf';
+                    $planIcon = 'fa-solid fa-leaf';
                 }
 
                 $storedFeatures = $plan->features;
@@ -173,7 +173,7 @@
                     @endif
 
                     <div class="plan-icon">
-                        <i class="bi {{ $planIcon }}"></i>
+                        <i class="{{ $planIcon }}"></i>
                     </div>
 
                     <h3>{{ $plan->name }}</h3>
@@ -203,7 +203,7 @@
                         <ul class="plan-features">
                             @foreach($features as $feature)
                                 <li>
-                                    <i class="bi bi-check-circle-fill"></i>
+                                    <i class="fa-solid fa-circle-check"></i>
                                     {{ $feature }}
                                 </li>
                             @endforeach

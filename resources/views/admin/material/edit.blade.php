@@ -38,7 +38,7 @@
         <div class="material-form-card">
             <div class="material-section-heading">
                 <div class="material-section-icon">
-                    <i class="ri-file-list-3-line"></i>
+                    <i class="fa-solid fa-list"></i>
                 </div>
                 <div>
                     <h5>Basic Information</h5>
@@ -129,7 +129,7 @@
         <div class="material-form-card">
             <div class="material-section-heading">
                 <div class="material-section-icon">
-                    <i class="ri-money-dollar-circle-line"></i>
+                    <i class="fa-solid fa-circle-dollar-to-slot"></i>
                 </div>
                 <div>
                     <h5>Pricing & Availability</h5>
@@ -196,7 +196,7 @@
         <div class="material-form-card">
             <div class="material-section-heading">
                 <div class="material-section-icon">
-                    <i class="ri-leaf-line"></i>
+                    <i class="fa-solid fa-leaf"></i>
                 </div>
                 <div>
                     <h5>Sustainability & Documentation</h5>
@@ -232,7 +232,7 @@
         <div class="material-form-card">
             <div class="material-section-heading">
                 <div class="material-section-icon">
-                    <i class="ri-image-line"></i>
+                    <i class="fa-solid fa-image"></i>
                 </div>
                 <div>
                     <h5>Material Image</h5>
@@ -268,12 +268,12 @@
         {{-- Form Actions --}}
         <div class="material-form-actions">
             <a href="{{ route('admin.material') }}" class="material-btn material-btn-cancel">
-                <i class="ri-arrow-left-line"></i>
+                <i class="fa-solid fa-arrow-left"></i>
                 Cancel
             </a>
 
             <button type="submit" class="material-btn material-btn-update">
-                <i class="ri-save-line"></i>
+                <i class="fa-solid fa-floppy-disk"></i>
                 Update Material
             </button>
         </div>
