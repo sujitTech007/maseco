@@ -113,7 +113,7 @@
 
                             <div class="col-12">
                                 <button type="submit"
-                                        class="btn text-white w-100 theme_btn py-3 fw-bold">
+                                        class="btn text-white w-100 theme-btn py-4 fw-bold">
                                     Send Enquiry
                                     <i class="fas fa-arrow-right ms-2"></i>
                                 </button>

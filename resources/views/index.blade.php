@@ -150,7 +150,7 @@
             <div class="col-12 col-sm-6 col-xl-3">
                 <div class="maseco-advantage-card">
                     <div class="maseco-advantage-icon bg-secondary bg-opacity-10">
-                        <i class="fa fa-leaf text-white"></i>
+                        <i class="fa fa-leaf text-dark"></i>
                     </div>
 
                     <div class="maseco-advantage-content">
@@ -218,7 +218,6 @@
                 </div>
             </div>
 
-            <!-- Right: Textile image and capability strip -->
             <div class="col-lg-7">
                 <div class="maseco-about-visual position-relative">
 
@@ -226,28 +225,27 @@
                         src="{{ asset('public/assets/images/about-us.webp') }}"
                         alt="Textile manufacturing and fabric production"
                         class="maseco-about-photo"
-                        loading="lazy"
-                    >
+                        loading="lazy">
 
                     <div class="maseco-about-capabilities">
 
                         <div class="maseco-capability">
                             <span class="maseco-capability-icon">
-                                <i class="bi bi-search"></i>
+                                <i class="fa-solid fa-magnifying-glass"></i>
                             </span>
                             <span>Supplier discovery</span>
                         </div>
 
                         <div class="maseco-capability">
                             <span class="maseco-capability-icon">
-                                <i class="bi bi-leaf"></i>
+                                <i class="fa-solid fa-leaf"></i>
                             </span>
                             <span>Sustainable materials</span>
                         </div>
 
                         <div class="maseco-capability">
                             <span class="maseco-capability-icon">
-                                <i class="bi bi-buildings"></i>
+                                <i class="fa-solid fa-industry"></i>
                             </span>
                             <span>Production support</span>
                         </div>
@@ -422,7 +420,7 @@
                                       loading="lazy">
                               </a>
 
-                              <span class="badge bg-white text_color_primary position-absolute top-0 start-0 m-3 shadow-sm">
+                              <span class="badge bg-white text_color_primary position-absolute top-0 start-0 m-3 shadow-sm fs-11 p-2">
                                   <i class="fa fa-check-circle me-1"></i>
                                   Verified Listing
                               </span>
@@ -430,7 +428,7 @@
 
                           <div class="card-body p-3 d-flex flex-column">
                               <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
-                                  <h5 class="fw-bold mb-0 material-name">
+                                  <h5 class="fw-bold mb-0 material-name fs-5">
                                       <a href="{{ route('listing.details', $material->id) }}"
                                          class="text-dark text-decoration-none">
                                           {{ $material->name }}
@@ -438,7 +436,7 @@
                                   </h5>
                               </div>
 
-                              <h4 class="text_color_primary fw-bold mb-3">
+                              <h4 class="text_color_primary fw-bold mb-3 fs-4">
                                   ${{ number_format($material->price, 2) }}
                                   <small class="text-muted fs-6 fw-normal">
                                       / {{ $material->unit }}
@@ -468,7 +466,7 @@
 
                               <div class="mt-auto">
                                   <a href="{{ route('listing.details', $material->id) }}"
-                                     class="btn btn-outline-success w-100">
+                                     class="btn theme_btn w-100">
                                       View Details
                                       <i class="fa fa-arrow-right ms-1"></i>
                                   </a>
@@ -565,11 +563,7 @@
                         towards smarter production — all in one place.
                     </p>
 
-                    <!-- <a href="{{ url('/marketplace') }}"
-                       class="theme_link">
-                        Explore the marketplace
-                        
-                    </a> -->
+                    
                 </div>
             </div>
 
@@ -734,7 +728,7 @@
                     </article>
 
                     <!-- Step 03 -->
-                    <article class="journey-step">
+                    <article class="journey-step border-0">
                         <div class="journey-step-number">03</div>
                         <div class="journey-step-content">
                             <span class="journey-step-label">GROW</span>
@@ -831,7 +825,7 @@
                     @endif
 
                     <div class="plan-icon">
-                        <i class="bi {{ $planIcon }}"></i>
+                        <i class="fs {{ $planIcon }}"></i>
                     </div>
 
                     <h3>{{ $plan->name }}</h3>

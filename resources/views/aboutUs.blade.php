@@ -13,43 +13,13 @@
       </div>
     </div>
   </section>
-<!-- 
-  <section class="section-Info py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-sm-12">
-          <div class="thumb">
-            <img src="{{ asset('public/assets/images/about-thumb.png') }}" alt="About">
-          </div>
-        </div>
-        <div class="col-md-6 col-sm-12 text-wrapper ps-md-5">
-          <div class="section-heading">
-            <span class="needle-heading text-uppercase d-block needleIcon">About Us</span>
-            <h2>Let’s Build Something Creative Together</h2>
-            <p>Maseco is a sustainability-driven fashion solutions provider, empowering designers with responsible
-              sourcing, ethical manufacturing, and AI-powered design insights.</p>
-          </div>
-          <ul class="listing list-with-icon">
-            <li>Ethical & Sustainable Materials</li>
-            <li>Seamless Manufacturing Support</li>
-            <li>Recycling & R&D Innovation</li>
-            <li>AI-Driven Design Assistance</li>
-            <li>Hassle-Free Logistics & Admin</li>
-          </ul>
-          <div class="section-button mt-5 d-block">
-          <a href="#" class="theme-btn">Read More <i class="fa fa-arrow-right"></i></a> -->
-          <!-- </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
 
   <section class="maseco-about-clean py-5" id="about-maseco">
     <div class="container">
         <div class="row align-items-center g-4 g-lg-5">
 
             <!-- Left: About content -->
-            <div class="col-lg-5">
+            <div class="col-lg-6">
                 <div class="maseco-about-copy">
 
                     <span class="maseco-about-eyebrow">
@@ -73,13 +43,16 @@
                         transparent supply chain for the fashion industry.
                     </p>
 
+                    <p>Maseco is a sustainability-driven fashion solutions provider, empowering designers with responsible
+              sourcing, ethical manufacturing, and AI-powered design insights.</p>
+
                   
 
                 </div>
             </div>
 
             <!-- Right: Textile image and capability strip -->
-            <div class="col-lg-7">
+            <div class="col-lg-6">
                 <div class="maseco-about-visual position-relative">
 
                     <img
@@ -93,21 +66,21 @@
 
                         <div class="maseco-capability">
                             <span class="maseco-capability-icon">
-                                <i class="bi bi-search"></i>
+                                <i class="fa-solid fa-magnifying-glass"></i>
                             </span>
                             <span>Supplier discovery</span>
                         </div>
 
                         <div class="maseco-capability">
                             <span class="maseco-capability-icon">
-                                <i class="bi bi-leaf"></i>
+                                <i class="fa-solid fa-leaf"></i>
                             </span>
                             <span>Sustainable materials</span>
                         </div>
 
                         <div class="maseco-capability">
                             <span class="maseco-capability-icon">
-                                <i class="bi bi-buildings"></i>
+                                <i class="fa-solid fa-industry"></i>
                             </span>
                             <span>Production support</span>
                         </div>
@@ -149,7 +122,8 @@
 
                     <div class="journey-image-caption">
                         <span class="journey-caption-icon">
-                            <i class="bi bi-recycle"></i>
+                                <i class="fa-solid fa-recycle"></i>
+
                         </span>
                         <div>
                             <strong>Better sourcing starts here.</strong>
@@ -192,7 +166,7 @@
                     </article>
 
                     <!-- Step 03 -->
-                    <article class="journey-step">
+                    <article class="journey-step border-0">
                         <div class="journey-step-number">03</div>
                         <div class="journey-step-content">
                             <span class="journey-step-label">GROW</span>
@@ -207,10 +181,7 @@
 
                 </div>
 
-                <a href="{{ url('/marketplace') }}" class="theme_link">
-                    Explore the marketplace
-                    <i class="bi bi-arrow-up-right"></i>
-                </a>
+              
             </div>
 
         </div>

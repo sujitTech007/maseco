@@ -1875,7 +1875,7 @@ a.btn.btn-link {
         text-transform: capitalize;
         padding: 10px 7px !important;
         display: block;
-        .maseco-advantage-icon color: var(--black-color);
+         color: var(--black-color);
         font-size: 17px;
         border-bottom: 1px solid var(--light-grey);
     }
@@ -3495,13 +3495,11 @@ form[action*="marketplace"] .form-label {
 
 .maseco-about-capabilities {
     position: absolute;
-    right: 16px;
-    bottom: 50px;
+    bottom: 20px;
     left: 16px;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     align-items: center;
-    min-height: 88px;
     padding: 14px 10px;
     border: 1px solid rgba(255, 255, 255, .8);
     border-radius: 12px;
@@ -3515,9 +3513,9 @@ form[action*="marketplace"] .form-label {
     justify-content: center;
     gap: 10px;
     min-width: 0;
-    padding: 8px 12px;
+    padding: 10px;
     color: #29483f;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
     line-height: 1.4;
 }
@@ -5560,4 +5558,8 @@ strong {
 .breadcrumb-wrapper a {
     color: #fff;
     text-decoration: none;
+}
+
+.features-section{
+    background:#f0faf8;
 }
