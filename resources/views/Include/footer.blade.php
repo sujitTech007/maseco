@@ -299,24 +299,22 @@
 </div>
 
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-  <script src="{{ asset('assets/js/slick.min.js') }}"></script>   
-      <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-  <script src="{{ asset('assets/js/progressbar.js') }}"></script>
-  <script src="{{ asset('assets/js/circle-progress.min.js') }}"></script>
-  <script src="{{ asset('assets/js/aos.js') }}"></script>
-      <script src="{{ asset('assets/js/script.js') }}"></script>
+<script src="{{ asset('assets/js/slick.min.js') }}"></script>   
+<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+
+@if (Request::is('login', 'signup'))
+    <script src="{{ asset('assets/js/bootstrap-select.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.selectpicker').selectpicker();
+        });
+    </script>
+@endif
+
+<script src="{{ asset('assets/js/script.js') }}"></script>
 
 
- 
-<!-- 
-  <script>
-    AOS.init({
-      duration: 1200,
-    });
-    
-  </script> -->
-  
 
   
 

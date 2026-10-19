@@ -173,6 +173,9 @@
     .login-form .form-check-input {
         cursor: pointer;
         accent-color: var(--maseco-accent);
+position: absolute;
+        margin: 0 auto;
+        opacity: 0;
     }
 
     .login-form .form-check-input:checked {
@@ -180,31 +183,122 @@
         border-color: var(--maseco-accent);
     }
 
-    .login-role-label {
-        display: block;
-        color: #52645b;
-        font-size: 13px;
-        font-weight: 600;
-        margin-bottom: 11px;
-    }
+   .login-role-label{
+    font-size: 14px;
+    font-weight: 600; margin-bottom: 10px;
+   }
+
+   .filter-option-inner-inner {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    padding-right: 10px;
+}
+.dropdown.bootstrap-select button.btn.dropdown-toggle {
+    width: auto;
+    padding: 10px 0;
+    border: none;
+    margin-right:10px
+}
+
+.mobileNumber .dropdown.bootstrap-select {
+    width: max-content !important;
+        min-width: 80px;
+
+}
+.mobileNumber .dropdown.bootstrap-select span.text {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+}
+.mobileNumber .dropdown.bootstrap-select .dropdown-menu{
+    padding: 0;
+}
+.mobileNumber .dropdown.bootstrap-select .bs-searchbox{
+    background: #f2f2f2;
+}
+        /* Default tab */
+.login-radio .form-check-label {
+    display: block;
+    width: 100%;
+    padding: 13px 10px;
+    text-align: center;
+    background: #fff;
+    color: #343a40;
+    border: 1px solid #d8e2df;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+/* Hover effect */
+.login-radio .form-check-label:hover {
+    border-color: #2eaa91;
+    background: #f0faf7;
+    color: #218c78;
+}
+
+/* Active tab */
+.login-radio .form-check-input:checked + .form-check-label {
+    background: #2eaa91;
+    border-color: #2eaa91;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(46, 170, 145, 0.22);
+     background: linear-gradient(
+        135deg,
+        #45c6a5 0%,
+        #2eaa91 50%,
+        #218d83 100%
+    );
+}
+
+/* Keyboard accessibility */
+.login-radio .form-check-input:focus-visible + .form-check-label {
+    outline: 2px solid #282660;
+    outline-offset: 3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
     .login-radio {
         flex-wrap: wrap;
-        gap: 10px 20px !important;
+        gap: 5px;
     }
 
     .login-radio .form-check {
         padding-left: 1.5em;
         margin: 0;
         font-family: "Google Sans Flex", sans-serif;
+        padding: 0;
+        border: none;
 
     }
 
-    .login-radio .form-check-label {
-        color: #46584f;
-        font-size: 13px;
-        cursor: pointer;
-    }
+   .login-radio .form-check-label {
+       color: #000;
+    font-size: 13px;
+    cursor: pointer;
+    padding: 10px 20px;
+    background: #fff;
+    border: 1px solid #dce5df;
+    min-width: 120px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 500;
+}
 
     .login-password-wrap {
         position: relative;
@@ -238,25 +332,6 @@
     .login-forgot:hover,
     .login-signup a:hover {
         color: var(--maseco-accent);
-    }
-
-    .login-submit {
-        background: var(--primary-color);
-        border: 1px solid var(--primary-color);
-        color: #fff;
-        width: 100%;
-        padding: 13px 18px;
-        border-radius: 9px;
-        font-size: 14px;
-        font-weight: 600;
-        transition: .25s ease;
-    }
-
-    .login-submit:hover {
-        background: var(--maseco-accent);
-        border-color: var(--maseco-accent);
-        color: #fff;
-        transform: translateY(-1px);
     }
 
     .login-signup {
@@ -330,41 +405,6 @@
             font-size: 28px;
         }
     }
-    /* Remove blue background from phone input */
-.iti input,
-.iti input[type="tel"],
-.iti input[type="text"] {
-    background-color: transparent !important;
-    box-shadow: none !important;
-}
-
-/* Remove blue background from password input */
-input[type="password"],
-input[type="password"]:focus {
-    background-color: transparent !important;
-    box-shadow: none !important;
-}
-
-/* Remove browser autofill blue background */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
-    box-shadow: 0 0 0 1000px #ffffff inset !important;
-    -webkit-text-fill-color: #183d35 !important;
-    transition: background-color 9999s ease-in-out 0s;
-}
-.iti .iti__selected-dial-code {
-    font-size: 14px;
-}
-.iti__country{
-  font-size: 14px;
-}
-input.iti__search-input {
-    padding: 10px;
-    font-size: 14px;
-}
-
 
 /* Password field design */
 .login-form .login-password-wrap {
@@ -418,3 +458,5 @@ input.iti__search-input {
 .login-form fieldset .login-password-wrap .form-control:focus {
     box-shadow: none;
 }
+
+
