@@ -38,7 +38,7 @@ class AdminPagesController extends Controller
 
         $users = \App\Models\User::all();
 
-        return view('admin.buyer', compact('users'));
+        return view('admin.user.index', compact('users'));
 
     }
 
@@ -50,7 +50,7 @@ class AdminPagesController extends Controller
 
         $suppliers = \App\Models\Supplier::all();
 
-        return view('admin.seller', compact('suppliers'));
+        return view('admin.supplier.index', compact('suppliers'));
 
     }
 
@@ -60,7 +60,7 @@ class AdminPagesController extends Controller
 
         $manufacturers = \App\Models\Manufacturer::all();
 
-        return view('admin.manufacturer', compact('manufacturers'));
+        return view('admin.manufacturer.index', compact('manufacturers'));
 
     }
 
@@ -86,7 +86,7 @@ class AdminPagesController extends Controller
 
             ->get();
 
-        return view('admin.orders', compact('orders'));
+        return view('admin.orders.index', compact('orders'));
 
     }
 
@@ -112,7 +112,7 @@ class AdminPagesController extends Controller
 
             ->get();
 
-        return view('admin.enquiry', compact('enquiries'));
+        return view('admin.enquiry.index', compact('enquiries'));
 
     }
 
@@ -128,7 +128,7 @@ class AdminPagesController extends Controller
 
             ->get();
 
-        return view('admin.payment', compact('payments'));
+        return view('admin.payment.index', compact('payments'));
 
     }
 
@@ -138,7 +138,7 @@ class AdminPagesController extends Controller
 
     {
 
-        return view('admin.profile');
+        return view('admin.profile.index');
 
     }
 
@@ -193,7 +193,7 @@ class AdminPagesController extends Controller
     public function newsletterList()
     {
         $newsletters = Newsletter::all();
-        return view('admin.newsletter', compact('newsletters'));
+        return view('admin.newsletter.index', compact('newsletters'));
     }
 
     public function contactList()

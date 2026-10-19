@@ -40,7 +40,7 @@ class ManufacturerController extends Controller
 
     {
 
-        return view('manufacturer.enquiry');
+        return view('manufacturer.enquiry.enquiry');
 
     }
 
@@ -50,7 +50,7 @@ class ManufacturerController extends Controller
 
     {
 
-        return view('manufacturer.orders');
+        return view('manufacturer.order.orders');
 
     }
 
@@ -60,7 +60,7 @@ class ManufacturerController extends Controller
 
     {
 
-        return view('manufacturer.plans');
+        return view('manufacturer.plan.plans');
 
     }
 
@@ -90,7 +90,7 @@ class ManufacturerController extends Controller
 
         $user = Auth::guard('manufacturer')->user();
 
-        return view('manufacturer.profile', compact('user'));
+        return view('manufacturer.profile.profile', compact('user'));
 
     }
 

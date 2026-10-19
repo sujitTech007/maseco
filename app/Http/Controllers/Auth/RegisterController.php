@@ -30,7 +30,7 @@ class RegisterController extends Controller
 
     {
 
-        return view('sign-up');
+        return view('auth.sign-up');
 
     }
 

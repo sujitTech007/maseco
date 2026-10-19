@@ -34,7 +34,7 @@ class LoginController extends Controller
 
     {
 
-        return view('login');
+        return view('auth.login');
 
     }
 
@@ -94,7 +94,7 @@ class LoginController extends Controller
 
         $this->sendOtp($user->country_code, $user->phone);
 
-        return view('otp')->with('success', 'OTP sent to your phone.');
+        return view('auth.otp')->with('success', 'OTP sent to your phone.');
 
         // return redirect()->route('otp.form')->with('success', 'OTP sent to your phone.');
 
@@ -133,7 +133,7 @@ class LoginController extends Controller
 
     {
 
-        return view('otp');
+        return view('auth.otp');
 
     }
 

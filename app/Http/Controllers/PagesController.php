@@ -41,7 +41,7 @@ class PagesController extends Controller
 
     {
 
-        return view('about-us');
+        return view('aboutUs');
     }
 
 
@@ -59,7 +59,7 @@ class PagesController extends Controller
 
     {
 
-        return view('contact-us');
+        return view('contactUs');
     }
 
     public function reducingTextiles()
@@ -238,7 +238,7 @@ class PagesController extends Controller
 
     {
 
-        return view('login');
+        return view('auth.login');
     }
 
 
@@ -247,7 +247,7 @@ class PagesController extends Controller
 
     {
 
-        return view('sign-up');
+        return view('auth.sign-up');
     }
 
 
@@ -353,7 +353,7 @@ class PagesController extends Controller
     
     public function termsCondition()
     {
-        return view('terms-condition');
+        return view('termsCondition');
     }
     
     public function privacyPolicy()

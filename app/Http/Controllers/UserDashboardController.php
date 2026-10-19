@@ -58,7 +58,7 @@ class UserDashboardController extends Controller
 
         $user = Auth::user();
 
-        return view('user.profile', compact('user'));
+        return view('user.profile.index', compact('user'));
 
     }
 
@@ -170,7 +170,7 @@ class UserDashboardController extends Controller
 
             ->get();
 
-        return view('user.subscriptions', compact('purchases'));
+        return view('user.subscription.index', compact('purchases'));
 
     }
 
@@ -188,7 +188,7 @@ class UserDashboardController extends Controller
 
             ->get();
 
-        return view('user.enquiries', compact('enquiries'));
+        return view('user.enquiries.index', compact('enquiries'));
 
     }
 
@@ -206,7 +206,7 @@ class UserDashboardController extends Controller
 
             ->get();
 
-        return view('user.orders', compact('orders'));
+        return view('user.order.index', compact('orders'));
 
     }
 
@@ -261,7 +261,7 @@ class UserDashboardController extends Controller
 
             ->orderByDesc('created_at')->get();
 
-        return view('user.payments', compact('payments'));
+        return view('user.payment.index', compact('payments'));
 
     }
 

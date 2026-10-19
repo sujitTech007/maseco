@@ -22,7 +22,7 @@ class SellerController extends Controller
 
     public function enquiry()
     {
-        return view('seller.enquiry');
+        return view('seller.enquiry.index');
     }
 
     public function material()
@@ -51,7 +51,7 @@ class SellerController extends Controller
     public function showMaterial($id)
     {
         // Fetch material by $id and pass to the view
-        return view('seller.material.view', compact('id'));
+        return view('seller.material.show', compact('id'));
     }
     public function updateMaterial(Request $request, $id)
     {
@@ -69,12 +69,12 @@ class SellerController extends Controller
 
     public function orders()
     {
-        return view('seller.orders');
+        return view('seller.order.index');
     }
 
     public function plans()
     {
-        return view('seller.plans');
+        return view('seller.plan.index');
     }
 
     public function payment()
@@ -89,7 +89,7 @@ class SellerController extends Controller
     public function profile()
     {
         $user = Auth::guard('supplier')->user();
-        return view('seller.profile', compact('user'));
+        return view('seller.profile.index', compact('user'));
     }
     
     public function updateProfile(Request $request)
