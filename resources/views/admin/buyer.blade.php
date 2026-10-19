@@ -30,9 +30,9 @@
 @endphp
 
         <div class="buyer-overview">
-            <div class="buyer-stat">
-                <div class="buyer-stat-icon">
-                    <i class="ri-group-line"></i>
+            <div class="buyer-stat bg-danger bg-opacity-10">
+                <div class="buyer-stat-icon bg-danger bg-opacity-10">
+                    <i class="ri-group-line text-danger"></i>
                 </div>
                 <div>
                     <div class="buyer-stat-label">Total Buyers</div>
@@ -40,9 +40,9 @@
                 </div>
             </div>
 
-            <div class="buyer-stat">
-                <div class="buyer-stat-icon">
-                    <i class="ri-user-follow-line"></i>
+            <div class="buyer-stat bg-warning bg-opacity-10">
+                <div class="buyer-stat-icon bg-warning bg-opacity-10">
+                    <i class="ri-user-follow-line text-warning"></i>
                 </div>
                 <div>
                     <div class="buyer-stat-label">Active Buyers</div>
@@ -50,9 +50,9 @@
                 </div>
             </div>
 
-            <div class="buyer-stat">
-                <div class="buyer-stat-icon">
-                    <i class="ri-user-unfollow-line"></i>
+            <div class="buyer-stat bg-success bg-opacity-10">
+                <div class="buyer-stat-icon bg-success bg-opacity-10">
+                    <i class="ri-user-unfollow-line text-success"></i>
                 </div>
                 <div>
                     <div class="buyer-stat-label">Inactive Buyers</div>

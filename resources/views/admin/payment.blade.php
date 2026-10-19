@@ -44,9 +44,9 @@
         <div class="row g-3 payments-summary">
 
             <div class="col-12 col-sm-6 col-xl-3">
-                <div class="payment-stat">
-                    <div class="payment-stat-icon total">
-                        <i class="ri-wallet-3-line"></i>
+                <div class="payment-stat bg-danger bg-opacity-10">
+                    <div class="payment-stat-icon total bg-danger bg-opacity-10">
+                        <i class="ri-wallet-3-line text-danger"></i>
                     </div>
                     <div>
                         <p>Total Payments</p>
@@ -56,9 +56,9 @@
             </div>
 
             <div class="col-12 col-sm-6 col-xl-3">
-                <div class="payment-stat">
-                    <div class="payment-stat-icon paid">
-                        <i class="ri-checkbox-circle-line"></i>
+                <div class="payment-stat bg-warning bg-opacity-10">
+                    <div class="payment-stat-icon paid bg-warning bg-opacity-10">
+                        <i class="ri-checkbox-circle-line text-warning"></i>
                     </div>
                     <div>
                         <p>Paid Transactions</p>
@@ -68,9 +68,9 @@
             </div>
 
             <div class="col-12 col-sm-6 col-xl-3">
-                <div class="payment-stat">
-                    <div class="payment-stat-icon pending">
-                        <i class="ri-time-line"></i>
+                <div class="payment-stat bg-success bg-opacity-10">
+                    <div class="payment-stat-icon pending bg-success bg-opacity-10">
+                        <i class="ri-time-line text-success"></i>
                     </div>
                     <div>
                         <p>Pending Payments</p>
@@ -80,9 +80,9 @@
             </div>
 
             <div class="col-12 col-sm-6 col-xl-3">
-                <div class="payment-stat">
-                    <div class="payment-stat-icon failed">
-                        <i class="ri-error-warning-line"></i>
+                <div class="payment-stat bg-primary bg-opacity-10">
+                    <div class="payment-stat-icon failed bg-primary bg-opacity-10">
+                        <i class="ri-error-warning-line text-primary"></i>
                     </div>
                     <div>
                         <p>Failed Payments</p>

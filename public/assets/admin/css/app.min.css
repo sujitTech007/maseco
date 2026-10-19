@@ -32978,7 +32978,9 @@ fieldset:disabled .btn {
 
     z-index: 1010;
 
-    background: #fff;
+    /* background: #fff;
+     */
+     background-color: #edf7f2 !important;
 
     min-height: var(--abstack-topbar-height);
 
@@ -46431,6 +46433,7 @@ span.flatpickr-weekday {
     overflow: auto;
 
     max-width: 100%;
+    background-color:  #168F80 !important;
 
     max-height: 100%;
 

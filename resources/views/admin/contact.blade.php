@@ -29,9 +29,9 @@
 
         {{-- Summary --}}
         <div class="contact-summary">
-            <div class="contact-stat">
-                <div class="contact-stat-icon">
-                    <i class="ri-contacts-line"></i>
+            <div class="contact-stat bg-danger bg-opacity-10">
+                <div class="contact-stat-icon bg-danger bg-opacity-10">
+                    <i class="ri-contacts-line text-danger"></i>
                 </div>
                 <div>
                     <p>Total Contact Requests</p>
@@ -39,9 +39,9 @@
                 </div>
             </div>
 
-            <div class="contact-stat">
-                <div class="contact-stat-icon email">
-                    <i class="ri-mail-line"></i>
+            <div class="contact-stat bg-warning bg-opacity-10">
+                <div class="contact-stat-icon email bg-warning bg-opacity-10">
+                    <i class="ri-mail-line text-warning"></i>
                 </div>
                 <div>
                     <p>Email Contacts</p>
@@ -49,9 +49,9 @@
                 </div>
             </div>
 
-            <div class="contact-stat">
-                <div class="contact-stat-icon phone">
-                    <i class="ri-phone-line"></i>
+            <div class="contact-stat bg-success bg-opacity-10">
+                <div class="contact-stat-icon phone bg-success bg-opacity-10">
+                    <i class="ri-phone-line text-success"></i>
                 </div>
                 <div>
                     <p>Phone Contacts</p>

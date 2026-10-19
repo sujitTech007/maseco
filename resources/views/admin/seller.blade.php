@@ -30,9 +30,9 @@
 
         <div class="seller-overview">
 
-            <div class="seller-stat">
-                <div class="seller-stat-icon">
-                    <i class="ri-store-2-line"></i>
+            <div class="seller-stat bg-danger bg-opacity-10">
+                <div class="seller-stat-icon bg-danger bg-opacity-10">
+                    <i class="ri-store-2-line text-danger"></i>
                 </div>
                 <div>
                     <div class="seller-stat-label">Total Sellers</div>
@@ -40,9 +40,9 @@
                 </div>
             </div>
 
-            <div class="seller-stat">
-                <div class="seller-stat-icon">
-                    <i class="ri-user-follow-line"></i>
+            <div class="seller-stat bg-warning bg-opacity-10">
+                <div class="seller-stat-icon bg-warning bg-opacity-10">
+                    <i class="ri-user-follow-line text-warning"></i>
                 </div>
                 <div>
                     <div class="seller-stat-label">Active Sellers</div>
@@ -50,9 +50,9 @@
                 </div>
             </div>
 
-            <div class="seller-stat">
-                <div class="seller-stat-icon">
-                    <i class="ri-user-unfollow-line"></i>
+            <div class="seller-stat bg-success bg-opacity-10">
+                <div class="seller-stat-icon bg-success bg-opacity-10">
+                    <i class="ri-user-unfollow-line text-success"></i>
                 </div>
                 <div>
                     <div class="seller-stat-label">Inactive Sellers</div>

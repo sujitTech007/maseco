@@ -1,6 +1,8 @@
 .sidenav-menu{
 
-    background: rgb(255 255 255);
+    /* background: rgb(255 255 255);
+     */
+   background-color: #edf7f2 !important
 
 }
 
@@ -20,7 +22,7 @@
 
 .side-nav .side-nav-item .side-nav-link{
 
-    /* color: #888888; */
+    color: hsl(0, 0%, 100%);
 
     padding: 10px;
 
