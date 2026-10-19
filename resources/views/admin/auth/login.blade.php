@@ -31,7 +31,7 @@
 
             <div class="login-form-container customLoginFormBox">
                 <div class="login-brand mb-4">
-                    <img src="{{ asset('assets/images/logo.png') }}" alt="MASECO" class="login-logo">
+                    <img src="{{ asset('public/assets/images/logo.png') }}" alt="MASECO" class="login-logo">
                     <span class="login-badge">ADMIN PORTAL</span>
                 </div>
 

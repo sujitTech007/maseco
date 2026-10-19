@@ -4,17 +4,9 @@
 
 
   <section class="position-relative text-white overflow-hidden section_hero" tyle="background: #073b35;">
-    <img src="{{ asset('assets/images/homepage-banner.webp') }}" class="w-100 h-100 position-absolute object-fit-cover" alt="banner">
+    <img src="{{ asset('public/assets/images/homepage-banner.webp') }}" class="w-100 h-100 position-absolute object-fit-cover" alt="banner">
 
-    <!-- Background image and overlay -->
-    <!-- <div class="position-absolute top-0 start-0 w-100 h-100"
-      style="background:     linear-gradient(
-        90deg,
-        rgba(15, 35, 29, 0.68) 0%,
-        rgba(15, 35, 29, 0.48) 45%,
-        rgba(15, 35, 29, 0.12) 100%
-    ), url('{{ asset('assets/images/homepage-banner.webp') }}') center/cover no-repeat;">
-    </div> -->
+   
 
     <div class="container position-relative py-4 py-lg-5 z-1">
 
@@ -231,7 +223,7 @@
                 <div class="maseco-about-visual position-relative">
 
                     <img
-                        src="{{ asset('assets/images/about-us.webp') }}"
+                        src="{{ asset('public/assets/images/about-us.webp') }}"
                         alt="Textile manufacturing and fabric production"
                         class="maseco-about-photo"
                         loading="lazy"
@@ -521,7 +513,7 @@
       <div class="row">
         <div class="col-md-6 col-sm-12">
           <div class="thumb">
-            <img src="{{ asset('assets/images/about-thumb.png')}}" alt="About" />
+            <img src="{{ asset('public/assets/images/about-thumb.png')}}" alt="About" />
           </div>
         </div>
         <div class="col-md-6 col-sm-12 text-wrapper ps-md-5">
@@ -588,7 +580,7 @@
                     <article class="process-step">
                         <div class="process-image">
                             <img
-                                src="{{ asset('assets/images/sustainable-img.webp') }}"
+                                src="{{ asset('public/assets/images/sustainable-img.webp') }}"
                                 alt="Sustainable textile materials"
                                 loading="lazy">
                             <span class="process-number">01</span>
@@ -608,7 +600,7 @@
                     <article class="process-step">
                         <div class="process-image">
                             <img
-                                src="{{ asset('assets/images/Sustainable-journey-img.webp') }}"
+                                src="{{ asset('public/assets/images/Sustainable-journey-img.webp') }}"
                                 alt="Textile manufacturing and supplier connections"
                                 loading="lazy">
                             <span class="process-number">02</span>
@@ -628,7 +620,7 @@
                     <article class="process-step">
                         <div class="process-image">
                             <img
-                                src="{{ asset('assets/images/service-box.webp') }}"
+                                src="{{ asset('public/assets/images/service-box.webp') }}"
                                 alt="Textile design and material planning"
                                 loading="lazy">
                             <span class="process-number">03</span>
@@ -648,7 +640,7 @@
                     <article class="process-step">
                         <div class="process-image">
                             <img
-                                src="{{ asset('assets/images/testimonial-img.webp') }}"
+                                src="{{ asset('public/assets/images/testimonial-img.webp') }}"
                                 alt="Textile production and logistics"
                                 loading="lazy">
                             <span class="process-number">04</span>
@@ -692,7 +684,7 @@
             <div class="col-lg-5">
                 <div class="journey-visual">
                     <img
-                        src="{{ asset('assets/images/sustainable-img.webp') }}"
+                        src="{{ asset('public/assets/images/sustainable-img.webp') }}"
                         alt="Textile materials and sustainable fabric sourcing"
                         loading="lazy"
                     >
@@ -768,96 +760,6 @@
 </section>
 
 
-
-  <!-- <section class="price-section py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <div class="section-heading">
-            <span class="needle-heading text-uppercase d-block needleIcon">Our subscription</span>
-            <h2>Find Your Perfect Plan</h2>
-            <p>Discover the ideal plan to fuel your business growth. Our pricing options are carefully crafted to
-              cater to businesses.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row justify-content-center mt-4">
-
-        @foreach($plans as $plan)
-        <div class="col-lg-4 col-md-4">
-          <div class="pricebox" data-aos-duration="{{ 500 + ($loop->index * 300) }}">
-            <div class="priceboxIcon">
-              @php
-              $icon = 'basic-icon.svg';
-              if(stripos($plan->name, 'premium') !== false) $icon = 'premium-icon.svg';
-              elseif(stripos($plan->name, 'pro') !== false) $icon = 'pro-icon.svg';
-              @endphp
-              <img src="assets/images/icon/{{ $icon }}" alt="">
-            </div>
-            <div class="price-content">
-              <h5>{{ $plan->name }}</h5>
-              <p class="price-text">{{ $plan->description ?? '' }}</p>
-              <h2 class="price">
-                @if($plan->price == 0)
-                Free
-                @else
-                <span class="dollar">$</span>{{ rtrim(rtrim(number_format($plan->price, 2, '.', ''), '0'), '.') }}
-                <span class="price-month">/ {{ $plan->duration }}</span>
-                @endif
-                @if($plan->commission)
-                <span class="pricebox-comment">+ Commission = {{ $plan->commission }}</span>
-                @endif
-              </h2>
-              @php
-              $features = $plan->features;
-              if(is_array($features)) {
-              $features = implode("\n", $features);
-              }
-              if(is_string($features)) {
-              $decoded = json_decode($features, true);
-              if(is_array($decoded)) {
-              $features = $decoded;
-              } else {
-              $features = preg_split('/\r?\n/', $features);
-              }
-              }
-              @endphp
-              @if($features && is_array($features))
-              <ul class="list-info">
-                @foreach($features as $feature)
-                @php
-                $feature = trim($feature);
-                if(substr($feature, -1) === '+') {
-                $feature = rtrim($feature, '+ ');
-                }
-                @endphp
-                @if($feature !== '')
-                <li><i class="fa-solid fa-square-up-right"></i><span>{{ $feature }}</span></li>
-                @endif
-                @endforeach
-              </ul>
-              @endif
-              <div class="getStarted-btn">
-                @if(Auth::guard('supplier')->check() || Auth::guard('manufacturer')->check())
-                <button class="theme-btn disabled" disabled>Not Available</button>
-                @else
-                <button class="theme-btn purchase-btn"
-                  data-plan-id="{{ $plan->id }}"
-                  data-plan-name="{{ $plan->name }}"
-                  data-plan-price="{{ $plan->price }}"
-                  data-plan-duration="{{ $plan->duration }}"
-                  onclick="handlePlanChooseFromButton(this)">
-                  Get Started
-                </button>
-                @endif
-              </div>
-            </div>
-          </div>
-        </div>
-        @endforeach
-      </div>
-    </div>
-  </section> -->
 
   
 <section class="maseco-pricing py-3 py-md-5" id="subscription">
@@ -1289,7 +1191,7 @@
                     </p>
 
                     <div class="d-flex align-items-center gap-3 border-top pt-3">
-                        <img src="{{ asset('assets/images/testimonial-user.jpg') }}"
+                        <img src="{{ asset('public/assets/images/testimonial-user.jpg') }}"
                              alt="Client"
                              class="rounded-circle"
                              width="52" height="52"
@@ -1327,7 +1229,7 @@
                     </p>
 
                     <div class="d-flex align-items-center gap-3 border-top pt-3">
-                        <img src="{{ asset('assets/images/testimonial-user.jpg') }}"
+                        <img src="{{ asset('public/assets/images/testimonial-user.jpg') }}"
                              alt="Client"
                              class="rounded-circle"
                              width="52" height="52"
@@ -1365,7 +1267,7 @@
                     </p>
 
                     <div class="d-flex align-items-center gap-3 border-top pt-3">
-                        <img src="{{ asset('assets/images/testimonial-user.jpg') }}"
+                        <img src="{{ asset('public/assets/images/testimonial-user.jpg') }}"
                              alt="Client"
                              class="rounded-circle"
                              width="52" height="52"
@@ -1386,98 +1288,6 @@
 </section>
 
 
-
-  <!-- <section class="blogs py-5">
-      <div class="container">
-        <div class="row">
-          <div class="section-heading text-center mt-5" >
-            <span class="needle-heading text-uppercase d-block needleIcon">Building  the future</span>
-            <h2>whatch our latest blog</h2>
-            <p>Textiles are materials made from fibers or yarn, and they are used to create widetest range of products
-              such as clothing and industrial goods.</p>
-          </div>
-        </div>
-
-        <div class="row">
-
-          <div class="blogs-slider">
-            <div class="post-post-box" >
-              <div class="blogBox">
-                <div class="postBox-media">
-                  <img src="assets/images/blog-thumb-1.jpeg" class="img-fluid" alt="" decoding="async">
-                </div>
-                <div class="postBox-textarea">
-                  <ul>
-                    <li class="postCategory"><i class="fa fa-user"></i>peacefulqode</li>
-                    <li class="postDate"><i class="fa fa-calendar"></i>April 13, 202</li>
-                  </ul>
-                  <h5><a href="#">Empowering Designers with Sustainable Solutions</a></h5>
-                  <p>Maseco offers a curated selection of ethically produced and sustainable raw materials...</p>
-                  <div class="slider-button">
-                    <a href="#" class="theme-btn">Read More <i class="fa fa-arrow-right"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="post-post-box" >
-              <div class="blogBox">
-                <div class="postBox-media">
-                  <img src="assets/images/blog-thumb-1.jpeg" class="img-fluid" alt="" decoding="async">
-                </div>
-                <div class="postBox-textarea">
-                  <ul>
-                    <li class="postCategory"><i class="fa fa-user"></i>peacefulqode</li>
-                    <li class="postDate"><i class="fa fa-calendar"></i>April 13, 202</li>
-                  </ul>
-                  <h5><a href="#">Empowering Designers with Sustainable Solutions</a></h5>
-                  <p>Maseco offers a curated selection of ethically produced and sustainable raw materials...</p>
-                  <div class="slider-button">
-                    <a href="#" class="theme-btn">Read More <i class="fa fa-arrow-right"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="post-post-box" >
-              <div class="blogBox">
-                <div class="postBox-media">
-                  <img src="assets/images/blog-thumb-1.jpeg" class="img-fluid" alt="" decoding="async">
-                </div>
-                <div class="postBox-textarea">
-                  <ul>
-                    <li class="postCategory"><i class="fa fa-user"></i>peacefulqode</li>
-                    <li class="postDate"><i class="fa fa-calendar"></i>April 13, 202</li>
-                  </ul>
-                  <h5><a href="#">Empowering Designers with Sustainable Solutions</a></h5>
-                  <p>Maseco offers a curated selection of ethically produced and sustainable raw materials...</p>
-                  <div class="slider-button">
-                    <a href="#" class="theme-btn">Read More <i class="fa fa-arrow-right"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="post-post-box" >
-              <div class="blogBox">
-                <div class="postBox-media">
-                  <img src="assets/images/blog-thumb-1.jpeg" class="img-fluid" alt="" decoding="async">
-                </div>
-                <div class="postBox-textarea">
-                  <ul>
-                    <li class="postCategory"><i class="fa fa-user"></i>peacefulqode</li>
-                    <li class="postDate"><i class="fa fa-calendar"></i>April 13, 202</li>
-                  </ul>
-                  <h5><a href="#">Empowering Designers with Sustainable Solutions</a></h5>
-                  <p>Maseco offers a curated selection of ethically produced and sustainable raw materials...</p>
-                  <div class="slider-button">
-                    <a href="#" class="theme-btn">Read More <i class="fa fa-arrow-right"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section> -->
 </main>
 
 

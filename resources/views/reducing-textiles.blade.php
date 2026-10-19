@@ -6,7 +6,7 @@
 
 
 
-        <section class="banner inner-banner py-3 py-md-5" style="background-image: url({{ asset('assets/images/homepage-banner.webp') }});">
+        <section class="banner inner-banner py-3 py-md-5" style="background-image: url({{ asset('public/assets/images/homepage-banner.webp') }});">
     <div class="container">
       <div class="row">
         <div class="inner-banner-heading position-relative z-1 text-center text-white">
@@ -32,7 +32,7 @@
 
                     <div class="details-thumb">
 
-                        <img src="{{ asset('assets/images/material-1.png') }}" alt="">
+                        <img src="{{ asset('public/assets/images/material-1.png') }}" alt="">
 
                     </div>
 
@@ -136,7 +136,7 @@
         <div class="row align-items-center g-4 mb-5">
 
             <div class="col-lg-5">
-                <img src="{{ asset('assets/images/service-box.webp') }}"
+                <img src="{{ asset('public/assets/images/service-box.webp') }}"
                      class="img-fluid rounded-3 w-100"
                      alt="Recycled textile materials">
             </div>
@@ -263,7 +263,7 @@
         <div class="row align-items-center g-4 mb-5">
 
             <div class="col-lg-5">
-                <img src="{{ asset('assets/images/sustainable-img.webp') }}"
+                <img src="{{ asset('public/assets/images/sustainable-img.webp') }}"
                      class="img-fluid rounded-3 w-100"
                      alt="Textile recycling and reuse">
             </div>

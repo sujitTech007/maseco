@@ -1,0 +1,417 @@
+
+
+.accordionFilter article {
+    border:1px solid var(--light-grey);  
+    box-shadow: 0px 6px 15px 0px #404F680D;
+    padding:20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+ 
+}
+
+.accordionFilter .filterTitle {
+    display: block;
+    cursor: pointer;
+    position: relative;
+  }
+.accordionFilter .filterTitle:after {
+
+content: "\f107";
+font-family: "FontAwesome";
+position: absolute;
+right: 0;
+font-size: 12px;
+top: 50%;
+transform: translateY(-50%);
+  }
+  .accordionFilter .filterTitle.active:after{
+    content: "\f106";
+  }
+.accordionFilter .accordionFilter-panel {
+
+    display: none;
+  }
+
+
+  
+  .accordionFilter article h4{
+font-size: 22px;
+  }
+  .accordionFilter article  h5{
+    font-size: 18px;
+  }
+  .accordionFilter article ul{
+    padding: 10px 0;
+  }
+
+  .accordionFilter article ul li{
+    margin-bottom: 10px;
+  }
+  .accordionFilter article ul .accordionFilter-panel{
+    margin-bottom: 20px;
+  }
+  .accordionFilter article input[type="checkbox"]{
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    margin: 0;    
+  }
+
+  .accordionFilter article label{
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 5px 0;
+    gap: 10px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+.listing-box{
+    gap: 15px;
+}
+
+
+.listingBox{
+padding:0px;
+border-radius: 10px;
+overflow: hidden;
+border: 1px solid rgba(27, 34, 60, 0.16);
+width: calc(33.3% - 15px);
+}
+.listingBox .media{
+    height: 200px;
+    width: 100%;
+}
+
+.listingBox .media img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.listingBox .textarea{
+    padding: 10px 15px 20px;
+}
+.listingBox .textarea ul{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+}
+.listingBox .textarea ul li{
+    font-size: 13px;
+    list-style-type: none;
+    color: var(--grey-color);
+}
+.listingBox .textarea ul li a{
+    color: var(--grey-color);
+}
+.listingBox .textarea h5 a{
+font-size: 20px;
+font-weight: bold;
+color: var(--black-color);
+}
+.listingBox .textarea p{
+    font-size: 13px;
+    margin-top: 7px;
+}
+.listingBox .textarea .theme-btn{
+    font-size: 14px;
+    padding: 10px 15px;
+    display: inline-block;
+}
+
+
+.section-heading h3{
+    font-size: 30px;
+}
+
+ .product-types{
+margin-top: 20px;
+}
+.product-types ul{
+    margin-top: 20px;
+    display: block;
+} .product-types li {
+margin: 10px 0;
+}
+
+.product-types li p{
+    padding: 5px 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.manufacturer-details {
+    box-shadow: 0px 6px 15px 0px #404F680D;
+    border: 1px solid #E9E9E9;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.manufacturer-info h5 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.manufacturer-name {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.manufacturer-thumb {
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+
+.manufacturer-title h5 {
+    font-size: 22px;
+}
+
+.manufacturer-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 12px;
+}
+.manufacturer-rating .rating{
+color: var(--primary-color);
+}
+
+.addressBox {
+    display: flex;
+    align-items: self-start;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+}
+.manufacturer-address{
+    border-top: 1px solid var(--light-grey);
+    margin-top: 20px;
+}
+
+.addressBox i{
+align-self: center;
+font-size: 20px;
+background: var(--primary-color);
+width: 40px;
+height: 40px;
+color: var(--white-color);
+border-radius: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.addressBox span{
+font-size: 13px;
+}
+
+
+
+
+
+
+
+
+
+
+/* my css */
+.listingBox {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%!important;
+  transition: all 0.3s ease-in-out;
+}
+.listingBox:hover {
+  box-shadow: 0px 4px 20px rgba(0,0,0,0.15);
+}
+.card-body {
+  padding: 15px;
+}
+.price {
+  font-size: 18px;
+  color: #000;
+  margin: 5px 0;
+  font-weight: bold;
+}
+.location, .brand, .thickness {
+  margin: 3px 0;
+  font-size: 14px;
+  color: #555;
+}
+.supplier-info {
+  font-size: 14px;
+  color: #444;
+}
+
+
+.card.detail-card {
+    padding: 10px;
+    margin: 10px 0px 10px;
+    border-radius: 10px;
+    border: 1px solid #2dac92;
+}
+button.detail-price-btn {
+    background: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    padding: 5px 11px;
+    border-radius: 10px;
+    font-size: 15px;
+    border: none;
+
+}
+
+p.retailer-heading {
+    font-size: 17px;
+    color: black;
+    font-weight: 600;
+}
+button.btn.btn-success.contact-supplier {
+    background: #2dac92;
+    border-radius: 10px;
+    padding: 10px 28px;
+    border: none;
+}
+
+✅ CSS
+.phone-link {
+    font-size: 16px;
+    font-weight: 600;
+    color: #007bff; /* Bootstrap Primary Blue */
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    border: 1px solid #007bff;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.phone-link i {
+      margin-right: 8px;
+    font-size: 18px;
+    color: #2dac92;
+}
+
+.phone-link {
+    /* background: #007bff; */
+  padding: 10px 15px;
+    text-decoration: none;
+    
+ 
+    color: #000000;
+    font-size: 14px;
+   
+}
+.phone-link:hover {
+   
+    border: 1px solid green;
+    border-radius: 10px;
+    
+    color: #7d7878;
+   
+}
+
+h2.deatil-main {
+    background: #2dac92;
+    padding: 10px;
+    border-radius: 10px;
+    justify-content: center;
+    text-align: center;
+    margin: 0px 0px 10px;
+    color: white;
+}
+
+ul.list-unstyled.mb-3.ul-detail {
+    background: aliceblue;
+    padding: 10px;
+    border-radius: 10px;
+}
+ul.list-unstyled.mb-3.ul-detail.product-info li {
+    border-bottom: 1px solid black;
+    padding: 10px;
+}
+
+/* Modal Slide from Top */
+.modal-dialog-slideout {
+  transform: translateY(-100%);
+  transition: transform 0.4s ease-out;
+}
+
+.modal.show .modal-dialog-slideout {
+  transform: translateY(0);
+}
+
+.supplier-modal .modal-content {
+  border-radius: 12px;
+  overflow: hidden;
+}
+.form-label {
+    margin-bottom: .5rem;
+    font-size: 13px!important;
+}
+button.btn.btn-primary.w-100.get-code {
+    background: #2dac92;
+    border: none;
+    text-align: center;
+}
+.detail-popup.text-left.mb-3 {
+    background: #c8c8c8;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.wsus__category_single_slider {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+
+@media (max-width:990px){
+  .listing-box{
+    gap: 10px;
+  }
+  .listingBox{
+    width: calc(50% - 10px);
+  }
+}
+
+
+@media (max-width:767px){
+  .listingBox{
+    width: calc(100% - 0px);
+  }
+  .manufacturer-details{margin-top: 30px;}
+}

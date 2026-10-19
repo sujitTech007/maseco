@@ -27,9 +27,9 @@
         <!-- Summary -->
         <div class="orders-summary">
 
-            <div class="orders-summary-card">
-                <div class="orders-summary-icon">
-                    <i class="ri-shopping-bag-3-line"></i>
+            <div class="orders-summary-card bg-danger bg-opacity-10">
+                <div class="orders-summary-icon bg-danger bg-opacity-10">
+                    <i class="ri-shopping-bag-3-line text-danger"></i>
                 </div>
                 <div>
                     <p class="orders-summary-label">Total Orders</p>
@@ -37,9 +37,9 @@
                 </div>
             </div>
 
-            <div class="orders-summary-card">
-                <div class="orders-summary-icon pending">
-                    <i class="ri-time-line"></i>
+            <div class="orders-summary-card bg-warning bg-opacity-10">
+                <div class="orders-summary-icon pending bg-warning bg-opacity-10">
+                    <i class="ri-time-line text-warning"></i>
                 </div>
                 <div>
                     <p class="orders-summary-label">Pending Orders</p>
@@ -47,9 +47,9 @@
                 </div>
             </div>
 
-            <div class="orders-summary-card">
-                <div class="orders-summary-icon completed">
-                    <i class="ri-checkbox-circle-line"></i>
+            <div class="orders-summary-card bg-success bg-opacity-10">
+                <div class="orders-summary-icon completed bg-success bg-opacity-10">
+                    <i class="ri-checkbox-circle-line text-success"></i>
                 </div>
                 <div>
                     <p class="orders-summary-label">Completed Orders</p>

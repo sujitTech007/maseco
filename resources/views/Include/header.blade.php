@@ -96,102 +96,24 @@
     }
 @endphp
 
-<title>{!! $metaTitle !!}</title>
-<meta name="description" content="{{ $metaDescription }}">
-<link rel="canonical" href="{{ url()->current() }}">
-<meta name="robots" content="index, follow">
-<meta property="og:title" content="{{ $metaTitle }}">
-<meta property="og:description" content="{{ $metaDescription }}">
-<meta property="og:type" content="website">
-<meta property="og:url" content="{{ url()->current() }}">
-<meta property="og:site_name" content="Maseco">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ $metaTitle }}">
-<meta name="twitter:description" content="{{ $metaDescription }}">
- <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/png">
-<link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/png">
-<link rel="stylesheet" href="{{ asset('assets/css/global.css') }}?v={{ time() }}">
+  <title>{!! $metaTitle !!}</title>
+  <meta name="description" content="{{ $metaDescription }}">
+  <link rel="canonical" href="{{ url()->current() }}">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:title" content="{{ $metaTitle }}">
+  <meta property="og:description" content="{{ $metaDescription }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ url()->current() }}">
+  <meta property="og:site_name" content="Maseco">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ $metaTitle }}">
+  <meta name="twitter:description" content="{{ $metaDescription }}">
 
-      
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link rel="shortcut icon" href="{{ asset('public/assets/images/favicon.png') }}" type="image/png">
+  <link rel="icon" href="{{ asset('public/assets/images/favicon.png') }}" type="image/png">
 
-
-
-    <style>
-      /* small styling to mimic your .theme-btn */
-
-      .theme-btn {
-
-        padding: .45rem .9rem;
-
-        border-radius: .35rem;
-
-        border: 1px solid transparent;
-
-        text-decoration: none;
-
-        display: inline-block;
-
-      }
-
-
-
-      .theme-btn.bg-transparent {
-
-        background: transparent;
-
-        color: #333;
-
-        border-color: #ccc;
-
-      }
-
-
-
-      .theme-btn:not(.bg-transparent) {
-
-        background: #0d6efd;
-
-        color: white;
-
-      }
-
-
-
-      /* ensure dropdown is visible above other elements */
-
-      .dropdown-menu {
-
-        z-index: 2000;
-
-      }
-
-
-
-      .dropdown-item:hover {
-
-        color: #ffffff;
-
-        background-color: #53b69b;
-
-      }
-
-
-
-      .toast-container {
-
-        position: fixed;
-
-        top: 1rem;
-
-        right: 1rem;
-
-        z-index: 9999;
-
-      }
-    </style>
-
-  </head>
+  <link rel="stylesheet" href="{{ asset('public/assets/css/global.css') }}?v={{ time() }}">      
+</head>
 
 
 
@@ -342,7 +264,7 @@
 
                 <a class="navbar-brand" href="{{ route('home') }}">
 
-                  <img class="logo" src="{{ asset('assets/images/logo.png') }}" alt="Maseco">
+                  <img class="logo" src="{{ asset('public/assets/images/logo.png') }}" alt="Maseco">
 
                 </a>
 
