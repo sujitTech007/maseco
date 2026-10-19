@@ -254,7 +254,7 @@ i.fas.fa-phone.fa-rotate-90 {
 
   
 <!-- Manufacturer Page Header -->
-  <section class="banner inner-banner py-3 py-md-5" style="background-image: url({{ asset('assets/images/homepage-banner.webp') }});">
+  <section class="banner inner-banner py-3 py-md-5" style="background-image: url({{ asset('public/assets/images/homepage-banner.webp') }});">
     <div class="container">
       <div class="row">
         <div class="inner-banner-heading position-relative z-1 text-center text-white">

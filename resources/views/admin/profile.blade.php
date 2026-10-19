@@ -24,7 +24,7 @@
         <div class="profile-banner">
             <div class="profile-banner-content">
                 <div class="profile-avatar">
-                    <img src="{{ asset('assets/images/user.png') }}"
+                    <img src="{{ asset('public/assets/images/user.png') }}"
                          alt="User Profile">
                 </div>
 

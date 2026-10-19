@@ -264,7 +264,7 @@
 
                 <a class="navbar-brand" href="{{ route('home') }}">
 
-                  <img class="logo" src="{{ asset('assets/images/logo.png') }}" alt="Maseco">
+                  <img class="logo" src="{{ asset('public/assets/images/logo.png') }}" alt="Maseco">
 
                 </a>
 
