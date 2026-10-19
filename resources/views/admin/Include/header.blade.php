@@ -63,7 +63,7 @@
 
         <script src="{{ asset('assets/admin/js/chart.js') }}"></script>
 
-       
+
 
     </head>
 
@@ -120,7 +120,7 @@
 
 
                                         <!--- Sidenav Menu -->
-                                        
+
 
 
                                         <ul class="side-nav">
@@ -240,7 +240,7 @@
                                                     <span class="menu-icon"><i class="fa-solid fa-rectangle-list"></i>
                                                     </span>
 
-                                                    <span class="menu-text"> Subscription Plans
+                                                    <span class="menu-text"> Subscription
 
                                                     </span>
 
@@ -284,7 +284,7 @@
                                                 <a href="{{ route('admin.contact.list') }}" class="side-nav-link {{ Route::is('admin.contact.list') ? 'active' : '' }}">
 
                                                     <span class="menu-icon">
-                                                       <i class="fa-solid fa-comment-dots"></i>
+                                                        <i class="fa-solid fa-comment-dots"></i>
 
                                                     </span>
 
@@ -325,7 +325,7 @@
                                             </li>
 
                                         </ul>
-                                        
+
 
 
 
@@ -510,7 +510,7 @@
             </script>
 
 
-<!-- <script>
+            <!-- <script>
 document.addEventListener('DOMContentLoaded', function () {
     const toggleButtons = document.querySelectorAll('.sidenav-toggle-button');
 
