@@ -1,11 +1,9 @@
-@import "../fonts/icomoon/style.css";
 
 @import url(bootstrap.min.css);
 @import url(all.min.css);
 @import url(variables.css);
 @import url(reset.css);
-@import url(aos.css);
-@import url('https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css');
+@import url(slick.css);
 @import url(header.css);
 @import url(home.css);
 @import url(style.css);

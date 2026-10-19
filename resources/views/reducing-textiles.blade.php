@@ -1,12 +1,11 @@
 @include('Include.header')
 
 
-
-    <main>
-
+<main>
 
 
-        <section class="banner inner-banner py-3 py-md-5" style="background-image: url({{ asset('public/assets/images/homepage-banner.webp') }});">
+
+<section class="banner inner-banner py-3 py-md-5" style="background-image: url({{ asset('public/assets/images/homepage-banner.webp') }});">
     <div class="container">
       <div class="row">
         <div class="inner-banner-heading position-relative z-1 text-center text-white">
@@ -16,122 +15,13 @@
         
       </div>
     </div>
-  </section>
+</section>
 
 
-
-
-
-        <!-- <section class="listing-details-page pt-5">
-
-            <div class="container">
-
-                <div class="row">                    
-
-                    <div class="listings-details col-lg-12  col-md-12">
-
-                    <div class="details-thumb">
-
-                        <img src="{{ asset('public/assets/images/material-1.png') }}" alt="">
-
-                    </div>
-
-                    <div class="blog-categories">
-
-                        <ul>
-
-                            <li><a href="#"><i class="fa fa-user"></i> info@maseco.com</a></li>
-
-                            <li><a href="#">Home Textiles</a></li>
-
-                            <li>MAY 24, 2025</li>
-
-                        </ul>
-
-                    </div>
-
-                    <div class="bolg-title">
-
-                        <p>
-
-                            Maseco is dedicated to reducing textile waste by sourcing sustainable and eco-friendly materials. We work closely with manufacturers to ensure a responsible supply chain while delivering high-quality textile solutions for homes and businesses.
-
-                        </p>
-
-                        <p>
-
-                            Our approach combines innovation with sustainability, providing products that not only meet design standards but also contribute to environmental conservation. From recycled fibers to organic materials, Maseco ensures that every textile choice reduces the ecological footprint.
-
-                        </p>
-
-                    </div>
-
-
-
-                    <div class="bolg-title">
-
-                        <h2 class="material-types">Types of Raw Materials We Source</h2>               
-
-                    </div>
-
-
-
-                    <div class="bolg-title">
-
-                        <h2>01.  Natural and Organic Materials</h2>
-
-                        <p>Maseco sources high-quality natural and organic fibers that are eco-friendly, durable, and safe for consumers. These materials promote sustainability and support ethical production practices.</p>
-
-                    </div>
-
-
-
-                    <div class="bolg-title">
-
-                        <h2>02.  Recycled Materials</h2>
-
-                        <p>We actively incorporate recycled textiles to reduce waste. Our processes ensure that recycled materials meet strict quality standards while minimizing environmental impact.</p>
-
-                    </div>
-
-
-
-                    <div class="bolg-title">
-
-                        <h2>03. Innovative Sustainable Materials</h2>
-
-                        <p>Maseco invests in innovative sustainable materials that provide both functionality and eco-conscious benefits. These include fibers made from renewable resources and advanced textile technologies.</p>
-
-                    </div>
-
-
-
-                    <div class="bolg-title">
-
-                        <h2>04.  Eco-Friendly Packaging Materials</h2>
-
-                        <p>All our packaging is designed to be eco-friendly, reducing plastic use and promoting recyclability, aligning with our commitment to sustainability.</p>
-
-                    </div>
-
-                </div>
-
-
-
-
-
-
-
-            </div>
-
-        </section>
-
-        -->
         
 <!-- Reducing Textiles Content Section -->
 <section class="py-5">
     <div class="container">
-
         <!-- Our Approach -->
         <div class="row align-items-center g-4 mb-5">
 
@@ -159,37 +49,41 @@
 
                 <div class="row g-3 mt-3">
 
-                    <div class="col-6 col-md-3">
-                        <i class="bi bi-leaf fs-3"
-                           style="color:rgba(45,172,146,1);"></i>
-                        <h6 class="mt-2">Sustainable Sourcing</h6>
-                    </div>
+                        <div class="col-6 col-md-3">
+                            <i class="fa-solid fa-leaf fs-3 primary-text-color"></i>
+                            <h6 class="mt-2">Sustainable Sourcing</h6>
+                        </div>
 
-                    <div class="col-6 col-md-3">
-                        <i class="bi bi-recycle fs-3"
-                           style="color:rgba(45,172,146,1);"></i>
-                        <h6 class="mt-2">Recycled Materials</h6>
-                    </div>
+                        <div class="col-6 col-md-3">
+                            <i class="fa-solid fa-recycle fs-3 primary-text-color"></i>
+                            <h6 class="mt-2">Recycled Materials</h6>
+                        </div>
 
-                    <div class="col-6 col-md-3">
-                        <i class="bi bi-shield-check fs-3"
-                           style="color:rgba(45,172,146,1);"></i>
-                        <h6 class="mt-2">Eco Certifications</h6>
-                    </div>
+                        <div class="col-6 col-md-3">
+                            <i class="fa-solid fa-shield-halved fs-3 primary-text-color"></i>
+                            <h6 class="mt-2">Eco Certifications</h6>
+                        </div>
 
-                    <div class="col-6 col-md-3">
-                        <i class="bi bi-globe fs-3"
-                           style="color:rgba(45,172,146,1);"></i>
-                        <h6 class="mt-2">Circular Economy</h6>
-                    </div>
+                        <div class="col-6 col-md-3">
+                            <i class="fa-solid fa-earth-americas fs-3 primary-text-color"></i>
+                            <h6 class="mt-2">Circular Economy</h6>
+                        </div>
 
-                </div>
+                        </div>
             </div>
         </div>
+    </div>
+</section>
+
+
+
+
+    <section class="features-section p-4 p-md-5 mb-5">
+
+    
 
         <!-- Marketplace Features -->
-        <div class="p-4 p-md-5 rounded-3 mb-5"
-             style="background:#f0faf8;">
+        <div class="container">
 
             <div class="mb-4">
                 <p class="small text-uppercase fw-semibold mb-2"
@@ -258,64 +152,74 @@
 
             </div>
         </div>
+    </section>
 
-        <!-- Circular Economy -->
+<section>
+    <div class="container">
         <div class="row align-items-center g-4 mb-5">
 
-            <div class="col-lg-5">
-                <img src="{{ asset('public/assets/images/sustainable-img.webp') }}"
-                     class="img-fluid rounded-3 w-100"
-                     alt="Textile recycling and reuse">
-            </div>
+    <div class="col-lg-5">
+        <img src="{{ asset('public/assets/images/sustainable-img.webp') }}" class="img-fluid rounded-3 w-100"
+            alt="Textile recycling and reuse">
+    </div>
 
-            <div class="col-lg-7">
-                <p class="small text-uppercase fw-semibold mb-2"
-                   style="color:rgba(45,172,146,1);">
-                    Circular Economy
-                </p>
+    <div class="col-lg-7">
+        <p class="small text-uppercase fw-semibold mb-2" style="color:rgba(45,172,146,1);">
+            Circular Economy
+        </p>
 
-                <h2 class="section-title-h2 mb-2">
-                    Give Textile Materials a Second Life
-                </h2>
+        <h2 class="section-title-h2 mb-2">
+            Give Textile Materials a Second Life
+        </h2>
 
-                <p class="text-secondary">
-                    Support textile reuse through recycled material listings,
-                    donation requests and waste material exchange.
-                </p>
+        <p class="text-secondary">
+            Support textile reuse through recycled material listings,
+            donation requests and waste material exchange.
+        </p>
 
-                <div class="row g-3 mt-2">
+        <div class="row g-3 mt-2">
 
-                    <div class="col-sm-6">
-                        <div class="d-flex align-items-center gap-2">
-                        <div class="icon_box"><i class="bi bi-recycle"></i></div>
-                        <h6 class="mt-2 fs-6">Recycled Textile Marketplace</h6>
+            <div class="col-sm-6">
+                <div class="d-flex align-items-center gap-2">
+                    <div class="icon_box">
+                        <i class="fa-solid fa-recycle"></i>
                     </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <div class="d-flex align-items-center gap-2">
-                        <div class="icon_box"><i class="bi bi-heart"></i></div>
-                        <h6 class="mt-2 fs-6">Textile Donation Requests</h6>
-                    </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <div class="d-flex align-items-center gap-2">
-                        <div class="icon_box"><i class="bi bi-arrow-left-right"></i></div>
-                        <h6 class="mt-2 fs-6">Waste Material Exchange</h6>
-                    </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <div class="d-flex align-items-center gap-2">
-                        <div class="icon_box"><i class="bi bi-bar-chart"></i></div>
-                        <h6 class="mt-2 fs-6">Sustainability Score Tagging</h6>
-                    </div>
-                    </div>
-
+                    <h6 class="mt-2 fs-6">Recycled Textile Marketplace</h6>
                 </div>
             </div>
+
+            <div class="col-sm-6">
+                <div class="d-flex align-items-center gap-2">
+                    <div class="icon_box">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <h6 class="mt-2 fs-6">Textile Donation Requests</h6>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="d-flex align-items-center gap-2">
+                    <div class="icon_box">
+                        <i class="fa-solid fa-right-left"></i>
+                    </div>
+                    <h6 class="mt-2 fs-6">Waste Material Exchange</h6>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="d-flex align-items-center gap-2">
+                    <div class="icon_box">
+                        <i class="fa-solid fa-chart-column"></i>
+                    </div>
+                    <h6 class="mt-2 fs-6">Sustainability Score Tagging</h6>
+                </div>
+            </div>
+
         </div>
+    </div>
+</div>
+    </div>
+        
 
     </div>
 </section>

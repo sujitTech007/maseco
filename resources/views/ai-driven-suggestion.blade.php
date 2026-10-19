@@ -40,9 +40,9 @@
 
                         <ul>
 
-                            <li><a href="#"><i class="fa fa-user"></i> William@maseco.com</a></li>
+                            <li><a href="{{ route('login') }}"><i class="fa fa-user"></i> William@maseco.com</a></li>
 
-                            <li><a href="#">Home Textiles</a></li>
+                            <li><a href="{{ route('login') }}">Home Textiles</a></li>
 
                             <li>MAY 24, 2025</li>
 
@@ -153,160 +153,164 @@
         </div>
 
         <!-- Suggestion Cards -->
-        <div class="row g-4">
 
-            <!-- Supplier Suggestions -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card border-0 shadow-sm rounded-3 h-100">
-                    <div class="card-body p-4">
+                <div class="row g-4">
 
-                        <div class="d-flex justify-content-between mb-3">
-                            <div class="rounded-3 p-3"
-                                 style="background:#e6f6f2;color:rgba(45,172,146,1);">
-                                <i class="bi bi-buildings fs-3"></i>
+                    <!-- Supplier Suggestions -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card border-0 shadow-sm rounded-3 h-100">
+                            <div class="card-body p-4">
+
+                                <div class="d-flex justify-content-between mb-3">
+                                    <div class="rounded-3 p-3"
+                                        style="background:#e6f6f2;color:rgba(45,172,146,1);">
+                                        <i class="fa-solid fa-building fa-2x"></i>
+                                    </div>
+
+                                    <span class="badge rounded-pill align-self-start"
+                                        style="background:#e6f6f2;color:#167d6b;">
+                                        Supplier Match
+                                    </span>
+                                </div>
+
+                                <h5 class="fw-bold fs-5 mb-2">Recommended Suppliers</h5>
+
+                                <p class="text-secondary">
+                                    Explore suppliers that match your textile
+                                    requirements and sourcing preferences.
+                                </p>
+
+                                <ul class="list-unstyled small text-secondary mb-4">
+                                    <li class="mb-2">
+                                        <i class="fa-solid fa-circle-check me-2"
+                                        style="color:rgba(45,172,146,1);"></i>
+                                        Relevant product categories
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fa-solid fa-circle-check me-2"
+                                        style="color:rgba(45,172,146,1);"></i>
+                                        MOQ and pricing preferences
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-circle-check me-2"
+                                        style="color:rgba(45,172,146,1);"></i>
+                                        Supplier comparison
+                                    </li>
+                                </ul>
+
+                                <a href="{{ route('login') }}" class="theme_link mt-1">
+                                    Explore Suppliers
+                                    <i class="fa-solid fa-arrow-right ms-1"></i>
+                                </a>
+
                             </div>
-
-                            <span class="badge rounded-pill align-self-start"
-                                  style="background:#e6f6f2;color:#167d6b;">
-                                Supplier Match
-                            </span>
                         </div>
-
-                        <h5 class="fw-bold fs-5 mb-2">Recommended Suppliers</h5>
-
-                        <p class="text-secondary">
-                            Explore suppliers that match your textile
-                            requirements and sourcing preferences.
-                        </p>
-
-                        <ul class="list-unstyled small text-secondary mb-4">
-                            <li class="mb-2">
-                                <i class="bi bi-check-circle-fill me-2"
-                                   style="color:rgba(45,172,146,1);"></i>
-                                Relevant product categories
-                            </li>
-                            <li class="mb-2">
-                                <i class="bi bi-check-circle-fill me-2"
-                                   style="color:rgba(45,172,146,1);"></i>
-                                MOQ and pricing preferences
-                            </li>
-                            <li>
-                                <i class="bi bi-check-circle-fill me-2"
-                                   style="color:rgba(45,172,146,1);"></i>
-                                Supplier comparison
-                            </li>
-                        </ul>
-
-                        <a href="#" class="theme_link mt-1">
-                            Explore Suppliers <i class="bi bi-arrow-right ms-1"></i>
-                        </a>
-
                     </div>
-                </div>
-            </div>
 
-            <!-- Material Suggestions -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card border-0 shadow-sm rounded-3 h-100">
-                    <div class="card-body p-4">
+                    <!-- Material Suggestions -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card border-0 shadow-sm rounded-3 h-100">
+                            <div class="card-body p-4">
 
-                        <div class="d-flex justify-content-between mb-3">
-                            <div class="rounded-3 p-3"
-                                 style="background:#e6f6f2;color:rgba(45,172,146,1);">
-                                <i class="bi bi-layers fs-3"></i>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <div class="rounded-3 p-3"
+                                        style="background:#e6f6f2;color:rgba(45,172,146,1);">
+                                        <i class="fa-solid fa-layer-group fs-3"></i>
+                                    </div>
+
+                                    <span class="badge rounded-pill align-self-start"
+                                        style="background:#e6f6f2;color:#167d6b;">
+                                        Material Match
+                                    </span>
+                                </div>
+
+                                <h5 class="fw-bold fs-5 mb-2">Textile Alternatives</h5>
+
+                                <p class="text-secondary">
+                                    Find alternative and recycled materials
+                                    that may suit your sourcing needs.
+                                </p>
+
+                                <ul class="list-unstyled small text-secondary mb-4">
+                                    <li class="mb-2">
+                                        <i class="fa-solid fa-circle-check me-2"
+                                        style="color:rgba(45,172,146,1);"></i>
+                                        Recycled textile options
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fa-solid fa-circle-check me-2"
+                                        style="color:rgba(45,172,146,1);"></i>
+                                        Material specifications
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-circle-check me-2"
+                                        style="color:rgba(45,172,146,1);"></i>
+                                        Alternative product discovery
+                                    </li>
+                                </ul>
+
+                                <a href="{{ route('login') }}" class="theme_link mt-1">
+                                    Explore Materials
+                                    <i class="fa-solid fa-arrow-right ms-1"></i>
+                                </a>
+
                             </div>
-
-                            <span class="badge rounded-pill align-self-start"
-                                  style="background:#e6f6f2;color:#167d6b;">
-                                Material Match
-                            </span>
                         </div>
-
-                        <h5 class="fw-bold fs-5 mb-2">Textile Alternatives</h5>
-
-                        <p class="text-secondary">
-                            Find alternative and recycled materials
-                            that may suit your sourcing needs.
-                        </p>
-
-                        <ul class="list-unstyled small text-secondary mb-4">
-                            <li class="mb-2">
-                                <i class="bi bi-check-circle-fill me-2"
-                                   style="color:rgba(45,172,146,1);"></i>
-                                Recycled textile options
-                            </li>
-                            <li class="mb-2">
-                                <i class="bi bi-check-circle-fill me-2"
-                                   style="color:rgba(45,172,146,1);"></i>
-                                Material specifications
-                            </li>
-                            <li>
-                                <i class="bi bi-check-circle-fill me-2"
-                                   style="color:rgba(45,172,146,1);"></i>
-                                Alternative product discovery
-                            </li>
-                        </ul>
-
-                        <a href="#" class="theme_link mt-1">
-                            Explore Materials <i class="bi bi-arrow-right ms-1"></i>
-                        </a>
-
                     </div>
-                </div>
-            </div>
 
-            <!-- Sustainability Suggestions -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card border-0 shadow-sm rounded-3 h-100">
-                    <div class="card-body p-4">
+                    <!-- Sustainability Suggestions -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card border-0 shadow-sm rounded-3 h-100">
+                            <div class="card-body p-4">
 
-                        <div class="d-flex justify-content-between mb-3">
-                            <div class="rounded-3 p-3"
-                                 style="background:#e6f6f2;color:rgba(45,172,146,1);">
-                                <i class="bi bi-recycle fs-3"></i>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <div class="rounded-3 p-3"
+                                        style="background:#e6f6f2;color:rgba(45,172,146,1);">
+                                        <i class="fa-solid fa-recycle fs-3"></i>
+                                    </div>
+
+                                    <span class="badge rounded-pill align-self-start"
+                                        style="background:#e6f6f2;color:#167d6b;">
+                                        Sustainability
+                                    </span>
+                                </div>
+
+                                <h5 class="fw-bold fs-5 mb-2">Eco-Friendly Alternatives</h5>
+
+                                <p class="text-secondary">
+                                    Discover material reuse and recycling
+                                    opportunities across the textile marketplace.
+                                </p>
+
+                                <ul class="list-unstyled small text-secondary mb-4">
+                                    <li class="mb-2">
+                                        <i class="fa-solid fa-circle-check me-2"
+                                        style="color:rgba(45,172,146,1);"></i>
+                                        Recycled material listings
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fa-solid fa-circle-check me-2"
+                                        style="color:rgba(45,172,146,1);"></i>
+                                        Waste material exchange
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-circle-check me-2"
+                                        style="color:rgba(45,172,146,1);"></i>
+                                        Sustainability score tagging
+                                    </li>
+                                </ul>
+
+                                <a href="{{ route('login') }}" class="theme_link mt-1">
+                                    Explore Alternatives
+                                    <i class="fa-solid fa-arrow-right ms-1"></i>
+                                </a>
+
                             </div>
-
-                            <span class="badge rounded-pill align-self-start"
-                                  style="background:#e6f6f2;color:#167d6b;">
-                                Sustainability
-                            </span>
                         </div>
-
-                        <h5 class="fw-bold fs-5 mb-2">Eco-Friendly Alternatives</h5>
-
-                        <p class="text-secondary">
-                            Discover material reuse and recycling
-                            opportunities across the textile marketplace.
-                        </p>
-
-                        <ul class="list-unstyled small text-secondary mb-4">
-                            <li class="mb-2">
-                                <i class="bi bi-check-circle-fill me-2"
-                                   style="color:rgba(45,172,146,1);"></i>
-                                Recycled material listings
-                            </li>
-                            <li class="mb-2">
-                                <i class="bi bi-check-circle-fill me-2"
-                                   style="color:rgba(45,172,146,1);"></i>
-                                Waste material exchange
-                            </li>
-                            <li>
-                                <i class="bi bi-check-circle-fill me-2"
-                                   style="color:rgba(45,172,146,1);"></i>
-                                Sustainability score tagging
-                            </li>
-                        </ul>
-
-                        <a href="#" class="theme_link mt-1">
-                            Explore Alternatives
-                            <i class="bi bi-arrow-right ms-1"></i>
-                        </a>
-
                     </div>
-                </div>
-            </div>
 
-        </div>
+                </div>
+
 
         <!-- AI Suggestion Notice -->
         <div class="mt-4 p-3 rounded-3 d-flex align-items-start gap-3"

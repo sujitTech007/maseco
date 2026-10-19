@@ -77,7 +77,11 @@
 
             <a href="{{ route('home') }}" class="logo">
 
+<<<<<<< HEAD
                 <img src="{{ asset('public/assets/images/logo.png') }}" alt="" style="width: 150px; height: auto;">
+=======
+                    <img src="{{ asset('public/assets/images/maseco-logo.png') }}" alt="" style="width: 150px; height: auto;">
+>>>>>>> c99ec904a5d551da8d4c1819dac118df197021c5
 
             </a>
 

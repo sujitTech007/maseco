@@ -34,7 +34,7 @@
 
                       <h4>Address</h4>
 
-                      <span>8920 Woodbine Avenue, 304, Markham, Ontario, Canada, L3R 9W9</span>
+                      <span>8920 Woodbine Avenue, 304, Markham, Ontario,<br>Canada, L3R 9W9</span>
 
                     </div>
 
