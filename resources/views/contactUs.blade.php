@@ -1,39 +1,5 @@
 @include('Include.header')
 
-<style>
-  
-.contact-icon {
-    width: 38px;
-    height: 38px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #e5f5ef;
-    color: #2DAC92;
-    border-radius: 8px;
-}
-
-.contactPage .form-control,
-.contactPage .form-select {
-    min-height: 43px;
-    font-size: 14px;
-    border-color: #dce3e0;
-}
-
-.contactPage .form-control:focus,
-.contactPage .form-select:focus {
-    border-color: #2DAC92;
-    box-shadow: 0 0 0 0.15rem rgba(45, 172, 146, 0.15);
-}
-
-@media (max-width: 576px) {
-    .contactPage .p-4 {
-        padding: 1rem !important;
-    }
-}
-
-</style>
 <main>
   
 <!-- Contact Banner -->
