@@ -193,7 +193,7 @@
                                     </a>
 
                                     <span class="badge bg-white text_color_primary position-absolute top-0 start-0 m-3 shadow-sm">
-                                        <i class="fa fa-check-circle me-1"></i>
+                                        <i class="fa fa-check-circle me-1 fs-11"></i>
                                         Verified Listing
                                     </span>
                                 </div>

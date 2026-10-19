@@ -409,6 +409,8 @@ p {
     font-size: 13px;
     padding: 10px;
 }
+
+
 .fs-14{
     font-size: 14px;
 }
@@ -416,8 +418,19 @@ p {
     font-size: 12px;
 }
 
+
+.fs-11{
+    font-size: 11px;
+}
+
+.bg-opacity-10{
+  --bs-bg-opacity: 0.15;
+}
 .primary-text-color{
     color: var(--primary-color);
+}
+.primary-bg-color{
+    background-color: var(--primary-color);
 }
 .theme_link {
     display: inline-flex;

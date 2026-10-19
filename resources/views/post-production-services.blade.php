@@ -80,9 +80,9 @@
                             <div class="col-md-6">
                                 <div class="service_card">
                                     <div class="service-icon">
-                                        <i class="bi bi-search"></i>
+                                        <i class="fa-solid fa-magnifying-glass"></i>
                                     </div>
-                                    
+
                                     <h5 class="fw-bold mb-3 fs-5 primary-text-color">
                                         Quality Control & Inspection
                                     </h5>
@@ -98,9 +98,9 @@
                             <div class="col-md-6">
                                 <div class="service_card">
                                     <div class="service-icon">
-                                        <i class="bi bi-layers"></i>
+                                        <i class="fa-solid fa-layer-group"></i>
                                     </div>
-                                    
+
                                     <h5 class="fw-bold mb-3 fs-5 primary-text-color">
                                         Finishing & Treatment
                                     </h5>
@@ -115,9 +115,9 @@
                             <div class="col-md-6">
                                 <div class="service_card">
                                     <div class="service-icon">
-                                        <i class="bi bi-box-seam"></i>
+                                        <i class="fa-solid fa-box"></i>
                                     </div>
-                                    
+
                                     <h5 class="fw-bold mb-3 fs-5 primary-text-color">
                                         Packaging & Labeling
                                     </h5>
@@ -132,9 +132,9 @@
                             <div class="col-md-6">
                                 <div class="service_card">
                                     <div class="service-icon">
-                                        <i class="bi bi-truck"></i>
+                                        <i class="fa-solid fa-truck-fast"></i>
                                     </div>
-                                    
+
                                     <h5 class="fw-bold mb-3 fs-5 primary-text-color">
                                         Logistics & Delivery Support
                                     </h5>
