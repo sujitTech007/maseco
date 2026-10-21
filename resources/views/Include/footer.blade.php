@@ -302,12 +302,16 @@
 <script src="{{ asset('public/assets/js/slick.min.js') }}"></script>   
 <script src="{{ asset('public/assets/js/bootstrap.bundle.min.js') }}"></script>
 
-@if (Request::is('login', 'signup'))
+@if (Request::is('login', 'sign-up', 'forgot-password', 'contact-us'))
     <script src="{{ asset('public/assets/js/bootstrap-select.min.js') }}"></script>
 
     <script>
         $(document).ready(function () {
-            $('.selectpicker').selectpicker();
+            $('.selectpicker').each(function () {
+                const selectedCode = $(this).attr('data-selected-country-code');
+                if (selectedCode) $(this).val(selectedCode);
+                $(this).selectpicker();
+            });
         });
     </script>
 @endif

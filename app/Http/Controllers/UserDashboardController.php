@@ -9,6 +9,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
+use App\Support\PhoneNumber;
 
 use App\Models\Order;
 
@@ -70,6 +71,15 @@ class UserDashboardController extends Controller
 
         $user = Auth::user();
 
+        if ($request->filled('phone')) {
+            $request->merge([
+                'phone' => PhoneNumber::normalizeLocal(
+                    (string) $request->input('phone'),
+                    (string) $request->input('country_code')
+                ),
+            ]);
+        }
+
         $validated = $request->validate([
 
             'name' => ['required', 'string', 'max:255'],
@@ -77,6 +87,7 @@ class UserDashboardController extends Controller
             'email' => ['required', 'email', 'max:255', 'unique:users,email,' . $user->id],
 
             'phone' => ['nullable', 'string', 'max:20'],
+            'country_code' => ['required_with:phone', 'string', 'max:10', 'regex:/^\+[0-9-]+$/'],
 
             'gender' => ['nullable'],
 
@@ -106,7 +117,10 @@ class UserDashboardController extends Controller
 
         $user->email = $validated['email'];
 
-        $user->phone = $validated['phone'] ?? $user->phone;
+        $user->phone = isset($validated['phone']) && $validated['phone'] !== ''
+            ? PhoneNumber::normalizeLocal($validated['phone'], $validated['country_code'] ?? $user->country_code)
+            : $user->phone;
+        $user->country_code = $validated['country_code'] ?? $user->country_code;
 
         $user->gender = $validated['gender'] ?? $user->gender;
 

@@ -19,6 +19,7 @@ use App\Models\Manufacturer;
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\Session;
+use App\Support\PhoneNumber;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -48,7 +49,8 @@ class LoginController extends Controller
 
             'user_type' => 'required|in:user,supplier,manufacturer',
 
-            'phone' => 'required',
+            'phone' => 'required|string|max:30',
+            'country_code' => ['required', 'string', 'max:10', 'regex:/^\+[0-9-]+$/'],
 
             'password' => 'required',
 
@@ -58,7 +60,10 @@ class LoginController extends Controller
 
         $model = $this->getModel($request->user_type);
 
-        $user = $model::where('phone', $request->phone)->where('country_code', $request->country_code)->first();
+        $normalizedPhone = PhoneNumber::normalizeLocal($request->phone, $request->country_code);
+        $user = $model::where('country_code', $request->country_code)
+            ->whereIn('phone', array_unique([$normalizedPhone, $request->phone]))
+            ->first();
         
         if(!$user){
             return back()->withErrors(['error' => 'Invalid credentials or user does not exist..']);
@@ -109,7 +114,7 @@ class LoginController extends Controller
     $verifySid  = env('TWILIO_VERIFY_SID');
 
     // Build full phone number dynamically
-    $formattedPhone = $countryCode . ltrim($phone, '0');
+    $formattedPhone = PhoneNumber::toE164($countryCode, $phone);
 
     $url = "https://verify.twilio.com/v2/Services/{$verifySid}/Verifications";
 
@@ -160,7 +165,7 @@ class LoginController extends Controller
     $verifySid  = env('TWILIO_VERIFY_SID');
 
     // Use stored country code here too
-    $formattedPhone = $otpUser['country_code'] . ltrim($otpUser['phone'], '0');
+    $formattedPhone = PhoneNumber::toE164($otpUser['country_code'] ?? '+1', $otpUser['phone']);
 
     $url = "https://verify.twilio.com/v2/Services/{$verifySid}/VerificationCheck";
 

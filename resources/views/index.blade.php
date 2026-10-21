@@ -34,7 +34,7 @@
 
 
 
-          <form action="{{ url('/marketplace') }}" method="GET"
+          <form action="{{ route('listing') }}" method="GET"
             class="bg-white text-dark rounded-3 shadow p-3 border form_container">
 
             <div class="d-flex flex-nowrap align-items-end gap-2">
@@ -44,8 +44,9 @@
                 <label for="q" class="form-label small fw-semibold mb-1">
                   Search Materials
                 </label>
-                <input type="text" name="q" id="q"
+                <input type="search" name="q" id="q"
                   class="form-control bg-light"
+                  value="{{ request('q') }}"
                   placeholder="Search materials...">
               </div>
 
@@ -57,8 +58,11 @@
                 <select name="category" id="category"
                   class="form-select bg-light">
                   <option value="">All categories</option>
-                  <option value="Fabric">Fabric</option>
-                  <option value="Chemicals">Chemicals</option>
+                  @foreach($categories as $category)
+                    <option value="{{ $category }}" {{ request('category') === $category ? 'selected' : '' }}>
+                      {{ $category }}
+                    </option>
+                  @endforeach
                 </select>
               </div>
 
@@ -70,8 +74,11 @@
                 <select name="location" id="location"
                   class="form-select bg-light">
                   <option value="">All locations</option>
-                  <option value="USA – Chicago, Illinois">USA – Chicago, Illinois</option>
-                  <option value="USA – Dallas, Texas">USA – Dallas, Texas</option>
+                  @foreach($locations as $location)
+                    <option value="{{ $location }}" {{ request('location') === $location ? 'selected' : '' }}>
+                      {{ $location }}
+                    </option>
+                  @endforeach
                 </select>
               </div>
 
@@ -83,6 +90,7 @@
                 <input type="number" step="0.01" min="0"
                   name="price_min" id="price_min"
                   class="form-control bg-light"
+                  value="{{ request('price_min') }}"
                   placeholder="Min">
               </div>
 

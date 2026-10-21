@@ -15,6 +15,10 @@
         <link href="{{ asset('public/assets/css/vendor.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('public/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style">
         <link href="{{ asset('public/assets/css/custom.css') }}" rel="stylesheet" type="text/css">
+        @if (Request::is('user/profile'))
+            <link href="{{ asset('public/assets/css/bootstrap-select.min.css') }}" rel="stylesheet" type="text/css">
+            <link href="{{ asset('public/assets/css/phone-country-code.css') }}" rel="stylesheet" type="text/css">
+        @endif
         <script type="text/javascript" src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
         <script src="{{ asset('public/assets/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('public/assets/js/chart.js') }}"></script>

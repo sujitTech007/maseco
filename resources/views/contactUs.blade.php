@@ -74,11 +74,12 @@
                             <div class="col-md-6 mt-4">
                                 <label for="phone" class="form-label"
                                        style="font-size:13px;">Phone Number *</label>
-                                <input type="tel" name="phone" id="phone"
-                                       class="form-control"
-                                       placeholder="Enter phone number"
-                                       value="{{ old('phone') }}"
-                                       required>
+                                @include('auth.partials.phone-input', [
+                                    'phoneInputId' => 'phone',
+                                    'phoneInputClass' => 'form-control',
+                                    'phoneWrapperClass' => 'd-flex mobileNumber phone-country-field',
+                                    'phonePlaceholder' => 'Enter phone number',
+                                ])
                                 @error('phone')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror

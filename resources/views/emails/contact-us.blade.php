@@ -1,58 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <title>Maseco Inquiry</title> -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f7;
-            margin: 0;
-            padding: 0;
-        }
-        .email-container {
-            max-width: 750px;
-            margin: 0px !important;
-            background-color: #ffffff;
-            padding: 20px 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h2 {
-            color: #333333;
-            border-bottom: 2px solid #f4f4f4;
-            padding-bottom: 10px;
-        }
-        p {
-            font-size: 16px;
-            color: #555555;
-            line-height: 1.5;
-        }
-        .label {
-            font-weight: bold;
-            color: #333333;
-        }
-        .footer {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #888888;
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
-    <div class="email-container">
-        <h2>Inquiry Details:</h2>
-        <p><span class="label">Name:</span> {{ $contact->name }}</p>
-        <p><span class="label">Email:</span> {{ $contact->email }}</p>
-        <p><span class="label">Phone:</span> {{ $contact->phone }}</p>
-        <p><span class="label">Found Us Via:</span> {{ $contact->find_us ?? 'Not specified' }}</p>
+@extends('emails.layout')
 
-        <div class="footer">
-           Maseco © 2025. All rights reserved. <br>
-          
-        </div>
-    </div>
-</body>
-</html>
+@section('title', 'We received your message | Maseco')
+@section('preheader', 'Your message has reached the Maseco team.')
+@section('eyebrow', 'MESSAGE RECEIVED')
+@section('heading', 'Thanks for reaching out, ' . $contact->name)
+@section('action', 'Visit Maseco')
+@section('action-url', route('home'))
+
+@section('content')
+    <p style="margin:0 0 16px;">We’ve received your message and a member of our team will get back to you soon.</p>
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-top:20px;background:#f7faf9;border:1px solid #e2ece8;border-radius:8px;">
+        <tr><td style="padding:15px 18px;border-bottom:1px solid #e2ece8;color:#71847f;">Name</td><td align="right" style="padding:15px 18px;border-bottom:1px solid #e2ece8;color:#28413d;font-weight:700;">{{ $contact->name }}</td></tr>
+        <tr><td style="padding:15px 18px;color:#71847f;">Phone</td><td align="right" style="padding:15px 18px;color:#28413d;">{{ $contact->phone }}</td></tr>
+    </table>
+@endsection

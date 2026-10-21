@@ -87,9 +87,9 @@
                                     </span>
 
                                     @if($supplier->phone)
-                                        <a href="tel:{{ $supplier->phone }}"
+                                        <a href="tel:{{ $supplier->country_code ? \App\Support\PhoneNumber::toE164($supplier->country_code, $supplier->phone) : $supplier->phone }}"
                                            class="theme_link m-0">
-                                            {{ $supplier->phone }}
+                                            {{ trim(($supplier->country_code ?? '') . ' ' . $supplier->phone) }}
                                         </a>
                                     @else
                                         <span class="text-secondary"
@@ -123,8 +123,8 @@
                             <div class="d-flex gap-2 pt-3 border-top">
 
                                 @if($supplier->phone)
-                                    <a href="tel:{{ $supplier->phone }}"
-                                       class="btn theme-btn flex-fill">
+                                    <a href="tel:{{ $supplier->country_code ? \App\Support\PhoneNumber::toE164($supplier->country_code, $supplier->phone) : $supplier->phone }}"
+                                       class="btn supplier-primary-btn flex-fill">
                                         <i class="fa-solid fa-phone me-1"></i>
                                         Call Supplier
                                     </a>

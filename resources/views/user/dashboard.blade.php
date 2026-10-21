@@ -96,7 +96,7 @@
 
                         <p class="mb-1 fw-bold text-break"><b>Name:</b> {{ $user->name }}</p>
                         <p class="mb-1 fw-bold text-break"><b>Email:</b> {{ $user->email }}</p>
-                        <p class="mb-4 fw-bold text-break"><b>Phone:</b> {{ $user->phone ?? '-' }}</p>
+                        <p class="mb-4 fw-bold text-break"><b>Phone:</b> {{ $user->phone ? trim(($user->country_code ?? '') . ' ' . $user->phone) : '-' }}</p>
                         <a href="{{ route('user.profile') }}"
                             class="btn btn-success btn-sm rounded-pill fw-bold px-3 px-xl-4 py-2 gap-2 align-self-start bg-opacity-10 mt-0">Edit
                             Profile {!! $ico('arrow', 16) !!} </a>

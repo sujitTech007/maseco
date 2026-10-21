@@ -64,8 +64,13 @@
           <div class="col-md-6">
             <div class="form-group mb-3">
               <label for="phone" class="form-label fw-semibold small">Phone No</label>
-              <input type="text" name="phone" id="phone" placeholder="Enter your Phone Number" class="form-control"
-                value="{{ $user->phone }}" required>
+              @include('auth.partials.phone-input', [
+                'phoneInputId' => 'manufacturer_phone',
+                'phoneInputClass' => 'form-control',
+                'countryCode' => $user->country_code ?? '+1',
+                'phoneValue' => $user->phone,
+                'phonePlaceholder' => 'Enter your Phone Number',
+              ])
             </div>
           </div>
 

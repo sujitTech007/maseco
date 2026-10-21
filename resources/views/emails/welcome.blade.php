@@ -1,7 +1,13 @@
-<!doctype html>
-<html lang="en"><body>
-    <h1>Welcome to Maseco, {{ $account->name }}!</h1>
-    <p>Your {{ $accountType }} account has been created successfully.</p>
-    <p><a href="{{ route('login') }}">Sign in to Maseco</a> to get started.</p>
-    <p>Thanks,<br>The Maseco team</p>
-</body></html>
+@extends('emails.layout')
+
+@section('title', 'Welcome to Maseco')
+@section('preheader', 'Your Maseco account is ready.')
+@section('eyebrow', 'WELCOME')
+@section('heading', 'Welcome to Maseco, ' . $account->name)
+@section('action', 'Sign in to your account')
+@section('action-url', route('login'))
+
+@section('content')
+    <p style="margin:0 0 16px;">Your {{ $accountType }} account has been created successfully. We’re glad you’re here.</p>
+    <p style="margin:0;">Sign in to explore textile materials, connect with suppliers, and manage your activity on Maseco.</p>
+@endsection

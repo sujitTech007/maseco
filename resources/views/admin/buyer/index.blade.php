@@ -112,7 +112,7 @@
                                 </td>
 
                                 <td>
-                                    <p class="buyer-cell-text">{{ $user->phone }}</p>
+                                    <p class="buyer-cell-text">{{ trim(($user->country_code ?? '') . ' ' . $user->phone) }}</p>
                                 </td>
 
                                 <td>
@@ -324,7 +324,7 @@
 
         document.getElementById('modalUserEmail').textContent = user.email || '';
 
-        document.getElementById('modalUserPhone').textContent = user.phone || '';
+        document.getElementById('modalUserPhone').textContent = [user.country_code, user.phone].filter(Boolean).join(' ');
 
         document.getElementById('modalUserStatus').textContent = user.status == 1 ? 'Active' : 'Inactive';
 

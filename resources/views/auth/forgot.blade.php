@@ -15,7 +15,12 @@
       </div>
       <div class="mb-3">
         <label class="form-label">Phone Number</label>
-        <input type="text" name="phone" class="form-control" placeholder="Enter phone number" value="{{ old('phone') }}" required>
+        @include('auth.partials.phone-input', [
+          'phoneInputId' => 'forgot_phone',
+          'phoneInputClass' => 'form-control',
+          'countryCode' => old('country_code', '+1'),
+          'phonePlaceholder' => 'Enter phone number',
+        ])
         @error('phone')<div class="text-danger small mt-1">{{ $message }}</div>@enderror
       </div>
       <button class="btn btn-primary w-100" type="submit">Send OTP</button>

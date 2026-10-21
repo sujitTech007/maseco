@@ -363,6 +363,20 @@
     <!-- Projects Analytics Dashboard App js -->
     <script src="assets/js/dashboard.js.download"></script>
 
+    @if (Request::is('admin/profile'))
+        <script src="{{ asset('public/assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('public/assets/js/bootstrap-select.min.js') }}"></script>
+        <script>
+            jQuery(function ($) {
+                $('.selectpicker').each(function () {
+                    const selectedCode = $(this).attr('data-selected-country-code');
+                    if (selectedCode) $(this).val(selectedCode);
+                    $(this).selectpicker();
+                });
+            });
+        </script>
+    @endif
+
 
 
 </body></html>

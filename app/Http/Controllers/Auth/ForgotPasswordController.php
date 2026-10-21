@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Supplier;
 use App\Models\Manufacturer;
+use App\Support\PhoneNumber;
 
 class ForgotPasswordController extends Controller
 {
@@ -22,10 +23,14 @@ class ForgotPasswordController extends Controller
         $validated = $request->validate([
             'user_type' => 'required|in:user,supplier,manufacturer',
             'phone' => 'required|string',
+            'country_code' => ['required', 'string', 'max:10', 'regex:/^\+[0-9-]+$/'],
         ]);
 
         $model = $this->getModel($validated['user_type']);
-        $user = $model::where('phone', $validated['phone'])->first();
+        $normalizedPhone = PhoneNumber::normalizeLocal($validated['phone'], $validated['country_code']);
+        $user = $model::where('country_code', $validated['country_code'])
+            ->whereIn('phone', array_unique([$normalizedPhone, $validated['phone']]))
+            ->first();
         if (!$user) {
             return back()->withErrors(['phone' => 'No account found with this phone number.'])->withInput();
         }
@@ -34,9 +39,10 @@ class ForgotPasswordController extends Controller
             'id' => $user->id,
             'type' => $validated['user_type'],
             'phone' => $user->phone,
+            'country_code' => $user->country_code,
         ]);
 
-        $this->sendOtpViaTwilio($user->phone);
+        $this->sendOtpViaTwilio($user->country_code, $user->phone);
         return redirect()->route('password.otp.form')->with('success', 'OTP sent to your phone.');
     }
 
@@ -58,7 +64,7 @@ class ForgotPasswordController extends Controller
         if (!$resetUser) {
             return redirect()->route('password.forgot')->with('error', 'Session expired. Please try again.');
         }
-        if (!$this->verifyOtpWithTwilio($resetUser['phone'], $otp)) {
+        if (!$this->verifyOtpWithTwilio($resetUser['country_code'] ?? '+1', $resetUser['phone'], $otp)) {
             return back()->withErrors(['otp' => 'Invalid or expired OTP.']);
         }
         Session::put('reset_user_verified', true);
@@ -100,14 +106,12 @@ class ForgotPasswordController extends Controller
         return Manufacturer::class;
     }
 
-    private function sendOtpViaTwilio(string $phone)
+    private function sendOtpViaTwilio(string $countryCode, string $phone)
     {
         $accountSid = env('TWILIO_ACCOUNT_SID');
         $authToken  = env('TWILIO_AUTH_TOKEN');
         $verifySid  = env('TWILIO_VERIFY_SID');
-        if (strpos($phone, '+') !== 0) {
-            $phone = '+91' . ltrim($phone, '0');
-        }
+        $phone = PhoneNumber::toE164($countryCode, $phone);
         $url = "https://verify.twilio.com/v2/Services/{$verifySid}/Verifications";
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -118,14 +122,12 @@ class ForgotPasswordController extends Controller
         curl_close($ch);
     }
 
-    private function verifyOtpWithTwilio(string $phone, string $otp): bool
+    private function verifyOtpWithTwilio(string $countryCode, string $phone, string $otp): bool
     {
         $accountSid = env('TWILIO_ACCOUNT_SID');
         $authToken  = env('TWILIO_AUTH_TOKEN');
         $verifySid  = env('TWILIO_VERIFY_SID');
-        if (strpos($phone, '+') !== 0) {
-            $phone = '+91' . ltrim($phone, '0');
-        }
+        $phone = PhoneNumber::toE164($countryCode, $phone);
         $url = "https://verify.twilio.com/v2/Services/{$verifySid}/VerificationCheck";
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
