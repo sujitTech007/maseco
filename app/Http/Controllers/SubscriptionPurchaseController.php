@@ -10,6 +10,9 @@ use \Stripe\Stripe;
 use Stripe\PaymentIntent;
 use \Stripe\Checkout\Session as StripeSession;
 use \Stripe\Charge as StripeCharge;
+use App\Mail\SubscriptionPurchasedMail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 
 
 class SubscriptionPurchaseController extends Controller
@@ -36,7 +39,7 @@ class SubscriptionPurchaseController extends Controller
         // Handle free plans directly
         if ((float)$plan->price <= 0) {
             $commissionAmount = $this->calculateCommissionAmount($plan->commission, 0);
-            SubscriptionPurchase::create([
+            $purchase = SubscriptionPurchase::create([
                 'user_id' => $user->id,
                 'stripe_id' => null,
                 'plan_name' => $plan->name,
@@ -49,6 +52,7 @@ class SubscriptionPurchaseController extends Controller
                 'is_active' => 1,
                 'payment_status' => 'paid',
             ]);
+            $this->sendPurchaseConfirmation($purchase);
 
             return response()->json(['redirect' => route('payment.success')]);
         }
@@ -147,7 +151,7 @@ class SubscriptionPurchaseController extends Controller
             $user = Auth::user();
             $commissionAmount = $this->calculateCommissionAmount($plan->commission, $plan->price);
 
-            SubscriptionPurchase::firstOrCreate(
+            $purchase = SubscriptionPurchase::firstOrCreate(
                 ['stripe_id' => $paymentIntentId], // store actual payment ID
                 [
                     'user_id' => $user->id,
@@ -162,6 +166,9 @@ class SubscriptionPurchaseController extends Controller
                     'payment_status' => 'paid',
                 ]
             );
+            if ($purchase->wasRecentlyCreated) {
+                $this->sendPurchaseConfirmation($purchase);
+            }
 
             return redirect()->route('subscription.plan')->with('success', 'Subscription purchased successfully!');
         } catch (\Exception $e) {
@@ -192,7 +199,7 @@ class SubscriptionPurchaseController extends Controller
 
         $commissionAmount = $this->calculateCommissionAmount($commission, $price);
 
-        SubscriptionPurchase::create([
+        $purchase = SubscriptionPurchase::create([
             'user_id' => $user->id,
             'stripe_id' => null,
             'plan_name' => $plan->name ?? $validated['plan_name'],
@@ -205,6 +212,7 @@ class SubscriptionPurchaseController extends Controller
             'is_active' => 1,
             'payment_status' => 'paid',
         ]);
+        $this->sendPurchaseConfirmation($purchase);
 
         return redirect()->back()->with('success', 'Subscription purchased successfully!');
 
@@ -250,7 +258,7 @@ class SubscriptionPurchaseController extends Controller
 
         $commissionAmount = $this->calculateCommissionAmount($commission, $price);
 
-        SubscriptionPurchase::create([
+        $purchase = SubscriptionPurchase::create([
             'user_id' => $user->id,
             'stripe_id' => $charge->id,
             'plan_name' => $plan->name ?? $validated['plan_name'],
@@ -263,8 +271,22 @@ class SubscriptionPurchaseController extends Controller
             'is_active' => 1,
             'payment_status' => 'paid',
         ]);
+        $this->sendPurchaseConfirmation($purchase);
 
         return response()->json(['status' => 'success']);
+    }
+
+    private function sendPurchaseConfirmation(SubscriptionPurchase $purchase): void
+    {
+        try {
+            $purchase->loadMissing('user');
+            Mail::to($purchase->user->email)->send(new SubscriptionPurchasedMail($purchase));
+        } catch (\Throwable $exception) {
+            Log::error('Subscription confirmation email could not be sent.', [
+                'purchase_id' => $purchase->id,
+                'exception' => $exception->getMessage(),
+            ]);
+        }
     }
 
     private function calculateCommissionAmount(?string $commission, float $base): float

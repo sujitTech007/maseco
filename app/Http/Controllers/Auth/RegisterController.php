@@ -15,6 +15,9 @@ use App\Models\User;
 use App\Models\Supplier;
 
 use App\Models\Manufacturer;
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -168,6 +171,12 @@ class RegisterController extends Controller
 
     // Create user
     $user = $model::create($data);
+
+    try {
+        Mail::to($user->email)->send(new WelcomeMail($user, $request->user_type));
+    } catch (\Throwable $exception) {
+        Log::error('Welcome email could not be sent.', ['email' => $user->email, 'exception' => $exception->getMessage()]);
+    }
 
     // Redirect to login
     return redirect()->route('login')->with('success', 'Registration successful! Please login.');
