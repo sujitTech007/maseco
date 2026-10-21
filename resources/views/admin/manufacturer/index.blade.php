@@ -113,7 +113,7 @@
                                     </span>
                                 </td>
 
-                                <td>{{ $manufacturer->phone }}</td>
+                                <td>{{ trim(($manufacturer->country_code ?? '') . ' ' . $manufacturer->phone) }}</td>
 
                                 <td>
                                     <span class="manufacturer-company">
@@ -351,7 +351,7 @@
 
         document.getElementById('modalManufacturerEmail').textContent = manufacturer.email || '';
 
-        document.getElementById('modalManufacturerPhone').textContent = manufacturer.phone || '';
+        document.getElementById('modalManufacturerPhone').textContent = [manufacturer.country_code, manufacturer.phone].filter(Boolean).join(' ');
 
         document.getElementById('modalManufacturerCompany').textContent = manufacturer.company_name || '';
 

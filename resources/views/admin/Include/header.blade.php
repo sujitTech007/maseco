@@ -36,6 +36,10 @@
     <link href="{{ asset('public/assets/admin/css/custom.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('public/assets/admin/css/admin.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('public/assets/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    @if (Request::is('admin/profile'))
+        <link href="{{ asset('public/assets/css/bootstrap-select.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('public/assets/css/phone-country-code.css') }}" rel="stylesheet" type="text/css">
+    @endif
 
 
 

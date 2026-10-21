@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Support\PhoneNumber;
+use Illuminate\Validation\Rule;
 
 
 class SellerController extends Controller
@@ -96,10 +98,23 @@ class SellerController extends Controller
     {
         $user = Auth::guard('supplier')->user();
 
+        $request->merge([
+            'phone' => PhoneNumber::normalizeLocal(
+                (string) $request->input('phone'),
+                (string) $request->input('country_code')
+            ),
+        ]);
+
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:suppliers,email,' . $user->id,
-            'phone' => 'required|string|unique:suppliers,phone,' . $user->id,
+            'country_code' => ['required', 'string', 'max:10', 'regex:/^\+[0-9-]+$/'],
+            'phone' => [
+                'required', 'digits_between:7,15',
+                Rule::unique('suppliers', 'phone')
+                    ->where(fn ($query) => $query->where('country_code', $request->input('country_code')))
+                    ->ignore($user->id),
+            ],
             'company_name' => 'required|string|max:255',
             'password' => 'nullable|string|min:6|confirmed',
         ]);
@@ -107,6 +122,7 @@ class SellerController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
+        $user->country_code = $request->country_code;
         $user->company_name = $request->company_name;
         if ($request->filled('password')) {
             $user->password = \Illuminate\Support\Facades\Hash::make($request->password);

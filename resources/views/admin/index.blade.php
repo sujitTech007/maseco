@@ -385,6 +385,56 @@
 
     </div>
 
+    <div class="row mt-3 g-3">
+      <div class="col-lg-6 col-12">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div>
+                <h5 class="mb-1">Newsletter subscribers</h5>
+                <small class="text-muted">{{ $newsletterCount }} total subscribers</small>
+              </div>
+              <a class="btn btn-sm btn-outline-primary" href="{{ route('admin.newsletter.list') }}">View all</a>
+            </div>
+            @forelse($recentNewsletters as $newsletter)
+              <div class="d-flex justify-content-between border-top py-2">
+                <a href="mailto:{{ $newsletter->email }}">{{ $newsletter->email }}</a>
+                <small class="text-muted">{{ $newsletter->created_at?->format('d M Y') }}</small>
+              </div>
+            @empty
+              <p class="text-muted mb-0">No newsletter subscribers yet.</p>
+            @endforelse
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-12">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div>
+                <h5 class="mb-1">Contact submissions</h5>
+                <small class="text-muted">{{ $contactCount }} total submissions</small>
+              </div>
+              <a class="btn btn-sm btn-outline-primary" href="{{ route('admin.contact.list') }}">View all</a>
+            </div>
+            @forelse($recentContacts as $contact)
+              <div class="border-top py-2">
+                <div class="d-flex justify-content-between">
+                  <strong>{{ $contact->name }}</strong>
+                  <small class="text-muted">{{ $contact->created_at?->format('d M Y') }}</small>
+                </div>
+                <div><a href="mailto:{{ $contact->email }}">{{ $contact->email }}</a></div>
+                <small class="text-muted">{{ $contact->phone }}</small>
+              </div>
+            @empty
+              <p class="text-muted mb-0">No contact submissions yet.</p>
+            @endforelse
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 

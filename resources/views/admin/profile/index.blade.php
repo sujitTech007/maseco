@@ -131,14 +131,11 @@
 
                                 <div class="profile-input-wrap">
                                     <i class="fa-solid fa-phone"></i>
-                                    <input
-                                        type="number"
-                                        name="phone"
-                                        id="phone"
-                                        placeholder="Enter your phone"
-                                        class="form-control"
-                                        required
-                                    >
+                                    @include('auth.partials.phone-input', [
+                                        'phoneInputId' => 'admin_phone',
+                                        'phoneInputClass' => 'form-control',
+                                        'phonePlaceholder' => 'Enter your phone',
+                                    ])
                                 </div>
                             </div>
                         </div>

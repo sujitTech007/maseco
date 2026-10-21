@@ -117,7 +117,7 @@
                                 </td>
 
                                 <td>
-                                    <p class="seller-cell-text">{{ $supplier->phone }}</p>
+                                    <p class="seller-cell-text">{{ trim(($supplier->country_code ?? '') . ' ' . $supplier->phone) }}</p>
                                 </td>
 
                                 <td>
@@ -349,7 +349,7 @@
 
         document.getElementById('modalSupplierEmail').textContent = supplier.email || '';
 
-        document.getElementById('modalSupplierPhone').textContent = supplier.phone || '';
+        document.getElementById('modalSupplierPhone').textContent = [supplier.country_code, supplier.phone].filter(Boolean).join(' ');
 
         document.getElementById('modalSupplierCompany').textContent = supplier.company_name || '';
 

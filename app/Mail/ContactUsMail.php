@@ -25,7 +25,7 @@ class ContactUsMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Maseco Inquiry')
+        return $this->subject('We received your message | Maseco')
                     ->view('emails.contact-us');
     }
 }

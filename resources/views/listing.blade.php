@@ -150,7 +150,7 @@
                                 </select>
                             </div>
 
-                            <button type="submit" class="btn theme_btn{ w-100 py-2">
+                            <button type="submit" class="btn theme_btn w-100 py-2">
                                 <i class="fa-solid fa-filter me-2"></i>Apply Filters
                             </button>
 

@@ -148,7 +148,7 @@
                         @endif
 
                         @if(optional($material->supplier)->phone)
-                            <a href="tel:{{ optional($material->supplier)->phone }}"
+                            <a href="tel:{{ optional($material->supplier)->country_code ? \App\Support\PhoneNumber::toE164(optional($material->supplier)->country_code, optional($material->supplier)->phone) : optional($material->supplier)->phone }}"
                                class="btn btn-outline-secondary px-4 py-2"
                                style="font-size:14px;">
                                 <i class="fa-solid fa-phone me-2"></i>Call Supplier
@@ -277,7 +277,11 @@
                         <div class="d-flex justify-content-between gap-3">
                             <span class="text-secondary" style="font-size:13px;">Phone</span>
                             <span class="fw-semibold text-end" style="font-size:13px;">
-                                {{ optional($material->supplier)->phone ?? 'N/A' }}
+                                @if(optional($material->supplier)->phone)
+                                    {{ trim((optional($material->supplier)->country_code ?? '') . ' ' . optional($material->supplier)->phone) }}
+                                @else
+                                    N/A
+                                @endif
                             </span>
                         </div>
                     </div>
