@@ -52,7 +52,7 @@
                         <li><i class="fa-solid fa-circle-check"></i> Discover sourcing options</li>
                     </ul>
 
-                    <a href="{{ route('subscription.plan') }}" class="plan-button">
+                    <a href="{{ route('subscription.plan') }}" class="btn theme-btn-outline">
                         Get started 
                     </a>
                 </article>
@@ -83,7 +83,7 @@
                         <li><i class="fa-solid fa-circle-check"></i> Supplier and vendor matching</li>
                     </ul>
 
-                    <a href="{{ route('subscription.plan') }}" class="plan-button plan-button-primary text-white">
+                    <a href="{{ route('subscription.plan') }}" class="btn theme-btn text-white">
                         Explore Premium 
                     </a>
                 </article>

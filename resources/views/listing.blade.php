@@ -166,7 +166,7 @@
 
             {{-- MATERIAL LISTINGS --}}
             <div class="col-lg-9 col-md-8">
-                <div class="row g-4">
+                <div class="row g-3">
 
                     @forelse($materials as $material)
                         @php
@@ -192,7 +192,7 @@
                                             alt="{{ $material->name }}">
                                     </a>
 
-                                    <span class="badge bg-white text_color_primary position-absolute top-0 start-0 m-3 shadow-sm">
+                                    <span class="badge bg-white text_color_primary position-absolute top-0 start-0 m-3 shadow-sm fs-11">
                                         <i class="fa-solid fa-circle-check me-1 fs-11"></i>
                                         Verified Listing
                                     </span>
@@ -242,7 +242,7 @@
                                         <a href="{{ route('listing.details', $material->id) }}"
                                            class="btn theme_btn text-white">
                                             View Details
-                                            <i class="fa-solid fa-arrow-right ms-1"></i>
+                                            <i class="fa-solid fa-arrow-right ms-0"></i>
                                         </a>
 
                                         @if(!Auth::guard('supplier')->check() && !Auth::guard('manufacturer')->check())
@@ -263,7 +263,7 @@
                                                 data-material-unit="{{ $material->unit }}"
                                                 data-material-supplier="{{ optional($material->supplier)->company_name ?? optional($material->supplier)->name ?? optional($material->manufacturer)->company_name ?? optional($material->manufacturer)->name ?? 'Supplier' }}"
                                                 data-material-location="{{ $material->location ?? '-' }}">
-                                                <i class="fa-solid fa-envelope me-2"></i>
+                                                <i class="fa-solid fa-envelope me-0"></i>
                                                 Contact {{ $contactType }}
                                             </button>
                                         @endif
@@ -317,7 +317,7 @@
         <div class="row">
           <div class="col-lg-5 col-md-12 border-end">
             <div class=" text-left mb-3">
-              <img id="enquiry-material-image" src="{{ asset('public/assets/images/blog-thumb-1.jpeg') }}" class="img-fluid mb-3" alt="Material">
+              <img id="enquiry-material-image" src="{{ asset('public/assets/images/blog-thumb-1.jpeg') }}" class="img-fluid w-100 mb-3" alt="Material">
               <div class=" detail-popup text-left mb-3">
                 <h6 id="enquiry-material-title"></h6>
                 <p class="mb-1"><strong id="enquiry-material-price"></strong></p>
@@ -328,7 +328,7 @@
             </div>
           </div>
           <div class="col-lg-7 col-md-12">
-            <h5 class="mb-3">Add few details to get quick response from the supplier</h5>
+            <h5 class="mb-3 fs-5">Add few details to get quick response from the supplier</h5>
             <form method="POST" action="{{ route('enquiry.store') }}">
                         @csrf
                         <div class="modal-body">

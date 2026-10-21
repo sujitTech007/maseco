@@ -990,6 +990,28 @@ ease-in-out;
 }
 
 
+.theme-btn-outline {
+    color: var(--primary-color);
+    background: #fff;
+    border: 1px solid var(--primary-color);
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 650;
+    text-align: center;
+    text-decoration: none;
+    transition: .25s ease;
+    padding: 10px 20px;
+    font-family: "Google Sans Flex", sans-serif;
+}
+
+.theme-btn-outline:hover {
+       color: #fff;
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+
+
 
 
 

@@ -4123,6 +4123,7 @@ form[action*="marketplace"] .form-label {
     margin: 0 0 25px;
     padding: 0;
     list-style: none;
+    min-height: 120px;
 }
 
 .plan-features li {
@@ -4148,39 +4149,6 @@ form[action*="marketplace"] .form-label {
     line-height: 1.6;
 }
 
-.plan-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
-    width: 100%;
-    min-height: 49px;
-    margin-top: auto;
-    padding: 12px 16px;
-    color: var(--primary-color);
-    background: #fff;
-    border: 1px solid var(--primary-color);
-    border-radius: 9px;
-    font-size: 14px;
-    font-weight: 650;
-    text-align: center;
-    text-decoration: none;
-    transition: .25s ease;
-}
-
-.plan-button:hover {
-    color: #fff;
-    background: var(--primary-color);
-    border-color: var(--primary-color);
-}
-
-.plan-button i {
-    transition: transform .25s ease;
-}
-
-.plan-button:hover i {
-    transform: translateX(3px);
-}
 
 /* Highlight Premium */
 .maseco-plan-featured {
@@ -4866,7 +4834,7 @@ form[action*="marketplace"] .form-label {
     font-size: 13px;
     border-radius: 6px;
     color: var(--primary-color);
-    padding: 10px 7px;
+    padding: 10px 6px;
 }
 
 .listing-page .btn:hover {
@@ -5115,6 +5083,9 @@ strong {
 }
 
 
+.supplier-directory-card .btn{
+    letter-spacing: 0;
+}
 .supplier-name {
     color: var(--primary-color);
     font-size: 18px;
@@ -5144,7 +5115,7 @@ strong {
     color: #2DAC92;
 }
 
-.supplier-primary-btn {
+/* .supplier-primary-btn {
     background: #2DAC92;
     color: #fff;
     border: 1px solid #2DAC92;
@@ -5155,20 +5126,9 @@ strong {
 .supplier-primary-btn:hover {
     background: var(--primary-color);
     color: #fff;
-}
+} */
 
-.supplier-secondary-btn {
-    background: #fff;
-    color: #2DAC92;
-    border: 1px solid #2DAC92;
-    font-size: 14px;
-    padding: 9px 8px;
-}
 
-.supplier-secondary-btn:hover {
-    background: #e7f5ef;
-    color: var(--primary-color);
-}
 
 
 

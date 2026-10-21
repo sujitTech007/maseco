@@ -124,7 +124,7 @@
 
                                 @if($supplier->phone)
                                     <a href="tel:{{ $supplier->phone }}"
-                                       class="btn supplier-primary-btn flex-fill">
+                                       class="btn theme-btn flex-fill">
                                         <i class="fa-solid fa-phone me-1"></i>
                                         Call Supplier
                                     </a>
@@ -132,7 +132,7 @@
 
                                 @if($supplier->email)
                                     <a href="mailto:{{ $supplier->email }}"
-                                       class="btn supplier-secondary-btn flex-fill">
+                                       class="btn theme-btn-outline flex-fill">
                                         <i class="fa-solid fa-envelope me-1"></i>
                                         Email
                                     </a>
