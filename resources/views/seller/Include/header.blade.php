@@ -28,13 +28,13 @@
 
         <!-- Vendor css -->
 
-        <link href="{{ asset('public/assets/seller/css/vendor.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('public/assets/css/vendor.min.css') }}" rel="stylesheet" type="text/css">
 
 
 
         <!-- App css -->
 
-        <link href="{{ asset('public/assets/seller/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style">
+        <link href="{{ asset('public/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style">
 
 
 
@@ -42,7 +42,7 @@
 
         <link href="{{ asset('public/assets/css/all.min.css') }}" rel="stylesheet" type="text/css">
 
-        <link href="{{ asset('public/assets/seller/css/custom.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('public/assets/css/custom.css') }}" rel="stylesheet" type="text/css">
         @if (Request::is('seller/profile'))
             <link href="{{ asset('public/assets/css/bootstrap-select.min.css') }}" rel="stylesheet" type="text/css">
             <link href="{{ asset('public/assets/css/phone-country-code.css') }}" rel="stylesheet" type="text/css">
@@ -53,16 +53,8 @@
         <!-- Theme Config Js -->
 
         <script src="{{ asset('public/assets/js/config.js.download') }}"></script>
-
-
-
-
         <script type="text/javascript" src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-
-
+        <script src="{{ asset('public/assets/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('public/assets/js/chart.js') }}"></script>
 
     </head>

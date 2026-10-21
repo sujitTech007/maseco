@@ -701,13 +701,13 @@
 
     <!-- Vendor js -->
 
-    <script src="{{ asset('public/assets/seller/js/vendor.min.js.download') }}"></script>
+    <script src="{{ asset('public/assets/js/vendor.min.js.download') }}"></script>
 
 
 
     <!-- App js -->
 
-    <script src="{{ asset('public/assets/seller/js/app.js.download') }}"></script>
+    <script src="{{ asset('public/assets/js/app.js.download') }}"></script>
 
 
 

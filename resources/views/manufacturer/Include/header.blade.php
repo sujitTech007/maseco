@@ -28,13 +28,13 @@
 
         <!-- Vendor css -->
 
-        <link href="{{ asset('public/assets/seller/css/vendor.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('public/assets/css/vendor.min.css') }}" rel="stylesheet" type="text/css">
 
 
 
         <!-- App css -->
 
-        <link href="{{ asset('public/assets/seller/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style">
+        <link href="{{ asset('public/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style">
 
 
 
@@ -42,7 +42,7 @@
 
         <link href="{{ asset('public/assets/css/all.min.css') }}" rel="stylesheet" type="text/css">
 
-        <link href="{{ asset('public/assets/seller/css/custom.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('public/assets/css/custom.css') }}" rel="stylesheet" type="text/css">
         @if (Request::is('manufacturer/profile'))
             <link href="{{ asset('public/assets/css/bootstrap-select.min.css') }}" rel="stylesheet" type="text/css">
             <link href="{{ asset('public/assets/css/phone-country-code.css') }}" rel="stylesheet" type="text/css">
