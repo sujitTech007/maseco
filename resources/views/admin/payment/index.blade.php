@@ -38,7 +38,7 @@
         });
     @endphp
 
-    <div class="payments-container">
+    <div class="page-container p-3 payments-container">
 
         {{-- Summary Cards --}}
         <div class="row g-3 payments-summary">

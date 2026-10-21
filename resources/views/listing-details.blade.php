@@ -26,15 +26,15 @@
             <div class="col-lg-5">
                 <div class="bg-white border rounded-3 p-3 h-100">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="small text-secondary">Material Preview</span>
+                        <span class="text-uppercase fw-semibold fs-14 primary-text-color">Material Preview</span>
 
                         @if(($material->stock ?? 0) > 0)
-                            <span class="badge rounded-pill"
+                            <span class="badge rounded-pill fs-12"
                                   style="background:#e5f6ef;color:#18794e;">
                                 In Stock
                             </span>
                         @else
-                            <span class="badge bg-light text-danger border">
+                            <span class="badge bg-light text-danger fs-12 border">
                                 Out of Stock
                             </span>
                         @endif
@@ -61,8 +61,7 @@
             <div class="col-lg-7">
                 <div class="bg-white border rounded-3 p-4 h-100">
 
-                    <span class="text-uppercase fw-semibold"
-                          style="font-size:12px;letter-spacing:1px;color:#2DAC92;">
+                    <span class="text-uppercase fw-semibold fs-14 primary-text-color">
                         Material Information
                     </span>
 
@@ -297,8 +296,7 @@
 
                     @if(!Auth::guard('supplier')->check() && !Auth::guard('manufacturer')->check())
                         <button type="button"
-                            class="btn text-white w-100 mt-4 py-2"
-                            style="background:#2DAC92;font-size:14px;"
+                            class="btn theme-btn fs-14 w-100 mt-4 p-3 fw-bold"
                             data-bs-toggle="modal"
                             data-bs-target="#supplierModal"
                             data-material-id="{{ $material->id }}"
@@ -364,7 +362,7 @@
                                 @auth
                                 <button type="submit" class="btn btn-primary">Submit Enquiry</button>
                                 @else
-                                <a class="btn btn-primary" href="{{ route('login') }}">Login to Continue</a>
+                                <a class="btn theme-btn" href="{{ route('login') }}">Login to Continue</a>
                                 @endauth
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>

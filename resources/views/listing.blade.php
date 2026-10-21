@@ -328,25 +328,27 @@
             </div>
           </div>
           <div class="col-lg-7 col-md-12">
-            <h5 class="mb-3 fs-5">Add few details to get quick response from the supplier</h5>
+            <h5 class="mb-1 fs-5 fw-normal px-3">Add few details to get quick response from the supplier</h5>
             <form method="POST" action="{{ route('enquiry.store') }}">
                         @csrf
                         <div class="modal-body">
                             @guest
-                                <div class="alert alert-warning">Please <a href="{{ route('login') }}">login</a> to submit an enquiry.</div>
+                                <div class="alert alert-warning fs-12 mb-2 p-1 px-2">Please <a href="{{ route('login') }}">login</a> to submit an enquiry.</div>
                             @endguest
                             <input type="hidden" name="material_id" id="enquiry-material-id" value="">
                             <div class="mb-3">
                                 <label class="form-label">Material</label>
                                 <input type="text" id="enquiry-material-name" value="" class="form-control" disabled>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label">Quantity</label>
-                                <input type="number" min="1" name="quantity" class="form-control" required>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Expected Price (optional)</label>
-                                <input type="number" step="0.01" name="expected_price" class="form-control">
+                            <div class="row">
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Quantity</label>
+                                    <input type="number" min="1" name="quantity" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3 col-md-6">
+                                        <label class="form-label">Expected Price (optional)</label>
+                                        <input type="number" step="0.01" name="expected_price" class="form-control">
+                                    </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Message</label>
@@ -355,11 +357,11 @@
                         </div>
                         <div class="modal-footer">
                             @auth
-                            <button type="submit" class="btn theme_btn{">Submit Enquiry</button>
+                            <button type="submit" class="btn theme_link m-0 fs-6">Submit Enquiry</button>
                             @else
-                            <a class="btn theme_btn{" href="{{ route('login') }}">Login to Continue</a>
+                            <a class="btn theme_link m-0 fs-6" href="{{ route('login') }}">Login to Continue</a>
                             @endauth
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                         </div>
                     </form>
           </div>

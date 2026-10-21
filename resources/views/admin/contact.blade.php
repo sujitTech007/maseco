@@ -1,18 +1,9 @@
 @include('admin.Include.header')
 
 <div class="page-content contact-page">
-
+<div class="page-container p-3">
     {{-- Page Header --}}
-    <!-- <div class="contact-page-header">
-        <div>
-            <h3>Contact Us List</h3>
-            <div class="contact-breadcrumb">
-                <a href="{{ url('/admin/dashboard') }}">Dashboard</a>
-                <span>›</span>
-                <span class="current">Contact Us List</span>
-            </div>
-        </div>
-    </div> -->
+   
 
     @if(session('success'))
         <div class="contact-alert">
@@ -203,6 +194,7 @@
 
         </div>
     </div>
+</div>
 </div>
 
 <script>

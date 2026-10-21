@@ -1,6 +1,6 @@
 @include('admin.Include.header')
 <div class="page-content newsletter-page">
-
+<div class="page-container p-3">
     {{-- Page Header --}}
     <!-- <div class="newsletter-header">
         <div>
@@ -180,6 +180,7 @@
             </div>
 
         </div>
+    </div>
     </div>
 </div>
 

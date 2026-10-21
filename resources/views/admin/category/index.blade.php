@@ -1,24 +1,16 @@
 @include('admin.Include.header')
 
 <div class="page-content category-page">
-    <div class="container mt-0">
+    <div class="page-container p-3">
 
-        <!-- <div class="mb-3">
-            <h3 class="category-heading">Category</h3>
-
-            <div class="category-breadcrumb">
-                <a href="https://maseco.ca/UAT/admin/dashboard">Dashboard</a>
-                <span class="separator">›</span>
-                <span class="current">Category</span>
-            </div>
-        </div> -->
+    
 
         @php
             $categoryTotal = $categories->count();
         @endphp
 
         <div class="category-topbar">
-            <p>Manage the categories used to organize marketplace materials.</p>
+            <h4>Manage the categories used to organize marketplace materials.</h4>
 
             <a href="{{ route('admin.category.create') }}" class="category-add-btn">
                 <i class="fa-solid fa-plus"></i>

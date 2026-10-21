@@ -19,7 +19,7 @@
         type="tel"
         name="phone"
         id="{{ $phoneInputId }}"
-        class="{{ $phoneInputClass }}"
+        class="{{ $phoneInputClass }} border-0 px-0"
         value="{{ old('phone', $phoneValue ?? '') }}"
         placeholder="{{ $phonePlaceholder ?? 'Enter phone number' }}"
         autocomplete="tel-national"

@@ -1,6 +1,6 @@
 @include('admin.Include.header')
 <div class="page-content subscription-page">
-    <div class="container-fluid px-3 px-lg-4">
+    <div class="page-container p-3">
 
         {{-- Page Heading --}}
         <div class="subscription-heading">
