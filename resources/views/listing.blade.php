@@ -192,10 +192,43 @@
                                             alt="{{ $material->name }}">
                                     </a>
 
-                                    <span class="badge bg-white text_color_primary position-absolute top-0 start-0 m-3 shadow-sm fs-11">
+                                    <!-- <div class="d-flex position-absolute top-0 start-0 m-3">
+                                        <span class="badge bg-white text_color_primary shadow-sm fs-11">
                                         <i class="fa-solid fa-circle-check me-1 fs-11"></i>
                                         Verified Listing
                                     </span>
+                                    </div> -->
+                                    <!-- Verified Listing Badge -->
+                                <div class="d-flex position-absolute top-0 start-0 p-2 left-0 justify-content-between w-100">
+                                    <span class="badge bg-white text_color_primary shadow-sm fs-11">
+                                        <i class="fa-solid fa-circle-check me-1 fs-11"></i>
+                                        Verified Listing
+                                    </span>
+                                    <div class="d-flex gap-2 align-items-center">
+                                                                            <!-- Save -->
+                                    <button type="button"
+                                        class="listing_badge border-0 rounded-circle shadow-sm"
+                                        title="Save Listing">
+                                        <i class="fa-solid fa-bookmark text-primary"></i>
+                                    </button>
+
+                                    <!-- Wishlist -->
+                                    <button type="button"
+                                        class="listing_badge border-0 rounded-circle shadow-sm"
+                                        title="Add to Wishlist">
+                                        <i class="fa-solid fa-heart text-danger"></i>
+                                    </button>
+
+                                    <!-- Compare -->
+                                    <button type="button"
+                                        class="listing_badge border-0 rounded-circle shadow-sm"
+                                        title="Compare Listing">
+                                        <i class="fa-solid fa-scale-balanced text-success"></i>
+                                    </button>
+                                    </div>
+                                </div>
+
+                                
                                 </div>
 
                                 {{-- Details --}}
