@@ -482,3 +482,25 @@ position: absolute;
     display: flex;
     align-items: center;
 }
+
+.mobileNumber-border-0 .phone-country-field {
+    border: none;
+}
+
+.mobileNumber-border-0 .dropdown.bootstrap-select button.btn.dropdown-toggle{
+    padding: 7px 0;
+}
+.login-form .form-control.otp-input {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ddd !important;
+    color: #000;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.login-form .form-control.otp-input.active {
+    border: 2px solid rgba(45, 172, 146, 1) !important;
+    background-color: #eaffea;
+    outline: none;
+}

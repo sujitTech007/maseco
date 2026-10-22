@@ -10,17 +10,20 @@
 
     text-align: center;
 
-    padding: 20px 38px 20px 38px;
+    padding: 17px 10px;
 
     position: static;
 
     height: auto;
 
-    height: 70px;
 
     width: 100%;
 
 }
+ .sidenav-menu .logo img{
+    height: 35px;
+    width: auto;
+ }
 
 .side-nav .side-nav-item .side-nav-link{
 
@@ -1835,4 +1838,29 @@ button.btn.btn-success.d-flex.align-items-center.gap-1.addbtn {
 
 .custom-filter-bars-icon .bar3 {
   width: 50%;       /* shortest */
+}
+
+
+
+.sidebar-collapsed .app-topbar{
+    padding-left: 70px;
+}
+
+
+.sidebar-collapsed .page-content{
+    margin-left: 70px;
+}
+.sidebar-collapsed ul.side-nav span.menu-text{
+    display: none;
+}
+.sidebar-collapsed .sidenav-menu{
+    width: 70px;
+}
+.sidebar-collapsed .sidebar-collapsed-none,
+.sidebar-collapsed-block{
+    display: none;
+}
+
+.sidebar-collapsed .sidebar-collapsed-block{
+    display: block;
 }
