@@ -77,17 +77,67 @@
 
         {{-- Plans Table --}}
         <div class="subscription-table-card">
-            <div class="subscription-table-header">
-                <div>
-                    <h5>All Subscription Plans</h5>
-                    <p>Manage plan pricing, features and commission rates.</p>
-                </div>
+           <!-- Subscription Plans Header & Filters -->
+<div class="subscription-table-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3">
 
-                <div class="subscription-count">
-                    {{ $subscriptionPlans->count() }}
-                    {{ $subscriptionPlans->count() === 1 ? 'plan' : 'plans' }}
-                </div>
-            </div>
+    <div>
+        <h5>All Subscription Plans</h5>
+        <p>Manage plan pricing, features and commission rates.</p>
+    </div>
+
+    <div class="d-flex flex-wrap align-items-center gap-2">
+
+        <!-- Plan Status -->
+        <select class="form-select"
+                id="subscription-status-filter"
+                aria-label="Filter by plan status"
+                style="width: 155px;">
+            <option value="">All Statuses</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+            <option value="draft">Draft</option>
+        </select>
+
+        <!-- Billing Type -->
+        <select class="form-select"
+                id="subscription-billing-filter"
+                aria-label="Filter by billing type"
+                style="width: 165px;">
+            <option value="">All Billing Types</option>
+            <option value="monthly">Monthly</option>
+            <option value="yearly">Yearly</option>
+            <option value="one-time">One-Time</option>
+        </select>
+
+        <!-- Start Date -->
+        <input type="date"
+               class="form-control"
+               id="subscription-start-date"
+               aria-label="Start date"
+               style="width: 155px;">
+
+        <!-- End Date -->
+        <input type="date"
+               class="form-control"
+               id="subscription-end-date"
+               aria-label="End date"
+               style="width: 155px;">
+
+        <!-- Filter Button -->
+        <button type="button"
+                class="btn btn-outline-success"
+                id="subscription-filter-btn">
+            <i class="ri-filter-3-line me-1"></i> Filter
+        </button>
+
+        <!-- Plan Count -->
+        <!-- <div class="subscription-count">
+            {{ $subscriptionPlans->count() }}
+            {{ $subscriptionPlans->count() === 1 ? 'plan' : 'plans' }}
+        </div> -->
+
+    </div>
+</div>
 
             <div class="table-responsive">
                 <table class="table subscription-table align-middle mb-0">

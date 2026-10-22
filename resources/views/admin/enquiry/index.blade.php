@@ -85,17 +85,46 @@
         {{-- Enquiry Table Card --}}
         <div class="enquiry-card">
 
-            <div class="enquiry-card-heading">
-                <div>
-                    <h5>All Enquiries</h5>
-                    <p>Review buyer requests, materials and expected prices.</p>
-                </div>
+           <div class="enquiry-card-heading d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3">
+    <div>
+        <h5>All Enquiries</h5>
+        <p>Review buyer requests, materials and expected prices.</p>
+    </div>
 
-                <span class="enquiry-total-label">
-                    {{ $enquiryCollection->count() }}
-                    {{ $enquiryCollection->count() === 1 ? 'record' : 'records' }}
-                </span>
-            </div>
+    <div class="d-flex flex-wrap align-items-center gap-2">
+        <select class="form-select" id="enquiry-status-filter" aria-label="Filter by status" style="width: 160px;">
+            <option value="">All Statuses</option>
+            <option value="pending">Pending</option>
+            <option value="in-progress">In Progress</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Rejected</option>
+            <option value="completed">Completed</option>
+        </select>
+
+        <input type="date"
+               class="form-control"
+               id="enquiry-start-date"
+               aria-label="Start date"
+               style="width: 155px;">
+
+        <input type="date"
+               class="form-control"
+               id="enquiry-end-date"
+               aria-label="End date"
+               style="width: 155px;">
+
+        <button type="button"
+                class="btn btn-outline-success"
+                id="enquiry-filter-btn">
+            <i class="ri-filter-3-line me-1"></i> Filter
+        </button>
+
+        <span class="enquiry-total-label">
+            {{ $enquiryCollection->count() }}
+            {{ $enquiryCollection->count() === 1 ? 'record' : 'records' }}
+        </span>
+    </div>
+</div>
 
             {{-- Table Controls --}}
             <div class="enquiry-table-controls">

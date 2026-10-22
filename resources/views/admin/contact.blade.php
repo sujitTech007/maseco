@@ -63,17 +63,64 @@
         {{-- Contact Table --}}
         <div class="contact-card">
 
-            <div class="contact-card-header">
-                <div>
-                    <h5>Contact Submissions</h5>
-                    <p>View contact details and how visitors found MASECO.</p>
-                </div>
+           <!-- Contact Submissions Header & Filters -->
+<div class="contact-card-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3">
 
-                <span class="contact-record-count">
-                    {{ $contactCollection->count() }}
-                    {{ $contactCollection->count() === 1 ? 'record' : 'records' }}
-                </span>
-            </div>
+    <div>
+        <h5>Contact Submissions</h5>
+        <p>View contact details and how visitors found MASECO.</p>
+    </div>
+
+    <div class="d-flex flex-wrap align-items-center gap-2">
+
+        <!-- Submission Status -->
+        <select class="form-select"
+                id="contact-status-filter"
+                aria-label="Filter by submission status"
+                style="width: 160px;">
+            <option value="">All Statuses</option>
+            <option value="new">New</option>
+            <option value="in_progress">In Progress</option>
+            <option value="resolved">Resolved</option>
+            <option value="closed">Closed</option>
+        </select>
+
+        <!-- Visitor Source -->
+        <select class="form-select"
+                id="contact-source-filter"
+                aria-label="Filter by visitor source"
+                style="width: 170px;">
+            <option value="">All Sources</option>
+            <option value="google">Google</option>
+            <option value="social_media">Social Media</option>
+            <option value="direct">Direct</option>
+            <option value="referral">Referral</option>
+            <option value="other">Other</option>
+        </select>
+
+        <!-- Start Date -->
+        <input type="date"
+               class="form-control"
+               id="contact-start-date"
+               aria-label="Start date"
+               style="width: 155px;">
+
+        <!-- End Date -->
+        <input type="date"
+               class="form-control"
+               id="contact-end-date"
+               aria-label="End date"
+               style="width: 155px;">
+
+        <!-- Filter Button -->
+        <button type="button"
+                class="btn btn-outline-success"
+                id="contact-filter-btn">
+            <i class="ri-filter-3-line me-1"></i> Filter
+        </button>
+
+        <!-- Record Count -->
+        <span class="contact
 
             {{-- Table Controls --}}
             <div class="contact-controls">

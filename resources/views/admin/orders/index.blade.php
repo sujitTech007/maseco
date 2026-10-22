@@ -62,22 +62,83 @@
         <!-- Orders Table -->
         <div class="orders-table-card">
 
-            <div class="orders-table-header">
-                <div>
-                    <h4>Order Management</h4>
-                    <p>Review orders and their current payment and fulfilment status.</p>
-                </div>
+           <!-- Order Management Header & Filters -->
+<div class="orders-table-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4">
 
-                <div class="orders-search">
-                    <i class="ri-search-line"></i>
-                    <input
-                        type="search"
-                        id="orders-search-input"
-                        placeholder="Search orders..."
-                        aria-label="Search orders"
-                    >
-                </div>
-            </div>
+    <div>
+        <h4>Order Management</h4>
+        <p>Review orders and their current payment and fulfilment status.</p>
+    </div>
+
+    <div class="row g-3 align-items-center flex-grow-1 ms-xl-3">
+
+        <!-- Search Orders -->
+        <div class="col-12 col-md-6 col-xl-3">
+            <input
+                type="search"
+                class="form-control"
+                id="orders-search-input"
+                placeholder="Search orders..."
+                aria-label="Search orders"
+            >
+        </div>
+
+        <!-- Order Status -->
+        <div class="col-12 col-md-6 col-xl-2">
+            <select class="form-select" id="orders-status-filter" aria-label="Filter by order status">
+                <option value="">All Order Statuses</option>
+                <option value="pending">Pending</option>
+                <option value="processing">Processing</option>
+                <option value="shipped">Shipped</option>
+                <option value="delivered">Delivered</option>
+                <option value="cancelled">Cancelled</option>
+            </select>
+        </div>
+
+        <!-- Payment Status -->
+        <div class="col-12 col-md-6 col-xl-2">
+            <select class="form-select" id="orders-payment-filter" aria-label="Filter by payment status">
+                <option value="">All Payment Statuses</option>
+                <option value="pending">Pending</option>
+                <option value="paid">Paid</option>
+                <option value="failed">Failed</option>
+                <option value="refunded">Refunded</option>
+            </select>
+        </div>
+
+        <!-- Start Date -->
+        <div class="col-12 col-md-6 col-xl-2">
+            <input
+                type="date"
+                class="form-control"
+                id="orders-start-date"
+                aria-label="Start date"
+            >
+        </div>
+
+        <!-- End Date -->
+        <div class="col-12 col-md-6 col-xl-2">
+            <input
+                type="date"
+                class="form-control"
+                id="orders-end-date"
+                aria-label="End date"
+            >
+        </div>
+
+        <!-- Filter Button -->
+        <div class="col-12 col-md-6 col-xl-1">
+            <button
+                type="button"
+                class="btn btn-outline-success w-100"
+                id="orders-filter-btn"
+            >
+                Filter
+            </button>
+        </div>
+
+    </div>
+</div>
 
             <div class="table-responsive">
                 <table class="table orders-table table-hover mb-0"

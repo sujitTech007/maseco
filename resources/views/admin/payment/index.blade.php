@@ -96,17 +96,63 @@
         {{-- Payments Table --}}
         <div class="payments-card">
 
-            <div class="payments-card-heading">
-                <div>
-                    <h5>Payment Transactions</h5>
-                    <p>Review payment status, amounts and transaction references.</p>
-                </div>
+            <!-- Payment Transactions Header & Filters -->
+<div class="payments-card-heading d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3">
 
-                <span class="payments-record-count">
-                    {{ $paymentCollection->count() }}
-                    {{ $paymentCollection->count() === 1 ? 'record' : 'records' }}
-                </span>
-            </div>
+    <div>
+        <h5>Payment Transactions</h5>
+        <p>Review payment status, amounts and transaction references.</p>
+    </div>
+
+    <div class="d-flex flex-wrap align-items-center gap-2">
+
+        <!-- Payment Status -->
+        <select class="form-select" id="payments-status-filter" aria-label="Filter by payment status" style="width: 165px;">
+            <option value="">All Statuses</option>
+            <option value="pending">Pending</option>
+            <option value="completed">Completed</option>
+            <option value="failed">Failed</option>
+            <option value="refunded">Refunded</option>
+        </select>
+
+        <!-- Payment Method -->
+        <select class="form-select" id="payments-method-filter" aria-label="Filter by payment method" style="width: 165px;">
+            <option value="">All Methods</option>
+            <option value="card">Card</option>
+            <option value="bank_transfer">Bank Transfer</option>
+            <option value="paypal">PayPal</option>
+            <option value="other">Other</option>
+        </select>
+
+        <!-- Start Date -->
+        <input type="date"
+               class="form-control"
+               id="payments-start-date"
+               aria-label="Start date"
+               style="width: 155px;">
+
+        <!-- End Date -->
+        <input type="date"
+               class="form-control"
+               id="payments-end-date"
+               aria-label="End date"
+               style="width: 155px;">
+
+        <!-- Filter Button -->
+        <button type="button"
+                class="btn btn-outline-success"
+                id="payments-filter-btn">
+            <i class="ri-filter-3-line me-1"></i> Filter
+        </button>
+
+        <!-- Record Count -->
+        <span class="payments-record-count">
+            {{ $paymentCollection->count() }}
+            {{ $paymentCollection->count() === 1 ? 'record' : 'records' }}
+        </span>
+
+    </div>
+</div>
 
             {{-- Table Controls --}}
             <div class="payments-controls">

@@ -46,25 +46,82 @@
 
         <div class="category-table-card">
 
-            <div class="category-table-header">
-                <div>
-                    <h4 class="category-table-title">Category Directory</h4>
-                    <p class="category-table-subtitle">
-                        View, edit, or remove marketplace categories.
-                    </p>
-                </div>
+           <!-- Category Directory Header & Filters -->
+<div class="category-table-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4">
 
-                <div class="category-search">
-                    <i class="ri-search-line"></i>
-                    <input
-                        type="search"
-                        id="category-search-input"
-                        placeholder="Search categories..."
-                        aria-label="Search categories"
-                    >
-                </div>
-            </div>
+    <div>
+        <h4 class="category-table-title mb-1">Category Directory</h4>
+        <p class="category-table-subtitle text-muted mb-0">
+            View, edit, or remove marketplace categories.
+        </p>
+    </div>
 
+    <div class="row g-3 align-items-center flex-grow-1 ms-xl-3">
+
+        <!-- Search Categories -->
+        <div class="col-12 col-md-6 col-xl-3">
+            <input
+                type="search"
+                class="form-control"
+                id="category-search-input"
+                placeholder="Search categories..."
+                aria-label="Search categories"
+            >
+        </div>
+
+        <!-- Status Filter -->
+        <div class="col-12 col-md-6 col-xl-2">
+            <select class="form-select" id="category-status">
+                <option value="">(Status)</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+            </select>
+        </div>
+
+        <!-- Category Type -->
+        <div class="col-12 col-md-6 col-xl-2">
+            <select class="form-select" id="category-type">
+                <option value="">Category Type</option>
+                <option value="fabric">Fabric</option>
+                <option value="garment">Garment</option>
+                <option value="accessories">Accessories</option>
+                <option value="recycled">Recycled Textiles</option>
+            </select>
+        </div>
+
+        <!-- Start Date -->
+        <div class="col-12 col-md-6 col-xl-2">
+            <input
+                type="date"
+                class="form-control"
+                id="category-start-date"
+                aria-label="Start date"
+            >
+        </div>
+
+        <!-- End Date -->
+        <div class="col-12 col-md-6 col-xl-2">
+            <input
+                type="date"
+                class="form-control"
+                id="category-end-date"
+                aria-label="End date"
+            >
+        </div>
+
+        <!-- Filter Button -->
+        <div class="col-12 col-md-6 col-xl-1">
+            <button
+                type="button"
+                class="btn btn-outline-success w-100"
+                id="category-filter-btn"
+            >
+                Filter
+            </button>
+        </div>
+
+    </div>
+</div>
             <div class="table-responsive">
                 <table class="table category-table table-hover mb-0"
                        id="category-directory-table"
