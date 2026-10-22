@@ -8,9 +8,9 @@
             <div>
                 <div class="subscription-breadcrumb">
                     <a href="{{ url('/admin/dashboard') }}">Dashboard</a>
-                    <i class="ri-arrow-right-s-line"></i>
+                    <i class="fa-solid fa-chevron-right"></i>
                     <a href="{{ route('admin.subscription.create') }}">Subscription Plans</a>
-                    <i class="ri-arrow-right-s-line"></i>
+                    <i class="fa-solid fa-chevron-right"></i>
                     <span>Edit Plan</span>
                 </div>
 
@@ -20,7 +20,7 @@
 
             <a href="{{ route('admin.subscription.create') }}"
                class="subscription-back-btn">
-                <i class="ri-arrow-left-line"></i>
+                <i class="fa-solid fa-arrow-left"></i>
                 Back to Plans
             </a>
         </div>
@@ -30,7 +30,7 @@
 
             <div class="subscription-card-heading">
                 <div class="subscription-heading-icon">
-                    <i class="ri-price-tag-3-line"></i>
+                    <i class="fa-solid fa-tag"></i>
                 </div>
                 <div>
                     <h4>Plan Information</h4>
@@ -40,7 +40,7 @@
 
             @if ($errors->any())
                 <div class="subscription-error-alert">
-                    <i class="ri-error-warning-line"></i>
+                    <i class="fa-solid fa-triangle-exclamation"></i>
                     <div>
                         <strong>Please check the following:</strong>
                         <ul>
@@ -111,7 +111,7 @@
                                 Plan Price <span>*</span>
                             </label>
                             <div class="subscription-input-group">
-                                <span><i class="ri-money-dollar-circle-line"></i></span>
+                                <span><i class="fa-solid fa-circle-dollar-to-slot"></i></span>
                                 <input
                                     type="number"
                                     id="plan_price"
@@ -162,7 +162,7 @@
                         >{{ old('features.0', is_array($plan->features) ? implode("\n", $plan->features) : $plan->features) }}</textarea>
 
                         <div class="subscription-field-hint">
-                            <i class="ri-information-line"></i>
+                            <i class="fa-solid fa-circle-info"></i>
                             Add each feature on a separate line.
                         </div>
 
@@ -207,7 +207,7 @@
                     </a>
 
                     <button type="submit" class="subscription-save-btn">
-                        <i class="ri-check-line"></i>
+                        <i class="fa-solid fa-check"></i>
                         Update Plan
                     </button>
                 </div>

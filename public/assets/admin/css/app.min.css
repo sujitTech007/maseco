@@ -578,7 +578,8 @@ body {
 
     -webkit-text-size-adjust: 100%;
 
-    -webkit-tap-highlight-color: transparent
+    -webkit-tap-highlight-color: transparent;
+    background: #f3f8f6;
 
 }
 
@@ -32980,7 +32981,7 @@ fieldset:disabled .btn {
 
     /* background: #fff;
      */
-     background-color: #edf7f2 !important;
+     background-color: #fff;
 
     min-height: var(--abstack-topbar-height);
 
@@ -33559,223 +33560,315 @@ php[data-bs-theme=dark] #light-dark-mode .dark-mode-icon {
     display: block
 
 }
+/* ==========================================
+   MASECO PREMIUM ADMIN SIDEBAR
+========================================== */
 
+.sidenav-menu {
+    --maseco-dark: #087f70;
+    --maseco-main: #108f7d;
+    --maseco-mint: #43d6b1;
+    --maseco-text: #e7f7f3;
 
+    position: fixed;
+    isolation: isolate;
+    background:
+        radial-gradient(
+            circle at 0% 18%,
+            rgba(65, 220, 180, 0.19) 0,
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 100% 55%,
+            rgba(24, 177, 153, 0.18) 0,
+            transparent 35%
+        ),
+        linear-gradient(
+            160deg,
+            #087f70 0%,
+            #108f7d 42%,
+            #087b70 100%
+        ) !important;
 
-.side-nav {
-
-    padding-top: 12px;
-
-    padding-left: 0;
-
-    list-style-type: none;
-
-    display: -webkit-box;
-
-    display: -ms-flexbox;
-
-    display: flex;
-
-    -webkit-box-orient: vertical;
-
-    -webkit-box-direction: normal;
-
-    -ms-flex-direction: column;
-
-    flex-direction: column;
-
-    gap: 4px
-
+    box-shadow: 5px 0 24px rgba(9, 67, 58, 0.08);
 }
 
-
-
-.side-nav .side-nav-item .side-nav-link {
-
-    display: -webkit-box;
-
-    display: -ms-flexbox;
-
-    display: flex;
-
-    -webkit-box-align: center;
-
-    -ms-flex-align: center;
-
-    align-items: center;
-
-    gap: var(--abstack-menu-link-item-gap);
-
-    position: relative;
-
-    white-space: nowrap;
-
-    color: var(--abstack-menu-item-color);
-
-    -webkit-transition: all .25s ease-in-out;
-
-    transition: all .25s ease-in-out;
-
-    line-height: var(--abstack-menu-item-font-size);
-
-    font-size: var(--abstack-menu-item-font-size);
-
-    padding: var(--abstack-menu-item-padding-y) var(--abstack-menu-item-padding-x)
-
-}
-
-
-
-.side-nav .side-nav-item .side-nav-link:active,
-
-.side-nav .side-nav-item .side-nav-link:focus,
-
-.side-nav .side-nav-item .side-nav-link:hover {
-
-    color: var(--abstack-menu-item-hover-color)
-
-}
-
-
-
-.side-nav .side-nav-item .side-nav-link .menu-icon {
-
-    font-size: var(--abstack-menu-item-icon-size);
-
-    line-height: var(--abstack-menu-item-icon-size)
-
-}
-
-
-
-.side-nav .side-nav-item .side-nav-link .menu-icon i {
-
-    font-size: var(--abstack-menu-item-icon-size);
-
-    line-height: var(--abstack-menu-item-icon-size)
-
-}
-
-
-
-.side-nav .side-nav-item .side-nav-link .menu-icon svg {
-
-    height: var(--abstack-menu-item-icon-size);
-
-    width: var(--abstack-menu-item-icon-size)
-
-}
-
-
-
-.side-nav .side-nav-item .side-nav-link .badge {
-
-    margin-left: auto
-
-}
-
-
-
-.side-nav>.side-nav-item {
-
-    padding: 0 10px
-
-}
-
-
-
-.side-nav .sub-menu {
-
-    list-style-type: none;
-
-    display: -webkit-box;
-
-    display: -ms-flexbox;
-
-    display: flex;
-
-    -webkit-box-orient: vertical;
-
-    -webkit-box-direction: normal;
-
-    -ms-flex-direction: column;
-
-    flex-direction: column;
-
-    gap: 2px;
-
-    padding-left: 0;
-
-    margin-top: 5px
-
-}
-
-
-
-.side-nav .sub-menu .side-nav-item .side-nav-link {
-
-    font-size: calc(var(--abstack-menu-item-font-size) * .95);
-
-    padding: calc(var(--abstack-menu-item-padding-y) * .95) calc(var(--abstack-menu-item-padding-x) * 1.5) calc(var(--abstack-menu-item-padding-y) * .95) calc(var(--abstack-menu-item-icon-size) + var(--abstack-menu-item-padding-x) + var(--abstack-menu-link-item-gap))
-
-}
-
-
-
-.side-nav .sub-menu .sub-menu {
-
-    padding-left: 12px
-
-}
-
-
-
-.side-nav .side-nav-title {
-
-    letter-spacing: .1em;
-
+/* Subtle background decoration */
+.sidenav-menu::before {
+    content: "";
+    position: absolute;
+    top: 205px;
+    right: -95px;
+    width: 235px;
+    height: 235px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 50%;
     pointer-events: none;
+    z-index: -1;
+    box-shadow:
+        0 0 0 24px rgba(255, 255, 255, 0.025),
+        0 0 0 48px rgba(255, 255, 255, 0.02);
+}
 
-    cursor: default;
+.sidenav-menu::after {
+    content: "";
+    position: absolute;
+    left: -80px;
+    bottom: 35px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: rgba(64, 221, 177, 0.08);
+    filter: blur(30px);
+    pointer-events: none;
+    z-index: -1;
+}
 
+/* ==========================================
+   LOGO AREA
+========================================== */
+
+.sidenav-menu > .logo {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px;
+
+    background: #ffffff;
+    border-bottom: 1px solid #e8f1ef;
+    text-decoration: none;
+}
+
+.sidenav-menu > .logo img {
+    display: block;
+    width: 150px;
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.25s ease;
+}
+
+.sidenav-menu > .logo:hover img {
+    transform: scale(1.035);
+}
+
+/* Sidebar close button */
+.sidenav-menu .button-close-fullsidebar {
+    z-index: 5;
+    color: #168c79;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.sidenav-menu .button-close-fullsidebar:hover {
+    color: #075b50;
+    background: #e8f8f3;
+}
+
+/* ==========================================
+   MENU CONTAINER
+========================================== */
+
+.sidenav-menu .side-nav {
+    position: relative;
+    z-index: 1;
+
+    padding: 18px 0 26px;
+    margin: 0;
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.sidenav-menu .side-nav > .side-nav-item {
+    padding: 0 11px;
+    margin: 0;
+}
+
+/* ==========================================
+   MENU LINKS
+========================================== */
+
+.sidenav-menu .side-nav .side-nav-item .side-nav-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    min-height: 47px;
+    padding: 11px 14px;
+
+    color: #e7f7f3;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.1px;
+    text-decoration: none;
     white-space: nowrap;
 
-    text-transform: uppercase;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 11px;
 
-    color: var(--abstack-menu-item-color);
-
-    font-weight: 700;
-
-    font-size: calc(var(--abstack-menu-item-font-size) * .7);
-
-    padding: var(--abstack-menu-item-padding-y) calc(var(--abstack-menu-item-padding-x) * 1.75);
-
-    opacity: .75
-
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
 }
 
+/* Consistent icon alignment */
+.sidenav-menu .side-nav .menu-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
+    width: 23px;
+    min-width: 23px;
+    height: 23px;
 
-.side-nav>.side-nav-item.active .menu-arrow {
+    color: #c9f5e8;
+    font-size: 17px;
+    line-height: 1;
 
-    -webkit-transform: rotate(90deg);
-
-    transform: rotate(90deg)
-
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
 }
 
-
-
-.side-nav>.side-nav-item.active .side-nav-link.active,
-
-.side-nav>.side-nav-item.active>a {
-
-    color: var(--abstack-menu-item-hover-color);
-
-    font-weight: 500
-
+.sidenav-menu .side-nav .menu-icon i {
+    font-size: 17px;
+    line-height: 1;
 }
 
+/* ==========================================
+   HOVER EFFECT
+========================================== */
+
+.sidenav-menu .side-nav > .side-nav-item > .side-nav-link:hover {
+    color: #ffffff;
+
+    background: rgba(255, 255, 255, 0.105);
+    border-color: rgba(255, 255, 255, 0.09);
+
+    transform: translateX(3px);
+}
+
+.sidenav-menu .side-nav .side-nav-link:hover .menu-icon {
+    color: #ffffff;
+    transform: scale(1.08);
+}
+
+/* ==========================================
+   PREMIUM ACTIVE MENU
+========================================== */
+
+.sidenav-menu .side-nav > .side-nav-item.active > .side-nav-link,
+.sidenav-menu .side-nav > .side-nav-item > .side-nav-link.active {
+    color: #ffffff !important;
+    font-weight: 600;
+
+    background:
+        linear-gradient(
+            110deg,
+            #35c7a4 0%,
+            #25b89a 55%,
+            #20a98f 100%
+        ) !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.24);
+
+    box-shadow:
+        0 5px 14px rgba(0, 55, 45, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+    transform: translateX(2px);
+}
+
+/* Glowing active indicator */
+.sidenav-menu .side-nav > .side-nav-item.active > .side-nav-link::before,
+.sidenav-menu .side-nav > .side-nav-item > .side-nav-link.active::before {
+    content: "";
+
+    position: absolute;
+    left: -12px;
+    top: 10px;
+    bottom: 10px;
+
+    width: 4px;
+    border-radius: 0 5px 5px 0;
+
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+/* Active icon highlight */
+.sidenav-menu .side-nav > .side-nav-item.active .menu-icon,
+.sidenav-menu .side-nav > .side-nav-item > .side-nav-link.active .menu-icon {
+    color: #ffffff;
+    transform: scale(1.04);
+}
+
+/* ==========================================
+   BADGES
+========================================== */
+
+.sidenav-menu .side-nav .side-nav-link .badge {
+    margin-left: auto;
+    padding: 4px 7px;
+    border-radius: 6px;
+    font-size: 10px;
+}
+
+/* ==========================================
+   LOGOUT - SEPARATE STYLE
+========================================== */
+
+.sidenav-menu .side-nav > .side-nav-item:last-child {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.sidenav-menu .side-nav > .side-nav-item:last-child > .side-nav-link {
+    color: #ffe8e8;
+}
+
+.sidenav-menu .side-nav > .side-nav-item:last-child .menu-icon {
+    color: #ffd0d0;
+}
+
+.sidenav-menu .side-nav > .side-nav-item:last-child > .side-nav-link:hover {
+    color: #ffffff;
+    background: rgba(255, 105, 105, 0.15);
+    border-color: rgba(255, 190, 190, 0.12);
+}
+
+.sidenav-menu .side-nav > .side-nav-item:last-child > .side-nav-link:hover .menu-icon {
+    color: #ffffff;
+}
+
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
+
+.sidenav-menu .side-nav .side-nav-link:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sidenav-menu *,
+    .sidenav-menu *::before,
+    .sidenav-menu *::after {
+        transition: none !important;
+    }
+}
 
 
 .menu-arrow {
@@ -48039,17 +48132,6 @@ span.login {
 
 }
 
-.custom-card-body {
-
-       height: 80px;
-    display: flex
-;
-    transition: all 0.3s 
-ease;
-    padding: 25px;
-    position: relative;
-
-  }
 
   
 
@@ -48316,4 +48398,19 @@ form {
 }
 form.formplan {
     padding: 1px 0px !important;
+}
+
+.sidebar-collapsed .app-topbar{
+    padding-left: 70px;
+}
+
+
+.sidebar-collapsed .page-content{
+    margin-left: 70px;
+}
+.sidebar-collapsed ul.side-nav span.menu-text{
+    display: none;
+}
+.sidebar-collapsed .sidenav-menu{
+    width: 70px;
 }

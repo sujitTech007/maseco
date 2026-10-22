@@ -32,7 +32,7 @@
 
         <div class="category-card-header">
             <div class="category-header-icon">
-                <i class="ri-price-tag-3-line"></i>
+                <i class="fa-solid fa-tag"></i>
             </div>
 
             <div>
@@ -117,12 +117,12 @@
 
                 <div class="category-form-actions">
                     <a href="{{ url('/admin/category') }}" class="category-btn category-btn-back">
-                        <i class="ri-arrow-left-line"></i>
+                        <i class="fa-solid fa-arrow-left"></i>
                         Back to Categories
                     </a>
 
                     <button type="submit" class="category-btn category-btn-update">
-                        <i class="ri-save-line"></i>
+                        <i class="fa-solid fa-floppy-disk"></i>
                         Update Category
                     </button>
                 </div>

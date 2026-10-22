@@ -701,13 +701,13 @@
 
     <!-- Vendor js -->
 
-    <script src="{{ asset('public/assets/seller/js/vendor.min.js.download') }}"></script>
+    <script src="{{ asset('public/assets/js/vendor.min.js.download') }}"></script>
 
 
 
     <!-- App js -->
 
-    <script src="{{ asset('public/assets/seller/js/app.js.download') }}"></script>
+    <script src="{{ asset('public/assets/js/app.js.download') }}"></script>
 
 
 
@@ -720,6 +720,20 @@
     <!-- Projects Analytics Dashboard App js -->
 
     <script src="{{ asset('public/assets/js/dashboard.js.download') }}"></script>
+
+    @if (Request::is('manufacturer/profile'))
+        <script src="{{ asset('public/assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('public/assets/js/bootstrap-select.min.js') }}"></script>
+        <script>
+            jQuery(function ($) {
+                $('.selectpicker').each(function () {
+                    const selectedCode = $(this).attr('data-selected-country-code');
+                    if (selectedCode) $(this).val(selectedCode);
+                    $(this).selectpicker();
+                });
+            });
+        </script>
+    @endif
 
 
 

@@ -243,11 +243,11 @@
 
               <ul>
 
-              <li><a href="https://www.facebook.com/masecotech"><i class="fab fa-facebook-f"></i></a></li>
+              <li><a href="https://www.facebook.com/masecotech"><i class="fa-brands fa-facebook-f"></i></a></li>
 
-<li><a href="https://www.instagram.com/masecotech/"><i class="fab fa-instagram"></i></a></li>
+<li><a href="https://www.instagram.com/masecotech/"><i class="fa-brands fa-instagram"></i></a></li>
 
-<li><a href="https://www.linkedin.com/company/masecotech/"><i class="fab fa-linkedin-in"></i></a></li>
+<li><a href="https://www.linkedin.com/company/masecotech/"><i class="fa-brands fa-linkedin-in"></i></a></li>
 
               </ul>
 
@@ -302,12 +302,16 @@
 <script src="{{ asset('public/assets/js/slick.min.js') }}"></script>   
 <script src="{{ asset('public/assets/js/bootstrap.bundle.min.js') }}"></script>
 
-@if (Request::is('login', 'signup'))
+@if (Request::is('login', 'sign-up', 'forgot-password', 'contact-us'))
     <script src="{{ asset('public/assets/js/bootstrap-select.min.js') }}"></script>
 
     <script>
         $(document).ready(function () {
-            $('.selectpicker').selectpicker();
+            $('.selectpicker').each(function () {
+                const selectedCode = $(this).attr('data-selected-country-code');
+                if (selectedCode) $(this).val(selectedCode);
+                $(this).selectpicker();
+            });
         });
     </script>
 @endif

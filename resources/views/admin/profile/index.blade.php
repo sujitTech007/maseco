@@ -9,9 +9,9 @@
             <div>
                 <div class="profile-breadcrumb">
                     <a href="{{ url('/admin/dashboard') }}">
-                        <i class="ri-home-4-line"></i> Dashboard
+                        <i class="fa-solid fa-house"></i> Dashboard
                     </a>
-                    <i class="ri-arrow-right-s-line"></i>
+                    <i class="fa-solid fa-chevron-right"></i>
                     <span>My Account</span>
                 </div>
 
@@ -31,11 +31,11 @@
                 <div class="profile-user-info">
                     <h3>Alexa Rawles</h3>
                     <p>
-                        <i class="ri-mail-line"></i>
+                        <i class="fa-solid fa-envelope"></i>
                         alexarawles@gmail.com
                     </p>
                     <span class="profile-account-label">
-                        <i class="ri-user-line"></i>
+                        <i class="fa-solid fa-user"></i>
                         Account Profile
                     </span>
                 </div>
@@ -47,7 +47,7 @@
 
             <div class="profile-form-heading">
                 <div class="profile-section-icon">
-                    <i class="ri-user-settings-line"></i>
+                    <i class="fa-solid fa-user-gear"></i>
                 </div>
 
                 <div>
@@ -68,7 +68,7 @@
                                 </label>
 
                                 <div class="profile-input-wrap">
-                                    <i class="ri-user-line"></i>
+                                    <i class="fa-solid fa-user"></i>
                                     <input
                                         type="text"
                                         name="name"
@@ -88,7 +88,7 @@
                                 </label>
 
                                 <div class="profile-input-wrap">
-                                    <i class="ri-user-line"></i>
+                                    <i class="fa-solid fa-user"></i>
                                     <input
                                         type="text"
                                         name="name"
@@ -109,7 +109,7 @@
                                 </label>
 
                                 <div class="profile-input-wrap">
-                                    <i class="ri-mail-line"></i>
+                                    <i class="fa-solid fa-envelope"></i>
                                     <input
                                         type="email"
                                         name="email"
@@ -130,15 +130,12 @@
                                 </label>
 
                                 <div class="profile-input-wrap">
-                                    <i class="ri-phone-line"></i>
-                                    <input
-                                        type="number"
-                                        name="phone"
-                                        id="phone"
-                                        placeholder="Enter your phone"
-                                        class="form-control"
-                                        required
-                                    >
+                                    <i class="fa-solid fa-phone"></i>
+                                    @include('auth.partials.phone-input', [
+                                        'phoneInputId' => 'admin_phone',
+                                        'phoneInputClass' => 'form-control',
+                                        'phonePlaceholder' => 'Enter your phone',
+                                    ])
                                 </div>
                             </div>
                         </div>
@@ -151,7 +148,7 @@
                                 </label>
 
                                 <div class="profile-input-wrap profile-select-wrap">
-                                    <i class="ri-global-line"></i>
+                                    <i class="fa-solid fa-globe"></i>
 
                                     <select
                                         id="dropdown"
@@ -184,7 +181,7 @@
                                 </label>
 
                                 <div class="profile-input-wrap profile-select-wrap">
-                                    <i class="ri-map-pin-line"></i>
+                                    <i class="fa-solid fa-location-dot"></i>
 
                                     <select
                                         id="state"
@@ -214,7 +211,7 @@
                     <!-- Actions -->
                     <div class="profile-form-actions">
                         <button type="submit" id="submit" class="profile-submit-btn">
-                            <i class="ri-send-plane-line"></i>
+                            <i class="fa-solid fa-paper-plane"></i>
                             Submit
                         </button>
                     </div>

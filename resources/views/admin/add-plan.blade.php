@@ -12,7 +12,7 @@
                         </div> -->
                         <!-- <div class="userName">
                             <h3>Alexa Rawles</h3>
-                            <p><i class="ri-mail-line"></i> alexarawles@gmail.com</p>
+                            <p><i class="fa-solid fa-envelope"></i> alexarawles@gmail.com</p>
                         </div>
                     </div> -->
                     

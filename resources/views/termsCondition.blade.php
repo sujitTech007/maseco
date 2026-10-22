@@ -8,7 +8,7 @@
         <div class="container text-center">
             <h1 class="inner-title">Terms & Conditions</h1>
             <nav class="breadcrumb-wrapper">
-                <a href="{{ route('home') }}"><i class="fas fa-home"></i> Home</a>
+                <a href="{{ route('home') }}"><i class="fa-solid fa-house"></i> Home</a>
                 <span>/</span>
                 <span>Terms & Conditions</span>
             </nav>

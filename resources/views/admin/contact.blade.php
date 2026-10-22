@@ -1,22 +1,13 @@
 @include('admin.Include.header')
 
 <div class="page-content contact-page">
-
+<div class="page-container p-3">
     {{-- Page Header --}}
-    <!-- <div class="contact-page-header">
-        <div>
-            <h3>Contact Us List</h3>
-            <div class="contact-breadcrumb">
-                <a href="{{ url('/admin/dashboard') }}">Dashboard</a>
-                <span>›</span>
-                <span class="current">Contact Us List</span>
-            </div>
-        </div>
-    </div> -->
+   
 
     @if(session('success'))
         <div class="contact-alert">
-            <i class="ri-checkbox-circle-line"></i>
+            <i class="fa-solid fa-circle-check"></i>
             {{ session('success') }}
         </div>
     @endif
@@ -31,7 +22,7 @@
         <div class="contact-summary">
             <div class="contact-stat bg-danger bg-opacity-10">
                 <div class="contact-stat-icon bg-danger bg-opacity-10">
-                    <i class="ri-contacts-line text-danger"></i>
+                    <i class="fa-solid fa-address-book text-danger"></i>
                 </div>
                 <div>
                     <p>Total Contact Requests</p>
@@ -41,7 +32,7 @@
 
             <div class="contact-stat bg-warning bg-opacity-10">
                 <div class="contact-stat-icon email bg-warning bg-opacity-10">
-                    <i class="ri-mail-line text-warning"></i>
+                    <i class="fa-solid fa-envelope text-warning"></i>
                 </div>
                 <div>
                     <p>Email Contacts</p>
@@ -51,7 +42,7 @@
 
             <div class="contact-stat bg-success bg-opacity-10">
                 <div class="contact-stat-icon phone bg-success bg-opacity-10">
-                    <i class="ri-phone-line text-success"></i>
+                    <i class="fa-solid fa-phone text-success"></i>
                 </div>
                 <div>
                     <p>Phone Contacts</p>
@@ -138,7 +129,7 @@
                 </div>
 
                 <div class="contact-search">
-                    <i class="ri-search-line"></i>
+                    <i class="fa-solid fa-magnifying-glass"></i>
                     <input
                         type="search"
                         id="contact-search-input"
@@ -189,7 +180,7 @@
                                     @if(!empty($contact->email))
                                         <a class="contact-email"
                                            href="mailto:{{ $contact->email }}">
-                                            <i class="ri-mail-line"></i>
+                                            <i class="fa-solid fa-envelope"></i>
                                             {{ $contact->email }}
                                         </a>
                                     @else
@@ -201,7 +192,7 @@
                                     @if(!empty($contact->phone))
                                         <a class="contact-phone"
                                            href="tel:{{ $contact->phone }}">
-                                            <i class="ri-phone-line"></i>
+                                            <i class="fa-solid fa-phone"></i>
                                             {{ $contact->phone }}
                                         </a>
                                     @else
@@ -224,7 +215,7 @@
                             <tr>
                                 <td colspan="5">
                                     <div class="contact-empty">
-                                        <i class="ri-contacts-line"></i>
+                                        <i class="fa-solid fa-address-book"></i>
                                         <h5>No contact submissions yet</h5>
                                         <p>Submitted contact forms will appear here.</p>
                                     </div>
@@ -236,7 +227,7 @@
                 </table>
 
                 <div class="contact-no-results" id="contact-no-results" hidden>
-                    <i class="ri-search-line"></i>
+                    <i class="fa-solid fa-magnifying-glass"></i>
                     <p>No contacts match your search.</p>
                 </div>
 
@@ -250,6 +241,7 @@
 
         </div>
     </div>
+</div>
 </div>
 
 <script>

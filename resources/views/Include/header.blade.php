@@ -112,9 +112,11 @@
   <link rel="shortcut icon" href="{{ asset('public/assets/images/favicon.png') }}" type="image/png">
   <link rel="icon" href="{{ asset('public/assets/images/favicon.png') }}" type="image/png">
 
+  <link rel="stylesheet" href="{{ asset('public/assets/css/all.min.css') }}">
   <link rel="stylesheet" href="{{ asset('public/assets/css/global.css') }}?v={{ time() }}">    
-  @if (Request::is('login', 'signup'))    
+  @if (Request::is('login', 'sign-up', 'forgot-password', 'contact-us'))
   <link rel="stylesheet" href="{{ asset('public/assets/css/bootstrap-select.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('public/assets/css/phone-country-code.css') }}">
 @endif
 
 </head>
@@ -135,6 +137,28 @@
           <div class="toast-body">
 
             {{ session('success') }}
+
+          </div>
+
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+            aria-label="Close"></button>
+
+        </div>
+
+      </div>
+
+      @endif
+
+      @if(session('error'))
+
+      <div class="toast align-items-center text-bg-danger border-0 show" role="alert" aria-live="assertive"
+        aria-atomic="true">
+
+        <div class="d-flex">
+
+          <div class="toast-body">
+
+            {{ session('error') }}
 
           </div>
 
@@ -205,7 +229,7 @@
 
                     <!-- <a href="tel:+18000016555">
 
-                      <i class="fas fa-phone"></i>
+                      <i class="fa-solid fa-phone"></i>
 
                       <span>+1800-001-6555</span>
 
@@ -217,7 +241,7 @@
 
                     <a href="mailto:info@peacefulqode.com">
 
-                      <i class="fas fa-envelope"></i>
+                      <i class="fa-solid fa-envelope"></i>
 
                       <span>info@maseco.ca</span>
 
@@ -236,11 +260,11 @@
               <div class="header-social">
 
                 <ul class="d-flex align-items-center justify-content-end">
-                  <li><a href="https://www.facebook.com/masecotech"><i class="fab fa-facebook-f"></i></a></li>
+                  <li><a href="https://www.facebook.com/masecotech"><i class="fa-brands fa-facebook-f"></i></a></li>
 
-                  <li><a href="https://www.instagram.com/masecotech/"><i class="fab fa-instagram"></i></a></li>
+                  <li><a href="https://www.instagram.com/masecotech/"><i class="fa-brands fa-instagram"></i></a></li>
 
-                  <li><a href="https://www.linkedin.com/company/masecotech/"><i class="fab fa-linkedin-in"></i></a></li>
+                  <li><a href="https://www.linkedin.com/company/masecotech/"><i class="fa-brands fa-linkedin-in"></i></a></li>
 
 
 
@@ -300,7 +324,7 @@
 
                       <li class="menu-item" data-aos="fade-in">
 
-                        <a href="#">Our Services <i class="fa fa-chevron-down submenu-icon"></i></a>
+                        <a href="#">Our Services <i class="fa-solid fa-chevron-down submenu-icon"></i></a>
 
                         <ul class="sub-menu">
 

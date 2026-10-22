@@ -385,7 +385,7 @@ button.btn.btn-primary.w-100.get-code {
     text-align: center;
 }
 .detail-popup.text-left.mb-3 {
-    background: #c8c8c8;
+    border: 1px solid var(--primary-color);
     padding: 10px;
     border-radius: 10px;
 }

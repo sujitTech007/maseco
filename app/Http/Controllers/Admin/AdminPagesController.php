@@ -23,6 +23,10 @@ class AdminPagesController extends Controller
         $buyerCount = User::count();
         $sellerCount = Supplier::count();
         $manufacturerCount = Manufacturer::count();
+        $newsletterCount = Newsletter::count();
+        $contactCount = Contact::count();
+        $recentNewsletters = Newsletter::latest()->take(5)->get();
+        $recentContacts = Contact::latest()->take(5)->get();
 
         return view('admin.index', compact(
             'enquiryCount',
@@ -30,7 +34,11 @@ class AdminPagesController extends Controller
             'paymentTotal',
             'buyerCount',
             'sellerCount',
-            'manufacturerCount'
+            'manufacturerCount',
+            'newsletterCount',
+            'contactCount',
+            'recentNewsletters',
+            'recentContacts'
         ));
     }
 

@@ -82,7 +82,7 @@
                         placeholder="Search for id, order, status..." style="padding-right:45px;">
 
                     <!-- Search Icon inside input -->
-                    <i class="bi bi-search" style="
+                    <i class="fa-solid fa-magnifying-glass" style="
                 position:absolute;
                 right:12px;
                 top:50%;
@@ -110,7 +110,7 @@
                 <button class="btn btn-outline-secondary d-flex align-items-center gap-1 filterbtn"
                     onclick="window.location='{{ route('user.orders.export') }}'">
                     Export
-                    <i class="bi bi-download"></i>
+                    <i class="fa-solid fa-download"></i>
                 </button>
 
             </div>

@@ -78,8 +78,13 @@
                     <!-- Phone Number -->
                     <div class="mb-3 col-4">
                         <label class="form-label">Phone Number</label>
-                        <input type="text" name="phone" class="form-control"
-                            value="{{ old('phone', $user->phone ?? '') }}" required>
+                        @include('auth.partials.phone-input', [
+                            'phoneInputId' => 'user_profile_phone',
+                            'phoneInputClass' => 'form-control',
+                            'countryCode' => $user->country_code ?? '+1',
+                            'phoneValue' => $user->phone ?? '',
+                            'phonePlaceholder' => 'Enter phone number',
+                        ])
                     </div>
 
                     <!-- Email -->

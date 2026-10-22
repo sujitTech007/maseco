@@ -104,7 +104,7 @@
 
                 <div class="col-md-6 col-lg-3">
                     <div class="card border-0 rounded-3 h-100 p-3">
-                        <i class="bi bi-search fs-2 mb-3"
+                        <i class="fa-solid fa-magnifying-glass fs-2 mb-3"
                            style="color:rgba(45,172,146,1);"></i>
                         <h5 class="h6 fw-bold">Advanced Search & Filters</h5>
                         <p class="text-secondary mb-0">
@@ -116,7 +116,7 @@
 
                 <div class="col-md-6 col-lg-3">
                     <div class="card border-0 rounded-3 h-100 p-3">
-                        <i class="bi bi-people fs-2 mb-3"
+                        <i class="fa-solid fa-users fs-2 mb-3"
                            style="color:rgba(45,172,146,1);"></i>
                         <h5 class="h6 fw-bold">Supplier Comparison</h5>
                         <p class="text-secondary mb-0">
@@ -128,7 +128,7 @@
 
                 <div class="col-md-6 col-lg-3">
                     <div class="card border-0 rounded-3 h-100 p-3">
-                        <i class="bi bi-patch-check fs-2 mb-3"
+                        <i class="fa-solid fa-certificate fs-2 mb-3"
                            style="color:rgba(45,172,146,1);"></i>
                         <h5 class="h6 fw-bold">Eco-Certification Badges</h5>
                         <p class="text-secondary mb-0">
@@ -140,7 +140,7 @@
 
                 <div class="col-md-6 col-lg-3">
                     <div class="card border-0 rounded-3 h-100 p-3">
-                        <i class="bi bi-heart fs-2 mb-3"
+                        <i class="fa-solid fa-heart fs-2 mb-3"
                            style="color:rgba(45,172,146,1);"></i>
                         <h5 class="h6 fw-bold">Saved Suppliers</h5>
                         <p class="text-secondary mb-0">

@@ -100,7 +100,7 @@
         <!-- Section heading -->
         <div class="journey-heading">
             <span class="journey-eyebrow">
-                <i class="bi bi-leaf"></i> THE MASECO JOURNEY
+                <i class="fa-solid fa-leaf"></i> THE MASECO JOURNEY
             </span>
             <h2 class="section-title-h2 mb-2">A Smarter Way to Source Textiles</h2>
             <p>

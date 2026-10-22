@@ -201,9 +201,15 @@ position: absolute;
     width: auto;
     padding: 10px 0;
     border: none;
-    margin-right:10px
+    margin-right:10px;
+    height: 100%;
 }
 
+.dropdown.bootstrap-select button.btn.dropdown-toggle:focus{
+    box-shadow: none;
+    border: none;
+    outline: 0 !important;
+}
 .mobileNumber .dropdown.bootstrap-select {
     width: max-content !important;
         min-width: 80px;
@@ -466,4 +472,35 @@ position: absolute;
 .agree-input-checked{
     width: 20px;
     height: 20px;
+}
+.phone-country-field {
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: 7px;
+    padding: 0 10px;
+}
+.phone-country-field .filter-option{
+    display: flex;
+    align-items: center;
+}
+
+.mobileNumber-border-0 .phone-country-field {
+    border: none;
+}
+
+.mobileNumber-border-0 .dropdown.bootstrap-select button.btn.dropdown-toggle{
+    padding: 7px 0;
+}
+.login-form .form-control.otp-input {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ddd !important;
+    color: #000;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.login-form .form-control.otp-input.active {
+    border: 2px solid rgba(45, 172, 146, 1) !important;
+    background-color: #eaffea;
+    outline: none;
 }

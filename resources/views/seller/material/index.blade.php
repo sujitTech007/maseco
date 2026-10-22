@@ -201,17 +201,17 @@
               <td class="text-nowrap">
 
                 <a href="{{ route('seller.material.show', $material->id) }}" class="btn btn-sm btn-outline-success"
-                  title="View"><i class="ri-eye-line"></i></a>
+                  title="View"><i class="fa-solid fa-eye"></i></a>
 
                 <a href="{{ route('seller.material.edit', $material->id) }}" class="btn btn-sm btn-outline-warning"
-                  title="Edit"><i class="ri-edit-line"></i></a>
+                  title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
 
                 <form action="{{ route('seller.material.destroy', $material->id) }}" method="POST"
                   class="d-inline delete-material-form">
                   @csrf
                   @method('DELETE')
                   <button type="submit" class="btn btn-outline-danger btn-sm" title="Delete"><i
-                      class="ri-delete-bin-line"></i></button>
+                      class="fa-solid fa-trash"></i></button>
                 </form>
 
               </td>

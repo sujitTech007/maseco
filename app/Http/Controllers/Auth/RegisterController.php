@@ -15,6 +15,10 @@ use App\Models\User;
 use App\Models\Supplier;
 
 use App\Models\Manufacturer;
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
+use App\Support\PhoneNumber;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -103,22 +107,33 @@ class RegisterController extends Controller
 
     public function register(Request $request)
 {
+    $request->merge([
+        'phone' => PhoneNumber::normalizeLocal(
+            (string) $request->input('phone'),
+            (string) $request->input('country_code')
+        ),
+    ]);
+
     $request->validate([
         'user_type' => 'required|in:user,supplier,manufacturer',
         'name' => 'required|string|max:255',
         'email' => 'required|email|max:255',
-        'phone' => 'required|string|max:20',
+        'phone' => 'required|digits_between:7,15',
+        'country_code' => ['required', 'string', 'max:10', 'regex:/^\+[0-9-]+$/'],
         'password' => 'required|confirmed|min:6',
         // 'country_code' => 'required',
     ]);
+
+    $phone = PhoneNumber::normalizeLocal($request->phone);
+    $countryCode = $request->country_code;
 
     $emailExists = User::where('email', $request->email)->exists() ||
                    Supplier::where('email', $request->email)->exists() ||
                    Manufacturer::where('email', $request->email)->exists();
 
-    $phoneExists = User::where('phone', $request->phone)->exists() ||
-                    Supplier::where('phone', $request->phone)->exists() ||
-                    Manufacturer::where('phone', $request->phone)->exists();
+    $phoneExists = User::where('phone', $phone)->where('country_code', $countryCode)->exists() ||
+                    Supplier::where('phone', $phone)->where('country_code', $countryCode)->exists() ||
+                    Manufacturer::where('phone', $phone)->where('country_code', $countryCode)->exists();
 
     if ($emailExists) {
         return back()->withErrors(['email' => 'User already exist with given email id.'])->withInput();
@@ -156,8 +171,8 @@ class RegisterController extends Controller
     $data = [
         'name' => $request->name,
         'email' => $request->email,
-        'phone' => $request->phone,
-        'country_code' => $request->country_code,
+        'phone' => $phone,
+        'country_code' => $countryCode,
         'password' => \Illuminate\Support\Facades\Hash::make($request->password),
     ];
 
@@ -168,6 +183,12 @@ class RegisterController extends Controller
 
     // Create user
     $user = $model::create($data);
+
+    try {
+        Mail::to($user->email)->send(new WelcomeMail($user, $request->user_type));
+    } catch (\Throwable $exception) {
+        Log::error('Welcome email could not be sent.', ['email' => $user->email, 'exception' => $exception->getMessage()]);
+    }
 
     // Redirect to login
     return redirect()->route('login')->with('success', 'Registration successful! Please login.');

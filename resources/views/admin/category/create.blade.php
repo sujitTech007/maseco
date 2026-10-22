@@ -7,14 +7,14 @@
             <div>
                 <!-- <div class="category-breadcrumb">
                     <a href="{{ url('/admin/dashboard') }}">
-                        <i class="ri-home-4-line"></i>
+                        <i class="fa-solid fa-house"></i>
                         Dashboard
                     </a>
-                    <i class="ri-arrow-right-s-line"></i>
+                    <i class="fa-solid fa-chevron-right"></i>
                     <a href="{{ route('admin.category.create') }}">
                         Categories
                     </a>
-                    <i class="ri-arrow-right-s-line"></i>
+                    <i class="fa-solid fa-chevron-right"></i>
                     <span>Add Category</span>
                 </div> -->
 
@@ -23,7 +23,7 @@
             </div>
 
             <a href="{{ url('/admin/category') }}" class="category-back-btn">
-                <i class="ri-arrow-left-line"></i>
+                <i class="fa-solid fa-arrow-left"></i>
                 Back to Categories
             </a>
         </div>
@@ -33,7 +33,7 @@
 
             <div class="category-card-heading">
                 <div class="category-heading-icon">
-                    <i class="ri-folder-add-line"></i>
+                    <i class="fa-solid fa-folder-plus"></i>
                 </div>
 
                 <div>
@@ -44,7 +44,7 @@
 
             @if ($errors->any())
                 <div class="category-error-alert">
-                    <i class="ri-error-warning-line"></i>
+                    <i class="fa-solid fa-triangle-exclamation"></i>
                     <div>
                         <strong>Please check the following fields:</strong>
                         <ul>
@@ -94,7 +94,7 @@
 
                     <label for="category_image" class="category-upload-area">
                         <div class="category-upload-icon">
-                            <i class="ri-upload-cloud-2-line"></i>
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
                         </div>
 
                         <div class="category-upload-text">
@@ -123,7 +123,7 @@
                                 class="category-remove-image"
                                 id="removeCategoryImage"
                                 aria-label="Remove selected image">
-                            <i class="ri-close-line"></i>
+                            <i class="fa-solid fa-xmark"></i>
                         </button>
                     </div>
 
@@ -140,7 +140,7 @@
                 <div class="category-form-section category-status-section">
                     <div class="category-status-copy">
                         <div class="category-status-icon">
-                            <i class="ri-toggle-line"></i>
+                            <i class="fa-solid fa-toggle-on"></i>
                         </div>
 
                         <div>
@@ -178,7 +178,7 @@
                     </a>
 
                     <button type="submit" class="category-submit-btn">
-                        <i class="ri-add-line"></i>
+                        <i class="fa-solid fa-plus"></i>
                         Add Category
                     </button>
                 </div>

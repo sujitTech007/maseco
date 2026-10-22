@@ -29,7 +29,7 @@
 
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <h5 class="fw-bold mb-0">
-                                <i class="fa fa-sliders me-2 text_color_primary"></i>
+                                <i class="fa-solid fa-sliders me-2 text_color_primary"></i>
                                 Filters
                             </h5>
                             <a href="{{ route('listing') }}"
@@ -45,7 +45,7 @@
                                 <label class="form-label fw-semibold">Search Materials</label>
                                 <div class="input-group">
                                     <span class="input-group-text bg-white">
-                                        <i class="fa fa-search text-muted"></i>
+                                        <i class="fa-solid fa-magnifying-glass text-muted"></i>
                                     </span>
                                     <input type="text" name="q"
                                         class="form-control"
@@ -150,8 +150,8 @@
                                 </select>
                             </div>
 
-                            <button type="submit" class="btn theme_btn{ w-100 py-2">
-                                <i class="fa fa-filter me-2"></i>Apply Filters
+                            <button type="submit" class="btn theme_btn w-100 py-2">
+                                <i class="fa-solid fa-filter me-2"></i>Apply Filters
                             </button>
 
                             <a href="{{ route('listing') }}"
@@ -166,7 +166,7 @@
 
             {{-- MATERIAL LISTINGS --}}
             <div class="col-lg-9 col-md-8">
-                <div class="row g-4">
+                <div class="row g-3">
 
                     @forelse($materials as $material)
                         @php
@@ -192,8 +192,8 @@
                                             alt="{{ $material->name }}">
                                     </a>
 
-                                    <span class="badge bg-white text_color_primary position-absolute top-0 start-0 m-3 shadow-sm">
-                                        <i class="fa fa-check-circle me-1 fs-11"></i>
+                                    <span class="badge bg-white text_color_primary position-absolute top-0 start-0 m-3 shadow-sm fs-11">
+                                        <i class="fa-solid fa-circle-check me-1 fs-11"></i>
                                         Verified Listing
                                     </span>
                                 </div>
@@ -219,18 +219,18 @@
 
                                     <div class="material-info mb-3">
                                         <p class="mb-2 text-muted">
-                                            <i class="fa fa-map-marker-alt text_color_primary me-2"></i>
+                                            <i class="fa-solid fa-location-dot text_color_primary me-2"></i>
                                             {{ $material->location ?: 'Location not specified' }}
                                         </p>
 
                                         <p class="mb-2 text-muted">
-                                            <i class="fa fa-building text_color_primary me-2"></i>
+                                            <i class="fa-solid fa-building text_color_primary me-2"></i>
                                             <span class="text-dark fw-semibold">Supplier:</span>
                                             {{ $supplierName }}
                                         </p>
 
                                         <p class="mb-0 text-muted">
-                                            <i class="fa fa-cubes text_color_primary me-2"></i>
+                                            <i class="fa-solid fa-cubes text_color_primary me-2"></i>
                                             <span class="text-dark fw-semibold">Grade / Size:</span>
                                             {{ $material->grade ?: '-' }}
                                             /
@@ -242,7 +242,7 @@
                                         <a href="{{ route('listing.details', $material->id) }}"
                                            class="btn theme_btn text-white">
                                             View Details
-                                            <i class="fa fa-arrow-right ms-1"></i>
+                                            <i class="fa-solid fa-arrow-right ms-0"></i>
                                         </a>
 
                                         @if(!Auth::guard('supplier')->check() && !Auth::guard('manufacturer')->check())
@@ -263,7 +263,7 @@
                                                 data-material-unit="{{ $material->unit }}"
                                                 data-material-supplier="{{ optional($material->supplier)->company_name ?? optional($material->supplier)->name ?? optional($material->manufacturer)->company_name ?? optional($material->manufacturer)->name ?? 'Supplier' }}"
                                                 data-material-location="{{ $material->location ?? '-' }}">
-                                                <i class="fa fa-envelope me-2"></i>
+                                                <i class="fa-solid fa-envelope me-0"></i>
                                                 Contact {{ $contactType }}
                                             </button>
                                         @endif
@@ -277,7 +277,7 @@
                         <div class="col-12">
                             <div class="card border-0 shadow-sm text-center py-5">
                                 <div class="card-body">
-                                    <i class="fa fa-search fa-3x text-muted mb-3"></i>
+                                    <i class="fa-solid fa-magnifying-glass fa-3x text-muted mb-3"></i>
                                     <h5 class="fw-bold">No Materials Found</h5>
                                     <p class="text-muted">
                                         Try changing your search or filter options.
@@ -317,7 +317,7 @@
         <div class="row">
           <div class="col-lg-5 col-md-12 border-end">
             <div class=" text-left mb-3">
-              <img id="enquiry-material-image" src="{{ asset('public/assets/images/blog-thumb-1.jpeg') }}" class="img-fluid mb-3" alt="Material">
+              <img id="enquiry-material-image" src="{{ asset('public/assets/images/blog-thumb-1.jpeg') }}" class="img-fluid w-100 mb-3" alt="Material">
               <div class=" detail-popup text-left mb-3">
                 <h6 id="enquiry-material-title"></h6>
                 <p class="mb-1"><strong id="enquiry-material-price"></strong></p>
@@ -328,25 +328,27 @@
             </div>
           </div>
           <div class="col-lg-7 col-md-12">
-            <h5 class="mb-3">Add few details to get quick response from the supplier</h5>
+            <h5 class="mb-1 fs-5 fw-normal px-3">Add few details to get quick response from the supplier</h5>
             <form method="POST" action="{{ route('enquiry.store') }}">
                         @csrf
                         <div class="modal-body">
                             @guest
-                                <div class="alert alert-warning">Please <a href="{{ route('login') }}">login</a> to submit an enquiry.</div>
+                                <div class="alert alert-warning fs-12 mb-2 p-1 px-2">Please <a href="{{ route('login') }}">login</a> to submit an enquiry.</div>
                             @endguest
                             <input type="hidden" name="material_id" id="enquiry-material-id" value="">
                             <div class="mb-3">
                                 <label class="form-label">Material</label>
                                 <input type="text" id="enquiry-material-name" value="" class="form-control" disabled>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label">Quantity</label>
-                                <input type="number" min="1" name="quantity" class="form-control" required>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Expected Price (optional)</label>
-                                <input type="number" step="0.01" name="expected_price" class="form-control">
+                            <div class="row">
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Quantity</label>
+                                    <input type="number" min="1" name="quantity" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3 col-md-6">
+                                        <label class="form-label">Expected Price (optional)</label>
+                                        <input type="number" step="0.01" name="expected_price" class="form-control">
+                                    </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Message</label>
@@ -355,11 +357,11 @@
                         </div>
                         <div class="modal-footer">
                             @auth
-                            <button type="submit" class="btn theme_btn{">Submit Enquiry</button>
+                            <button type="submit" class="btn theme_link m-0 fs-6">Submit Enquiry</button>
                             @else
-                            <a class="btn theme_btn{" href="{{ route('login') }}">Login to Continue</a>
+                            <a class="btn theme_link m-0 fs-6" href="{{ route('login') }}">Login to Continue</a>
                             @endauth
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                         </div>
                     </form>
           </div>

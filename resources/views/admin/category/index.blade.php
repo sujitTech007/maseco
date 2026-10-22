@@ -1,41 +1,33 @@
 @include('admin.Include.header')
 
 <div class="page-content category-page">
-    <div class="container mt-0">
+    <div class="page-container p-3">
 
-        <!-- <div class="mb-3">
-            <h3 class="category-heading">Category</h3>
-
-            <div class="category-breadcrumb">
-                <a href="https://maseco.ca/UAT/admin/dashboard">Dashboard</a>
-                <span class="separator">›</span>
-                <span class="current">Category</span>
-            </div>
-        </div> -->
+    
 
         @php
             $categoryTotal = $categories->count();
         @endphp
 
         <div class="category-topbar">
-            <p>Manage the categories used to organize marketplace materials.</p>
+            <h4>Manage the categories used to organize marketplace materials.</h4>
 
             <a href="{{ route('admin.category.create') }}" class="category-add-btn">
-                <i class="ri-add-line"></i>
+                <i class="fa-solid fa-plus"></i>
                 Add Category
             </a>
         </div>
 
         @if(session('success'))
             <div class="alert alert-success category-alert">
-                <i class="ri-checkbox-circle-line me-1"></i>
+                <i class="fa-solid fa-circle-check me-1"></i>
                 {{ session('success') }}
             </div>
         @endif
 
         <div class="category-summary">
             <div class="category-summary-icon">
-                <i class="ri-folders-line"></i>
+                <i class="fa-solid fa-folder-open"></i>
             </div>
 
             <div>
@@ -158,7 +150,7 @@
                                         >
                                     @else
                                         <div class="category-no-image" title="No image">
-                                            <i class="ri-image-line"></i>
+                                            <i class="fa-solid fa-image"></i>
                                         </div>
                                     @endif
                                 </td>

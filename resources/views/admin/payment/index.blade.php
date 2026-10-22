@@ -38,7 +38,7 @@
         });
     @endphp
 
-    <div class="payments-container">
+    <div class="page-container p-3 payments-container">
 
         {{-- Summary Cards --}}
         <div class="row g-3 payments-summary">
@@ -46,7 +46,7 @@
             <div class="col-12 col-sm-6 col-xl-3">
                 <div class="payment-stat bg-danger bg-opacity-10">
                     <div class="payment-stat-icon total bg-danger bg-opacity-10">
-                        <i class="ri-wallet-3-line text-danger"></i>
+                        <i class="fa-solid fa-wallet text-danger"></i>
                     </div>
                     <div>
                         <p>Total Payments</p>
@@ -58,7 +58,7 @@
             <div class="col-12 col-sm-6 col-xl-3">
                 <div class="payment-stat bg-warning bg-opacity-10">
                     <div class="payment-stat-icon paid bg-warning bg-opacity-10">
-                        <i class="ri-checkbox-circle-line text-warning"></i>
+                        <i class="fa-solid fa-circle-check text-warning"></i>
                     </div>
                     <div>
                         <p>Paid Transactions</p>
@@ -70,7 +70,7 @@
             <div class="col-12 col-sm-6 col-xl-3">
                 <div class="payment-stat bg-success bg-opacity-10">
                     <div class="payment-stat-icon pending bg-success bg-opacity-10">
-                        <i class="ri-time-line text-success"></i>
+                        <i class="fa-solid fa-clock text-success"></i>
                     </div>
                     <div>
                         <p>Pending Payments</p>
@@ -82,7 +82,7 @@
             <div class="col-12 col-sm-6 col-xl-3">
                 <div class="payment-stat bg-primary bg-opacity-10">
                     <div class="payment-stat-icon failed bg-primary bg-opacity-10">
-                        <i class="ri-error-warning-line text-primary"></i>
+                        <i class="fa-solid fa-triangle-exclamation text-primary"></i>
                     </div>
                     <div>
                         <p>Failed Payments</p>
@@ -172,7 +172,7 @@
                 </div>
 
                 <div class="payments-search">
-                    <i class="ri-search-line"></i>
+                    <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="search"
                            id="payments-search-input"
                            class="payments-input"
@@ -292,7 +292,7 @@
                             <tr class="payment-empty-row">
                                 <td colspan="8">
                                     <div class="payments-empty">
-                                        <i class="ri-wallet-3-line"></i>
+                                        <i class="fa-solid fa-wallet"></i>
                                         <h5>No payment records yet</h5>
                                         <p>Payment transactions will appear here when available.</p>
                                     </div>
@@ -305,7 +305,7 @@
                 </table>
 
                 <div class="payments-no-results" id="payments-no-results" hidden>
-                    <i class="ri-search-line"></i>
+                    <i class="fa-solid fa-magnifying-glass"></i>
                     <p>No payments match your search.</p>
                 </div>
 

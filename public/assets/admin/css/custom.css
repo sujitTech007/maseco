@@ -1,24 +1,5 @@
-.sidenav-menu{
 
-    /* background: rgb(255 255 255);
-     */
-   background-color: #edf7f2 !important
 
-}
-
-.sidenav-menu .logo {
-
-    display: block;
-
-    text-align: center;
-
-    padding: 20px 38px 20px 38px;
-
-    position: static;
-
-    height: auto;
-
-}
 
 .side-nav .side-nav-item .side-nav-link{
 
@@ -60,7 +41,7 @@
 
 
 
-.topbar-link i.ri-mail-line {
+.topbar-link i.fa-envelope {
 
     font-size: 22px;
 

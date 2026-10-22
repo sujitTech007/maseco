@@ -26,15 +26,15 @@
             <div class="col-lg-5">
                 <div class="bg-white border rounded-3 p-3 h-100">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="small text-secondary">Material Preview</span>
+                        <span class="text-uppercase fw-semibold fs-14 primary-text-color">Material Preview</span>
 
                         @if(($material->stock ?? 0) > 0)
-                            <span class="badge rounded-pill"
+                            <span class="badge rounded-pill fs-12"
                                   style="background:#e5f6ef;color:#18794e;">
                                 In Stock
                             </span>
                         @else
-                            <span class="badge bg-light text-danger border">
+                            <span class="badge bg-light text-danger fs-12 border">
                                 Out of Stock
                             </span>
                         @endif
@@ -51,7 +51,7 @@
 
                     <div class="d-flex align-items-center gap-2 mt-3"
                          style="font-size:13px;color:#687773;">
-                        <i class="fas fa-map-marker-alt" style="color:#2DAC92;"></i>
+                        <i class="fa-solid fa-location-dot" style="color:#2DAC92;"></i>
                         {{ $material->location ?? 'Location not specified' }}
                     </div>
                 </div>
@@ -61,8 +61,7 @@
             <div class="col-lg-7">
                 <div class="bg-white border rounded-3 p-4 h-100">
 
-                    <span class="text-uppercase fw-semibold"
-                          style="font-size:12px;letter-spacing:1px;color:#2DAC92;">
+                    <span class="text-uppercase fw-semibold fs-14 primary-text-color">
                         Material Information
                     </span>
 
@@ -142,16 +141,16 @@
                                 data-bs-target="#supplierModal"
                                 data-material-id="{{ $material->id }}"
                                 data-material-name="{{ $material->name }}">
-                                <i class="fas fa-envelope me-2"></i>
+                                <i class="fa-solid fa-envelope me-2"></i>
                                 Send Enquiry
                             </button>
                         @endif
 
                         @if(optional($material->supplier)->phone)
-                            <a href="tel:{{ optional($material->supplier)->phone }}"
+                            <a href="tel:{{ optional($material->supplier)->country_code ? \App\Support\PhoneNumber::toE164(optional($material->supplier)->country_code, optional($material->supplier)->phone) : optional($material->supplier)->phone }}"
                                class="btn btn-outline-secondary px-4 py-2"
                                style="font-size:14px;">
-                                <i class="fas fa-phone me-2"></i>Call Supplier
+                                <i class="fa-solid fa-phone me-2"></i>Call Supplier
                             </a>
                         @endif
                     </div>
@@ -224,7 +223,7 @@
                     <div class="mt-3 p-3 rounded-3"
                          style="background:#f0f8f5;">
                         <p class="mb-0" style="font-size:13px;color:#48665d;">
-                            <i class="fas fa-info-circle me-2" style="color:#2DAC92;"></i>
+                            <i class="fa-solid fa-circle-info me-2" style="color:#2DAC92;"></i>
                             Ask the supplier about minimum order quantity, availability,
                             delivery terms, and sustainability certifications before ordering.
                         </p>
@@ -248,7 +247,7 @@
                          style="background:#f6f8f7;">
                         <div class="d-flex align-items-center justify-content-center rounded-3"
                              style="width:46px;height:46px;flex-shrink:0;background:#e0f4ed;color:#2DAC92;">
-                            <i class="fas fa-building fa-lg"></i>
+                            <i class="fa-solid fa-building fa-lg"></i>
                         </div>
 
                         <div class="min-w-0">
@@ -258,7 +257,7 @@
                                     ?? 'Supplier' }}
                             </h6>
                             <p class="text-secondary mb-0" style="font-size:13px;">
-                                <i class="fas fa-map-marker-alt me-1"></i>
+                                <i class="fa-solid fa-location-dot me-1"></i>
                                 {{ $material->location ?? 'Location not specified' }}
                             </p>
                         </div>
@@ -277,7 +276,11 @@
                         <div class="d-flex justify-content-between gap-3">
                             <span class="text-secondary" style="font-size:13px;">Phone</span>
                             <span class="fw-semibold text-end" style="font-size:13px;">
-                                {{ optional($material->supplier)->phone ?? 'N/A' }}
+                                @if(optional($material->supplier)->phone)
+                                    {{ trim((optional($material->supplier)->country_code ?? '') . ' ' . optional($material->supplier)->phone) }}
+                                @else
+                                    N/A
+                                @endif
                             </span>
                         </div>
                     </div>
@@ -293,13 +296,12 @@
 
                     @if(!Auth::guard('supplier')->check() && !Auth::guard('manufacturer')->check())
                         <button type="button"
-                            class="btn text-white w-100 mt-4 py-2"
-                            style="background:#2DAC92;font-size:14px;"
+                            class="btn theme-btn fs-14 w-100 mt-4 p-3 fw-bold"
                             data-bs-toggle="modal"
                             data-bs-target="#supplierModal"
                             data-material-id="{{ $material->id }}"
                             data-material-name="{{ $material->name }}">
-                            Contact Supplier <i class="fas fa-arrow-right ms-2"></i>
+                            Contact Supplier <i class="fa-solid fa-arrow-right ms-2"></i>
                         </button>
                     @endif
 
@@ -360,7 +362,7 @@
                                 @auth
                                 <button type="submit" class="btn btn-primary">Submit Enquiry</button>
                                 @else
-                                <a class="btn btn-primary" href="{{ route('login') }}">Login to Continue</a>
+                                <a class="btn theme-btn" href="{{ route('login') }}">Login to Continue</a>
                                 @endauth
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>

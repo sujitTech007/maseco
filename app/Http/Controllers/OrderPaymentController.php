@@ -8,6 +8,9 @@ use App\Models\Order;
 use App\Models\Payment;
 use Stripe\Stripe;
 use Stripe\Checkout\Session as StripeSession;
+use App\Mail\OrderPaymentConfirmationMail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 
 class OrderPaymentController extends Controller
 {
@@ -107,10 +110,23 @@ class OrderPaymentController extends Controller
                 ]
             );
 
+            $wasAlreadyPaid = $order->payment_status === 'paid';
             $order->update([
                 'payment_status' => 'paid',
                 'status' => 'confirmed',
             ]);
+
+            if (!$wasAlreadyPaid) {
+                try {
+                    $order->loadMissing('user');
+                    Mail::to($order->user->email)->send(new OrderPaymentConfirmationMail($order));
+                } catch (\Throwable $exception) {
+                    Log::error('Order payment confirmation email could not be sent.', [
+                        'order_id' => $order->id,
+                        'exception' => $exception->getMessage(),
+                    ]);
+                }
+            }
 
             // Clear session
             session()->forget('stripe_session_id');

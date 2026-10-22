@@ -4,7 +4,7 @@
 ========================================= */
 
 .page-content {
-    background: #f5f8f7;
+    background: #fff;
     min-height: 100vh;
     color: #263b38;
     font-family: inherit;
@@ -27,7 +27,7 @@
 
 /* Main content spacing */
 .page-container {
-    padding: 24px 22px !important;
+    padding:30px 20px !important;
 }
 
 .page-content .container {
@@ -67,8 +67,6 @@
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    min-height: 142px;
-    padding: 26px 24px !important;
     text-align: left !important;
 }
 
@@ -80,21 +78,11 @@
 }
 
 .page-content .custom-card-body .card-text {
-    color: #71817d !important;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1.5;
-    margin-bottom: 13px !important;
+opacity: 0.6;
 }
 
 .page-content .custom-card-body .card-title {
-    color: #203d37 !important;
-    font-size: 29px !important;
-    font-weight: 750;
-    line-height: 1.2;
-    margin: 0 !important;
-    overflow-wrap: anywhere;
-    letter-spacing: -0.7px;
+
 }
 
 /* Circular icon background */
@@ -144,11 +132,6 @@
 }
 
 /* User count cards */
-.page-content .card-body-users .card-title,
-.page-content .card-body-growth .card-title,
-.page-content .card-body-rating .card-title {
-    color: #203d37 !important;
-}
 
 /* Second row spacing */
 .page-content .container > .row.mt-4 {
@@ -222,91 +205,25 @@
     }
 }
 
-/* =====================================
-   DIFFERENT BACKGROUNDS FOR DASH CARDS
-===================================== */
-
-/* Enquiry - Soft Mint Green */
-.page-content .card:has(.card-body-users) {
-    background: linear-gradient(135deg, #e8f8f2 0%, #f5fcf8 100%) !important;
-    border-color: #d3eee3 !important;
+.dashboard-card {
+    transition: transform .2s ease, box-shadow .2s ease;
 }
-
-.page-content .card-body-users .icon-box {
-    background: #d0f0e4 !important;
-    color: #16866d !important;
-}
-
-/* Orders - Soft Blue */
-.page-content .card:has(.card-body-growth) {
-    background: linear-gradient(135deg, #eaf2ff 0%, #f6f9ff 100%) !important;
-    border-color: #d8e6ff !important;
-}
-
-.page-content .card-body-growth .icon-box {
-    background: #d6e6ff !important;
-    color: #3679d8 !important;
-}
-
-/* Payments - Soft Yellow */
-.page-content .card:has(.card-body-rating) {
-    background: linear-gradient(135deg, #fff4dc 0%, #fffbf1 100%) !important;
-    border-color: #f5e7c3 !important;
-}
-
-.page-content .card-body-rating .icon-box {
-    background: #ffe8b0 !important;
-    color: #b98112 !important;
-}
-
-/* Total Profit - Soft Pink */
-.page-content .card:has(.card-body-uptime) {
-    background: linear-gradient(135deg, #fff0f2 0%, #fff8f9 100%) !important;
-    border-color: #f6dce1 !important;
-}
-
-.page-content .card-body-uptime .icon-box {
-    background: #ffdce3 !important;
-    color: #d84f6b !important;
-}
-
-/* Consistent transparent card bodies */
-.page-content .custom-card-body {
-    background: transparent !important;
-}
-
-/* Buyer, Seller and Manufacturer icon colors */
-.page-content .container > .row.mt-4 .card-body-users .icon-box {
-    background: #d0f0e4 !important;
-    color: #16866d !important;
-}
-
-.page-content .container > .row.mt-4 .card-body-growth .icon-box {
-    background: #d6e6ff !important;
-    color: #3679d8 !important;
-}
-
-.page-content .container > .row.mt-4 .card-body-rating .icon-box {
-    background: #ffe8b0 !important;
-    color: #b98112 !important;
-}
-
-/* Smooth hover */
-.page-content .card {
-    transition: transform 0.25s ease,
-                box-shadow 0.25s ease;
-}
-
-.page-content .card:hover {
+.dashboard-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(35, 70, 60, 0.10) !important;
+    box-shadow: 0 12px 25px rgba(0,0,0,.15) !important;
+}
+.dashboard-card .icon-box {
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background: rgba(255,255,255,.2);
+    color: #fff;
+    
 }
 
-
-.buyer-page {
-    padding: 8px 0 28px;
-    color: #193d37;
-}
 
 .buyer-page .buyer-heading {
     display: flex;
@@ -607,10 +524,7 @@
 /* ==========================================
    MASECO SELLER PAGE STYLING
 ========================================== */
-   .seller-page {
-        padding: 8px 0 28px;
-        color: #193d37;
-    }
+
 
     .seller-page .seller-heading {
         margin-bottom: 24px;
@@ -938,7 +852,7 @@
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 16px;
-        margin: 24px 0;
+        margin: 0 0 20px;
     }
 
     .manufacturer-page .summary-card {
@@ -1205,7 +1119,6 @@
 ======================================== */
 
 .materials-page {
-    padding: 28px 30px !important;
     background: #f3f8f6;
     min-height: 100vh;
     color: #294b48;
@@ -1626,11 +1539,7 @@
    Force styles over existing Bootstrap CSS
 ========================================== */
 
-/* Page background */
-.subscription-page {
-        padding: 24px 0 35px;
-        color: #263b38;
-    }
+
 
     .subscription-page .subscription-heading {
         display: flex;
@@ -2029,10 +1938,7 @@
 /* ===================================
    MASECO ENQUIRY PAGE
 =================================== */
- .enquiry-page {
-        padding: 22px 0 35px;
-        color: #293d38;
-    }
+    
 
     .enquiry-page .enquiry-page-header {
         display: flex;
@@ -2068,9 +1974,7 @@
         color: #2DAC92;
     }
 
-    .enquiry-page .enquiry-container {
-        padding: 0 24px;
-    }
+   
 
     .enquiry-page .enquiry-summary {
         margin-bottom: 22px;
@@ -2424,9 +2328,7 @@
             padding: 0 15px;
         }
 
-        .enquiry-page .enquiry-container {
-            padding: 0 15px;
-        }
+      
 
         .enquiry-page .enquiry-page-header h3 {
             font-size: 21px;
@@ -3205,11 +3107,7 @@
     }
 
 
-    .payments-page {
-        padding: 22px 0 35px;
-        color: #293d38;
-    }
-
+  
     .payments-page .payments-heading {
         padding: 0 24px;
         margin-bottom: 22px;
@@ -3241,9 +3139,6 @@
         color: #2DAC92;
     }
 
-    .payments-page .payments-container {
-        padding: 0 24px;
-    }
 
     .payments-page .payments-summary {
         margin-bottom: 22px;
@@ -4083,10 +3978,6 @@
         }
     }
 
-      .newsletter-page {
-        padding: 22px 0 35px;
-        color: #293d38;
-    }
 
     .newsletter-page .newsletter-header {
         padding: 0 24px;
@@ -4119,10 +4010,7 @@
         color: #2DAC92;
     }
 
-    .newsletter-page .newsletter-container {
-        padding: 0 24px;
-    }
-
+  
     .newsletter-page .newsletter-alert {
         display: flex;
         align-items: center;

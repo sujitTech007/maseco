@@ -126,11 +126,11 @@
                 $planName = strtolower($plan->name ?? '');
 
                 if (stripos($planName, 'premium') !== false) {
-                    $planIcon = 'bi-stars';
+                    $planIcon = 'fa-solid fa-wand-magic-sparkles';
                 } elseif (stripos($planName, 'pro') !== false) {
-                    $planIcon = 'bi-buildings';
+                    $planIcon = 'fa-solid fa-city';
                 } else {
-                    $planIcon = 'bi-leaf';
+                    $planIcon = 'fa-solid fa-leaf';
                 }
 
                 $storedFeatures = $plan->features;
@@ -173,7 +173,7 @@
                     @endif
 
                     <div class="plan-icon">
-                        <i class="bi {{ $planIcon }}"></i>
+                        <i class="{{ $planIcon }}"></i>
                     </div>
 
                     <h3>{{ $plan->name }}</h3>
@@ -203,7 +203,7 @@
                         <ul class="plan-features">
                             @foreach($features as $feature)
                                 <li>
-                                    <i class="bi bi-check-circle-fill"></i>
+                                    <i class="fa-solid fa-circle-check"></i>
                                     {{ $feature }}
                                 </li>
                             @endforeach
@@ -213,7 +213,7 @@
                     <div class="getStarted-btn">
                         @if(Auth::guard('supplier')->check() || Auth::guard('manufacturer')->check())
 
-                            <button type="button" class="plan-button" disabled>
+                            <button type="button" class="btn theme-btn-outline" disabled>
                                 Not Available
                             </button>
 
@@ -221,7 +221,7 @@
 
                             <button
                                 type="button"
-                                class="plan-button {{ $isPremium ? 'plan-button-primary text-white' : '' }} purchase-btn"
+                                class="btn {{ $isPremium ? 'theme-btn text-white w-100' : '' }} theme-btn-outline w-100"
                                 data-plan-id="{{ $plan->id }}"
                                 data-plan-name="{{ $plan->name }}"
                                 data-plan-price="{{ $plan->price }}"

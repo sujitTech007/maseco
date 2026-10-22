@@ -1,8 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactUsMail;
+use App\Mail\ContactInquiryNotificationMail;
+use App\Mail\NewsletterWelcomeMail;
+use Illuminate\Support\Facades\Log;
 
 
 use Illuminate\Http\Request;
@@ -14,6 +18,7 @@ use App\Models\Manufacturer;
 use App\Models\Material;
 use App\Models\Newsletter;
 use App\Models\Contact;
+use App\Support\PhoneNumber;
 
 use App\Models\User;
 
@@ -34,7 +39,24 @@ class PagesController extends Controller
             ->latest()
             ->get();
 
-        return view('index', compact('plans', 'materials'));
+        $filterOptions = Material::where('status', 'active')
+            ->get(['category', 'sub_category', 'location']);
+
+        $categories = $filterOptions
+            ->flatMap(fn ($material) => [$material->category, $material->sub_category])
+            ->filter(fn ($value) => filled($value))
+            ->unique()
+            ->sort()
+            ->values();
+
+        $locations = $filterOptions
+            ->pluck('location')
+            ->filter(fn ($value) => filled($value))
+            ->unique()
+            ->sort()
+            ->values();
+
+        return view('index', compact('plans', 'materials', 'categories', 'locations'));
     }
 
     public function aboutUs()
@@ -103,7 +125,7 @@ class PagesController extends Controller
         $request = request();
 
         $query = Material::with(['supplier', 'manufacturer'])
-    ->where('status', 'active');
+            ->where('status', 'active');
 
 
 
@@ -111,7 +133,7 @@ class PagesController extends Controller
 
         if ($request->filled('q')) {
 
-            $search = $request->string('q');
+            $search = (string) $request->input('q');
 
             $query->where(function ($q) use ($search) {
 
@@ -127,7 +149,7 @@ class PagesController extends Controller
 
         if ($request->filled('category')) {
 
-            $category = $request->string('category');
+            $category = (string) $request->input('category');
 
             $query->where(function ($q) use ($category) {
 
@@ -143,7 +165,7 @@ class PagesController extends Controller
 
         if ($request->filled('location')) {
 
-            $query->where('location', $request->string('location'));
+            $query->where('location', (string) $request->input('location'));
         }
 
 
@@ -166,22 +188,22 @@ class PagesController extends Controller
 
         if ($request->filled('grade')) {
 
-            $query->where('grade', $request->string('grade'));
+            $query->where('grade', (string) $request->input('grade'));
         }
 
         if ($request->filled('size')) {
 
-            $query->where('size', $request->string('size'));
+            $query->where('size', (string) $request->input('size'));
         }
 
         if ($request->filled('certification')) {
 
-            $query->where('certification', $request->string('certification'));
+            $query->where('certification', (string) $request->input('certification'));
         }
 
         if ($request->filled('unit')) {
 
-            $query->where('unit', $request->string('unit'));
+            $query->where('unit', (string) $request->input('unit'));
         }
 
 
@@ -301,24 +323,25 @@ class PagesController extends Controller
 
     public function newsletter(Request $request)
     {
-        // Validate email
-        $request->validate([
-            'email' => 'required|email',
+        $validated = $request->validate([
+            'email' => 'required|email|max:255',
         ]);
 
-        // Check if email already exists
-        $exists = Newsletter::where('email', $request->email)->exists();
+        $email = strtolower(trim($validated['email']));
+        $newsletter = Newsletter::firstOrCreate(['email' => $email]);
 
-        if ($exists) {
-            return back()->with('success', 'You have already subscribed to our newsletter.');
+        try {
+            Mail::to($newsletter->email)->send(new NewsletterWelcomeMail($newsletter));
+        } catch (\Throwable $exception) {
+            Log::error('Newsletter confirmation email could not be sent.', [
+                'email' => $newsletter->email,
+                'exception' => $exception->getMessage(),
+            ]);
+
+            return back()->with('error', 'Your subscription was saved, but we could not send the confirmation email. Please try again later.');
         }
 
-        // Create new subscription
-        $newsletter = new Newsletter();
-        $newsletter->email = $request->email;
-        $newsletter->save();
-
-        return back()->with('success', 'Newsletter subscription done successfully.');
+        return back()->with('success', 'Newsletter subscription confirmed.');
     }
 
     public function contactUsStore(Request $request)
@@ -327,7 +350,8 @@ class PagesController extends Controller
         $validated = $request->validate([
             'name'     => 'required|string|max:255',
             'email'    => 'required|email|max:255',
-            'phone'    => 'required|digits_between:7,15',
+            'phone'    => ['required', 'string', 'max:30', 'regex:/^[0-9+().\s-]+$/'],
+            'country_code' => ['required', 'string', 'max:10', 'regex:/^\+[0-9-]+$/'],
             'find_us'  => 'nullable|string|max:100',
         ]);
 
@@ -342,36 +366,41 @@ class PagesController extends Controller
         $contact = new Contact();
         $contact->name = $request->name;
         $contact->email = $request->email;
-        $contact->phone = $request->phone;
+        $contact->phone = PhoneNumber::toE164($validated['country_code'], $validated['phone']);
         $contact->find_us = $request->find_us;
         $contact->save();
 
-         Mail::to($contact->email)->send(new ContactUsMail($contact));
+        try {
+            Mail::to($contact->email)->send(new ContactUsMail($contact));
+        } catch (\Throwable $exception) {
+            Log::error('Contact confirmation email could not be sent.', [
+                'contact_id' => $contact->id,
+                'exception' => $exception->getMessage(),
+            ]);
+        }
+
+        $notificationAddress = config('mail.contact_to', config('mail.from.address'));
+        if ($notificationAddress && $notificationAddress !== $contact->email) {
+            try {
+                Mail::to($notificationAddress)->send(new ContactInquiryNotificationMail($contact));
+            } catch (\Throwable $exception) {
+                Log::error('Contact notification email could not be sent.', [
+                    'contact_id' => $contact->id,
+                    'exception' => $exception->getMessage(),
+                ]);
+            }
+        }
 
         return back()->with('success', 'Thank you for reaching out! We will contact you shortly.');
     }
-    
+
     public function termsCondition()
     {
         return view('termsCondition');
     }
-    
+
     public function privacyPolicy()
     {
         return view('privacy-policy');
     }
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
 }

@@ -34,7 +34,7 @@
 
 
 
-          <form action="{{ url('/marketplace') }}" method="GET"
+          <form action="{{ route('listing') }}" method="GET"
             class="bg-white text-dark rounded-3 shadow p-3 border form_container">
 
             <div class="d-flex flex-nowrap align-items-end gap-2">
@@ -44,8 +44,9 @@
                 <label for="q" class="form-label small fw-semibold mb-1">
                   Search Materials
                 </label>
-                <input type="text" name="q" id="q"
+                <input type="search" name="q" id="q"
                   class="form-control bg-light"
+                  value="{{ request('q') }}"
                   placeholder="Search materials...">
               </div>
 
@@ -57,8 +58,11 @@
                 <select name="category" id="category"
                   class="form-select bg-light">
                   <option value="">All categories</option>
-                  <option value="Fabric">Fabric</option>
-                  <option value="Chemicals">Chemicals</option>
+                  @foreach($categories as $category)
+                    <option value="{{ $category }}" {{ request('category') === $category ? 'selected' : '' }}>
+                      {{ $category }}
+                    </option>
+                  @endforeach
                 </select>
               </div>
 
@@ -70,8 +74,11 @@
                 <select name="location" id="location"
                   class="form-select bg-light">
                   <option value="">All locations</option>
-                  <option value="USA – Chicago, Illinois">USA – Chicago, Illinois</option>
-                  <option value="USA – Dallas, Texas">USA – Dallas, Texas</option>
+                  @foreach($locations as $location)
+                    <option value="{{ $location }}" {{ request('location') === $location ? 'selected' : '' }}>
+                      {{ $location }}
+                    </option>
+                  @endforeach
                 </select>
               </div>
 
@@ -83,6 +90,7 @@
                 <input type="number" step="0.01" min="0"
                   name="price_min" id="price_min"
                   class="form-control bg-light"
+                  value="{{ request('price_min') }}"
                   placeholder="Min">
               </div>
 
@@ -91,7 +99,7 @@
                 <div class="d-flex gap-2">
                   <button type="submit"
                     class="btn theme_btn">
-                    <i class="fa fa-search me-1"></i> Search
+                    <i class="fa-solid fa-magnifying-glass me-1"></i> Search
                   </button>
 
 
@@ -122,7 +130,7 @@
             <div class="col-12 col-sm-6 col-xl-3">
                 <div class="maseco-advantage-card">
                     <div class="maseco-advantage-icon bg-danger bg-opacity-10">
-                        <i class="fa fa-shield text-danger"></i>
+                        <i class="fa-solid fa-shield text-danger"></i>
                     </div>
 
                     <div class="maseco-advantage-content">
@@ -136,7 +144,7 @@
             <div class="col-12 col-sm-6 col-xl-3">
                 <div class="maseco-advantage-card">
                     <div class="maseco-advantage-icon bg-warning bg-opacity-10">
-                        <i class="fa fa-sliders text-warning"></i>
+                        <i class="fa-solid fa-sliders text-warning"></i>
                     </div>
 
                     <div class="maseco-advantage-content">
@@ -150,7 +158,7 @@
             <div class="col-12 col-sm-6 col-xl-3">
                 <div class="maseco-advantage-card">
                     <div class="maseco-advantage-icon bg-secondary bg-opacity-10">
-                        <i class="fa fa-leaf text-dark"></i>
+                        <i class="fa-solid fa-leaf text-dark"></i>
                     </div>
 
                     <div class="maseco-advantage-content">
@@ -164,7 +172,7 @@
             <div class="col-12 col-sm-6 col-xl-3">
                 <div class="maseco-advantage-card">
                     <div class="maseco-advantage-icon bg-success bg-opacity-10">
-                        <i class="fa fa-comments primary-text-color"></i>
+                        <i class="fa-solid fa-comments primary-text-color"></i>
                     </div>
 
                     <div class="maseco-advantage-content">
@@ -385,7 +393,7 @@
           <div class="maseco-featured-heading">
               <div>
                   <span class="maseco-featured-eyebrow">
-                      <i class="bi bi-leaf-fill"></i> SUSTAINABLE SOURCING
+                      <i class="fa-solid fa-leaf"></i> SUSTAINABLE SOURCING
                   </span>
                   <h2 class="section-title-h2 mb-2">Featured <span class="primary-text-color">textile suppliers</span></h2>
                   <p>Discover trusted partners for responsible textile sourcing.</p>
@@ -421,7 +429,7 @@
                               </a>
 
                               <span class="badge bg-white text_color_primary position-absolute top-0 start-0 m-3 shadow-sm fs-11 p-2">
-                                  <i class="fa fa-check-circle me-1"></i>
+                                  <i class="fa-solid fa-circle-check me-1"></i>
                                   Verified Listing
                               </span>
                           </div>
@@ -445,18 +453,18 @@
 
                               <div class="material-info mb-3">
                                   <p class="mb-2 text-muted">
-                                      <i class="fa fa-map-marker-alt text_color_primary me-2"></i>
+                                      <i class="fa-solid fa-location-dot text_color_primary me-2"></i>
                                       {{ $material->location ?: 'Location not specified' }}
                                   </p>
 
                                   <p class="mb-2 text-muted">
-                                      <i class="fa fa-building text_color_primary me-2"></i>
+                                      <i class="fa-solid fa-building text_color_primary me-2"></i>
                                       <span class="text-dark fw-semibold">Supplier:</span>
                                       {{ $supplierName }}
                                   </p>
 
                                   <p class="mb-0 text-muted">
-                                      <i class="fa fa-cubes text_color_primary me-2"></i>
+                                      <i class="fa-solid fa-cubes text_color_primary me-2"></i>
                                       <span class="text-dark fw-semibold">Grade / Size:</span>
                                       {{ $material->grade ?: '-' }}
                                       /
@@ -468,7 +476,7 @@
                                   <a href="{{ route('listing.details', $material->id) }}"
                                      class="btn theme_btn w-100">
                                       View Details
-                                      <i class="fa fa-arrow-right ms-1"></i>
+                                      <i class="fa-solid fa-arrow-right ms-1"></i>
                                   </a>
                               </div>
                           </div>
@@ -478,7 +486,7 @@
                   <div class="col-12">
                       <div class="card border-0 shadow-sm text-center py-5">
                           <div class="card-body">
-                              <i class="fa fa-search fa-3x text-muted mb-3"></i>
+                              <i class="fa-solid fa-magnifying-glass fa-3x text-muted mb-3"></i>
                               <h5 class="fw-bold">No Materials Found</h5>
                               <p class="text-muted">Materials will appear here when suppliers add active listings.</p>
                               <a href="{{ route('listing') }}" class="btn btn-outline-success">
@@ -529,7 +537,7 @@
             <li>Hassle-Free Logistics & Admin</li>
           </ul>
           <div class="section-button mt-5 d-block">
-            <a href="{{ url('about-us') }}" class="theme-btn">Read More <i class="fa fa-arrow-right"></i></a>
+            <a href="{{ url('about-us') }}" class="theme-btn">Read More <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -662,7 +670,7 @@
         <!-- Section heading -->
         <div class="journey-heading">
             <span class="journey-eyebrow">
-                <i class="bi bi-leaf"></i> THE MASECO JOURNEY
+                <i class="fa-solid fa-leaf"></i> THE MASECO JOURNEY
             </span>
             
             <h2 class="section-title-h2 mb-2 primary-text-color">A Smarter Way to Source Textiles</h2>
@@ -685,7 +693,7 @@
 
                     <div class="journey-image-caption">
                         <span class="journey-caption-icon">
-                            <i class="bi bi-recycle"></i>
+                            <i class="fa-solid fa-recycle"></i>
                         </span>
                         <div>
                             <strong>Better sourcing starts here.</strong>
@@ -745,7 +753,7 @@
 
                 <!-- <a href="{{ url('/marketplace') }}" class="theme_link">
                     Explore the marketplace
-                    <i class="bi bi-arrow-up-right"></i>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </a> -->
             </div>
 
@@ -778,11 +786,11 @@
                 $planName = strtolower($plan->name ?? '');
 
                 if (stripos($planName, 'premium') !== false) {
-                    $planIcon = 'bi-stars';
+                    $planIcon = 'fa-solid fa-wand-magic-sparkles';
                 } elseif (stripos($planName, 'pro') !== false) {
-                    $planIcon = 'bi-buildings';
+                    $planIcon = 'fa-solid fa-city';
                 } else {
-                    $planIcon = 'bi-leaf';
+                    $planIcon = 'fa-solid fa-leaf';
                 }
 
                 $storedFeatures = $plan->features;
@@ -855,7 +863,7 @@
                         <ul class="plan-features">
                             @foreach($features as $feature)
                                 <li>
-                                    <i class="bi bi-check-circle-fill"></i>
+                                    <i class="fa-solid fa-circle-check"></i>
                                     {{ $feature }}
                                 </li>
                             @endforeach
@@ -865,7 +873,7 @@
                     <div class="getStarted-btn">
                         @if(Auth::guard('supplier')->check() || Auth::guard('manufacturer')->check())
 
-                            <button type="button" class="plan-button" disabled>
+                            <button type="button" class="theme-btn" disabled>
                                 Not Available
                             </button>
 
@@ -873,7 +881,7 @@
 
                             <button
                                 type="button"
-                                class="plan-button {{ $isPremium ? 'plan-button-primary text-white' : '' }} purchase-btn"
+                                class="btn {{ $isPremium ? 'theme-btn text-white w-100' : '' }} theme-btn-outline w-100"
                                 data-plan-id="{{ $plan->id }}"
                                 data-plan-name="{{ $plan->name }}"
                                 data-plan-price="{{ $plan->price }}"
@@ -931,7 +939,7 @@
                     position-absolute top-50 start-0 translate-middle-y"
           id="workflowPrev" aria-label="Previous steps"
           style="z-index:2">
-          <i class="fa fa-chevron-left primary-text-color"></i>
+          <i class="fa-solid fa-chevron-left primary-text-color"></i>
         </button>
 
         <div class="overflow-hidden mx-3 mx-md-4">
@@ -944,7 +952,7 @@
             'title' => 'Discover Suppliers',
             'subtitle' => 'Find the right match',
             'image' => 'assets/images/suppliers/green-textiles.jpg',
-            'icon' => 'fa-search',
+            'icon' => 'fa-magnifying-glass',
             'description' => 'Find textile suppliers using advanced filters for material, category, MOQ and eco-certification.',
             'points' => ['Advanced search & filters', 'Verified supplier profiles', 'Sustainable materials'],
             ],
@@ -953,7 +961,7 @@
             'title' => 'Compare & Select',
             'subtitle' => 'Make informed decisions',
             'image' => 'assets/images/suppliers/sunrise-fabrics.jpg',
-            'icon' => 'fa-balance-scale',
+            'icon' => 'fa-scale-balanced',
             'description' => 'Review supplier details, compare options and save your preferred textile partners.',
             'points' => ['Supplier comparison', 'Saved suppliers & favorites', 'MOQ and material review'],
             ],
@@ -992,7 +1000,7 @@
                   </span>
 
                   <span class="workflow-icon">
-                    <i class="fa {{ $item['icon'] }}"></i>
+                    <i class="fa-solid {{ $item['icon'] }}"></i>
                   </span>
                 </div>
 
@@ -1012,7 +1020,7 @@
                   <ul class="list-unstyled text-secondary mb-4">
                     @foreach($item['points'] as $point)
                     <li class="mb-2">
-                      <i class="fa fa-check-circle primary-text-color me-2"></i>
+                      <i class="fa-solid fa-circle-check primary-text-color me-2"></i>
                       {{ $point }}
                     </li>
                     @endforeach
@@ -1020,7 +1028,7 @@
 
                   <a href="{{ url('/marketplace') }}"
                     class="btn theme_btn rounded-5">
-                    Learn More <i class="fa fa-arrow-right ms-1"></i>
+                    Learn More <i class="fa-solid fa-arrow-right ms-1"></i>
                   </a>
                 </div>
               </div>
@@ -1034,7 +1042,7 @@
                     position-absolute top-50 end-0 translate-middle-y"
           id="workflowNext" aria-label="Next steps"
           style="z-index:2">
-          <i class="fa fa-chevron-right primary-text-color"></i>
+          <i class="fa-solid fa-chevron-right primary-text-color"></i>
         </button>
       </div>
 
@@ -1054,7 +1062,7 @@
       <div class="row g-3 align-items-center bg-white rounded-4 shadow-sm p-4 mt-5">
         <div class="col-lg-4">
           <h3 class="h5 fw-bold mb-2">
-            <i class="fa fa-leaf primary-text-color me-2"></i>
+            <i class="fa-solid fa-leaf primary-text-color me-2"></i>
             Sustainable Sourcing
           </h3>
           <p class="text-secondary mb-0">
@@ -1066,14 +1074,14 @@
        
         <div class="col-6 col-lg-3">
             <div class="d-flex align-items-center gap-2 p-3 rounded-3 border supplier-benefit-card">
-                <i class="fa fa-shield primary-text-color fs-5"></i>
+                <i class="fa-solid fa-shield primary-text-color fs-5"></i>
                 <span class="fs-14 fw-semibold">Supplier Verification</span>
             </div>
         </div>
 
         <div class="col-6 col-lg-3">
             <div class="d-flex align-items-center gap-2 p-3 rounded-3 border supplier-benefit-card">
-                <i class="fa fa-recycle primary-text-color fs-5"></i>
+                <i class="fa-solid fa-recycle primary-text-color fs-5"></i>
                 <span class="fs-14 fw-semibold">Eco-conscious Options</span>
             </div>
         </div>
@@ -1082,7 +1090,7 @@
         <div class="col-lg-2 text-lg-end">
           <a href="{{ url('/marketplace') }}"
             class="btn theme_btn px-4">
-            Get Started <i class="fa fa-arrow-right ms-1"></i>
+            Get Started <i class="fa-solid fa-arrow-right ms-1"></i>
           </a>
         </div>
       </div>
@@ -1138,7 +1146,7 @@
         </div>
         <div class="col-xl-4">
           <div class="section-button mt-2 text-right">
-            <a href="{{ url('contact-us') }}" class="theme-btn">contact us <i class="fa fa-arrow-right"></i></a>
+            <a href="{{ url('contact-us') }}" class="theme-btn">contact us <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -1501,8 +1509,8 @@
     button.setAttribute('aria-pressed', String(!isSelected));
 
     button.innerHTML = !isSelected ?
-      '<i class="fa fa-check me-1"></i> Selected' :
-      '<i class="fa fa-balance-scale me-1"></i> Compare';
+      '<i class="fa-solid fa-check me-1"></i> Selected' :
+      '<i class="fa-solid fa-scale-balanced me-1"></i> Compare';
   }
 </script>
 
@@ -1553,8 +1561,9 @@
         );
 
         if (icon) {
-          icon.classList.toggle('bi-heart', isFavourite);
-          icon.classList.toggle('bi-heart-fill', !isFavourite);
+          icon.classList.toggle('fa-regular', isFavourite);
+          icon.classList.toggle('fa-solid', !isFavourite);
+          icon.classList.toggle('fa-heart', true);
         }
 
         button.classList.remove('is-pop');
@@ -1601,8 +1610,8 @@
         const icon = button.querySelector('i');
         if (icon) {
           icon.className = !isSelected ?
-            'bi bi-check2 me-1' :
-            'bi bi-arrow-left-right me-1';
+            'fa-solid fa-check me-1' :
+            'fa-solid fa-arrows-left-right me-1';
         }
 
         button.lastChild.textContent = !isSelected ?
@@ -1621,7 +1630,7 @@
 
           const icon = button.querySelector('i');
           if (icon) {
-            icon.className = 'bi bi-arrow-left-right me-1';
+            icon.className = 'fa-solid fa-arrows-left-right me-1';
           }
 
           button.lastChild.textContent = ' Compare';
