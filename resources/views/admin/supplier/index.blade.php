@@ -63,25 +63,82 @@
         </div>
 
         <div class="seller-panel">
+<!-- Registered Sellers Header & Filters -->
+<div class="seller-panel-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4">
+    <div>
+        <h5 class="mb-1">Registered Sellers</h5>
+        <p class="text-muted mb-0">Review seller details and manage account status.</p>
+    </div>
 
-            <div class="seller-panel-header">
-                <div>
-                    <h5>Registered Sellers</h5>
-                    <p>Review seller details and manage account status.</p>
-                </div>
+    <div class="row g-3 align-items-center flex-grow-1 ms-xl-3">
 
-                <div class="seller-search-wrap">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input
-                        type="search"
-                        class="dt-input seller-search"
-                        id="dt-search-0"
-                        placeholder="Search sellers..."
-                        aria-label="Search sellers"
-                        aria-controls="complex-header-datatable"
-                    >
-                </div>
-            </div>
+        <!-- Search Sellers -->
+        <div class="col-12 col-md-6 col-xl-3">
+            <input
+                type="search"
+                class="form-control"
+                id="seller-search"
+                placeholder="Search sellers..."
+                aria-label="Search sellers"
+                aria-controls="complex-header-datatable"
+            >
+        </div>
+
+        <!-- Status Filter -->
+        <div class="col-12 col-md-6 col-xl-2">
+            <select class="form-select" id="seller-status">
+                <option value="">(Status)</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+                <option value="pending">Pending</option>
+                <option value="suspended">Suspended</option>
+            </select>
+        </div>
+
+        <!-- Seller Type Filter -->
+        <div class="col-12 col-md-6 col-xl-2">
+            <select class="form-select" id="seller-type">
+                <option value="">Seller Type</option>
+                <option value="manufacturer">Manufacturer</option>
+                <option value="supplier">Supplier</option>
+                <option value="wholesaler">Wholesaler</option>
+                <option value="distributor">Distributor</option>
+            </select>
+        </div>
+
+        <!-- Start Date -->
+        <div class="col-12 col-md-6 col-xl-2">
+            <input
+                type="date"
+                class="form-control"
+                id="seller-start-date"
+                aria-label="Start date"
+            >
+        </div>
+
+        <!-- End Date -->
+        <div class="col-12 col-md-6 col-xl-2">
+            <input
+                type="date"
+                class="form-control"
+                id="seller-end-date"
+                aria-label="End date"
+            >
+        </div>
+
+        <!-- Filter Button -->
+        <div class="col-12 col-md-6 col-xl-1">
+            <button
+                type="button"
+                class="btn btn-outline-success w-100"
+                id="seller-filter-btn"
+            >
+                Filter
+            </button>
+        </div>
+
+    </div>
+</div>
 
             <div class="seller-table-wrap">
                 <table

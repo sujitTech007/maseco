@@ -55,18 +55,55 @@
         {{-- Newsletter Table --}}
         <div class="newsletter-card">
 
-            <div class="newsletter-card-header">
-                <div>
-                    <h5>Newsletter Subscribers</h5>
-                    <p>View and manage your newsletter subscriber list.</p>
-                </div>
+           <!-- Newsletter Subscribers Header & Filters -->
+<div class="newsletter-card-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3">
 
-                <span class="newsletter-count">
-                    {{ $newsletterCollection->count() }}
-                    {{ $newsletterCollection->count() === 1 ? 'subscriber' : 'subscribers' }}
-                </span>
-            </div>
+    <div>
+        <h5>Newsletter Subscribers</h5>
+        <p>View and manage your newsletter subscriber list.</p>
+    </div>
 
+    <div class="d-flex flex-wrap align-items-center gap-2">
+
+        <!-- Subscription Status -->
+        <select class="form-select"
+                id="newsletter-status-filter"
+                aria-label="Filter by subscription status"
+                style="width: 165px;">
+            <option value="">All Subscribers</option>
+            <option value="subscribed">Subscribed</option>
+            <option value="unsubscribed">Unsubscribed</option>
+        </select>
+
+        <!-- Start Date -->
+        <input type="date"
+               class="form-control"
+               id="newsletter-start-date"
+               aria-label="Start date"
+               style="width: 155px;">
+
+        <!-- End Date -->
+        <input type="date"
+               class="form-control"
+               id="newsletter-end-date"
+               aria-label="End date"
+               style="width: 155px;">
+
+        <!-- Filter Button -->
+        <button type="button"
+                class="btn btn-outline-success"
+                id="newsletter-filter-btn">
+            <i class="ri-filter-3-line me-1"></i> Filter
+        </button>
+
+        <!-- Subscriber Count -->
+        <span class="newsletter-count">
+            {{ $newsletterCollection->count() }}
+            {{ $newsletterCollection->count() === 1 ? 'subscriber' : 'subscribers' }}
+        </span>
+
+    </div>
+</div>
             {{-- Search and Page Size --}}
             <div class="newsletter-controls">
 

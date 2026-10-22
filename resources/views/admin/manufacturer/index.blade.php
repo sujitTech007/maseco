@@ -60,24 +60,84 @@
 
         <div class="manufacturer-table-card">
 
-            <div class="table-card-header">
-                <div>
-                    <h4 class="table-card-title">Manufacturer Directory</h4>
-                    <p class="table-card-subtitle">
-                        View manufacturer details and manage account status.
-                    </p>
-                </div>
+          <!-- Manufacturer Directory Header & Filters -->
+<div class="table-card-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4">
 
-                <div class="manufacturer-search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input
-                        type="search"
-                        id="manufacturer-search"
-                        placeholder="Search manufacturers..."
-                        aria-label="Search manufacturers"
-                    >
-                </div>
-            </div>
+    <div>
+        <h4 class="table-card-title mb-1">Manufacturer Directory</h4>
+        <p class="table-card-subtitle text-muted mb-0">
+            View manufacturer details and manage account status.
+        </p>
+    </div>
+
+    <div class="row g-3 align-items-center flex-grow-1 ms-xl-3">
+
+        <!-- Search Manufacturers -->
+        <div class="col-12 col-md-6 col-xl-3">
+            <input
+                type="search"
+                class="form-control"
+                id="manufacturer-search"
+                placeholder="Search manufacturers..."
+                aria-label="Search manufacturers"
+            >
+        </div>
+
+        <!-- Status Filter -->
+        <div class="col-12 col-md-6 col-xl-2">
+            <select class="form-select" id="manufacturer-status">
+                <option value="">(Status)</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+                <option value="pending">Pending</option>
+                <option value="suspended">Suspended</option>
+            </select>
+        </div>
+
+        <!-- Manufacturer Type -->
+        <div class="col-12 col-md-6 col-xl-2">
+            <select class="form-select" id="manufacturer-type">
+                <option value="">Manufacturer Type</option>
+                <option value="textile">Textile Manufacturer</option>
+                <option value="garment">Garment Manufacturer</option>
+                <option value="fabric">Fabric Manufacturer</option>
+                <option value="recycled">Recycled Textile Manufacturer</option>
+            </select>
+        </div>
+
+        <!-- Start Date -->
+        <div class="col-12 col-md-6 col-xl-2">
+            <input
+                type="date"
+                class="form-control"
+                id="manufacturer-start-date"
+                aria-label="Start date"
+            >
+        </div>
+
+        <!-- End Date -->
+        <div class="col-12 col-md-6 col-xl-2">
+            <input
+                type="date"
+                class="form-control"
+                id="manufacturer-end-date"
+                aria-label="End date"
+            >
+        </div>
+
+        <!-- Filter Button -->
+        <div class="col-12 col-md-6 col-xl-1">
+            <button
+                type="button"
+                class="btn btn-outline-success w-100"
+                id="manufacturer-filter-btn"
+            >
+                Filter
+            </button>
+        </div>
+
+    </div>
+</div>
 
             <div class="table-responsive">
                 <table class="table manufacturer-table table-hover mb-0"

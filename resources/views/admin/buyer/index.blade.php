@@ -62,24 +62,81 @@
         </div>
 
         <div class="buyer-panel">
-            <div class="buyer-panel-header">
-                <div>
-                    <h5>Registered Buyers</h5>
-                    <p>View buyer details and manage account status.</p>
-                </div>
+           <!-- Registered Buyers Header & Filters -->
+<div class="buyer-panel-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4">
+    <div>
+        <h5 class="mb-1">Registered Buyers</h5>
+        <p class="text-muted mb-0">View buyer details and manage account status.</p>
+    </div>
 
-                <div class="buyer-search-wrap">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input
-                        type="search"
-                        class="dt-input buyer-search"
-                        id="dt-search-0"
-                        placeholder="Search buyers..."
-                        aria-label="Search buyers"
-                        aria-controls="complex-header-datatable"
-                    >
-                </div>
-            </div>
+    <div class="row g-3 align-items-center flex-grow-1 ms-xl-3">
+
+        <!-- Search Buyers -->
+        <div class="col-12 col-md-6 col-xl-3">
+            <input
+                type="search"
+                class="form-control"
+                id="buyer-search"
+                placeholder="Search buyers..."
+                aria-label="Search buyers"
+            >
+        </div>
+
+        <!-- Status Filter -->
+        <div class="col-12 col-md-6 col-xl-2">
+            <select class="form-select" id="buyer-status">
+                <option value="">(Status)</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+                <option value="pending">Pending</option>
+                <option value="suspended">Suspended</option>
+            </select>
+        </div>
+
+        <!-- Buyer Type Filter -->
+        <div class="col-12 col-md-6 col-xl-2">
+            <select class="form-select" id="buyer-type">
+                <option value="">Buyer Type</option>
+                <option value="manufacturer">Manufacturer</option>
+                <option value="retailer">Retailer</option>
+                <option value="wholesaler">Wholesaler</option>
+                <option value="distributor">Distributor</option>
+            </select>
+        </div>
+
+        <!-- Start Date -->
+        <div class="col-12 col-md-6 col-xl-2">
+            <input
+                type="date"
+                class="form-control"
+                id="buyer-start-date"
+                aria-label="Start date"
+            >
+        </div>
+
+        <!-- End Date -->
+        <div class="col-12 col-md-6 col-xl-2">
+            <input
+                type="date"
+                class="form-control"
+                id="buyer-end-date"
+                aria-label="End date"
+            >
+        </div>
+
+        <!-- Filter Button -->
+        <div class="col-12 col-md-6 col-xl-1">
+            <button
+                type="button"
+                class="btn btn-outline-success w-100"
+                id="buyer-filter-btn"
+            >
+                Filter
+            </button>
+        </div>
+
+    </div>
+</div>
 
             <div class="buyer-table-wrap">
                 <table class="table table-custom table-centered table-sm table-hover mb-0 dataTable"

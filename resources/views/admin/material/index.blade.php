@@ -63,17 +63,68 @@
     <!-- Materials Table -->
     <div class="materials-table-card">
 
-        <div class="materials-table-header">
-            <div>
-                <h4>Material Inventory</h4>
-                <p>Manage your available raw materials and pricing.</p>
-            </div>
+       <!-- Material Inventory Header & Filters -->
+<div class="materials-table-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3">
 
-            <div class="materials-count">
-                {{ $materials->count() }} Materials
-            </div>
-        </div>
+    <div>
+        <h4>Material Inventory</h4>
+        <p>Manage your available raw materials and pricing.</p>
+    </div>
 
+    <div class="d-flex flex-wrap align-items-center gap-2">
+
+        <!-- Material Status -->
+        <select class="form-select"
+                id="materials-status-filter"
+                aria-label="Filter by material status"
+                style="width: 155px;">
+            <option value="">All Statuses</option>
+            <option value="available">Available</option>
+            <option value="low-stock">Low Stock</option>
+            <option value="out-of-stock">Out of Stock</option>
+        </select>
+
+        <!-- Material Type -->
+        <select class="form-select"
+                id="materials-type-filter"
+                aria-label="Filter by material type"
+                style="width: 165px;">
+            <option value="">All Material Types</option>
+            <option value="cotton">Cotton</option>
+            <option value="polyester">Polyester</option>
+            <option value="wool">Wool</option>
+            <option value="silk">Silk</option>
+            <option value="recycled">Recycled Materials</option>
+        </select>
+
+        <!-- Start Date -->
+        <input type="date"
+               class="form-control"
+               id="materials-start-date"
+               aria-label="Start date"
+               style="width: 155px;">
+
+        <!-- End Date -->
+        <input type="date"
+               class="form-control"
+               id="materials-end-date"
+               aria-label="End date"
+               style="width: 155px;">
+
+        <!-- Filter Button -->
+        <button type="button"
+                class="btn btn-outline-success"
+                id="materials-filter-btn">
+            <i class="ri-filter-3-line me-1"></i> Filter
+        </button>
+
+        <!-- Materials Count -->
+        <!-- <div class="materials-count">
+            {{ $materials->count() }} Materials
+        </div> -->
+
+    </div>
+</div>
         <div class="table-responsive">
             <table class="table materials-table align-middle mb-0">
 
