@@ -51,12 +51,9 @@
                 </div>
             </div>
         </div>
-
-        {{-- Newsletter Table --}}
-        <div class="newsletter-card">
-
+        
            <!-- Newsletter Subscribers Header & Filters -->
-<div class="newsletter-card-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3">
+<div class="newsletter-card-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 card">
 
     <div>
         <h5>Newsletter Subscribers</h5>
@@ -104,6 +101,10 @@
 
     </div>
 </div>
+
+        {{-- Newsletter Table --}}
+        <div class="newsletter-card">
+
             {{-- Search and Page Size --}}
             <div class="newsletter-controls">
 

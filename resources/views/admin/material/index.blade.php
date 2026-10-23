@@ -70,12 +70,8 @@
 
         </form>
     </div>
-
-    <!-- Materials Table -->
-    <div class="materials-table-card">
-
-       <!-- Material Inventory Header & Filters -->
-<div class="materials-table-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3">
+        <!-- Material Inventory Header & Filters -->
+<div class="materials-table-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 card">
 
     <div>
         <h4>Material Inventory</h4>
@@ -136,6 +132,11 @@
 
     </div>
 </div>
+
+    <!-- Materials Table -->
+    <div class="materials-table-card">
+
+   
         <div class="table-responsive">
             <table class="table materials-table align-middle mb-0">
 

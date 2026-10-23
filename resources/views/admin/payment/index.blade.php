@@ -92,12 +92,9 @@
             </div>
 
         </div>
-
-        {{-- Payments Table --}}
-        <div class="payments-card">
-
+        
             <!-- Payment Transactions Header & Filters -->
-<div class="payments-card-heading d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3">
+<div class="payments-card-heading d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 card">
 
     <div>
         <h5>Payment Transactions</h5>
@@ -153,6 +150,10 @@
 
     </div>
 </div>
+
+        {{-- Payments Table --}}
+        <div class="payments-card">
+
 
             {{-- Table Controls --}}
             <div class="payments-controls">

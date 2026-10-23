@@ -120,6 +120,108 @@
 
         <p class="text-muted mb-3">Your plan purchases and their payment status.</p>
 
+        
+<!-- Subscription Filter Card -->
+<div class="card border-0 shadow-sm rounded-4 mb-4">
+    <div class="card-body p-3">
+
+        <div class="row g-2 align-items-end">
+
+            <!-- Search Subscriptions -->
+            <div class="col-12 col-md-6 col-xl-3">
+                <label for="subscription-search"
+                       class="form-label small fw-semibold">
+                    Search Subscriptions
+                </label>
+
+                <div class="input-group">
+                    <span class="input-group-text bg-light">
+                        <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                    </span>
+
+                    <input type="search"
+                           class="form-control"
+                           id="subscription-search"
+                           placeholder="Subscription ID or plan...">
+                </div>
+            </div>
+
+            <!-- Subscription Status -->
+            <div class="col-6 col-md-3 col-xl-2">
+                <label for="subscription-status"
+                       class="form-label small fw-semibold">
+                    Subscription Status
+                </label>
+
+                <select class="form-select" id="subscription-status">
+                    <option value="">All Statuses</option>
+                    <option value="active">Active</option>
+                    <option value="pending">Pending</option>
+                    <option value="expired">Expired</option>
+                    <option value="cancelled">Cancelled</option>
+                    <option value="suspended">Suspended</option>
+                </select>
+            </div>
+
+            <!-- Subscription Plan -->
+            <div class="col-6 col-md-3 col-xl-2">
+                <label for="subscription-plan"
+                       class="form-label small fw-semibold">
+                    Subscription Plan
+                </label>
+
+                <select class="form-select" id="subscription-plan">
+                    <option value="">All Plans</option>
+                    <option value="free">Free</option>
+                    <option value="basic">Basic</option>
+                    <option value="standard">Standard</option>
+                    <option value="premium">Premium</option>
+                    <option value="enterprise">Enterprise</option>
+                </select>
+            </div>
+
+            <!-- Start Date -->
+            <div class="col-6 col-md-4 col-xl-2">
+                <label for="subscription-start-date"
+                       class="form-label small fw-semibold">
+                    From Date
+                </label>
+
+                <input type="date"
+                       class="form-control"
+                       id="subscription-start-date">
+            </div>
+
+            <!-- End Date -->
+            <div class="col-6 col-md-4 col-xl-2">
+                <label for="subscription-end-date"
+                       class="form-label small fw-semibold">
+                    To Date
+                </label>
+
+                <input type="date"
+                       class="form-control"
+                       id="subscription-end-date">
+            </div>
+
+            <!-- Filter Button -->
+            <div class="col-6 col-md-2 col-xl-1">
+                <button type="button"
+                        class="btn btn-success w-100 text-nowrap"
+                        id="subscription-filter-btn"
+                        title="Apply Filters">
+                    <i class="fa-solid fa-filter"></i>
+                </button>
+            </div>
+
+        </div>
+
+       
+
+    </div>
+</div>
+
+
         <div class="ud-table-wrap bg-white shadow-sm rounded-4 overflow-hidden">
 
             <div class="ud-scroll">

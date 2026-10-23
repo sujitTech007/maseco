@@ -35,11 +35,8 @@
                 <h4 class="category-summary-value">{{ $categoryTotal }}</h4>
             </div>
         </div>
-
-        <div class="category-table-card">
-
-           <!-- Category Directory Header & Filters -->
-<div class="category-table-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4">
+              <!-- Category Directory Header & Filters -->
+<div class="category-table-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4 card">
 
     <div>
         <h4 class="category-table-title mb-1">Category Directory</h4>
@@ -114,6 +111,10 @@
 
     </div>
 </div>
+
+        <div class="category-table-card">
+
+     
             <div class="table-responsive">
                 <table class="table category-table table-hover mb-0"
                        id="category-directory-table"

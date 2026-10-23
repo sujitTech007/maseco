@@ -135,6 +135,115 @@
         <p class="text-muted mb-3">Track the requests you have sent to suppliers and manufacturers and follow their
             status.</p>
 
+            
+<!-- RFQ Header -->
+
+
+
+<!-- RFQ Filter Card -->
+<div class="card border-0 shadow-sm rounded-4 mb-4">
+    <div class="card-body p-3">
+
+        <div class="row g-2 align-items-end">
+
+            <!-- Search -->
+            <div class="col-12 col-md-6 col-xl-3">
+                <label for="rfq-search" class="form-label small fw-semibold">
+                    Search RFQs
+                </label>
+                <div class="input-group">
+                    <span class="input-group-text bg-light">
+                        <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                    </span>
+                    <input type="search" class="form-control"
+                           id="rfq-search"
+                           placeholder="Search RFQs...">
+                </div>
+            </div>
+
+            <!-- Status -->
+            <div class="col-6 col-md-3 col-xl-2">
+                <label for="rfq-status" class="form-label small fw-semibold">
+                    RFQ Status
+                </label>
+                <select class="form-select" id="rfq-status">
+                    <option value="">All Statuses</option>
+                    <option value="draft">Draft</option>
+                    <option value="published">Published</option>
+                    <option value="open">Open</option>
+                    <option value="in progress">In Progress</option>
+                    <option value="quoted">Quoted</option>
+                    <option value="closed">Closed</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+            </div>
+
+            <!-- Category -->
+            <div class="col-6 col-md-3 col-xl-2">
+                <label for="rfq-category" class="form-label small fw-semibold">
+                    Category
+                </label>
+                <select class="form-select" id="rfq-category">
+                    <option value="">All Categories</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="textiles">Textiles</option>
+                    <option value="machinery">Machinery</option>
+                    <option value="raw materials">Raw Materials</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <!-- From Date -->
+            <div class="col-6 col-md-4 col-xl-2">
+                <label for="rfq-start-date" class="form-label small fw-semibold">
+                    From Date
+                </label>
+                <input type="date" class="form-control" id="rfq-start-date">
+            </div>
+
+            <!-- To Date -->
+            <div class="col-6 col-md-4 col-xl-2">
+                <label for="rfq-end-date" class="form-label small fw-semibold">
+                    To Date
+                </label>
+                <input type="date" class="form-control" id="rfq-end-date">
+            </div>
+
+            <!-- Buttons: Same Row -->
+            <div class="col-6 col-md-2 col-xl-1">
+                <label class="form-label small fw-semibold invisible">Filter</label>
+                <button type="button"
+                        class="btn btn-success w-100 text-nowrap"
+                        id="rfq-filter-btn"
+                        title="Apply Filters">
+                    <i class="fa-solid fa-filter"></i>
+                </button>
+            </div>
+
+            <div class="col-6 col-md-2 col-xl-12 d-xl-none">
+                <button type="button"
+                        class="btn btn-outline-secondary w-100"
+                        id="rfq-reset-btn">
+                    <i class="fa-solid fa-rotate-left me-1"></i> Reset
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Reset aligned at right on XL -->
+        <!-- <div class="d-none d-xl-flex justify-content-end mt-2">
+            <button type="button"
+                    class="btn btn-outline-secondary btn-sm"
+                    id="rfq-reset-btn-desktop">
+                <i class="fa-solid fa-rotate-left me-1"></i> Reset
+            </button>
+        </div> -->
+
+    </div>
+</div>
+
+
+
         <div class="ud-table-wrap bg-white shadow-sm rounded-4 overflow-hidden">
 
             <div class="ud-scroll">

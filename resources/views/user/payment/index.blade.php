@@ -67,6 +67,98 @@
 
         <p class="text-muted mb-3">A record of the payments you have made across your orders and subscriptions.</p>
 
+
+        
+<!-- Order Payment Filter Card -->
+<div class="card border-0 shadow-sm rounded-4 mb-4">
+    <div class="card-body p-3">
+
+        <div class="row g-2 align-items-end">
+
+            <!-- Search Payments -->
+            <div class="col-12 col-md-6 col-xl-3">
+                <label for="payment-search" class="form-label small fw-semibold">
+                    Search Payments
+                </label>
+                <div class="input-group">
+                    <span class="input-group-text bg-light">
+                        <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                    </span>
+                    <input type="search"
+                           class="form-control"
+                           id="payment-search"
+                           placeholder="Payment ID or Order ID...">
+                </div>
+            </div>
+
+            <!-- Payment Status -->
+            <div class="col-6 col-md-3 col-xl-2">
+                <label for="payment-status" class="form-label small fw-semibold">
+                    Payment Status
+                </label>
+                <select class="form-select" id="payment-status">
+                    <option value="">All Statuses</option>
+                    <option value="pending">Pending</option>
+                    <option value="processing">Processing</option>
+                    <option value="paid">Paid</option>
+                    <option value="failed">Failed</option>
+                    <option value="refunded">Refunded</option>
+                </select>
+            </div>
+
+            <!-- Payment Method -->
+            <div class="col-6 col-md-3 col-xl-2">
+                <label for="payment-method" class="form-label small fw-semibold">
+                    Payment Method
+                </label>
+                <select class="form-select" id="payment-method">
+                    <option value="">All Methods</option>
+                    <option value="upi">UPI</option>
+                    <option value="card">Credit/Debit Card</option>
+                    <option value="netbanking">Net Banking</option>
+                    <option value="wallet">Wallet</option>
+                    <option value="cod">Cash on Delivery</option>
+                </select>
+            </div>
+
+            <!-- From Date -->
+            <div class="col-6 col-md-4 col-xl-2">
+                <label for="payment-start-date" class="form-label small fw-semibold">
+                    From Date
+                </label>
+                <input type="date"
+                       class="form-control"
+                       id="payment-start-date">
+            </div>
+
+            <!-- To Date -->
+            <div class="col-6 col-md-4 col-xl-2">
+                <label for="payment-end-date" class="form-label small fw-semibold">
+                    To Date
+                </label>
+                <input type="date"
+                       class="form-control"
+                       id="payment-end-date">
+            </div>
+
+            <!-- Apply Filter -->
+            <div class="col-6 col-md-2 col-xl-1">
+                <button type="button"
+                        class="btn btn-success w-100 text-nowrap"
+                        id="payment-filter-btn"
+                        title="Apply Filters">
+                    <i class="fa-solid fa-filter"></i>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Reset -->
+       
+    </div>
+</div>
+
+
         <div class="ud-table-wrap bg-white shadow-sm rounded-4 overflow-hidden">
 
             <div class="ud-scroll">

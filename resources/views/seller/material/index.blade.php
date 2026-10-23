@@ -113,21 +113,130 @@
 
   <p class="text-muted mb-3">Manage the materials you offer to buyers, including pricing and availability.</p>
 
-  <form method="GET" class="bg-white shadow-sm rounded-4 p-3 mb-3 d-flex flex-wrap gap-2 align-items-end">
 
-    <div>
+{{-- Material Filters --}}
+<div class="card border-0 shadow-sm rounded-4 mb-4">
+    <div class="card-body p-3">
 
-      <label class="form-label fw-semibold small">Search</label>
+        <div class="row g-2 align-items-end">
 
-      <input type="text" name="search" class="form-control" value="{{ request('search') }}" placeholder="Material name">
+            {{-- Search Materials --}}
+            <div class="col-12 col-md-6 col-xl-4">
+                <label for="material-search" class="form-label small fw-semibold">
+                    Search Materials
+                </label>
 
+                <div class="input-group">
+                    <span class="input-group-text bg-light">
+                        <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                    </span>
+
+                    <input type="search"
+                           class="form-control"
+                           id="material-search"
+                           placeholder="Material name..."
+                           value="{{ request('search') }}">
+                </div>
+            </div>
+
+            {{-- Material Status --}}
+            <div class="col-6 col-md-3 col-xl-2">
+                <label for="material-status" class="form-label small fw-semibold">
+                    Material Status
+                </label>
+
+                <select class="form-select" id="material-status">
+                    <option value="">All Statuses</option>
+                    <option value="active" @selected(request('status') === 'active')>Active</option>
+                    <option value="inactive" @selected(request('status') === 'inactive')>Inactive</option>
+                </select>
+            </div>
+
+            {{-- From Date --}}
+            <div class="col-6 col-md-3 col-xl-2">
+                <label for="material-start-date" class="form-label small fw-semibold">
+                    From Date
+                </label>
+
+                <input type="date"
+                       class="form-control"
+                       id="material-start-date"
+                       value="{{ request('start_date') }}">
+            </div>
+
+            {{-- To Date --}}
+            <div class="col-6 col-md-4 col-xl-2">
+                <label for="material-end-date" class="form-label small fw-semibold">
+                    To Date
+                </label>
+
+                <input type="date"
+                       class="form-control"
+                       id="material-end-date"
+                       value="{{ request('end_date') }}">
+            </div>
+
+            {{-- Filter Button --}}
+            <div class="col-6 col-md-2 col-xl-1">
+                <button type="button"
+                        class="btn btn-success w-100 text-nowrap"
+                        id="material-filter-btn"
+                        title="Apply Filters">
+                    <i class="fa-solid fa-filter"></i>
+                </button>
+            </div>
+
+            {{-- Reset Button --}}
+            <div class="col-6 col-md-2 col-xl-1">
+                <a href="{{ route('seller.material') }}"
+                   class="btn btn-outline-secondary w-100 text-nowrap"
+                   title="Reset Filters">
+                    <i class="fa-solid fa-rotate-left"></i>
+                </a>
+            </div>
+
+        </div>
     </div>
+</div>
 
-    <button class="btn btn-outline-success fltrbtn">Filter</button>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const filterButton = document.getElementById('material-filter-btn');
 
-    <a href="{{ route('seller.material') }}" class="btn btn-outline-secondary fltrbtn">Reset</a>
+    filterButton.addEventListener('click', function () {
+        const search = document.getElementById('material-search').value.trim();
+        const status = document.getElementById('material-status').value;
+        const startDate = document.getElementById('material-start-date').value;
+        const endDate = document.getElementById('material-end-date').value;
 
-  </form>
+        if (startDate && endDate && startDate > endDate) {
+            alert('From Date cannot be later than To Date.');
+            return;
+        }
+
+        const url = new URL(window.location.href);
+        const filters = {
+            search: search,
+            status: status,
+            start_date: startDate,
+            end_date: endDate
+        };
+
+        Object.entries(filters).forEach(([key, value]) => {
+            if (value) {
+                url.searchParams.set(key, value);
+            } else {
+                url.searchParams.delete(key);
+            }
+        });
+
+        url.searchParams.delete('page');
+
+        window.location.href = url.toString();
+    });
+});
+</script>
+
 
   <div class="ud-table-wrap bg-white shadow-sm rounded-4 overflow-hidden">
 

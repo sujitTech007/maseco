@@ -133,6 +133,91 @@
             <div class="row">
 
                 <div class="col-md-12">
+                
+{{-- RFQ Filters --}}
+<div class="card border-0 shadow-sm rounded-4 mb-3">
+    <div class="card-body p-3">
+        <div class="row g-3 align-items-end">
+
+            {{-- Search RFQs --}}
+            <div class="col-lg-4 col-md-6">
+                <label for="rfq-search" class="form-label fw-semibold small">
+                    Search RFQs
+                </label>
+                <input
+                    type="text"
+                    id="rfq-search"
+                    class="form-control"
+                    placeholder="RFQ ID or product name..."
+                    value="{{ request('search') }}"
+                >
+            </div>
+
+            {{-- RFQ Status --}}
+            <div class="col-lg-2 col-md-6">
+                <label for="rfq-status" class="form-label fw-semibold small">
+                    RFQ Status
+                </label>
+                <select id="rfq-status" class="form-select">
+                    <option value="">All Statuses</option>
+                    <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Pending</option>
+                    <option value="open" {{ request('status') == 'open' ? 'selected' : '' }}>Open</option>
+                    <option value="quoted" {{ request('status') == 'quoted' ? 'selected' : '' }}>Quoted</option>
+                    <option value="accepted" {{ request('status') == 'accepted' ? 'selected' : '' }}>Accepted</option>
+                    <option value="rejected" {{ request('status') == 'rejected' ? 'selected' : '' }}>Rejected</option>
+                    <option value="closed" {{ request('status') == 'closed' ? 'selected' : '' }}>Closed</option>
+                </select>
+            </div>
+
+            {{-- From Date --}}
+            <div class="col-lg-2 col-md-6">
+                <label for="rfq-start-date" class="form-label fw-semibold small">
+                    From Date
+                </label>
+                <input
+                    type="date"
+                    id="rfq-start-date"
+                    class="form-control"
+                    value="{{ request('start_date') }}"
+                >
+            </div>
+
+            {{-- To Date --}}
+            <div class="col-lg-2 col-md-6">
+                <label for="rfq-end-date" class="form-label fw-semibold small">
+                    To Date
+                </label>
+                <input
+                    type="date"
+                    id="rfq-end-date"
+                    class="form-control"
+                    value="{{ request('end_date') }}"
+                >
+            </div>
+
+            {{-- Filter & Reset --}}
+            <div class="col-lg-2 col-md-12 d-flex gap-2">
+                <button
+                    type="button"
+                    id="rfq-filter-btn"
+                    class="btn btn-success flex-grow-1"
+                >
+                    <i class="fa-solid fa-filter me-1"></i> Filter
+                </button>
+
+                <a
+                    href=""
+                    class="btn btn-outline-secondary"
+                    title="Reset Filters"
+                >
+                    <i class="fa-solid fa-rotate-left"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 
                     <div class="ud-table-wrap bg-white shadow-sm rounded-4 overflow-hidden mt-4">
 

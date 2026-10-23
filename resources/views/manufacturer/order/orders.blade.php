@@ -72,6 +72,107 @@
     </div>
 
     <div class="page-container p-3">
+        
+{{-- Order Filters --}}
+<div class="card border-0 shadow-sm rounded-4 mb-3">
+    <div class="card-body p-3">
+        <div class="row g-3 align-items-end">
+
+            {{-- Search Orders --}}
+            <div class="col-lg-3 col-md-6">
+                <label for="order-search" class="form-label fw-semibold small">
+                    Search Orders
+                </label>
+                <input
+                    type="text"
+                    id="order-search"
+                    class="form-control"
+                    placeholder="Order ID or product name..."
+                    value="{{ request('search') }}"
+                >
+            </div>
+
+            {{-- Order Status --}}
+            <div class="col-lg-2 col-md-6">
+                <label for="order-status" class="form-label fw-semibold small">
+                    Order Status
+                </label>
+                <select id="order-status" class="form-select">
+                    <option value="">All Statuses</option>
+                    <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Pending</option>
+                    <option value="processing" {{ request('status') == 'processing' ? 'selected' : '' }}>Processing</option>
+                    <option value="confirmed" {{ request('status') == 'confirmed' ? 'selected' : '' }}>Confirmed</option>
+                    <option value="shipped" {{ request('status') == 'shipped' ? 'selected' : '' }}>Shipped</option>
+                    <option value="delivered" {{ request('status') == 'delivered' ? 'selected' : '' }}>Delivered</option>
+                    <option value="cancelled" {{ request('status') == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
+                </select>
+            </div>
+
+            {{-- Payment Status --}}
+            <div class="col-lg-2 col-md-6">
+                <label for="payment-status" class="form-label fw-semibold small">
+                    Payment Status
+                </label>
+                <select id="payment-status" class="form-select">
+                    <option value="">All Payments</option>
+                    <option value="paid" {{ request('payment_status') == 'paid' ? 'selected' : '' }}>Paid</option>
+                    <option value="pending" {{ request('payment_status') == 'pending' ? 'selected' : '' }}>Pending</option>
+                    <option value="failed" {{ request('payment_status') == 'failed' ? 'selected' : '' }}>Failed</option>
+                    <option value="refunded" {{ request('payment_status') == 'refunded' ? 'selected' : '' }}>Refunded</option>
+                </select>
+            </div>
+
+            {{-- From Date --}}
+            <div class="col-lg-2 col-md-6">
+                <label for="order-start-date" class="form-label fw-semibold small">
+                    From Date
+                </label>
+                <input
+                    type="date"
+                    id="order-start-date"
+                    class="form-control"
+                    value="{{ request('start_date') }}"
+                >
+            </div>
+
+            {{-- To Date --}}
+            <div class="col-lg-2 col-md-6">
+                <label for="order-end-date" class="form-label fw-semibold small">
+                    To Date
+                </label>
+                <input
+                    type="date"
+                    id="order-end-date"
+                    class="form-control"
+                    value="{{ request('end_date') }}"
+                >
+            </div>
+
+            {{-- Filter & Reset --}}
+            <div class="col-lg-1 col-md-12 d-flex gap-2">
+                <button
+                    type="button"
+                    id="order-filter-btn"
+                    class="btn btn-success"
+                    title="Filter Orders"
+                >
+                    <i class="fa-solid fa-filter"></i>
+                </button>
+
+                <!-- <a
+                    href="{{ route('manufacturer.orders') }}"
+                    class="btn btn-outline-secondary"
+                    title="Reset Filters"
+                >
+                    <i class="fa-solid fa-rotate-left"></i>
+                </a> -->
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
 
         <div class="meetingPpage">
 

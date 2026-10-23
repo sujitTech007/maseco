@@ -113,21 +113,83 @@
 
   <p class="text-muted mb-3">Manage the materials you offer to buyers, including pricing and availability.</p>
 
-  <form method="GET" class="bg-white shadow-sm rounded-4 p-3 mb-3 d-flex flex-wrap gap-2 align-items-end">
+ 
+{{-- Material Filters --}}
+<div class="card border-0 shadow-sm rounded-4 mb-3">
+    <div class="card-body p-3">
+        <div class="row g-3 align-items-end">
 
-    <div>
+            {{-- Search --}}
+            <div class="col-lg-4 col-md-6">
+                <label for="material-search" class="form-label fw-semibold small">
+                    Search Materials
+                </label>
+                <input
+                    type="text"
+                    id="material-search"
+                    class="form-control"
+                    placeholder="Material name..."
+                    value="{{ request('search') }}"
+                >
+            </div>
 
-      <label class="form-label fw-semibold small">Search</label>
+            {{-- Material Status --}}
+            <div class="col-lg-2 col-md-6">
+                <label for="material-status" class="form-label fw-semibold small">
+                    Material Status
+                </label>
+                <select id="material-status" class="form-select">
+                    <option value="">All Statuses</option>
+                    <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Active</option>
+                    <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
+                </select>
+            </div>
 
-      <input type="text" name="search" class="form-control" value="{{ request('search') }}" placeholder="Material name">
+            {{-- From Date --}}
+            <div class="col-lg-2 col-md-6">
+                <label for="material-start-date" class="form-label fw-semibold small">
+                    From Date
+                </label>
+                <input
+                    type="date"
+                    id="material-start-date"
+                    class="form-control"
+                    value="{{ request('start_date') }}"
+                >
+            </div>
 
+            {{-- To Date --}}
+            <div class="col-lg-2 col-md-6">
+                <label for="material-end-date" class="form-label fw-semibold small">
+                    To Date
+                </label>
+                <input
+                    type="date"
+                    id="material-end-date"
+                    class="form-control"
+                    value="{{ request('end_date') }}"
+                >
+            </div>
+
+            {{-- Filter & Reset --}}
+            <div class="col-lg-2 col-md-12 d-flex gap-2">
+                <button type="button" id="material-filter-btn"
+                    class="btn btn-success flex-grow-1">
+                    <i class="fa-solid fa-filter me-1"></i> Filter
+                </button>
+
+                <a href="{{ route('manufacturer.material') }}"
+                    class="btn btn-outline-secondary" title="Reset Filters">
+                    <i class="fa-solid fa-rotate-left"></i>
+                </a>
+            </div>
+
+        </div>
     </div>
+</div>
 
-    <button class="btn btn-outline-success">Filter</button>
 
-    <a href="{{ route('manufacturer.material') }}" class="btn btn-outline-secondary">Reset</a>
 
-  </form>
 
   <div class="ud-table-wrap bg-white shadow-sm rounded-4 overflow-hidden">
 

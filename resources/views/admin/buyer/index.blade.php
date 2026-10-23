@@ -23,11 +23,11 @@
     </div> -->
 
     <div class="page-container p-3">
-       @php
-    $buyerTotal = $users->count();
-    $buyerActive = $users->where('status', '1')->count();
-    $buyerInactive = $buyerTotal - $buyerActive;
-@endphp
+        @php
+        $buyerTotal = $users->count();
+        $buyerActive = $users->where('status', '1')->count();
+        $buyerInactive = $buyerTotal - $buyerActive;
+        @endphp
 
         <div class="buyer-overview">
             <div class="buyer-stat bg-danger bg-opacity-10">
@@ -60,88 +60,85 @@
                 </div>
             </div>
         </div>
+         <!-- Registered Buyers Header & Filters -->
+            <div class="buyer-panel-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4 card">
+                <div>
+                    <h5 class="mb-1">Registered Buyers</h5>
+                    <p class="text-muted mb-0">View buyer details and manage account status.</p>
+                </div>
+
+                <div class="row g-3 align-items-center flex-grow-1 ms-xl-3">
+
+                    <!-- Search Buyers -->
+                    <div class="col-12 col-md-6 col-xl-3">
+                        <input
+                            type="search"
+                            class="form-control"
+                            id="buyer-search"
+                            placeholder="Search buyers..."
+                            aria-label="Search buyers">
+                    </div>
+
+                    <!-- Status Filter -->
+                    <div class="col-12 col-md-6 col-xl-2">
+                        <select class="form-select" id="buyer-status">
+                            <option value="">(Status)</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                            <option value="pending">Pending</option>
+                            <option value="suspended">Suspended</option>
+                        </select>
+                    </div>
+
+                    <!-- Buyer Type Filter -->
+                    <div class="col-12 col-md-6 col-xl-2">
+                        <select class="form-select" id="buyer-type">
+                            <option value="">Buyer Type</option>
+                            <option value="manufacturer">Manufacturer</option>
+                            <option value="retailer">Retailer</option>
+                            <option value="wholesaler">Wholesaler</option>
+                            <option value="distributor">Distributor</option>
+                        </select>
+                    </div>
+
+                    <!-- Start Date -->
+                    <div class="col-12 col-md-6 col-xl-2">
+                        <input
+                            type="date"
+                            class="form-control"
+                            id="buyer-start-date"
+                            aria-label="Start date">
+                    </div>
+
+                    <!-- End Date -->
+                    <div class="col-12 col-md-6 col-xl-2">
+                        <input
+                            type="date"
+                            class="form-control"
+                            id="buyer-end-date"
+                            aria-label="End date">
+                    </div>
+
+                    <!-- Filter Button -->
+                    <div class="col-12 col-md-6 col-xl-1">
+                        <button
+                            type="button"
+                            class="btn btn-outline-success w-100"
+                            id="buyer-filter-btn">
+                            Filter
+                        </button>
+                    </div>
+
+                </div>
+            </div>
 
         <div class="buyer-panel">
-           <!-- Registered Buyers Header & Filters -->
-<div class="buyer-panel-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4">
-    <div>
-        <h5 class="mb-1">Registered Buyers</h5>
-        <p class="text-muted mb-0">View buyer details and manage account status.</p>
-    </div>
-
-    <div class="row g-3 align-items-center flex-grow-1 ms-xl-3">
-
-        <!-- Search Buyers -->
-        <div class="col-12 col-md-6 col-xl-3">
-            <input
-                type="search"
-                class="form-control"
-                id="buyer-search"
-                placeholder="Search buyers..."
-                aria-label="Search buyers"
-            >
-        </div>
-
-        <!-- Status Filter -->
-        <div class="col-12 col-md-6 col-xl-2">
-            <select class="form-select" id="buyer-status">
-                <option value="">(Status)</option>
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
-                <option value="pending">Pending</option>
-                <option value="suspended">Suspended</option>
-            </select>
-        </div>
-
-        <!-- Buyer Type Filter -->
-        <div class="col-12 col-md-6 col-xl-2">
-            <select class="form-select" id="buyer-type">
-                <option value="">Buyer Type</option>
-                <option value="manufacturer">Manufacturer</option>
-                <option value="retailer">Retailer</option>
-                <option value="wholesaler">Wholesaler</option>
-                <option value="distributor">Distributor</option>
-            </select>
-        </div>
-
-        <!-- Start Date -->
-        <div class="col-12 col-md-6 col-xl-2">
-            <input
-                type="date"
-                class="form-control"
-                id="buyer-start-date"
-                aria-label="Start date"
-            >
-        </div>
-
-        <!-- End Date -->
-        <div class="col-12 col-md-6 col-xl-2">
-            <input
-                type="date"
-                class="form-control"
-                id="buyer-end-date"
-                aria-label="End date"
-            >
-        </div>
-
-        <!-- Filter Button -->
-        <div class="col-12 col-md-6 col-xl-1">
-            <button
-                type="button"
-                class="btn btn-outline-success w-100"
-                id="buyer-filter-btn"
-            >
-                Filter
-            </button>
-        </div>
-
-    </div>
-</div>
+           
 
             <div class="buyer-table-wrap">
                 <table class="table table-custom table-centered table-sm table-hover mb-0 dataTable"
-                       id="complex-header-datatable"
-                       style="width: 100%;">
+                    id="complex-header-datatable"
+                    style="width: 100%;">
                     <thead>
                         <tr>
                             <th>S No.</th>
@@ -155,58 +152,57 @@
 
                     <tbody>
                         @forelse($users as $user)
-                            <tr>
-                                <td>
-                                    <p class="buyer-cell-text">{{ $loop->iteration }}</p>
-                                </td>
+                        <tr>
+                            <td>
+                                <p class="buyer-cell-text">{{ $loop->iteration }}</p>
+                            </td>
 
-                                <td>
-                                    <p class="buyer-name">{{ $user->name }}</p>
-                                </td>
+                            <td>
+                                <p class="buyer-name">{{ $user->name }}</p>
+                            </td>
 
-                                <td>
-                                    <p class="buyer-cell-text">{{ $user->email }}</p>
-                                </td>
+                            <td>
+                                <p class="buyer-cell-text">{{ $user->email }}</p>
+                            </td>
 
-                                <td>
-                                    <p class="buyer-cell-text">{{ trim(($user->country_code ?? '') . ' ' . $user->phone) }}</p>
-                                </td>
+                            <td>
+                                <p class="buyer-cell-text">{{ trim(($user->country_code ?? '') . ' ' . $user->phone) }}</p>
+                            </td>
 
-                                <td>
-                                    <div class="d-flex align-items-center flex-wrap">
-                                        <div class="form-check form-switch mb-0">
-                                            <input
-                                                class="form-check-input user-status-toggle"
-                                                type="checkbox"
-                                                data-id="{{ $user->id }}"
-                                                {{ $user->status == '1' ? 'checked' : '' }}
-                                            >
-                                        </div>
-
-                                        <span class="buyer-status {{ $user->status == '1' ? 'bg-success' : 'bg-danger' }}">
-                                            {{ $user->status == '1' ? 'Active' : 'Inactive' }}
-                                        </span>
+                            <td>
+                                <div class="d-flex align-items-center flex-wrap">
+                                    <div class="form-check form-switch mb-0">
+                                        <input
+                                            class="form-check-input user-status-toggle"
+                                            type="checkbox"
+                                            data-id="{{ $user->id }}"
+                                            {{ $user->status == '1' ? 'checked' : '' }}>
                                     </div>
-                                </td>
 
-                                <td>
-                                    <div class="actionBtn">
-                                        <a href="javascript:void(0);"
-                                           class="dropdown-item viewBtn"
-                                           data-user='@json($user)'
-                                           aria-label="View buyer {{ $user->name }}"
-                                           title="View buyer details">
-                                            <i class="fa-solid fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
+                                    <span class="buyer-status {{ $user->status == '1' ? 'bg-success' : 'bg-danger' }}">
+                                        {{ $user->status == '1' ? 'Active' : 'Inactive' }}
+                                    </span>
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="actionBtn">
+                                    <a href="javascript:void(0);"
+                                        class="dropdown-item viewBtn"
+                                        data-user='@json($user)'
+                                        aria-label="View buyer {{ $user->name }}"
+                                        title="View buyer details">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
                         @empty
-                            <tr>
-                                <td colspan="6" class="buyer-empty">
-                                    No buyers found.
-                                </td>
-                            </tr>
+                        <tr>
+                            <td colspan="6" class="buyer-empty">
+                                No buyers found.
+                            </td>
+                        </tr>
                         @endforelse
                     </tbody>
                 </table>
@@ -215,9 +211,9 @@
     </div>
 </div>
 
-  <!-- User Details Modal -->
+<!-- User Details Modal -->
 
-  
+
 <!-- User Details Modal -->
 <div class="modal fade maseco-user-modal" id="userDetailsModal" tabindex="-1"
     aria-labelledby="userDetailsModalLabel" aria-hidden="true">
@@ -310,62 +306,62 @@
 </div>
 
 
-  <script>
+<script>
     document.querySelectorAll('.user-status-toggle').forEach(function(toggle) {
 
-      toggle.addEventListener('change', function() {
+        toggle.addEventListener('change', function() {
 
-        var userId = this.getAttribute('data-id');
+            var userId = this.getAttribute('data-id');
 
-        var status = this.checked ? 1 : 0;
+            var status = this.checked ? 1 : 0;
 
-        fetch("{{ url('admin/buyer/status') }}/" + userId, {
+            fetch("{{ url('admin/buyer/status') }}/" + userId, {
 
-            method: 'POST',
+                    method: 'POST',
 
-            headers: {
+                    headers: {
 
-              'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
 
-              'Content-Type': 'application/json'
+                        'Content-Type': 'application/json'
 
-            },
+                    },
 
-            body: JSON.stringify({
-              status: status
-            })
+                    body: JSON.stringify({
+                        status: status
+                    })
 
-          })
+                })
 
-          .then(response => response.json())
+                .then(response => response.json())
 
-          .then(data => {
+                .then(data => {
 
-            if (data.success) {
+                    if (data.success) {
 
-              this.nextElementSibling.className = 'badge bg-' + (status ? 'success' : 'danger') + ' ms-2';
+                        this.nextElementSibling.className = 'badge bg-' + (status ? 'success' : 'danger') + ' ms-2';
 
-              this.nextElementSibling.textContent = status ? 'Active' : 'Inactive';
+                        this.nextElementSibling.textContent = status ? 'Active' : 'Inactive';
 
-              // Show success message
+                        // Show success message
 
-              let msg = document.createElement('div');
+                        let msg = document.createElement('div');
 
-              msg.className = 'alert alert-success position-fixed top-0 end-0 m-3';
+                        msg.className = 'alert alert-success position-fixed top-0 end-0 m-3';
 
-              msg.style.zIndex = 9999;
+                        msg.style.zIndex = 9999;
 
-              msg.textContent = 'Status changed successfully!';
+                        msg.textContent = 'Status changed successfully!';
 
-              document.body.appendChild(msg);
+                        document.body.appendChild(msg);
 
-              setTimeout(() => msg.remove(), 2000);
+                        setTimeout(() => msg.remove(), 2000);
 
-            }
+                    }
 
-          });
+                });
 
-      });
+        });
 
     });
 
@@ -373,56 +369,56 @@
 
     document.querySelectorAll('.viewBtn').forEach(function(btn) {
 
-      btn.addEventListener('click', function() {
+        btn.addEventListener('click', function() {
 
-        var user = JSON.parse(this.getAttribute('data-user'));
+            var user = JSON.parse(this.getAttribute('data-user'));
 
-        document.getElementById('modalUserName').textContent = user.name || '';
+            document.getElementById('modalUserName').textContent = user.name || '';
 
-        document.getElementById('modalUserEmail').textContent = user.email || '';
+            document.getElementById('modalUserEmail').textContent = user.email || '';
 
-        document.getElementById('modalUserPhone').textContent = [user.country_code, user.phone].filter(Boolean).join(' ');
+            document.getElementById('modalUserPhone').textContent = [user.country_code, user.phone].filter(Boolean).join(' ');
 
-        document.getElementById('modalUserStatus').textContent = user.status == 1 ? 'Active' : 'Inactive';
+            document.getElementById('modalUserStatus').textContent = user.status == 1 ? 'Active' : 'Inactive';
 
-        document.getElementById('modalUserCreated').textContent = user.created_at || '';
+            document.getElementById('modalUserCreated').textContent = user.created_at || '';
 
-        var modal = new bootstrap.Modal(document.getElementById('userDetailsModal'));
+            var modal = new bootstrap.Modal(document.getElementById('userDetailsModal'));
 
-        modal.show();
+            modal.show();
 
-      });
+        });
 
     });
-  </script>
+</script>
 
-  <script>
+<script>
     const searchInput = document.getElementById('dt-search-0');
     const table = document.querySelector('.table-custom tbody');
     const rows = table.getElementsByTagName('tr');
 
     function filterTable() {
-      const filter = searchInput.value.toLowerCase();
+        const filter = searchInput.value.toLowerCase();
 
-      for (let i = 0; i < rows.length; i++) {
-        const cells = rows[i].getElementsByTagName('td');
-        let found = false;
+        for (let i = 0; i < rows.length; i++) {
+            const cells = rows[i].getElementsByTagName('td');
+            let found = false;
 
-        for (let j = 0; j < cells.length; j++) {
-          if (cells[j].textContent.toLowerCase().includes(filter)) {
-            found = true;
-            break;
-          }
+            for (let j = 0; j < cells.length; j++) {
+                if (cells[j].textContent.toLowerCase().includes(filter)) {
+                    found = true;
+                    break;
+                }
+            }
+
+            rows[i].style.display = found ? '' : 'none';
         }
-
-        rows[i].style.display = found ? '' : 'none';
-      }
     }
 
     // Works for typing + clear (✖) icon
     searchInput.addEventListener('input', filterTable);
-  </script>
+</script>
 
 
 
-  @include('admin.Include.footer')
+@include('admin.Include.footer')

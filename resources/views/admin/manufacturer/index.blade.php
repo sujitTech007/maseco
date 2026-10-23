@@ -57,11 +57,8 @@
             </div>
 
         </div>
-
-        <div class="manufacturer-table-card">
-
-          <!-- Manufacturer Directory Header & Filters -->
-<div class="table-card-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4">
+               <!-- Manufacturer Directory Header & Filters -->
+<div class="table-card-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4 card">
 
     <div>
         <h4 class="table-card-title mb-1">Manufacturer Directory</h4>
@@ -138,6 +135,10 @@
 
     </div>
 </div>
+
+        <div class="manufacturer-table-card">
+
+   
 
             <div class="table-responsive">
                 <table class="table manufacturer-table table-hover mb-0"
