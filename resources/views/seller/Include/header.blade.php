@@ -331,6 +331,13 @@
 
                                             </li>
 
+                                            <li class="side-nav-item {{ request()->routeIs('seller.enquiry') ? 'active' : '' }}">
+                                                <a href="{{ route('seller.enquiry') }}#rfqTable" class="side-nav-link {{ request()->routeIs('seller.enquiry') ? 'active' : '' }}" data-chat-notifications>
+                                                    <span class="menu-icon"><i class="fa-regular fa-comments"></i></span>
+                                                    <span class="menu-text">Chat <span class="badge bg-danger rounded-pill ms-1" data-chat-unread-count hidden></span><small class="d-block text-danger" data-chat-unread-sender hidden></small></span>
+                                                </a>
+                                            </li>
+
                                             <li
                                                 class="side-nav-item {{ request()->routeIs('seller.payment') ? 'active' : '' }}">
 
@@ -648,3 +655,4 @@
                 </div>
 
             </header>
+            @include('chat.partials.notifications')

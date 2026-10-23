@@ -164,7 +164,12 @@
               </div>
 
               <p class="fs-1 fw-bold lh-1 mb-2">{{ $enquiriesCount }}</p>
-              <p class="text-muted small mb-0">Requests from buyers.</p>
+              <p class="text-muted small mb-3">Requests and conversations from buyers.</p>
+              <a href="{{ route('seller.enquiry') }}#rfqTable" data-chat-notifications
+                class="btn btn-sm fw-bold rounded-pill px-3 py-2 align-self-start mt-auto d-inline-flex align-items-center gap-2 bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25">
+                Open chats {!! $ico('chat', 16) !!}<span class="badge bg-danger rounded-pill" data-chat-unread-count hidden></span>
+              </a>
+              <small class="text-danger mt-2" data-chat-unread-sender hidden></small>
             </div>
           </div>
         </div>

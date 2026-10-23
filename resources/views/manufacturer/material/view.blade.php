@@ -65,6 +65,7 @@
         <div class="col-md-8">
 
           <h4 class="fw-bold mb-1">{{ $material->name }}</h4>
+          @if($material->is_certified)<img src="{{ asset('public/assets/images/certified-badge.png') }}" alt="Certified Listing" style="height:25px;width:auto;max-width:100%;">@endif
           <p class="text-muted mb-4">{{ $material->description }}</p>
 
           <!-- Key figures -->

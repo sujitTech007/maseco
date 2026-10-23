@@ -192,7 +192,7 @@ class LoginController extends Controller
 
     if ($otpUser['type'] === 'user') {
         Auth::guard('web')->login($user);
-        return redirect()->route('user.dashboard')->with('success', 'Login successful!');
+        return redirect()->intended(route('user.dashboard'))->with('success', 'Login successful!');
     } elseif ($otpUser['type'] === 'supplier') {
         Auth::guard('supplier')->login($user);
         return redirect()->route('seller.dashboard')->with('success', 'Login successful!');

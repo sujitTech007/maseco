@@ -157,6 +157,8 @@
 
                             <th>Date</th>
 
+                                            <th>Chat</th>
+
                         </tr>
 
                     </thead>
@@ -206,13 +208,15 @@
 
                                 <td class="text-nowrap text-muted">{{ $enquiry->created_at->format('d M Y') }}</td>
 
+                                <td><a href="{{ route('chat.show', $enquiry->id) }}" class="btn btn-sm btn-outline-success text-nowrap" data-chat-enquiry="{{ $enquiry->id }}"><i class="fa-regular fa-comments me-1"></i>Open chat <span class="badge bg-danger rounded-pill ms-1" data-chat-unread-count hidden></span></a><small class="d-block text-danger mt-1" data-chat-unread-sender hidden></small></td>
+
                             </tr>
 
                         @empty
 
                             <tr>
 
-                                <td colspan="6" class="text-center text-muted">
+                                <td colspan="7" class="text-center text-muted">
                                     <div>No enquiries found.</div>
                                     <div class="small">Requests you send to suppliers and manufacturers will appear here.
                                     </div>

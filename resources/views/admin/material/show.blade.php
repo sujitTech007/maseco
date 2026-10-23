@@ -27,6 +27,14 @@
         <dt class="col-sm-3">Name</dt>
 
         <dd class="col-sm-9">{{ $material->name }}</dd>
+        <dt class="col-sm-3">Certified Listing</dt>
+        <dd class="col-sm-9">
+            @if($material->is_certified)
+                <img src="{{ asset('public/assets/images/certified-badge.png') }}" alt="Certified Listing" style="height:25px;width:auto;max-width:100%;">
+            @else
+                Not Certified
+            @endif
+        </dd>
 
         <dt class="col-sm-3">Description</dt>
 

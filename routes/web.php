@@ -51,6 +51,7 @@ Route::prefix('admin')->name('admin.')->middleware(['admin.auth'])->group(functi
     Route::get('/material/{id}', [AdminMaterialController::class, 'show'])->name('material.show');
     Route::delete('/material/{id}', [AdminMaterialController::class, 'destroy'])->name('material.destroy');
     Route::post('/material/{id}/toggle', [AdminMaterialController::class, 'toggleStatus'])->name('material.toggle');
+    Route::post('/material/{id}/certification', [AdminMaterialController::class, 'toggleCertification'])->name('material.certification');
 
 
     Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
@@ -70,6 +71,17 @@ Route::get('/category', [PagesController::class, 'category'])->name('category');
 Route::get('/contact-us', [PagesController::class, 'contactUs'])->name('contact.us');
 Route::get('/listing', [PagesController::class, 'listing'])->name('listing');
 Route::get('/listing-details/{id}', [PagesController::class, 'listingDetails'])->name('listing.details');
+
+Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
+    Route::get('/wishlist', [\App\Http\Controllers\UserMaterialCollectionController::class, 'wishlist'])->name('wishlist');
+    Route::post('/collections/{collection}/{material}', [\App\Http\Controllers\UserMaterialCollectionController::class, 'toggle'])->name('collection.toggle');
+});
+
+Route::get('/compare', [\App\Http\Controllers\UserMaterialCollectionController::class, 'compare'])
+    ->middleware('auth')->name('user.compare');
+
+Route::get('/compare/add/{material}', [\App\Http\Controllers\UserMaterialCollectionController::class, 'addToCompare'])
+    ->middleware('auth')->name('compare.add');
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
@@ -145,6 +157,11 @@ Route::post('/subscription/free', [SubscriptionPurchaseController::class, 'free'
 Route::post('/stripe/charge', [SubscriptionPurchaseController::class, 'charge'])->name('stripe.charge');
 // Enquiry create (user must be logged in)
 Route::post('/enquiry', [EnquiryController::class, 'store'])->middleware('auth')->name('enquiry.store');
+
+Route::get('/chat/unread', [\App\Http\Controllers\ChatController::class, 'unread'])->name('chat.unread');
+Route::get('/chat/{enquiry}', [\App\Http\Controllers\ChatController::class, 'show'])->name('chat.show');
+Route::get('/chat/{enquiry}/messages', [\App\Http\Controllers\ChatController::class, 'messages'])->name('chat.messages');
+Route::post('/chat/{enquiry}/messages', [\App\Http\Controllers\ChatController::class, 'send'])->name('chat.send');
 
 // User dashboard routes
 Route::prefix('user')->name('user.')->middleware(['auth'])->group(function () {

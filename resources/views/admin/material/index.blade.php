@@ -17,6 +17,8 @@
     </div> -->
 
     <div class="page-container p-3">
+    @if(session('success'))<div class="alert alert-success alert-dismissible fade show" role="alert">{{ session('success') }}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>@endif
+    @if($errors->any())<div class="alert alert-danger">{{ $errors->first() }}</div>@endif
     <!-- Search and Filter -->
     <div class="materials-filter-card">
         <form method="GET" class="materials-filter-form">
@@ -43,6 +45,15 @@
                     <option value="0" @if(request('status')==='0') selected @endif>
                         Inactive
                     </option>
+                </select>
+            </div>
+
+            <div class="filter-field filter-status">
+                <label for="certification-status">Certification</label>
+                <select name="certification_status" id="certification-status" class="form-control">
+                    <option value="">All Certifications</option>
+                    <option value="certified" @selected(request('certification_status') === 'certified')>Certified</option>
+                    <option value="not_certified" @selected(request('certification_status') === 'not_certified')>Not Certified</option>
                 </select>
             </div>
 
@@ -133,10 +144,12 @@
                         <th>Sr. No.</th>
                         <th>Image</th>
                         <th>Name</th>
+                        <th>Owner</th>
                         <th>Description</th>
                         <th>Unit</th>
                         <th>Price</th>
                         <th>Status</th>
+                        <th>Certification</th>
                         <th class="text-center">Actions</th>
                     </tr>
                 </thead>
@@ -169,6 +182,19 @@
                             <span class="material-name">
                                 {{ $material->name }}
                             </span>
+                        </td>
+
+                        <td>
+                            @if($material->supplier_id)
+                                {{ optional($material->getRelation('supplier'))->company_name ?: (optional($material->getRelation('supplier'))->business_name ?: (optional($material->getRelation('supplier'))->name ?: 'Supplier')) }}
+                                <span class="d-block small text-muted">Supplier</span>
+                            @elseif($material->manufacturer_id)
+                                {{ optional($material->getRelation('manufacturer'))->company_name ?: (optional($material->getRelation('manufacturer'))->name ?: 'Manufacturer') }}
+                                <span class="d-block small text-muted">Manufacturer</span>
+                            @else
+                                Maseco
+                                <span class="d-block small text-muted">Platform listing</span>
+                            @endif
                         </td>
 
                         <td>
@@ -205,6 +231,26 @@
                                     <span class="status-dot"></span>
                                     {{ $material->status === 'active' ? 'Active' : 'Inactive' }}
                                 </button>
+                            </form>
+                        </td>
+
+                        <td>
+                            @if($material->is_certified)
+                                <span class="badge bg-success-subtle text-success mb-1">Certified</span>
+                            @else
+                                <span class="badge bg-light text-muted border mb-1">Not Certified</span>
+                            @endif
+                            <form method="POST" action="{{ route('admin.material.certification', $material->id) }}" class="d-inline">
+                                @csrf
+                                @foreach(request()->only(['search', 'status', 'certification_status']) as $key => $value)
+                                    <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+                                @endforeach
+                                <input type="hidden" name="is_certified" value="{{ $material->is_certified ? 0 : 1 }}">
+                                @if($material->is_certified)
+                                    <button type="submit" class="btn btn-sm btn-outline-danger text-nowrap">Remove Certification</button>
+                                @else
+                                    <button type="submit" class="btn btn-sm btn-outline-success text-nowrap">Mark as Certified</button>
+                                @endif
                             </form>
                         </td>
 
@@ -253,7 +299,7 @@
 
                     @empty
                     <tr>
-                        <td colspan="8">
+                        <td colspan="10">
                             <div class="materials-empty-state">
                                 <i class="fa-solid fa-inbox"></i>
                                 <h5>No materials found</h5>

@@ -65,4 +65,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(SubscriptionPurchase::class);
     }
+
+    public function collectionMaterials(string $collection)
+    {
+        return $this->belongsToMany(Material::class, 'user_material_collections')
+            ->withPivot('collection', 'created_at')
+            ->wherePivot('collection', $collection);
+    }
 }

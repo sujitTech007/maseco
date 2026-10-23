@@ -224,6 +224,9 @@ class PagesController extends Controller
 
 
 
+        $wishlistIds = auth()->check() ? auth()->user()->collectionMaterials('wishlist')->pluck('materials.id')->all() : [];
+        $compareIds = auth()->check() ? auth()->user()->collectionMaterials('compare')->pluck('materials.id')->all() : [];
+
         return view('listing', [
 
             'materials' => $materials,
@@ -239,6 +242,8 @@ class PagesController extends Controller
             'units' => $units,
 
             'filters' => $request->only(['q', 'category', 'location', 'price_min', 'price_max', 'grade', 'size', 'certification', 'unit']),
+            'wishlistIds' => $wishlistIds,
+            'compareIds' => $compareIds,
 
         ]);
     }
@@ -251,7 +256,10 @@ class PagesController extends Controller
 
         $material = Material::with(['supplier', 'manufacturer'])->findOrFail($id);
 
-        return view('listing-details', compact('material'));
+        $wishlistIds = auth()->check() ? auth()->user()->collectionMaterials('wishlist')->pluck('materials.id')->all() : [];
+        $compareIds = auth()->check() ? auth()->user()->collectionMaterials('compare')->pluck('materials.id')->all() : [];
+
+        return view('listing-details', compact('material', 'wishlistIds', 'compareIds'));
     }
 
 

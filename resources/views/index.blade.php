@@ -428,10 +428,9 @@
                                       loading="lazy">
                               </a>
 
-                              <span class="badge bg-white text_color_primary position-absolute top-0 start-0 m-3 shadow-sm fs-11 p-2">
-                                  <i class="fa-solid fa-circle-check me-1"></i>
-                                  Verified Listing
-                              </span>
+                              @if($material->is_certified)
+                                  <div class="certified-badge position-absolute top-0 start-0 m-3" style="height:25px;background:transparent"><img src="{{ asset('public/assets/images/certified-badge.png') }}" alt="Certified Listing" class="h-100 w-auto"></div>
+                              @endif
                           </div>
 
                           <div class="card-body p-3 d-flex flex-column">

@@ -652,3 +652,4 @@
                 </div>
 
             </header>
+            @include('chat.partials.notifications')

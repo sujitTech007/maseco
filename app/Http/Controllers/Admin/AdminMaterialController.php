@@ -10,7 +10,11 @@ class AdminMaterialController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Material::query();
+        $request->validate([
+            'certification_status' => ['nullable', 'in:certified,not_certified'],
+        ]);
+
+        $query = Material::with(['supplier', 'manufacturer']);
 
         if ($request->filled('search')) {
             $query->where('name', 'like', '%' . $request->search . '%');
@@ -18,6 +22,10 @@ class AdminMaterialController extends Controller
 
         if ($request->filled('status')) {
             $query->where('status', $request->status);
+        }
+
+        if ($request->filled('certification_status')) {
+            $query->where('is_certified', $request->certification_status === 'certified');
         }
 
         $materials = $query->get();
@@ -191,5 +199,21 @@ class AdminMaterialController extends Controller
         return response()->json([
             'status' => $material->status,
         ]);
+    }
+
+    public function toggleCertification(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'is_certified' => ['required', 'boolean'],
+        ]);
+
+        $material = Material::findOrFail($id);
+        $material->is_certified = (bool) $validated['is_certified'];
+        $material->save();
+
+        return redirect()->route('admin.material', $request->only(['search', 'status', 'certification_status']))
+            ->with('success', $material->is_certified
+                ? 'Certified Listing badge granted to ' . $material->name . '.'
+                : 'Certified Listing badge removed from ' . $material->name . '.');
     }
 }

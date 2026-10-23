@@ -8,6 +8,9 @@
 <section class="listing-page py-5 bg-light">
     <div class="container">
 
+        @if(session('success'))<div class="alert alert-success">{{ session('success') }}</div>@endif
+        @if(session('error'))<div class="alert alert-danger">{{ session('error') }}</div>@endif
+
         {{-- Page Heading --}}
         <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
             <div>
@@ -204,12 +207,12 @@
                                     </button>
 
                                     <!-- Wishlist -->
-                                    <button type="button" class="listing_badge border-0 rounded-circle shadow-sm" title="Add to Wishlist"> <i class="fa-solid fa-heart text-danger"></i>
-                                    </button>
+                                    <form method="POST" action="{{ route('user.collection.toggle', ['collection' => 'wishlist', 'material' => $material->id]) }}">@csrf
+                                        <button type="submit" class="listing_badge border-0 rounded-circle shadow-sm" title="{{ in_array($material->id, $wishlistIds ?? [], true) ? 'Remove from Wishlist' : 'Add to Wishlist' }}" aria-label="{{ in_array($material->id, $wishlistIds ?? [], true) ? 'Remove from Wishlist' : 'Add to Wishlist' }}"><i class="fa-solid fa-heart {{ in_array($material->id, $wishlistIds ?? [], true) ? 'text-danger' : 'text-secondary' }}"></i></button>
+                                    </form>
 
                                     <!-- Compare -->
-                                    <button type="button" class="listing_badge border-0 rounded-circle shadow-sm" title="Compare Listing"> <i class="fa-solid fa-scale-balanced text-success"></i>
-                                    </button>
+                                    <a href="{{ route('compare.add', $material->id) }}" class="listing_badge border-0 rounded-circle shadow-sm d-inline-flex align-items-center justify-content-center text-decoration-none" title="{{ in_array($material->id, $compareIds ?? [], true) ? 'Open Compare List' : 'Compare Listing' }}" aria-label="{{ in_array($material->id, $compareIds ?? [], true) ? 'Open Compare List' : 'Compare Listing' }}"><i class="fa-solid fa-scale-balanced {{ in_array($material->id, $compareIds ?? [], true) ? 'text-success' : 'text-secondary' }}"></i></a>
                                     </div>
                                 </div>
 
@@ -226,9 +229,9 @@
                                                 {{ $material->name }}
                                             </a>
                                         </h5>
-                                        <div class="certified-badge">
-                                            <img src="{{ asset('public/assets/images/certified-badge.png') }}" alt="certified-badge" class="h-100 w-auto">
-                                        </div>
+                                        @if($material->is_certified)
+                                            <div class="certified-badge"><img src="{{ asset('public/assets/images/certified-badge.png') }}" alt="Certified Listing" class="h-100 w-auto"></div>
+                                        @endif
                                     </div>
 
                                     <h4 class="text_color_primary fw-bold mb-3">

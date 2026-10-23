@@ -9,6 +9,9 @@ class Material extends Model
 {
     use HasFactory;
     protected $table = 'materials';
+    protected $casts = [
+        'is_certified' => 'boolean',
+    ];
     protected $fillable = [
         'supplier_id',
         'manufacturer_id',

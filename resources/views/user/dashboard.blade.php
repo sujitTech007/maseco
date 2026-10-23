@@ -120,10 +120,18 @@
 
                         <p class="fs-1 fw-bold lh-1 mb-2">{{ $enquiriesCount }}</p>
                         <p class="text-muted small mb-4">Requests sent to suppliers and manufacturers.</p>
-                        <a href="{{ route('user.enquiries') }}"
-                            class="btn btn-sm fw-bold rounded-pill px-3 py-2 align-self-start mt-0 d-inline-flex align-items-center gap-2 bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25">
-                            View enquiries {!! $ico('arrow', 16) !!}
-                        </a>
+                        <div class="d-flex flex-wrap gap-2 mt-auto">
+                            <a href="{{ route('user.enquiries') }}"
+                                data-chat-notifications
+                                class="btn btn-sm fw-bold rounded-pill px-3 py-2 align-self-start mt-0 d-inline-flex align-items-center gap-2 bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25">
+                                Open chats {!! $ico('chat', 16) !!}<span class="badge bg-danger rounded-pill" data-chat-unread-count hidden></span>
+                            </a>
+                            <small class="text-danger align-self-center" data-chat-unread-sender hidden></small>
+                            <a href="{{ route('listing') }}"
+                                class="btn btn-sm fw-bold rounded-pill px-3 py-2 align-self-start mt-0 d-inline-flex align-items-center gap-2 bg-primary text-white border border-primary">
+                                Create RFQ {!! $ico('arrow', 16) !!}
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

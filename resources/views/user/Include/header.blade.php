@@ -164,6 +164,13 @@
             </li>
 
             <li class="side-nav-item {{ request()->routeIs('user.enquiries') ? 'active' : '' }}">
+                <a href="{{ route('user.enquiries') }}" class="side-nav-link {{ request()->routeIs('user.enquiries') ? 'active' : '' }}" data-chat-notifications>
+                    <span class="menu-icon"><i class="fa-regular fa-comments"></i></span>
+                    <span class="menu-text">Chat <span class="badge bg-danger rounded-pill ms-1" data-chat-unread-count hidden></span><small class="d-block text-danger" data-chat-unread-sender hidden></small></span>
+                </a>
+            </li>
+
+            <li class="side-nav-item {{ request()->routeIs('user.enquiries') ? 'active' : '' }}">
 
                 <a href="{{ route('user.enquiries') }}" class="side-nav-link {{ request()->routeIs('user.enquiries') ? 'active' : '' }}">
 
@@ -259,6 +266,12 @@
             </li>
 
             <h5 style="padding-left: 20px;font-size: 14px;font-weight: 300;padding-top: 50px;color: #727272;"> Tools </h5>
+
+            <li class="side-nav-item {{ request()->routeIs('user.wishlist') ? 'active' : '' }}">
+                <a href="{{ route('user.wishlist') }}" class="side-nav-link {{ request()->routeIs('user.wishlist') ? 'active' : '' }}">
+                    <span class="menu-icon"><i class="fa-solid fa-heart"></i></span><span class="menu-text"> Wishlist </span>
+                </a>
+            </li>
 
 
             <li class="side-nav-item {{ request()->routeIs('user.profile') ? 'active' : '' }}">
@@ -477,4 +490,5 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
-</script> 
+</script>
+@include('chat.partials.notifications')

@@ -205,6 +205,10 @@
 
                                             <td>
 
+                                                @unless(isset($eq->demo_material))
+                                                    <a href="{{ route('chat.show', $eq->id) }}" class="btn btn-sm btn-outline-success px-3 text-nowrap mb-1" data-chat-enquiry="{{ $eq->id }}"><i class="fa-regular fa-comments me-1"></i>Chat <span class="badge bg-danger rounded-pill ms-1" data-chat-unread-count hidden></span></a><small class="d-block text-danger mt-1" data-chat-unread-sender hidden></small>
+                                                @endunless
+
                                                 @if($eq->status !== 'approved')
 
                                                     <button class="btn btn-sm btn-success px-3 text-nowrap"

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Enquiry;
 use App\Models\Order;
 use App\Models\Material;
+use App\Models\ChatMessage;
 
 class EnquiryController extends Controller
 {
@@ -78,7 +79,7 @@ class EnquiryController extends Controller
         
             $material = Material::findOrFail($request->material_id);
         
-            Enquiry::create([
+            $enquiry = Enquiry::create([
                 'user_id'          => $user->id,
                 'subject'          => $material->name,
                 'message'          => ($data['message'] ?? '')
@@ -91,6 +92,15 @@ class EnquiryController extends Controller
                 'quantity'         => $data['quantity'],
                 'expected_price'   => $data['expected_price'] ?? null,
             ]);
+
+            if (Auth::guard('web')->check()) {
+                ChatMessage::create([
+                    'enquiry_id' => $enquiry->id,
+                    'sender_type' => 'user',
+                    'sender_id' => $user->id,
+                    'body' => trim($data['message'] ?: 'I would like more information about this material.'),
+                ]);
+            }
         
             return redirect()->route($redirect)
                 ->with('success', 'Your enquiry has been submitted.');

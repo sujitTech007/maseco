@@ -153,6 +153,8 @@
 
             <th>Status</th>
 
+            <th>Certification</th>
+
             <th>Actions</th>
 
           </tr>
@@ -198,6 +200,14 @@
                 @endif
               </td>
 
+              <td>
+                @if(!empty($material->is_certified))
+                  <img src="{{ asset('public/assets/images/certified-badge.png') }}" alt="Certified Listing" style="height:25px;width:auto;max-width:100%;">
+                @else
+                  <span class="text-muted">—</span>
+                @endif
+              </td>
+
               <td class="text-nowrap">
 
                 <a href="{{ route('seller.material.show', $material->id) }}" class="btn btn-sm btn-outline-success"
@@ -221,7 +231,7 @@
           @empty
 
             <tr>
-              <td colspan="8" class="text-center text-muted">
+              <td colspan="9" class="text-center text-muted">
                 <div>No materials found.</div>
                 <div class="small">Materials you add will appear here.</div>
               </td>
