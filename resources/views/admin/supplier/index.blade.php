@@ -61,10 +61,8 @@
             </div>
 
         </div>
-
-        <div class="seller-panel">
-<!-- Registered Sellers Header & Filters -->
-<div class="seller-panel-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4">
+        <!-- Registered Sellers Header & Filters -->
+<div class="seller-panel-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4 card">
     <div>
         <h5 class="mb-1">Registered Sellers</h5>
         <p class="text-muted mb-0">Review seller details and manage account status.</p>
@@ -139,6 +137,9 @@
 
     </div>
 </div>
+
+        <div class="seller-panel">
+
 
             <div class="seller-table-wrap">
                 <table

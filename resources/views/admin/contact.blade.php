@@ -59,12 +59,9 @@
                 </div>
             </div>
         </div>
-
-        {{-- Contact Table --}}
-        <div class="contact-card">
-
+        
             <!-- Contact Submissions Header & Filters -->
-<div class="contact-card-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3">
+<div class="contact-card-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 card">
 
     <div>
         <h5>Contact Submissions</h5>
@@ -127,6 +124,10 @@
 
     </div>
 </div>
+
+        {{-- Contact Table --}}
+        <div class="contact-card">
+
 
             {{-- Table Controls --}}
             <div class="contact-controls">

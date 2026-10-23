@@ -59,16 +59,10 @@
 
         </div>
 
-        <!-- Orders Table -->
-        <div class="orders-table-card">
+                  <!-- Order Management Header & Filters -->
+<div class="orders-table-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4 card">
 
-           <!-- Order Management Header & Filters -->
-<div class="orders-table-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4">
-
-    <div>
-        <h4>Order Management</h4>
-        <p>Review orders and their current payment and fulfilment status.</p>
-    </div>
+   
 
     <div class="row g-3 align-items-center flex-grow-1 ms-xl-3">
 
@@ -139,6 +133,10 @@
 
     </div>
 </div>
+        <!-- Orders Table -->
+        <div class="orders-table-card">
+
+ 
 
             <div class="table-responsive">
                 <table class="table orders-table table-hover mb-0"

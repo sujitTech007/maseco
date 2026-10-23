@@ -74,11 +74,8 @@
                 </div>
             </div>
         </div>
-
-        {{-- Plans Table --}}
-        <div class="subscription-table-card">
-           <!-- Subscription Plans Header & Filters -->
-<div class="subscription-table-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3">
+             <!-- Subscription Plans Header & Filters -->
+<div class="subscription-table-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 card">
 
     <div>
         <h5>All Subscription Plans</h5>
@@ -138,6 +135,10 @@
 
     </div>
 </div>
+
+        {{-- Plans Table --}}
+        <div class="subscription-table-card">
+      
 
             <div class="table-responsive">
                 <table class="table subscription-table align-middle mb-0">

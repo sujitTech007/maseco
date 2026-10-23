@@ -60,10 +60,8 @@
                 </div>
             </div>
         </div>
-
-        <div class="buyer-panel">
-            <!-- Registered Buyers Header & Filters -->
-            <div class="buyer-panel-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4">
+         <!-- Registered Buyers Header & Filters -->
+            <div class="buyer-panel-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4 card">
                 <div>
                     <h5 class="mb-1">Registered Buyers</h5>
                     <p class="text-muted mb-0">View buyer details and manage account status.</p>
@@ -133,6 +131,9 @@
 
                 </div>
             </div>
+
+        <div class="buyer-panel">
+           
 
             <div class="buyer-table-wrap">
                 <table class="table table-custom table-centered table-sm table-hover mb-0 dataTable"
