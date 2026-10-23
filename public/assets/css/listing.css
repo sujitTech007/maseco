@@ -415,3 +415,20 @@ button.btn.btn-primary.w-100.get-code {
   }
   .manufacturer-details{margin-top: 30px;}
 }
+
+
+.certified-badge{
+  height: 25px;
+  background: #fff;
+}
+
+
+.table-compare th, .table-compare td{
+  font-size: 14px;
+} 
+.table-compare-btn{
+  justify-content: center;
+}
+.table-compare-btn .btn{
+  font-size: 14px;
+}

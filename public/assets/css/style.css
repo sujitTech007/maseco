@@ -4820,14 +4820,14 @@ form[action*="marketplace"] .form-label {
 .material-info p {
     font-size: 13px;
 }
-
+.material-card .btn,
 .listing-page .btn {
     font-size: 13px;
     border-radius: 6px;
     color: var(--primary-color);
     padding: 10px 6px;
 }
-
+.material-card .btn:hover,
 .listing-page .btn:hover {
     color: white;
     background-color: #049a77;
@@ -5523,3 +5523,17 @@ strong {
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease !important;
 }
 
+
+
+.listing_badge:hover{
+      color: var(--white-color);
+    background: var(--primary-color);
+    border-color: rgba(45, 172, 146, 1);
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 22px rgba(45, 172, 146, 0.30);
+}
+.listing_badge:hover i{
+     color: var(--white-color) !important;
+}
