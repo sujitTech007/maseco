@@ -210,6 +210,62 @@
                 </a>
 
             </li>
+            <li class="side-nav-item {{ request()->routeIs('user.orders') ? 'active' : '' }}">
+
+                <a href="{{ route('user.orders') }}" class="side-nav-link {{ request()->routeIs('user.orders') ? 'active' : '' }}">
+
+                    <span class="menu-icon"> <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                            <!-- Wheels -->
+                            <circle cx="8" cy="21" r="1"></circle>
+                            <circle cx="19" cy="21" r="1"></circle>
+
+                            <!-- Cart -->
+                            <path d="M1 4h4l2.5 10.5A2 2 0 0 0 9.5 16h9.5a2 2 0 0 0 1.9-1.4L23 7H6"></path>
+
+                            <!-- CENTERED TICK (finally correct) -->
+                            <path d="M11 11.5l1.5 1.5l3 -3"></path>
+
+                        </svg>
+
+                    </span>
+
+                    <span class="menu-text">tracking
+
+                    </span>
+
+                </a>
+
+            </li>
+            <li class="side-nav-item {{ request()->routeIs('user.orders') ? 'active' : '' }}">
+
+                <a href="{{ route('user.orders') }}" class="side-nav-link {{ request()->routeIs('user.orders') ? 'active' : '' }}">
+
+                    <span class="menu-icon"> <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                            <!-- Wheels -->
+                            <circle cx="8" cy="21" r="1"></circle>
+                            <circle cx="19" cy="21" r="1"></circle>
+
+                            <!-- Cart -->
+                            <path d="M1 4h4l2.5 10.5A2 2 0 0 0 9.5 16h9.5a2 2 0 0 0 1.9-1.4L23 7H6"></path>
+
+                            <!-- CENTERED TICK (finally correct) -->
+                            <path d="M11 11.5l1.5 1.5l3 -3"></path>
+
+                        </svg>
+
+                    </span>
+
+                    <span class="menu-text">report
+
+                    </span>
+
+                </a>
+
+            </li>
 
             <li class="side-nav-item {{ request()->routeIs('user.payments') ? 'active' : '' }}">
 

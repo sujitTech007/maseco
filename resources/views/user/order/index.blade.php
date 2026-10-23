@@ -73,49 +73,112 @@
             still pending.</p>
 
         <!-- Search + Buttons Row -->
-        <div class="d-flex justify-content-between align-items-center mb-3">
+       
+<!-- Order Page Header & Filters -->
 
-            <!-- Search Box -->
-            <div class="flex-grow-1" style="max-width: 500px;">
-                <div class="position-relative">
-                    <input type="text" id="orderSearch" class="form-control"
-                        placeholder="Search for id, order, status..." style="padding-right:45px;">
+<!-- Order Filter Card -->
+<div class="card border-0 shadow-sm rounded-4 mb-4">
+    <div class="card-body p-3">
 
-                    <!-- Search Icon inside input -->
-                    <i class="fa-solid fa-magnifying-glass" style="
-                position:absolute;
-                right:12px;
-                top:50%;
-                transform:translateY(-50%);
-                font-size:18px;
-                color: #4545455c;
-                cursor:pointer;
-                "></i>
+        <div class="row g-2 align-items-end">
+
+            <!-- Search Orders -->
+            <div class="col-12 col-md-6 col-xl-3">
+                <label for="order-search"
+                       class="form-label small fw-semibold">
+                    Search Orders
+                </label>
+
+                <div class="input-group">
+                    <span class="input-group-text bg-light">
+                        <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                    </span>
+
+                    <input type="search"
+                           class="form-control"
+                           id="order-search"
+                           placeholder="Order ID or product name...">
                 </div>
             </div>
 
-            <!-- Right Buttons -->
-            <div class="d-flex align-items-center gap-2">
+            <!-- Order Status -->
+            <div class="col-6 col-md-3 col-xl-2">
+                <label for="order-status"
+                       class="form-label small fw-semibold">
+                    Order Status
+                </label>
 
-                <button class="btn btn-outline-secondary d-flex align-items-center gap-1 filterbtn">
-                    Filter
-                    <span class="custom-filter-bars-icon" aria-hidden="true">
-                        <span class="bar bar1"></span>
-                        <span class="bar bar2"></span>
-                        <span class="bar bar3"></span>
-                    </span>
+                <select class="form-select" id="order-status">
+                    <option value="">All Statuses</option>
+                    <option value="pending">Pending</option>
+                    <option value="processing">Processing</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="shipped">Shipped</option>
+                    <option value="delivered">Delivered</option>
+                    <option value="cancelled">Cancelled</option>
+                    <option value="returned">Returned</option>
+                </select>
+            </div>
+
+            <!-- Payment Status -->
+            <div class="col-6 col-md-3 col-xl-2">
+                <label for="order-payment-status"
+                       class="form-label small fw-semibold">
+                    Payment Status
+                </label>
+
+                <select class="form-select" id="order-payment-status">
+                    <option value="">All Payments</option>
+                    <option value="paid">Paid</option>
+                    <option value="pending">Pending</option>
+                    <option value="failed">Failed</option>
+                    <option value="refunded">Refunded</option>
+                    <option value="unpaid">Unpaid</option>
+                </select>
+            </div>
+
+            <!-- From Date -->
+            <div class="col-6 col-md-4 col-xl-2">
+                <label for="order-start-date"
+                       class="form-label small fw-semibold">
+                    From Date
+                </label>
+
+                <input type="date"
+                       class="form-control"
+                       id="order-start-date">
+            </div>
+
+            <!-- To Date -->
+            <div class="col-6 col-md-4 col-xl-2">
+                <label for="order-end-date"
+                       class="form-label small fw-semibold">
+                    To Date
+                </label>
+
+                <input type="date"
+                       class="form-control"
+                       id="order-end-date">
+            </div>
+
+            <!-- Filter Button -->
+            <div class="col-6 col-md-2 col-xl-1">
+                <button type="button"
+                        class="btn btn-success w-100 text-nowrap"
+                        id="order-filter-btn"
+                        title="Apply Filters">
+                    <i class="fa-solid fa-filter"></i>
                 </button>
-
-                <!-- Export Button -->
-                <button class="btn btn-outline-secondary d-flex align-items-center gap-1 filterbtn"
-                    onclick="window.location='{{ route('user.orders.export') }}'">
-                    Export
-                    <i class="fa-solid fa-download"></i>
-                </button>
-
             </div>
 
         </div>
+
+        <!-- Reset Button -->
+      
+    </div>
+</div>
+
+
 
         <div class="ud-table-wrap bg-white shadow-sm rounded-4 overflow-hidden">
 

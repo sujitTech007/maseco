@@ -119,6 +119,103 @@
   </div>
 
   <div class="page-container p-3">
+  
+{{-- Payment Filters --}}
+<div class="card border-0 shadow-sm rounded-4 mb-3">
+    <div class="card-body p-3">
+        <div class="row g-3 align-items-end">
+
+            {{-- Search Payments --}}
+            <div class="col-lg-3 col-md-6">
+                <label for="payment-search" class="form-label fw-semibold small">
+                    Search Payments
+                </label>
+                <input
+                    type="text"
+                    id="payment-search"
+                    class="form-control"
+                    placeholder="Payment ID or Order ID..."
+                    value="{{ request('search') }}"
+                >
+            </div>
+
+            {{-- Payment Status --}}
+            <div class="col-lg-2 col-md-6">
+                <label for="payment-status" class="form-label fw-semibold small">
+                    Payment Status
+                </label>
+                <select id="payment-status" class="form-select">
+                    <option value="">All Statuses</option>
+                    <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Pending</option>
+                    <option value="paid" {{ request('status') == 'paid' ? 'selected' : '' }}>Paid</option>
+                    <option value="failed" {{ request('status') == 'failed' ? 'selected' : '' }}>Failed</option>
+                    <option value="refunded" {{ request('status') == 'refunded' ? 'selected' : '' }}>Refunded</option>
+                </select>
+            </div>
+
+            {{-- Payment Method --}}
+            <div class="col-lg-2 col-md-6">
+                <label for="payment-method" class="form-label fw-semibold small">
+                    Payment Method
+                </label>
+                <select id="payment-method" class="form-select">
+                    <option value="">All Methods</option>
+                    <option value="bank_transfer" {{ request('method') == 'bank_transfer' ? 'selected' : '' }}>Bank Transfer</option>
+                    <option value="upi" {{ request('method') == 'upi' ? 'selected' : '' }}>UPI</option>
+                    <option value="card" {{ request('method') == 'card' ? 'selected' : '' }}>Card</option>
+                    <option value="cash" {{ request('method') == 'cash' ? 'selected' : '' }}>Cash</option>
+                </select>
+            </div>
+
+            {{-- From Date --}}
+            <div class="col-lg-2 col-md-6">
+                <label for="payment-start-date" class="form-label fw-semibold small">
+                    From Date
+                </label>
+                <input
+                    type="date"
+                    id="payment-start-date"
+                    class="form-control"
+                    value="{{ request('start_date') }}"
+                >
+            </div>
+
+            {{-- To Date --}}
+            <div class="col-lg-2 col-md-6">
+                <label for="payment-end-date" class="form-label fw-semibold small">
+                    To Date
+                </label>
+                <input
+                    type="date"
+                    id="payment-end-date"
+                    class="form-control"
+                    value="{{ request('end_date') }}"
+                >
+            </div>
+
+            {{-- Filter & Reset --}}
+            <div class="col-lg-1 col-md-12 d-flex gap-2">
+                <button
+                    type="button"
+                    id="payment-filter-btn"
+                    class="btn btn-success"
+                    title="Filter Payments"
+                >
+                    <i class="fa-solid fa-filter"></i>
+                </button>
+
+                <!-- <a
+                    href=""
+                    class="btn btn-outline-secondary"
+                    title="Reset Filters"
+                >
+                    <i class="fa-solid fa-rotate-left"></i>
+                </a> -->
+            </div>
+
+        </div>
+    </div>
+</div>
 
     <div class="ud-table-wrap bg-white shadow-sm rounded-4 overflow-hidden">
 

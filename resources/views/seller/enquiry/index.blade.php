@@ -133,6 +133,140 @@
             <div class="row">
 
                 <div class="col-md-12">
+                
+{{-- RFQ Filters --}}
+<div class="card border-0 shadow-sm rounded-4 mb-4">
+    <div class="card-body p-3">
+        <div class="row g-3 align-items-end">
+
+            {{-- Search RFQs --}}
+            <div class="col-lg-4 col-md-6">
+                <label for="rfq-search" class="form-label fw-semibold">
+                    Search RFQs
+                </label>
+                <input
+                    type="text"
+                    id="rfq-search"
+                    class="form-control"
+                    placeholder="RFQ ID or product name..."
+                    value="{{ request('search') }}"
+                >
+            </div>
+
+            {{-- RFQ Status --}}
+            <div class="col-lg-2 col-md-6">
+                <label for="rfq-status" class="form-label fw-semibold">
+                    RFQ Status
+                </label>
+                <select id="rfq-status" class="form-select">
+                    <option value="">All Statuses</option>
+                    <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Pending</option>
+                    <option value="open" {{ request('status') == 'open' ? 'selected' : '' }}>Open</option>
+                    <option value="quoted" {{ request('status') == 'quoted' ? 'selected' : '' }}>Quoted</option>
+                    <option value="accepted" {{ request('status') == 'accepted' ? 'selected' : '' }}>Accepted</option>
+                    <option value="rejected" {{ request('status') == 'rejected' ? 'selected' : '' }}>Rejected</option>
+                    <option value="closed" {{ request('status') == 'closed' ? 'selected' : '' }}>Closed</option>
+                </select>
+            </div>
+
+            {{-- From Date --}}
+            <div class="col-lg-2 col-md-6">
+                <label for="rfq-start-date" class="form-label fw-semibold">
+                    From Date
+                </label>
+                <input
+                    type="date"
+                    id="rfq-start-date"
+                    class="form-control"
+                    value="{{ request('start_date') }}"
+                >
+            </div>
+
+            {{-- To Date --}}
+            <div class="col-lg-2 col-md-6">
+                <label for="rfq-end-date" class="form-label fw-semibold">
+                    To Date
+                </label>
+                <input
+                    type="date"
+                    id="rfq-end-date"
+                    class="form-control"
+                    value="{{ request('end_date') }}"
+                >
+            </div>
+
+            {{-- Buttons --}}
+            <div class="col-lg-2 col-md-12 d-flex gap-2">
+                <button
+                    type="button"
+                    id="rfq-filter-btn"
+                    class="btn btn-success flex-grow-1"
+                >
+                    <i class="fa-solid fa-filter me-1"></i> Filter
+                </button>
+
+                <a
+                    href=""
+                    class="btn btn-outline-secondary"
+                    title="Reset Filters"
+                >
+                    <i class="fa-solid fa-rotate-left"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const filterBtn = document.getElementById('rfq-filter-btn');
+    const searchInput = document.getElementById('rfq-search');
+    const statusSelect = document.getElementById('rfq-status');
+    const startDateInput = document.getElementById('rfq-start-date');
+    const endDateInput = document.getElementById('rfq-end-date');
+
+    function applyRfqFilters() {
+        const search = searchInput.value.trim();
+        const status = statusSelect.value;
+        const startDate = startDateInput.value;
+        const endDate = endDateInput.value;
+
+        if (startDate && endDate && startDate > endDate) {
+            alert('From Date cannot be later than To Date.');
+            return;
+        }
+
+        const url = new URL(window.location.href);
+        const params = url.searchParams;
+
+        [
+            'search',
+            'status',
+            'start_date',
+            'end_date',
+            'page'
+        ].forEach(param => params.delete(param));
+
+        if (search) params.set('search', search);
+        if (status) params.set('status', status);
+        if (startDate) params.set('start_date', startDate);
+        if (endDate) params.set('end_date', endDate);
+
+        window.location.href = url.toString();
+    }
+
+    filterBtn.addEventListener('click', applyRfqFilters);
+
+    searchInput.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            applyRfqFilters();
+        }
+    });
+});
+</script>
+
 
                     <div class="ud-table-wrap bg-white shadow-sm rounded-4 overflow-hidden">
 

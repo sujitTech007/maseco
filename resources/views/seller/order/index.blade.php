@@ -70,6 +70,176 @@
         </div>
 
     </div>
+    
+{{-- Order Filters --}}
+<div class="card border-0 shadow-sm rounded-4 mb-4">
+    <div class="card-body p-3">
+
+        <div class="row g-2 align-items-end">
+
+            {{-- Search Orders --}}
+            <div class="col-12 col-md-6 col-xl-3">
+                <label for="order-search" class="form-label small fw-semibold">
+                    Search Orders
+                </label>
+
+                <div class="input-group">
+                    <span class="input-group-text bg-light">
+                        <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                    </span>
+
+                    <input type="search"
+                           class="form-control"
+                           id="order-search"
+                           placeholder="Order ID or product name..."
+                           value="{{ request('search') }}">
+                </div>
+            </div>
+
+            {{-- Order Status --}}
+            <div class="col-6 col-md-3 col-xl-2">
+                <label for="order-status" class="form-label small fw-semibold">
+                    Order Status
+                </label>
+
+                <select class="form-select" id="order-status">
+                    <option value="">All Statuses</option>
+                    @foreach([
+                        'pending' => 'Pending',
+                        'processing' => 'Processing',
+                        'confirmed' => 'Confirmed',
+                        'shipped' => 'Shipped',
+                        'delivered' => 'Delivered',
+                        'cancelled' => 'Cancelled',
+                        'returned' => 'Returned'
+                    ] as $value => $label)
+                        <option value="{{ $value }}"
+                            @selected(request('status') === $value)>
+                            {{ $label }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            {{-- Payment Status --}}
+            <div class="col-6 col-md-3 col-xl-2">
+                <label for="order-payment-status" class="form-label small fw-semibold">
+                    Payment Status
+                </label>
+
+                <select class="form-select" id="order-payment-status">
+                    <option value="">All Payments</option>
+                    @foreach([
+                        'paid' => 'Paid',
+                        'pending' => 'Pending',
+                        'failed' => 'Failed',
+                        'refunded' => 'Refunded',
+                        'unpaid' => 'Unpaid'
+                    ] as $value => $label)
+                        <option value="{{ $value }}"
+                            @selected(request('payment_status') === $value)>
+                            {{ $label }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            {{-- From Date --}}
+            <div class="col-6 col-md-4 col-xl-2">
+                <label for="order-start-date" class="form-label small fw-semibold">
+                    From Date
+                </label>
+
+                <input type="date"
+                       class="form-control"
+                       id="order-start-date"
+                       value="{{ request('start_date') }}">
+            </div>
+
+            {{-- To Date --}}
+            <div class="col-6 col-md-4 col-xl-2">
+                <label for="order-end-date" class="form-label small fw-semibold">
+                    To Date
+                </label>
+
+                <input type="date"
+                       class="form-control"
+                       id="order-end-date"
+                       value="{{ request('end_date') }}">
+            </div>
+
+            {{-- Filter Button --}}
+            <div class="col-6 col-md-2 col-xl-1">
+                <button type="button"
+                        class="btn btn-success w-100 text-nowrap"
+                        id="order-filter-btn"
+                        title="Apply Filters">
+                    <i class="fa-solid fa-filter"></i>
+                </button>
+            </div>
+
+            <!-- {{-- Reset Button --}}
+            <div class="col-6 col-md-2 col-xl-1">
+                <a href="{{ route('seller.orders') }}"
+                   class="btn btn-outline-secondary w-100 text-nowrap"
+                   title="Reset Filters">
+                    <i class="fa-solid fa-rotate-left"></i>
+                </a>
+            </div> -->
+
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const filterButton = document.getElementById('order-filter-btn');
+
+    filterButton.addEventListener('click', function () {
+        const search = document.getElementById('order-search').value.trim();
+        const status = document.getElementById('order-status').value;
+        const paymentStatus = document.getElementById('order-payment-status').value;
+        const startDate = document.getElementById('order-start-date').value;
+        const endDate = document.getElementById('order-end-date').value;
+
+        if (startDate && endDate && startDate > endDate) {
+            alert('From Date cannot be later than To Date.');
+            return;
+        }
+
+        const url = new URL(window.location.href);
+
+        const filters = {
+            search: search,
+            status: status,
+            payment_status: paymentStatus,
+            start_date: startDate,
+            end_date: endDate
+        };
+
+        Object.entries(filters).forEach(([key, value]) => {
+            if (value) {
+                url.searchParams.set(key, value);
+            } else {
+                url.searchParams.delete(key);
+            }
+        });
+
+        url.searchParams.delete('page');
+
+        window.location.href = url.toString();
+    });
+
+    // Press Enter in the search field to apply filters.
+    document.getElementById('order-search').addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            filterButton.click();
+        }
+    });
+});
+</script>
+
 
     <div class="page-container p-3">
 
@@ -85,6 +255,8 @@
                             <h5 class="header-title fw-bold mb-1">Orders</h5>
                             <p class="text-muted small mb-0">Orders placed with you and their payment status.</p>
                         </div>
+
+                        
 
                         <div class="ud-scroll">
 

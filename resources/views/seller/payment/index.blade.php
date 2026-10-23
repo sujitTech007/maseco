@@ -119,6 +119,157 @@
   </div>
 
   <div class="page-container p-3">
+  
+{{-- Payment Filters --}}
+<div class="card border-0 shadow-sm rounded-4 mb-4">
+    <div class="card-body p-3">
+        <div class="row g-3 align-items-end">
+
+            {{-- Search Payments --}}
+            <div class="col-lg-3 col-md-6">
+                <label for="payment-search" class="form-label fw-semibold">
+                    Search Payments
+                </label>
+                <input
+                    type="text"
+                    id="payment-search"
+                    class="form-control"
+                    placeholder="Payment ID or Order ID..."
+                    value="{{ request('search') }}"
+                >
+            </div>
+
+            {{-- Payment Status --}}
+            <div class="col-lg-2 col-md-6">
+                <label for="payment-status" class="form-label fw-semibold">
+                    Payment Status
+                </label>
+                <select id="payment-status" class="form-select">
+                    <option value="">All Statuses</option>
+                    <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Pending</option>
+                    <option value="paid" {{ request('status') == 'paid' ? 'selected' : '' }}>Paid</option>
+                    <option value="failed" {{ request('status') == 'failed' ? 'selected' : '' }}>Failed</option>
+                    <option value="refunded" {{ request('status') == 'refunded' ? 'selected' : '' }}>Refunded</option>
+                </select>
+            </div>
+
+            {{-- Payment Method --}}
+            <div class="col-lg-2 col-md-6">
+                <label for="payment-method" class="form-label fw-semibold">
+                    Payment Method
+                </label>
+                <select id="payment-method" class="form-select">
+                    <option value="">All Methods</option>
+                    <option value="bank_transfer" {{ request('method') == 'bank_transfer' ? 'selected' : '' }}>Bank Transfer</option>
+                    <option value="upi" {{ request('method') == 'upi' ? 'selected' : '' }}>UPI</option>
+                    <option value="card" {{ request('method') == 'card' ? 'selected' : '' }}>Card</option>
+                    <option value="cash" {{ request('method') == 'cash' ? 'selected' : '' }}>Cash</option>
+                </select>
+            </div>
+
+            {{-- From Date --}}
+            <div class="col-lg-2 col-md-6">
+                <label for="payment-start-date" class="form-label fw-semibold">
+                    From Date
+                </label>
+                <input
+                    type="date"
+                    id="payment-start-date"
+                    class="form-control"
+                    value="{{ request('start_date') }}"
+                >
+            </div>
+
+            {{-- To Date --}}
+            <div class="col-lg-2 col-md-6">
+                <label for="payment-end-date" class="form-label fw-semibold">
+                    To Date
+                </label>
+                <input
+                    type="date"
+                    id="payment-end-date"
+                    class="form-control"
+                    value="{{ request('end_date') }}"
+                >
+            </div>
+
+            {{-- Buttons --}}
+            <div class="col-lg-1 col-md-12 d-flex gap-2">
+                <button
+                    type="button"
+                    id="payment-filter-btn"
+                    class="btn btn-success"
+                    title="Filter Payments"
+                >
+                    <i class="fa-solid fa-filter"></i>
+                </button>
+
+                <!-- <a
+                    href=""
+                    class="btn btn-outline-secondary"
+                    title="Reset Filters"
+                >
+                    <i class="fa-solid fa-rotate-left"></i>
+                </a> -->
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const filterBtn = document.getElementById('payment-filter-btn');
+    const searchInput = document.getElementById('payment-search');
+    const statusSelect = document.getElementById('payment-status');
+    const methodSelect = document.getElementById('payment-method');
+    const startDateInput = document.getElementById('payment-start-date');
+    const endDateInput = document.getElementById('payment-end-date');
+
+    function applyPaymentFilters() {
+        const search = searchInput.value.trim();
+        const status = statusSelect.value;
+        const method = methodSelect.value;
+        const startDate = startDateInput.value;
+        const endDate = endDateInput.value;
+
+        if (startDate && endDate && startDate > endDate) {
+            alert('From Date cannot be later than To Date.');
+            return;
+        }
+
+        const url = new URL(window.location.href);
+        const params = url.searchParams;
+
+        [
+            'search',
+            'status',
+            'method',
+            'start_date',
+            'end_date',
+            'page'
+        ].forEach(param => params.delete(param));
+
+        if (search) params.set('search', search);
+        if (status) params.set('status', status);
+        if (method) params.set('method', method);
+        if (startDate) params.set('start_date', startDate);
+        if (endDate) params.set('end_date', endDate);
+
+        window.location.href = url.toString();
+    }
+
+    filterBtn.addEventListener('click', applyPaymentFilters);
+
+    searchInput.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            applyPaymentFilters();
+        }
+    });
+});
+</script>
+
 
     <div class="ud-table-wrap bg-white shadow-sm rounded-4 overflow-hidden">
 

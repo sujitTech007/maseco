@@ -366,6 +366,32 @@
                                                 </a>
 
                                             </li>
+                                            <li
+                                                class="side-nav-item {{ request()->routeIs('manufacturer.payment') ? 'active' : '' }}">
+
+                                                <a href="{{ route('manufacturer.payment') }}"
+                                                    class="side-nav-link {{ request()->routeIs('manufacturer.payment') ? 'active' : '' }}">
+
+                                                    <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                            fill="currentColor" viewBox="0 0 24 24" width="48"
+                                                            height="48">
+
+                                                            <path
+                                                                d="M2 5C2 3.89543 2.89543 3 4 3H20C21.1046 3 22 3.89543 22 5V19C22 20.1046 21.1046 21 20 21H4C2.89543 21 2 20.1046 2 19V5ZM20 5H4V7H20V5ZM4 19H20V10H4V19ZM6 12H8V14H6V12ZM10 12H12V14H10V12Z">
+                                                            </path>
+
+                                                        </svg>
+                                                        </svg>
+
+                                                    </span>
+
+                                                    <span class="menu-text">shipment
+
+                                                    </span>
+
+                                                </a>
+
+                                            </li>
 
 
                                             <li
@@ -387,6 +413,32 @@
                                                     </span>
 
                                                     <span class="menu-text"> Plans
+
+                                                    </span>
+
+                                                </a>
+
+                                            </li>
+
+                                            <li
+                                                class="side-nav-item {{ request()->routeIs('manufacturer.plans') ? 'active' : '' }}">
+
+                                                <a href="{{ route('manufacturer.plans') }}"
+                                                    class="side-nav-link {{ request()->routeIs('manufacturer.plans') ? 'active' : '' }}">
+
+                                                    <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                            fill="currentColor" viewBox="0 0 24 24" width="48"
+                                                            height="48">
+
+                                                            <path
+                                                                d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z">
+                                                            </path>
+
+                                                        </svg>
+
+                                                    </span>
+
+                                                    <span class="menu-text">reports
 
                                                     </span>
 
