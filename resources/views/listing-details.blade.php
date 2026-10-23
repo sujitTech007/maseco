@@ -1,7 +1,6 @@
 @include('Include.header')
 
 <main>
-
    
 <!-- Material Detail Banner -->
  <section class="banner inner-banner py-3 py-md-5" style="background-image: url({{ asset('public/assets/images/homepage-banner.webp') }});">
@@ -61,13 +60,36 @@
             <div class="col-lg-7">
                 <div class="bg-white border rounded-3 p-4 h-100">
 
-                    <span class="text-uppercase fw-semibold fs-14 primary-text-color">
+                    <div class="d-flex justify-content-between  w-100">
+                        <span class="text-uppercase fw-semibold fs-14 primary-text-color">
                         Material Information
                     </span>
+                    <div class="d-flex justify-content-between align-items-center">
+                                    
+                                    
+                                    <div class="d-flex gap-2 align-items-center">
+                                                                            <!-- Save -->
+                                    <button type="button" class="listing_badge border-0 rounded-circle shadow-none" title="Save Listing">
+                                        <i class="fa-solid fa-bookmark text-primary"></i>
+                                    </button>
 
-                    <h2 class="fw-bold mt-2 mb-3" style="font-size:28px;color:#263b3a;">
+                                    <!-- Wishlist -->
+                                    <button type="button" class="listing_badge border-0 rounded-circle shadow-none" title="Add to Wishlist"> <i class="fa-solid fa-heart text-danger"></i>
+                                    </button>
+
+                                    <!-- Compare -->
+                                    <button type="button" class="listing_badge border-0 rounded-circle shadow-none" title="Compare Listing"> <i class="fa-solid fa-scale-balanced text-success"></i>
+                                    </button>
+                                    </div>
+                                </div>
+                    </div>
+
+                   
+                     <h2 class="fw-bold">
                         {{ $material->name }}
                     </h2>
+                   
+                   
 
                     <div class="mb-3">
                         <span class="fw-bold" style="font-size:26px;color:#263b3a;">
@@ -81,6 +103,9 @@
                     <p class="text-secondary mb-4" style="font-size:14px;line-height:1.7;">
                         {{ $material->description ?: 'Contact the supplier for further material information.' }}
                     </p>
+                     <div class="certified-badge">
+                                            <img src="{{ asset('public/assets/images/certified-badge.png') }}" alt="certified-badge" class="h-100 w-auto">
+                                        </div>
 
                     <hr class="my-4">
 
@@ -375,5 +400,612 @@
 
 </div>
 
+
+
+<!-- add wishlist -->
+ 
+
+<div class="container py-4">
+
+    <!-- Page Header -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+        <div>
+            <h3 class="fw-bold mb-2">
+                <i class="fa-solid fa-heart text-danger me-2"></i>
+                My Wishlist
+            </h3>
+            <p class="text-muted mb-0">
+                Keep track of your favourite materials and suppliers.
+            </p>
+        </div>
+
+        <a href="#" class="btn theme-btn">
+            <i class="fa-solid fa-arrow-left me-2"></i>
+            Continue Browsing
+        </a>
+    </div>
+
+    <!-- Wishlist Summary -->
+    <div class="row g-3 mb-4">
+
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <div class="bg-success-subtle text-success rounded-3 p-3">
+                        <i class="fa-solid fa-boxes-stacked fa-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-muted mb-1">Saved Materials</p>
+                        <h4 class="fw-bold mb-0">03</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <div class="bg-primary-subtle text-primary rounded-3 p-3">
+                        <i class="fa-solid fa-building fa-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-muted mb-1">Suppliers</p>
+                        <h4 class="fw-bold mb-0">03</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <div class="bg-warning-subtle text-warning rounded-3 p-3">
+                        <i class="fa-solid fa-bookmark fa-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-muted mb-1">Ready to Explore</p>
+                        <h4 class="fw-bold mb-0">03</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Wishlist Toolbar -->
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body">
+            <div class="row align-items-center g-3">
+
+                <div class="col-lg-7">
+                    <h5 class="fw-bold mb-1">Your Saved Materials</h5>
+                    <p class="text-muted mb-0">
+                        3 materials saved to your wishlist
+                    </p>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="d-flex gap-2">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </span>
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Search saved materials...">
+                        </div>
+
+                        <button class="btn theme-btn d-flex"
+                                type="button">
+                            <i class="fa-solid fa-sliders me-1"></i>
+                            Filter
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Wishlist Material Cards -->
+    <div class="row g-4">
+
+        <!-- Material 1 -->
+        <div class="col-xl-4 col-md-6">
+            <div class="card material-card h-100 border-0 shadow-sm">
+
+                <div class="material-image position-relative">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80"
+                         class="card-img-top"
+                         alt="Recycled textile material"
+                         style="height:220px; object-fit:cover;">
+
+                         <div class="d-flex position-absolute top-0 start-0 p-2 left-0 justify-content-between w-100">
+                                    
+                                    
+                                    <div class="d-flex gap-2 align-items-center">
+                                                                            <!-- Save -->
+                                    <button type="button" class="listing_badge border-0 rounded-circle shadow-sm" title="Save Listing">
+                                        <i class="fa-solid fa-bookmark text-primary"></i>
+                                    </button>
+
+                                    <!-- Wishlist -->
+                                    <button type="button" class="listing_badge border-0 rounded-circle shadow-sm" title="Add to Wishlist"> <i class="fa-solid fa-heart text-danger"></i>
+                                    </button>
+
+                                    <!-- Compare -->
+                                    <button type="button" class="listing_badge border-0 rounded-circle shadow-sm" title="Compare Listing"> <i class="fa-solid fa-scale-balanced text-success"></i>
+                                    </button>
+                                    </div>
+                                </div>
+                    
+                </div>
+
+                <div class="card-body p-3 d-flex flex-column">
+
+                                    <div class="d-flex justify-content-between align-items-center gap-2 mb-2">
+                                        <h5 class="fw-bold mb-0 material-name">
+                                            <a href="#" class="text-dark text-decoration-none">
+                                               Premium Recycled Fabric
+                                            </a>
+                                        </h5>
+                                        <div class="certified-badge">
+                                            <img src="{{ asset('public/assets/images/certified-badge.png') }}" alt="certified-badge" class="h-100 w-auto">
+                                        </div>
+                                        <span class="badge bg-light text-success border">In Stock</span>
+                                    </div>
+
+                                    <h4 class="text_color_primary fw-bold mb-3">
+                                        $100.00
+                                        <small class="text-muted fs-6 fw-normal">
+                                            / KG
+                                        </small>
+                                    </h4>
+
+                                    <div class="material-info mb-3">
+                                        <p class="mb-2 text-muted">
+                                            <i class="fa-solid fa-location-dot text_color_primary me-2"></i>
+                                            Dallas, Texas, USA
+                                        </p>
+
+                                        <p class="mb-2 text-muted">
+                                            <i class="fa-solid fa-building text_color_primary me-2"></i>
+                                            <span class="text-dark fw-semibold">Supplier:</span>
+                                            Maseco Z
+                                        </p>
+
+                                        <p class="mb-0 text-muted">
+                                            <i class="fa-solid fa-cubes text_color_primary me-2"></i>
+                                            <span class="text-dark fw-semibold">Grade / Size:</span>
+                                            Premium / 10
+                                        </p>
+                                        
+                                    </div>
+                                    <div class="mt-auto d-flex gap-2">
+                                        <a href="#"
+                                           class="btn theme_btn text-white">
+                                            View Details
+                                            <i class="fa-solid fa-arrow-right ms-0"></i>
+                                        </a>
+                                        <button href="#" class="btn btn-outline-success"><i class="fa-solid fa-envelope me-1"></i>Contact Supplier</button>
+
+                                        
+                                    </div>
+                                    
+
+
+                   
+
+                    
+
+
+                    <p class="text-muted small mt-3 mb-0">
+                        <i class="fa-regular fa-clock me-1"></i>
+                        Added to wishlist 2 days ago
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+        
+
+    </div>
+
+    <!-- Bottom Information -->
+    <div class="alert alert-success d-flex align-items-center gap-3 mt-4 mb-0"
+         role="alert">
+        <i class="fa-solid fa-circle-info fa-xl"></i>
+        <div>
+            <strong>Find the right material for your business.</strong>
+            <p class="mb-0">
+                Compare your saved listings and contact suppliers when you're ready.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- compare page start  -->
+
+
+
+<div class="container py-4">
+
+    <!-- Page Header -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+        <div>
+            <h3 class="fw-bold mb-2">
+                <i class="fa-solid fa-scale-balanced text-success me-2"></i>
+                Compare Materials
+            </h3>
+            <p class="text-muted mb-0">
+                Compare prices, quality, specifications and suppliers before making a decision.
+            </p>
+        </div>
+
+        <a href="#" class="btn btn-outline-success">
+            <i class="fa-solid fa-arrow-left me-2"></i>
+            Browse Materials
+        </a>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="row g-3 mb-4">
+
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <div class="bg-success-subtle text-success rounded-3 p-3">
+                        <i class="fa-solid fa-boxes-stacked fa-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-muted mb-1">Materials Compared</p>
+                        <h4 class="fw-bold mb-0">03</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <div class="bg-primary-subtle text-primary rounded-3 p-3">
+                        <i class="fa-solid fa-building fa-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-muted mb-1">Suppliers</p>
+                        <h4 class="fw-bold mb-0">03</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <div class="bg-warning-subtle text-warning rounded-3 p-3">
+                        <i class="fa-solid fa-tags fa-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-muted mb-1">Lowest Listed Price</p>
+                        <h4 class="fw-bold mb-0">$75.50 / Kg</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Comparison Information -->
+    <div class="alert alert-success border-0 d-flex align-items-center gap-3 mb-4">
+        <i class="fa-solid fa-circle-info fa-xl"></i>
+        <div>
+            <strong>Make an informed choice</strong>
+            <p class="mb-0">
+                Review the specifications and prices of these materials side by side.
+                Prices shown are sample data.
+            </p>
+        </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header bg-white py-3">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+                <h5 class="fw-bold mb-0 fs-5">Material Comparison</h5>
+
+                <span class="badge bg-success-subtle text-success">
+                    <i class="fa-solid fa-check-circle me-1"></i>
+                    3 Materials Selected
+                </span>
+            </div>
+        </div>
+
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-bordered table-compare align-middle text-center mb-0">
+
+                    <thead class="table-light">
+                        <tr>
+                            <th class="text-start p-3" style="min-width:170px;">
+                                Specifications
+                            </th>
+
+                            <th class="p-3" style="min-width:230px;">
+                                <div class="d-flex flex-column align-items-center gap-2">
+
+                                    <img
+                                        src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=80"
+                                        alt="Premium Recycled Fabric"
+                                        class="img-fluid rounded"
+                                        style="height:120px; width:160px; object-fit:cover;"
+                                    >
+
+                                    <h6 class="fw-bold mb-0">Premium Recycled Fabric</h6>
+
+                                    <span class="badge bg-success">
+                                        <i class="fa-solid fa-circle-check me-1"></i>
+                                        Verified
+                                    </span>
+
+                                </div>
+                            </th>
+
+                            <th class="p-3" style="min-width:230px;">
+                                <div class="d-flex flex-column align-items-center gap-2">
+
+                                    <img
+                                        src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=400&q=80"
+                                        alt="Organic Cotton Fibre"
+                                        class="img-fluid rounded"
+                                        style="height:120px; width:160px; object-fit:cover;"
+                                    >
+
+                                    <h6 class="fw-bold mb-0">Organic Cotton Fibre</h6>
+
+                                    <span class="badge bg-success">
+                                        <i class="fa-solid fa-circle-check me-1"></i>
+                                        Verified
+                                    </span>
+
+                                </div>
+                            </th>
+
+                            <th class="p-3" style="min-width:230px;">
+                                <div class="d-flex flex-column align-items-center gap-2">
+
+                                    <img
+                                        src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?auto=format&fit=crop&w=400&q=80"
+                                        alt="Industrial Textile Rolls"
+                                        class="img-fluid rounded"
+                                        style="height:120px; width:160px; object-fit:cover;"
+                                    >
+
+                                    <h6 class="fw-bold mb-0">Industrial Textile Rolls</h6>
+
+                                    <span class="badge bg-success">
+                                        <i class="fa-solid fa-circle-check me-1"></i>
+                                        Verified
+                                    </span>
+
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <!-- Price -->
+                        <tr>
+                            <th class="text-start p-3">
+                                <i class="fa-solid fa-tag text-success me-2"></i>
+                                Price
+                            </th>
+
+                            <td>
+                                <h5 class="text-success fw-bold mb-0">$100.00 / Kg</h5>
+                            </td>
+
+                            <td class="table-success">
+                                <span class="badge bg-success mb-2">Lowest Price</span>
+                                <h5 class="text-success fw-bold mb-0">$75.50 / Kg</h5>
+                            </td>
+
+                            <td>
+                                <h5 class="text-success fw-bold mb-0">$120.00 / Roll</h5>
+                            </td>
+                        </tr>
+
+                        <!-- Supplier -->
+                        <tr>
+                            <th class="text-start p-3">
+                                <i class="fa-solid fa-building text-success me-2"></i>
+                                Supplier
+                            </th>
+                            <td>Maseco Z</td>
+                            <td>Green Fibre Co.</td>
+                            <td>Textile Hub Ltd.</td>
+                        </tr>
+
+                        <!-- Location -->
+                        <tr>
+                            <th class="text-start p-3">
+                                <i class="fa-solid fa-location-dot text-success me-2"></i>
+                                Location
+                            </th>
+                            <td>Dallas, Texas, USA</td>
+                            <td>Toronto, Ontario, Canada</td>
+                            <td>Chicago, Illinois, USA</td>
+                        </tr>
+
+                        <!-- Grade -->
+                        <tr>
+                            <th class="text-start p-3">
+                                <i class="fa-solid fa-award text-success me-2"></i>
+                                Material Grade
+                            </th>
+                            <td>Premium</td>
+                            <td>A Grade</td>
+                            <td>Industrial Grade</td>
+                        </tr>
+
+                        <!-- Size -->
+                        <tr>
+                            <th class="text-start p-3">
+                                <i class="fa-solid fa-ruler-combined text-success me-2"></i>
+                                Size
+                            </th>
+                            <td>10</td>
+                            <td>20</td>
+                            <td>15</td>
+                        </tr>
+
+                        <!-- Availability -->
+                        <tr>
+                            <th class="text-start p-3">
+                                <i class="fa-solid fa-box-open text-success me-2"></i>
+                                Availability
+                            </th>
+                            <td>
+                                <span class="badge bg-success-subtle text-success">
+                                    In Stock
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge bg-success-subtle text-success">
+                                    In Stock
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge bg-success-subtle text-success">
+                                    In Stock
+                                </span>
+                            </td>
+                        </tr>
+
+                        <!-- Minimum Order -->
+                        <tr>
+                            <th class="text-start p-3">
+                                <i class="fa-solid fa-truck-fast text-success me-2"></i>
+                                Minimum Order
+                            </th>
+                            <td>50 Kg</td>
+                            <td>25 Kg</td>
+                            <td>10 Rolls</td>
+                        </tr>
+
+                        <!-- Certification -->
+                        <tr>
+                            <th class="text-start p-3">
+                                <i class="fa-solid fa-certificate text-success me-2"></i>
+                                Certification
+                            </th>
+                            <td>Verified Supplier</td>
+                            <td>Verified Supplier</td>
+                            <td>Verified Supplier</td>
+                        </tr>
+
+                        <!-- Actions -->
+                        <tr>
+                            <th class="text-start p-3">Actions</th>
+
+                            <td class="p-3">
+                                <div class="gap-2 table-compare-btn d-flex">
+                                    <a href="#" class="btn btn-success">
+                                        <i class="fa-solid fa-eye me-1"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-outline-success">
+                                        <i class="fa-regular fa-envelope me-1"></i>
+                                        Contact
+                                    </a>
+                                    <button type="button" class="btn btn-outline-danger">
+                                        <i class="fa-solid fa-trash-can me-1"></i>
+                                    </button>
+                                </div>
+                            </td>
+
+                            <td class="p-3">
+                                <div class="gap-2 table-compare-btn d-flex">
+                                    <a href="#" class="btn btn-success">
+                                        <i class="fa-solid fa-eye me-1"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-outline-success">
+                                        <i class="fa-regular fa-envelope me-1"></i>
+                                        Contact
+                                    </a>
+                                    <button type="button" class="btn btn-outline-danger">
+                                        <i class="fa-solid fa-trash-can me-1"></i>
+                                    </button>
+                                </div>
+                            </td>
+
+                            <td class="p-3">
+                                <div class="gap-2 table-compare-btn d-flex">
+                                    <a href="#" class="btn btn-success">
+                                        <i class="fa-solid fa-eye me-1"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-outline-success">
+                                        <i class="fa-regular fa-envelope me-1"></i>
+                                        Contact
+                                    </a>
+                                    <button type="button" class="btn btn-outline-danger">
+                                        <i class="fa-solid fa-trash-can me-1"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendation Cards -->
+    <div class="card border-0 shadow-sm">
+        <div class="card-body p-4">
+
+            <div class="d-flex align-items-start gap-3">
+                <div class="bg-success-subtle text-success rounded-3 p-3">
+                    <i class="fa-solid fa-lightbulb fa-xl"></i>
+                </div>
+
+                <div>
+                    <h5 class="fw-bold mb-2">Comparison Tips</h5>
+                    <p class="text-muted mb-2">
+                        Before choosing a material, consider more than just the listed price.
+                    </p>
+
+                    <div class="row g-3 mt-1">
+                        <div class="col-md-4">
+                            <p class="mb-0">
+                                <i class="fa-solid fa-check-circle text-success me-2"></i>
+                                Compare prices using the same unit.
+                            </p>
+                        </div>
+
+                        <div class="col-md-4">
+                            <p class="mb-0">
+                                <i class="fa-solid fa-check-circle text-success me-2"></i>
+                                Check material grade and specifications.
+                            </p>
+                        </div>
+
+                        <div class="col-md-4">
+                            <p class="mb-0">
+                                <i class="fa-solid fa-check-circle text-success me-2"></i>
+                                Confirm shipping costs and minimum order quantity.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
 
 @include('Include.footer')

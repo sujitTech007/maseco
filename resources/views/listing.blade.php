@@ -192,38 +192,23 @@
                                             alt="{{ $material->name }}">
                                     </a>
 
-                                    <!-- <div class="d-flex position-absolute top-0 start-0 m-3">
-                                        <span class="badge bg-white text_color_primary shadow-sm fs-11">
-                                        <i class="fa-solid fa-circle-check me-1 fs-11"></i>
-                                        Verified Listing
-                                    </span>
-                                    </div> -->
+                                 
                                     <!-- Verified Listing Badge -->
                                 <div class="d-flex position-absolute top-0 start-0 p-2 left-0 justify-content-between w-100">
-                                    <span class="badge bg-white text_color_primary shadow-sm fs-11">
-                                        <i class="fa-solid fa-circle-check me-1 fs-11"></i>
-                                        Verified Listing
-                                    </span>
+                                    
+                                    
                                     <div class="d-flex gap-2 align-items-center">
                                                                             <!-- Save -->
-                                    <button type="button"
-                                        class="listing_badge border-0 rounded-circle shadow-sm"
-                                        title="Save Listing">
+                                    <button type="button" class="listing_badge border-0 rounded-circle shadow-sm" title="Save Listing">
                                         <i class="fa-solid fa-bookmark text-primary"></i>
                                     </button>
 
                                     <!-- Wishlist -->
-                                    <button type="button"
-                                        class="listing_badge border-0 rounded-circle shadow-sm"
-                                        title="Add to Wishlist">
-                                        <i class="fa-solid fa-heart text-danger"></i>
+                                    <button type="button" class="listing_badge border-0 rounded-circle shadow-sm" title="Add to Wishlist"> <i class="fa-solid fa-heart text-danger"></i>
                                     </button>
 
                                     <!-- Compare -->
-                                    <button type="button"
-                                        class="listing_badge border-0 rounded-circle shadow-sm"
-                                        title="Compare Listing">
-                                        <i class="fa-solid fa-scale-balanced text-success"></i>
+                                    <button type="button" class="listing_badge border-0 rounded-circle shadow-sm" title="Compare Listing"> <i class="fa-solid fa-scale-balanced text-success"></i>
                                     </button>
                                     </div>
                                 </div>
@@ -234,13 +219,16 @@
                                 {{-- Details --}}
                                 <div class="card-body p-3 d-flex flex-column">
 
-                                    <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                    <div class="d-flex justify-content-between align-items-center gap-2 mb-2">
                                         <h5 class="fw-bold mb-0 material-name">
                                             <a href="{{ route('listing.details', $material->id) }}"
                                                class="text-dark text-decoration-none">
                                                 {{ $material->name }}
                                             </a>
                                         </h5>
+                                        <div class="certified-badge">
+                                            <img src="{{ asset('public/assets/images/certified-badge.png') }}" alt="certified-badge" class="h-100 w-auto">
+                                        </div>
                                     </div>
 
                                     <h4 class="text_color_primary fw-bold mb-3">
@@ -269,7 +257,9 @@
                                             /
                                             {{ $material->size ?: '-' }}
                                         </p>
+                                        
                                     </div>
+                                    
 
                                     <div class="mt-auto d-flex gap-2">
                                         <a href="{{ route('listing.details', $material->id) }}"
