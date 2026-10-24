@@ -1,7 +1,7 @@
 
 @include('admin.Include.header')
 
-<div class="page-content">
+             <div class="page-content">
     <div class="page-container container-fluid py-3">
 
         {{-- Page Header --}}

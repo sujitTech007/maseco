@@ -1767,10 +1767,10 @@ color: #fff;
 }
 
 /* Allow the admin navigation to scroll when its menu is taller than the viewport. */
-.sidenav-menu {
+/* .sidenav-menu {
     height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
     overscroll-behavior-y: contain;
     scrollbar-width: thin;
-}
+} */
