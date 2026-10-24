@@ -172,7 +172,7 @@
                                         : []);
                             @endphp
 
-                            <tr>
+                            <tr data-status="{{ strtolower((string) $plan->status) }}" data-type="{{ str_contains(strtolower((string) $plan->duration), 'year') ? 'yearly' : (str_contains(strtolower((string) $plan->duration), 'month') ? 'monthly' : 'one-time') }}" data-date="{{ $plan->created_at?->format('Y-m-d') }}">
                                 <td>
                                     <span class="subscription-id">#{{ $plan->id }}</span>
                                 </td>

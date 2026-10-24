@@ -3,9 +3,21 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Schema;
 
 class Order extends Model
 {
+    protected static function booted(): void
+    {
+        static::created(function (Order $order) {
+            if (Schema::hasColumn('orders', 'uid')) {
+                $order->forceFill([
+                    'uid' => 'ORD' . str_pad((string) $order->getKey(), 4, '0', STR_PAD_LEFT),
+                ])->saveQuietly();
+            }
+        });
+    }
+
     protected $fillable = [
         'user_id',
         'enquiry_id',
@@ -16,6 +28,10 @@ class Order extends Model
         'amount',
         'status',
         'payment_status',
+        'tracking_number',
+        'shipping_method',
+        'estimated_delivery',
+        'shipping_address',
     ];
 
     public function user()
@@ -31,6 +47,16 @@ class Order extends Model
     public function material()
     {
         return $this->belongsTo(Material::class);
+    }
+
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class);
+    }
+
+    public function manufacturer()
+    {
+        return $this->belongsTo(Manufacturer::class);
     }
 
     public function payment()

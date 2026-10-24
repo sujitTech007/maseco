@@ -176,6 +176,14 @@
 
                                     </li>
 
+                                    <li class="side-nav-item {{ Route::is('admin.tracking') ? 'active' : '' }}">
+                                        <a href="{{ route('admin.tracking') }}"
+                                            class="side-nav-link {{ Route::is('admin.tracking') ? 'active' : '' }}">
+                                            <span class="menu-icon"><i class="fa-solid fa-truck-fast"></i></span>
+                                            <span class="menu-text">Order Tracking</span>
+                                        </a>
+                                    </li>
+
                                     <li
                                         class="side-nav-item {{ Route::is('admin.subscription.index') ? 'active' : '' }}">
 

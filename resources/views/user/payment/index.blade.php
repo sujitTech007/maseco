@@ -87,7 +87,7 @@
                     <input type="search"
                            class="form-control"
                            id="payment-search"
-                           placeholder="Payment ID or Order ID...">
+                           placeholder="Payment ID or Order UID...">
                 </div>
             </div>
 
@@ -171,7 +171,9 @@
 
                             <th>#</th>
 
-                            <th>Order</th>
+                            <th>Order ID</th>
+
+                            <th>Order UID</th>
 
                             <th>Amount</th>
 
@@ -206,7 +208,9 @@
 
                                 <td class="text-muted">{{ $p->id }}</td>
 
-                                <td class="fw-semibold">#{{ $p->order_id }}</td>
+                                <td class="text-muted">#{{ $p->order?->id ?? $p->order_id ?? '—' }}</td>
+
+                                <td class="fw-semibold">{{ $p->order?->uid ?? (filled($p->order_id) ? 'ORD' . str_pad((string) $p->order_id, 4, '0', STR_PAD_LEFT) : '—') }}</td>
 
                                 <td class="fw-semibold text-nowrap">${{ number_format($p->amount, 2) }}</td>
 
@@ -226,7 +230,7 @@
 
                             <tr>
 
-                                <td colspan="7" class="text-center text-muted">
+                                <td colspan="8" class="text-center text-muted">
                                     <div>No payments found.</div>
                                     <div class="small">Payments for your orders and subscriptions will appear here.</div>
                                 </td>

@@ -53,7 +53,7 @@ class ManufacturerController extends Controller
 
         $payments = Payment::whereHas('order', function ($query) use ($manufacturer) {
             $query->where('manufacturer_id', $manufacturer->id);
-        })->orderByDesc('created_at')->get();
+        })->with('order')->orderByDesc('created_at')->get();
 
         return view('manufacturer.payment.index', compact('payments'));
     }

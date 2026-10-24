@@ -12,6 +12,7 @@ use App\Models\Payment;
 use App\Models\User;
 use App\Models\Supplier;
 use App\Models\Manufacturer;
+use Illuminate\Support\Facades\Schema;
 
 class AdminPagesController extends Controller
 {
@@ -75,6 +76,54 @@ class AdminPagesController extends Controller
             ->get();
 
         return view('admin.orders.index', compact('orders'));
+    }
+
+    public function tracking(Request $request)
+    {
+        $filters = $request->validate([
+            'search' => ['nullable', 'string', 'max:100'],
+            'status' => ['nullable', 'string', 'max:50'],
+        ]);
+
+        $hasTrackingNumber = Schema::hasColumn('orders', 'tracking_number');
+        $hasOrderUid = Schema::hasColumn('orders', 'uid');
+        $ordersQuery = Order::with(['user', 'material', 'supplier', 'manufacturer'])
+            ->orderByDesc('created_at');
+
+        if (!empty($filters['status'])) {
+            $ordersQuery->where('status', $filters['status']);
+        }
+
+        if (!empty($filters['search'])) {
+            $search = trim($filters['search']);
+            $ordersQuery->where(function ($query) use ($search, $hasTrackingNumber, $hasOrderUid) {
+                $query->whereHas('user', function ($userQuery) use ($search) {
+                    $userQuery->where('name', 'like', '%' . $search . '%')
+                        ->orWhere('email', 'like', '%' . $search . '%');
+                });
+                if ($hasTrackingNumber) {
+                    $query->orWhere('tracking_number', 'like', '%' . $search . '%');
+                }
+                if ($hasOrderUid) {
+                    $query->orWhere('uid', 'like', '%' . $search . '%');
+                }
+                if (ctype_digit($search)) {
+                    $query->orWhereKey((int) $search);
+                }
+            });
+        }
+
+        $orders = $ordersQuery->paginate(20)->withQueryString();
+        $totalOrders = Order::count();
+        $inTransitOrders = Order::whereIn('status', ['shipped', 'in_transit', 'out_for_delivery'])->count();
+        $deliveredOrders = Order::where('status', 'delivered')->count();
+        $untrackedOrders = $hasTrackingNumber
+            ? Order::whereNull('tracking_number')->orWhere('tracking_number', '')->count()
+            : $totalOrders;
+
+        return view('admin.tracking.index', compact(
+            'orders', 'totalOrders', 'inTransitOrders', 'deliveredOrders', 'untrackedOrders'
+        ));
     }
 
     public function plan()

@@ -88,8 +88,6 @@
                 <option value="">(Status)</option>
                 <option value="active">Active</option>
                 <option value="inactive">Inactive</option>
-                <option value="pending">Pending</option>
-                <option value="suspended">Suspended</option>
             </select>
         </div>
 
@@ -161,7 +159,7 @@
 
                     <tbody>
                         @forelse($suppliers as $supplier)
-                            <tr>
+                            <tr data-status="{{ $supplier->status == '1' ? 'active' : 'inactive' }}" data-type="{{ strtolower((string) ($supplier->business_type ?? '')) }}" data-date="{{ $supplier->created_at?->format('Y-m-d') }}">
                                 <td>
                                     <p class="seller-cell-text">{{ $loop->iteration }}</p>
                                 </td>

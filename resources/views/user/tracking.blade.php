@@ -27,7 +27,7 @@
                     <div class="row g-3 align-items-end">
                         <div class="col-12 col-md-9">
                             <label for="tracking_number" class="form-label fw-semibold">
-                                Order ID or Tracking Number
+                                Order UID or Tracking Number
                             </label>
                             <div class="input-group">
                                 <span class="input-group-text bg-light">
@@ -37,8 +37,8 @@
                                     name="tracking_number"
                                     id="tracking_number"
                                     class="form-control"
-                                    placeholder="Enter your order ID or tracking number"
-                                    value="{{ request('tracking_number') }}"
+                                    placeholder="Enter your order UID or tracking number"
+                                    value="{{ request('tracking_number', request('order_id')) }}"
                                     required>
                             </div>
                         </div>
@@ -52,6 +52,45 @@
                 </form>
             </div>
         </div>
+
+        @if($orders->isNotEmpty())
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-header bg-white border-0 p-4 pb-2">
+                    <h5 class="fw-bold mb-1">Your Orders</h5>
+                    <p class="text-muted small mb-0">Select an order to view its latest tracking status.</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th class="ps-4">Order ID</th>
+                                <th>Order UID</th>
+                                <th>Item</th>
+                                <th>Status</th>
+                                <th>Tracking number</th>
+                                <th class="text-end pe-4">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($orders as $listedOrder)
+                                <tr>
+                                    <td class="ps-4">#{{ $listedOrder->id }}</td>
+                                    <td class="fw-semibold">{{ $listedOrder->uid ?? ('ORD' . str_pad((string) $listedOrder->id, 4, '0', STR_PAD_LEFT)) }}</td>
+                                    <td>{{ $listedOrder->material?->name ?? 'Marketplace order' }}</td>
+                                    <td><span class="badge bg-light text-dark border">{{ ucwords(str_replace('_', ' ', $listedOrder->status ?? 'pending')) }}</span></td>
+                                    <td>{{ $listedOrder->tracking_number ?: 'Not assigned yet' }}</td>
+                                    <td class="text-end pe-4">
+                                        <a href="{{ route('user.tracking', ['tracking_number' => $listedOrder->uid ?? $listedOrder->id]) }}" class="btn btn-sm btn-outline-success rounded-pill px-3">
+                                            <i class="fa-solid fa-truck-fast me-1"></i> Track
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        @endif
 
         {{-- Tracking Result --}}
         @if(isset($order) && $order)
@@ -119,10 +158,15 @@
                                 <div>
                                     <p class="text-muted small mb-1">Order Reference</p>
                                     <h4 class="fw-bold mb-0">
-                                        #{{ $order->id }}
+                                        {{ $order->uid ?? ('ORD' . str_pad((string) $order->id, 4, '0', STR_PAD_LEFT)) }}
                                     </h4>
                                 </div>
                             </div>
+
+                            <p class="mb-2">
+                                <span class="text-muted">Order ID:</span>
+                                <span class="fw-semibold">#{{ $order->id }}</span>
+                            </p>
 
                             <p class="mb-2">
                                 <span class="text-muted">Tracking Number:</span>
@@ -235,10 +279,11 @@
                                 Shipment Details
                             </h5>
 
+                            @php $shipper = $order->supplier ?: $order->manufacturer; @endphp
                             <div class="d-flex justify-content-between gap-3 py-2 border-bottom">
-                                <span class="text-muted">Supplier</span>
+                                <span class="text-muted">{{ $order->supplier ? 'Supplier' : 'Manufacturer' }}</span>
                                 <span class="fw-semibold text-end">
-                                    {{ $order->supplier_name ?? 'To be updated' }}
+                                    {{ $shipper?->company_name ?: ($shipper?->business_name ?: ($shipper?->name ?? 'To be updated')) }}
                                 </span>
                             </div>
 
@@ -298,10 +343,10 @@
 
             </div>
 
-        @elseif(request()->filled('tracking_number'))
+        @elseif(request()->filled('tracking_number') || request()->filled('order_id'))
             <div class="alert alert-warning rounded-4">
                 <i class="fa-solid fa-circle-exclamation me-2"></i>
-                No order was found for that order ID or tracking number. Please check the number and try again.
+                No order was found for that order UID or tracking number. Please check the value and try again.
             </div>
 
         @else
@@ -316,7 +361,7 @@
 
                     <h4 class="fw-bold">Ready to track your order?</h4>
                     <p class="text-muted mx-auto mb-4" style="max-width: 500px;">
-                        Enter your order ID or tracking number above to view the latest shipment status and delivery details.
+                        Enter your order UID or tracking number above to view the latest shipment status and delivery details.
                     </p>
 
                     <a href="{{ route('user.orders') }}"

@@ -84,7 +84,7 @@ class SellerController extends Controller
         $supplier = Auth::guard('supplier')->user();
         $payments = \App\Models\Payment::whereHas('order', function($q) use ($supplier){
             $q->where('supplier_id', $supplier->id);
-        })->orderByDesc('created_at')->get();
+        })->with('order')->orderByDesc('created_at')->get();
         return view('seller.payment.index', compact('payments'));
     }
 

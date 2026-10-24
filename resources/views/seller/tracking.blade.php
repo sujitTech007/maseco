@@ -81,7 +81,7 @@
                                         <input type="text" id="search" name="search"
                                             class="form-control"
                                             value="{{ request('search') }}"
-                                            placeholder="Order ID, buyer or tracking number">
+                                            placeholder="Order UID, buyer or tracking number">
                                     </div>
                                 </div>
 
@@ -128,7 +128,8 @@
                             <table class="table table-hover align-middle mb-0">
                                 <thead class="table-light">
                                     <tr>
-                                        <th class="px-4 py-3">Order</th>
+                                        <th class="px-4 py-3">Order ID</th>
+                                        <th class="py-3">Order UID</th>
                                         <th class="py-3">Buyer</th>
                                         <th class="py-3">Tracking Number</th>
                                         <th class="py-3">Order Date</th>
@@ -152,9 +153,10 @@
                                         @endphp
 
                                         <tr>
-                                            <td class="px-4 py-3">
+                                            <td class="px-4 py-3">#{{ $order->id }}</td>
+                                            <td class="py-3">
                                                 <span class="fw-bold">
-                                                    #{{ $order->id }}
+                                                    {{ $order->uid ?? ('ORD' . str_pad((string) $order->id, 4, '0', STR_PAD_LEFT)) }}
                                                 </span>
                                             </td>
 
@@ -199,7 +201,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="7" class="text-center py-5">
+                                            <td colspan="8" class="text-center py-5">
                                                 <i class="fa-solid fa-box-open fa-2x text-muted mb-3"></i>
                                                 <h6 class="fw-bold">No orders found</h6>
                                                 <p class="text-muted small mb-0">

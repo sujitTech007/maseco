@@ -18,6 +18,7 @@
     <script src="{{ asset('public/assets/js/apexcharts.min.js') }}"></script>
 
     <script src="{{ asset('public/assets/js/dashboard.js') }}"></script>
+    <script src="{{ asset('public/assets/js/dashboard-auto-filters.js') }}"></script>
 
     @if (Request::is('user/profile'))
         <script src="{{ asset('public/assets/js/jquery.min.js') }}"></script>

@@ -50,6 +50,7 @@
     <!-- Projects Analytics Dashboard App js -->
 
     <script src="{{ asset('public/assets/js/dashboard.js.download') }}"></script>
+    <script src="{{ asset('public/assets/js/dashboard-auto-filters.js') }}"></script>
 
     @if (Request::is('seller/profile'))
         <script src="{{ asset('public/assets/js/jquery.min.js') }}"></script>

@@ -70,18 +70,6 @@
 
     <div class="d-flex flex-wrap align-items-center gap-2">
 
-        <!-- Submission Status -->
-        <select class="form-select"
-                id="contact-status-filter"
-                aria-label="Filter by submission status"
-                style="width: 160px;">
-            <option value="">All Statuses</option>
-            <option value="new">New</option>
-            <option value="in_progress">In Progress</option>
-            <option value="resolved">Resolved</option>
-            <option value="closed">Closed</option>
-        </select>
-
         <!-- Visitor Source -->
         <select class="form-select"
                 id="contact-source-filter"
@@ -173,7 +161,7 @@
                     <tbody id="contact-table-body">
 
                         @forelse($contactCollection as $contact)
-                            <tr class="contact-data-row">
+                            <tr class="contact-data-row" data-source="{{ strtolower((string) ($contact->find_us ?? $contact->find_id ?? '')) }}" data-date="{{ $contact->created_at?->format('Y-m-d') }}">
 
                                 <td data-label="ID">
                                     <span class="contact-id">
@@ -267,6 +255,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const tbody = page.querySelector('#contact-table-body');
     const search = page.querySelector('#contact-search-input');
     const sizeSelect = page.querySelector('#contact-page-size');
+    const filterControls = page.querySelectorAll('#contact-source-filter, #contact-start-date, #contact-end-date');
+    const filterButton = page.querySelector('#contact-filter-btn');
     const info = page.querySelector('#contact-table-info');
     const pagination = page.querySelector('#contact-pagination');
     const noResults = page.querySelector('#contact-no-results');
@@ -279,9 +269,9 @@ document.addEventListener('DOMContentLoaded', function () {
     function renderTable() {
         const query = search.value.trim().toLowerCase();
 
-        const filteredRows = rows.filter(function (row) {
-            return row.textContent.toLowerCase().includes(query);
-        });
+        const filteredRows = window.dashboardFilterRows
+            ? window.dashboardFilterRows(page, rows)
+            : rows.filter(function (row) { return row.textContent.toLowerCase().includes(query); });
 
         const pageSize = sizeSelect.value === 'all'
             ? Math.max(filteredRows.length, 1)
@@ -354,6 +344,18 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     sizeSelect.addEventListener('change', function () {
+        currentPage = 1;
+        renderTable();
+    });
+
+    filterControls.forEach(function (control) {
+        control.addEventListener('change', function () {
+            currentPage = 1;
+            renderTable();
+        });
+    });
+
+    if (filterButton) filterButton.addEventListener('click', function () {
         currentPage = 1;
         renderTable();
     });

@@ -85,19 +85,16 @@
                             <option value="">(Status)</option>
                             <option value="active">Active</option>
                             <option value="inactive">Inactive</option>
-                            <option value="pending">Pending</option>
-                            <option value="suspended">Suspended</option>
                         </select>
                     </div>
 
-                    <!-- Buyer Type Filter -->
+                    <!-- Buyer Gender Filter -->
                     <div class="col-12 col-md-6 col-xl-2">
                         <select class="form-select" id="buyer-type">
-                            <option value="">Buyer Type</option>
-                            <option value="manufacturer">Manufacturer</option>
-                            <option value="retailer">Retailer</option>
-                            <option value="wholesaler">Wholesaler</option>
-                            <option value="distributor">Distributor</option>
+                            <option value="">All genders</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
                         </select>
                     </div>
 
@@ -152,7 +149,7 @@
 
                     <tbody>
                         @forelse($users as $user)
-                        <tr>
+                        <tr data-status="{{ $user->status == '1' ? 'active' : 'inactive' }}" data-type="{{ strtolower((string) ($user->gender ?? '')) }}" data-date="{{ $user->created_at?->format('Y-m-d') }}">
                             <td>
                                 <p class="buyer-cell-text">{{ $loop->iteration }}</p>
                             </td>

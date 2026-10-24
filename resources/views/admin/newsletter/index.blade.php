@@ -69,7 +69,6 @@
                 style="width: 165px;">
             <option value="">All Subscribers</option>
             <option value="subscribed">Subscribed</option>
-            <option value="unsubscribed">Unsubscribed</option>
         </select>
 
         <!-- Start Date -->
@@ -152,7 +151,7 @@
 
                         @forelse($newsletterCollection as $newsletter)
 
-                            <tr class="newsletter-data-row">
+                            <tr class="newsletter-data-row" data-status="subscribed" data-date="{{ $newsletter->created_at?->format('Y-m-d') }}">
 
                                 <td data-label="Subscriber ID">
                                     <span class="newsletter-id">
@@ -233,6 +232,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const tbody = page.querySelector('#newsletter-table-body');
     const search = page.querySelector('#newsletter-search-input');
     const sizeSelect = page.querySelector('#newsletter-page-size');
+    const filterControls = page.querySelectorAll('#newsletter-status-filter, #newsletter-start-date, #newsletter-end-date');
+    const filterButton = page.querySelector('#newsletter-filter-btn');
     const info = page.querySelector('#newsletter-table-info');
     const pagination = page.querySelector('#newsletter-pagination');
     const noResults = page.querySelector('#newsletter-no-results');
@@ -245,9 +246,9 @@ document.addEventListener('DOMContentLoaded', function () {
     function renderTable() {
         const query = search.value.trim().toLowerCase();
 
-        const filteredRows = rows.filter(function (row) {
-            return row.textContent.toLowerCase().includes(query);
-        });
+        const filteredRows = window.dashboardFilterRows
+            ? window.dashboardFilterRows(page, rows)
+            : rows.filter(function (row) { return row.textContent.toLowerCase().includes(query); });
 
         const pageSize = sizeSelect.value === 'all'
             ? Math.max(filteredRows.length, 1)
@@ -315,6 +316,18 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     sizeSelect.addEventListener('change', function () {
+        currentPage = 1;
+        renderTable();
+    });
+
+    filterControls.forEach(function (control) {
+        control.addEventListener('change', function () {
+            currentPage = 1;
+            renderTable();
+        });
+    });
+
+    if (filterButton) filterButton.addEventListener('click', function () {
         currentPage = 1;
         renderTable();
     });

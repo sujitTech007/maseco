@@ -14,6 +14,7 @@ use App\Support\PhoneNumber;
 use App\Models\Order;
 
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Schema;
 
 use App\Models\Enquiry;
 
@@ -224,6 +225,49 @@ class UserDashboardController extends Controller
 
     }
 
+    public function tracking(Request $request)
+    {
+        $validated = $request->validate([
+            'order_id' => ['nullable', 'integer', 'min:1'],
+            'tracking_number' => ['nullable', 'string', 'max:100'],
+        ]);
+        $orderQuery = Order::with(['material', 'supplier', 'manufacturer'])
+            ->where('user_id', Auth::id());
+        $order = null;
+
+        if (!empty($validated['order_id'])) {
+            $order = (clone $orderQuery)->whereKey($validated['order_id'])->first();
+        } elseif (!empty($validated['tracking_number'])) {
+            $trackingNumber = trim($validated['tracking_number']);
+            $hasOrderUid = Schema::hasColumn('orders', 'uid');
+            $hasTrackingNumber = Schema::hasColumn('orders', 'tracking_number');
+            if ($hasTrackingNumber || $hasOrderUid || ctype_digit($trackingNumber)) {
+                $order = (clone $orderQuery)->where(function ($query) use ($trackingNumber, $hasOrderUid, $hasTrackingNumber) {
+                    $hasCondition = false;
+                    if ($hasTrackingNumber) {
+                        $query->where('tracking_number', $trackingNumber);
+                        $hasCondition = true;
+                    }
+                    if ($hasOrderUid) {
+                        $hasCondition
+                            ? $query->orWhere('uid', strtoupper($trackingNumber))
+                            : $query->where('uid', strtoupper($trackingNumber));
+                        $hasCondition = true;
+                    }
+                    if (ctype_digit($trackingNumber)) {
+                        $hasCondition
+                            ? $query->orWhereKey((int) $trackingNumber)
+                            : $query->whereKey((int) $trackingNumber);
+                    }
+                })->first();
+            }
+        }
+
+        $orders = (clone $orderQuery)->latest()->limit(50)->get();
+
+        return view('user.tracking', compact('order', 'orders'));
+    }
+
     public function export()
     {
         // Get orders for the logged-in user
@@ -272,7 +316,7 @@ class UserDashboardController extends Controller
         $user = Auth::user();
 
         $payments = \App\Models\Payment::where('user_id', $user->id)
-
+            ->with('order')
             ->orderByDesc('created_at')->get();
 
         return view('user.payment.index', compact('payments'));

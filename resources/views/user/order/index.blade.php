@@ -97,7 +97,7 @@
                     <input type="search"
                            class="form-control"
                            id="order-search"
-                           placeholder="Order ID or product name...">
+                           placeholder="Order UID or product name...">
                 </div>
             </div>
 
@@ -190,7 +190,8 @@
 
                         <tr>
 
-                            <th>#</th>
+                            <th>Order UID</th>
+                            <th>Order ID</th>
 
                             <th>Amount</th>
 
@@ -231,7 +232,8 @@
 
                             <tr>
 
-                                <td class="text-muted">{{ $order->id }}</td>
+                                <td class="fw-semibold text-nowrap">{{ $order->uid ?? ('ORD' . str_pad((string) $order->id, 4, '0', STR_PAD_LEFT)) }}</td>
+                                <td class="text-muted">#{{ $order->id }}</td>
 
                                 <td class="fw-semibold text-nowrap">${{ number_format($order->amount, 2) }}</td>
 
@@ -289,7 +291,7 @@
 
                             <tr>
 
-                                <td colspan="6" class="text-center text-muted">
+                                <td colspan="7" class="text-center text-muted">
                                     <div>No orders found.</div>
                                     <div class="small">Orders you place with suppliers and manufacturers will appear here.</div>
                                 </td>

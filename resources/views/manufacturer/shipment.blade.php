@@ -191,7 +191,8 @@
                             <table class="table table-hover align-middle mb-0">
                                 <thead class="table-light">
                                     <tr>
-                                        <th class="px-3 py-3">Order</th>
+                                        <th class="px-3 py-3">Order ID</th>
+                                        <th class="py-3">Order UID</th>
                                         <th class="py-3">Buyer</th>
                                         <th class="py-3">Tracking Number</th>
                                         <th class="py-3">Shipping Method</th>
@@ -220,10 +221,9 @@
                                         @endphp
 
                                         <tr>
-                                            <td class="px-3">
-                                                <span class="fw-bold">
-                                                    #{{ $shipment->id }}
-                                                </span>
+                                            <td class="px-3">#{{ $shipment->id }}</td>
+                                            <td class="py-3">
+                                                <span class="fw-bold">{{ $shipment->uid ?? ('ORD' . str_pad((string) $shipment->id, 4, '0', STR_PAD_LEFT)) }}</span>
                                                 <div class="text-muted small">
                                                     {{ optional($shipment->created_at)->format('d M Y') }}
                                                 </div>
@@ -290,7 +290,7 @@
                                                                     Update Shipment
                                                                 </h5>
                                                                 <p class="text-muted small mb-0">
-                                                                    Order #{{ $shipment->id }}
+                                                                    Order {{ $shipment->uid ?? ('ORD' . str_pad((string) $shipment->id, 4, '0', STR_PAD_LEFT)) }}
                                                                 </p>
                                                             </div>
                                                             <button type="button"
@@ -374,7 +374,7 @@
                                         </div>
                                     @empty
                                         <tr>
-                                            <td colspan="7" class="text-center py-5">
+                                            <td colspan="8" class="text-center py-5">
                                                 <i class="fa-solid fa-box-open fa-3x text-muted mb-3"></i>
                                                 <h6 class="fw-bold">No shipments found</h6>
                                                 <p class="text-muted small mb-0">

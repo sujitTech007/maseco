@@ -39,10 +39,10 @@
                 <label for="material-status">Status</label>
                 <select name="status" id="material-status" class="form-control">
                     <option value="">All Status</option>
-                    <option value="1" @if(request('status')==='1') selected @endif>
+                    <option value="active" @if(request('status')==='active') selected @endif>
                         Active
                     </option>
-                    <option value="0" @if(request('status')==='0') selected @endif>
+                    <option value="inactive" @if(request('status')==='inactive') selected @endif>
                         Inactive
                     </option>
                 </select>
@@ -158,7 +158,7 @@
                 <tbody>
                     @forelse($materials as $i => $material)
 
-                    <tr>
+                    <tr data-status="{{ strtolower((string) $material->status) }}" data-stock-status="{{ (float) $material->stock <= 0 ? 'out-of-stock' : (((float) $material->moq > 0 && (float) $material->stock <= (float) $material->moq) ? 'low-stock' : 'available') }}" data-type="{{ strtolower((string) ($material->category ?: $material->name)) }}" data-category="{{ strtolower((string) ($material->category ?? '')) }}" data-certification="{{ $material->is_certified ? 'certified' : 'not_certified' }}" data-date="{{ $material->created_at?->format('Y-m-d') }}">
                         <td>
                             <span class="material-serial">
                                 {{ $i + 1 }}

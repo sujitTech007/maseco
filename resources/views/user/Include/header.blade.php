@@ -146,9 +146,9 @@
 
         <ul class="side-nav">
 
-            <li class="side-nav-item {{ request()->routeIs('seller.dashboard') ? 'active' : '' }}">
+            <li class="side-nav-item {{ request()->routeIs('user.dashboard') ? 'active' : '' }}">
 
-                <a href="{{ route('user.dashboard') }}" class="side-nav-link {{ request()->routeIs('seller.dashboard') ? 'active' : '' }}">
+                <a href="{{ route('user.dashboard') }}" class="side-nav-link {{ request()->routeIs('user.dashboard') ? 'active' : '' }}">
 
                     <span class="menu-icon">
                         <script src="https://unpkg.com/lucide@latest"></script>
@@ -217,9 +217,9 @@
                 </a>
 
             </li>
-            <li class="side-nav-item {{ request()->routeIs('user.orders') ? 'active' : '' }}">
+            <li class="side-nav-item {{ request()->routeIs('user.tracking') ? 'active' : '' }}">
 
-                <a href="{{ route('user.orders') }}" class="side-nav-link {{ request()->routeIs('user.orders') ? 'active' : '' }}">
+                <a href="{{ route('user.tracking') }}" class="side-nav-link {{ request()->routeIs('user.tracking') ? 'active' : '' }}">
 
                     <span class="menu-icon"> <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -238,7 +238,7 @@
 
                     </span>
 
-                    <span class="menu-text">tracking
+                    <span class="menu-text">Order Tracking
 
                     </span>
 
@@ -486,6 +486,11 @@
                                 <a href="{{ route('user.orders') }}" class="dropdown-item">
                                     <i class="fa-solid fa-cart-shopping me-1 fs-16 align-middle"></i>
                                     <span class="align-middle">Orders</span>
+                                </a>
+
+                                <a href="{{ route('user.tracking') }}" class="dropdown-item">
+                                    <i class="fa-solid fa-truck-fast me-1 fs-16 align-middle"></i>
+                                    <span class="align-middle">Order Tracking</span>
                                 </a>
 
                                 <a href="{{ route('user.payments') }}" class="dropdown-item">

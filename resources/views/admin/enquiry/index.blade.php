@@ -197,7 +197,7 @@
                         $submittedDate = $e->created_at?->format('d M Y') ?? '-';
                         @endphp
 
-                        <tr class="enquiry-data-row">
+                        <tr class="enquiry-data-row" data-status="{{ $enquiryStatus }}" data-date="{{ $e->created_at?->format('Y-m-d') }}">
                             <td data-label="Enquiry ID">
                                 <span class="enquiry-id">#{{ $e->id }}</span>
                             </td>
@@ -278,6 +278,8 @@
         const tableBody = page.querySelector('#enquiry-table-body');
         const searchInput = page.querySelector('#enquiry-search-input');
         const pageSizeSelect = page.querySelector('#enquiry-page-size');
+        const filterControls = page.querySelectorAll('#enquiry-status-filter, #enquiry-start-date, #enquiry-end-date');
+        const filterButton = page.querySelector('#enquiry-filter-btn');
         const info = page.querySelector('#enquiry-table-info');
         const pagination = page.querySelector('#enquiry-pagination');
         const noResults = page.querySelector('#enquiry-no-results');
@@ -295,9 +297,9 @@
         function renderTable() {
             const query = searchInput.value.trim().toLowerCase();
 
-            const filteredRows = rows.filter(function(row) {
-                return row.textContent.toLowerCase().includes(query);
-            });
+            const filteredRows = window.dashboardFilterRows
+                ? window.dashboardFilterRows(page, rows)
+                : rows.filter(function(row) { return row.textContent.toLowerCase().includes(query); });
 
             const pageSize = pageSizeSelect.value === 'all' ?
                 Math.max(filteredRows.length, 1) :
@@ -375,6 +377,18 @@
         });
 
         pageSizeSelect.addEventListener('change', function() {
+            currentPage = 1;
+            renderTable();
+        });
+
+        filterControls.forEach(function(control) {
+            control.addEventListener('change', function() {
+                currentPage = 1;
+                renderTable();
+            });
+        });
+
+        if (filterButton) filterButton.addEventListener('click', function() {
             currentPage = 1;
             renderTable();
         });

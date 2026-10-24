@@ -87,7 +87,7 @@
                     type="text"
                     id="order-search"
                     class="form-control"
-                    placeholder="Order ID or product name..."
+                    placeholder="Order UID or product name..."
                     value="{{ request('search') }}"
                 >
             </div>
@@ -195,7 +195,8 @@
 
                                     <tr>
 
-                                        <th>ID</th>
+                                        <th>Order UID</th>
+                                        <th>Order ID</th>
 
                                         <th>Buyer</th>
 
@@ -219,7 +220,8 @@
 
                                       <tr>
 
-                                          <td class="text-muted">{{ $o->id }}</td>
+                                          <td class="text-muted">{{ $o->uid ?? ('ORD' . str_pad((string) $o->id, 4, '0', STR_PAD_LEFT)) }}</td>
+                                          <td class="text-muted">#{{ $o->id }}</td>
 
                                           <td class="fw-semibold">{{ optional($o->user)->name ?? 'User #' . $o->user_id }}</td>
 
@@ -245,7 +247,7 @@
 
                                       <tr>
 
-                                          <td colspan="7" class="text-center text-muted">
+                                          <td colspan="8" class="text-center text-muted">
                                               <div>No orders found.</div>
                                               <div class="small">Orders created from approved RFQs will appear here.</div>
                                           </td>

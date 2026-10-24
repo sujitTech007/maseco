@@ -75,7 +75,7 @@
           <!-- Details -->
           <div class="row g-3">
             <div class="col-sm-6">
-              <div class="text-muted small">Order ID</div>
+              <div class="text-muted small">Order UID</div>
               <div class="fw-semibold">ORD56789</div>
             </div>
             <div class="col-sm-6">

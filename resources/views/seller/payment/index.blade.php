@@ -134,7 +134,7 @@
                     type="text"
                     id="payment-search"
                     class="form-control"
-                    placeholder="Payment ID or Order ID..."
+                    placeholder="Payment ID or Order UID..."
                     value="{{ request('search') }}"
                 >
             </div>
@@ -288,7 +288,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
               <th>ID</th>
 
-              <th>Order</th>
+              <th>Order ID</th>
+
+              <th>Order UID</th>
 
               <th>Buyer</th>
 
@@ -322,7 +324,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 <td class="text-muted">{{ $p->id }}</td>
 
-                <td class="fw-semibold">#{{ $p->order_id }}</td>
+                <td class="text-muted">#{{ $p->order?->id ?? $p->order_id ?? '—' }}</td>
+
+                <td class="fw-semibold">{{ $p->order?->uid ?? (filled($p->order_id) ? 'ORD' . str_pad((string) $p->order_id, 4, '0', STR_PAD_LEFT) : '—') }}</td>
 
                 <td>{{ optional(optional($p->order)->user)->name ?? 'User #' . optional($p->order)->user_id }}</td>
 
@@ -344,7 +348,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
               <tr>
 
-                <td colspan="8" class="text-center text-muted">
+                <td colspan="9" class="text-center text-muted">
                   <div>No payments found.</div>
                   <div class="small">Payments for your orders will appear here.</div>
                 </td>

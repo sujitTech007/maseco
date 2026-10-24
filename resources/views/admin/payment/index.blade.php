@@ -192,7 +192,8 @@
                     <thead>
                         <tr>
                             <th>Payment ID</th>
-                            <th>Order</th>
+                            <th>Order ID</th>
+                            <th>Order UID</th>
                             <th>Customer</th>
                             <th>Status</th>
                             <th>Amount</th>
@@ -238,9 +239,10 @@
                                     </span>
                                 </td>
 
-                                <td data-label="Order">
+                                <td data-label="Order ID">#{{ $order?->id ?? $p->order_id ?? '—' }}</td>
+                                <td data-label="Order UID">
                                     <span class="payment-order">
-                                        #{{ $p->order_id ?? '—' }}
+                                        {{ $p->order?->uid ?? (filled($p->order_id) ? 'ORD' . str_pad((string) $p->order_id, 4, '0', STR_PAD_LEFT) : '—') }}
                                     </span>
                                 </td>
 
@@ -291,7 +293,7 @@
                         @empty
 
                             <tr class="payment-empty-row">
-                                <td colspan="8">
+                                <td colspan="9">
                                     <div class="payments-empty">
                                         <i class="fa-solid fa-wallet"></i>
                                         <h5>No payment records yet</h5>
@@ -330,6 +332,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const tbody = page.querySelector('#payments-table-body');
     const search = page.querySelector('#payments-search-input');
     const sizeSelect = page.querySelector('#payments-page-size');
+    const filterControls = page.querySelectorAll('#payments-status-filter, #payments-method-filter, #payments-start-date, #payments-end-date');
+    const filterButton = page.querySelector('#payments-filter-btn');
     const info = page.querySelector('#payments-table-info');
     const pagination = page.querySelector('#payments-pagination');
     const noResults = page.querySelector('#payments-no-results');
@@ -342,9 +346,9 @@ document.addEventListener('DOMContentLoaded', function () {
     function renderTable() {
         const query = search.value.trim().toLowerCase();
 
-        const filtered = rows.filter(function (row) {
-            return row.textContent.toLowerCase().includes(query);
-        });
+        const filtered = window.dashboardFilterRows
+            ? window.dashboardFilterRows(page, rows)
+            : rows.filter(function (row) { return row.textContent.toLowerCase().includes(query); });
 
         const pageSize = sizeSelect.value === 'all'
             ? Math.max(filtered.length, 1)
@@ -412,6 +416,18 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     sizeSelect.addEventListener('change', function () {
+        currentPage = 1;
+        renderTable();
+    });
+
+    filterControls.forEach(function (control) {
+        control.addEventListener('change', function () {
+            currentPage = 1;
+            renderTable();
+        });
+    });
+
+    if (filterButton) filterButton.addEventListener('click', function () {
         currentPage = 1;
         renderTable();
     });

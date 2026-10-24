@@ -36,6 +36,7 @@ Route::prefix('admin')->name('admin.')->middleware(['admin.auth'])->group(functi
     Route::get('/manufacturer', [AdminPagesController::class, 'manufacturer'])->name('manufacturer');
     Route::get('/service', [AdminPagesController::class, 'service'])->name('service');
     Route::get('/orders', [AdminPagesController::class, 'orders'])->name('orders');
+    Route::get('/tracking', [AdminPagesController::class, 'tracking'])->name('tracking');
     Route::get('/plan', [AdminPagesController::class, 'plan'])->name('plan');
     Route::get('/enquiry', [AdminPagesController::class, 'enquiry'])->name('enquiry');
     Route::get('/payment', [AdminPagesController::class, 'payment'])->name('payment');
@@ -171,6 +172,7 @@ Route::prefix('user')->name('user.')->middleware(['auth'])->group(function () {
     Route::get('/subscriptions', [UserDashboardController::class, 'subscriptions'])->name('subscriptions');
     Route::get('/enquiries', [UserDashboardController::class, 'enquiries'])->name('enquiries');
     Route::get('/orders', [UserDashboardController::class, 'orders'])->name('orders');
+    Route::get('/tracking', [UserDashboardController::class, 'tracking'])->name('tracking');
     Route::get('/payments', [UserDashboardController::class, 'payments'])->name('payments');
     Route::get('/orders/export', [UserDashboardController::class, 'export'])->name('orders.export');
     Route::post('/orders/{id}/pay', [\App\Http\Controllers\OrderPaymentController::class, 'checkout'])->name('orders.pay');

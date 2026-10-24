@@ -132,7 +132,7 @@
 
                     <tbody>
                         @forelse($categories as $category)
-                            <tr>
+                            <tr data-status="{{ strtolower((string) $category->status) }}" data-type="{{ strtolower((string) $category->name) }}" data-date="{{ $category->created_at?->format('Y-m-d') }}">
                                 <td class="category-id">{{ $category->id }}</td>
 
                                 <td>

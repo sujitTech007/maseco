@@ -36,7 +36,6 @@ class LoginController extends Controller
     {
 
         return view('auth.login');
-
     }
 
 
@@ -64,19 +63,18 @@ class LoginController extends Controller
         $user = $model::where('country_code', $request->country_code)
             ->whereIn('phone', array_unique([$normalizedPhone, $request->phone]))
             ->first();
-        
-        if(!$user){
+
+        if (!$user) {
             return back()->withErrors(['error' => 'Invalid credentials or user does not exist..']);
         }
-        
-        if($user->status == 0){
+
+        if ($user->status == 0) {
             return back()->withErrors(['error' => 'Your account is not active, please contact to admin to activate your account.']);
         }
 
         if (!$user || !Hash::check($request->password, $user->password)) {
 
             return back()->withErrors(['phone' => 'Invalid credentials.']);
-
         }
 
 
@@ -90,7 +88,7 @@ class LoginController extends Controller
             'type' => $request->user_type,
 
             'phone' => $user->phone,
-            
+
             'country_code' => $user->country_code,
 
         ]);
@@ -108,29 +106,29 @@ class LoginController extends Controller
 
 
     private function sendOtp($countryCode, $phone)
-{
-    $accountSid = env('TWILIO_ACCOUNT_SID');
-    $authToken  = env('TWILIO_AUTH_TOKEN');
-    $verifySid  = env('TWILIO_VERIFY_SID');
+    {
+        $accountSid = env('TWILIO_ACCOUNT_SID');
+        $authToken  = env('TWILIO_AUTH_TOKEN');
+        $verifySid  = env('TWILIO_VERIFY_SID');
 
-    // Build full phone number dynamically
-    $formattedPhone = PhoneNumber::toE164($countryCode, $phone);
+        // Build full phone number dynamically
+        $formattedPhone = PhoneNumber::toE164($countryCode, $phone);
 
-    $url = "https://verify.twilio.com/v2/Services/{$verifySid}/Verifications";
+        $url = "https://verify.twilio.com/v2/Services/{$verifySid}/Verifications";
 
-    $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
-        'To' => $formattedPhone,
-        'Channel' => 'sms'
-    ]));
-    curl_setopt($ch, CURLOPT_USERPWD, "{$accountSid}:{$authToken}");
-    $response = curl_exec($ch);
-    curl_close($ch);
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
+            'To' => $formattedPhone,
+            'Channel' => 'sms'
+        ]));
+        curl_setopt($ch, CURLOPT_USERPWD, "{$accountSid}:{$authToken}");
+        $response = curl_exec($ch);
+        curl_close($ch);
 
-    return $response;
-}
+        return $response;
+    }
 
 
 
@@ -139,68 +137,71 @@ class LoginController extends Controller
     {
 
         return view('auth.otp');
-
     }
 
 
 
     public function otpVerify(Request $request)
-{
-    $otp = $request->otp ?: collect([
-        $request->otp1, $request->otp2, $request->otp3, 
-        $request->otp4, $request->otp5, $request->otp6
-    ])->implode('');
+    {
+        $otp = $request->otp ?: collect([
+            $request->otp1,
+            $request->otp2,
+            $request->otp3,
+            $request->otp4,
+            $request->otp5,
+            $request->otp6
+        ])->implode('');
 
-    if (!preg_match('/^\d{6}$/', $otp)) {
-        return back()->with('error', 'Please enter a valid 6-digit OTP.');
+        if (!preg_match('/^\d{6}$/', $otp)) {
+            return back()->with('error', 'Please enter a valid 6-digit OTP.');
+        }
+
+        $otpUser = Session::get('otp_user');
+        if (!$otpUser) {
+            return redirect()->route('login')->with('error', 'Session expired. Please login again.');
+        }
+
+        $accountSid = env('TWILIO_ACCOUNT_SID');
+        $authToken  = env('TWILIO_AUTH_TOKEN');
+        $verifySid  = env('TWILIO_VERIFY_SID');
+
+        // Use stored country code here too
+        $formattedPhone = PhoneNumber::toE164($otpUser['country_code'] ?? '+1', $otpUser['phone']);
+
+        $url = "https://verify.twilio.com/v2/Services/{$verifySid}/VerificationCheck";
+
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
+            'To'   => $formattedPhone,
+            'Code' => $otp
+        ]));
+        curl_setopt($ch, CURLOPT_USERPWD, "{$accountSid}:{$authToken}");
+        $response = curl_exec($ch);
+        $twilioResponse = json_decode($response, true);
+        curl_close($ch);
+
+        if (!isset($twilioResponse['status']) || $twilioResponse['status'] !== 'approved') {
+            return back()->with('error', 'Invalid or expired OTP.');
+        }
+
+        // Login user
+        $model = $this->getModel($otpUser['type']);
+        $user = $model::find($otpUser['id']);
+        Session::forget('otp_user');
+
+        if ($otpUser['type'] === 'user') {
+            Auth::guard('web')->login($user);
+            return redirect()->intended(route('user.dashboard'))->with('success', 'Login successful!');
+        } elseif ($otpUser['type'] === 'supplier') {
+            Auth::guard('supplier')->login($user);
+            return redirect()->route('seller.dashboard')->with('success', 'Login successful!');
+        } else {
+            Auth::guard('manufacturer')->login($user);
+            return redirect()->route('manufacturer.dashboard')->with('success', 'Login successful!');
+        }
     }
-
-    $otpUser = Session::get('otp_user');
-    if (!$otpUser) {
-        return redirect()->route('login')->with('error', 'Session expired. Please login again.');
-    }
-
-    $accountSid = env('TWILIO_ACCOUNT_SID');
-    $authToken  = env('TWILIO_AUTH_TOKEN');
-    $verifySid  = env('TWILIO_VERIFY_SID');
-
-    // Use stored country code here too
-    $formattedPhone = PhoneNumber::toE164($otpUser['country_code'] ?? '+1', $otpUser['phone']);
-
-    $url = "https://verify.twilio.com/v2/Services/{$verifySid}/VerificationCheck";
-
-    $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
-        'To'   => $formattedPhone,
-        'Code' => $otp
-    ]));
-    curl_setopt($ch, CURLOPT_USERPWD, "{$accountSid}:{$authToken}");
-    $response = curl_exec($ch);
-    $twilioResponse = json_decode($response, true);
-    curl_close($ch);
-
-    if (!isset($twilioResponse['status']) || $twilioResponse['status'] !== 'approved') {
-        return back()->with('error', 'Invalid or expired OTP.');
-    }
-
-    // Login user
-    $model = $this->getModel($otpUser['type']);
-    $user = $model::find($otpUser['id']);
-    Session::forget('otp_user');
-
-    if ($otpUser['type'] === 'user') {
-        Auth::guard('web')->login($user);
-        return redirect()->intended(route('user.dashboard'))->with('success', 'Login successful!');
-    } elseif ($otpUser['type'] === 'supplier') {
-        Auth::guard('supplier')->login($user);
-        return redirect()->route('seller.dashboard')->with('success', 'Login successful!');
-    } else {
-        Auth::guard('manufacturer')->login($user);
-        return redirect()->route('manufacturer.dashboard')->with('success', 'Login successful!');
-    }
-}
 
 
 
@@ -213,8 +214,5 @@ class LoginController extends Controller
         if ($type === 'supplier') return Supplier::class;
 
         return Manufacturer::class;
-
     }
-
 }
-
