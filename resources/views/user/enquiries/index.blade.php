@@ -98,17 +98,17 @@
 </style>
 
 @php
-    // TEMP DEMO DATA: only shows when the list is empty, APP_DEBUG is true and the URL has ?demo=1. Delete before launch.
-    $rows = $enquiries;
-    if ($rows->isEmpty() && config('app.debug') && request()->boolean('demo')) {
-        $rows = collect([
-            (object) ['id' => 12, 'subject' => 'Organic cotton fabric - bulk order', 'expected_price' => '2500.00', 'quantity' => 500, 'status' => 'pending', 'created_at' => now()->subDays(1)],
-            (object) ['id' => 11, 'subject' => 'GOTS-certified linen supplier', 'expected_price' => '1800.00', 'quantity' => 300, 'status' => 'approved', 'created_at' => now()->subDays(6)],
-            (object) ['id' => 10, 'subject' => 'Recycled polyester yarn', 'expected_price' => '950.00', 'quantity' => 1200, 'status' => 'completed', 'created_at' => now()->subDays(18)],
-            (object) ['id' => 9, 'subject' => 'Cut and sew manufacturer for activewear', 'expected_price' => '6400.00', 'quantity' => 800, 'status' => 'pending', 'created_at' => now()->subDays(27)],
-            (object) ['id' => 8, 'subject' => 'Hemp blend denim samples', 'expected_price' => '420.00', 'quantity' => 50, 'status' => 'rejected', 'created_at' => now()->subDays(43)],
-        ]);
-    }
+// TEMP DEMO DATA: only shows when the list is empty, APP_DEBUG is true and the URL has ?demo=1. Delete before launch.
+$rows = $enquiries;
+if ($rows->isEmpty() && config('app.debug') && request()->boolean('demo')) {
+$rows = collect([
+(object) ['id' => 12, 'subject' => 'Organic cotton fabric - bulk order', 'expected_price' => '2500.00', 'quantity' => 500, 'status' => 'pending', 'created_at' => now()->subDays(1)],
+(object) ['id' => 11, 'subject' => 'GOTS-certified linen supplier', 'expected_price' => '1800.00', 'quantity' => 300, 'status' => 'approved', 'created_at' => now()->subDays(6)],
+(object) ['id' => 10, 'subject' => 'Recycled polyester yarn', 'expected_price' => '950.00', 'quantity' => 1200, 'status' => 'completed', 'created_at' => now()->subDays(18)],
+(object) ['id' => 9, 'subject' => 'Cut and sew manufacturer for activewear', 'expected_price' => '6400.00', 'quantity' => 800, 'status' => 'pending', 'created_at' => now()->subDays(27)],
+(object) ['id' => 8, 'subject' => 'Hemp blend denim samples', 'expected_price' => '420.00', 'quantity' => 50, 'status' => 'rejected', 'created_at' => now()->subDays(43)],
+]);
+}
 @endphp
 
 <div class="page-content">
@@ -135,103 +135,103 @@
         <p class="text-muted mb-3">Track the requests you have sent to suppliers and manufacturers and follow their
             status.</p>
 
-            
-<!-- RFQ Header -->
+
+        <!-- RFQ Header -->
 
 
 
-<!-- RFQ Filter Card -->
-<div class="card border-0 shadow-sm rounded-4 mb-4">
-    <div class="card-body p-3">
+        <!-- RFQ Filter Card -->
+        <div class="card border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-body p-3">
 
-        <div class="row g-2 align-items-end">
+                <div class="row g-2 align-items-end">
 
-            <!-- Search -->
-            <div class="col-12 col-md-6 col-xl-3">
-                <label for="rfq-search" class="form-label small fw-semibold">
-                    Search RFQs
-                </label>
-                <div class="input-group">
-                    <span class="input-group-text bg-light">
-                        <i class="fa-solid fa-magnifying-glass text-muted"></i>
-                    </span>
-                    <input type="search" class="form-control"
-                           id="rfq-search"
-                           placeholder="Search RFQs...">
+                    <!-- Search -->
+                    <div class="col-12 col-md-6 col-xl-3">
+                        <label for="rfq-search" class="form-label small fw-semibold">
+                            Search RFQs
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light">
+                                <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                            </span>
+                            <input type="search" class="form-control"
+                                id="rfq-search"
+                                placeholder="Search RFQs...">
+                        </div>
+                    </div>
+
+                    <!-- Status -->
+                    <div class="col-6 col-md-3 col-xl-2">
+                        <label for="rfq-status" class="form-label small fw-semibold">
+                            RFQ Status
+                        </label>
+                        <select class="form-select" id="rfq-status">
+                            <option value="">All Statuses</option>
+                            <option value="draft">Draft</option>
+                            <option value="published">Published</option>
+                            <option value="open">Open</option>
+                            <option value="in progress">In Progress</option>
+                            <option value="quoted">Quoted</option>
+                            <option value="closed">Closed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+
+                    <!-- Category -->
+                    <div class="col-6 col-md-3 col-xl-2">
+                        <label for="rfq-category" class="form-label small fw-semibold">
+                            Category
+                        </label>
+                        <select class="form-select" id="rfq-category">
+                            <option value="">All Categories</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="textiles">Textiles</option>
+                            <option value="machinery">Machinery</option>
+                            <option value="raw materials">Raw Materials</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- From Date -->
+                    <div class="col-6 col-md-4 col-xl-2">
+                        <label for="rfq-start-date" class="form-label small fw-semibold">
+                            From Date
+                        </label>
+                        <input type="date" class="form-control" id="rfq-start-date">
+                    </div>
+
+                    <!-- To Date -->
+                    <div class="col-6 col-md-4 col-xl-2">
+                        <label for="rfq-end-date" class="form-label small fw-semibold">
+                            To Date
+                        </label>
+                        <input type="date" class="form-control" id="rfq-end-date">
+                    </div>
+
+                    <!-- Buttons: Same Row -->
+                    <div class="col-6 col-md-2 col-xl-1">
+                        <label class="form-label small fw-semibold invisible">Filter</label>
+                        <button type="button"
+                            class="btn btn-success w-100 text-nowrap"
+                            id="rfq-filter-btn"
+                            title="Apply Filters">
+                            <i class="fa-solid fa-filter"></i>
+                        </button>
+                    </div>
+
+                    <div class="col-6 col-md-2 col-xl-12 d-xl-none">
+                        <button type="button"
+                            class="btn btn-outline-secondary w-100"
+                            id="rfq-reset-btn">
+                            <i class="fa-solid fa-rotate-left me-1"></i> Reset
+                        </button>
+                    </div>
+
                 </div>
-            </div>
 
-            <!-- Status -->
-            <div class="col-6 col-md-3 col-xl-2">
-                <label for="rfq-status" class="form-label small fw-semibold">
-                    RFQ Status
-                </label>
-                <select class="form-select" id="rfq-status">
-                    <option value="">All Statuses</option>
-                    <option value="draft">Draft</option>
-                    <option value="published">Published</option>
-                    <option value="open">Open</option>
-                    <option value="in progress">In Progress</option>
-                    <option value="quoted">Quoted</option>
-                    <option value="closed">Closed</option>
-                    <option value="cancelled">Cancelled</option>
-                </select>
-            </div>
-
-            <!-- Category -->
-            <div class="col-6 col-md-3 col-xl-2">
-                <label for="rfq-category" class="form-label small fw-semibold">
-                    Category
-                </label>
-                <select class="form-select" id="rfq-category">
-                    <option value="">All Categories</option>
-                    <option value="electronics">Electronics</option>
-                    <option value="textiles">Textiles</option>
-                    <option value="machinery">Machinery</option>
-                    <option value="raw materials">Raw Materials</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
-
-            <!-- From Date -->
-            <div class="col-6 col-md-4 col-xl-2">
-                <label for="rfq-start-date" class="form-label small fw-semibold">
-                    From Date
-                </label>
-                <input type="date" class="form-control" id="rfq-start-date">
-            </div>
-
-            <!-- To Date -->
-            <div class="col-6 col-md-4 col-xl-2">
-                <label for="rfq-end-date" class="form-label small fw-semibold">
-                    To Date
-                </label>
-                <input type="date" class="form-control" id="rfq-end-date">
-            </div>
-
-            <!-- Buttons: Same Row -->
-            <div class="col-6 col-md-2 col-xl-1">
-                <label class="form-label small fw-semibold invisible">Filter</label>
-                <button type="button"
-                        class="btn btn-success w-100 text-nowrap"
-                        id="rfq-filter-btn"
-                        title="Apply Filters">
-                    <i class="fa-solid fa-filter"></i>
-                </button>
-            </div>
-
-            <div class="col-6 col-md-2 col-xl-12 d-xl-none">
-                <button type="button"
-                        class="btn btn-outline-secondary w-100"
-                        id="rfq-reset-btn">
-                    <i class="fa-solid fa-rotate-left me-1"></i> Reset
-                </button>
-            </div>
-
-        </div>
-
-        <!-- Reset aligned at right on XL -->
-        <!-- <div class="d-none d-xl-flex justify-content-end mt-2">
+                <!-- Reset aligned at right on XL -->
+                <!-- <div class="d-none d-xl-flex justify-content-end mt-2">
             <button type="button"
                     class="btn btn-outline-secondary btn-sm"
                     id="rfq-reset-btn-desktop">
@@ -239,8 +239,8 @@
             </button>
         </div> -->
 
-    </div>
-</div>
+            </div>
+        </div>
 
 
 
@@ -266,7 +266,7 @@
 
                             <th>Date</th>
 
-                                            <th>Chat</th>
+                            <th>Chat</th>
 
                         </tr>
 
@@ -276,62 +276,62 @@
 
                         @forelse($rows as $enquiry)
 
-                            @php
-                                $st = [
-                                    'pending' => 'warning',
-                                    'approved' => 'success',
-                                    'accepted' => 'success',
-                                    'completed' => 'success',
-                                    'rejected' => 'danger',
-                                    'cancelled' => 'danger',
-                                ][strtolower($enquiry->status)] ?? 'secondary';
-                            @endphp
+                        @php
+                        $st = [
+                        'pending' => 'warning',
+                        'approved' => 'success',
+                        'accepted' => 'success',
+                        'completed' => 'success',
+                        'rejected' => 'danger',
+                        'cancelled' => 'danger',
+                        ][strtolower($enquiry->status)] ?? 'secondary';
+                        @endphp
 
-                            <tr>
+                        <tr>
 
-                                <td class="text-muted">{{ $enquiry->id }}</td>
+                            <td class="text-muted">{{ $enquiry->id }}</td>
 
-                                <td>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <span
-                                            class="ud-ico rounded-3 d-inline-flex align-items-center justify-content-center flex-shrink-0"
-                                            aria-hidden="true">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                                                stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                                                <path d="M14 2v6h6" />
-                                                <path d="M8 13h8M8 17h5" />
-                                            </svg>
-                                        </span>
-                                        <span class="fw-semibold">{{ $enquiry->subject }}</span>
-                                    </div>
-                                </td>
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span
+                                        class="ud-ico rounded-3 d-inline-flex align-items-center justify-content-center flex-shrink-0"
+                                        aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                            <path d="M14 2v6h6" />
+                                            <path d="M8 13h8M8 17h5" />
+                                        </svg>
+                                    </span>
+                                    <span class="fw-semibold">{{ $enquiry->subject }}</span>
+                                </div>
+                            </td>
 
-                                <td class="text-nowrap">{{ $enquiry->expected_price }}</td>
+                            <td class="text-nowrap">{{ $enquiry->expected_price }}</td>
 
-                                <td>{{ $enquiry->quantity }}</td>
+                            <td>{{ $enquiry->quantity }}</td>
 
-                                <td><span
-                                        class="ud-st ud-st-{{ $st }} rounded-pill d-inline-block text-nowrap">{{ ucfirst($enquiry->status) }}</span>
-                                </td>
+                            <td><span
+                                    class="ud-st ud-st-{{ $st }} rounded-pill d-inline-block text-nowrap">{{ ucfirst($enquiry->status) }}</span>
+                            </td>
 
-                                <td class="text-nowrap text-muted">{{ $enquiry->created_at->format('d M Y') }}</td>
+                            <td class="text-nowrap text-muted">{{ $enquiry->created_at->format('d M Y') }}</td>
 
-                                <td><a href="{{ route('chat.show', $enquiry->id) }}" class="btn btn-sm btn-outline-success text-nowrap" data-chat-enquiry="{{ $enquiry->id }}"><i class="fa-regular fa-comments me-1"></i>Open chat <span class="badge bg-danger rounded-pill ms-1" data-chat-unread-count hidden></span></a><small class="d-block text-danger mt-1" data-chat-unread-sender hidden></small></td>
+                            <td><a href="{{ route('chat.show', $enquiry->id) }}" class="btn btn-sm btn-outline-success text-nowrap" data-chat-enquiry="{{ $enquiry->id }}"><i class="fa-regular fa-comments me-1"></i>Open chat <span class="badge bg-danger rounded-pill ms-1" data-chat-unread-count hidden></span></a><small class="d-block text-danger mt-1" data-chat-unread-sender hidden></small></td>
 
-                            </tr>
+                        </tr>
 
                         @empty
 
-                            <tr>
+                        <tr>
 
-                                <td colspan="7" class="text-center text-muted">
-                                    <div>No enquiries found.</div>
-                                    <div class="small">Requests you send to suppliers and manufacturers will appear here.
-                                    </div>
-                                </td>
+                            <td colspan="7" class="text-center text-muted">
+                                <div>No enquiries found.</div>
+                                <div class="small">Requests you send to suppliers and manufacturers will appear here.
+                                </div>
+                            </td>
 
-                            </tr>
+                        </tr>
 
                         @endforelse
 

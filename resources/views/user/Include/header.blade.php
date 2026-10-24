@@ -127,7 +127,7 @@
 
                 <img src="{{ asset('public/assets/images/logo.png') }}" alt="logo" class="sidebar-collapsed-none">
 
-                 <img src="{{ asset('public/assets/images/favicon.png') }}" alt="logo" class="sidebar-collapsed-block">
+                <img src="{{ asset('public/assets/images/favicon.png') }}" alt="logo" class="sidebar-collapsed-block">
 
             </a>
 
@@ -141,232 +141,232 @@
 
             </button>
 
-        
 
 
-        <ul class="side-nav">
 
-            <li class="side-nav-item {{ request()->routeIs('user.dashboard') ? 'active' : '' }}">
+            <ul class="side-nav">
 
-                <a href="{{ route('user.dashboard') }}" class="side-nav-link {{ request()->routeIs('user.dashboard') ? 'active' : '' }}">
+                <li class="side-nav-item {{ request()->routeIs('user.dashboard') ? 'active' : '' }}">
 
-                    <span class="menu-icon">
-                        <script src="https://unpkg.com/lucide@latest"></script>
-                        <i data-lucide="home"></i>
-                    </span>
+                    <a href="{{ route('user.dashboard') }}" class="side-nav-link {{ request()->routeIs('user.dashboard') ? 'active' : '' }}">
 
-                    <span class="menu-text"> Dashboard </span>
+                        <span class="menu-icon">
+                            <script src="https://unpkg.com/lucide@latest"></script>
+                            <i data-lucide="home"></i>
+                        </span>
 
-                    <span class="badge bg-danger rounded"></span>
+                        <span class="menu-text"> Dashboard </span>
 
-                </a>
+                        <span class="badge bg-danger rounded"></span>
 
-            </li>
+                    </a>
 
-            <li class="side-nav-item {{ request()->routeIs('user.enquiries') ? 'active' : '' }}">
+                </li>
+
+                <!-- <li class="side-nav-item {{ request()->routeIs('user.enquiries') ? 'active' : '' }}">
                 <a href="{{ route('user.enquiries') }}" class="side-nav-link {{ request()->routeIs('user.enquiries') ? 'active' : '' }}" data-chat-notifications>
                     <span class="menu-icon"><i class="fa-regular fa-comments"></i></span>
                     <span class="menu-text">Chat <span class="badge bg-danger rounded-pill ms-1" data-chat-unread-count hidden></span><small class="d-block text-danger" data-chat-unread-sender hidden></small></span>
                 </a>
-            </li>
+            </li> -->
 
-            <li class="side-nav-item {{ request()->routeIs('user.enquiries') ? 'active' : '' }}">
+                <li class="side-nav-item {{ request()->routeIs('user.enquiries') ? 'active' : '' }}">
 
-                <a href="{{ route('user.enquiries') }}" class="side-nav-link {{ request()->routeIs('user.enquiries') ? 'active' : '' }}">
+                    <a href="{{ route('user.enquiries') }}" class="side-nav-link {{ request()->routeIs('user.enquiries') ? 'active' : '' }}">
 
-                    <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="48" height="48">
-                            <path d="M6 2H14L20 8V22C20 23.1 19.1 24 18 24H6C4.9 24 4 23.1 4 22V2ZM14 3.5V8H18.5L14 3.5ZM6 4V22H18V10H14V4H6ZM8 12H16V14H8V12ZM8 16H14V18H8V16Z" />
-                        </svg>
-                    </span>
+                        <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="48" height="48">
+                                <path d="M6 2H14L20 8V22C20 23.1 19.1 24 18 24H6C4.9 24 4 23.1 4 22V2ZM14 3.5V8H18.5L14 3.5ZM6 4V22H18V10H14V4H6ZM8 12H16V14H8V12ZM8 16H14V18H8V16Z" />
+                            </svg>
+                        </span>
 
-                    <span class="menu-text"> RFQs
+                        <span class="menu-text"> RFQs
 
-                    </span>
+                        </span>
 
-                </a>
+                    </a>
 
-            </li>
+                </li>
 
 
 
-            <li class="side-nav-item {{ request()->routeIs('user.orders') ? 'active' : '' }}">
+                <li class="side-nav-item {{ request()->routeIs('user.orders') ? 'active' : '' }}">
 
-                <a href="{{ route('user.orders') }}" class="side-nav-link {{ request()->routeIs('user.orders') ? 'active' : '' }}">
+                    <a href="{{ route('user.orders') }}" class="side-nav-link {{ request()->routeIs('user.orders') ? 'active' : '' }}">
 
-                    <span class="menu-icon"> <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <span class="menu-icon"> <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 
-                            <!-- Wheels -->
-                            <circle cx="8" cy="21" r="1"></circle>
-                            <circle cx="19" cy="21" r="1"></circle>
+                                <!-- Wheels -->
+                                <circle cx="8" cy="21" r="1"></circle>
+                                <circle cx="19" cy="21" r="1"></circle>
 
-                            <!-- Cart -->
-                            <path d="M1 4h4l2.5 10.5A2 2 0 0 0 9.5 16h9.5a2 2 0 0 0 1.9-1.4L23 7H6"></path>
+                                <!-- Cart -->
+                                <path d="M1 4h4l2.5 10.5A2 2 0 0 0 9.5 16h9.5a2 2 0 0 0 1.9-1.4L23 7H6"></path>
 
-                            <!-- CENTERED TICK (finally correct) -->
-                            <path d="M11 11.5l1.5 1.5l3 -3"></path>
+                                <!-- CENTERED TICK (finally correct) -->
+                                <path d="M11 11.5l1.5 1.5l3 -3"></path>
 
-                        </svg>
+                            </svg>
 
-                    </span>
+                        </span>
 
-                    <span class="menu-text"> Orders
+                        <span class="menu-text"> Orders
 
-                    </span>
+                        </span>
 
-                </a>
+                    </a>
 
-            </li>
-            <li class="side-nav-item {{ request()->routeIs('user.tracking') ? 'active' : '' }}">
+                </li>
+                <li class="side-nav-item {{ request()->routeIs('user.tracking') ? 'active' : '' }}">
 
-                <a href="{{ route('user.tracking') }}" class="side-nav-link {{ request()->routeIs('user.tracking') ? 'active' : '' }}">
+                    <a href="{{ route('user.tracking') }}" class="side-nav-link {{ request()->routeIs('user.tracking') ? 'active' : '' }}">
 
-                    <span class="menu-icon"> <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <span class="menu-icon"> <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 
-                            <!-- Wheels -->
-                            <circle cx="8" cy="21" r="1"></circle>
-                            <circle cx="19" cy="21" r="1"></circle>
+                                <!-- Wheels -->
+                                <circle cx="8" cy="21" r="1"></circle>
+                                <circle cx="19" cy="21" r="1"></circle>
 
-                            <!-- Cart -->
-                            <path d="M1 4h4l2.5 10.5A2 2 0 0 0 9.5 16h9.5a2 2 0 0 0 1.9-1.4L23 7H6"></path>
+                                <!-- Cart -->
+                                <path d="M1 4h4l2.5 10.5A2 2 0 0 0 9.5 16h9.5a2 2 0 0 0 1.9-1.4L23 7H6"></path>
 
-                            <!-- CENTERED TICK (finally correct) -->
-                            <path d="M11 11.5l1.5 1.5l3 -3"></path>
+                                <!-- CENTERED TICK (finally correct) -->
+                                <path d="M11 11.5l1.5 1.5l3 -3"></path>
 
-                        </svg>
+                            </svg>
 
-                    </span>
+                        </span>
 
-                    <span class="menu-text">Order Tracking
+                        <span class="menu-text">Order Tracking
 
-                    </span>
+                        </span>
 
-                </a>
+                    </a>
 
-            </li>
-            <li class="side-nav-item {{ request()->routeIs('user.orders') ? 'active' : '' }}">
+                </li>
+                <li class="side-nav-item {{ request()->routeIs('user.orders') ? 'active' : '' }}">
 
-                <a href="{{ route('user.orders') }}" class="side-nav-link {{ request()->routeIs('user.orders') ? 'active' : '' }}">
+                    <a href="{{ route('user.orders') }}" class="side-nav-link {{ request()->routeIs('user.orders') ? 'active' : '' }}">
 
-                    <span class="menu-icon"> <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <span class="menu-icon"> <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 
-                            <!-- Wheels -->
-                            <circle cx="8" cy="21" r="1"></circle>
-                            <circle cx="19" cy="21" r="1"></circle>
+                                <!-- Wheels -->
+                                <circle cx="8" cy="21" r="1"></circle>
+                                <circle cx="19" cy="21" r="1"></circle>
 
-                            <!-- Cart -->
-                            <path d="M1 4h4l2.5 10.5A2 2 0 0 0 9.5 16h9.5a2 2 0 0 0 1.9-1.4L23 7H6"></path>
+                                <!-- Cart -->
+                                <path d="M1 4h4l2.5 10.5A2 2 0 0 0 9.5 16h9.5a2 2 0 0 0 1.9-1.4L23 7H6"></path>
 
-                            <!-- CENTERED TICK (finally correct) -->
-                            <path d="M11 11.5l1.5 1.5l3 -3"></path>
+                                <!-- CENTERED TICK (finally correct) -->
+                                <path d="M11 11.5l1.5 1.5l3 -3"></path>
 
-                        </svg>
+                            </svg>
 
-                    </span>
+                        </span>
 
-                    <span class="menu-text">report
+                        <span class="menu-text">report
 
-                    </span>
+                        </span>
 
-                </a>
+                    </a>
 
-            </li>
+                </li>
 
-            <li class="side-nav-item {{ request()->routeIs('user.payments') ? 'active' : '' }}">
+                <li class="side-nav-item {{ request()->routeIs('user.payments') ? 'active' : '' }}">
 
-                <a href="{{ route('user.payments') }}" class="side-nav-link {{ request()->routeIs('user.payments') ? 'active' : '' }}">
+                    <a href="{{ route('user.payments') }}" class="side-nav-link {{ request()->routeIs('user.payments') ? 'active' : '' }}">
 
-                    <span class="menu-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                        <span class="menu-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
 
-                            <!-- Paper with curved / zigzag bottom -->
-                            <path d="M6 2h9l4 4v12l-1 1l-1 -1l-1 1l-1 -1l-1 1l-1 -1l-1 1l-1 -1l-1 1l-1 -1l-1 1l-1 -1l-1 1V4a2 2 0 0 1 2-2z"></path>
+                                <!-- Paper with curved / zigzag bottom -->
+                                <path d="M6 2h9l4 4v12l-1 1l-1 -1l-1 1l-1 -1l-1 1l-1 -1l-1 1l-1 -1l-1 1l-1 -1l-1 1l-1 -1l-1 1V4a2 2 0 0 1 2-2z"></path>
 
-                            <!-- Fold corner -->
-                            <path d="M15 2v4h4"></path>
+                                <!-- Fold corner -->
+                                <path d="M15 2v4h4"></path>
 
-                            <!-- Lines -->
-                            <line x1="8" y1="9" x2="16" y2="9"></line>
-                            <line x1="8" y1="13" x2="16" y2="13"></line>
-                            <line x1="8" y1="17" x2="14" y2="17"></line>
+                                <!-- Lines -->
+                                <line x1="8" y1="9" x2="16" y2="9"></line>
+                                <line x1="8" y1="13" x2="16" y2="13"></line>
+                                <line x1="8" y1="17" x2="14" y2="17"></line>
 
-                        </svg>
+                            </svg>
 
-                    </span>
+                        </span>
 
-                    <span class="menu-text"> Order Payment
+                        <span class="menu-text"> Order Payment
 
-                    </span>
+                        </span>
 
-                </a>
+                    </a>
 
-            </li>
+                </li>
 
-            <li class="side-nav-item {{ request()->routeIs('user.subscriptions') ? 'active' : '' }}">
+                <li class="side-nav-item {{ request()->routeIs('user.subscriptions') ? 'active' : '' }}">
 
-                <a href="{{ route('user.subscriptions') }}" class="side-nav-link {{ request()->routeIs('user.subscriptions') ? 'active' : '' }}">
+                    <a href="{{ route('user.subscriptions') }}" class="side-nav-link {{ request()->routeIs('user.subscriptions') ? 'active' : '' }}">
 
-                    <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="48" height="48">
-                            <path d="M6 2L4 6V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V6L18 2H6ZM12 4C13.1 4 14 4.9 14 6H16C16 3.79 14.21 2 12 2C9.79 2 8 3.79 8 6H10C10 4.9 10.9 4 12 4ZM6 8H18V20H6V8Z" />
-                        </svg>
-                    </span>
+                        <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="48" height="48">
+                                <path d="M6 2L4 6V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V6L18 2H6ZM12 4C13.1 4 14 4.9 14 6H16C16 3.79 14.21 2 12 2C9.79 2 8 3.79 8 6H10C10 4.9 10.9 4 12 4ZM6 8H18V20H6V8Z" />
+                            </svg>
+                        </span>
 
-                    <span class="menu-text"> Purchase Plan
+                        <span class="menu-text"> Purchase Plan
 
-                    </span>
+                        </span>
 
-                </a>
+                    </a>
 
-            </li>
+                </li>
 
-            <h5 style="padding-left: 20px;font-size: 14px;font-weight: 300;padding-top: 50px;color: #727272;"> Tools </h5>
+                <h5 style="padding-left: 20px;font-size: 14px;font-weight: 300;padding-top: 50px;color: #727272;"> Tools </h5>
 
-            <li class="side-nav-item {{ request()->routeIs('user.wishlist') ? 'active' : '' }}">
-                <a href="{{ route('user.wishlist') }}" class="side-nav-link {{ request()->routeIs('user.wishlist') ? 'active' : '' }}">
-                    <span class="menu-icon"><i class="fa-solid fa-heart"></i></span><span class="menu-text"> Wishlist </span>
-                </a>
-            </li>
+                <li class="side-nav-item {{ request()->routeIs('user.wishlist') ? 'active' : '' }}">
+                    <a href="{{ route('user.wishlist') }}" class="side-nav-link {{ request()->routeIs('user.wishlist') ? 'active' : '' }}">
+                        <span class="menu-icon"><i class="fa-solid fa-heart"></i></span><span class="menu-text"> Wishlist </span>
+                    </a>
+                </li>
 
 
-            <li class="side-nav-item {{ request()->routeIs('user.profile') ? 'active' : '' }}">
+                <li class="side-nav-item {{ request()->routeIs('user.profile') ? 'active' : '' }}">
 
-                <a href="{{ route('user.profile') }}" class="side-nav-link {{ request()->routeIs('user.profile') ? 'active' : '' }}">
+                    <a href="{{ route('user.profile') }}" class="side-nav-link {{ request()->routeIs('user.profile') ? 'active' : '' }}">
 
-                    <span class="menu-icon"> <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="48" height="48">
-                            <path d="M19.14,12.94a7.77,7.77,0,0,0,.06-1,7.77,7.77,0,0,0-.06-1l2.11-1.65a.5.5,0,0,0,.12-.63l-2-3.46a.5.5,0,0,0-.6-.22l-2.49,1a7.14,7.14,0,0,0-1.73-1L14.7,2.46a.5.5,0,0,0-.5-.46H9.8a.5.5,0,0,0-.5.46L9,5.05a7.14,7.14,0,0,0-1.73,1l-2.49-1a.5.5,0,0,0-.6.22l-2,3.46a.5.5,0,0,0,.12.63L4.41,10a7.77,7.77,0,0,0-.06,1,7.77,7.77,0,0,0,.06,1L2.3,13.65a.5.5,0,0,0-.12.63l2,3.46a.5.5,0,0,0,.6.22l2.49-1a7.14,7.14,0,0,0,1.73,1l.34,2.59a.5.5,0,0,0,.5.46h4.4a.5.5,0,0,0,.5-.46l.34-2.59a7.14,7.14,0,0,0,1.73-1l2.49,1a.5.5,0,0,0,.6-.22l2-3.46a.5.5,0,0,0-.12-.63ZM12,15.5A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z" />
-                        </svg>
+                        <span class="menu-icon"> <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="48" height="48">
+                                <path d="M19.14,12.94a7.77,7.77,0,0,0,.06-1,7.77,7.77,0,0,0-.06-1l2.11-1.65a.5.5,0,0,0,.12-.63l-2-3.46a.5.5,0,0,0-.6-.22l-2.49,1a7.14,7.14,0,0,0-1.73-1L14.7,2.46a.5.5,0,0,0-.5-.46H9.8a.5.5,0,0,0-.5.46L9,5.05a7.14,7.14,0,0,0-1.73,1l-2.49-1a.5.5,0,0,0-.6.22l-2,3.46a.5.5,0,0,0,.12.63L4.41,10a7.77,7.77,0,0,0-.06,1,7.77,7.77,0,0,0,.06,1L2.3,13.65a.5.5,0,0,0-.12.63l2,3.46a.5.5,0,0,0,.6.22l2.49-1a7.14,7.14,0,0,0,1.73,1l.34,2.59a.5.5,0,0,0,.5.46h4.4a.5.5,0,0,0,.5-.46l.34-2.59a7.14,7.14,0,0,0,1.73-1l2.49,1a.5.5,0,0,0,.6-.22l2-3.46a.5.5,0,0,0-.12-.63ZM12,15.5A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z" />
+                            </svg>
 
-                    </span>
+                        </span>
 
-                    <span class="menu-text"> Account & Settings
+                        <span class="menu-text"> Account & Settings
 
-                    </span>
+                        </span>
 
-                </a>
+                    </a>
 
-            </li>
+                </li>
 
-            <li class="side-nav-item">
+                <li class="side-nav-item">
 
-                <a href="{{ route('user.logout') }}" class="side-nav-link">
+                    <a href="{{ route('user.logout') }}" class="side-nav-link">
 
-                    <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="share" class="lucide lucide-share">
-                            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                            <polyline points="16 6 12 2 8 6"></polyline>
-                            <line x1="12" x2="12" y1="2" y2="15"></line>
-                        </svg></span>
+                        <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="share" class="lucide lucide-share">
+                                <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                                <polyline points="16 6 12 2 8 6"></polyline>
+                                <line x1="12" x2="12" y1="2" y2="15"></line>
+                            </svg></span>
 
-                    <span class="menu-text"> Log Out </span>
+                        <span class="menu-text"> Log Out </span>
 
-                </a>
+                    </a>
 
-            </li>
+                </li>
 
 
 
-        </ul>
+            </ul>
 
         </div>
 
@@ -530,26 +530,26 @@
 
         </header>
 
-        
-         <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const toggleButtons = document.querySelectorAll('.sidenav-toggle-button');
 
-    toggleButtons.forEach(function (button) {
-        button.addEventListener('click', function (event) {
-            event.preventDefault();
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const toggleButtons = document.querySelectorAll('.sidenav-toggle-button');
 
-            document.documentElement.classList.toggle('sidebar-collapsed');
+                toggleButtons.forEach(function(button) {
+                    button.addEventListener('click', function(event) {
+                        event.preventDefault();
 
-            const isCollapsed = document.documentElement.classList.contains('sidebar-collapsed');
+                        document.documentElement.classList.toggle('sidebar-collapsed');
 
-            toggleButtons.forEach(function (btn) {
-                btn.setAttribute('aria-expanded', String(!isCollapsed));
+                        const isCollapsed = document.documentElement.classList.contains('sidebar-collapsed');
+
+                        toggleButtons.forEach(function(btn) {
+                            btn.setAttribute('aria-expanded', String(!isCollapsed));
+                        });
+
+                        console.log('Sidebar collapsed:', isCollapsed);
+                    });
+                });
             });
-
-            console.log('Sidebar collapsed:', isCollapsed);
-        });
-    });
-});
-</script>
-@include('chat.partials.notifications')
+        </script>
+        @include('chat.partials.notifications')

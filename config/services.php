@@ -36,4 +36,12 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'twilio' => [
+        'account_sid' => env('TWILIO_ACCOUNT_SID'),
+        'auth_token' => env('TWILIO_AUTH_TOKEN'),
+        'verify_sid' => env('TWILIO_VERIFY_SID'),
+        'test_otp' => env('TWILIO_TEST_OTP', '112233'),
+        'test_otp_enabled' => env('TWILIO_TEST_OTP_ENABLED', env('APP_ENV', 'production') !== 'production'),
+    ],
+
 ];

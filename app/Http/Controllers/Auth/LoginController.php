@@ -22,8 +22,9 @@ use Illuminate\Support\Facades\Session;
 use App\Support\PhoneNumber;
 
 use Illuminate\Support\Facades\Auth;
-
-use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 
 
@@ -91,11 +92,19 @@ class LoginController extends Controller
 
             'country_code' => $user->country_code,
 
+            'created_at' => now()->timestamp,
+
         ]);
 
 
 
-        $this->sendOtp($user->country_code, $user->phone);
+        if (!$this->sendOtp($user->country_code, $user->phone)) {
+            Session::forget('otp_user');
+
+            return back()->withErrors([
+                'error' => 'We could not send an OTP right now. Please try again shortly.',
+            ]);
+        }
 
         return view('auth.otp')->with('success', 'OTP sent to your phone.');
 
@@ -107,27 +116,77 @@ class LoginController extends Controller
 
     private function sendOtp($countryCode, $phone)
     {
-        $accountSid = env('TWILIO_ACCOUNT_SID');
-        $authToken  = env('TWILIO_AUTH_TOKEN');
-        $verifySid  = env('TWILIO_VERIFY_SID');
+        $accountSid = config('services.twilio.account_sid');
+        $authToken = config('services.twilio.auth_token');
+        $verifySid = config('services.twilio.verify_sid');
 
-        // Build full phone number dynamically
+        if (!$accountSid || !$authToken || !$verifySid) {
+            return $this->testOtpEnabled();
+        }
+
         $formattedPhone = PhoneNumber::toE164($countryCode, $phone);
-
         $url = "https://verify.twilio.com/v2/Services/{$verifySid}/Verifications";
 
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
-            'To' => $formattedPhone,
-            'Channel' => 'sms'
-        ]));
-        curl_setopt($ch, CURLOPT_USERPWD, "{$accountSid}:{$authToken}");
-        $response = curl_exec($ch);
-        curl_close($ch);
+        try {
+            $response = Http::asForm()
+                ->withBasicAuth($accountSid, $authToken)
+                ->timeout(10)
+                ->post($url, [
+                    'To' => $formattedPhone,
+                    'Channel' => 'sms',
+                ]);
 
-        return $response;
+            return $response->successful() || $this->testOtpEnabled();
+        } catch (ConnectionException $exception) {
+            Log::warning('Twilio OTP request failed to connect.', [
+                'environment' => app()->environment(),
+            ]);
+
+            return $this->testOtpEnabled();
+        }
+    }
+
+    private function testOtpEnabled(): bool
+    {
+        return app()->environment(['local', 'testing'])
+            && (bool) config('services.twilio.test_otp_enabled');
+    }
+
+    private function verifyOtp(string $countryCode, string $phone, string $otp): bool
+    {
+        $testOtp = (string) config('services.twilio.test_otp', '112233');
+        if ($this->testOtpEnabled() && hash_equals($testOtp, $otp)) {
+            return true;
+        }
+
+        $accountSid = config('services.twilio.account_sid');
+        $authToken = config('services.twilio.auth_token');
+        $verifySid = config('services.twilio.verify_sid');
+        if (!$accountSid || !$authToken || !$verifySid) {
+            return false;
+        }
+
+        $formattedPhone = PhoneNumber::toE164($countryCode, $phone);
+        $url = "https://verify.twilio.com/v2/Services/{$verifySid}/VerificationCheck";
+
+        try {
+            $response = Http::asForm()
+                ->withBasicAuth($accountSid, $authToken)
+                ->timeout(10)
+                ->post($url, [
+                    'To' => $formattedPhone,
+                    'Code' => $otp,
+                ]);
+
+            return $response->successful()
+                && $response->json('status') === 'approved';
+        } catch (ConnectionException $exception) {
+            Log::warning('Twilio OTP verification failed to connect.', [
+                'environment' => app()->environment(),
+            ]);
+
+            return false;
+        }
     }
 
 
@@ -161,28 +220,16 @@ class LoginController extends Controller
             return redirect()->route('login')->with('error', 'Session expired. Please login again.');
         }
 
-        $accountSid = env('TWILIO_ACCOUNT_SID');
-        $authToken  = env('TWILIO_AUTH_TOKEN');
-        $verifySid  = env('TWILIO_VERIFY_SID');
+        if (now()->timestamp - (int) ($otpUser['created_at'] ?? 0) > 600) {
+            Session::forget('otp_user');
+            return redirect()->route('login')->with('error', 'Your OTP session expired. Please login again.');
+        }
 
-        // Use stored country code here too
-        $formattedPhone = PhoneNumber::toE164($otpUser['country_code'] ?? '+1', $otpUser['phone']);
-
-        $url = "https://verify.twilio.com/v2/Services/{$verifySid}/VerificationCheck";
-
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
-            'To'   => $formattedPhone,
-            'Code' => $otp
-        ]));
-        curl_setopt($ch, CURLOPT_USERPWD, "{$accountSid}:{$authToken}");
-        $response = curl_exec($ch);
-        $twilioResponse = json_decode($response, true);
-        curl_close($ch);
-
-        if (!isset($twilioResponse['status']) || $twilioResponse['status'] !== 'approved') {
+        if (!$this->verifyOtp(
+            $otpUser['country_code'] ?? '+1',
+            $otpUser['phone'],
+            $otp
+        )) {
             return back()->with('error', 'Invalid or expired OTP.');
         }
 
@@ -191,14 +238,23 @@ class LoginController extends Controller
         $user = $model::find($otpUser['id']);
         Session::forget('otp_user');
 
+        if (!$user || $user->status == 0) {
+            return redirect()->route('login')->withErrors([
+                'error' => 'Your account is not active or could not be found.',
+            ]);
+        }
+
         if ($otpUser['type'] === 'user') {
             Auth::guard('web')->login($user);
+            $request->session()->regenerate();
             return redirect()->intended(route('user.dashboard'))->with('success', 'Login successful!');
         } elseif ($otpUser['type'] === 'supplier') {
             Auth::guard('supplier')->login($user);
+            $request->session()->regenerate();
             return redirect()->route('seller.dashboard')->with('success', 'Login successful!');
         } else {
             Auth::guard('manufacturer')->login($user);
+            $request->session()->regenerate();
             return redirect()->route('manufacturer.dashboard')->with('success', 'Login successful!');
         }
     }

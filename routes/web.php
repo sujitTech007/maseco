@@ -95,7 +95,7 @@ Route::post('/forgot-password/reset', [ForgotPasswordController::class, 'reset']
 Route::get('/sign-up', [RegisterController::class, 'showRegistrationForm'])->name('sign.up');
 Route::post('/sign-up', [RegisterController::class, 'register'])->name('register.submit');
 Route::get('/otp', [LoginController::class, 'otpForm'])->name('otp.form');
-Route::post('/otp-verify', [LoginController::class, 'otpVerify'])->name('otp.verify');
+Route::post('/otp-verify', [LoginController::class, 'otpVerify'])->middleware('throttle:6,1')->name('otp.verify');
 Route::get('/single-blog', [PagesController::class, 'singleBlog'])->name('single.blog');
 Route::get('/subscription', [PagesController::class, 'subscription'])->name('subscription');
 Route::get('/subscription-plan', [PagesController::class, 'subscriptionPlan'])->name('subscription.plan');
