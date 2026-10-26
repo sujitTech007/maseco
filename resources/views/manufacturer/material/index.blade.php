@@ -278,7 +278,7 @@
                 <a href="{{ route('manufacturer.material.edit', $material->id) }}" class="btn btn-sm btn-outline-warning"
                   title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
 
-                <form action="{{ route('manufacturer.material.destroy', $material->id) }}" method="POST" class="d-inline"
+                <form action="{{ route('manufacturer.material.destroy', $material->id) }}" method="POST" class="d-inline p-0"
                   onsubmit="return confirm('Delete this material?')">
                   @csrf
                   @method('DELETE')

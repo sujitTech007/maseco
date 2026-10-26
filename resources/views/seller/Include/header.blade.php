@@ -41,6 +41,8 @@
         <!-- Icons css -->
 
         <link href="{{ asset('public/assets/css/all.min.css') }}" rel="stylesheet" type="text/css">
+         <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/css/intlTelInput.css">
 
         <link href="{{ asset('public/assets/css/custom.css') }}" rel="stylesheet" type="text/css">
         @if (Request::is('seller/profile'))

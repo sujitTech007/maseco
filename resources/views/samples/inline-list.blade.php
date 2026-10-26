@@ -10,7 +10,7 @@
    
    
    
-   <div class="card border-0 shadow-sm rounded-4 mt-4">
+   <!-- <div class="card border-0 shadow-sm rounded-4 mt-4">
     <div class="card-body">
         <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
             <div>
@@ -57,7 +57,7 @@
             </table>
         </div>
     </div>
-</div>
+</div> -->
 
 <div class="modal fade" id="createSampleModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
