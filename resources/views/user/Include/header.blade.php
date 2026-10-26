@@ -152,7 +152,7 @@
 
                         <span class="menu-icon">
                             <script src="https://unpkg.com/lucide@latest"></script>
-                            <i data-lucide="home"></i>
+                           <i class="fa-solid fa-gauge-high"></i>
                         </span>
 
                         <span class="menu-text"> Dashboard </span>
@@ -174,9 +174,7 @@
 
                     <a href="{{ route('user.enquiries') }}" class="side-nav-link {{ request()->routeIs('user.enquiries') ? 'active' : '' }}">
 
-                        <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="48" height="48">
-                                <path d="M6 2H14L20 8V22C20 23.1 19.1 24 18 24H6C4.9 24 4 23.1 4 22V2ZM14 3.5V8H18.5L14 3.5ZM6 4V22H18V10H14V4H6ZM8 12H16V14H8V12ZM8 16H14V18H8V16Z" />
-                            </svg>
+                        <span class="menu-icon"><i class="fa-solid fa-file-lines"></i>
                         </span>
 
                         <span class="menu-text"> RFQs
@@ -190,20 +188,7 @@
 
                     <a href="{{ route('user.orders') }}" class="side-nav-link {{ request()->routeIs('user.orders') ? 'active' : '' }}">
 
-                        <span class="menu-icon"> <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-
-                                <!-- Wheels -->
-                                <circle cx="8" cy="21" r="1"></circle>
-                                <circle cx="19" cy="21" r="1"></circle>
-
-                                <!-- Cart -->
-                                <path d="M1 4h4l2.5 10.5A2 2 0 0 0 9.5 16h9.5a2 2 0 0 0 1.9-1.4L23 7H6"></path>
-
-                                <!-- CENTERED TICK (finally correct) -->
-                                <path d="M11 11.5l1.5 1.5l3 -3"></path>
-
-                            </svg>
+                        <span class="menu-icon"> <i class="fa-solid fa-cart-shopping"></i>
 
                         </span>
 
@@ -256,22 +241,7 @@
 
                     <a href="{{ route('user.payments') }}" class="side-nav-link {{ request()->routeIs('user.payments') ? 'active' : '' }}">
 
-                        <span class="menu-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-
-                                <!-- Paper with curved / zigzag bottom -->
-                                <path d="M6 2h9l4 4v12l-1 1l-1 -1l-1 1l-1 -1l-1 1l-1 -1l-1 1l-1 -1l-1 1l-1 -1l-1 1l-1 -1l-1 1V4a2 2 0 0 1 2-2z"></path>
-
-                                <!-- Fold corner -->
-                                <path d="M15 2v4h4"></path>
-
-                                <!-- Lines -->
-                                <line x1="8" y1="9" x2="16" y2="9"></line>
-                                <line x1="8" y1="13" x2="16" y2="13"></line>
-                                <line x1="8" y1="17" x2="14" y2="17"></line>
-
-                            </svg>
-
+                        <span class="menu-icon"><i class="fa-solid fa-money-check-dollar"></i>
                         </span>
 
                         <span class="menu-text">Payment
@@ -286,9 +256,7 @@
 
                     <a href="{{ route('user.subscriptions') }}" class="side-nav-link {{ request()->routeIs('user.subscriptions') ? 'active' : '' }}">
 
-                        <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="48" height="48">
-                                <path d="M6 2L4 6V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V6L18 2H6ZM12 4C13.1 4 14 4.9 14 6H16C16 3.79 14.21 2 12 2C9.79 2 8 3.79 8 6H10C10 4.9 10.9 4 12 4ZM6 8H18V20H6V8Z" />
-                            </svg>
+                        <span class="menu-icon"><i class="fa-solid fa-clipboard-list"></i>
                         </span>
 
                         <span class="menu-text"> Purchase Plan

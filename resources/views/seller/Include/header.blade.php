@@ -204,7 +204,8 @@
 
                                                     <span class="menu-icon">
                                                         <script src="https://unpkg.com/lucide@latest"></script>
-                                                        <i data-lucide="home"></i>
+                                                       <i class="fa-solid fa-gauge-high"></i>
+
                                                     </span>
 
                                                     <span class="menu-text"> Dashboard </span>
@@ -229,14 +230,8 @@
                                                 <a href="{{ route('seller.material') }}"
                                                     class="side-nav-link {{ request()->routeIs('seller.material') ? 'active' : '' }}">
 
-                                                    <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg"
-                                                            height="48" width="48" viewBox="0 0 24 24" fill="none"
-                                                            stroke="currentColor" stroke-width="2"
-                                                            stroke-linecap="round" stroke-linejoin="round">
-                                                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-                                                            <path d="M16 3v4M8 3v4M2 11h20" />
-                                                            <line x1="12" y1="11" x2="12" y2="21" />
-                                                        </svg>
+                                                    <span class="menu-icon"><i class="fa-solid fa-boxes-stacked"></i>
+
                                                     </span>
 
                                                     <span class="menu-text"> Material Management
@@ -252,14 +247,8 @@
                                                 <a href="{{ route('seller.material') }}"
                                                     class="side-nav-link {{ request()->routeIs('seller.material') ? 'active' : '' }}">
 
-                                                    <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg"
-                                                            height="48" width="48" viewBox="0 0 24 24" fill="none"
-                                                            stroke="currentColor" stroke-width="2"
-                                                            stroke-linecap="round" stroke-linejoin="round">
-                                                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-                                                            <path d="M16 3v4M8 3v4M2 11h20" />
-                                                            <line x1="12" y1="11" x2="12" y2="21" />
-                                                        </svg>
+                                                    <span class="menu-icon"><i class="fa-solid fa-chart-line"></i>
+
                                                     </span>
 
                                                     <span class="menu-text">report
@@ -275,14 +264,7 @@
                                                 <a href="{{ route('seller.material') }}"
                                                     class="side-nav-link {{ request()->routeIs('seller.material') ? 'active' : '' }}">
 
-                                                    <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg"
-                                                            height="48" width="48" viewBox="0 0 24 24" fill="none"
-                                                            stroke="currentColor" stroke-width="2"
-                                                            stroke-linecap="round" stroke-linejoin="round">
-                                                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-                                                            <path d="M16 3v4M8 3v4M2 11h20" />
-                                                            <line x1="12" y1="11" x2="12" y2="21" />
-                                                        </svg>
+                                                    <span class="menu-icon"><i class="fa-solid fa-route"></i>
                                                     </span>
 
                                                     <span class="menu-text">tracking
@@ -298,14 +280,7 @@
                                                 <a href="{{ route('seller.material') }}"
                                                     class="side-nav-link {{ request()->routeIs('seller.material') ? 'active' : '' }}">
 
-                                                    <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg"
-                                                            height="48" width="48" viewBox="0 0 24 24" fill="none"
-                                                            stroke="currentColor" stroke-width="2"
-                                                            stroke-linecap="round" stroke-linejoin="round">
-                                                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-                                                            <path d="M16 3v4M8 3v4M2 11h20" />
-                                                            <line x1="12" y1="11" x2="12" y2="21" />
-                                                        </svg>
+                                                    <span class="menu-icon"><i class="fa-solid fa-truck-fast"></i>
                                                     </span>
 
                                                     <span class="menu-text">shipment
@@ -326,21 +301,8 @@
                                                 <a href="{{ route('seller.orders') }}"
                                                     class="side-nav-link {{ request()->routeIs('seller.orders') ? 'active' : '' }}">
 
-                                                    <span class="menu-icon"><svg width="24" height="24"
-                                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                            stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round">
+                                                    <span class="menu-icon"><i class="fa-solid fa-cart-shopping"></i>
 
-                                                            <!-- Cart -->
-                                                            <circle cx="9" cy="21" r="1"></circle>
-                                                            <circle cx="20" cy="21" r="1"></circle>
-                                                            <path
-                                                                d="M1 1h4l2.6 12.4A2 2 0 0 0 9.6 15h9.8a2 2 0 0 0 1.9-1.4L23 6H6">
-                                                            </path>
-
-                                                            <!-- Centered Tick -->
-                                                            <path d="M10.5 10.5l2 2l3 -3"></path>
-                                                        </svg>
                                                     </span>
 
                                                     <span class="menu-text"> Orders
@@ -377,21 +339,8 @@
                                                 <a href="{{ route('seller.enquiry') }}"
                                                     class="side-nav-link {{ request()->routeIs('seller.enquiry') ? 'active' : '' }}">
 
-                                                    <span class="menu-icon"><svg width="64" height="64"
-                                                            viewBox="0 0 24 24" fill="none" stroke="#888888"
-                                                            stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-                                                            <!-- Document shape -->
-                                                            <path
-                                                                d="M4 2h12l4 4v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" />
-                                                            <!-- Lines on the document -->
-                                                            <line x1="8" y1="10" x2="16" y2="10" />
-                                                            <line x1="8" y1="14" x2="14" y2="14" />
-                                                            <line x1="8" y1="18" x2="12" y2="18" />
-                                                            <!-- Magnifying glass handle -->
-                                                            <circle cx="18" cy="18" r="3" />
-                                                            <line x1="20.5" y1="20.5" x2="22" y2="22" />
-                                                        </svg>
+                                                    <span class="menu-icon"><i class="fa-solid fa-file-lines"></i>
+
                                                     </span>
 
                                                     <span class="menu-text"> RFQ
@@ -404,7 +353,8 @@
 
                                             <li class="side-nav-item {{ request()->routeIs('seller.enquiry') ? 'active' : '' }}">
                                                 <a href="{{ route('seller.enquiry') }}#rfqTable" class="side-nav-link {{ request()->routeIs('seller.enquiry') ? 'active' : '' }}" data-chat-notifications>
-                                                    <span class="menu-icon"><i class="fa-regular fa-comments"></i></span>
+                                                    <span class="menu-icon"><i class="fa-solid fa-comments"></i>
+</span>
                                                     <span class="menu-text">Chat <span class="badge bg-danger rounded-pill ms-1" data-chat-unread-count hidden></span><small class="d-block text-danger" data-chat-unread-sender hidden></small></span>
                                                 </a>
                                             </li>
@@ -415,14 +365,7 @@
                                                 <a href="{{ route('seller.payment') }}"
                                                     class="side-nav-link {{ request()->routeIs('seller.payment') ? 'active' : '' }}">
 
-                                                    <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg"
-                                                            fill="currentColor" viewBox="0 0 24 24" width="48"
-                                                            height="48">
-
-                                                            <path
-                                                                d="M2 5C2 3.89543 2.89543 3 4 3H20C21.1046 3 22 3.89543 22 5V19C22 20.1046 21.1046 21 20 21H4C2.89543 21 2 20.1046 2 19V5ZM20 5H4V7H20V5ZM4 19H20V10H4V19ZM6 12H8V14H6V12ZM10 12H12V14H10V12Z" />
-
-                                                        </svg>
+                                                    <span class="menu-icon"><i class="fa-solid fa-money-check-dollar"></i>
 
                                                     </span>
 
@@ -442,15 +385,7 @@
                                                 <a href="{{ route('seller.plans') }}"
                                                     class="side-nav-link {{ request()->routeIs('seller.plans') ? 'active' : '' }}">
 
-                                                    <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg"
-                                                            fill="currentColor" viewBox="0 0 24 24" width="48"
-                                                            height="48">
-
-                                                            <path
-                                                                d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z">
-                                                            </path>
-
-                                                        </svg>
+                                                    <span class="menu-icon"><i class="fa-solid fa-clipboard-list"></i>
 
                                                     </span>
 
@@ -470,15 +405,8 @@
                                                 <a href="{{ route('seller.profile') }}"
                                                     class="side-nav-link {{ request()->routeIs('seller.profile') ? 'active' : '' }}">
 
-                                                    <span class="menu-icon"><svg width="64" height="64"
-                                                            viewBox="0 0 24 24" fill="none" stroke="#888888"
-                                                            stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-                                                            <!-- Head -->
-                                                            <circle cx="12" cy="7" r="5" />
-                                                            <!-- Shoulders -->
-                                                            <path d="M4 21c0-4 8-4 8-4s8 0 8 4" />
-                                                        </svg>
+                                                    <span class="menu-icon"><i class="fa-solid fa-circle-user"></i>
+
 
 
                                                     </span>
@@ -501,15 +429,7 @@
 
                                                 <a href="{{ route('seller.logout') }}" class="side-nav-link">
 
-                                                    <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg"
-                                                            width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                            stroke="currentColor" stroke-width="2"
-                                                            stroke-linecap="round" stroke-linejoin="round"
-                                                            data-lucide="share" class="lucide lucide-share">
-                                                            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                                                            <polyline points="16 6 12 2 8 6"></polyline>
-                                                            <line x1="12" x2="12" y1="2" y2="15"></line>
-                                                        </svg></span>
+                                                    <span class="menu-icon"><i class="fa-solid fa-right-from-bracket"></i></span>
 
                                                     <span class="menu-text"> Log Out </span>
 
