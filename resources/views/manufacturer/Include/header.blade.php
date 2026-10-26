@@ -564,7 +564,7 @@
 
                                     <!-- item-->
 
-                                    <a href="{{ route('manufacturer.dashboard') }}" class="dropdown-item">
+                                    <!-- <a href="{{ route('manufacturer.dashboard') }}" class="dropdown-item">
                                         <i class="fa-solid fa-gauge me-1 fs-16 align-middle"></i>
                                         <span class="align-middle">Dashboard</span>
                                     </a>
@@ -587,7 +587,7 @@
                                     <a href="{{ route('manufacturer.payment') }}" class="dropdown-item">
                                         <i class="fa-solid fa-wallet me-1 fs-16 align-middle"></i>
                                         <span class="align-middle">Payment</span>
-                                    </a>
+                                    </a> -->
 
                                     <div class="dropdown-divider"></div>
 
