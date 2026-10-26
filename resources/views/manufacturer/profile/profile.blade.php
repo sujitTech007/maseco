@@ -11,26 +11,43 @@
   form#profile-form {
     margin-bottom: 0;
   }
+  .phone-country-field {
+    display: flex;
+    width: 100%;
+}
 
-  .phone-country-field .form-select {
-    flex: 0 0 125px;
-    width: 125px;
-    min-width: 110px;
-    border-radius: 0.375rem 0 0 0.375rem;
-    font-size: 14px;
+.phone-country-field .form-select {
+    border-radius: 6px 0 0 6px;
+    border-right: 0;
+    background-color: #f8f9fa;
 }
 
 .phone-country-field .form-control {
     min-width: 0;
-    border-radius: 0 0.375rem 0.375rem 0;
+    border-radius: 0 6px 6px 0;
 }
 
-.phone-country-field .form-control:focus,
-.phone-country-field .form-select:focus {
-    z-index: 2;
-    box-shadow: none;
-    border-color: #20a486;
+
+/* Make the phone field look like other Bootstrap inputs */
+.input-group:has(select[name="country_code"]) {
+    border: 1.7px solid #D1D1D1;
+    border-radius: 12px;
+    overflow: hidden;
 }
+
+.input-group:has(select[name="country_code"]) .form-select,
+.input-group:has(select[name="country_code"]) .form-control {
+    border: 0;
+    box-shadow: none;
+}
+
+.input-group:has(select[name="country_code"]):focus-within {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+
+  
 </style>
 
 <div class="page-content">
@@ -82,53 +99,39 @@
           </div>
 
         
+
+
+
 <div class="col-md-6">
     <div class="form-group mb-3">
-        <label for="manufacturer_phone" class="form-label fw-semibold small">
-            Phone No
+        <label for="manufacturer_phone" class="form-label">
+            Phone Number
         </label>
 
-        <div class="input-group phone-country-field">
-
-            <!-- Country Code -->
+        <div class="input-group">
             <select
                 id="manufacturer_phone_country_code"
                 name="country_code"
-                class="form-select"
-                style="max-width: 125px;"
+                class="form-select border-0"
+                style="max-width: 100px;"
                 data-country-code-select
-                data-selected-country-code="+91"
+                data-selected-country-code="+1"
                 aria-label="Country calling code"
                 required
             >
-                <option value="+93" data-flag="af">🇦🇫 +93</option>
-                <option value="+355" data-flag="al">🇦🇱 +355</option>
-                <option value="+213" data-flag="dz">🇩🇿 +213</option>
-                <option value="+1" data-flag="us">🇺🇸 +1 (US)</option>
-                <option value="+61" data-flag="au">🇦🇺 +61</option>
-                <option value="+880" data-flag="bd">🇧🇩 +880</option>
-                <option value="+55" data-flag="br">🇧🇷 +55</option>
-                <option value="+1" data-flag="ca">🇨🇦 +1 (CA)</option>
-                <option value="+86" data-flag="cn">🇨🇳 +86</option>
-                <option value="+33" data-flag="fr">🇫🇷 +33</option>
-                <option value="+49" data-flag="de">🇩🇪 +49</option>
-                <option value="+91" data-flag="in" selected>🇮🇳 +91</option>
-                <option value="+62" data-flag="id">🇮🇩 +62</option>
-                <option value="+39" data-flag="it">🇮🇹 +39</option>
-                <option value="+81" data-flag="jp">🇯🇵 +81</option>
-                <option value="+60" data-flag="my">🇲🇾 +60</option>
-                <option value="+977" data-flag="np">🇳🇵 +977</option>
-                <option value="+64" data-flag="nz">🇳🇿 +64</option>
-                <option value="+92" data-flag="pk">🇵🇰 +92</option>
-                <option value="+65" data-flag="sg">🇸🇬 +65</option>
-                <option value="+27" data-flag="za">🇿🇦 +27</option>
-                <option value="+82" data-flag="kr">🇰🇷 +82</option>
-                <option value="+94" data-flag="lk">🇱🇰 +94</option>
-                <option value="+971" data-flag="ae">🇦🇪 +971</option>
-                <option value="+44" data-flag="gb">🇬🇧 +44</option>
+                <option value="+93">🇦🇫 +93</option>
+                <option value="+1" selected>🇺🇸 +1</option>
+                <option value="+61">🇦🇺 +61</option>
+                <option value="+86">🇨🇳 +86</option>
+                <option value="+33">🇫🇷 +33</option>
+                <option value="+49">🇩🇪 +49</option>
+                <option value="+91">🇮🇳 +91</option>
+                <option value="+81">🇯🇵 +81</option>
+                <option value="+92">🇵🇰 +92</option>
+                <option value="+971">🇦🇪 +971</option>
+                <option value="+44">🇬🇧 +44</option>
             </select>
 
-            <!-- Phone Number -->
             <input
                 type="tel"
                 name="phone"
@@ -143,6 +146,8 @@
         </div>
     </div>
 </div>
+
+
 
           <div class="col-md-6">
             <div class="form-group mb-3">

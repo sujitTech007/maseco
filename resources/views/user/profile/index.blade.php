@@ -7,6 +7,24 @@
         border-radius: 20px;
         background: white;
     }
+    /* Make the phone field look like other Bootstrap inputs */
+.input-group:has(select[name="country_code"]) {
+    border: 1.7px solid #D1D1D1;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.input-group:has(select[name="country_code"]) .form-select,
+.input-group:has(select[name="country_code"]) .form-control {
+    border: 0;
+    box-shadow: none;
+}
+
+.input-group:has(select[name="country_code"]):focus-within {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
 </style>
 
 <div class="page-content">
@@ -76,16 +94,51 @@
                     </div>
 
                     <!-- Phone Number -->
-                    <div class="mb-3 col-4">
-                        <label class="form-label">Phone Number</label>
-                        @include('auth.partials.phone-input', [
-                            'phoneInputId' => 'user_profile_phone',
-                            'phoneInputClass' => 'form-control',
-                            'countryCode' => $user->country_code ?? '+1',
-                            'phoneValue' => $user->phone ?? '',
-                            'phonePlaceholder' => 'Enter phone number',
-                        ])
-                    </div>
+                   
+<div class="col-4 mb-3">
+    <div class="form-group mb-3">
+        <label for="manufacturer_phone" class="form-label">
+            Phone Number
+        </label>
+
+        <div class="input-group">
+            <select
+                id="manufacturer_phone_country_code"
+                name="country_code"
+                class="form-select border-0"
+                style="max-width: 100px;"
+                data-country-code-select
+                data-selected-country-code="+1"
+                aria-label="Country calling code"
+                required
+            >
+                <option value="+93">🇦🇫 +93</option>
+                <option value="+1" selected>🇺🇸 +1</option>
+                <option value="+61">🇦🇺 +61</option>
+                <option value="+86">🇨🇳 +86</option>
+                <option value="+33">🇫🇷 +33</option>
+                <option value="+49">🇩🇪 +49</option>
+                <option value="+91">🇮🇳 +91</option>
+                <option value="+81">🇯🇵 +81</option>
+                <option value="+92">🇵🇰 +92</option>
+                <option value="+971">🇦🇪 +971</option>
+                <option value="+44">🇬🇧 +44</option>
+            </select>
+
+            <input
+                type="tel"
+                name="phone"
+                id="manufacturer_phone"
+                class="form-control"
+                value="8745987359"
+                placeholder="Enter your phone number"
+                autocomplete="tel-national"
+                inputmode="tel"
+                required
+            >
+        </div>
+    </div>
+</div>
 
                     <!-- Email -->
                     <div class="mb-3 col-4">
