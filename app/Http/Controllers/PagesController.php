@@ -315,7 +315,15 @@ class PagesController extends Controller
 
         $plans = \App\Models\SubscriptionPlan::where('status', 'active')->get();
 
-        return view('plan', compact('plans'));
+        $activeSubscription = null;
+        foreach (['web' => 'buyer', 'supplier' => 'supplier', 'manufacturer' => 'manufacturer'] as $guard => $type) {
+            if (\Illuminate\Support\Facades\Auth::guard($guard)->check()) {
+                $activeSubscription = \App\Support\SubscriptionAccess::current($type, (int) \Illuminate\Support\Facades\Auth::guard($guard)->id());
+                break;
+            }
+        }
+
+        return view('plan', compact('plans', 'activeSubscription'));
     }
 
 

@@ -187,11 +187,16 @@ $rows = collect([
                 Subscription
             </span>
 
-            <a href="{{ route('subscription.plan') }}" class="buy-plan-btn">
-                <span>+</span>
-                Buy a Plan
-            </a>
+            @if($activeSubscription)
+                <a href="{{ route('subscription.plan') }}" class="buy-plan-btn">Upgrade Plan</a>
+            @else
+                <a href="{{ route('subscription.plan') }}" class="buy-plan-btn"><span>+</span>Buy a Plan</a>
+            @endif
         </div>
+
+        @if($activeSubscription)
+            <div class="alert alert-success mb-3">Your {{ $activeSubscription->plan_name }} subscription is active until {{ $activeSubscription->end_date->format('d M Y') }}. You can upgrade to a higher plan while it is active.</div>
+        @endif
 
 
         <p class="text-muted mb-3">Your plan purchases and their payment status.</p>

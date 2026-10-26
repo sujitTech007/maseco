@@ -39,13 +39,7 @@ class UserDashboardController extends Controller
 
         $paymentsTotal = \App\Models\Payment::where('user_id', $user->id)->sum('amount');
 
-        $activeSubscription = SubscriptionPurchase::where('user_id', $user->id)
-
-            ->where('payment_status', 'paid')
-
-            ->latest()
-
-            ->first();
+        $activeSubscription = \App\Support\SubscriptionAccess::current('buyer', (int)$user->id);
 
 
 
@@ -186,7 +180,9 @@ class UserDashboardController extends Controller
 
             ->get();
 
-        return view('user.subscription.index', compact('purchases'));
+        $activeSubscription = \App\Support\SubscriptionAccess::current('buyer', (int)$user->id);
+
+        return view('user.subscription.index', compact('purchases', 'activeSubscription'));
 
     }
 

@@ -115,6 +115,10 @@
                 Access textile suppliers, sustainable materials and production
                 solutions — all in one place.
             </p>
+            @if(session('error'))<div class="alert alert-danger mt-3">{{ session('error') }}</div>@endif
+            @if($activeSubscription)
+                <div class="alert alert-success mt-3">Your {{ $activeSubscription->plan_name }} plan is active until {{ \Illuminate\Support\Carbon::parse($activeSubscription->end_date)->format('d M Y') }}. You can upgrade to a higher plan.</div>
+            @endif
         </div>
 
         <!-- Plans -->
@@ -163,6 +167,8 @@
                 }
 
                 $isPremium = stripos($plan->name ?? '', 'premium') !== false;
+                $hasActiveSubscription = !empty($activeSubscription);
+                $isCurrentOrLower = $hasActiveSubscription && (float)$plan->price <= (float)($activeSubscription->price ?? 0);
             @endphp
 
             <div class="col-lg-4">
@@ -211,6 +217,9 @@
                     @endif
 
                     <div class="getStarted-btn">
+                            @if($isCurrentOrLower)
+                                <button type="button" class="btn theme-btn-outline w-100" disabled>{{ strtolower($plan->name) === strtolower($activeSubscription->plan_name ?? '') ? 'Current Plan' : 'Included in Your Plan' }}</button>
+                            @else
                             <button
                                 type="button"
                                 class="btn {{ $isPremium ? 'theme-btn text-white w-100' : '' }} theme-btn-outline w-100"
@@ -220,7 +229,9 @@
                                 data-plan-duration="{{ $plan->duration }}"
                                 onclick="handlePlanChooseFromButton(this)">
 
-                                @if($plan->price == 0)
+                                @if($hasActiveSubscription)
+                                    Upgrade Plan
+                                @elseif($plan->price == 0)
                                     Get started
                                 @elseif($isPremium)
                                     Explore Premium
@@ -229,6 +240,7 @@
                                 @endif
 
                             </button>
+                            @endif
 
                     </div>
 
@@ -312,13 +324,18 @@
         headers: {
           "Content-Type": "application/json",
           "X-CSRF-TOKEN": "{{ csrf_token() }}",
+          "Accept": "application/json",
         },
         body: JSON.stringify({
           plan_id: planId,
         }),
       })
-      .then(res => res.json())
-      .then(async data => {
+      .then(async res => {
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok && !data.error) data.error = data.message || "The subscription request could not be completed.";
+        return data;
+      })
+      .then(data => {
         if (data.redirect) {
           window.location.href = data.redirect;
         } else if (data.stripe_url) {
@@ -329,7 +346,7 @@
       })
       .catch(err => {
         console.error(err);
-        document.getElementById("card-errors").textContent = "Something went wrong!";
+        document.getElementById("card-errors").textContent = "Something went wrong. Please try again.";
       });
   }
 
