@@ -11,43 +11,49 @@
   form#profile-form {
     margin-bottom: 0;
   }
+
   .phone-country-field {
     display: flex;
     width: 100%;
-}
+  }
 
-.phone-country-field .form-select {
+  .phone-country-field .form-select {
     border-radius: 6px 0 0 6px;
     border-right: 0;
     background-color: #f8f9fa;
-}
+  }
 
-.phone-country-field .form-control {
+  .phone-country-field .form-control {
     min-width: 0;
     border-radius: 0 6px 6px 0;
-}
+  }
 
 
-/* Make the phone field look like other Bootstrap inputs */
-.input-group:has(select[name="country_code"]) {
+  /* Make the phone field look like other Bootstrap inputs */
+  .input-group:has(select[name="country_code"]) {
     border: 1.7px solid #D1D1D1;
     border-radius: 12px;
     overflow: hidden;
-}
+  }
 
-.input-group:has(select[name="country_code"]) .form-select,
-.input-group:has(select[name="country_code"]) .form-control {
+  .input-group:has(select[name="country_code"]) .form-select,
+  .input-group:has(select[name="country_code"]) .form-control {
     border: 0;
     box-shadow: none;
-}
+  }
 
-.input-group:has(select[name="country_code"]):focus-within {
+  .input-group:has(select[name="country_code"]):focus-within {
     border-color: #86b7fe;
     box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-}
+  }
 
+  .iti {
+    width: 100%;
+  }
 
-  
+  .iti input {
+    width: 100%;
+  }
 </style>
 
 <div class="page-content">
@@ -98,54 +104,38 @@
             </div>
           </div>
 
-        
 
 
 
-<div class="col-md-6">
-    <div class="form-group mb-3">
-        <label for="manufacturer_phone" class="form-label">
-            Phone Number
-        </label>
 
-        <div class="input-group">
-            <select
-                id="manufacturer_phone_country_code"
-                name="country_code"
-                class="form-select border-0"
-                style="max-width: 100px;"
-                data-country-code-select
-                data-selected-country-code="+1"
-                aria-label="Country calling code"
-                required
-            >
-                <option value="+93">🇦🇫 +93</option>
-                <option value="+1" selected>🇺🇸 +1</option>
-                <option value="+61">🇦🇺 +61</option>
-                <option value="+86">🇨🇳 +86</option>
-                <option value="+33">🇫🇷 +33</option>
-                <option value="+49">🇩🇪 +49</option>
-                <option value="+91">🇮🇳 +91</option>
-                <option value="+81">🇯🇵 +81</option>
-                <option value="+92">🇵🇰 +92</option>
-                <option value="+971">🇦🇪 +971</option>
-                <option value="+44">🇬🇧 +44</option>
-            </select>
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <label for="manufacturer_phone" class="form-label">
+                Phone Number
+              </label>
 
-            <input
-                type="tel"
-                name="phone"
-                id="manufacturer_phone"
-                class="form-control"
-                value="8745987359"
-                placeholder="Enter your phone number"
-                autocomplete="tel-national"
-                inputmode="tel"
-                required
-            >
-        </div>
-    </div>
-</div>
+              <div class="input-group">
+
+                <input
+                  type="tel"
+                  name="phone"
+                  id="manufacturer_phone"
+                  class="form-control"
+                  value="8745987359"
+                  placeholder="Enter your phone number"
+                  autocomplete="tel-national"
+                  inputmode="tel"
+                  required>
+
+                <input
+                  type="hidden"
+                  name="country_code"
+                  id="manufacturer_phone_country_code"
+                  value="+1">
+
+              </div>
+            </div>
+          </div>
 
 
 
@@ -216,10 +206,10 @@
                 <option disabled selected value>Select Business Type</option>
 
                 <option value="Manufacturer" @if(old('business_type', $user->business_type) == 'Manufacturer') selected
-                @endif>Manufacturer</option>
+                  @endif>Manufacturer</option>
 
                 <option value="Distributor" @if(old('business_type', $user->business_type) == 'Distributor') selected
-                @endif>Distributor</option>
+                  @endif>Distributor</option>
 
                 <option value="Supplier" @if(old('business_type', $user->business_type) == 'Supplier') selected @endif>
                   Supplier</option>
@@ -304,7 +294,7 @@
           }
         });
 
-      countrySelect.addEventListener('change', function () {
+      countrySelect.addEventListener('change', function() {
         loadStates(this.value);
       });
 
@@ -326,6 +316,36 @@
           stateSelect.appendChild(option);
         });
       }
+    </script>
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const phoneInput = document.querySelector('#manufacturer_phone');
+        const countryCodeInput = document.querySelector('#manufacturer_phone_country_code');
+
+        if (!phoneInput || !countryCodeInput) return;
+
+        const iti = window.intlTelInput(phoneInput, {
+          initialCountry: 'us',
+          separateDialCode: true,
+          nationalMode: true,
+          countrySearch: true,
+          loadUtils: () => import(
+            'https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/utils.js'
+          )
+        });
+
+        function updateCountryCode() {
+          countryCodeInput.value =
+            '+' + iti.getSelectedCountryData().dialCode;
+        }
+
+        updateCountryCode();
+        phoneInput.addEventListener('countrychange', updateCountryCode);
+
+        phoneInput.form?.addEventListener('submit', updateCountryCode);
+      });
     </script>
 
   </div>

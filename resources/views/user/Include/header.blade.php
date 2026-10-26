@@ -22,6 +22,8 @@
     <script type="text/javascript" src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
     <script src="{{ asset('public/assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('public/assets/js/chart.js') }}"></script>
+     <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/css/intlTelInput.css">
 
 </head>
 
