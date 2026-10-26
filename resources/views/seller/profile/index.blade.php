@@ -11,6 +11,32 @@
   form#profileform {
     margin-bottom: 0;
   }
+  
+  /* Make the phone field look like other Bootstrap inputs */
+  .input-group:has(select[name="country_code"]) {
+    border: 1.7px solid #D1D1D1;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .input-group:has(select[name="country_code"]) .form-select,
+  .input-group:has(select[name="country_code"]) .form-control {
+    border: 0;
+    box-shadow: none;
+  }
+
+  .input-group:has(select[name="country_code"]):focus-within {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  }
+
+  .iti {
+    width: 100%;
+  }
+
+  .iti input {
+    width: 100%;
+  }
 </style>
 
 <div class="page-content">
@@ -57,18 +83,36 @@
             </div>
           </div>
 
+         
           <div class="col-md-6">
             <div class="form-group mb-3">
-              <label for="phone" class="form-label fw-semibold small">Phone No</label>
-              @include('auth.partials.phone-input', [
-                'phoneInputId' => 'seller_phone',
-                'phoneInputClass' => 'form-control',
-                'countryCode' => $user->country_code ?? '+1',
-                'phoneValue' => $user->phone,
-                'phonePlaceholder' => 'Enter your Phone Number',
-              ])
+              <label for="manufacturer_phone" class="form-label">
+                Phone Number
+              </label>
+
+              <div class="input-group">
+
+                <input
+                  type="tel"
+                  name="phone"
+                  id="manufacturer_phone"
+                  class="form-control"
+                  value="8745987359"
+                  placeholder="Enter your phone number"
+                  autocomplete="tel-national"
+                  inputmode="tel"
+                  required>
+
+                <input
+                  type="hidden"
+                  name="country_code"
+                  id="manufacturer_phone_country_code"
+                  value="+1">
+
+              </div>
             </div>
           </div>
+
 
           <div class="col-md-6">
             <div class="form-group mb-3">
@@ -253,6 +297,34 @@
           stateSelect.appendChild(option);
         });
       }
+    </script>
+     <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const phoneInput = document.querySelector('#manufacturer_phone');
+        const countryCodeInput = document.querySelector('#manufacturer_phone_country_code');
+
+        if (!phoneInput || !countryCodeInput) return;
+
+        const iti = window.intlTelInput(phoneInput, {
+          initialCountry: 'us',
+          separateDialCode: true,
+          nationalMode: true,
+          countrySearch: true,
+          loadUtils: () => import(
+            'https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/utils.js'
+          )
+        });
+
+        function updateCountryCode() {
+          countryCodeInput.value =
+            '+' + iti.getSelectedCountryData().dialCode;
+        }
+
+        updateCountryCode();
+        phoneInput.addEventListener('countrychange', updateCountryCode);
+
+        phoneInput.form?.addEventListener('submit', updateCountryCode);
+      });
     </script>
 
   </div>
