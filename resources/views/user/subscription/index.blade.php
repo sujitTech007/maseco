@@ -85,16 +85,16 @@
 </style>
 
 @php
-    // TEMP DEMO DATA: only shows when the list is empty, APP_DEBUG is true and the URL has ?demo=1. Delete before launch.
-    $rows = $purchases;
-    if ($rows->isEmpty() && config('app.debug') && request()->boolean('demo')) {
-        $rows = collect([
-            (object) ['id' => 14, 'plan_name' => 'Pro Subscription', 'amount' => 299, 'payment_status' => 'paid', 'created_at' => now()->subDays(3)],
-            (object) ['id' => 13, 'plan_name' => 'Premium Subscription', 'amount' => 69, 'payment_status' => 'paid', 'created_at' => now()->subDays(35)],
-            (object) ['id' => 12, 'plan_name' => 'Premium Subscription', 'amount' => 69, 'payment_status' => 'failed', 'created_at' => now()->subDays(66)],
-            (object) ['id' => 11, 'plan_name' => 'Basic Subscription', 'amount' => 0, 'payment_status' => 'paid', 'created_at' => now()->subDays(97)],
-        ]);
-    }
+// TEMP DEMO DATA: only shows when the list is empty, APP_DEBUG is true and the URL has ?demo=1. Delete before launch.
+$rows = $purchases;
+if ($rows->isEmpty() && config('app.debug') && request()->boolean('demo')) {
+$rows = collect([
+(object) ['id' => 14, 'plan_name' => 'Pro Subscription', 'amount' => 299, 'payment_status' => 'paid', 'created_at' => now()->subDays(3)],
+(object) ['id' => 13, 'plan_name' => 'Premium Subscription', 'amount' => 69, 'payment_status' => 'paid', 'created_at' => now()->subDays(35)],
+(object) ['id' => 12, 'plan_name' => 'Premium Subscription', 'amount' => 69, 'payment_status' => 'failed', 'created_at' => now()->subDays(66)],
+(object) ['id' => 11, 'plan_name' => 'Basic Subscription', 'amount' => 0, 'payment_status' => 'paid', 'created_at' => now()->subDays(97)],
+]);
+}
 @endphp
 
 <div class="page-content">
@@ -102,124 +102,200 @@
     <div class="container py-1">
 
         <h4 class="mb-1 fs-bold main-heading"> Subscription</h4>
-        <div class="breadcrumb-wrapper mb-3" style="font-size: 15px; font-weight: 500;">
 
-            <a href="{{ route('user.dashboard') }}" style="color:#454545; text-decoration:none;">
+        <style>
+            .breadcrumb-wrapper {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-bottom: 20px;
+                font-size: 15px;
+                font-weight: 500;
+            }
+
+            .breadcrumb-wrapper .breadcrumb-link {
+                color: #454545;
+                text-decoration: none;
+                transition: color 0.2s ease;
+            }
+
+            .breadcrumb-wrapper .breadcrumb-link:hover {
+                color: #2DAC92;
+            }
+
+            .breadcrumb-wrapper .breadcrumb-separator {
+                color: #999;
+                font-size: 11px;
+            }
+
+            .breadcrumb-wrapper .breadcrumb-current {
+                color: #2DAC92;
+                font-weight: 600;
+            }
+
+            .breadcrumb-wrapper .buy-plan-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 7px;
+                margin-left: auto;
+                padding: 10px 20px;
+                background: #2DAC92;
+                color: #fff;
+                border: 1px solid #2DAC92;
+                border-radius: 8px;
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: 600;
+                line-height: 1.4;
+                white-space: nowrap;
+                box-shadow: 0 3px 8px rgba(45, 172, 146, 0.15);
+                transition: all 0.25s ease;
+            }
+
+            .breadcrumb-wrapper .buy-plan-btn:hover {
+                background: #23977f;
+                border-color: #23977f;
+                color: #fff;
+                transform: translateY(-1px);
+                box-shadow: 0 5px 12px rgba(45, 172, 146, 0.25);
+            }
+
+            @media (max-width: 576px) {
+                .breadcrumb-wrapper {
+                    gap: 8px;
+                    font-size: 13px;
+                }
+
+                .breadcrumb-wrapper .buy-plan-btn {
+                    margin-left: 0;
+                    padding: 8px 13px;
+                    font-size: 13px;
+                }
+            }
+        </style>
+
+        <div class="breadcrumb-wrapper">
+            <a href="{{ route('user.dashboard') }}" class="breadcrumb-link">
                 Dashboard
             </a>
 
-            <span style="padding:0 6px; color:#999; font-size:10px;">
-                ▶
-            </span>
+            <span class="breadcrumb-separator">▶</span>
 
-            <span style="color:#2DAC92;">
+            <span class="breadcrumb-current">
                 Subscription
             </span>
 
+            <a href="{{ route('subscription.plan') }}" class="buy-plan-btn">
+                <span>+</span>
+                Buy a Plan
+            </a>
         </div>
+
 
         <p class="text-muted mb-3">Your plan purchases and their payment status.</p>
 
-        
-<!-- Subscription Filter Card -->
-<div class="card border-0 shadow-sm rounded-4 mb-4">
-    <div class="card-body p-3">
 
-        <div class="row g-2 align-items-end">
+        <!-- Subscription Filter Card -->
+        <div class="card border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-body p-3">
 
-            <!-- Search Subscriptions -->
-            <div class="col-12 col-md-6 col-xl-3">
-                <label for="subscription-search"
-                       class="form-label small fw-semibold">
-                    Search Subscriptions
-                </label>
+                <div class="row g-2 align-items-end">
 
-                <div class="input-group">
-                    <span class="input-group-text bg-light">
-                        <i class="fa-solid fa-magnifying-glass text-muted"></i>
-                    </span>
+                    <!-- Search Subscriptions -->
+                    <div class="col-12 col-md-6 col-xl-3">
+                        <label for="subscription-search"
+                            class="form-label small fw-semibold">
+                            Search Subscriptions
+                        </label>
 
-                    <input type="search"
-                           class="form-control"
-                           id="subscription-search"
-                           placeholder="Subscription ID or plan...">
+                        <div class="input-group">
+                            <span class="input-group-text bg-light">
+                                <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                            </span>
+
+                            <input type="search"
+                                class="form-control"
+                                id="subscription-search"
+                                placeholder="Subscription ID or plan...">
+                        </div>
+                    </div>
+
+                    <!-- Subscription Status -->
+                    <div class="col-6 col-md-3 col-xl-2">
+                        <label for="subscription-status"
+                            class="form-label small fw-semibold">
+                            Subscription Status
+                        </label>
+
+                        <select class="form-select" id="subscription-status">
+                            <option value="">All Statuses</option>
+                            <option value="active">Active</option>
+                            <option value="pending">Pending</option>
+                            <option value="expired">Expired</option>
+                            <option value="cancelled">Cancelled</option>
+                            <option value="suspended">Suspended</option>
+                        </select>
+                    </div>
+
+                    <!-- Subscription Plan -->
+                    <div class="col-6 col-md-3 col-xl-2">
+                        <label for="subscription-plan"
+                            class="form-label small fw-semibold">
+                            Subscription Plan
+                        </label>
+
+                        <select class="form-select" id="subscription-plan">
+                            <option value="">All Plans</option>
+                            <option value="free">Free</option>
+                            <option value="basic">Basic</option>
+                            <option value="standard">Standard</option>
+                            <option value="premium">Premium</option>
+                            <option value="enterprise">Enterprise</option>
+                        </select>
+                    </div>
+
+                    <!-- Start Date -->
+                    <div class="col-6 col-md-4 col-xl-2">
+                        <label for="subscription-start-date"
+                            class="form-label small fw-semibold">
+                            From Date
+                        </label>
+
+                        <input type="date"
+                            class="form-control"
+                            id="subscription-start-date">
+                    </div>
+
+                    <!-- End Date -->
+                    <div class="col-6 col-md-4 col-xl-2">
+                        <label for="subscription-end-date"
+                            class="form-label small fw-semibold">
+                            To Date
+                        </label>
+
+                        <input type="date"
+                            class="form-control"
+                            id="subscription-end-date">
+                    </div>
+
+                    <!-- Filter Button -->
+                    <div class="col-6 col-md-2 col-xl-1">
+                        <button type="button"
+                            class="btn btn-success w-100 text-nowrap"
+                            id="subscription-filter-btn"
+                            title="Apply Filters">
+                            <i class="fa-solid fa-filter"></i>
+                        </button>
+                    </div>
+
                 </div>
+
+
+
             </div>
-
-            <!-- Subscription Status -->
-            <div class="col-6 col-md-3 col-xl-2">
-                <label for="subscription-status"
-                       class="form-label small fw-semibold">
-                    Subscription Status
-                </label>
-
-                <select class="form-select" id="subscription-status">
-                    <option value="">All Statuses</option>
-                    <option value="active">Active</option>
-                    <option value="pending">Pending</option>
-                    <option value="expired">Expired</option>
-                    <option value="cancelled">Cancelled</option>
-                    <option value="suspended">Suspended</option>
-                </select>
-            </div>
-
-            <!-- Subscription Plan -->
-            <div class="col-6 col-md-3 col-xl-2">
-                <label for="subscription-plan"
-                       class="form-label small fw-semibold">
-                    Subscription Plan
-                </label>
-
-                <select class="form-select" id="subscription-plan">
-                    <option value="">All Plans</option>
-                    <option value="free">Free</option>
-                    <option value="basic">Basic</option>
-                    <option value="standard">Standard</option>
-                    <option value="premium">Premium</option>
-                    <option value="enterprise">Enterprise</option>
-                </select>
-            </div>
-
-            <!-- Start Date -->
-            <div class="col-6 col-md-4 col-xl-2">
-                <label for="subscription-start-date"
-                       class="form-label small fw-semibold">
-                    From Date
-                </label>
-
-                <input type="date"
-                       class="form-control"
-                       id="subscription-start-date">
-            </div>
-
-            <!-- End Date -->
-            <div class="col-6 col-md-4 col-xl-2">
-                <label for="subscription-end-date"
-                       class="form-label small fw-semibold">
-                    To Date
-                </label>
-
-                <input type="date"
-                       class="form-control"
-                       id="subscription-end-date">
-            </div>
-
-            <!-- Filter Button -->
-            <div class="col-6 col-md-2 col-xl-1">
-                <button type="button"
-                        class="btn btn-success w-100 text-nowrap"
-                        id="subscription-filter-btn"
-                        title="Apply Filters">
-                    <i class="fa-solid fa-filter"></i>
-                </button>
-            </div>
-
         </div>
-
-       
-
-    </div>
-</div>
 
 
         <div class="ud-table-wrap bg-white shadow-sm rounded-4 overflow-hidden">
@@ -232,7 +308,7 @@
 
                         <tr>
 
-                            <th>#</th>
+                            <th>S.No</th>
 
                             <th>Plan</th>
 
@@ -250,47 +326,48 @@
 
                         @forelse($rows as $purchase)
 
-                            @php
-                                $st = [
-                                    'paid' => 'success',
-                                    'succeeded' => 'success',
-                                    'completed' => 'success',
-                                    'active' => 'success',
-                                    'pending' => 'warning',
-                                    'failed' => 'danger',
-                                    'cancelled' => 'danger',
-                                ][strtolower($purchase->payment_status ?? '')] ?? 'secondary';
-                            @endphp
+                        @php
+                        $st = [
+                        'paid' => 'success',
+                        'succeeded' => 'success',
+                        'completed' => 'success',
+                        'active' => 'success',
+                        'pending' => 'warning',
+                        'failed' => 'danger',
+                        'cancelled' => 'danger',
+                        ][strtolower($purchase->payment_status ?? '')] ?? 'secondary';
+                        @endphp
 
-                            <tr>
+                        <tr>
 
-                                <td class="text-muted">{{ $purchase->id }}</td>
+                            <td class="text-muted">{{ $purchase->id }}</td>
 
-                                <td class="fw-semibold">
-                                    {{ $purchase->plan_name ?? data_get($purchase->details, 'plan_name', 'N/A') }}</td>
+                            <td class="fw-semibold">
+                                {{ $purchase->plan_name ?? data_get($purchase->details, 'plan_name', 'N/A') }}
+                            </td>
 
-                                <td class="fw-semibold text-nowrap">
-                                    ${{ number_format($purchase->amount ?? $purchase->price ?? 0, 2) }}</td>
+                            <td class="fw-semibold text-nowrap">
+                                ${{ number_format($purchase->amount ?? $purchase->price ?? 0, 2) }}</td>
 
-                                <td><span
-                                        class="ud-st ud-st-{{ $st }} rounded-pill d-inline-block text-nowrap">{{ ucfirst($purchase->payment_status) }}</span>
-                                </td>
+                            <td><span
+                                    class="ud-st ud-st-{{ $st }} rounded-pill d-inline-block text-nowrap">{{ ucfirst($purchase->payment_status) }}</span>
+                            </td>
 
-                                <td class="text-nowrap text-muted">{{ $purchase->created_at->format('d M Y') }}</td>
+                            <td class="text-nowrap text-muted">{{ $purchase->created_at->format('d M Y') }}</td>
 
-                            </tr>
+                        </tr>
 
                         @empty
 
-                            <tr>
+                        <tr>
 
-                                <td colspan="5" class="text-center text-muted">
-                                    <div>No subscriptions found. <a href="{{ route('subscription.plan') }}">Buy a plan</a>
-                                    </div>
-                                    <div class="small">Plans you purchase will appear here.</div>
-                                </td>
+                            <td colspan="5" class="text-center text-muted">
+                                <div>No subscriptions found. <a href="{{ route('subscription.plan') }}">Buy a plan</a>
+                                </div>
+                                <div class="small">Plans you purchase will appear here.</div>
+                            </td>
 
-                            </tr>
+                        </tr>
 
                         @endforelse
 

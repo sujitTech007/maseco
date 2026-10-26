@@ -207,7 +207,7 @@
 
             <th>Name</th>
 
-            <th>Description</th>
+            <!-- <th>Description</th> -->
 
             <th>Unit</th>
 
@@ -248,7 +248,7 @@
 
               <td class="fw-semibold">{{ $material->name }}</td>
 
-              <td>{{ $material->description }}</td>
+              <!-- <td>{{ $material->description }}</td> -->
 
               <td>{{ $material->unit }}</td>
 

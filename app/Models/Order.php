@@ -63,6 +63,11 @@ class Order extends Model
     {
         return $this->hasOne(Payment::class);
     }
+
+    public function productionProject()
+    {
+        return $this->hasOne(ProductionProject::class);
+    }
 }
 
 

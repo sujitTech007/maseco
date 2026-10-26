@@ -164,20 +164,20 @@
 
           <!-- Datasheet -->
           @if($material->datasheet)
-            <div class="mt-4">
-              <a href="{{ asset('public/' . $material->datasheet) }}" target="_blank"
-                class="btn btn-outline-success btn-sm px-3">
-                📄 View Datasheet
-              </a>
-            </div>
+          <div class="mt-4">
+            <a href="{{ asset('public/' . $material->datasheet) }}" target="_blank"
+              class="btn btn-outline-success btn-sm px-3">
+              📄 View Datasheet
+            </a>
+          </div>
           @endif
 
           <!-- Actions -->
-          <div class="mt-3 d-flex gap-2">
+          <!-- <div class="mt-3 d-flex gap-2">
             <a href="{{ route('manufacturer.material.edit', $material->id) }}" class="btn btn-success btn-sm px-3">
               ✏️ Edit Material
             </a>
-          </div>
+          </div> -->
 
         </div>
       </div>

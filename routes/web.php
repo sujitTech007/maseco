@@ -116,6 +116,15 @@ Route::post('/contact-us', [PagesController::class, 'contactUsStore'])->name('co
 
 // Route::prefix('seller')->name('seller.')->group(function () {
 Route::prefix('seller')->name('seller.')->middleware(['auth:supplier'])->group(function () {
+    Route::get('/production', [\App\Http\Controllers\ProductionController::class, 'index'])->name('production.index');
+    Route::post('/production', [\App\Http\Controllers\ProductionController::class, 'create'])->name('production.create');
+    Route::get('/production/{project}', [\App\Http\Controllers\ProductionController::class, 'show'])->name('production.show');
+    Route::post('/production/{project}/milestones/{milestone?}', [\App\Http\Controllers\ProductionController::class, 'milestone'])->name('production.milestone');
+    Route::post('/production/{project}/samples', [\App\Http\Controllers\ProductionController::class, 'submitSample'])->name('production.samples.submit');
+    Route::post('/production/{project}/comments', [\App\Http\Controllers\ProductionController::class, 'comment'])->name('production.comments');
+    Route::post('/production/{project}/files', [\App\Http\Controllers\ProductionController::class, 'file'])->name('production.files');
+    Route::post('/production/{project}/deliveries/{delivery?}', [\App\Http\Controllers\ProductionController::class, 'delivery'])->name('production.delivery');
+    Route::post('/production/{project}/meetings', [\App\Http\Controllers\ProductionController::class, 'meeting'])->name('production.meetings');
     Route::get('/samples', [\App\Http\Controllers\SampleSystemController::class, 'manage'])->name('samples.index');
     Route::get('/orders/{order}/sharing', [\App\Http\Controllers\SampleSystemController::class, 'buyerOrder'])->name('orders.sharing');
     Route::post('/samples', [\App\Http\Controllers\SampleSystemController::class, 'storeSample'])->name('samples.store');
@@ -181,6 +190,12 @@ Route::post('/chat/{enquiry}/messages', [\App\Http\Controllers\ChatController::c
 
 // User dashboard routes
 Route::prefix('user')->name('user.')->middleware(['auth'])->group(function () {
+    Route::get('/production', [\App\Http\Controllers\ProductionController::class, 'index'])->name('production.index');
+    Route::get('/production/{project}', [\App\Http\Controllers\ProductionController::class, 'show'])->name('production.show');
+    Route::post('/production/{project}/samples/{submission}/review', [\App\Http\Controllers\ProductionController::class, 'reviewSample'])->name('production.samples.review');
+    Route::post('/production/{project}/comments', [\App\Http\Controllers\ProductionController::class, 'comment'])->name('production.comments');
+    Route::post('/production/{project}/files', [\App\Http\Controllers\ProductionController::class, 'file'])->name('production.files');
+    Route::post('/production/{project}/meetings', [\App\Http\Controllers\ProductionController::class, 'meeting'])->name('production.meetings');
     Route::get('/dashboard', [UserDashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/profile', [UserDashboardController::class, 'profile'])->name('profile');
     Route::post('/profile', [UserDashboardController::class, 'updateProfile'])->name('profile.update');
@@ -210,6 +225,17 @@ Route::prefix('user')->name('user.')->middleware(['auth'])->group(function () {
 
 // Manufacturer dashboard routes (similar to seller)
 Route::prefix('manufacturer')->name('manufacturer.')->middleware(['auth:manufacturer'])->group(function () {
+    Route::get('/production', [\App\Http\Controllers\ProductionController::class, 'index'])->name('production.index');
+    Route::post('/production', [\App\Http\Controllers\ProductionController::class, 'create'])->name('production.create');
+    Route::get('/production/{project}', [\App\Http\Controllers\ProductionController::class, 'show'])->name('production.show');
+    Route::post('/production/{project}/progress', [\App\Http\Controllers\ProductionController::class, 'progress'])->name('production.progress');
+    Route::post('/production/{project}/milestones/{milestone?}', [\App\Http\Controllers\ProductionController::class, 'milestone'])->name('production.milestone');
+    Route::post('/production/{project}/samples', [\App\Http\Controllers\ProductionController::class, 'submitSample'])->name('production.samples.submit');
+    Route::post('/production/{project}/comments', [\App\Http\Controllers\ProductionController::class, 'comment'])->name('production.comments');
+    Route::post('/production/{project}/files', [\App\Http\Controllers\ProductionController::class, 'file'])->name('production.files');
+    Route::post('/production/{project}/deliveries/{delivery?}', [\App\Http\Controllers\ProductionController::class, 'delivery'])->name('production.delivery');
+    Route::post('/production/{project}/shipments/{shipment?}', [\App\Http\Controllers\ProductionController::class, 'shipment'])->name('production.shipment');
+    Route::post('/production/{project}/meetings', [\App\Http\Controllers\ProductionController::class, 'meeting'])->name('production.meetings');
     Route::get('/samples', [\App\Http\Controllers\SampleSystemController::class, 'manage'])->name('samples.index');
     Route::get('/orders/{order}/sharing', [\App\Http\Controllers\SampleSystemController::class, 'buyerOrder'])->name('orders.sharing');
     Route::post('/samples', [\App\Http\Controllers\SampleSystemController::class, 'storeSample'])->name('samples.store');
@@ -247,4 +273,7 @@ Route::prefix('manufacturer')->name('manufacturer.')->middleware(['auth:manufact
 
 Route::middleware(['auth:supplier,manufacturer,web'])->get('/sharing/files/{file}', [\App\Http\Controllers\SampleSystemController::class, 'downloadFile'])->name('sharing.files.download');
 Route::middleware(['admin.auth'])->post('/admin/sample-purchases/{purchase}/confirm-payment', [\App\Http\Controllers\SampleSystemController::class, 'manualPaymentConfirmed'])->name('admin.samples.payment.confirm');
+Route::middleware(['admin.auth'])->get('/admin/production', [\App\Http\Controllers\ProductionController::class, 'admin'])->name('admin.production.index');
+Route::middleware(['admin.auth'])->get('/admin/production/export', [\App\Http\Controllers\ProductionController::class, 'adminExport'])->name('admin.production.export');
+Route::middleware(['auth:supplier,manufacturer,web'])->get('/production/files/{file}', [\App\Http\Controllers\ProductionController::class, 'download'])->name('production.files.download');
 Route::middleware(['admin.auth'])->get('/admin/sample-purchases', [\App\Http\Controllers\SampleSystemController::class, 'adminPurchases'])->name('admin.samples.index');
