@@ -1,186 +1,186 @@
 @include('Include.header')
 
-    <main>
-
-     
+<main>
 
 
-<section class="listing-page py-5 bg-light">
-    <div class="container">
 
-        @if(session('success'))<div class="alert alert-success">{{ session('success') }}</div>@endif
-        @if(session('error'))<div class="alert alert-danger">{{ session('error') }}</div>@endif
 
-        {{-- Page Heading --}}
-        <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
-            <div>
-                <h2 class="section-title-h2 mb-2">Explore Materials</h2>
-                <p class="text-muted mb-0">
-                    Find the right materials for your business
-                </p>
+    <section class="listing-page py-5 bg-light">
+        <div class="container">
+
+            @if(session('success'))<div class="alert alert-success">{{ session('success') }}</div>@endif
+            @if(session('error'))<div class="alert alert-danger">{{ session('error') }}</div>@endif
+
+            {{-- Page Heading --}}
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+                <div>
+                    <h2 class="section-title-h2 mb-2">Explore Materials</h2>
+                    <p class="text-muted mb-0">
+                        Find the right materials for your business
+                    </p>
+                </div>
+
+
             </div>
 
-           
-        </div>
+            <div class="row g-4">
 
-        <div class="row g-4">
+                {{-- FILTER SIDEBAR --}}
+                <div class="col-lg-3 col-md-4">
+                    <div class="card border-0 shadow-sm rounded-3">
+                        <div class="card-body p-4">
 
-            {{-- FILTER SIDEBAR --}}
-            <div class="col-lg-3 col-md-4">
-                <div class="card border-0 shadow-sm rounded-3">
-                    <div class="card-body p-4">
-
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h5 class="fw-bold mb-0">
-                                <i class="fa-solid fa-sliders me-2 text_color_primary"></i>
-                                Filters
-                            </h5>
-                            <a href="{{ route('listing') }}"
-                               class="text-decoration-none small text-success">
-                                Clear All
-                            </a>
-                        </div>
-
-                        <form method="GET" action="{{ route('listing') }}">
-
-                            {{-- Search --}}
-                            <div class="mb-4">
-                                <label class="form-label fw-semibold">Search Materials</label>
-                                <div class="input-group">
-                                    <span class="input-group-text bg-white">
-                                        <i class="fa-solid fa-magnifying-glass text-muted"></i>
-                                    </span>
-                                    <input type="text" name="q"
-                                        class="form-control"
-                                        value="{{ data_get($filters, 'q') }}"
-                                        placeholder="Material name...">
-                                </div>
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h5 class="fw-bold mb-0">
+                                    <i class="fa-solid fa-sliders me-2 text_color_primary"></i>
+                                    Filters
+                                </h5>
+                                <a href="{{ route('listing') }}"
+                                    class="text-decoration-none small text-success">
+                                    Clear All
+                                </a>
                             </div>
 
-                            {{-- Category --}}
-                            <div class="mb-4">
-                                <label class="form-label fw-semibold">Category</label>
-                                <select name="category" class="form-select">
-                                    <option value="">All Categories</option>
-                                    @foreach(($categories ?? []) as $cat)
+                            <form method="GET" action="{{ route('listing') }}">
+
+                                {{-- Search --}}
+                                <div class="mb-4">
+                                    <label class="form-label fw-semibold">Search Materials</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white">
+                                            <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                                        </span>
+                                        <input type="text" name="q"
+                                            class="form-control"
+                                            value="{{ data_get($filters, 'q') }}"
+                                            placeholder="Material name...">
+                                    </div>
+                                </div>
+
+                                {{-- Category --}}
+                                <div class="mb-4">
+                                    <label class="form-label fw-semibold">Category</label>
+                                    <select name="category" class="form-select">
+                                        <option value="">All Categories</option>
+                                        @foreach(($categories ?? []) as $cat)
                                         <option value="{{ $cat }}"
                                             {{ $cat == data_get($filters, 'category') ? 'selected' : '' }}>
                                             {{ $cat }}
                                         </option>
-                                    @endforeach
-                                </select>
-                            </div>
+                                        @endforeach
+                                    </select>
+                                </div>
 
-                            {{-- Location --}}
-                            <div class="mb-4">
-                                <label class="form-label fw-semibold">Location</label>
-                                <select name="location" class="form-select">
-                                    <option value="">All Locations</option>
-                                    @foreach(($locations ?? []) as $loc)
+                                {{-- Location --}}
+                                <div class="mb-4">
+                                    <label class="form-label fw-semibold">Location</label>
+                                    <select name="location" class="form-select">
+                                        <option value="">All Locations</option>
+                                        @foreach(($locations ?? []) as $loc)
                                         <option value="{{ $loc }}"
                                             {{ $loc == data_get($filters, 'location') ? 'selected' : '' }}>
                                             {{ $loc }}
                                         </option>
-                                    @endforeach
-                                </select>
-                            </div>
+                                        @endforeach
+                                    </select>
+                                </div>
 
-                            {{-- Price --}}
-                            <div class="mb-4">
-                                <label class="form-label fw-semibold">Price Range</label>
-                                <div class="row g-2">
-                                    <div class="col-6">
-                                        <input type="number" step="0.01"
-                                            min="0" name="price_min"
-                                            class="form-control"
-                                            value="{{ data_get($filters, 'price_min') }}"
-                                            placeholder="Min">
-                                    </div>
-                                    <div class="col-6">
-                                        <input type="number" step="0.01"
-                                            min="0" name="price_max"
-                                            class="form-control"
-                                            value="{{ data_get($filters, 'price_max') }}"
-                                            placeholder="Max">
+                                {{-- Price --}}
+                                <div class="mb-4">
+                                    <label class="form-label fw-semibold">Price Range</label>
+                                    <div class="row g-2">
+                                        <div class="col-6">
+                                            <input type="number" step="0.01"
+                                                min="0" name="price_min"
+                                                class="form-control"
+                                                value="{{ data_get($filters, 'price_min') }}"
+                                                placeholder="Min">
+                                        </div>
+                                        <div class="col-6">
+                                            <input type="number" step="0.01"
+                                                min="0" name="price_max"
+                                                class="form-control"
+                                                value="{{ data_get($filters, 'price_max') }}"
+                                                placeholder="Max">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            {{-- Specifications --}}
-                            <h6 class="fw-bold border-bottom pb-2 mb-3">
-                                Specifications
-                            </h6>
+                                {{-- Specifications --}}
+                                <h6 class="fw-bold border-bottom pb-2 mb-3">
+                                    Specifications
+                                </h6>
 
-                            <div class="mb-3">
-                                <label class="form-label">Grade</label>
-                                <select name="grade" class="form-select">
-                                    <option value="">All Grades</option>
-                                    @foreach(($grades ?? []) as $g)
+                                <div class="mb-3">
+                                    <label class="form-label">Grade</label>
+                                    <select name="grade" class="form-select">
+                                        <option value="">All Grades</option>
+                                        @foreach(($grades ?? []) as $g)
                                         <option value="{{ $g }}"
                                             {{ $g == data_get($filters, 'grade') ? 'selected' : '' }}>
                                             {{ $g }}
                                         </option>
-                                    @endforeach
-                                </select>
-                            </div>
+                                        @endforeach
+                                    </select>
+                                </div>
 
-                            <div class="mb-3">
-                                <label class="form-label">Size / Thickness</label>
-                                <input type="text" name="size"
-                                    class="form-control"
-                                    value="{{ data_get($filters, 'size') }}"
-                                    placeholder="e.g. 12mm">
-                            </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Size / Thickness</label>
+                                    <input type="text" name="size"
+                                        class="form-control"
+                                        value="{{ data_get($filters, 'size') }}"
+                                        placeholder="e.g. 12mm">
+                                </div>
 
-                            <div class="mb-3">
-                                <label class="form-label">Certification</label>
-                                <input type="text" name="certification"
-                                    class="form-control"
-                                    value="{{ data_get($filters, 'certification') }}"
-                                    placeholder="e.g. GOTS">
-                            </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Certification</label>
+                                    <input type="text" name="certification"
+                                        class="form-control"
+                                        value="{{ data_get($filters, 'certification') }}"
+                                        placeholder="e.g. GOTS">
+                                </div>
 
-                            <div class="mb-4">
-                                <label class="form-label">Unit</label>
-                                <select name="unit" class="form-select">
-                                    <option value="">All Units</option>
-                                    @foreach(($units ?? []) as $u)
+                                <div class="mb-4">
+                                    <label class="form-label">Unit</label>
+                                    <select name="unit" class="form-select">
+                                        <option value="">All Units</option>
+                                        @foreach(($units ?? []) as $u)
                                         <option value="{{ $u }}"
                                             {{ $u == data_get($filters, 'unit') ? 'selected' : '' }}>
                                             {{ $u }}
                                         </option>
-                                    @endforeach
-                                </select>
-                            </div>
+                                        @endforeach
+                                    </select>
+                                </div>
 
-                            <button type="submit" class="btn theme_btn w-100 py-2">
-                                <i class="fa-solid fa-filter me-2"></i>Apply Filters
-                            </button>
+                                <button type="submit" class="btn theme_btn w-100 py-2">
+                                    <i class="fa-solid fa-filter me-2"></i>Apply Filters
+                                </button>
 
-                            <a href="{{ route('listing') }}"
-                               class="btn btn-outline-secondary w-100 mt-2">
-                                Reset Filters
-                            </a>
+                                <a href="{{ route('listing') }}"
+                                    class="btn btn-outline-secondary w-100 mt-2">
+                                    Reset Filters
+                                </a>
 
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            {{-- MATERIAL LISTINGS --}}
-            <div class="col-lg-9 col-md-8">
-                <div class="row g-3">
+                {{-- MATERIAL LISTINGS --}}
+                <div class="col-lg-9 col-md-8">
+                    <div class="row g-3">
 
-                    @forelse($materials as $material)
+                        @forelse($materials as $material)
                         @php
-                            $supplierAccount = $material->getRelation('supplier');
-                            $manufacturerAccount = $material->getRelation('manufacturer');
-                            $supplierName = optional($supplierAccount)->company_name
-                                ?: (optional($supplierAccount)->business_name
-                                    ?: (optional($supplierAccount)->name
-                                        ?: ($material->supplier ?: optional($manufacturerAccount)->company_name
-                                            ?: optional($manufacturerAccount)->name
-                                            ?: 'Supplier')));
+                        $supplierAccount = $material->getRelation('supplier');
+                        $manufacturerAccount = $material->getRelation('manufacturer');
+                        $supplierName = optional($supplierAccount)->company_name
+                        ?: (optional($supplierAccount)->business_name
+                        ?: (optional($supplierAccount)->name
+                        ?: ($material->supplier ?: optional($manufacturerAccount)->company_name
+                        ?: optional($manufacturerAccount)->name
+                        ?: 'Supplier')));
                         @endphp
                         <div class="col-xl-4 col-lg-6 col-md-12 col-sm-6">
 
@@ -195,28 +195,28 @@
                                             alt="{{ $material->name }}">
                                     </a>
 
-                                 
+
                                     <!-- Verified Listing Badge -->
-                                <div class="d-flex position-absolute top-0 start-0 p-2 left-0 justify-content-between w-100">
-                                    
-                                    
-                                    <div class="d-flex gap-2 align-items-center">
-                                                                            <!-- Save -->
-                                    <button type="button" class="listing_badge border-0 rounded-circle shadow-sm" title="Save Listing">
-                                        <i class="fa-solid fa-bookmark text-primary"></i>
-                                    </button>
+                                    <div class="d-flex position-absolute top-0 start-0 p-2 left-0 justify-content-between w-100">
 
-                                    <!-- Wishlist -->
-                                    <form method="POST" action="{{ route('user.collection.toggle', ['collection' => 'wishlist', 'material' => $material->id]) }}">@csrf
-                                        <button type="submit" class="listing_badge border-0 rounded-circle shadow-sm" title="{{ in_array($material->id, $wishlistIds ?? [], true) ? 'Remove from Wishlist' : 'Add to Wishlist' }}" aria-label="{{ in_array($material->id, $wishlistIds ?? [], true) ? 'Remove from Wishlist' : 'Add to Wishlist' }}"><i class="fa-solid fa-heart {{ in_array($material->id, $wishlistIds ?? [], true) ? 'text-danger' : 'text-secondary' }}"></i></button>
-                                    </form>
 
-                                    <!-- Compare -->
-                                    <a href="{{ route('compare.add', $material->id) }}" class="listing_badge border-0 rounded-circle shadow-sm d-inline-flex align-items-center justify-content-center text-decoration-none" title="{{ in_array($material->id, $compareIds ?? [], true) ? 'Open Compare List' : 'Compare Listing' }}" aria-label="{{ in_array($material->id, $compareIds ?? [], true) ? 'Open Compare List' : 'Compare Listing' }}"><i class="fa-solid fa-scale-balanced {{ in_array($material->id, $compareIds ?? [], true) ? 'text-success' : 'text-secondary' }}"></i></a>
+                                        <div class="d-flex gap-2 align-items-center">
+                                            <!-- Save -->
+                                            <button type="button" class="listing_badge border-0 rounded-circle shadow-sm" title="Save Listing">
+                                                <i class="fa-solid fa-bookmark text-primary"></i>
+                                            </button>
+
+                                            <!-- Wishlist -->
+                                            <form method="POST" action="{{ route('user.collection.toggle', ['collection' => 'wishlist', 'material' => $material->id]) }}">@csrf
+                                                <button type="submit" class="listing_badge border-0 rounded-circle shadow-sm" title="{{ in_array($material->id, $wishlistIds ?? [], true) ? 'Remove from Wishlist' : 'Add to Wishlist' }}" aria-label="{{ in_array($material->id, $wishlistIds ?? [], true) ? 'Remove from Wishlist' : 'Add to Wishlist' }}"><i class="fa-solid fa-heart {{ in_array($material->id, $wishlistIds ?? [], true) ? 'text-danger' : 'text-secondary' }}"></i></button>
+                                            </form>
+
+                                            <!-- Compare -->
+                                            <a href="{{ route('compare.add', $material->id) }}" class="listing_badge border-0 rounded-circle shadow-sm d-inline-flex align-items-center justify-content-center text-decoration-none" title="{{ in_array($material->id, $compareIds ?? [], true) ? 'Open Compare List' : 'Compare Listing' }}" aria-label="{{ in_array($material->id, $compareIds ?? [], true) ? 'Open Compare List' : 'Compare Listing' }}"><i class="fa-solid fa-scale-balanced {{ in_array($material->id, $compareIds ?? [], true) ? 'text-success' : 'text-secondary' }}"></i></a>
+                                        </div>
                                     </div>
-                                </div>
 
-                                
+
                                 </div>
 
                                 {{-- Details --}}
@@ -225,12 +225,12 @@
                                     <div class="d-flex justify-content-between align-items-center gap-2 mb-2">
                                         <h5 class="fw-bold mb-0 material-name">
                                             <a href="{{ route('listing.details', $material->id) }}"
-                                               class="text-dark text-decoration-none">
+                                                class="text-dark text-decoration-none">
                                                 {{ $material->name }}
                                             </a>
                                         </h5>
                                         @if($material->is_certified)
-                                            <div class="certified-badge"><img src="{{ asset('public/assets/images/certified-badge.png') }}" alt="Certified Listing" class="h-100 w-auto"></div>
+                                        <div class="certified-badge"><img src="{{ asset('public/assets/images/certified-badge.png') }}" alt="Certified Listing" class="h-100 w-auto"></div>
                                         @endif
                                     </div>
 
@@ -260,38 +260,38 @@
                                             /
                                             {{ $material->size ?: '-' }}
                                         </p>
-                                        
+
                                     </div>
-                                    
+
 
                                     <div class="mt-auto d-flex gap-2">
                                         <a href="{{ route('listing.details', $material->id) }}"
-                                           class="btn theme_btn text-white">
+                                            class="btn theme_btn text-white">
                                             View Details
                                             <i class="fa-solid fa-arrow-right ms-0"></i>
                                         </a>
 
                                         @if(!Auth::guard('supplier')->check() && !Auth::guard('manufacturer')->check())
-                                            @php
-                                                $contactType = $material->manufacturer_id
-                                                    ? 'Manufacturer'
-                                                    : 'Supplier';
-                                            @endphp
+                                        @php
+                                        $contactType = $material->manufacturer_id
+                                        ? 'Manufacturer'
+                                        : 'Supplier';
+                                        @endphp
 
-                                            <button type="button"
-                                                class="btn btn-outline-success"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#enquiryModal"
-                                                data-material-id="{{ $material->id }}"
-                                                data-material-name="{{ $material->name }}"
-                                                data-material-image="{{ asset('public/' . $material->image) }}"
-                                                data-material-price="{{ number_format($material->price, 2, '.', '') }}"
-                                                data-material-unit="{{ $material->unit }}"
-                                                data-material-supplier="{{ optional($material->supplier)->company_name ?? optional($material->supplier)->name ?? optional($material->manufacturer)->company_name ?? optional($material->manufacturer)->name ?? 'Supplier' }}"
-                                                data-material-location="{{ $material->location ?? '-' }}">
-                                                <i class="fa-solid fa-envelope me-0"></i>
-                                                Contact {{ $contactType }}
-                                            </button>
+                                        <button type="button"
+                                            class="btn btn-outline-success"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#enquiryModal"
+                                            data-material-id="{{ $material->id }}"
+                                            data-material-name="{{ $material->name }}"
+                                            data-material-image="{{ asset('public/' . $material->image) }}"
+                                            data-material-price="{{ number_format($material->price, 2, '.', '') }}"
+                                            data-material-unit="{{ $material->unit }}"
+                                            data-material-supplier="{{ optional($material->supplier)->company_name ?? optional($material->supplier)->name ?? optional($material->manufacturer)->company_name ?? optional($material->manufacturer)->name ?? 'Supplier' }}"
+                                            data-material-location="{{ $material->location ?? '-' }}">
+                                            <i class="fa-solid fa-envelope me-0"></i>
+                                            Contact {{ $contactType }}
+                                        </button>
                                         @endif
                                     </div>
 
@@ -299,7 +299,7 @@
                             </div>
                         </div>
 
-                    @empty
+                        @empty
                         <div class="col-12">
                             <div class="card border-0 shadow-sm text-center py-5">
                                 <div class="card-body">
@@ -309,116 +309,116 @@
                                         Try changing your search or filter options.
                                     </p>
                                     <a href="{{ route('listing') }}"
-                                       class="btn theme_btn{">
+                                        class="btn theme_btn{">
                                         View All Materials
                                     </a>
                                 </div>
                             </div>
                         </div>
-                    @endforelse
+                        @endforelse
 
-                </div>
+                    </div>
 
-                {{-- Pagination --}}
-                @if(method_exists($materials, 'links'))
+                    {{-- Pagination --}}
+                    @if(method_exists($materials, 'links'))
                     <div class="mt-4">
                         {{ $materials->appends(request()->query())->links() }}
                     </div>
-                @endif
+                    @endif
 
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
 
 
-        <!-- Enquiry Modal -->
-        <!-- Supplier Modal -->
-<div class="modal fade enquiry-modal" id="enquiryModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-slideout">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-lg-5 col-md-12 border-end">
-            <div class=" text-left mb-3">
-              <img id="enquiry-material-image" src="{{ asset('public/assets/images/blog-thumb-1.jpeg') }}" class="img-fluid w-100 mb-3" alt="Material">
-              <div class=" detail-popup text-left mb-3">
-                <h6 id="enquiry-material-title"></h6>
-                <p class="mb-1"><strong id="enquiry-material-price"></strong></p>
-                <p class="mb-1" id="enquiry-material-supplier"></p>
-                <p class="mb-1" id="enquiry-material-location"></p>
-                
-              </div>
+    <!-- Enquiry Modal -->
+    <!-- Supplier Modal -->
+    <div class="modal fade enquiry-modal" id="enquiryModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-slideout">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-12 border-end">
+                            <div class=" text-left mb-3">
+                                <img id="enquiry-material-image" src="{{ asset('public/assets/images/blog-thumb-1.jpeg') }}" class="img-fluid w-100 mb-3" alt="Material">
+                                <div class=" detail-popup text-left mb-3">
+                                    <h6 id="enquiry-material-title"></h6>
+                                    <p class="mb-1"><strong id="enquiry-material-price"></strong></p>
+                                    <p class="mb-1" id="enquiry-material-supplier"></p>
+                                    <p class="mb-1" id="enquiry-material-location"></p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-12">
+                            <h5 class="mb-1 fs-5 fw-normal px-3">Add few details to get quick response from the supplier</h5>
+                            <form method="POST" action="{{ route('enquiry.store') }}">
+                                @csrf
+                                <div class="modal-body">
+                                    @guest
+                                    <div class="alert alert-warning fs-12 mb-2 p-1 px-2">Please <a href="{{ route('login') }}">login</a> to submit an enquiry.</div>
+                                    @endguest
+                                    <input type="hidden" name="material_id" id="enquiry-material-id" value="">
+                                    <div class="mb-3">
+                                        <label class="form-label">Material</label>
+                                        <input type="text" id="enquiry-material-name" value="" class="form-control" disabled>
+                                    </div>
+                                    <div class="row">
+                                        <div class="mb-3 col-md-6">
+                                            <label class="form-label">Quantity</label>
+                                            <input type="number" min="1" name="quantity" class="form-control" required>
+                                        </div>
+                                        <div class="mb-3 col-md-6">
+                                            <label class="form-label">Expected Price (optional)</label>
+                                            <input type="number" step="0.01" name="expected_price" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Message</label>
+                                        <textarea name="message" class="form-control" rows="3" placeholder="Any specific requirements"></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    @auth
+                                    <button type="submit" class="btn theme_link m-0 fs-6">Submit Enquiry</button>
+                                    @else
+                                    <a class="btn theme_link m-0 fs-6" href="{{ route('login') }}">Login to Continue</a>
+                                    @endauth
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-lg-7 col-md-12">
-            <h5 class="mb-1 fs-5 fw-normal px-3">Add few details to get quick response from the supplier</h5>
-            <form method="POST" action="{{ route('enquiry.store') }}">
-                        @csrf
-                        <div class="modal-body">
-                            @guest
-                                <div class="alert alert-warning fs-12 mb-2 p-1 px-2">Please <a href="{{ route('login') }}">login</a> to submit an enquiry.</div>
-                            @endguest
-                            <input type="hidden" name="material_id" id="enquiry-material-id" value="">
-                            <div class="mb-3">
-                                <label class="form-label">Material</label>
-                                <input type="text" id="enquiry-material-name" value="" class="form-control" disabled>
-                            </div>
-                            <div class="row">
-                                <div class="mb-3 col-md-6">
-                                    <label class="form-label">Quantity</label>
-                                    <input type="number" min="1" name="quantity" class="form-control" required>
-                                    </div>
-                                    <div class="mb-3 col-md-6">
-                                        <label class="form-label">Expected Price (optional)</label>
-                                        <input type="number" step="0.01" name="expected_price" class="form-control">
-                                    </div>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Message</label>
-                                <textarea name="message" class="form-control" rows="3" placeholder="Any specific requirements"></textarea>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            @auth
-                            <button type="submit" class="btn theme_link m-0 fs-6">Submit Enquiry</button>
-                            @else
-                            <a class="btn theme_link m-0 fs-6" href="{{ route('login') }}">Login to Continue</a>
-                            @endauth
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </form>
-          </div>
         </div>
-      </div>
-    </div>
-  </div>
-  
-</div>
-        <script>
-            const enquiryModal = document.getElementById('enquiryModal');
-            enquiryModal && enquiryModal.addEventListener('show.bs.modal', event => {
-                const button = event.relatedTarget;
-                if (!button) return;
 
-                const material = button.dataset;
-                document.getElementById('enquiry-material-id').value = material.materialId;
-                document.getElementById('enquiry-material-name').value = material.materialName;
-                document.getElementById('enquiry-material-image').src =
-                    material.materialImage || "{{ asset('public/assets/images/blog-thumb-1.jpeg') }}";
-                document.getElementById('enquiry-material-image').alt = material.materialName;
-                document.getElementById('enquiry-material-title').textContent = material.materialName;
-                document.getElementById('enquiry-material-price').textContent =
-                    '$ ' + material.materialPrice + '/' + material.materialUnit;
-                document.getElementById('enquiry-material-supplier').textContent =
-                    material.materialSupplier;
-                document.getElementById('enquiry-material-location').textContent =
-                    material.materialLocation;
-            });
-        </script>
-    </main>
+    </div>
+    <script>
+        const enquiryModal = document.getElementById('enquiryModal');
+        enquiryModal && enquiryModal.addEventListener('show.bs.modal', event => {
+            const button = event.relatedTarget;
+            if (!button) return;
+
+            const material = button.dataset;
+            document.getElementById('enquiry-material-id').value = material.materialId;
+            document.getElementById('enquiry-material-name').value = material.materialName;
+            document.getElementById('enquiry-material-image').src =
+                material.materialImage || "{{ asset('public/assets/images/blog-thumb-1.jpeg') }}";
+            document.getElementById('enquiry-material-image').alt = material.materialName;
+            document.getElementById('enquiry-material-title').textContent = material.materialName;
+            document.getElementById('enquiry-material-price').textContent =
+                '$ ' + material.materialPrice + '/' + material.materialUnit;
+            document.getElementById('enquiry-material-supplier').textContent =
+                material.materialSupplier;
+            document.getElementById('enquiry-material-location').textContent =
+                material.materialLocation;
+        });
+    </script>
+</main>
 
 
 @include('Include.footer')

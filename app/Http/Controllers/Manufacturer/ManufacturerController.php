@@ -39,7 +39,10 @@ class ManufacturerController extends Controller
 
     public function orders()
     {
-        return view('manufacturer.order.orders');
+        $manufacturer = Auth::guard('manufacturer')->user();
+        $sampleOrders = \App\Models\SampleOrder::where('manufacturer_id', $manufacturer->id)
+            ->with(['buyer', 'sample', 'material'])->latest()->paginate(15, ['*'], 'sample_orders_page');
+        return view('manufacturer.order.orders', compact('sampleOrders'));
     }
 
     public function plans()

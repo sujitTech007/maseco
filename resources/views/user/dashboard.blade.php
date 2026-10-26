@@ -1,24 +1,52 @@
 @include('user.Include.header')
 
 @php
-    // Inline SVG icon helper (Lucide-style, stroke icons). Size is set inline so theme SVG rules can't resize them.
-    $ico = function (string $name, int $size = 24, string $class = '', float $stroke = 1.8, bool $solid = false) {
-        $paths = [
-            'user' => '<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
-            'chat' => '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M13 8H7"/><path d="M17 12H7"/>',
-            'bag' => '<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>',
-            'card' => '<rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/>',
-            'star' => '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
-            'headset' => '<path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z"/><path d="M21 16v2a4 4 0 0 1-4 4h-5"/>',
-            'mail' => '<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>',
-            'arrow' => '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
-            'calendar' => '<path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/>',
-            'chevron' => '<path d="m6 9 6 6 6-6"/>',
-            'handshake' => '<path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/>',
-        ];
+// Inline SVG icon helper (Lucide-style, stroke icons). Size is set inline so theme SVG rules can't resize them.
+$ico = function (string $name, int $size = 24, string $class = '', float $stroke = 1.8, bool $solid = false) {
+$paths = [
+'user' => '
+<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+<circle cx="12" cy="7" r="4" />',
+'chat' => '
+<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+<path d="M13 8H7" />
+<path d="M17 12H7" />',
+'bag' => '
+<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+<path d="M3 6h18" />
+<path d="M16 10a4 4 0 0 1-8 0" />',
+'card' => '
+<rect width="20" height="14" x="2" y="5" rx="2" />
+<path d="M2 10h20" />
+<path d="M6 15h4" />',
+'star' => '
+<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />',
+'headset' => '
+<path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z" />
+<path d="M21 16v2a4 4 0 0 1-4 4h-5" />',
+'mail' => '
+<rect width="20" height="16" x="2" y="4" rx="2" />
+<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />',
+'arrow' => '
+<path d="M5 12h14" />
+<path d="m12 5 7 7-7 7" />',
+'calendar' => '
+<path d="M8 2v4" />
+<path d="M16 2v4" />
+<rect width="18" height="18" x="3" y="4" rx="2" />
+<path d="M3 10h18" />',
+'chevron' => '
+<path d="m6 9 6 6 6-6" />',
+'handshake' => '
+<path d="m11 17 2 2a1 1 0 1 0 3-3" />
+<path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" />
+<path d="m21 3 1 11h-2" />
+<path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" />
+<path d="M3 4h8" />',
+];
 
-        return '<svg xmlns="http://www.w3.org/2000/svg" width="' . $size . '" height="' . $size . '" viewBox="0 0 24 24" fill="' . ($solid ? 'currentColor' : 'none') . '" stroke="currentColor" stroke-width="' . $stroke . '" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 ' . $class . '" style="width:' . $size . 'px;height:' . $size . 'px" aria-hidden="true">' . $paths[$name] . '</svg>';
-    };
+return '<svg xmlns="http://www.w3.org/2000/svg" width="' . $size . '" height="' . $size . '" viewBox="0 0 24 24" fill="' . ($solid ? 'currentColor' : 'none') . '" stroke="currentColor" stroke-width="' . $stroke . '" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 ' . $class . '" style="width:' . $size . 'px;height:' . $size . 'px" aria-hidden="true">' . $paths[$name] . '</svg>';
+};
 @endphp
 
 <div class="page-content">
@@ -120,18 +148,15 @@
 
                         <p class="fs-1 fw-bold lh-1 mb-2">{{ $enquiriesCount }}</p>
                         <p class="text-muted small mb-4">Requests sent to suppliers and manufacturers.</p>
-                        <div class="d-flex flex-wrap gap-2 mt-auto">
-                            <a href="{{ route('user.enquiries') }}"
-                                data-chat-notifications
-                                class="btn btn-sm fw-bold rounded-pill px-3 py-2 align-self-start mt-0 d-inline-flex align-items-center gap-2 bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25">
-                                Open chats {!! $ico('chat', 16) !!}<span class="badge bg-danger rounded-pill" data-chat-unread-count hidden></span>
-                            </a>
-                            <small class="text-danger align-self-center" data-chat-unread-sender hidden></small>
-                            <a href="{{ route('listing') }}"
-                                class="btn btn-sm fw-bold rounded-pill px-3 py-2 align-self-start mt-0 d-inline-flex align-items-center gap-2 bg-primary text-white border border-primary">
-                                Create RFQ {!! $ico('arrow', 16) !!}
-                            </a>
-                        </div>
+                            <div class="d-flex flex-wrap gap-2 mt-auto">
+                                <a href="{{ route('user.enquiries') }}"
+                                    data-chat-notifications
+                                    class="btn btn-sm fw-bold rounded-pill px-3 py-2 align-self-start mt-0 d-inline-flex align-items-center gap-2 bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25">
+                                    Open chats {!! $ico('chat', 16) !!}<span class="badge bg-danger rounded-pill" data-chat-unread-count hidden></span>
+                                </a>
+                                <small class="text-danger align-self-center" data-chat-unread-sender hidden></small>
+
+                            </div>
                     </div>
                 </div>
             </div>
@@ -207,17 +232,17 @@
                     <h3 class="h4 fw-bold mb-0">Active Subscription</h3>
                 </div>
                 @if($activeSubscription)
-                    <div>
-                        <p class="mb-1"><b>Plan:</b> {{ $activeSubscription->plan_name ?? 'N/A' }}</p>
-                        <p class="mb-1"><b>Amount:</b>
-                            ${{ number_format($activeSubscription->amount ?? $activeSubscription->price ?? 0, 2) }}</p>
-                        <p class="mb-0"><b>Status:</b> {{ ucfirst($activeSubscription->payment_status) }}</p>
-                    </div>
+                <div>
+                    <p class="mb-1"><b>Plan:</b> {{ $activeSubscription->plan_name ?? 'N/A' }}</p>
+                    <p class="mb-1"><b>Amount:</b>
+                        ${{ number_format($activeSubscription->amount ?? $activeSubscription->price ?? 0, 2) }}</p>
+                    <p class="mb-0"><b>Status:</b> {{ ucfirst($activeSubscription->payment_status) }}</p>
+                </div>
                 @else
-                    <p class="mb-1">No active subscription. <a href="{{ route('subscription.plan') }}"
-                            class="text-success fw-semibold">Browse plans</a></p>
-                    <p class="text-muted small mb-0">Upgrade to Premium for generative AI and supplier + vendor
-                        match-making, or to Pro for post-production features.</p>
+                <p class="mb-1">No active subscription. <a href="{{ route('subscription.plan') }}"
+                        class="text-success fw-semibold">Browse plans</a></p>
+                <p class="text-muted small mb-0">Upgrade to Premium for generative AI and supplier + vendor
+                    match-making, or to Pro for post-production features.</p>
                 @endif
             </div>
         </div>

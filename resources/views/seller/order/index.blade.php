@@ -280,6 +280,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                         <th>Date</th>
 
                                         <th>Status</th>
+                                        <th>Files &amp; Samples</th>
 
                                     </tr>
 
@@ -311,25 +312,43 @@ document.addEventListener('DOMContentLoaded', function () {
                                           <td class="text-nowrap text-muted">{{ $o->created_at?->format('d M Y') }}</td>
 
                                           <td><span class="ud-st ud-st-{{ ($o->payment_status ?? 'pending') === 'paid' ? 'success' : 'warning' }} rounded-pill d-inline-block text-nowrap">{{ ucfirst($o->status) }}</span></td>
+                                          <td><a class="btn btn-sm btn-outline-primary" href="{{ route('seller.orders.sharing',$o->id) }}">Open sharing</a></td>
 
                                       </tr>
 
                                     @empty
-
+                                      @if($sampleOrders->isEmpty())
                                       <tr>
 
-                                          <td colspan="8" class="text-center text-muted">
+                                          <td colspan="9" class="text-center text-muted">
                                               <div>No orders found.</div>
                                               <div class="small">Orders created from approved RFQs will appear here.</div>
                                           </td>
 
                                       </tr>
+                                      @endif
 
                                     @endforelse
+
+                                    @foreach($sampleOrders as $sampleOrder)
+                                      <tr class="table-light">
+                                          <td class="text-muted">{{ $sampleOrder->reference }}</td>
+                                          <td><span class="badge bg-success-subtle text-success">Sample</span></td>
+                                          <td class="fw-semibold">{{ $sampleOrder->buyer->name ?? 'Buyer #'.$sampleOrder->buyer_id }}</td>
+                                          <td>{{ $sampleOrder->sample->name ?? 'Sample' }}<div class="small text-muted">{{ $sampleOrder->material->name ?? '' }}</div></td>
+                                          <td>{{ $sampleOrder->quantity }}</td>
+                                          <td class="text-nowrap"><span class="fw-semibold">{{ number_format($sampleOrder->total_amount,2) }}</span><div class="text-muted small">Payment: {{ ucfirst($sampleOrder->payment_status) }}</div></td>
+                                          <td class="text-nowrap text-muted">{{ $sampleOrder->created_at?->format('d M Y') }}</td>
+                                          <td>{{ ucfirst(str_replace('_',' ',$sampleOrder->order_status)) }}</td>
+                                          <td><div class="d-flex flex-wrap gap-1"><a class="btn btn-sm btn-outline-primary" href="{{ route('seller.samples.purchase.show',$sampleOrder) }}">Details</a>@if($sampleOrder->order_status==='awaiting_approval')<form method="POST" action="{{ route('seller.samples.decision',$sampleOrder) }}">@csrf<input type="hidden" name="decision" value="approve"><button class="btn btn-sm btn-success">Approve</button></form><form method="POST" action="{{ route('seller.samples.decision',$sampleOrder) }}">@csrf<input type="hidden" name="decision" value="reject"><button class="btn btn-sm btn-outline-danger">Reject</button></form>@endif</div></td>
+                                      </tr>
+                                    @endforeach
 
                                 </tbody>
 
                             </table>
+
+                            <div class="mt-3">{{ $sampleOrders->links() }}</div>
 
                             <!-- end table -->
 

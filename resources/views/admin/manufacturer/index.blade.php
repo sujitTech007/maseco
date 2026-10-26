@@ -201,9 +201,8 @@
                                 <td>
                                     <div class="actionBtn">
                                         <a
-                                            href="javascript:void(0);"
-                                            class="manufacturer-view-btn viewManufacturerBtn"
-                                            data-manufacturer='@json($manufacturer)'
+                                            href="{{ route('admin.manufacturer.show', $manufacturer->id) }}"
+                                            class="manufacturer-view-btn"
                                             title="View manufacturer"
                                             aria-label="View {{ $manufacturer->name }}"
                                         >
@@ -228,256 +227,41 @@
     </div>
 </div>
 
-
-  @include('admin.Include.footer')
-
-
-
-  <!-- Manufacturer Details Modal -->
-
- 
-<!-- Manufacturer Details Modal -->
-<div class="modal fade maseco-user-modal" id="manufacturerDetailsModal"
-    tabindex="-1" aria-labelledby="manufacturerDetailsModalLabel" aria-hidden="true">
-
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-
-            <!-- Header -->
-            <div class="modal-header">
-                <div>
-                    <span class="user-modal-eyebrow">MASECO ADMIN</span>
-                    <h5 class="modal-title" id="manufacturerDetailsModalLabel">
-                        Manufacturer Details
-                    </h5>
-                </div>
-
-                <button type="button" class="btn-close"
-                    data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-            <!-- Body -->
-            <div class="modal-body">
-
-                <!-- Manufacturer Profile -->
-                <div class="user-modal-profile ">
-                    <div class="user-modal-avatar">
-                        <i class="fa-solid fa-building"></i>
-                    </div>
-
-                    <div>
-                        <h6 id="modalManufacturerName" class="user-modal-name">—</h6>
-                        <span class="user-modal-caption">Manufacturer Profile</span>
-                    </div>
-                </div>
-
-                <!-- Manufacturer Information -->
-                <div class="user-modal-details">
-
-                    <div class="user-detail-item">
-                        <div class="user-detail-icon">
-                            <i class="fa-solid fa-envelope"></i>
-                        </div>
-                        <div class="user-detail-content">
-                            <span>Email Address</span>
-                            <strong id="modalManufacturerEmail">—</strong>
-                        </div>
-                    </div>
-
-                    <div class="user-detail-item">
-                        <div class="user-detail-icon">
-                            <i class="fa-solid fa-phone"></i>
-                        </div>
-                        <div class="user-detail-content">
-                            <span>Phone Number</span>
-                            <strong id="modalManufacturerPhone">—</strong>
-                        </div>
-                    </div>
-
-                    <div class="user-detail-item">
-                        <div class="user-detail-icon">
-                            <i class="fa-solid fa-building"></i>
-                        </div>
-                        <div class="user-detail-content">
-                            <span>Company Name</span>
-                            <strong id="modalManufacturerCompany">—</strong>
-                        </div>
-                    </div>
-
-                    <div class="user-detail-item">
-                        <div class="user-detail-icon">
-                            <i class="fa-solid fa-shield"></i>
-                        </div>
-                        <div class="user-detail-content">
-                            <span>Account Status</span>
-                            <strong id="modalManufacturerStatus">—</strong>
-                        </div>
-                    </div>
-
-                    <div class="user-detail-item">
-                        <div class="user-detail-icon">
-                            <i class="fa-solid fa-calendar-days"></i>
-                        </div>
-                        <div class="user-detail-content">
-                            <span>Registered On</span>
-                            <strong id="modalManufacturerCreated">—</strong>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Footer -->
-            <div class="modal-footer">
-                <button type="button" class="user-modal-close-btn"
-                    data-bs-dismiss="modal">
-                    Close
-                </button>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-  <script>
-    document.querySelectorAll('.manufacturer-status-toggle').forEach(function(toggle) {
-
-      toggle.addEventListener('change', function() {
-
-        var manufacturerId = this.getAttribute('data-id');
-
-        var status = this.checked ? 1 : 0;
-
-        fetch("{{ url('admin/manufacturer/status') }}/" + manufacturerId, {
-
-            method: 'POST',
-
-            headers: {
-
-              'X-CSRF-TOKEN': '{{ csrf_token() }}',
-
-              'Content-Type': 'application/json'
-
-            },
-
-            body: JSON.stringify({
-              status: status
-            })
-
-          })
-
-          .then(response => response.json())
-
-          .then(data => {
-
-            if (data.success) {
-
-              this.nextElementSibling.className = 'badge bg-' + (status ? 'success' : 'danger') + ' ms-2';
-
-              this.nextElementSibling.textContent = status ? 'Active' : 'Inactive';
-
-              // Show success message
-
-              let msg = document.createElement('div');
-
-              msg.className = 'alert alert-success position-fixed top-0 end-0 m-3';
-
-              msg.style.zIndex = 9999;
-
-              msg.textContent = 'Status changed successfully!';
-
-              document.body.appendChild(msg);
-
-              setTimeout(() => msg.remove(), 2000);
-
-            }
-
-          });
-
-      });
-
-    });
-
-    // Manufacturer details modal logic
-
-    document.querySelectorAll('.viewManufacturerBtn').forEach(function(btn) {
-
-      btn.addEventListener('click', function() {
-
-        var manufacturer = JSON.parse(this.getAttribute('data-manufacturer'));
-
-        document.getElementById('modalManufacturerName').textContent = manufacturer.name || '';
-
-        document.getElementById('modalManufacturerEmail').textContent = manufacturer.email || '';
-
-        document.getElementById('modalManufacturerPhone').textContent = [manufacturer.country_code, manufacturer.phone].filter(Boolean).join(' ');
-
-        document.getElementById('modalManufacturerCompany').textContent = manufacturer.company_name || '';
-
-        document.getElementById('modalManufacturerStatus').textContent = manufacturer.status == 1 ? 'Active' : 'Inactive';
-
-        document.getElementById('modalManufacturerCreated').textContent = manufacturer.created_at || '';
-
-        var modal = new bootstrap.Modal(document.getElementById('manufacturerDetailsModal'));
-
-        modal.show();
-
-      });
-
-    });
-  </script>
-  
 <script>
-  const searchInput = document.getElementById('dt-search-0');
-  const table = document.querySelector('.table-custom tbody');
-  const rows = table.getElementsByTagName('tr');
+document.querySelectorAll('.manufacturer-status-toggle').forEach(function (toggle) {
+    toggle.addEventListener('change', async function () {
+        const checkbox = this;
+        const previousStatus = !checkbox.checked;
+        const status = checkbox.checked ? 1 : 0;
 
-  function filterTable() {
-    const filter = searchInput.value.toLowerCase();
-
-    for (let i = 0; i < rows.length; i++) {
-      const cells = rows[i].getElementsByTagName('td');
-      let found = false;
-
-      for (let j = 0; j < cells.length; j++) {
-        if (cells[j].textContent.toLowerCase().includes(filter)) {
-          found = true;
-          break;
-        }
-      }
-
-      rows[i].style.display = found ? '' : 'none';
-    }
-  }
-
-  // Works for typing + clear (✖) icon
-  searchInput.addEventListener('input', filterTable);
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const searchInput = document.getElementById('manufacturer-search');
-        const table = document.getElementById('manufacturer-directory-table');
-
-        if (!searchInput || !table) {
-            return;
-        }
-
-        // Use simple client-side search without changing existing backend behavior.
-        searchInput.addEventListener('input', function () {
-            const searchTerm = this.value.toLowerCase().trim();
-            const rows = table.querySelectorAll('tbody tr');
-
-            rows.forEach(function (row) {
-                const isEmptyRow = row.querySelector('.manufacturer-empty');
-
-                if (isEmptyRow) {
-                    return;
-                }
-
-                row.style.display = row.textContent.toLowerCase().includes(searchTerm)
-                    ? ''
-                    : 'none';
+        try {
+            const response = await fetch("{{ url('admin/manufacturer/status') }}/" + encodeURIComponent(checkbox.dataset.id), {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ status: status })
             });
-        });
+            if (!response.ok) throw new Error('Request failed');
+            const result = await response.json();
+            if (!result.success) throw new Error('Status was not updated');
+
+            const row = checkbox.closest('tr');
+            const badge = row && row.querySelector('.status-label');
+            if (row) row.dataset.status = status ? 'active' : 'inactive';
+            if (badge) {
+                badge.classList.toggle('active', Boolean(status));
+                badge.classList.toggle('inactive', !status);
+                badge.textContent = status ? 'Active' : 'Inactive';
+            }
+        } catch (error) {
+            checkbox.checked = previousStatus;
+            window.alert('Could not update account status. Please try again.');
+        }
     });
+});
 </script>
+
+@include('admin.Include.footer')

@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Material;
+use App\Models\ProductSample;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -26,7 +27,8 @@ class MaterialController extends Controller
       
         // $query = Material::where('supplier_id', Auth::id());
 
-        $query = Material::where('supplier_id', Auth::id());
+        $supplier = Auth::guard('supplier')->user();
+        $query = Material::where('supplier_id', $supplier->id);
 
         if ($request->filled('search')) {
 
@@ -39,8 +41,10 @@ class MaterialController extends Controller
         }
 
         $materials = $query->orderBy('id', 'desc')->get();
+        $sampleMaterials = Material::where('supplier_id', $supplier->id)->orderBy('name')->get();
+        $samples = ProductSample::where('supplier_id', $supplier->id)->with(['material', 'files'])->latest()->get();
 
-        return view('seller.material.index', compact('materials'));
+        return view('seller.material.index', compact('materials', 'samples', 'sampleMaterials'));
     }
 
 

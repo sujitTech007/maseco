@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\Enquiry;
 
 use App\Models\SubscriptionPurchase;
+use App\Models\SampleOrder;
 
 
 
@@ -221,8 +222,33 @@ class UserDashboardController extends Controller
 
             ->get();
 
-        return view('user.order.index', compact('orders'));
+        $sampleOrders = SampleOrder::where('buyer_id', $user->id)
+            ->with(['sample', 'material'])
+            ->orderByDesc('created_at')
+            ->get();
 
+        return view('user.order.index', compact('orders', 'sampleOrders'));
+
+    }
+
+    public function report()
+    {
+        $user = Auth::user();
+        $ordersCount = Order::where('user_id', $user->id)->count();
+        $enquiriesCount = Enquiry::where('user_id', $user->id)->count();
+        $paymentsTotal = \App\Models\Payment::where('user_id', $user->id)->sum('amount');
+        $activeSubscription = SubscriptionPurchase::where('user_id', $user->id)
+            ->where('payment_status', 'paid')
+            ->latest()
+            ->first();
+
+        return view('user.report', compact(
+            'user',
+            'ordersCount',
+            'enquiriesCount',
+            'paymentsTotal',
+            'activeSubscription'
+        ));
     }
 
     public function tracking(Request $request)

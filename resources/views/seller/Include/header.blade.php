@@ -293,6 +293,8 @@
 
 
 
+                                            <li class="side-nav-item {{ request()->routeIs('seller.samples.*') ? 'active' : '' }}"><a href="{{ route('seller.samples.index') }}" class="side-nav-link {{ request()->routeIs('seller.samples.*') ? 'active' : '' }}"><span class="menu-icon"><i class="fa-solid fa-flask"></i></span><span class="menu-text">Manage Samples</span></a></li>
+
                                             <li
                                                 class="side-nav-item {{ request()->routeIs('seller.orders') ? 'active' : '' }}">
 

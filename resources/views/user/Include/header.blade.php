@@ -184,9 +184,6 @@
                     </a>
 
                 </li>
-
-
-
                 <li class="side-nav-item {{ request()->routeIs('user.orders') ? 'active' : '' }}">
 
                     <a href="{{ route('user.orders') }}" class="side-nav-link {{ request()->routeIs('user.orders') ? 'active' : '' }}">
@@ -202,11 +199,33 @@
                     </a>
 
                 </li>
-                <li class="side-nav-item {{ request()->routeIs('user.tracking') ? 'active' : '' }}">
+
+                <li class="side-nav-item {{ request()->routeIs('user.samples.*') ? 'active' : '' }}">
+                    <a href="{{ route('user.samples.orders') }}" class="side-nav-link {{ request()->routeIs('user.samples.*') ? 'active' : '' }}">
+                        <span class="menu-icon"><i class="fa-solid fa-flask"></i></span>
+                        <span class="menu-text">Sample Purchases</span>
+                    </a>
+                </li>
+
+
+
+
+                <!-- <li class="side-nav-item {{ request()->routeIs('user.tracking') ? 'active' : '' }}">
 
                     <a href="{{ route('user.tracking') }}" class="side-nav-link {{ request()->routeIs('user.tracking') ? 'active' : '' }}">
 
-                        <span class="menu-icon"> <i class="fa-solid fa-truck-fast"></i>
+                        <span class="menu-icon"> <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                                <circle cx="8" cy="21" r="1"></circle>
+                                <circle cx="19" cy="21" r="1"></circle>
+
+                                <path d="M1 4h4l2.5 10.5A2 2 0 0 0 9.5 16h9.5a2 2 0 0 0 1.9-1.4L23 7H6"></path>
+
+                                <path d="M11 11.5l1.5 1.5l3 -3"></path>
+
+                            </svg>
+
                         </span>
 
                         <span class="menu-text">Order Tracking
@@ -215,22 +234,8 @@
 
                     </a>
 
-                </li>
-                <li class="side-nav-item {{ request()->routeIs('user.orders') ? 'active' : '' }}">
+                </li> -->
 
-                    <a href="{{ route('user.orders') }}" class="side-nav-link {{ request()->routeIs('user.orders') ? 'active' : '' }}">
-
-                        <span class="menu-icon"><i class="fa-solid fa-chart-line"></i>
-
-                        </span>
-
-                        <span class="menu-text">report
-
-                        </span>
-
-                    </a>
-
-                </li>
 
                 <li class="side-nav-item {{ request()->routeIs('user.payments') ? 'active' : '' }}">
 
@@ -239,7 +244,7 @@
                         <span class="menu-icon"><i class="fa-solid fa-money-check-dollar"></i>
                         </span>
 
-                        <span class="menu-text"> Order Payment
+                        <span class="menu-text">Payment
 
                         </span>
 
@@ -262,7 +267,7 @@
 
                 </li>
 
-                <h5 style="padding-left: 20px;font-size: 14px;font-weight: 300;padding-top: 50px;color: #727272;"> Tools </h5>
+                <!-- <h5 style="padding-left: 20px;font-size: 14px;font-weight: 300;padding-top: 50px;color: #727272;"> Tools </h5> -->
 
                 <li class="side-nav-item {{ request()->routeIs('user.wishlist') ? 'active' : '' }}">
                     <a href="{{ route('user.wishlist') }}" class="side-nav-link {{ request()->routeIs('user.wishlist') ? 'active' : '' }}">
@@ -288,6 +293,35 @@
                     </a>
 
                 </li>
+                <li class="side-nav-item {{ request()->routeIs('user.report') ? 'active' : '' }}">
+
+                    <a href="{{ route('user.report') }}" class="side-nav-link {{ request()->routeIs('user.report') ? 'active' : '' }}">
+
+                        <span class="menu-icon"> <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                                <!-- Wheels -->
+                                <circle cx="8" cy="21" r="1"></circle>
+                                <circle cx="19" cy="21" r="1"></circle>
+
+                                <!-- Cart -->
+                                <path d="M1 4h4l2.5 10.5A2 2 0 0 0 9.5 16h9.5a2 2 0 0 0 1.9-1.4L23 7H6"></path>
+
+                                <!-- CENTERED TICK (finally correct) -->
+                                <path d="M11 11.5l1.5 1.5l3 -3"></path>
+
+                            </svg>
+
+                        </span>
+
+                        <span class="menu-text">Reports
+
+                        </span>
+
+                    </a>
+
+                </li>
+
 
                 <li class="side-nav-item">
 
