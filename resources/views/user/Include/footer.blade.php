@@ -19,6 +19,7 @@
 
     <script src="{{ asset('public/assets/js/dashboard.js') }}"></script>
     <script src="{{ asset('public/assets/js/dashboard-auto-filters.js') }}"></script>
+     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/intlTelInput.min.js"></script>
 
     @if (Request::is('user/profile'))
         <script src="{{ asset('public/assets/js/jquery.min.js') }}"></script>

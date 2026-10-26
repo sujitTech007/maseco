@@ -43,6 +43,9 @@
         <link href="{{ asset('public/assets/css/all.min.css') }}" rel="stylesheet" type="text/css">
 
         <link href="{{ asset('public/assets/css/custom.css') }}" rel="stylesheet" type="text/css">
+        <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/css/intlTelInput.css">
+
         @if (Request::is('manufacturer/profile'))
             <link href="{{ asset('public/assets/css/bootstrap-select.min.css') }}" rel="stylesheet" type="text/css">
             <link href="{{ asset('public/assets/css/phone-country-code.css') }}" rel="stylesheet" type="text/css">
