@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\SubscriptionPlan;
 use App\Models\SubscriptionPurchase;
+use App\Support\SubscriptionAccess;
 use Illuminate\Support\Facades\Auth;
 use \Stripe\Stripe;
 use Stripe\PaymentIntent;
@@ -42,24 +43,34 @@ class SubscriptionPurchaseController extends Controller
                 'commission_amount'=>$commissionAmount, 'start_date'=>$start, 'end_date'=>$end,
                 'is_active'=>$paid, 'payment_status'=>$paid?'paid':'pending',
             ];
-            if ($paymentReference) {
-                SubscriptionPurchase::firstOrCreate(['stripe_id'=>$paymentReference], $attributes);
-            } else {
-                SubscriptionPurchase::create($attributes);
-            }
+            DB::transaction(function () use ($account, $paymentReference, $attributes) {
+                if ($paymentReference && SubscriptionPurchase::where('stripe_id', $paymentReference)->exists()) return;
+                SubscriptionPurchase::where('user_id', $account->id)->where('is_active', true)->update(['is_active'=>false]);
+                if ($paymentReference) SubscriptionPurchase::create($attributes + ['stripe_id'=>$paymentReference]);
+                else SubscriptionPurchase::create($attributes);
+            });
             return;
         }
 
         $table = $type === 'supplier' ? 'supplier_subscription_purchases' : 'manufacturer_subscription_purchases';
         $ownerColumn = $type.'_id';
         $referenceColumn = 'stripe_session_id';
-        if ($paymentReference && DB::table($table)->where($referenceColumn,$paymentReference)->exists()) return;
-        DB::table($table)->insert([
-            $ownerColumn=>$account->id, 'subscription_plan_id'=>$plan->id, 'plan_name'=>$plan->name,
-            $referenceColumn=>$paymentReference, 'price'=>$plan->price,
-            'payment_status'=>$paid?'paid':'pending', 'start_date'=>$start, 'end_date'=>$end,
-            'is_active'=>$paid, 'created_at'=>now(), 'updated_at'=>now(),
-        ]);
+        DB::transaction(function () use ($table, $ownerColumn, $account, $plan, $paymentReference, $referenceColumn, $paid, $start, $end) {
+            if ($paymentReference && DB::table($table)->where($referenceColumn,$paymentReference)->exists()) return;
+            DB::table($table)->where($ownerColumn,$account->id)->where('is_active',true)->update(['is_active'=>false,'updated_at'=>now()]);
+            DB::table($table)->insert([$ownerColumn=>$account->id,'subscription_plan_id'=>$plan->id,'plan_name'=>$plan->name,$referenceColumn=>$paymentReference,'price'=>$plan->price,'payment_status'=>$paid?'paid':'pending','start_date'=>$start,'end_date'=>$end,'is_active'=>$paid,'created_at'=>now(),'updated_at'=>now()]);
+        });
+    }
+
+    private function dashboardRoute(string $type): string
+    {
+        return match ($type) { 'supplier'=>'seller.dashboard', 'manufacturer'=>'manufacturer.dashboard', default=>'user.dashboard' };
+    }
+
+    private function upgradeAllowed(string $type, $account, SubscriptionPlan $plan): bool
+    {
+        $current = SubscriptionAccess::current($type, (int)$account->id);
+        return !$current || (float)$plan->price > (float)($current->price ?? 0);
     }
 
     public function purchase(Request $request)
@@ -76,6 +87,7 @@ class SubscriptionPurchaseController extends Controller
 
         $plan = SubscriptionPlan::findOrFail($request->input('plan_id'));
         if ($plan->status !== 'active') return response()->json(['error'=>'This subscription plan is not available.'],422);
+        if (!$this->upgradeAllowed($type,$account,$plan)) return response()->json(['error'=>'You already have an active subscription. You can upgrade to a higher plan or purchase another plan after it expires.'],409);
 
         // Handle free plans directly
         if ((float)$plan->price <= 0) {
@@ -85,7 +97,7 @@ class SubscriptionPurchaseController extends Controller
                 if ($purchase) $this->sendPurchaseConfirmation($purchase);
             }
 
-            return response()->json(['redirect' => route('subscription.plan')]);
+            return response()->json(['redirect' => route($this->dashboardRoute($type))]);
         }
 
         if (!config('services.stripe.secret')) return response()->json(['error'=>'Online subscription payment is not configured.'],503);
@@ -172,7 +184,7 @@ class SubscriptionPurchaseController extends Controller
                 if ($purchase) $this->sendPurchaseConfirmation($purchase);
             }
 
-            return redirect()->route('subscription.plan')->with('success', 'Subscription purchased successfully!');
+            return redirect()->route($this->dashboardRoute($type))->with('success', 'Subscription purchased successfully!');
         } catch (\Exception $e) {
             return redirect()->route('subscription.plan')->with('error', 'Payment verification failed: ' . $e->getMessage());
         }
@@ -189,9 +201,10 @@ class SubscriptionPurchaseController extends Controller
         $validated=$request->validate(['plan_id'=>'nullable|integer|exists:subscription_plans,id','plan_name'=>'nullable|string|max:255']);
         $plan=!empty($validated['plan_id']) ? SubscriptionPlan::findOrFail($validated['plan_id']) : SubscriptionPlan::where('name',$validated['plan_name']??'')->firstOrFail();
         abort_unless($plan->status==='active' && (float)$plan->price<=0,422,'Only an active free plan can be activated here.');
+        if (!$this->upgradeAllowed($type,$account,$plan)) return redirect()->back()->with('error','You already have an active subscription. Upgrade to a higher plan or wait until it expires.');
         $this->createAccountSubscription($type,$account,$plan);
         if($type==='buyer') { $purchase=SubscriptionPurchase::where('user_id',$account->id)->where('plan_name',$plan->name)->latest()->first(); if($purchase)$this->sendPurchaseConfirmation($purchase); }
-        return redirect()->route('subscription.plan')->with('success','Subscription activated successfully.');
+        return redirect()->route($this->dashboardRoute($type))->with('success','Subscription activated successfully.');
     }
 
     public function charge(Request $request)
@@ -211,6 +224,7 @@ class SubscriptionPurchaseController extends Controller
 
         $plan=!empty($validated['plan_id']) ? SubscriptionPlan::findOrFail($validated['plan_id']) : SubscriptionPlan::whereRaw('LOWER(name) = ?', [strtolower($validated['plan_name']??'')])->firstOrFail();
         abort_unless($plan->status==='active' && (float)$plan->price>0,422,'Select an active paid subscription plan.');
+        if (!$this->upgradeAllowed($type,$account,$plan)) return response()->json(['status'=>'error','message'=>'You already have an active subscription. Select a higher plan to upgrade.'],409);
         if (isset($validated['plan_price']) && round((float)$validated['plan_price'],2)!==round((float)$plan->price,2)) {
             return response()->json(['status'=>'error','message'=>'The submitted plan price does not match the selected plan.'],422);
         }
@@ -242,7 +256,7 @@ class SubscriptionPurchaseController extends Controller
             if($purchase)$this->sendPurchaseConfirmation($purchase);
         }
 
-        return response()->json(['status' => 'success']);
+        return response()->json(['status' => 'success', 'redirect' => route($this->dashboardRoute($type))]);
     }
 
     private function sendPurchaseConfirmation(SubscriptionPurchase $purchase): void
