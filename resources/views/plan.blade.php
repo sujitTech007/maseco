@@ -211,14 +211,6 @@
                     @endif
 
                     <div class="getStarted-btn">
-                        @if(Auth::guard('supplier')->check() || Auth::guard('manufacturer')->check())
-
-                            <button type="button" class="btn theme-btn-outline" disabled>
-                                Not Available
-                            </button>
-
-                        @else
-
                             <button
                                 type="button"
                                 class="btn {{ $isPremium ? 'theme-btn text-white w-100' : '' }} theme-btn-outline w-100"
@@ -238,7 +230,6 @@
 
                             </button>
 
-                        @endif
                     </div>
 
                 </article>

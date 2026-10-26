@@ -267,6 +267,13 @@
 
                 </li>
 
+                <li class="side-nav-item {{ request()->routeIs('subscription.plan') ? 'active' : '' }}">
+                    <a href="{{ route('subscription.plan') }}" class="side-nav-link {{ request()->routeIs('subscription.plan') ? 'active' : '' }}">
+                        <span class="menu-icon"><i class="fa-solid fa-credit-card"></i></span>
+                        <span class="menu-text">Choose Subscription Plan</span>
+                    </a>
+                </li>
+
                 <!-- <h5 style="padding-left: 20px;font-size: 14px;font-weight: 300;padding-top: 50px;color: #727272;"> Tools </h5> -->
 
                 <li class="side-nav-item {{ request()->routeIs('user.wishlist') ? 'active' : '' }}">

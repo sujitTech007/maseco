@@ -8,6 +8,7 @@ use App\Models\Enquiry;
 use App\Models\Order;
 use App\Models\Material;
 use App\Models\ChatMessage;
+use App\Support\SubscriptionAccess;
 
 class EnquiryController extends Controller
 {
@@ -63,6 +64,9 @@ class EnquiryController extends Controller
             // Detect logged-in user by guard
             if (Auth::guard('web')->check()) {
                 $user = Auth::guard('web')->user();
+                if (!SubscriptionAccess::hasActive('buyer', (int)$user->id)) {
+                    return redirect()->route('subscription.plan')->with('error', 'Please activate a subscription before placing an order request.');
+                }
                 $redirect = 'user.enquiries';
         
             } elseif (Auth::guard('supplier')->check()) {
@@ -110,6 +114,14 @@ class EnquiryController extends Controller
     public function approveBySupplier(Request $request, $id)
     {
         $enquiry = Enquiry::findOrFail($id);
+        $supplier = Auth::guard('supplier')->user();
+        abort_unless($supplier && (int)$enquiry->supplier_id === (int)$supplier->id, 403);
+        if (!SubscriptionAccess::hasActive('supplier', (int)$supplier->id)) {
+            return redirect()->route('subscription.plan')->with('error', 'Activate a supplier subscription before approving requests and creating orders.');
+        }
+        if ($enquiry->status === 'approved' && Order::where('enquiry_id',$enquiry->id)->exists()) {
+            return back()->with('error', 'This enquiry has already been converted to an order.');
+        }
         $validated = $request->validate([
             'amount' => 'required|numeric|min:0',
             'quantity' => 'nullable|numeric|min:0',
@@ -135,6 +147,23 @@ class EnquiryController extends Controller
 
     public function approveByManufacturer(Request $request, $id)
     {
-        return $this->approveBySupplier($request, $id);
+        $enquiry = Enquiry::findOrFail($id);
+        $manufacturer = Auth::guard('manufacturer')->user();
+        abort_unless($manufacturer && (int)$enquiry->manufacturer_id === (int)$manufacturer->id, 403);
+        if (!SubscriptionAccess::hasActive('manufacturer', (int)$manufacturer->id)) {
+            return redirect()->route('subscription.plan')->with('error', 'Activate a manufacturer subscription before approving requests and creating orders.');
+        }
+        if ($enquiry->status === 'approved' && Order::where('enquiry_id',$enquiry->id)->exists()) {
+            return back()->with('error', 'This enquiry has already been converted to an order.');
+        }
+        $validated=$request->validate(['amount'=>'required|numeric|min:0','quantity'=>'nullable|numeric|min:0']);
+        $enquiry->update(['status'=>'approved']);
+        Order::create([
+            'user_id'=>$enquiry->user_id,'enquiry_id'=>$enquiry->id,'supplier_id'=>$enquiry->supplier_id,
+            'manufacturer_id'=>$enquiry->manufacturer_id,'material_id'=>$enquiry->material_id,
+            'quantity'=>$validated['quantity']??$enquiry->quantity,'amount'=>$validated['amount'],
+            'status'=>'pending','payment_status'=>'pending',
+        ]);
+        return back()->with('success', 'Enquiry approved and order generated.');
     }
 }

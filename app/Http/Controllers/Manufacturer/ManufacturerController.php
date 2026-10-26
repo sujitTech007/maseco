@@ -47,7 +47,7 @@ class ManufacturerController extends Controller
 
     public function plans()
     {
-        return view('manufacturer.plan.plans');
+        return redirect()->route('subscription.plan');
     }
 
     public function payment()
