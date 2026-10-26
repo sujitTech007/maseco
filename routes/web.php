@@ -187,6 +187,10 @@ Route::get('/chat/unread', [\App\Http\Controllers\ChatController::class, 'unread
 Route::get('/chat/{enquiry}', [\App\Http\Controllers\ChatController::class, 'show'])->name('chat.show');
 Route::get('/chat/{enquiry}/messages', [\App\Http\Controllers\ChatController::class, 'messages'])->name('chat.messages');
 Route::post('/chat/{enquiry}/messages', [\App\Http\Controllers\ChatController::class, 'send'])->name('chat.send');
+Route::middleware(['auth:supplier,manufacturer,web'])->group(function () {
+    Route::get('/enquiries/{enquiry}/meetings', [\App\Http\Controllers\EnquiryMeetingController::class, 'index'])->name('enquiry.meetings.index');
+    Route::post('/enquiries/{enquiry}/meetings', [\App\Http\Controllers\EnquiryMeetingController::class, 'store'])->name('enquiry.meetings.store');
+});
 
 // User dashboard routes
 Route::prefix('user')->name('user.')->middleware(['auth'])->group(function () {

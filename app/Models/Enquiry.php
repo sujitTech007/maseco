@@ -34,4 +34,9 @@ class Enquiry extends Model
     {
         return $this->hasMany(ChatMessage::class);
     }
+
+    public function meetings()
+    {
+        return $this->hasMany(EnquiryMeeting::class);
+    }
 }

@@ -270,7 +270,7 @@ $rows = collect([
 
                             <th>Date</th>
 
-                            <th>Chat</th>
+                            <th>Chat / Meeting</th>
 
                         </tr>
 
@@ -321,7 +321,7 @@ $rows = collect([
 
                             <td class="text-nowrap text-muted">{{ $enquiry->created_at->format('d M Y') }}</td>
 
-                            <td><a href="{{ route('chat.show', $enquiry->id) }}" class="btn btn-sm btn-outline-success text-nowrap" data-chat-enquiry="{{ $enquiry->id }}"><i class="fa-regular fa-comments me-1"></i>Open chat <span class="badge bg-danger rounded-pill ms-1" data-chat-unread-count hidden></span></a><small class="d-block text-danger mt-1" data-chat-unread-sender hidden></small></td>
+                            <td><div class="d-flex flex-wrap gap-1"><a href="{{ route('chat.show', $enquiry->id) }}" class="btn btn-sm btn-outline-success text-nowrap" data-chat-enquiry="{{ $enquiry->id }}"><i class="fa-regular fa-comments me-1"></i>Open chat <span class="badge bg-danger rounded-pill ms-1" data-chat-unread-count hidden></span></a>@if($enquiry instanceof \App\Models\Enquiry)<a href="{{ route('enquiry.meetings.index', $enquiry->id) }}" class="btn btn-sm btn-outline-primary text-nowrap"><i class="fa-regular fa-calendar me-1"></i>Meeting</a>@endif</div><small class="d-block text-danger mt-1" data-chat-unread-sender hidden></small></td>
 
                         </tr>
 
