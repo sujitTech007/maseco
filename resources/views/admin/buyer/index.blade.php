@@ -184,9 +184,8 @@
 
                             <td>
                                 <div class="actionBtn">
-                                    <a href="javascript:void(0);"
-                                        class="dropdown-item viewBtn"
-                                        data-user='@json($user)'
+                                    <a href="{{ route('admin.buyer.show', $user->id) }}"
+                                        class="dropdown-item"
                                         aria-label="View buyer {{ $user->name }}"
                                         title="View buyer details">
                                         <i class="fa-solid fa-eye"></i>
@@ -208,214 +207,41 @@
     </div>
 </div>
 
-<!-- User Details Modal -->
-
-
-<!-- User Details Modal -->
-<div class="modal fade maseco-user-modal" id="userDetailsModal" tabindex="-1"
-    aria-labelledby="userDetailsModalLabel" aria-hidden="true">
-
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-
-            <!-- Header -->
-            <div class="modal-header">
-                <div>
-                    <span class="user-modal-eyebrow">MASECO ADMIN</span>
-                    <h5 class="modal-title" id="userDetailsModalLabel">
-                        User Details
-                    </h5>
-                </div>
-
-                <button type="button" class="btn-close"
-                    data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-            <!-- Body -->
-            <div class="modal-body">
-
-                <div class="user-modal-profile">
-                    <div class="user-modal-avatar">
-                        <i class="fa-solid fa-user"></i>
-                    </div>
-
-                    <div>
-                        <h6 id="modalUserName" class="user-modal-name">—</h6>
-                        <span class="user-modal-caption">User Profile</span>
-                    </div>
-                </div>
-
-                <div class="user-modal-details">
-
-                    <div class="user-detail-item">
-                        <div class="user-detail-icon">
-                            <i class="fa-solid fa-envelope"></i>
-                        </div>
-                        <div class="user-detail-content">
-                            <span>Email Address</span>
-                            <strong id="modalUserEmail">—</strong>
-                        </div>
-                    </div>
-
-                    <div class="user-detail-item">
-                        <div class="user-detail-icon">
-                            <i class="fa-solid fa-phone"></i>
-                        </div>
-                        <div class="user-detail-content">
-                            <span>Phone Number</span>
-                            <strong id="modalUserPhone">—</strong>
-                        </div>
-                    </div>
-
-                    <div class="user-detail-item">
-                        <div class="user-detail-icon">
-                            <i class="fa-solid fa-user-shield"></i>
-                        </div>
-                        <div class="user-detail-content">
-                            <span>Account Status</span>
-                            <strong id="modalUserStatus">—</strong>
-                        </div>
-                    </div>
-
-                    <div class="user-detail-item">
-                        <div class="user-detail-icon">
-                            <i class="fa-solid fa-calendar-days"></i>
-                        </div>
-                        <div class="user-detail-content">
-                            <span>Registered On</span>
-                            <strong id="modalUserCreated">—</strong>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Footer -->
-            <div class="modal-footer">
-                <button type="button" class="user-modal-close-btn"
-                    data-bs-dismiss="modal">
-                    Close
-                </button>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-
 <script>
-    document.querySelectorAll('.user-status-toggle').forEach(function(toggle) {
+document.querySelectorAll('.user-status-toggle').forEach(function (toggle) {
+    toggle.addEventListener('change', async function () {
+        const checkbox = this;
+        const previousStatus = !checkbox.checked;
+        const status = checkbox.checked ? 1 : 0;
 
-        toggle.addEventListener('change', function() {
+        try {
+            const response = await fetch('{{ url('admin/buyer/status') }}/' + encodeURIComponent(checkbox.dataset.id), {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ status: status })
+            });
+            if (!response.ok) throw new Error('Request failed');
+            const result = await response.json();
+            if (!result.success) throw new Error('Status was not updated');
 
-            var userId = this.getAttribute('data-id');
-
-            var status = this.checked ? 1 : 0;
-
-            fetch("{{ url('admin/buyer/status') }}/" + userId, {
-
-                    method: 'POST',
-
-                    headers: {
-
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
-
-                        'Content-Type': 'application/json'
-
-                    },
-
-                    body: JSON.stringify({
-                        status: status
-                    })
-
-                })
-
-                .then(response => response.json())
-
-                .then(data => {
-
-                    if (data.success) {
-
-                        this.nextElementSibling.className = 'badge bg-' + (status ? 'success' : 'danger') + ' ms-2';
-
-                        this.nextElementSibling.textContent = status ? 'Active' : 'Inactive';
-
-                        // Show success message
-
-                        let msg = document.createElement('div');
-
-                        msg.className = 'alert alert-success position-fixed top-0 end-0 m-3';
-
-                        msg.style.zIndex = 9999;
-
-                        msg.textContent = 'Status changed successfully!';
-
-                        document.body.appendChild(msg);
-
-                        setTimeout(() => msg.remove(), 2000);
-
-                    }
-
-                });
-
-        });
-
-    });
-
-    // User details modal logic
-
-    document.querySelectorAll('.viewBtn').forEach(function(btn) {
-
-        btn.addEventListener('click', function() {
-
-            var user = JSON.parse(this.getAttribute('data-user'));
-
-            document.getElementById('modalUserName').textContent = user.name || '';
-
-            document.getElementById('modalUserEmail').textContent = user.email || '';
-
-            document.getElementById('modalUserPhone').textContent = [user.country_code, user.phone].filter(Boolean).join(' ');
-
-            document.getElementById('modalUserStatus').textContent = user.status == 1 ? 'Active' : 'Inactive';
-
-            document.getElementById('modalUserCreated').textContent = user.created_at || '';
-
-            var modal = new bootstrap.Modal(document.getElementById('userDetailsModal'));
-
-            modal.show();
-
-        });
-
-    });
-</script>
-
-<script>
-    const searchInput = document.getElementById('dt-search-0');
-    const table = document.querySelector('.table-custom tbody');
-    const rows = table.getElementsByTagName('tr');
-
-    function filterTable() {
-        const filter = searchInput.value.toLowerCase();
-
-        for (let i = 0; i < rows.length; i++) {
-            const cells = rows[i].getElementsByTagName('td');
-            let found = false;
-
-            for (let j = 0; j < cells.length; j++) {
-                if (cells[j].textContent.toLowerCase().includes(filter)) {
-                    found = true;
-                    break;
-                }
+            const row = checkbox.closest('tr');
+            const badge = row && row.querySelector('.buyer-status');
+            if (row) row.dataset.status = status ? 'active' : 'inactive';
+            if (badge) {
+                badge.classList.toggle('bg-success', Boolean(status));
+                badge.classList.toggle('bg-danger', !status);
+                badge.textContent = status ? 'Active' : 'Inactive';
             }
-
-            rows[i].style.display = found ? '' : 'none';
+        } catch (error) {
+            checkbox.checked = previousStatus;
+            window.alert('Could not update account status. Please try again.');
         }
-    }
-
-    // Works for typing + clear (✖) icon
-    searchInput.addEventListener('input', filterTable);
+    });
+});
 </script>
-
-
 
 @include('admin.Include.footer')

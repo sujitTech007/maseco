@@ -71,7 +71,10 @@ class SellerController extends Controller
 
     public function orders()
     {
-        return view('seller.order.index');
+        $supplier = Auth::guard('supplier')->user();
+        $sampleOrders = \App\Models\SampleOrder::where('supplier_id', $supplier->id)
+            ->with(['buyer', 'sample', 'material'])->latest()->paginate(15, ['*'], 'sample_orders_page');
+        return view('seller.order.index', compact('sampleOrders'));
     }
 
     public function plans()

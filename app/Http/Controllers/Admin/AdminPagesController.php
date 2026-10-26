@@ -50,6 +50,16 @@ class AdminPagesController extends Controller
         return view('admin.buyer.index', compact('users'));
     }
 
+    public function buyerDetails($id)
+    {
+        return view('admin.accounts.show', [
+            'account' => User::findOrFail($id),
+            'accountType' => 'Buyer',
+            'backRoute' => 'admin.buyer',
+            'icon' => 'fa-user',
+        ]);
+    }
+
     public function seller()
     {
         $suppliers = Supplier::all();
@@ -57,11 +67,31 @@ class AdminPagesController extends Controller
         return view('admin.supplier.index', compact('suppliers'));
     }
 
+    public function supplierDetails($id)
+    {
+        return view('admin.accounts.show', [
+            'account' => Supplier::findOrFail($id),
+            'accountType' => 'Supplier',
+            'backRoute' => 'admin.seller',
+            'icon' => 'fa-store',
+        ]);
+    }
+
     public function manufacturer()
     {
         $manufacturers = Manufacturer::all();
 
         return view('admin.manufacturer.index', compact('manufacturers'));
+    }
+
+    public function manufacturerDetails($id)
+    {
+        return view('admin.accounts.show', [
+            'account' => Manufacturer::findOrFail($id),
+            'accountType' => 'Manufacturer',
+            'backRoute' => 'admin.manufacturer',
+            'icon' => 'fa-industry',
+        ]);
     }
 
     public function service()

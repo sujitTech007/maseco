@@ -176,6 +176,13 @@
 
                                     </li>
 
+                                    <li class="side-nav-item {{ Route::is('admin.samples.*') ? 'active' : '' }}">
+                                        <a href="{{ route('admin.samples.index') }}" class="side-nav-link {{ Route::is('admin.samples.*') ? 'active' : '' }}">
+                                            <span class="menu-icon"><i class="fa-solid fa-flask"></i></span>
+                                            <span class="menu-text">Sample Purchases</span>
+                                        </a>
+                                    </li>
+
                                     <li class="side-nav-item {{ Route::is('admin.tracking') ? 'active' : '' }}">
                                         <a href="{{ route('admin.tracking') }}"
                                             class="side-nav-link {{ Route::is('admin.tracking') ? 'active' : '' }}">

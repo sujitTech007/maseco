@@ -107,7 +107,7 @@
       </span>
 
     </div>
-    <a href="{{ route('manufacturer.material.create') }}" class="btn btn-success btn-sm px-3">+ Add Material</a>
+    <div class="d-flex gap-2"><a href="{{ route('manufacturer.material.create') }}" class="btn btn-success btn-sm px-3">+ Add Material</a><button type="button" class="btn btn-outline-success btn-sm px-3" data-bs-toggle="modal" data-bs-target="#createSampleModal">+ Add Sample</button></div>
 
   </div>
 
@@ -310,6 +310,8 @@
   </div>
 
 </div>
+
+@include('samples.inline-list', ['samples' => $samples, 'materials' => $sampleMaterials, 'rolePrefix' => 'manufacturer'])
 
 <script>
   document.querySelectorAll('.toggle-status-btn').forEach(btn => {

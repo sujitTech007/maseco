@@ -5,9 +5,17 @@
 
 
 <style>
-    .ud-scroll { overflow-x: auto; }
+    .ud-scroll {
+        overflow-x: auto;
+    }
 
-    .ud-table { width: 100%; border-collapse: collapse; margin: 0; border: 0 !important; background: transparent; }
+    .ud-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0;
+        border: 0 !important;
+        background: transparent;
+    }
 
     .ud-table th,
     .ud-table td {
@@ -20,32 +28,78 @@
         box-shadow: none !important;
     }
 
-    .ud-table thead { background-color: rgb(76 76 92); }
-    .ud-table th { color: #fff; font-weight: 700; font-size: .85rem; }
-    .ud-table tbody tr:last-child td { border-bottom: 0 !important; }
-    .ud-table tbody tr:hover td { background: #f3faf8 !important; }
-    .ud-table td.text-center { text-align: center !important; }
+    .ud-table thead {
+        background-color: rgb(76 76 92);
+    }
 
-    .ud-st { font-size: .8rem; font-weight: 600; padding: .3rem .7rem; }
-    .ud-st::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; margin-right: .4rem; display: inline-block; vertical-align: middle; }
-    .ud-st-success { background: #e6f4ec; color: #198754; }
-    .ud-st-warning { background: #fff4d6; color: #a06a00; }
-    .ud-st-danger { background: #fde8e8; color: #c0392b; }
-    .ud-st-secondary { background: #eceff3; color: #5f6b7a; }
+    .ud-table th {
+        color: #fff;
+        font-weight: 700;
+        font-size: .85rem;
+    }
+
+    .ud-table tbody tr:last-child td {
+        border-bottom: 0 !important;
+    }
+
+    .ud-table tbody tr:hover td {
+        background: #f3faf8 !important;
+    }
+
+    .ud-table td.text-center {
+        text-align: center !important;
+    }
+
+    .ud-st {
+        font-size: .8rem;
+        font-weight: 600;
+        padding: .3rem .7rem;
+    }
+
+    .ud-st::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: currentColor;
+        margin-right: .4rem;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .ud-st-success {
+        background: #e6f4ec;
+        color: #198754;
+    }
+
+    .ud-st-warning {
+        background: #fff4d6;
+        color: #a06a00;
+    }
+
+    .ud-st-danger {
+        background: #fde8e8;
+        color: #c0392b;
+    }
+
+    .ud-st-secondary {
+        background: #eceff3;
+        color: #5f6b7a;
+    }
 </style>
 
 @php
-    // TEMP DEMO DATA: only shows when the list is empty, APP_DEBUG is true and the URL has ?demo=1. Delete before launch.
-    $rows = $orders;
-    if ($rows->isEmpty() && config('app.debug') && request()->boolean('demo')) {
-        $rows = collect([
-            (object) ['id' => 1048, 'amount' => 2500, 'status' => 'processing', 'payment_status' => 'pending', 'payment' => null, 'created_at' => now()->subDays(1)],
-            (object) ['id' => 1047, 'amount' => 1800, 'status' => 'completed', 'payment_status' => 'paid', 'payment' => (object) ['provider' => 'stripe', 'transaction_id' => 'pi_3Q8demo001'], 'created_at' => now()->subDays(6)],
-            (object) ['id' => 1046, 'amount' => 950, 'status' => 'completed', 'payment_status' => 'paid', 'payment' => (object) ['provider' => 'stripe', 'transaction_id' => 'pi_3Q7demo002'], 'created_at' => now()->subDays(18)],
-            (object) ['id' => 1045, 'amount' => 6400, 'status' => 'pending', 'payment_status' => 'pending', 'payment' => null, 'created_at' => now()->subDays(27)],
-            (object) ['id' => 1044, 'amount' => 420, 'status' => 'cancelled', 'payment_status' => 'failed', 'payment' => null, 'created_at' => now()->subDays(43)],
-        ]);
-    }
+// TEMP DEMO DATA: only shows when the list is empty, APP_DEBUG is true and the URL has ?demo=1. Delete before launch.
+$rows = $orders;
+if ($rows->isEmpty() && config('app.debug') && request()->boolean('demo')) {
+$rows = collect([
+(object) ['id' => 1048, 'amount' => 2500, 'status' => 'processing', 'payment_status' => 'pending', 'payment' => null, 'created_at' => now()->subDays(1)],
+(object) ['id' => 1047, 'amount' => 1800, 'status' => 'completed', 'payment_status' => 'paid', 'payment' => (object) ['provider' => 'stripe', 'transaction_id' => 'pi_3Q8demo001'], 'created_at' => now()->subDays(6)],
+(object) ['id' => 1046, 'amount' => 950, 'status' => 'completed', 'payment_status' => 'paid', 'payment' => (object) ['provider' => 'stripe', 'transaction_id' => 'pi_3Q7demo002'], 'created_at' => now()->subDays(18)],
+(object) ['id' => 1045, 'amount' => 6400, 'status' => 'pending', 'payment_status' => 'pending', 'payment' => null, 'created_at' => now()->subDays(27)],
+(object) ['id' => 1044, 'amount' => 420, 'status' => 'cancelled', 'payment_status' => 'failed', 'payment' => null, 'created_at' => now()->subDays(43)],
+]);
+}
 @endphp
 
 <div class="page-content">
@@ -73,110 +127,110 @@
             still pending.</p>
 
         <!-- Search + Buttons Row -->
-       
-<!-- Order Page Header & Filters -->
 
-<!-- Order Filter Card -->
-<div class="card border-0 shadow-sm rounded-4 mb-4">
-    <div class="card-body p-3">
+        <!-- Order Page Header & Filters -->
 
-        <div class="row g-2 align-items-end">
+        <!-- Order Filter Card -->
+        <div class="card border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-body p-3">
 
-            <!-- Search Orders -->
-            <div class="col-12 col-md-6 col-xl-3">
-                <label for="order-search"
-                       class="form-label small fw-semibold">
-                    Search Orders
-                </label>
+                <div class="row g-2 align-items-end">
 
-                <div class="input-group">
-                    <span class="input-group-text bg-light">
-                        <i class="fa-solid fa-magnifying-glass text-muted"></i>
-                    </span>
+                    <!-- Search Orders -->
+                    <div class="col-12 col-md-6 col-xl-3">
+                        <label for="order-search"
+                            class="form-label small fw-semibold">
+                            Search Orders
+                        </label>
 
-                    <input type="search"
-                           class="form-control"
-                           id="order-search"
-                           placeholder="Order UID or product name...">
+                        <div class="input-group">
+                            <span class="input-group-text bg-light">
+                                <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                            </span>
+
+                            <input type="search"
+                                class="form-control"
+                                id="order-search"
+                                placeholder="Order UID or product name...">
+                        </div>
+                    </div>
+
+                    <!-- Order Status -->
+                    <div class="col-6 col-md-3 col-xl-2">
+                        <label for="order-status"
+                            class="form-label small fw-semibold">
+                            Order Status
+                        </label>
+
+                        <select class="form-select" id="order-status">
+                            <option value="">All Statuses</option>
+                            <option value="pending">Pending</option>
+                            <option value="processing">Processing</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="shipped">Shipped</option>
+                            <option value="delivered">Delivered</option>
+                            <option value="cancelled">Cancelled</option>
+                            <option value="returned">Returned</option>
+                        </select>
+                    </div>
+
+                    <!-- Payment Status -->
+                    <div class="col-6 col-md-3 col-xl-2">
+                        <label for="order-payment-status"
+                            class="form-label small fw-semibold">
+                            Payment Status
+                        </label>
+
+                        <select class="form-select" id="order-payment-status">
+                            <option value="">All Payments</option>
+                            <option value="paid">Paid</option>
+                            <option value="pending">Pending</option>
+                            <option value="failed">Failed</option>
+                            <option value="refunded">Refunded</option>
+                            <option value="unpaid">Unpaid</option>
+                        </select>
+                    </div>
+
+                    <!-- From Date -->
+                    <div class="col-6 col-md-4 col-xl-2">
+                        <label for="order-start-date"
+                            class="form-label small fw-semibold">
+                            From Date
+                        </label>
+
+                        <input type="date"
+                            class="form-control"
+                            id="order-start-date">
+                    </div>
+
+                    <!-- To Date -->
+                    <div class="col-6 col-md-4 col-xl-2">
+                        <label for="order-end-date"
+                            class="form-label small fw-semibold">
+                            To Date
+                        </label>
+
+                        <input type="date"
+                            class="form-control"
+                            id="order-end-date">
+                    </div>
+
+                    <!-- Filter Button -->
+                    <div class="col-6 col-md-2 col-xl-1">
+                        <button type="button"
+                            class="btn btn-success w-100 text-nowrap"
+                            id="order-filter-btn"
+                            title="Apply Filters">
+                            <i class="fa-solid fa-filter"></i>
+                        </button>
+                    </div>
+
                 </div>
+
+                <!-- Reset Button -->
+
             </div>
-
-            <!-- Order Status -->
-            <div class="col-6 col-md-3 col-xl-2">
-                <label for="order-status"
-                       class="form-label small fw-semibold">
-                    Order Status
-                </label>
-
-                <select class="form-select" id="order-status">
-                    <option value="">All Statuses</option>
-                    <option value="pending">Pending</option>
-                    <option value="processing">Processing</option>
-                    <option value="confirmed">Confirmed</option>
-                    <option value="shipped">Shipped</option>
-                    <option value="delivered">Delivered</option>
-                    <option value="cancelled">Cancelled</option>
-                    <option value="returned">Returned</option>
-                </select>
-            </div>
-
-            <!-- Payment Status -->
-            <div class="col-6 col-md-3 col-xl-2">
-                <label for="order-payment-status"
-                       class="form-label small fw-semibold">
-                    Payment Status
-                </label>
-
-                <select class="form-select" id="order-payment-status">
-                    <option value="">All Payments</option>
-                    <option value="paid">Paid</option>
-                    <option value="pending">Pending</option>
-                    <option value="failed">Failed</option>
-                    <option value="refunded">Refunded</option>
-                    <option value="unpaid">Unpaid</option>
-                </select>
-            </div>
-
-            <!-- From Date -->
-            <div class="col-6 col-md-4 col-xl-2">
-                <label for="order-start-date"
-                       class="form-label small fw-semibold">
-                    From Date
-                </label>
-
-                <input type="date"
-                       class="form-control"
-                       id="order-start-date">
-            </div>
-
-            <!-- To Date -->
-            <div class="col-6 col-md-4 col-xl-2">
-                <label for="order-end-date"
-                       class="form-label small fw-semibold">
-                    To Date
-                </label>
-
-                <input type="date"
-                       class="form-control"
-                       id="order-end-date">
-            </div>
-
-            <!-- Filter Button -->
-            <div class="col-6 col-md-2 col-xl-1">
-                <button type="button"
-                        class="btn btn-success w-100 text-nowrap"
-                        id="order-filter-btn"
-                        title="Apply Filters">
-                    <i class="fa-solid fa-filter"></i>
-                </button>
-            </div>
-
         </div>
-
-        <!-- Reset Button -->
-      
-    </div>
-</div>
 
 
 
@@ -191,7 +245,7 @@
                         <tr>
 
                             <th>Order UID</th>
-                            <th>Order ID</th>
+                            <!-- <th>Order ID</th> -->
 
                             <th>Amount</th>
 
@@ -211,92 +265,104 @@
 
                         @forelse($rows as $order)
 
-                            @php
-                                $st = [
-                                    'pending' => 'warning',
-                                    'processing' => 'warning',
-                                    'approved' => 'success',
-                                    'accepted' => 'success',
-                                    'completed' => 'success',
-                                    'delivered' => 'success',
-                                    'rejected' => 'danger',
-                                    'cancelled' => 'danger',
-                                ][strtolower($order->status)] ?? 'secondary';
+                        @php
+                        $st = [
+                        'pending' => 'warning',
+                        'processing' => 'warning',
+                        'approved' => 'success',
+                        'accepted' => 'success',
+                        'completed' => 'success',
+                        'delivered' => 'success',
+                        'rejected' => 'danger',
+                        'cancelled' => 'danger',
+                        ][strtolower($order->status)] ?? 'secondary';
 
-                                $pst = [
-                                    'pending' => 'warning',
-                                    'paid' => 'success',
-                                    'failed' => 'danger',
-                                ][strtolower($order->payment_status ?? 'pending')] ?? 'secondary';
-                            @endphp
+                        $pst = [
+                        'pending' => 'warning',
+                        'paid' => 'success',
+                        'failed' => 'danger',
+                        ][strtolower($order->payment_status ?? 'pending')] ?? 'secondary';
+                        @endphp
 
-                            <tr>
+                        <tr>
 
-                                <td class="fw-semibold text-nowrap">{{ $order->uid ?? ('ORD' . str_pad((string) $order->id, 4, '0', STR_PAD_LEFT)) }}</td>
-                                <td class="text-muted">#{{ $order->id }}</td>
+                            <td class="fw-semibold text-nowrap">{{ $order->uid ?? ('ORD' . str_pad((string) $order->id, 4, '0', STR_PAD_LEFT)) }}</td>
+                            <!-- <td class="text-muted">#{{ $order->id }}</td> -->
 
-                                <td class="fw-semibold text-nowrap">${{ number_format($order->amount, 2) }}</td>
+                            <td class="fw-semibold text-nowrap">${{ number_format($order->amount, 2) }}</td>
 
-                                <td><span
-                                        class="ud-st ud-st-{{ $st }} rounded-pill d-inline-block text-nowrap">{{ ucfirst($order->status) }}</span>
-                                </td>
+                            <td><span
+                                    class="ud-st ud-st-{{ $st }} rounded-pill d-inline-block text-nowrap">{{ ucfirst($order->status) }}</span>
+                            </td>
 
-                                <td>
+                            <td>
 
-                                    <span
-                                        class="ud-st ud-st-{{ $pst }} rounded-pill d-inline-block text-nowrap">{{ ucfirst($order->payment_status ?? 'pending') }}</span>
+                                <span
+                                    class="ud-st ud-st-{{ $pst }} rounded-pill d-inline-block text-nowrap">{{ ucfirst($order->payment_status ?? 'pending') }}</span>
 
-                                    @php($payment = optional($order->payment))
+                                @php($payment = optional($order->payment))
 
-                                    @if(($order->payment_status ?? 'pending') === 'paid' && $payment)
+                                @if(($order->payment_status ?? 'pending') === 'paid' && $payment)
 
-                                        <div class="small text-muted mt-1">
+                                <div class="small text-muted mt-1">
 
-                                            {{ strtoupper($payment->provider ?? '-') }} • <code>{{ $payment->transaction_id ?? '-' }}</code>
+                                    {{ strtoupper($payment->provider ?? '-') }} • <code>{{ $payment->transaction_id ?? '-' }}</code>
 
-                                        </div>
+                                </div>
 
-                                    @endif
+                                @endif
 
-                                </td>
+                            </td>
 
-                                <td class="text-nowrap text-muted">{{ $order->created_at->format('d M Y') }}</td>
+                            <td class="text-nowrap text-muted">{{ $order->created_at->format('d M Y') }}</td>
 
-                                <td>
+                            <td>
 
-                                    @if(($order->payment_status ?? 'pending') !== 'paid')
+                                @if(($order->payment_status ?? 'pending') !== 'paid')
 
-                                        <form method="POST" action="{{ route('user.orders.pay', $order->id) }}"
-                                            onsubmit="return startStripeCheckout(event, this)" class="m-0">
+                                <form method="POST" action="{{ route('user.orders.pay', $order->id) }}"
+                                    onsubmit="return startStripeCheckout(event, this)" class="m-0">
 
-                                            @csrf
+                                    @csrf
 
-                                            <input type="hidden" name="order_id" value="{{ $order->id }}">
+                                    <input type="hidden" name="order_id" value="{{ $order->id }}">
 
-                                            <button class="btn btn-sm btn-success px-3 text-nowrap" type="submit">Pay with Card</button>
+                                    <button class="btn btn-sm btn-success px-3 text-nowrap" type="submit">Pay with Card</button>
 
-                                        </form>
+                                </form>
 
-                                    @else
+                                @else
 
-                                        <a href="#" class="btn btn-sm btn-outline-success px-3 disabled" aria-disabled="true">Paid</a>
+                                <a href="#" class="btn btn-sm btn-outline-success px-3 disabled" aria-disabled="true">Paid</a>
 
-                                    @endif
+                                @endif
 
-                                </td>
+                            </td>
+                            <td class="text-end pe-4">
+                                <a href="{{ route('user.orders.sharing', $order) }}" class="btn btn-sm btn-outline-primary rounded-pill px-3 mb-1">
+                                    <i class="fa-solid fa-paperclip me-1"></i> Files &amp; Samples
+                                </a>
+                                <a href="{{ route('user.tracking', ['tracking_number' => $order->uid ?? $order->id]) }}" class="btn btn-sm btn-outline-success rounded-pill px-3">
+                                    <i class="fa-solid fa-truck-fast me-1"></i> Track
+                                </a>
+                            </td>
 
-                            </tr>
+                        </tr>
 
                         @empty
 
-                            <tr>
+                        <tr>
 
-                                <td colspan="7" class="text-center text-muted">
+                            <td colspan="7" class="text-center text-muted">
+                                @if($sampleOrders->isEmpty())
                                     <div>No orders found.</div>
                                     <div class="small">Orders you place with suppliers and manufacturers will appear here.</div>
-                                </td>
+                                @else
+                                    <div>No production orders yet. Your sample purchases are listed below.</div>
+                                @endif
+                            </td>
 
-                            </tr>
+                        </tr>
 
                         @endforelse
 
@@ -306,6 +372,47 @@
 
             </div>
 
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-4 mt-4">
+            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                <div><h5 class="mb-0">Sample Orders</h5><small class="text-muted">Sample purchases are tracked separately from production orders.</small></div>
+                <a href="{{ route('user.samples.orders') }}" class="btn btn-sm btn-outline-success">All sample purchases</a>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table align-middle mb-0">
+                        <thead class="table-light"><tr><th>Sample order</th><th>Sample / product</th><th>Qty</th><th>Total</th><th>Order status</th><th>Payment</th><th>Date</th><th></th></tr></thead>
+                        <tbody>
+                            @forelse($sampleOrders as $sampleOrder)
+                                <tr>
+                                    <td class="fw-semibold">{{ $sampleOrder->reference }}</td>
+                                    <td>{{ $sampleOrder->sample->name ?? 'Sample' }}<div class="small text-muted">{{ $sampleOrder->material->name ?? 'Product' }}
+                                        @if($sampleOrder->original_order_id)
+                                            · linked to order #{{ $sampleOrder->original_order_id }}
+                                        @else
+                                            · product purchase
+                                        @endif
+                                    </div></td>
+                                    <td>{{ $sampleOrder->quantity }}</td>
+                                    <td class="text-nowrap">{{ number_format($sampleOrder->total_amount, 2) }}</td>
+                                    <td><span class="badge text-bg-light">{{ ucfirst(str_replace('_', ' ', $sampleOrder->order_status)) }}</span></td>
+                                    <td>{{ ucfirst($sampleOrder->payment_status) }}</td>
+                                    <td class="text-nowrap">{{ $sampleOrder->created_at?->format('d M Y') }}</td>
+                                    <td class="text-end text-nowrap">
+                                        @if($sampleOrder->order_status === 'awaiting_payment' && $sampleOrder->payment_status !== 'paid')
+                                            <form method="POST" action="{{ route('user.samples.checkout', $sampleOrder) }}" class="d-inline">@csrf<button class="btn btn-sm btn-success">Pay</button></form>
+                                        @endif
+                                        <a href="{{ route('user.samples.purchase.show', $sampleOrder) }}" class="btn btn-sm btn-outline-primary">View / Track</a>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr><td colspan="8" class="text-center text-muted py-4">No sample orders yet.</td></tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
 
         <div
@@ -373,46 +480,48 @@
 
 
 <script>
-// === SEARCH FUNCTIONALITY ===
-document.getElementById('orderSearch').addEventListener('input', function() {
-    let filter = this.value.toLowerCase();
-    let rows = document.querySelectorAll('table tbody tr');
+    // === SEARCH FUNCTIONALITY ===
+    document.getElementById('orderSearch').addEventListener('input', function() {
+        let filter = this.value.toLowerCase();
+        let rows = document.querySelectorAll('table tbody tr');
 
-    rows.forEach(row => {
-        let text = row.innerText.toLowerCase();
-        if(text.includes(filter)){
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
-    });
-});
-
-// === EXPORT FUNCTIONALITY ===
-document.getElementById('exportBtn').addEventListener('click', function() {
-    let rows = document.querySelectorAll('table tbody tr');
-    let csvContent = "ID,Amount,Status,Payment,Date\n";
-
-    rows.forEach(row => {
-        if(row.style.display !== 'none'){ // only visible rows
-            let cols = row.querySelectorAll('td');
-            let rowData = [];
-            cols.forEach(col => {
-                let text = col.innerText.replace(/(\r\n|\n|\r)/gm, "").trim();
-                rowData.push('"' + text + '"');
-            });
-            csvContent += rowData.join(",") + "\n";
-        }
+        rows.forEach(row => {
+            let text = row.innerText.toLowerCase();
+            if (text.includes(filter)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
     });
 
-    // Download CSV
-    let blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    let link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = 'orders_export.csv';
-    link.style.display = 'none';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-});
+    // === EXPORT FUNCTIONALITY ===
+    document.getElementById('exportBtn').addEventListener('click', function() {
+        let rows = document.querySelectorAll('table tbody tr');
+        let csvContent = "ID,Amount,Status,Payment,Date\n";
+
+        rows.forEach(row => {
+            if (row.style.display !== 'none') { // only visible rows
+                let cols = row.querySelectorAll('td');
+                let rowData = [];
+                cols.forEach(col => {
+                    let text = col.innerText.replace(/(\r\n|\n|\r)/gm, "").trim();
+                    rowData.push('"' + text + '"');
+                });
+                csvContent += rowData.join(",") + "\n";
+            }
+        });
+
+        // Download CSV
+        let blob = new Blob([csvContent], {
+            type: 'text/csv;charset=utf-8;'
+        });
+        let link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = 'orders_export.csv';
+        link.style.display = 'none';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    });
 </script>

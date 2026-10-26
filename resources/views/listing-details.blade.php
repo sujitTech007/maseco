@@ -106,7 +106,7 @@
                             {{ $material->description ?: 'Contact the supplier for further material information.' }}
                         </p>
                         @if($material->is_certified)
-                            <div class="certified-badge"><img src="{{ asset('public/assets/images/certified-badge.png') }}" alt="Certified Listing" class="h-100 w-auto"></div>
+                        <div class="certified-badge"><img src="{{ asset('public/assets/images/certified-badge.png') }}" alt="Certified Listing" class="h-100 w-auto"></div>
                         @endif
 
                         <hr class="my-4">
@@ -174,11 +174,11 @@
                             @endif
 
                             @if(optional($material->supplier)->phone)
-                            <a href="tel:{{ optional($material->supplier)->country_code ? \App\Support\PhoneNumber::toE164(optional($material->supplier)->country_code, optional($material->supplier)->phone) : optional($material->supplier)->phone }}"
+                            <!-- <a href="tel:{{ optional($material->supplier)->country_code ? \App\Support\PhoneNumber::toE164(optional($material->supplier)->country_code, optional($material->supplier)->phone) : optional($material->supplier)->phone }}"
                                 class="btn btn-outline-secondary px-4 py-2"
                                 style="font-size:14px;">
                                 <i class="fa-solid fa-phone me-2"></i>Call Supplier
-                            </a>
+                            </a> -->
                             @endif
                         </div>
 
@@ -299,7 +299,7 @@
                             </div>
                         </div>
 
-                        <div class="py-3 border-bottom">
+                        <!-- <div class="py-3 border-bottom">
                             <div class="d-flex justify-content-between gap-3">
                                 <span class="text-secondary" style="font-size:13px;">Phone</span>
                                 <span class="fw-semibold text-end" style="font-size:13px;">
@@ -310,7 +310,7 @@
                                     @endif
                                 </span>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="py-3 border-bottom">
                             <div class="d-flex justify-content-between gap-3">
@@ -330,6 +330,15 @@
                             data-material-name="{{ $material->name }}">
                             Contact Supplier <i class="fa-solid fa-arrow-right ms-2"></i>
                         </button>
+                        @auth
+                        <a href="{{ route('user.materials.samples', $material) }}" class="btn btn-outline-success fs-14 w-100 mt-2 p-3 fw-bold">
+                            <i class="fa-solid fa-flask me-2"></i> Purchase Sample
+                        </a>
+                        @else
+                        <a href="{{ route('login') }}" class="btn btn-outline-success fs-14 w-100 mt-2 p-3 fw-bold">
+                            <i class="fa-solid fa-flask me-2"></i> Login to Purchase Sample
+                        </a>
+                        @endif
                         @endif
 
                     </div>
@@ -388,6 +397,7 @@
                             <div class="modal-footer">
                                 @auth
                                 <button type="submit" class="btn btn-primary">Submit Enquiry</button>
+                                <a href="{{ route('user.materials.samples', $material) }}" class="btn btn-outline-success">Purchase Sample</a>
                                 @else
                                 <a class="btn theme-btn" href="{{ route('login') }}">Login to Continue</a>
                                 @endauth

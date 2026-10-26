@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Manufacturer;
 
 use App\Http\Controllers\Controller;
 use App\Models\Material;
+use App\Models\ProductSample;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,8 +25,10 @@ class MaterialController extends Controller
         }
 
         $materials = $query->latest()->get();
+        $sampleMaterials = Material::where('manufacturer_id', $manufacturer->id)->orderBy('name')->get();
+        $samples = ProductSample::where('manufacturer_id', $manufacturer->id)->with(['material', 'files'])->latest()->get();
 
-        return view('manufacturer.material.index', compact('materials'));
+        return view('manufacturer.material.index', compact('materials', 'samples', 'sampleMaterials'));
     }
 
     public function create()

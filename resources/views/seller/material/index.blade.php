@@ -107,7 +107,7 @@
       </span>
 
     </div>
-    <a href="{{ route('seller.material.create') }}" class="btn btn-success btn-sm px-3 addbtn"> Add Material +</a>
+    <div class="d-flex gap-2"><a href="{{ route('seller.material.create') }}" class="btn btn-success btn-sm px-3 addbtn"> Add Material +</a><button type="button" class="btn btn-outline-success btn-sm px-3" data-bs-toggle="modal" data-bs-target="#createSampleModal">+ Add Sample</button></div>
 
   </div>
 
@@ -357,6 +357,8 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 
 </div>
+
+@include('samples.inline-list', ['samples' => $samples, 'materials' => $sampleMaterials, 'rolePrefix' => 'seller'])
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

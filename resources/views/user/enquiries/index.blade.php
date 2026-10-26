@@ -129,6 +129,10 @@ $rows = collect([
             <span style="color:#2DAC92;">
                 Enquiries
             </span>
+            <a href="{{ route('listing') }}"
+                class="btn btn-sm fw-bold rounded-pill px-3 py-2 align-self-start mt-0 d-inline-flex align-items-center gap-2 bg-primary text-white border border-primary">
+                Create RFQ <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
 
         </div>
 
@@ -254,7 +258,7 @@ $rows = collect([
 
                         <tr>
 
-                            <th>#</th>
+                            <th>S.No</th>
 
                             <th>Subject</th>
 

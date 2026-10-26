@@ -2,120 +2,119 @@
 
 <html lang="en" data-sidenav-size="sm-hover-active" data-bs-theme="light" data-menu-color="light" data-topbar-color="brand">
 
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        <title>Dashboard</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
-        <meta content="Coderthemes" name="author">
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
+    <meta content="Coderthemes" name="author">
 
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="{{ asset('public/assets/admin/images/favicon.ico') }}">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ asset('public/assets/admin/images/favicon.ico') }}">
 
-        <!-- Vendor css -->
-        <link href="{{ asset('public/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
-        <link href="{{ asset('public/assets/css/all.min.css') }}" rel="stylesheet" type="text/css">
-        
-        <link href="{{ asset('public/assets/css/admin-login.css') }}" rel="stylesheet" type="text/css">
+    <!-- Vendor css -->
+    <link href="{{ asset('public/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('public/assets/css/all.min.css') }}" rel="stylesheet" type="text/css">
 
-       
-    </head>
+    <link href="{{ asset('public/assets/css/admin-login.css') }}" rel="stylesheet" type="text/css">
 
-    <body>
 
-        
-<div class="myaccountPage pt-5 login-page">
-    <div class="dashboardForms py-4">
-        <form id="login-form" method="POST" action="{{ route('admin.login.submit') }}">
-            @csrf
+</head>
 
-            <div class="login-form-container customLoginFormBox">
-                <div class="login-brand mb-4">
-                    <img src="{{ asset('public/assets/images/logo.png') }}" alt="MASECO" class="login-logo">
-                    <span class="login-badge">ADMIN PORTAL</span>
-                </div>
+<body>
 
-                <h1 class="text-center mb-2 log">
-                    Welcome <span class="login">Back</span>
-                </h1>
 
-                <p class="login-subtitle text-center mb-4">
-                    Sign in to manage your MASECO workspace.
-                </p>
+    <div class="myaccountPage pt-5 login-page">
+        <div class="dashboardForms py-4">
+            <form id="login-form" method="POST" action="{{ route('admin.login.submit') }}">
+                @csrf
 
-                <div class="form-group mb-3">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input
-                        type="email"
-                        name="email"
-                        id="email"
-                        placeholder="Enter your email"
-                        class="form-control"
-                        autocomplete="username"
-                        required
-                    >
-                </div>
+                <div class="login-form-container customLoginFormBox">
+                    <div class="login-brand mb-4">
+                        <img src="{{ asset('public/assets/images/logo.png') }}" alt="MASECO" class="login-logo">
+                        <span class="login-badge">ADMIN PORTAL</span>
+                    </div>
 
-                <div class="form-group position-relative mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        placeholder="Enter your password"
-                        class="form-control"
-                        autocomplete="current-password"
-                        required
-                    >
+                    <h1 class="text-center mb-2 log">
+                        Welcome <span class="login">Back</span>
+                    </h1>
 
-                    <span class="toggle-password" onclick="togglePassword()">
-                        <i class="fa-solid fa-eye" id="eyeIcon"></i>
-                    </span>
-                </div>
+                    <p class="login-subtitle text-center mb-4">
+                        Sign in to manage your MASECO workspace.
+                    </p>
 
-                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <div class="form-group mb-3">
+                        <label for="email" class="form-label">Email </label>
+                        <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            placeholder="Enter your email"
+                            class="form-control"
+                            autocomplete="username"
+                            required>
+                    </div>
+
+                    <div class="form-group position-relative mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            class="form-control"
+                            autocomplete="current-password"
+                            required>
+
+                        <span class="toggle-password" onclick="togglePassword()">
+                            <i class="fa-solid fa-eye" id="eyeIcon"></i>
+                        </span>
+                    </div>
+
+                    <!-- <div class="d-flex align-items-center justify-content-between mb-4">
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="remember-me">
                         <label class="form-check-label" for="remember-me">
                             Remember Me
                         </label>
                     </div>
-                </div>
+                </div> -->
 
-                <button type="submit" id="submit" class="lab-btn w-100">
-                    Submit <i class="fa-solid fa-arrow-right ms-1"></i>
-                </button>
+                    <button type="submit" id="submit" class="lab-btn w-100">
+                        Submit <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </button>
 
-                <div class="login-footer text-center mt-4">
-                    <span>Powered by</span>
-                    <strong>MASECO</strong>
-                    <span class="login-footer-dot">•</span>
-                    <span>Sustainable Business Solutions</span>
+                    <div class="login-footer text-center mt-4">
+                        <span>Powered by</span>
+                        <strong>MASECO</strong>
+                        <span class="login-footer-dot">•</span>
+                        <span>Sustainable Business Solutions</span>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
 
 
 
 
-        <script>
-            function togglePassword() {
-                const passwordInput = document.getElementById("password");
-                const eyeIcon = document.getElementById("eyeIcon");
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById("password");
+            const eyeIcon = document.getElementById("eyeIcon");
 
-                if (passwordInput.type === "password") {
-                    passwordInput.type = "text";
-                    eyeIcon.classList.remove("fa-solid fa-eye");
-                    eyeIcon.classList.add("fa-solid fa-eye-slash");
-                } else {
-                    passwordInput.type = "password";
-                    eyeIcon.classList.remove("fa-solid fa-eye-slash");
-                    eyeIcon.classList.add("fa-solid fa-eye");
-                }
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.classList.remove("fa-solid fa-eye");
+                eyeIcon.classList.add("fa-solid fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.classList.remove("fa-solid fa-eye-slash");
+                eyeIcon.classList.add("fa-solid fa-eye");
             }
-        </script>
-    </body>
+        }
+    </script>
+</body>
+
 </html>
