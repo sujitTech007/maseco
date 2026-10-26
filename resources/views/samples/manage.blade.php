@@ -330,7 +330,7 @@
   }
 </style>
 
-<div class="samples-page">
+<div class="page-content p-4">
 
   <div class="samples-heading">
     <div>
