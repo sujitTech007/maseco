@@ -10,6 +10,7 @@ use App\Models\SampleMessage;
 use App\Models\SampleOrder;
 use App\Models\SampleOrderStatusLog;
 use App\Notifications\SampleWorkflowNotification;
+use App\Support\SubscriptionAccess;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -191,6 +192,9 @@ class SampleSystemController extends Controller
 
     public function purchase(Request $request)
     {
+        if (!SubscriptionAccess::hasActive('buyer',(int)Auth::id())) {
+            return redirect()->route('subscription.plan')->with('error','Please activate a subscription before placing a sample order.');
+        }
         $data=$request->validate(['sample_id'=>'required|integer','quantity'=>'required|integer|min:1|max:1000','original_order_id'=>'nullable|integer','shipping_address'=>'required|string|max:3000']);
         $purchase=DB::transaction(function()use($data){
             $sample=ProductSample::where('status','active')->lockForUpdate()->findOrFail($data['sample_id']);
@@ -222,6 +226,7 @@ class SampleSystemController extends Controller
     {
         [$actor,$type]=$this->actor(); $this->authorizePurchase($purchase,$actor,$type);
         $data=$request->validate(['decision'=>'required|in:approve,reject']); $target=$data['decision']==='approve'?'awaiting_payment':'rejected'; abort_unless(SampleOrder::canTransition($purchase->order_status,$target),409);
+        if ($data['decision']==='approve' && !SubscriptionAccess::hasActive($type,(int)$actor->id)) return redirect()->route('subscription.plan')->with('error','Activate a subscription before approving sample orders.');
         DB::transaction(function()use($purchase,$actor,$type,$data){ $old=$purchase->order_status; $new=$data['decision']==='approve'?'awaiting_payment':'rejected'; $purchase->update(['order_status'=>$new]); if($new==='rejected') ProductSample::whereKey($purchase->product_sample_id)->increment('stock_quantity',$purchase->quantity); SampleOrderStatusLog::create(['sample_order_id'=>$purchase->id,'old_status'=>$old,'new_status'=>$new,'changed_by_id'=>$actor->id,'changed_by_type'=>$type]); });
         $decisionLabel=$data['decision']==='approve'?'approved':'rejected';
         $this->notifyPurchaseParticipants($purchase,'sample_'.$data['decision'],'The seller '.$decisionLabel.' sample request '.$purchase->reference.'.','seller');

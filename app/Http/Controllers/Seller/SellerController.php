@@ -79,7 +79,7 @@ class SellerController extends Controller
 
     public function plans()
     {
-        return view('seller.plan.index');
+        return redirect()->route('subscription.plan');
     }
 
     public function payment()

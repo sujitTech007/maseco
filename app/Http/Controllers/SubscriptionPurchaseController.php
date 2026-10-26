@@ -13,53 +13,87 @@ use \Stripe\Charge as StripeCharge;
 use App\Mail\SubscriptionPurchasedMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 
 class SubscriptionPurchaseController extends Controller
 {
+    private function accountContext(): ?array
+    {
+        foreach (['web'=>'buyer','supplier'=>'supplier','manufacturer'=>'manufacturer'] as $guard => $type) {
+            if (Auth::guard($guard)->check()) return [$type, Auth::guard($guard)->user()];
+        }
+        return null;
+    }
+
+    private function createAccountSubscription(string $type, $account, SubscriptionPlan $plan, ?string $paymentReference = null): void
+    {
+        $start = now()->toDateString();
+        $end = $this->calculateEndDate((string)$plan->duration);
+        $paid = (float)$plan->price <= 0 || $paymentReference !== null;
+
+        if ($type === 'buyer') {
+            $commissionAmount = (float)$plan->price > 0
+                ? $this->calculateCommissionAmount($plan->commission, (float)$plan->price)
+                : 0.0;
+            $attributes = [
+                'user_id'=>$account->id, 'plan_name'=>$plan->name, 'price'=>$plan->price,
+                'commission'=>$plan->commission, 'total_amount'=>(float)$plan->price+$commissionAmount,
+                'commission_amount'=>$commissionAmount, 'start_date'=>$start, 'end_date'=>$end,
+                'is_active'=>$paid, 'payment_status'=>$paid?'paid':'pending',
+            ];
+            if ($paymentReference) {
+                SubscriptionPurchase::firstOrCreate(['stripe_id'=>$paymentReference], $attributes);
+            } else {
+                SubscriptionPurchase::create($attributes);
+            }
+            return;
+        }
+
+        $table = $type === 'supplier' ? 'supplier_subscription_purchases' : 'manufacturer_subscription_purchases';
+        $ownerColumn = $type.'_id';
+        $referenceColumn = 'stripe_session_id';
+        if ($paymentReference && DB::table($table)->where($referenceColumn,$paymentReference)->exists()) return;
+        DB::table($table)->insert([
+            $ownerColumn=>$account->id, 'subscription_plan_id'=>$plan->id, 'plan_name'=>$plan->name,
+            $referenceColumn=>$paymentReference, 'price'=>$plan->price,
+            'payment_status'=>$paid?'paid':'pending', 'start_date'=>$start, 'end_date'=>$end,
+            'is_active'=>$paid, 'created_at'=>now(), 'updated_at'=>now(),
+        ]);
+    }
+
     public function purchase(Request $request)
     {
-        if (!Auth::check()) {
+        $context = $this->accountContext();
+        if (!$context) {
             return response()->json(['redirect' => route('login')]);
         }
-
-        $user = Auth::user();
-
-        // Only allow normal users
-        if (Auth::guard('supplier')->check() || Auth::guard('manufacturer')->check()) {
-            return response()->json(['error' => 'This plan is not for suppliers or manufacturers.']);
-        }
+        [$type,$account] = $context;
 
         $request->validate([
             'plan_id' => 'required|integer|exists:subscription_plans,id',
         ]);
 
         $plan = SubscriptionPlan::findOrFail($request->input('plan_id'));
+        if ($plan->status !== 'active') return response()->json(['error'=>'This subscription plan is not available.'],422);
 
         // Handle free plans directly
         if ((float)$plan->price <= 0) {
-            $commissionAmount = $this->calculateCommissionAmount($plan->commission, 0);
-            $purchase = SubscriptionPurchase::create([
-                'user_id' => $user->id,
-                'stripe_id' => null,
-                'plan_name' => $plan->name,
-                'price' => 0,
-                'commission' => $plan->commission,
-                'total_amount' => 0,
-                'commission_amount' => $commissionAmount,
-                'start_date' => now()->toDateString(),
-                'end_date' => $this->calculateEndDate($plan->duration),
-                'is_active' => 1,
-                'payment_status' => 'paid',
-            ]);
-            $this->sendPurchaseConfirmation($purchase);
+            $this->createAccountSubscription($type,$account,$plan);
+            if ($type === 'buyer') {
+                $purchase = SubscriptionPurchase::where('user_id',$account->id)->where('plan_name',$plan->name)->latest()->first();
+                if ($purchase) $this->sendPurchaseConfirmation($purchase);
+            }
 
-            return response()->json(['redirect' => route('payment.success')]);
+            return response()->json(['redirect' => route('subscription.plan')]);
         }
+
+        if (!config('services.stripe.secret')) return response()->json(['error'=>'Online subscription payment is not configured.'],503);
 
         // Stripe Checkout session
         Stripe::setApiKey(config('services.stripe.secret'));
 
+        try {
         $session = StripeSession::create([
             'payment_method_types' => ['card'],
             'line_items' => [[
@@ -75,62 +109,46 @@ class SubscriptionPurchaseController extends Controller
             'mode' => 'payment',
             'success_url' => url('/payment/success'),
             'cancel_url' => route('subscription.plan'),
-            'customer_email' => $user->email,
-            'metadata' => [
+            'customer_email' => $account->email,
+            'metadata' => array_filter([
                 'plan_id' => (string)$plan->id,
-                'user_id' => (string)$user->id,
-            ],
+                'owner_type' => $type,
+                'owner_id' => (string)$account->id,
+                'user_id' => $type === 'buyer' ? (string)$account->id : null,
+            ], static fn ($value) => $value !== null),
         ]);
          session(['stripe_session_id' => $session->id]);
 
         return response()->json(['stripe_url' => $session->url]);
+        } catch (\Throwable $e) {
+            report($e);
+            return response()->json(['error'=>'Subscription checkout could not be started. Please try again.'],422);
+        }
     }
 
     public function success(Request $request)
     {
-
-        if (!Auth::check()) {
+        $context = $this->accountContext();
+        if (!$context) {
             return redirect()->route('login');
         }
+        [$type,$account] = $context;
 
         $stripe_session_id = session('stripe_session_id');
         if (!$stripe_session_id) {
             return redirect()->route('home')->with('success', 'Missing payment session.');
         }
 
-        if (!$stripe_session_id) {
-        $planId = 1; // default free plan
-        $plan = SubscriptionPlan::find($planId);
-        if (!$plan) {
-            return redirect()->route('subscription.plan')->with('error', 'Plan not found.');
-        }
-
-        $user = Auth::user();
-        $commissionAmount = $this->calculateCommissionAmount($plan->commission, $plan->price);
-
-        SubscriptionPurchase::firstOrCreate(
-            ['user_id' => $user->id, 'plan_name' => $plan->name],
-            [
-                'stripe_id' => $stripe_session_id,
-                'price' => $plan->price,
-                'commission' => $plan->commission,
-                'total_amount' => $plan->price + $commissionAmount,
-                'commission_amount' => $commissionAmount,
-                'start_date' => now()->toDateString(),
-                'end_date' => $this->calculateEndDate($plan->duration),
-                'is_active' => 1,
-                'payment_status' => 'paid',
-            ]
-        );
-
-        return redirect()->route('subscription.plan')->with('success', 'Subscription purchased successfully!');
-    }
-
         Stripe::setApiKey(config('services.stripe.secret'));
 
         try {
             $session = StripeSession::retrieve($stripe_session_id);
             $paymentIntentId = $session->payment_intent;
+            $sessionType = $session->metadata->owner_type ?? 'buyer';
+            $sessionOwnerId = (string)($session->metadata->owner_id ?? $session->metadata->user_id ?? '');
+            if (($session->payment_status ?? null) !== 'paid' || $sessionType !== $type || $sessionOwnerId !== (string)$account->id) {
+                return redirect()->route('subscription.plan')->with('error', 'Subscription payment could not be verified for this account.');
+            }
 
             // Verify payment intent status
             $paymentIntent = PaymentIntent::retrieve($paymentIntentId);
@@ -148,26 +166,10 @@ class SubscriptionPurchaseController extends Controller
                 return redirect()->route('subscription.plan')->with('error', 'Plan not found.');
             }
 
-            $user = Auth::user();
-            $commissionAmount = $this->calculateCommissionAmount($plan->commission, $plan->price);
-
-            $purchase = SubscriptionPurchase::firstOrCreate(
-                ['stripe_id' => $paymentIntentId], // store actual payment ID
-                [
-                    'user_id' => $user->id,
-                    'plan_name' => $plan->name,
-                    'price' => $plan->price,
-                    'commission' => $plan->commission,
-                    'total_amount' => $plan->price + $commissionAmount,
-                    'commission_amount' => $commissionAmount,
-                    'start_date' => now()->toDateString(),
-                    'end_date' => $this->calculateEndDate($plan->duration),
-                    'is_active' => 1,
-                    'payment_status' => 'paid',
-                ]
-            );
-            if ($purchase->wasRecentlyCreated) {
-                $this->sendPurchaseConfirmation($purchase);
+            $this->createAccountSubscription($type,$account,$plan,$type==='buyer'?$paymentIntentId:$stripe_session_id);
+            if ($type === 'buyer') {
+                $purchase = SubscriptionPurchase::where('stripe_id',$paymentIntentId)->first();
+                if ($purchase) $this->sendPurchaseConfirmation($purchase);
             }
 
             return redirect()->route('subscription.plan')->with('success', 'Subscription purchased successfully!');
@@ -179,99 +181,66 @@ class SubscriptionPurchaseController extends Controller
     // Free plan method
     public function free(Request $request)
     {
-        if (!Auth::check()) {
+        $context = $this->accountContext();
+        if (!$context) {
             return response()->json(['status' => 'error', 'message' => 'Login required'], 401);
         }
-
-        $user = Auth::user();
-
-        $validated = $request->validate([
-            'plan_name' => 'required|string',
-            'plan_price' => 'nullable|numeric',
-            'plan_duration' => 'nullable|string',
-        ]);
-
-        $plan = SubscriptionPlan::whereRaw('LOWER(name) = ?', [strtolower($validated['plan_name'])])->first();
-
-        $price = 0.0;
-        $duration = $validated['plan_duration'] ?? ($plan->duration ?? '30 days');
-        $commission = $plan->commission ?? null;
-
-        $commissionAmount = $this->calculateCommissionAmount($commission, $price);
-
-        $purchase = SubscriptionPurchase::create([
-            'user_id' => $user->id,
-            'stripe_id' => null,
-            'plan_name' => $plan->name ?? $validated['plan_name'],
-            'price' => $price,
-            'commission' => $commission,
-            'total_amount' => 0,
-            'commission_amount' => $commissionAmount,
-            'start_date' => now()->toDateString(),
-            'end_date' => $this->calculateEndDate($duration),
-            'is_active' => 1,
-            'payment_status' => 'paid',
-        ]);
-        $this->sendPurchaseConfirmation($purchase);
-
-        return redirect()->back()->with('success', 'Subscription purchased successfully!');
-
-        // return response()->json(['status' => 'success']);
+        [$type,$account]=$context;
+        $validated=$request->validate(['plan_id'=>'nullable|integer|exists:subscription_plans,id','plan_name'=>'nullable|string|max:255']);
+        $plan=!empty($validated['plan_id']) ? SubscriptionPlan::findOrFail($validated['plan_id']) : SubscriptionPlan::where('name',$validated['plan_name']??'')->firstOrFail();
+        abort_unless($plan->status==='active' && (float)$plan->price<=0,422,'Only an active free plan can be activated here.');
+        $this->createAccountSubscription($type,$account,$plan);
+        if($type==='buyer') { $purchase=SubscriptionPurchase::where('user_id',$account->id)->where('plan_name',$plan->name)->latest()->first(); if($purchase)$this->sendPurchaseConfirmation($purchase); }
+        return redirect()->route('subscription.plan')->with('success','Subscription activated successfully.');
     }
 
     public function charge(Request $request)
     {
-        if (!Auth::check()) {
+        $context=$this->accountContext();
+        if (!$context) {
             return response()->json(['status' => 'error', 'message' => 'Login required'], 401);
         }
-
-        $user = Auth::user();
+        [$type,$account]=$context;
 
         $validated = $request->validate([
             'stripeToken' => 'required|string',
-            'plan_name' => 'required|string',
-            'plan_price' => 'required|numeric|min:0',
-            'plan_duration' => 'nullable|string',
+            'plan_id' => 'nullable|integer|exists:subscription_plans,id',
+            'plan_name' => 'nullable|string|max:255',
+            'plan_price' => 'nullable|numeric|min:0',
         ]);
 
-        $plan = SubscriptionPlan::whereRaw('LOWER(name) = ?', [strtolower($validated['plan_name'])])->first();
-        $price = (float)$validated['plan_price'];
-        $duration = $validated['plan_duration'] ?? ($plan->duration ?? '30 days');
-        $commission = $plan->commission ?? null;
+        $plan=!empty($validated['plan_id']) ? SubscriptionPlan::findOrFail($validated['plan_id']) : SubscriptionPlan::whereRaw('LOWER(name) = ?', [strtolower($validated['plan_name']??'')])->firstOrFail();
+        abort_unless($plan->status==='active' && (float)$plan->price>0,422,'Select an active paid subscription plan.');
+        if (isset($validated['plan_price']) && round((float)$validated['plan_price'],2)!==round((float)$plan->price,2)) {
+            return response()->json(['status'=>'error','message'=>'The submitted plan price does not match the selected plan.'],422);
+        }
+        if (!config('services.stripe.secret')) return response()->json(['status'=>'error','message'=>'Online subscription payment is not configured.'],503);
 
         Stripe::setApiKey(config('services.stripe.secret'));
 
         try {
             $charge = StripeCharge::create([
-                'amount' => (int)round($price * 100),
+                'amount' => (int)round((float)$plan->price * 100),
                 'currency' => 'usd',
                 'source' => $validated['stripeToken'],
-                'description' => 'Subscription purchase - ' . ($plan->name ?? $validated['plan_name']),
+                'description' => 'Subscription purchase - ' . $plan->name,
                 'metadata' => [
-                    'user_id' => (string)$user->id,
-                    'plan_name' => $plan->name ?? $validated['plan_name'],
+                    'owner_type' => $type,
+                    'owner_id' => (string)$account->id,
+                    'plan_id' => (string)$plan->id,
                 ],
             ]);
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'message' => $e->getMessage()], 422);
         }
-
-        $commissionAmount = $this->calculateCommissionAmount($commission, $price);
-
-        $purchase = SubscriptionPurchase::create([
-            'user_id' => $user->id,
-            'stripe_id' => $charge->id,
-            'plan_name' => $plan->name ?? $validated['plan_name'],
-            'price' => $price,
-            'commission' => $commission,
-            'total_amount' => $price + $commissionAmount,
-            'commission_amount' => $commissionAmount,
-            'start_date' => now()->toDateString(),
-            'end_date' => $this->calculateEndDate($duration),
-            'is_active' => 1,
-            'payment_status' => 'paid',
-        ]);
-        $this->sendPurchaseConfirmation($purchase);
+        if (!($charge->paid ?? false) || ($charge->status ?? null) !== 'succeeded') {
+            return response()->json(['status'=>'error','message'=>'The payment was not completed.'],422);
+        }
+        $this->createAccountSubscription($type,$account,$plan,$charge->id);
+        if ($type==='buyer') {
+            $purchase=SubscriptionPurchase::where('stripe_id',$charge->id)->first();
+            if($purchase)$this->sendPurchaseConfirmation($purchase);
+        }
 
         return response()->json(['status' => 'success']);
     }
