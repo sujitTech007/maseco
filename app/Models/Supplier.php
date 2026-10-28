@@ -36,6 +36,7 @@ class Supplier extends Authenticatable
         'gst',
         'password',
         'country_code',
+        'status',
 
     ];
 

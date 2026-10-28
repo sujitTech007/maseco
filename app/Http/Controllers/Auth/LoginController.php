@@ -247,14 +247,23 @@ class LoginController extends Controller
         if ($otpUser['type'] === 'user') {
             Auth::guard('web')->login($user);
             $request->session()->regenerate();
+            if (!\App\Models\KycSubmission::where('account_type', 'user')->where('account_id', $user->id)->where('status', 'approved')->exists()) {
+                return redirect()->route('kyc.show')->with('info', 'Please complete KYC before accessing your dashboard.');
+            }
             return redirect()->intended(route('user.dashboard'))->with('success', 'Login successful!');
         } elseif ($otpUser['type'] === 'supplier') {
             Auth::guard('supplier')->login($user);
             $request->session()->regenerate();
+            if (!\App\Models\KycSubmission::where('account_type', 'supplier')->where('account_id', $user->id)->where('status', 'approved')->exists()) {
+                return redirect()->route('kyc.show')->with('info', 'Please complete KYC before accessing your dashboard.');
+            }
             return redirect()->route('seller.dashboard')->with('success', 'Login successful!');
         } else {
             Auth::guard('manufacturer')->login($user);
             $request->session()->regenerate();
+            if (!\App\Models\KycSubmission::where('account_type', 'manufacturer')->where('account_id', $user->id)->where('status', 'approved')->exists()) {
+                return redirect()->route('kyc.show')->with('info', 'Please complete KYC before accessing your dashboard.');
+            }
             return redirect()->route('manufacturer.dashboard')->with('success', 'Login successful!');
         }
     }

@@ -110,6 +110,13 @@
 
                                     </li>
 
+                                    <li class="side-nav-item {{ Route::is('admin.kyc.*') ? 'active' : '' }}">
+                                        <a href="{{ route('admin.kyc.index') }}" class="side-nav-link {{ Route::is('admin.kyc.*') ? 'active' : '' }}">
+                                            <span class="menu-icon"><i class="fa-solid fa-id-card"></i></span>
+                                            <span class="menu-text">KYC Review</span>
+                                        </a>
+                                    </li>
+
 
 
                                     <li class="side-nav-item {{ Route::is('admin.category.*') ? 'active' : '' }}">

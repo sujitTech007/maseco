@@ -39,7 +39,8 @@ class Manufacturer extends Authenticatable
         'address',
         'gst',
         'country_code',
-        'otp_expires_at'
+        'otp_expires_at',
+        'status',
 
 
     ];
