@@ -97,6 +97,15 @@ Route::get('/forgot-password/reset', [ForgotPasswordController::class, 'resetFor
 Route::post('/forgot-password/reset', [ForgotPasswordController::class, 'reset'])->name('password.reset.submit');
 Route::get('/sign-up', [RegisterController::class, 'showRegistrationForm'])->name('sign.up');
 Route::post('/sign-up', [RegisterController::class, 'register'])->name('register.submit');
+Route::prefix('admin')->name('admin.')->middleware(['admin.auth'])->group(function () {
+    Route::get('/kyc', [\App\Http\Controllers\Admin\KycReviewController::class, 'index'])->name('kyc.index');
+    Route::get('/kyc/{kyc}/documents/{field}', [\App\Http\Controllers\Admin\KycReviewController::class, 'document'])->name('kyc.document');
+    Route::post('/kyc/{kyc}/decision', [\App\Http\Controllers\Admin\KycReviewController::class, 'decision'])->name('kyc.decision');
+});
+Route::middleware(['auth:supplier,manufacturer,web'])->group(function () {
+    Route::get('/kyc', [\App\Http\Controllers\KycController::class, 'show'])->name('kyc.show');
+    Route::post('/kyc', [\App\Http\Controllers\KycController::class, 'submit'])->name('kyc.submit');
+});
 Route::get('/otp', [LoginController::class, 'otpForm'])->name('otp.form');
 Route::post('/otp-verify', [LoginController::class, 'otpVerify'])->middleware('throttle:6,1')->name('otp.verify');
 Route::get('/single-blog', [PagesController::class, 'singleBlog'])->name('single.blog');
@@ -115,7 +124,7 @@ Route::post('/contact-us', [PagesController::class, 'contactUsStore'])->name('co
 
 
 // Route::prefix('seller')->name('seller.')->group(function () {
-Route::prefix('seller')->name('seller.')->middleware(['auth:supplier'])->group(function () {
+Route::prefix('seller')->name('seller.')->middleware(['auth:supplier', 'kyc.approved'])->group(function () {
     Route::get('/production', [\App\Http\Controllers\ProductionController::class, 'index'])->name('production.index');
     Route::post('/production', [\App\Http\Controllers\ProductionController::class, 'create'])->name('production.create');
     Route::get('/production/{project}', [\App\Http\Controllers\ProductionController::class, 'show'])->name('production.show');
@@ -193,7 +202,7 @@ Route::middleware(['auth:supplier,manufacturer,web'])->group(function () {
 });
 
 // User dashboard routes
-Route::prefix('user')->name('user.')->middleware(['auth'])->group(function () {
+Route::prefix('user')->name('user.')->middleware(['auth', 'kyc.approved'])->group(function () {
     Route::get('/production', [\App\Http\Controllers\ProductionController::class, 'index'])->name('production.index');
     Route::get('/production/{project}', [\App\Http\Controllers\ProductionController::class, 'show'])->name('production.show');
     Route::post('/production/{project}/samples/{submission}/review', [\App\Http\Controllers\ProductionController::class, 'reviewSample'])->name('production.samples.review');
@@ -228,7 +237,7 @@ Route::prefix('user')->name('user.')->middleware(['auth'])->group(function () {
 });
 
 // Manufacturer dashboard routes (similar to seller)
-Route::prefix('manufacturer')->name('manufacturer.')->middleware(['auth:manufacturer'])->group(function () {
+Route::prefix('manufacturer')->name('manufacturer.')->middleware(['auth:manufacturer', 'kyc.approved'])->group(function () {
     Route::get('/production', [\App\Http\Controllers\ProductionController::class, 'index'])->name('production.index');
     Route::post('/production', [\App\Http\Controllers\ProductionController::class, 'create'])->name('production.create');
     Route::get('/production/{project}', [\App\Http\Controllers\ProductionController::class, 'show'])->name('production.show');

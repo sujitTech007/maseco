@@ -74,5 +74,6 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         // ...existing middleware...
         'admin.auth' => \App\Http\Middleware\AdminAuthenticate::class,
+        'kyc.approved' => \App\Http\Middleware\EnsureKycApproved::class,
     ];
 }

@@ -174,6 +174,7 @@ class RegisterController extends Controller
         'phone' => $phone,
         'country_code' => $countryCode,
         'password' => \Illuminate\Support\Facades\Hash::make($request->password),
+        'status' => 1,
     ];
 
     // Add company name if needed
