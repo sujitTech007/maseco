@@ -26,9 +26,9 @@
         <div class="row g-3 mb-4">
 
             <div class="col-12 col-sm-6 col-xl-3">
-                <div class="card h-100 border-success border-opacity-25 bg-success bg-opacity-10 rounded-4 shadow-sm">
+                <div class="card  border-success border-opacity-25 bg-success bg-opacity-10 rounded-4 shadow-sm">
                     <div class="card-body p-3">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex justify-content-between align-items-center">
                             <span class="fw-semibold">Total Enquiries</span>
                             <span class="rounded-3 bg-success text-white p-2">
                                 <i class="fa-solid fa-comments"></i>
@@ -41,9 +41,9 @@
             </div>
 
             <div class="col-12 col-sm-6 col-xl-3">
-                <div class="card h-100 border-primary border-opacity-25 bg-primary bg-opacity-10 rounded-4 shadow-sm">
+                <div class="card  border-primary border-opacity-25 bg-primary bg-opacity-10 rounded-4 shadow-sm">
                     <div class="card-body p-3">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex justify-content-between align-items-center">
                             <span class="fw-semibold">Total Orders</span>
                             <span class="rounded-3 bg-primary text-white p-2">
                                 <i class="fa-solid fa-bag-shopping"></i>
@@ -56,9 +56,9 @@
             </div>
 
             <div class="col-12 col-sm-6 col-xl-3">
-                <div class="card h-100 border-warning border-opacity-25 bg-warning bg-opacity-10 rounded-4 shadow-sm">
+                <div class="card  border-warning border-opacity-25 bg-warning bg-opacity-10 rounded-4 shadow-sm">
                     <div class="card-body p-3">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex justify-content-between align-items-center">
                             <span class="fw-semibold">Total Payments</span>
                             <span class="rounded-3 bg-warning text-dark p-2">
                                 <i class="fa-solid fa-credit-card"></i>
@@ -71,9 +71,9 @@
             </div>
 
             <div class="col-12 col-sm-6 col-xl-3">
-                <div class="card h-100 border-secondary border-opacity-25 bg-secondary bg-opacity-10 rounded-4 shadow-sm">
+                <div class="card  border-secondary border-opacity-25 bg-secondary bg-opacity-10 rounded-4 shadow-sm">
                     <div class="card-body p-3">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex justify-content-between align-items-center">
                             <span class="fw-semibold">Subscription</span>
                             <span class="rounded-3 bg-secondary text-white p-2">
                                 <i class="fa-solid fa-star"></i>
