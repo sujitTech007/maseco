@@ -361,3 +361,4 @@ $rows = collect([
 </div>
 
 @include('user.Include.footer')
+  

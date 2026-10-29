@@ -71,7 +71,60 @@
 
     </div>
     
-{{-- Order Filters --}}
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const filterButton = document.getElementById('order-filter-btn');
+
+    filterButton.addEventListener('click', function () {
+        const search = document.getElementById('order-search').value.trim();
+        const status = document.getElementById('order-status').value;
+        const paymentStatus = document.getElementById('order-payment-status').value;
+        const startDate = document.getElementById('order-start-date').value;
+        const endDate = document.getElementById('order-end-date').value;
+
+        if (startDate && endDate && startDate > endDate) {
+            alert('From Date cannot be later than To Date.');
+            return;
+        }
+
+        const url = new URL(window.location.href);
+
+        const filters = {
+            search: search,
+            status: status,
+            payment_status: paymentStatus,
+            start_date: startDate,
+            end_date: endDate
+        };
+
+        Object.entries(filters).forEach(([key, value]) => {
+            if (value) {
+                url.searchParams.set(key, value);
+            } else {
+                url.searchParams.delete(key);
+            }
+        });
+
+        url.searchParams.delete('page');
+
+        window.location.href = url.toString();
+    });
+
+    // Press Enter in the search field to apply filters.
+    document.getElementById('order-search').addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            filterButton.click();
+        }
+    });
+});
+</script>
+
+
+    <div class="page-container p-3">
+        {{-- Order Filters --}}
 <div class="card border-0 shadow-sm rounded-4 mb-4">
     <div class="card-body p-3">
 
@@ -190,58 +243,6 @@
         </div>
     </div>
 </div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const filterButton = document.getElementById('order-filter-btn');
-
-    filterButton.addEventListener('click', function () {
-        const search = document.getElementById('order-search').value.trim();
-        const status = document.getElementById('order-status').value;
-        const paymentStatus = document.getElementById('order-payment-status').value;
-        const startDate = document.getElementById('order-start-date').value;
-        const endDate = document.getElementById('order-end-date').value;
-
-        if (startDate && endDate && startDate > endDate) {
-            alert('From Date cannot be later than To Date.');
-            return;
-        }
-
-        const url = new URL(window.location.href);
-
-        const filters = {
-            search: search,
-            status: status,
-            payment_status: paymentStatus,
-            start_date: startDate,
-            end_date: endDate
-        };
-
-        Object.entries(filters).forEach(([key, value]) => {
-            if (value) {
-                url.searchParams.set(key, value);
-            } else {
-                url.searchParams.delete(key);
-            }
-        });
-
-        url.searchParams.delete('page');
-
-        window.location.href = url.toString();
-    });
-
-    // Press Enter in the search field to apply filters.
-    document.getElementById('order-search').addEventListener('keydown', function (event) {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            filterButton.click();
-        }
-    });
-});
-</script>
-
-
-    <div class="page-container p-3">
 
         <div class="meetingPpage">
 

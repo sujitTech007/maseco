@@ -4824,7 +4824,7 @@ form[action*="marketplace"] .form-label {
 .listing-page .btn {
     font-size: 13px;
     border-radius: 6px;
-    color: var(--primary-color);
+    /* color: var(--primary-color); */
     padding: 10px 6px;
 }
 .material-card .btn:hover,
