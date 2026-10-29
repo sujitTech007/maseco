@@ -126,6 +126,23 @@
     </div>
 
 
+    {{-- KYC Pending Alert --}}
+    @if(($kycPendingCount ?? 0) > 0)
+    <div class="alert alert-warning d-flex align-items-center gap-3 shadow-sm border-0 mb-3" role="alert">
+        <div class="rounded-circle bg-warning bg-opacity-25 text-warning d-flex align-items-center justify-content-center flex-shrink-0"
+             style="width:42px;height:42px;font-size:1.2rem">
+            <i class="ri-time-line"></i>
+        </div>
+        <div class="flex-grow-1">
+            <strong>{{ $kycPendingCount }} KYC {{ Str::plural('submission', $kycPendingCount) }} pending review.</strong>
+            Approve or reject them so users can access their dashboards.
+        </div>
+        <a href="{{ route('admin.kyc.index', ['status'=>'pending']) }}" class="btn btn-sm btn-warning text-white flex-shrink-0">
+            Review now
+        </a>
+    </div>
+    @endif
+
     {{-- Second Row: User Statistics --}}
     <div class="row g-3">
 

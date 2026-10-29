@@ -23,6 +23,7 @@ use App\Support\PhoneNumber;
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -191,8 +192,22 @@ class RegisterController extends Controller
         Log::error('Welcome email could not be sent.', ['email' => $user->email, 'exception' => $exception->getMessage()]);
     }
 
-    // Redirect to login
-    return redirect()->route('login')->with('success', 'Registration successful! Please login.');
+    // Sign in immediately so KYC is the first page after registration.
+    $guard = match ($request->user_type) {
+        'supplier' => 'supplier',
+        'manufacturer' => 'manufacturer',
+        default => 'web',
+    };
+    Auth::guard($guard)->login($user);
+    $request->session()->regenerate();
+
+    $kycRoute = match ($request->user_type) {
+        'supplier' => 'seller.kyc',
+        'manufacturer' => 'manufacturer.kyc',
+        default => 'user.kyc',
+    };
+
+    return redirect()->route($kycRoute)->with('success', 'Registration complete. Submit your KYC documents for admin approval.');
 }
 
 

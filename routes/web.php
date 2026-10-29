@@ -106,6 +106,22 @@ Route::middleware(['auth:supplier,manufacturer,web'])->group(function () {
     Route::get('/kyc', [\App\Http\Controllers\KycController::class, 'show'])->name('kyc.show');
     Route::post('/kyc', [\App\Http\Controllers\KycController::class, 'submit'])->name('kyc.submit');
 });
+
+// ─── Per-role KYC routes (auth only — no kyc.approved so they can upload) ───
+Route::middleware(['auth:supplier'])->prefix('seller')->name('seller.')->group(function () {
+    Route::get('/kyc',  [\App\Http\Controllers\KycController::class, 'sellerShow'])->name('kyc');
+    Route::post('/kyc', [\App\Http\Controllers\KycController::class, 'sellerSubmit'])->name('kyc.submit');
+});
+
+Route::middleware(['auth:manufacturer'])->prefix('manufacturer')->name('manufacturer.')->group(function () {
+    Route::get('/kyc',  [\App\Http\Controllers\KycController::class, 'manufacturerShow'])->name('kyc');
+    Route::post('/kyc', [\App\Http\Controllers\KycController::class, 'manufacturerSubmit'])->name('kyc.submit');
+});
+
+Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
+    Route::get('/kyc',  [\App\Http\Controllers\KycController::class, 'buyerShow'])->name('kyc');
+    Route::post('/kyc', [\App\Http\Controllers\KycController::class, 'buyerSubmit'])->name('kyc.submit');
+});
 Route::get('/otp', [LoginController::class, 'otpForm'])->name('otp.form');
 Route::post('/otp-verify', [LoginController::class, 'otpVerify'])->middleware('throttle:6,1')->name('otp.verify');
 Route::get('/single-blog', [PagesController::class, 'singleBlog'])->name('single.blog');
@@ -147,6 +163,11 @@ Route::prefix('seller')->name('seller.')->middleware(['auth:supplier', 'kyc.appr
     Route::post('/sample-purchases/{purchase}/status', [\App\Http\Controllers\SampleSystemController::class, 'status'])->name('samples.status');
     Route::post('/sample-purchases/{purchase}/messages', [\App\Http\Controllers\SampleSystemController::class, 'message'])->name('samples.messages');
     Route::get('/dashboard', [SellerController::class, 'dashboard'])->name('dashboard');
+    Route::get('/report', [SellerController::class, 'report'])->name('report');
+    Route::get('/tracking', [SellerController::class, 'tracking'])->name('tracking');
+    Route::get('/tracking/{order}', [SellerController::class, 'trackingOrder'])->name('tracking.show');
+    Route::get('/shipments', [SellerController::class, 'shipments'])->name('shipments');
+    Route::patch('/shipments/{order}', [SellerController::class, 'updateShipment'])->name('shipments.update');
     Route::get('/enquiry', [SellerController::class, 'enquiry'])->name('enquiry');
     Route::get('/material', [MaterialController::class, 'index'])->name('material');
     Route::get('/material/create', [MaterialController::class, 'create'])->name('material.create');

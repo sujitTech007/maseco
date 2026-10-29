@@ -9,9 +9,10 @@ class KycSubmission extends Model
     protected $fillable = [
         'account_type', 'account_id', 'identity_document', 'address_document',
         'business_document', 'tax_document', 'status', 'admin_note', 'submitted_at', 'reviewed_at',
+        'document_back', 'selfie_document', 'profile_photo', 'document_type', 'document_number', 'form_data',
     ];
 
-    protected $casts = ['submitted_at' => 'datetime', 'reviewed_at' => 'datetime'];
+    protected $casts = ['submitted_at' => 'datetime', 'reviewed_at' => 'datetime', 'form_data' => 'array'];
 
     public function account()
     {

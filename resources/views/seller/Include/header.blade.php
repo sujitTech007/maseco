@@ -227,16 +227,16 @@
 
 
                                             <li
-                                                class="side-nav-item {{ request()->routeIs('seller.material') ? 'active' : '' }}">
+                                                class="side-nav-item {{ request()->routeIs('seller.material*') ? 'active' : '' }}">
 
                                                 <a href="{{ route('seller.material') }}"
-                                                    class="side-nav-link {{ request()->routeIs('seller.material') ? 'active' : '' }}">
+                                                    class="side-nav-link {{ request()->routeIs('seller.material*') ? 'active' : '' }}">
 
                                                     <span class="menu-icon"><i class="fa-solid fa-boxes-stacked"></i>
 
                                                     </span>
 
-                                                    <span class="menu-text"> Material Management
+                                                <span class="menu-text"> Material Management
 
                                                     </span>
 
@@ -244,16 +244,16 @@
 
                                             </li>
                                             <li
-                                                class="side-nav-item {{ request()->routeIs('seller.material') ? 'active' : '' }}">
+                                                class="side-nav-item {{ request()->routeIs('seller.report') ? 'active' : '' }}">
 
-                                                <a href="{{ route('seller.material') }}"
-                                                    class="side-nav-link {{ request()->routeIs('seller.material') ? 'active' : '' }}">
+                                                <a href="{{ route('seller.report') }}"
+                                                    class="side-nav-link {{ request()->routeIs('seller.report') ? 'active' : '' }}">
 
                                                     <span class="menu-icon"><i class="fa-solid fa-chart-line"></i>
 
                                                     </span>
 
-                                                    <span class="menu-text">report
+                                                <span class="menu-text">Reports
 
                                                     </span>
 
@@ -261,15 +261,15 @@
 
                                             </li>
                                             <li
-                                                class="side-nav-item {{ request()->routeIs('seller.material') ? 'active' : '' }}">
+                                                class="side-nav-item {{ request()->routeIs('seller.tracking*') ? 'active' : '' }}">
 
-                                                <a href="{{ route('seller.material') }}"
-                                                    class="side-nav-link {{ request()->routeIs('seller.material') ? 'active' : '' }}">
+                                                <a href="{{ route('seller.tracking') }}"
+                                                    class="side-nav-link {{ request()->routeIs('seller.tracking*') ? 'active' : '' }}">
 
                                                     <span class="menu-icon"><i class="fa-solid fa-route"></i>
                                                     </span>
 
-                                                    <span class="menu-text">tracking
+                                                <span class="menu-text">Tracking
 
                                                     </span>
 
@@ -277,15 +277,15 @@
 
                                             </li>
                                             <li
-                                                class="side-nav-item {{ request()->routeIs('seller.material') ? 'active' : '' }}">
+                                                class="side-nav-item {{ request()->routeIs('seller.shipments*') ? 'active' : '' }}">
 
-                                                <a href="{{ route('seller.material') }}"
-                                                    class="side-nav-link {{ request()->routeIs('seller.material') ? 'active' : '' }}">
+                                                <a href="{{ route('seller.shipments') }}"
+                                                    class="side-nav-link {{ request()->routeIs('seller.shipments*') ? 'active' : '' }}">
 
                                                     <span class="menu-icon"><i class="fa-solid fa-truck-fast"></i>
                                                     </span>
 
-                                                    <span class="menu-text">shipment
+                                                <span class="menu-text">Shipment
 
                                                     </span>
 

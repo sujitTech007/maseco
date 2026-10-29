@@ -26,6 +26,7 @@
             $sellerTotal = $suppliers->count();
             $sellerActive = $suppliers->where('status', '1')->count();
             $sellerInactive = $sellerTotal - $sellerActive;
+            $kycMap = $kycMap ?? collect();
         @endphp
 
         <div class="seller-overview">
@@ -152,6 +153,7 @@
                             <th>Email</th>
                             <th>Mobile No.</th>
                             <th>Company Name</th>
+                            <th>KYC</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
@@ -159,6 +161,13 @@
 
                     <tbody>
                         @forelse($suppliers as $supplier)
+                        @php
+                            $supplierKyc  = $kycMap->get($supplier->id);
+                            $kycStatus    = $supplierKyc->status ?? 'not_submitted';
+                            $kycBadgeMap  = ['approved'=>'success','pending'=>'warning','rejected'=>'danger','not_submitted'=>'secondary','incomplete'=>'secondary'];
+                            $kycBadge     = $kycBadgeMap[$kycStatus] ?? 'secondary';
+                            $kycText      = ['approved'=>'Approved','pending'=>'Pending','rejected'=>'Rejected','not_submitted'=>'Not submitted','incomplete'=>'Incomplete'][$kycStatus] ?? ucfirst($kycStatus);
+                        @endphp
                             <tr data-status="{{ $supplier->status == '1' ? 'active' : 'inactive' }}" data-type="{{ strtolower((string) ($supplier->business_type ?? '')) }}" data-date="{{ $supplier->created_at?->format('Y-m-d') }}">
                                 <td>
                                     <p class="seller-cell-text">{{ $loop->iteration }}</p>
@@ -178,6 +187,10 @@
 
                                 <td>
                                     <p class="seller-cell-text">{{ $supplier->company_name }}</p>
+                                </td>
+
+                                <td>
+                                    <span class="badge bg-{{ $kycBadge }}">{{ $kycText }}</span>
                                 </td>
 
                                 <td>

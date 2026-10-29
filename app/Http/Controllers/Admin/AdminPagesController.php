@@ -7,6 +7,7 @@ use App\Models\Newsletter;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use App\Models\Enquiry;
+use App\Models\KycSubmission;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Models\User;
@@ -18,79 +19,105 @@ class AdminPagesController extends Controller
 {
     public function dashboard()
     {
-        $enquiryCount = Enquiry::count();
-        $orderCount = Order::count();
-        $paymentTotal = Payment::sum('amount');
-        $buyerCount = User::count();
-        $sellerCount = Supplier::count();
+        $enquiryCount      = Enquiry::count();
+        $orderCount        = Order::count();
+        $paymentTotal      = Payment::sum('amount');
+        $buyerCount        = User::count();
+        $sellerCount       = Supplier::count();
         $manufacturerCount = Manufacturer::count();
-        $newsletterCount = Newsletter::count();
-        $contactCount = Contact::count();
+        $newsletterCount   = Newsletter::count();
+        $contactCount      = Contact::count();
         $recentNewsletters = Newsletter::latest()->take(5)->get();
-        $recentContacts = Contact::latest()->take(5)->get();
+        $recentContacts    = Contact::latest()->take(5)->get();
+
+        // KYC pending counts for dashboard alert
+        $kycPendingCount = KycSubmission::where('status', 'pending')->count();
 
         return view('admin.index', compact(
-            'enquiryCount',
-            'orderCount',
-            'paymentTotal',
-            'buyerCount',
-            'sellerCount',
-            'manufacturerCount',
-            'newsletterCount',
-            'contactCount',
-            'recentNewsletters',
-            'recentContacts'
+            'enquiryCount', 'orderCount', 'paymentTotal',
+            'buyerCount', 'sellerCount', 'manufacturerCount',
+            'newsletterCount', 'contactCount',
+            'recentNewsletters', 'recentContacts',
+            'kycPendingCount'
         ));
     }
 
     public function buyer()
     {
+        // Eager-load KYC for each buyer (account_type = 'user')
         $users = User::all();
+        $kycMap = KycSubmission::where('account_type', 'user')
+            ->whereIn('account_id', $users->pluck('id'))
+            ->get()
+            ->keyBy('account_id');
 
-        return view('admin.buyer.index', compact('users'));
+        return view('admin.buyer.index', compact('users', 'kycMap'));
     }
 
     public function buyerDetails($id)
     {
+        $account = User::findOrFail($id);
+        $kyc     = KycSubmission::where('account_type', 'user')->where('account_id', $id)->first();
+
         return view('admin.accounts.show', [
-            'account' => User::findOrFail($id),
+            'account'     => $account,
+            'kyc'         => $kyc,
             'accountType' => 'Buyer',
-            'backRoute' => 'admin.buyer',
-            'icon' => 'fa-user',
+            'kycType'     => 'user',
+            'backRoute'   => 'admin.buyer',
+            'icon'        => 'fa-user',
         ]);
     }
 
     public function seller()
     {
         $suppliers = Supplier::all();
+        $kycMap    = KycSubmission::where('account_type', 'supplier')
+            ->whereIn('account_id', $suppliers->pluck('id'))
+            ->get()
+            ->keyBy('account_id');
 
-        return view('admin.supplier.index', compact('suppliers'));
+        return view('admin.supplier.index', compact('suppliers', 'kycMap'));
     }
 
     public function supplierDetails($id)
     {
+        $account = Supplier::findOrFail($id);
+        $kyc     = KycSubmission::where('account_type', 'supplier')->where('account_id', $id)->first();
+
         return view('admin.accounts.show', [
-            'account' => Supplier::findOrFail($id),
+            'account'     => $account,
+            'kyc'         => $kyc,
             'accountType' => 'Supplier',
-            'backRoute' => 'admin.seller',
-            'icon' => 'fa-store',
+            'kycType'     => 'supplier',
+            'backRoute'   => 'admin.seller',
+            'icon'        => 'fa-store',
         ]);
     }
 
     public function manufacturer()
     {
         $manufacturers = Manufacturer::all();
+        $kycMap        = KycSubmission::where('account_type', 'manufacturer')
+            ->whereIn('account_id', $manufacturers->pluck('id'))
+            ->get()
+            ->keyBy('account_id');
 
-        return view('admin.manufacturer.index', compact('manufacturers'));
+        return view('admin.manufacturer.index', compact('manufacturers', 'kycMap'));
     }
 
     public function manufacturerDetails($id)
     {
+        $account = Manufacturer::findOrFail($id);
+        $kyc     = KycSubmission::where('account_type', 'manufacturer')->where('account_id', $id)->first();
+
         return view('admin.accounts.show', [
-            'account' => Manufacturer::findOrFail($id),
+            'account'     => $account,
+            'kyc'         => $kyc,
             'accountType' => 'Manufacturer',
-            'backRoute' => 'admin.manufacturer',
-            'icon' => 'fa-industry',
+            'kycType'     => 'manufacturer',
+            'backRoute'   => 'admin.manufacturer',
+            'icon'        => 'fa-industry',
         ]);
     }
 

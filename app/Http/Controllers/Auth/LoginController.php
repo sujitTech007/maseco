@@ -69,7 +69,7 @@ class LoginController extends Controller
             return back()->withErrors(['error' => 'Invalid credentials or user does not exist..']);
         }
 
-        if ($user->status == 0) {
+        if (!$this->canSignIn($user, $request->user_type)) {
             return back()->withErrors(['error' => 'Your account is not active, please contact to admin to activate your account.']);
         }
 
@@ -238,34 +238,43 @@ class LoginController extends Controller
         $user = $model::find($otpUser['id']);
         Session::forget('otp_user');
 
-        if (!$user || $user->status == 0) {
+        if (!$user || !$this->canSignIn($user, $otpUser['type'])) {
             return redirect()->route('login')->withErrors([
                 'error' => 'Your account is not active or could not be found.',
             ]);
         }
 
-        if ($otpUser['type'] === 'user') {
-            Auth::guard('web')->login($user);
-            $request->session()->regenerate();
-            if (!\App\Models\KycSubmission::where('account_type', 'user')->where('account_id', $user->id)->where('status', 'approved')->exists()) {
-                return redirect()->route('kyc.show')->with('info', 'Please complete KYC before accessing your dashboard.');
-            }
-            return redirect()->intended(route('user.dashboard'))->with('success', 'Login successful!');
-        } elseif ($otpUser['type'] === 'supplier') {
-            Auth::guard('supplier')->login($user);
-            $request->session()->regenerate();
-            if (!\App\Models\KycSubmission::where('account_type', 'supplier')->where('account_id', $user->id)->where('status', 'approved')->exists()) {
-                return redirect()->route('kyc.show')->with('info', 'Please complete KYC before accessing your dashboard.');
-            }
-            return redirect()->route('seller.dashboard')->with('success', 'Login successful!');
-        } else {
-            Auth::guard('manufacturer')->login($user);
-            $request->session()->regenerate();
-            if (!\App\Models\KycSubmission::where('account_type', 'manufacturer')->where('account_id', $user->id)->where('status', 'approved')->exists()) {
-                return redirect()->route('kyc.show')->with('info', 'Please complete KYC before accessing your dashboard.');
-            }
-            return redirect()->route('manufacturer.dashboard')->with('success', 'Login successful!');
+        $type = $otpUser['type'];
+        $guard = match ($type) {
+            'supplier' => 'supplier',
+            'manufacturer' => 'manufacturer',
+            default => 'web',
+        };
+        Auth::guard($guard)->login($user);
+        $request->session()->regenerate();
+
+        $approved = \App\Models\KycSubmission::where('account_type', $type)
+            ->where('account_id', $user->id)
+            ->where('status', 'approved')
+            ->exists();
+
+        if (!$approved) {
+            $kycRoute = match ($type) {
+                'supplier' => 'seller.kyc',
+                'manufacturer' => 'manufacturer.kyc',
+                default => 'user.kyc',
+            };
+
+            return redirect()->route($kycRoute)->with('info', 'Complete KYC verification to access your dashboard.');
         }
+
+        $dashboardRoute = match ($type) {
+            'supplier' => 'seller.dashboard',
+            'manufacturer' => 'manufacturer.dashboard',
+            default => 'user.dashboard',
+        };
+
+        return redirect()->intended(route($dashboardRoute))->with('success', 'Login successful!');
     }
 
 
@@ -279,5 +288,19 @@ class LoginController extends Controller
         if ($type === 'supplier') return Supplier::class;
 
         return Manufacturer::class;
+    }
+
+    private function canSignIn($user, string $type): bool
+    {
+        if ((int) $user->status !== 0) {
+            return true;
+        }
+
+        // Older rejected KYC decisions also deactivated the account. Let those
+        // users back in to review the admin note and submit corrected documents.
+        return \App\Models\KycSubmission::where('account_type', $type)
+            ->where('account_id', $user->id)
+            ->where('status', 'rejected')
+            ->exists();
     }
 }

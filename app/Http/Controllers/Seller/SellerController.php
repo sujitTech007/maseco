@@ -27,6 +27,92 @@ class SellerController extends Controller
         return view('seller.enquiry.index');
     }
 
+    public function report()
+    {
+        $supplier = Auth::guard('supplier')->user();
+        $ordersCount = \App\Models\Order::where('supplier_id', $supplier->id)->count();
+        $paidOrdersCount = \App\Models\Order::where('supplier_id', $supplier->id)->where('payment_status', 'paid')->count();
+        $enquiriesCount = \App\Models\Enquiry::where('supplier_id', $supplier->id)->count();
+        $paymentsTotal = \App\Models\Payment::whereHas('order', function ($query) use ($supplier) {
+            $query->where('supplier_id', $supplier->id);
+        })->sum('amount');
+
+        return view('seller.report', compact('ordersCount', 'paidOrdersCount', 'enquiriesCount', 'paymentsTotal'));
+    }
+
+    public function tracking(Request $request)
+    {
+        return $this->trackingPage($request);
+    }
+
+    public function trackingOrder(Request $request, $order)
+    {
+        $request->merge(['search' => $order]);
+        return $this->trackingPage($request);
+    }
+
+    private function trackingPage(Request $request)
+    {
+        $supplier = Auth::guard('supplier')->user();
+        $query = \App\Models\Order::with('user')->where('supplier_id', $supplier->id);
+        if ($request->filled('search')) {
+            $search = trim($request->input('search'));
+            $query->where(function ($builder) use ($search) {
+                $builder->where('uid', 'like', '%' . $search . '%')
+                    ->orWhere('tracking_number', 'like', '%' . $search . '%')
+                    ->orWhereHas('user', fn ($userQuery) => $userQuery->where('name', 'like', '%' . $search . '%'));
+                if (ctype_digit($search)) $builder->orWhere('id', (int) $search);
+            });
+        }
+        if ($request->filled('status')) $query->where('status', $request->input('status'));
+
+        $ordersCount = \App\Models\Order::where('supplier_id', $supplier->id)->count();
+        $inTransitCount = \App\Models\Order::where('supplier_id', $supplier->id)->whereIn('status', ['shipped', 'in_transit', 'out_for_delivery'])->count();
+        $deliveredCount = \App\Models\Order::where('supplier_id', $supplier->id)->where('status', 'delivered')->count();
+        $orders = $query->latest()->paginate(15)->withQueryString();
+
+        return view('seller.tracking', compact('orders', 'ordersCount', 'inTransitCount', 'deliveredCount'));
+    }
+
+    public function shipments(Request $request)
+    {
+        $supplier = Auth::guard('supplier')->user();
+        $query = \App\Models\Order::with('user')->where('supplier_id', $supplier->id);
+        if ($request->filled('search')) {
+            $search = trim($request->input('search'));
+            $query->where(function ($builder) use ($search) {
+                $builder->where('uid', 'like', '%' . $search . '%')
+                    ->orWhere('tracking_number', 'like', '%' . $search . '%')
+                    ->orWhereHas('user', fn ($userQuery) => $userQuery->where('name', 'like', '%' . $search . '%'));
+                if (ctype_digit($search)) $builder->orWhere('id', (int) $search);
+            });
+        }
+        if ($request->filled('status')) $query->where('status', $request->input('status'));
+
+        $shipments = $query->latest()->paginate(15)->withQueryString();
+        $shipmentsCount = \App\Models\Order::where('supplier_id', $supplier->id)->count();
+        $pendingShipmentsCount = \App\Models\Order::where('supplier_id', $supplier->id)->whereIn('status', ['pending', 'processing'])->count();
+        $inTransitCount = \App\Models\Order::where('supplier_id', $supplier->id)->whereIn('status', ['shipped', 'in_transit', 'out_for_delivery'])->count();
+        $deliveredCount = \App\Models\Order::where('supplier_id', $supplier->id)->where('status', 'delivered')->count();
+
+        return view('seller.shipment', compact('shipments', 'shipmentsCount', 'pendingShipmentsCount', 'inTransitCount', 'deliveredCount'));
+    }
+
+    public function updateShipment(Request $request, $order)
+    {
+        $supplier = Auth::guard('supplier')->user();
+        $shipment = \App\Models\Order::where('supplier_id', $supplier->id)->findOrFail($order);
+        $data = $request->validate([
+            'tracking_number' => ['nullable', 'string', 'max:100'],
+            'shipping_method' => ['nullable', 'string', 'max:100'],
+            'estimated_delivery' => ['nullable', 'date'],
+            'status' => ['required', 'in:pending,processing,shipped,in_transit,out_for_delivery,delivered,cancelled'],
+        ]);
+        $shipment->update($data);
+
+        return back()->with('success', 'Shipment updated successfully.');
+    }
+
     public function material()
     {
         return view('seller.material.index');

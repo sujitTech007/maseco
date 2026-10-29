@@ -27,6 +27,7 @@
         $buyerTotal = $users->count();
         $buyerActive = $users->where('status', '1')->count();
         $buyerInactive = $buyerTotal - $buyerActive;
+        $kycMap = $kycMap ?? collect();
         @endphp
 
         <div class="buyer-overview">
@@ -142,6 +143,7 @@
                             <th>Buyer</th>
                             <th>Email</th>
                             <th>Mobile</th>
+                            <th>KYC</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
@@ -149,6 +151,13 @@
 
                     <tbody>
                         @forelse($users as $user)
+                        @php
+                            $userKyc = $kycMap->get($user->id);
+                            $kycStatus = $userKyc->status ?? 'not_submitted';
+                            $kycBadgeMap = ['approved'=>'success','pending'=>'warning','rejected'=>'danger','not_submitted'=>'secondary','incomplete'=>'secondary'];
+                            $kycBadge = $kycBadgeMap[$kycStatus] ?? 'secondary';
+                            $kycText  = ['approved'=>'Approved','pending'=>'Pending','rejected'=>'Rejected','not_submitted'=>'Not submitted','incomplete'=>'Incomplete'][$kycStatus] ?? ucfirst($kycStatus);
+                        @endphp
                         <tr data-status="{{ $user->status == '1' ? 'active' : 'inactive' }}" data-type="{{ strtolower((string) ($user->gender ?? '')) }}" data-date="{{ $user->created_at?->format('Y-m-d') }}">
                             <td>
                                 <p class="buyer-cell-text">{{ $loop->iteration }}</p>
@@ -164,6 +173,10 @@
 
                             <td>
                                 <p class="buyer-cell-text">{{ trim(($user->country_code ?? '') . ' ' . $user->phone) }}</p>
+                            </td>
+
+                            <td>
+                                <span class="badge bg-{{ $kycBadge }}">{{ $kycText }}</span>
                             </td>
 
                             <td>
