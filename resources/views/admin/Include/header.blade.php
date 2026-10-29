@@ -110,7 +110,7 @@
 
                                     </li>
 
-                                    <li class="side-nav-item {{ Route::is('admin.kyc.*') ? 'active' : '' }}">
+                                    <!-- <li class="side-nav-item {{ Route::is('admin.kyc.*') ? 'active' : '' }}">
                                         <a href="{{ route('admin.kyc.index') }}" class="side-nav-link {{ Route::is('admin.kyc.*') ? 'active' : '' }}">
                                             <span class="menu-icon"><i class="fa-solid fa-id-card"></i></span>
                                             <span class="menu-text">KYC Review</span>
@@ -119,7 +119,7 @@
                                                 <span class="badge bg-danger rounded-pill ms-auto">{{ $__kycPending }}</span>
                                             @endif
                                         </a>
-                                    </li>
+                                    </li> -->
 
 
 

@@ -6,10 +6,14 @@
         $account->country_code ?? null,
         $account->phone ?? null,
     ], fn ($value) => filled($value))));
+    $kycDetails = $kyc?->form_data ?? [];
+    $kycValue = fn ($key, $fallback = null) => filled($kycDetails[$key] ?? null) ? $kycDetails[$key] : $fallback;
+    $displayName = $kycValue('name', $account->name);
 
     $details = [
-        'Email address' => $account->email ?? null,
-        'Phone number'  => $phone ?: null,
+        'Full name'     => $displayName,
+        'Email address' => $kycValue('email', $account->email),
+        'Phone number'  => $kycValue('phone', $phone ?: null),
     ];
 
     if ($accountType === 'Buyer') {
@@ -19,17 +23,21 @@
         ];
     } else {
         $details += [
-            'Company name'   => $account->company_name ?? null,
-            'Business name'  => $account->business_name ?? null,
-            'Business type'  => $account->business_type ?? null,
-            'GST / Tax number' => $account->gst ?? null,
+            'Company name'   => $kycValue('company_name', $account->company_name),
+            'Business name'  => $kycValue('business_name', $account->business_name ?: ($account->company_name ?? null)),
+            'Business type'  => $kycValue('business_type', $account->business_type),
+            'Company registration number' => $kycValue('company_registration_number'),
+            'Business tax ID' => $kycValue('business_tax_id', $account->gst),
+            'GST number' => $kycValue('gst_number'),
         ];
     }
 
     $details += [
-        'Country'          => $account->country ?? null,
-        'State / Province' => $account->state ?? null,
-        'Address'          => $account->address ?? null,
+        'Country'          => $kycValue('country', $account->country),
+        'State / Province' => $kycValue('state', $account->state),
+        'City'             => $kycValue('city'),
+        'Address'          => $kycValue('address', $account->address),
+        'Business address' => $kycValue('business_address'),
         'Registered on'    => optional($account->created_at)->format('M j, Y g:i A'),
     ];
 
@@ -82,14 +90,14 @@
                                 <i class="fa-solid {{ $icon }}"></i>
                             </div>
                             <div class="flex-grow-1">
-                                <h2 class="h4 mb-1">{{ $account->name ?: 'Unnamed account' }}</h2>
+                                <h2 class="h4 mb-1">{{ $displayName ?: 'Unnamed account' }}</h2>
                                 <span class="badge {{ $statusIsActive ? 'bg-success' : 'bg-secondary' }} me-1">
                                     {{ $statusIsActive ? 'Active' : 'Inactive' }}
                                 </span>
                                 <span class="badge bg-{{ $kycBadge }}">KYC: {{ $kycLabel }}</span>
                             </div>
-                            @if(!empty($account->company_name))
-                                <div class="text-muted">{{ $account->company_name }}</div>
+                            @if($kycValue('company_name', $account->company_name))
+                                <div class="text-muted">{{ $kycValue('company_name', $account->company_name) }}</div>
                             @endif
                         </div>
 
@@ -144,7 +152,7 @@
                             <div class="mb-3">
                                 <div class="small text-muted mb-2 fw-semibold">Uploaded documents</div>
                                 <div class="d-flex flex-wrap gap-2">
-                                    @foreach(['identity_document'=>['Identity','ri-id-card-line'],'address_document'=>['Address','ri-map-pin-line'],'business_document'=>['Business Reg.','ri-building-line'],'tax_document'=>['Tax Reg.','ri-receipt-line']] as $field => [$label, $icon2])
+                                    @foreach(['identity_document'=>['Identity front','ri-id-card-line'],'document_back'=>['Identity back','ri-id-card-line'],'selfie_document'=>['Selfie','ri-user-line'],'profile_photo'=>['Profile photo','ri-image-line'],'address_document'=>['Address proof','ri-map-pin-line'],'business_document'=>['Business certificate','ri-building-line'],'tax_document'=>['Tax document','ri-receipt-line']] as $field => [$label, $icon2])
                                         @if($kyc->$field)
                                             <a href="{{ route('admin.kyc.document', [$kyc, $field]) }}"
                                                class="btn btn-sm btn-outline-primary" target="_blank">

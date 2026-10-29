@@ -61,77 +61,77 @@
                 </div>
             </div>
         </div>
-         <!-- Registered Buyers Header & Filters -->
-            <div class="buyer-panel-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4 card">
-                <div>
-                    <h5 class="mb-1">Registered Buyers</h5>
-                    <p class="text-muted mb-0">View buyer details and manage account status.</p>
-                </div>
-
-                <div class="row g-3 align-items-center flex-grow-1 ms-xl-3">
-
-                    <!-- Search Buyers -->
-                    <div class="col-12 col-md-6 col-xl-3">
-                        <input
-                            type="search"
-                            class="form-control"
-                            id="buyer-search"
-                            placeholder="Search buyers..."
-                            aria-label="Search buyers">
-                    </div>
-
-                    <!-- Status Filter -->
-                    <div class="col-12 col-md-6 col-xl-2">
-                        <select class="form-select" id="buyer-status">
-                            <option value="">(Status)</option>
-                            <option value="active">Active</option>
-                            <option value="inactive">Inactive</option>
-                        </select>
-                    </div>
-
-                    <!-- Buyer Gender Filter -->
-                    <div class="col-12 col-md-6 col-xl-2">
-                        <select class="form-select" id="buyer-type">
-                            <option value="">All genders</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-
-                    <!-- Start Date -->
-                    <div class="col-12 col-md-6 col-xl-2">
-                        <input
-                            type="date"
-                            class="form-control"
-                            id="buyer-start-date"
-                            aria-label="Start date">
-                    </div>
-
-                    <!-- End Date -->
-                    <div class="col-12 col-md-6 col-xl-2">
-                        <input
-                            type="date"
-                            class="form-control"
-                            id="buyer-end-date"
-                            aria-label="End date">
-                    </div>
-
-                    <!-- Filter Button -->
-                    <div class="col-12 col-md-6 col-xl-1">
-                        <button
-                            type="button"
-                            class="btn btn-outline-success w-100"
-                            id="buyer-filter-btn">
-                            Filter
-                        </button>
-                    </div>
-
-                </div>
+        <!-- Registered Buyers Header & Filters -->
+        <div class="buyer-panel-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4 card">
+            <div>
+                <h5 class="mb-1">Registered Buyers</h5>
+                <p class="text-muted mb-0">View buyer details and manage account status.</p>
             </div>
 
+            <div class="row g-3 align-items-center flex-grow-1 ms-xl-3">
+
+                <!-- Search Buyers -->
+                <div class="col-12 col-md-6 col-xl-3">
+                    <input
+                        type="search"
+                        class="form-control"
+                        id="buyer-search"
+                        placeholder="Search buyers..."
+                        aria-label="Search buyers">
+                </div>
+
+                <!-- Status Filter -->
+                <div class="col-12 col-md-6 col-xl-2">
+                    <select class="form-select" id="buyer-status">
+                        <option value="">(Status)</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+
+                <!-- Buyer Gender Filter -->
+                <div class="col-12 col-md-6 col-xl-2">
+                    <select class="form-select" id="buyer-type">
+                        <option value="">All genders</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Start Date -->
+                <div class="col-12 col-md-6 col-xl-2">
+                    <input
+                        type="date"
+                        class="form-control"
+                        id="buyer-start-date"
+                        aria-label="Start date">
+                </div>
+
+                <!-- End Date -->
+                <div class="col-12 col-md-6 col-xl-2">
+                    <input
+                        type="date"
+                        class="form-control"
+                        id="buyer-end-date"
+                        aria-label="End date">
+                </div>
+
+                <!-- Filter Button -->
+                <div class="col-12 col-md-6 col-xl-1">
+                    <button
+                        type="button"
+                        class="btn btn-outline-success w-100"
+                        id="buyer-filter-btn">
+                        Filter
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
         <div class="buyer-panel">
-           
+
 
             <div class="buyer-table-wrap">
                 <table class="table table-custom table-centered table-sm table-hover mb-0 dataTable"
@@ -139,7 +139,7 @@
                     style="width: 100%;">
                     <thead>
                         <tr>
-                            <th>S No.</th>
+                            <th>S.No</th>
                             <th>Buyer</th>
                             <th>Email</th>
                             <th>Mobile</th>
@@ -152,11 +152,11 @@
                     <tbody>
                         @forelse($users as $user)
                         @php
-                            $userKyc = $kycMap->get($user->id);
-                            $kycStatus = $userKyc->status ?? 'not_submitted';
-                            $kycBadgeMap = ['approved'=>'success','pending'=>'warning','rejected'=>'danger','not_submitted'=>'secondary','incomplete'=>'secondary'];
-                            $kycBadge = $kycBadgeMap[$kycStatus] ?? 'secondary';
-                            $kycText  = ['approved'=>'Approved','pending'=>'Pending','rejected'=>'Rejected','not_submitted'=>'Not submitted','incomplete'=>'Incomplete'][$kycStatus] ?? ucfirst($kycStatus);
+                        $userKyc = $kycMap->get($user->id);
+                        $kycStatus = $userKyc->status ?? 'not_submitted';
+                        $kycBadgeMap = ['approved'=>'success','pending'=>'warning','rejected'=>'danger','not_submitted'=>'secondary','incomplete'=>'secondary'];
+                        $kycBadge = $kycBadgeMap[$kycStatus] ?? 'secondary';
+                        $kycText = ['approved'=>'Approved','pending'=>'Pending','rejected'=>'Rejected','not_submitted'=>'Not submitted','incomplete'=>'Incomplete'][$kycStatus] ?? ucfirst($kycStatus);
                         @endphp
                         <tr data-status="{{ $user->status == '1' ? 'active' : 'inactive' }}" data-type="{{ strtolower((string) ($user->gender ?? '')) }}" data-date="{{ $user->created_at?->format('Y-m-d') }}">
                             <td>
@@ -203,12 +203,17 @@
                                         title="View buyer details">
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
+                                    @php($__kycPending = \App\Models\KycSubmission::where('account_type', 'user')->where('account_id', $user->id)->where('status', 'pending')->exists())
+                                    <a href="{{ route('admin.kyc.index', ['type' => 'user']) }}" class="kyc-row-action" aria-label="Review buyer KYC" title="Review buyer KYC">
+                                        <i class="fa-solid fa-id-card"></i>
+                                        @if($__kycPending)<span class="kyc-pending-badge">1</span>@endif
+                                    </a>
                                 </div>
                             </td>
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="6" class="buyer-empty">
+                            <td colspan="7" class="buyer-empty">
                                 No buyers found.
                             </td>
                         </tr>
@@ -221,40 +226,43 @@
 </div>
 
 <script>
-document.querySelectorAll('.user-status-toggle').forEach(function (toggle) {
-    toggle.addEventListener('change', async function () {
-        const checkbox = this;
-        const previousStatus = !checkbox.checked;
-        const status = checkbox.checked ? 1 : 0;
+    document.querySelectorAll('.user-status-toggle').forEach(function(toggle) {
+        toggle.addEventListener('change', async function() {
+            const checkbox = this;
+            const previousStatus = !checkbox.checked;
+            const status = checkbox.checked ? 1 : 0;
 
-        try {
-            const response = await fetch('{{ url('admin/buyer/status') }}/' + encodeURIComponent(checkbox.dataset.id), {
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({ status: status })
-            });
-            if (!response.ok) throw new Error('Request failed');
-            const result = await response.json();
-            if (!result.success) throw new Error('Status was not updated');
+            try {
+                const response = await fetch('{{ url('
+                    admin / buyer / status ') }}/' + encodeURIComponent(checkbox.dataset.id), {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            status: status
+                        })
+                    });
+                if (!response.ok) throw new Error('Request failed');
+                const result = await response.json();
+                if (!result.success) throw new Error('Status was not updated');
 
-            const row = checkbox.closest('tr');
-            const badge = row && row.querySelector('.buyer-status');
-            if (row) row.dataset.status = status ? 'active' : 'inactive';
-            if (badge) {
-                badge.classList.toggle('bg-success', Boolean(status));
-                badge.classList.toggle('bg-danger', !status);
-                badge.textContent = status ? 'Active' : 'Inactive';
+                const row = checkbox.closest('tr');
+                const badge = row && row.querySelector('.buyer-status');
+                if (row) row.dataset.status = status ? 'active' : 'inactive';
+                if (badge) {
+                    badge.classList.toggle('bg-success', Boolean(status));
+                    badge.classList.toggle('bg-danger', !status);
+                    badge.textContent = status ? 'Active' : 'Inactive';
+                }
+            } catch (error) {
+                checkbox.checked = previousStatus;
+                window.alert('Could not update account status. Please try again.');
             }
-        } catch (error) {
-            checkbox.checked = previousStatus;
-            window.alert('Could not update account status. Please try again.');
-        }
+        });
     });
-});
 </script>
 
 @include('admin.Include.footer')

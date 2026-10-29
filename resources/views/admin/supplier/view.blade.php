@@ -28,7 +28,7 @@
         $sellerInactive = $sellerTotal - $sellerActive;
         @endphp
 
-      
+
     </div>
 </div>
 
@@ -40,7 +40,7 @@
 
 {{-- Supplier Details Modal - Bootstrap Only --}}
 <div class="modal fade" id="supplierDetailsModal" tabindex="-1"
-     aria-labelledby="supplierDetailsModalLabel" aria-hidden="true">
+    aria-labelledby="supplierDetailsModalLabel" aria-hidden="true">
 
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0 shadow rounded-4">
@@ -58,7 +58,7 @@
                 </div>
 
                 <button type="button" class="btn-close"
-                        data-bs-dismiss="modal" aria-label="Close"></button>
+                    data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
             {{-- Body --}}
@@ -69,14 +69,14 @@
                     <div class="rounded-circle bg-success bg-opacity-10
                                 text-success d-flex align-items-center
                                 justify-content-center fw-bold fs-3"
-                         style="width:65px;height:65px;">
+                        style="width:65px;height:65px;">
                         <span id="modalSupplierInitial">S</span>
                     </div>
 
                     <div class="flex-grow-1">
                         <h5 class="fw-bold mb-2" id="modalSupplierName">—</h5>
                         <span id="modalSupplierStatusBadge"
-                              class="badge rounded-pill bg-success-subtle text-success px-3 py-2">
+                            class="badge rounded-pill bg-success-subtle text-success px-3 py-2">
                             Active
                         </span>
                     </div>
@@ -98,7 +98,7 @@
                                         Email Address
                                     </small>
                                     <div class="fw-semibold text-break"
-                                         id="modalSupplierEmail">—</div>
+                                        id="modalSupplierEmail">—</div>
                                 </div>
                             </div>
                         </div>
@@ -114,7 +114,7 @@
                                         Mobile Number
                                     </small>
                                     <div class="fw-semibold"
-                                         id="modalSupplierPhone">—</div>
+                                        id="modalSupplierPhone">—</div>
                                 </div>
                             </div>
                         </div>
@@ -130,7 +130,7 @@
                                         Company Name
                                     </small>
                                     <div class="fw-semibold text-break"
-                                         id="modalSupplierCompany">—</div>
+                                        id="modalSupplierCompany">—</div>
                                 </div>
                             </div>
                         </div>
@@ -146,7 +146,7 @@
                                         Registered On
                                     </small>
                                     <div class="fw-semibold"
-                                         id="modalSupplierCreated">—</div>
+                                        id="modalSupplierCreated">—</div>
                                 </div>
                             </div>
                         </div>
@@ -158,7 +158,7 @@
             {{-- Footer --}}
             <div class="modal-footer bg-light border-0 px-4">
                 <button type="button" class="btn btn-outline-secondary px-4"
-                        data-bs-dismiss="modal">
+                    data-bs-dismiss="modal">
                     <i class="fa-solid fa-xmark me-1"></i>
                     Close
                 </button>

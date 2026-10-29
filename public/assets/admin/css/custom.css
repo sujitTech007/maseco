@@ -770,6 +770,41 @@ a.side-nav-link.active:hover {
 
 }
 
+.actionBtn a.kyc-row-action {
+    position: relative;
+    flex: 0 0 35px;
+    width: 35px;
+    min-width: 35px;
+    height: 35px;
+    color: #218d78;
+    background: #eaf7f4;
+    text-decoration: none;
+}
+
+.actionBtn a.kyc-row-action:hover {
+    color: #fff;
+    background: #2dac92;
+}
+
+.kyc-row-action .kyc-pending-badge {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border: 2px solid #fff;
+    border-radius: 999px;
+    color: #fff;
+    background: #dc3545;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+}
+
 
 
 .actionBtn a.editBtn:hover{
