@@ -166,20 +166,20 @@
                         </p>
                     </div>
 
-                    <div class="card-body p-0">
-                        <div class="table-responsive">
+                    <div class="card-body px-2">
+                        <div class="table-responsive p-0 shadow-none">
                             <table class="table table-hover align-middle mb-0">
                                 <thead class="table-light">
                                     <tr>
-                                        <th class="px-4 py-3">Order ID</th>
-                                        <th class="py-3">Order UID</th>
-                                        <th class="py-3">Buyer</th>
-                                        <th class="py-3">Tracking Number</th>
-                                        <th class="py-3">Shipping Method</th>
-                                        <th class="py-3">Dispatch Date</th>
-                                        <th class="py-3">Estimated Delivery</th>
-                                        <th class="py-3">Status</th>
-                                        <th class="px-4 py-3 text-end">Action</th>
+                                        <th>Order ID</th>
+                                        <th>Order UID</th>
+                                        <th>Buyer</th>
+                                        <th>Tracking Number</th>
+                                        <th>Shipping Method</th>
+                                        <th>Dispatch Date</th>
+                                        <th>Estimated Delivery</th>
+                                        <th>Status</th>
+                                        <th class="text-end">Action</th>
                                     </tr>
                                 </thead>
 

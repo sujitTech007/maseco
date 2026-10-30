@@ -1,93 +1,5 @@
 @include('user.Include.header')
 
-
-
-
-
-<style>
-    .ud-scroll {
-        overflow-x: auto;
-    }
-
-    .ud-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 0;
-        border: 0 !important;
-        background: transparent;
-    }
-
-    .ud-table th,
-    .ud-table td {
-        border: 0 !important;
-        border-bottom: 1px solid #eef0f3 !important;
-        padding: .9rem 1rem !important;
-        text-align: left;
-        vertical-align: middle;
-        background: transparent;
-        box-shadow: none !important;
-    }
-
-    .ud-table thead {
-        background-color: rgb(76 76 92);
-    }
-
-    .ud-table th {
-        color: #fff;
-        font-weight: 700;
-        font-size: .85rem;
-    }
-
-    .ud-table tbody tr:last-child td {
-        border-bottom: 0 !important;
-    }
-
-    .ud-table tbody tr:hover td {
-        background: #f3faf8 !important;
-    }
-
-    .ud-table td.text-center {
-        text-align: center !important;
-    }
-
-    .ud-st {
-        font-size: .8rem;
-        font-weight: 600;
-        padding: .3rem .7rem;
-    }
-
-    .ud-st::before {
-        content: "";
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: currentColor;
-        margin-right: .4rem;
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-    .ud-st-success {
-        background: #e6f4ec;
-        color: #198754;
-    }
-
-    .ud-st-warning {
-        background: #fff4d6;
-        color: #a06a00;
-    }
-
-    .ud-st-danger {
-        background: #fde8e8;
-        color: #c0392b;
-    }
-
-    .ud-st-secondary {
-        background: #eceff3;
-        color: #5f6b7a;
-    }
-</style>
-
 @php
 // TEMP DEMO DATA: only shows when the list is empty, APP_DEBUG is true and the URL has ?demo=1. Delete before launch.
 $rows = $orders;
@@ -106,23 +18,8 @@ $rows = collect([
 
     <div class="container py-1">
 
-        <h4 class="mb-1 fs-bold main-heading"> Orders</h4>
-        <div class="breadcrumb-wrapper mb-3" style="font-size: 15px; font-weight: 500;">
-
-            <a href="{{ route('user.dashboard') }}" style="color:#454545; text-decoration:none;">
-                Dashboard
-            </a>
-
-            <span style="padding:0 6px; color:#999; font-size:10px;">
-                ▶
-            </span>
-
-            <span style="color:#2DAC92;">
-                Orders
-            </span>
-
-        </div>
-
+        <h1 class="fw-bold mb-1 dashboard_title">Orders</h1>
+       
         <p class="text-muted mb-3">Track your material and production orders, and complete payment for any that are
             still pending.</p>
 

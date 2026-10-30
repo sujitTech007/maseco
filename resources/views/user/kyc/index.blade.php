@@ -5,10 +5,10 @@
     <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
       <div>
         <div class="text-muted small mb-1">Buyer onboarding · Step 2 of 2</div>
-        <h3 class="mb-1">Identity verification</h3>
+        <h1 class="fw-bold mb-1 dashboard_title">Identity verification</h1>
         <p class="text-muted mb-0">Submit your identity and address documents to complete your buyer setup.</p>
       </div>
-      <a href="{{ route('user.profile') }}" class="btn btn-outline-secondary">Back to profile</a>
+      <!-- <a href="{{ route('user.profile') }}" class="btn btn-outline-dark">Back to home</a> -->
     </div>
 
     @if(session('success'))<div class="alert alert-success" role="status">{{ session('success') }}</div>@endif
@@ -30,7 +30,7 @@
             <div class="d-flex align-items-start gap-3 mb-4">
               <span class="d-inline-flex align-items-center justify-content-center rounded-circle flex-shrink-0"
                     style="width:48px;height:48px;background:#eaf7f4;color:#2DAC92;font-size:22px;" aria-hidden="true">
-                <i class="ri-shield-check-line"></i>
+                <i class="fa-solid fa-shield-check"></i>
               </span>
               <div>
                 <h4 class="mb-1">Verify your identity</h4>

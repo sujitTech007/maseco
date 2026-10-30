@@ -7,7 +7,7 @@
         {{-- Page Heading --}}
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
             <div>
-                <h2 class="fw-bold mb-1">Messages</h2>
+               <h1 class="fw-bold mb-1 dashboard_title">Messages</h1>
                 <p class="text-muted mb-0">
                     Chat with suppliers, sellers and the Maseco support team.
                 </p>

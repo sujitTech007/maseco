@@ -175,8 +175,8 @@
                     </span>
                 </div>
 
-                <div class="table-responsive">
-                    <table class="table table-hover align-middle mb-0" id="report-table">
+                <div class="table-responsive px-2 border-0 shadow-none">
+                    <table class="table align-middle mb-0" id="report-table">
                         <thead class="table-light">
                             <tr>
                                 <th class="px-3">#</th>

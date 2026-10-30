@@ -8,7 +8,7 @@
         <h3 class="mb-1">Business verification</h3>
         <p class="text-muted mb-0">Submit your business registration documents to complete supplier setup.</p>
       </div>
-      <a href="{{ route('seller.profile') }}" class="btn btn-outline-secondary">Back to profile</a>
+      <!-- <a href="{{ route('seller.profile') }}" class="btn btn-outline-secondary">Back to profile</a> -->
     </div>
 
     @if(session('success'))<div class="alert alert-success" role="status">{{ session('success') }}</div>@endif
@@ -30,7 +30,7 @@
             <div class="d-flex align-items-start gap-3 mb-4">
               <span class="d-inline-flex align-items-center justify-content-center rounded-circle flex-shrink-0"
                     style="width:48px;height:48px;background:#eaf7f4;color:#2DAC92;font-size:22px;" aria-hidden="true">
-                <i class="ri-shield-check-line"></i>
+                <i class="fa-solid fa-shield"></i>
               </span>
               <div>
                 <h4 class="mb-1">Verify your business</h4>
@@ -110,7 +110,7 @@
                   <div class="form-text mb-4">Accepted formats: PDF, JPG, or PNG. Maximum file size: 10 MB each.</div>
                 </div>
 
-                <button type="submit" class="btn text-white px-4" style="background:#2DAC92;">
+                <button type="submit" class="btn theme-btn">
                   {{ $kycStatus === 'rejected' ? 'Resubmit for review' : 'Submit for review' }}
                 </button>
               </form>

@@ -1,63 +1,16 @@
 @include('user.Include.header')
 
-<style>
-    .profile-form {
-        box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-        padding: 28px;
-        border-radius: 20px;
-        background: white;
-    }
-    /* Make the phone field look like other Bootstrap inputs */
-.input-group:has(select[name="country_code"]) {
-    border: 1.7px solid #D1D1D1;
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-.input-group:has(select[name="country_code"]) .form-select,
-.input-group:has(select[name="country_code"]) .form-control {
-    border: 0;
-    box-shadow: none;
-}
-
-.input-group:has(select[name="country_code"]):focus-within {
-    border-color: #86b7fe;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-}
-
- .iti {
-    width: 100%;
-  }
-
-  .iti input {
-    width: 100%;
-  }
-</style>
 
 <div class="page-content">
 
     <div class="container py-1">
 
-        <h4 class="mb-1 fs-bold main-heading">Account & Settings</h4>
-        <div class="breadcrumb-wrapper mb-3" style="font-size: 15px; font-weight: 500;">
-
-            <a href="{{ route('user.dashboard') }}" style="color:#454545; text-decoration:none;">
-                Dashboard
-            </a>
-
-            <span style="padding:0 6px; color:#999; font-size:10px;">
-                ▶
-            </span>
-
-            <span style="color:#2DAC92;">
-                Profile
-            </span>
-
-        </div>
+        <h1 class="fw-bold mb-1 dashboard_title">Account & Settings</h1>
+        
 
 
         <!-- ===== TAB BUTTONS ===== -->
-        <div class="d-flex mb-4 " style="background: white;padding:6px;border-radius: 14px;border: 1px solid #D1D1D1;">
+        <div class="d-flex mt-4 mb-2" style="background: white;padding:6px;border-radius: 14px;border: 1px solid #D1D1D1;">
             <button class="tab-btn active me-2" data-tab="account_tab"
                 style="flex: 1 1 0%;border: 1px solid #a9a9a999;background: rgb(201, 245, 233);padding: 7px;border-radius: 8px;color: rgb(45, 172, 146);    max-width: 250px;">
                 Account

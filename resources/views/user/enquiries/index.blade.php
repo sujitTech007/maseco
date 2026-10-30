@@ -1,101 +1,5 @@
 @include('user.Include.header')
 
-<style>
-    .ud-scroll {
-        overflow-x: auto;
-    }
-
-    .ud-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 0;
-        border: 0 !important;
-        background: transparent;
-    }
-
-    .ud-table th,
-    .ud-table td {
-        border: 0 !important;
-        border-bottom: 1px solid #eef0f3 !important;
-        padding: .9rem 1rem !important;
-        text-align: left;
-        vertical-align: middle;
-        background: transparent;
-        box-shadow: none !important;
-    }
-
-    .ud-table th {
-        /* background: #f8f9fa !important; */
-        color: #fff;
-        font-weight: 700;
-        font-size: .85rem;
-    }
-
-    .ud-table tbody tr:last-child td {
-        border-bottom: 0 !important;
-    }
-
-    .ud-table tbody tr:hover td {
-        background: #f3faf8 !important;
-    }
-
-    .ud-table td.text-center {
-        text-align: center !important;
-    }
-
-    .ud-ico {
-        width: 36px;
-        height: 36px;
-        background: #e6f4ec;
-        color: #198754;
-    }
-
-    .ud-ico svg {
-        width: 18px !important;
-        height: 18px !important;
-    }
-
-    .ud-st {
-        font-size: .8rem;
-        font-weight: 600;
-        padding: .3rem .7rem;
-    }
-
-    .ud-st::before {
-        content: "";
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: currentColor;
-        margin-right: .4rem;
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-    .ud-st-success {
-        background: #e6f4ec;
-        color: #198754;
-    }
-
-    .ud-st-warning {
-        background: #fff4d6;
-        color: #a06a00;
-    }
-
-    .ud-st-danger {
-        background: #fde8e8;
-        color: #c0392b;
-    }
-
-    .ud-st-secondary {
-        background: #eceff3;
-        color: #5f6b7a;
-    }
-
-    thead {
-        background-color: rgb(76 76 92);
-    }
-</style>
 
 @php
 // TEMP DEMO DATA: only shows when the list is empty, APP_DEBUG is true and the URL has ?demo=1. Delete before launch.
@@ -115,29 +19,21 @@ $rows = collect([
 
     <div class="container py-0">
 
-        <h4 class="mb-1 fs-bold main-heading"> Enquiries</h4>
-        <div class="breadcrumb-wrapper mb-3" style="font-size: 15px; font-weight: 500;">
-
-            <a href="{{ route('user.dashboard') }}" style="color:#454545; text-decoration:none;">
-                Dashboard
-            </a>
-
-            <span style="padding:0 6px; color:#999; font-size:10px;">
-                ▶
-            </span>
-
-            <span style="color:#2DAC92;">
-                Enquiries
-            </span>
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                 <h1 class="fw-bold mb-1 dashboard_title">Enquiries</h1>
+         <p class="text-muted mb-3">Track the requests you have sent to suppliers and manufacturers and follow their
+            status.</p>
+            </div>            
             <a href="{{ route('listing') }}"
-                class="btn btn-sm fw-bold rounded-pill px-3 py-2 align-self-start mt-0 d-inline-flex align-items-center gap-2 bg-primary text-white border border-primary">
+                class="buy-plan-btn">
                 Create RFQ <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
             </a>
 
         </div>
 
-        <p class="text-muted mb-3">Track the requests you have sent to suppliers and manufacturers and follow their
-            status.</p>
+
+       
 
 
         <!-- RFQ Header -->
@@ -248,94 +144,132 @@ $rows = collect([
 
 
 
-        <div class="ud-table-wrap bg-white shadow-sm rounded-4 overflow-hidden">
+                    
+            <div class="table-responsive p-0 border-none ud-table-wrap">
 
-            <div class="ud-scroll">
-
-                <table class="ud-table">
+                <table class="table align-middle mb-0 border-none ud-table">
 
                     <thead>
-
                         <tr>
-
                             <th>S.No</th>
-
                             <th>Subject</th>
-
                             <th>Expected Price</th>
-
                             <th>Quantity</th>
-
                             <th>Status</th>
-
                             <th>Date</th>
-
                             <th>Chat / Meeting</th>
-
                         </tr>
-
                     </thead>
 
                     <tbody>
 
                         @forelse($rows as $enquiry)
 
-                        @php
-                        $st = [
-                        'pending' => 'warning',
-                        'approved' => 'success',
-                        'accepted' => 'success',
-                        'completed' => 'success',
-                        'rejected' => 'danger',
-                        'cancelled' => 'danger',
-                        ][strtolower($enquiry->status)] ?? 'secondary';
-                        @endphp
+                            @php
+                                $st = [
+                                    'pending' => 'warning',
+                                    'approved' => 'success',
+                                    'accepted' => 'success',
+                                    'completed' => 'success',
+                                    'rejected' => 'danger',
+                                    'cancelled' => 'danger',
+                                ][strtolower($enquiry->status)] ?? 'secondary';
+                            @endphp
 
-                        <tr>
+                            <tr>
 
-                            <td class="text-muted">{{ $enquiry->id }}</td>
+                                <td class="px-3 text-muted">
+                                    {{ $enquiry->id }}
+                                </td>
 
-                            <td>
-                                <div class="d-flex align-items-center gap-2">
-                                    <span
-                                        class="ud-ico rounded-3 d-inline-flex align-items-center justify-content-center flex-shrink-0"
-                                        aria-hidden="true">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                                            <path d="M14 2v6h6" />
-                                            <path d="M8 13h8M8 17h5" />
-                                        </svg>
+                                <td class="px-3">
+                                    <div class="d-flex align-items-center gap-2">
+
+                                        <span class="rounded-3 bg-success-subtle text-success d-inline-flex align-items-center justify-content-center flex-shrink-0"
+                                            style="width:36px; height:36px;"
+                                            aria-hidden="true">
+                                            <i class="fa-regular fa-file-lines"></i>
+                                        </span>
+
+                                        <span class="fw-semibold">
+                                            {{ $enquiry->subject }}
+                                        </span>
+
+                                    </div>
+                                </td>
+
+                                <td class="px-3 text-nowrap">
+                                    {{ $enquiry->expected_price }}
+                                </td>
+
+                                <td class="px-3">
+                                    {{ $enquiry->quantity }}
+                                </td>
+
+                                <td class="px-3">
+                                    <span class="badge rounded-pill bg-{{ $st }}-subtle text-{{ $st }} px-3 py-2">
+                                        {{ ucfirst($enquiry->status) }}
                                     </span>
-                                    <span class="fw-semibold">{{ $enquiry->subject }}</span>
-                                </div>
-                            </td>
+                                </td>
 
-                            <td class="text-nowrap">{{ $enquiry->expected_price }}</td>
+                                <td class="px-3 text-nowrap text-muted">
+                                    {{ $enquiry->created_at->format('d M Y') }}
+                                </td>
 
-                            <td>{{ $enquiry->quantity }}</td>
+                                <td class="px-3">
+                                    <div class="d-flex flex-wrap gap-2">
 
-                            <td><span
-                                    class="ud-st ud-st-{{ $st }} rounded-pill d-inline-block text-nowrap">{{ ucfirst($enquiry->status) }}</span>
-                            </td>
+                                        <a href="{{ route('chat.show', $enquiry->id) }}"
+                                        class="btn btn-sm btn-outline-success text-nowrap"
+                                        data-chat-enquiry="{{ $enquiry->id }}">
 
-                            <td class="text-nowrap text-muted">{{ $enquiry->created_at->format('d M Y') }}</td>
+                                            <i class="fa-regular fa-comments me-1"></i>
+                                            Open chat
 
-                            <td><div class="d-flex flex-wrap gap-1"><a href="{{ route('chat.show', $enquiry->id) }}" class="btn btn-sm btn-outline-success text-nowrap" data-chat-enquiry="{{ $enquiry->id }}"><i class="fa-regular fa-comments me-1"></i>Open chat <span class="badge bg-danger rounded-pill ms-1" data-chat-unread-count hidden></span></a>@if($enquiry instanceof \App\Models\Enquiry)<a href="{{ route('enquiry.meetings.index', $enquiry->id) }}" class="btn btn-sm btn-outline-primary text-nowrap"><i class="fa-regular fa-calendar me-1"></i>Meeting</a>@endif</div><small class="d-block text-danger mt-1" data-chat-unread-sender hidden></small></td>
+                                            <span class="badge bg-danger rounded-pill ms-1"
+                                                data-chat-unread-count
+                                                hidden></span>
 
-                        </tr>
+                                        </a>
+
+                                        @if($enquiry instanceof \App\Models\Enquiry)
+
+                                            <a href="{{ route('enquiry.meetings.index', $enquiry->id) }}"
+                                            class="btn btn-sm btn-outline-primary text-nowrap">
+
+                                                <i class="fa-regular fa-calendar me-1"></i>
+                                                Meeting
+
+                                            </a>
+
+                                        @endif
+
+                                    </div>
+
+                                    <small class="d-block text-danger mt-1"
+                                        data-chat-unread-sender
+                                        hidden></small>
+                                </td>
+
+                            </tr>
 
                         @empty
 
-                        <tr>
+                            <tr>
+                                <td colspan="7" class="text-center py-5 text-muted">
 
-                            <td colspan="7" class="text-center text-muted">
-                                <div>No enquiries found.</div>
-                                <div class="small">Requests you send to suppliers and manufacturers will appear here.
-                                </div>
-                            </td>
+                                    <i class="fa-regular fa-folder-open fs-2 d-block mb-2"></i>
 
-                        </tr>
+                                    <div class="fw-semibold">
+                                        No enquiries found.
+                                    </div>
+
+                                    <div class="small">
+                                        Requests you send to suppliers and manufacturers will appear here.
+                                    </div>
+
+                                </td>
+                            </tr>
 
                         @endforelse
 
@@ -345,7 +279,6 @@ $rows = collect([
 
             </div>
 
-        </div>
 
         <div
             class="bg-white shadow-sm rounded-4 p-3 mt-3 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">

@@ -56,7 +56,7 @@ return '<svg xmlns="http://www.w3.org/2000/svg" width="' . $size . '" height="' 
         {{-- Page heading + date range --}}
         <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center gap-3 mb-4">
             <div>
-                <h2 class="fw-bold mb-1 fs-bold">My Dashboard</h2>
+                <h1 class="fw-bold mb-1 dashboard_title">My Dashboard</h1>
                 <p class="text-muted mb-0">Overview of your enquiries, orders and payments with Maseco.</p>
             </div>
 

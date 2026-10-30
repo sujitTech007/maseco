@@ -1,47 +1,5 @@
 @include('seller.Include.header')
 
-<style>
-  .ud-scroll {
-    overflow-x: auto;
-  }
-
-  .ud-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0;
-    border: 0 !important;
-    background: transparent;
-  }
-
-  .ud-table th,
-  .ud-table td {
-    border: 0 !important;
-    border-bottom: 1px solid #eef0f3 !important;
-    padding: .9rem 1rem !important;
-    text-align: left;
-    vertical-align: middle;
-    background: transparent;
-    box-shadow: none !important;
-  }
-
-  .ud-table thead {
-    background-color: rgb(76 76 92);
-  }
-
-  .ud-table th {
-    color: #fff;
-    font-weight: 700;
-    font-size: .85rem;
-  }
-
-  .ud-table tbody tr:last-child td {
-    border-bottom: 0 !important;
-  }
-
-  .ud-table tbody tr:hover td {
-    background: #f3faf8 !important;
-  }
-</style>
 
 <body>
 

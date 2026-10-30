@@ -14,7 +14,7 @@
 
     @if(session('success'))
       <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <i class="ri-checkbox-circle-line me-2"></i>{{ session('success') }}
+        <i class="fa-regular fa-circle-check me-2"></i>{{ session('success') }}
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
       </div>
     @endif
@@ -23,10 +23,10 @@
     <div class="row g-3 mb-4">
       @php
         $statCards = [
-          ['label'=>'Total Submissions','value'=>$stats['total'],   'color'=>'primary',  'icon'=>'ri-file-list-3-line'],
-          ['label'=>'Pending Review',   'value'=>$stats['pending'], 'color'=>'warning',  'icon'=>'ri-time-line'],
-          ['label'=>'Approved',         'value'=>$stats['approved'],'color'=>'success',  'icon'=>'ri-checkbox-circle-line'],
-          ['label'=>'Rejected',         'value'=>$stats['rejected'],'color'=>'danger',   'icon'=>'ri-close-circle-line'],
+          ['label'=>'Total Submissions', 'value'=>$stats['total'],    'color'=>'primary', 'icon'=>'fas fa-file-alt'],
+          ['label'=>'Pending Review',    'value'=>$stats['pending'],  'color'=>'warning', 'icon'=>'fas fa-clock'],
+          ['label'=>'Approved',          'value'=>$stats['approved'], 'color'=>'success', 'icon'=>'fas fa-check-circle'],
+          ['label'=>'Rejected',          'value'=>$stats['rejected'], 'color'=>'danger',  'icon'=>'fas fa-times-circle'],
         ];
       @endphp
       @foreach($statCards as $card)
@@ -99,7 +99,7 @@
             <div class="d-flex align-items-center gap-3">
               <div class="rounded-circle bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center flex-shrink-0"
                    style="width:44px;height:44px;font-size:1.1rem">
-                <i class="ri-user-line"></i>
+                <i class="fas fa-user"></i>
               </div>
               <div>
                 <h5 class="mb-0">{{ $account->name ?? 'Account unavailable' }}
@@ -117,7 +117,7 @@
               </div>
             </div>
             <a href="{{ $detailRoute }}" class="btn btn-sm btn-outline-secondary">
-              <i class="ri-external-link-line me-1"></i>View profile
+              <i class="fas fa-external-link-alt me-1"></i>View profile
             </a>
           </div>
 
@@ -146,7 +146,7 @@
               @if($kyc->$field)
                 <a href="{{ route('admin.kyc.document', [$kyc, $field]) }}"
                    class="btn btn-sm btn-outline-primary" target="_blank">
-                  <i class="ri-file-download-line me-1"></i>{{ $label }}
+                  <i class="fas fa-file-download me-1"></i>{{ $label }}
                 </a>
               @endif
             @endforeach
@@ -170,18 +170,18 @@
               </div>
               <div class="col-auto">
                 <button class="btn btn-sm btn-success px-3" name="decision" value="approved">
-                  <i class="ri-checkbox-circle-line me-1"></i>Approve
+                  <i class="fa-regular fa-circle-check me-1"></i>Approve
                 </button>
               </div>
               <div class="col-auto">
                 <button class="btn btn-sm btn-outline-danger px-3" name="decision" value="rejected">
-                  <i class="ri-close-circle-line me-1"></i>Reject
+                  <i class="fa-regular fa-circle-xmark me-1"></i>Reject
                 </button>
               </div>
             </form>
           @else
             <div class="border-top pt-3 d-flex align-items-center gap-2 text-success small">
-              <i class="ri-checkbox-circle-fill"></i>
+            <i class="fa-solid fa-circle-check"></i>
               <span>KYC approved on {{ optional($kyc->reviewed_at)->format('M j, Y') }}. Account is active.</span>
               {{-- Allow re-rejection in edge cases --}}
               <form method="POST" action="{{ route('admin.kyc.decision', $kyc) }}" class="ms-auto d-flex gap-2 align-items-center">
@@ -198,7 +198,7 @@
     @empty
       <div class="card border-0 shadow-sm">
         <div class="card-body text-center py-5 text-muted">
-          <i class="ri-shield-check-line" style="font-size:2.5rem;opacity:.35"></i>
+          <i class="fa-solid fa-shield-check" style="font-size:2.5rem;opacity:.35"></i>
           <p class="mt-2 mb-0">No KYC submissions match the current filters.</p>
         </div>
       </div>
