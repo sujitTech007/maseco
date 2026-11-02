@@ -1,59 +1,13 @@
 @include('seller.Include.header')
 
-<style>
-  .myaccountPage,
-  form#profileform {
-    background: transparent;
-    padding: 0;
-    border-radius: 0;
-  }
 
-  form#profileform {
-    margin-bottom: 0;
-  }
-  
-  /* Make the phone field look like other Bootstrap inputs */
-  .input-group:has(select[name="country_code"]) {
-    border: 1.7px solid #D1D1D1;
-    border-radius: 12px;
-    overflow: hidden;
-  }
+<div class="wrapper active">
+    <div class="page-content">
+        <div class="page-container">
+            <div class="container">
+  <div class="breadcrumb-wrapper mb-3">
+    <h1 class="mb-1 dashboard_title">Profile</h1>
 
-  .input-group:has(select[name="country_code"]) .form-select,
-  .input-group:has(select[name="country_code"]) .form-control {
-    border: 0;
-    box-shadow: none;
-  }
-
-  .input-group:has(select[name="country_code"]):focus-within {
-    border-color: #86b7fe;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-  }
-
-  .iti {
-    width: 100%;
-  }
-
-  .iti input {
-    width: 100%;
-  }
-</style>
-
-<div class="page-content">
-  <div class="breadcrumb-wrapper mb-3" style="font-size: 15px; font-weight: 500;">
-    <h3 class="mb-1">Profile</h3>
-
-    <a href="{{ route('user.dashboard') }}" style="color:#555; text-decoration:none;">
-      Dashboard
-    </a>
-
-    <span style="padding:0 6px; color:#999; font-size:14px;">
-      ▶
-    </span>
-
-    <span style="color:#2DAC92;">
-      Profile
-    </span>
 
   </div>
 
@@ -61,7 +15,7 @@
 
     <!-- Seller Profile Section -->
 
-    <div class="bg-white shadow-sm rounded-4 p-4 mb-4">
+    <div class="mb-4">
 
       <form id="profile-form" method="POST" action="{{ route('seller.profile.update') }}">
         @csrf
@@ -148,7 +102,7 @@
           <!-- Button for Profile Form -->
 
           <div class="col-md-6">
-            <button type="submit" class="btn btn-success px-4 w-100 m-auto">Save Profile</button>
+            <button type="submit" class="btn theme-btn">Save Profile</button>
           </div>
 
         </div>
@@ -159,9 +113,9 @@
 
     {{-- <!-- Business Details Section --> --}}
 
-    <div class="bg-white shadow-sm rounded-4 p-4">
+    <div>
 
-      <h3 class="h5 fw-bold mb-3">Business Details</h3>
+      <h3 class="h5 fw-bold mb-3 dashboard_title ps-2">Business Details</h3>
 
       <form id="business-details-form" method="POST" action="{{ route('seller.profile.business') }}">
 
@@ -234,7 +188,7 @@
           </div>
 
           <div class="col-md-6">
-            <button type="submit" class="btn btn-success px-4 w-100">Save Business Details</button>
+            <button type="submit" class="btn theme-btn">Save Business Details</button>
           </div>
 
         </div>
@@ -329,6 +283,9 @@
 
   </div>
 
+</div>
+</div>
+</div>
 </div>
 
 @include('seller.Include.footer')

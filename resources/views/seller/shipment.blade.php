@@ -1,21 +1,21 @@
 @include('seller.Include.header')
 
 <div class="wrapper active">
-    <div class="page-content mt-3">
-        <div class="page-container p-1">
-            <div class="container py-3">
+    <div class="page-content">
+        <div class="page-container">
+            <div class="container">
 
                 {{-- Page Heading --}}
                 <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
                     <div>
-                        <h2 class="fw-bold mb-1">Shipment Management</h2>
+                        <h1 class="fw-bold mb-1 dashboard_title">Shipment Management</h1>
                         <p class="text-muted mb-0">
                             Manage dispatches, shipping details and deliveries for your orders.
                         </p>
                     </div>
 
                     <a href="{{ route('seller.tracking') }}"
-                        class="btn btn-outline-success rounded-pill px-4">
+                        class="btn btn-outline-success rounded-3">
                         <i class="fa-solid fa-location-dot me-2"></i> Track Orders
                     </a>
                 </div>

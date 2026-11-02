@@ -48401,16 +48401,16 @@ form.formplan {
 }
 
 .sidebar-collapsed .app-topbar{
-    padding-left: 70px;
+    padding-left: 85px;
 }
 
 
 .sidebar-collapsed .page-content{
-    margin-left: 70px;
+    margin-left: 85px;
 }
 .sidebar-collapsed ul.side-nav span.menu-text{
     display: none;
 }
 .sidebar-collapsed .sidenav-menu{
-    width: 70px;
+    width: 85px;
 }

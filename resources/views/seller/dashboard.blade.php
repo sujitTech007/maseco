@@ -23,23 +23,22 @@
 <!-- Begin page -->
 <div class="wrapper active">
 
-  <div class="page-content mt-3">
+  <div class="page-content">
 
-    <div class="page-container p-1">
-      <div class="container py-1">
+    <div class="page-container">
+      <div class="container">
 
         {{-- Page heading + date range --}}
         <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center gap-3 mb-4">
           <div>
-            <h2 class="fw-bold mb-1 fs-bold">My Dashboard</h2>
+            <h1 class="fw-bold mb-1 fs-bold dashboard_title">My Dashboard</h1>
             <p class="text-muted mb-0">Overview of your orders, payments and buyer enquiries with Maseco.</p>
           </div>
 
           <div
-            class="d-inline-flex align-items-center gap-2 bg-white border rounded-3 px-3 py-2 text-muted align-self-start">
+            class="d-inline-flex align-items-center gap-2 bg-white border rounded-3 p-2 text-muted align-self-start">
             {!! $ico('calendar', 18) !!}
             <span>{{ now()->subDays(7)->format('M d, Y') }} - {{ now()->format('M d, Y') }}</span>
-            {!! $ico('chevron', 16) !!}
           </div>
         </div>
 

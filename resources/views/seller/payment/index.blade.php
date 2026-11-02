@@ -13,33 +13,18 @@
   }
 @endphp
 
-<div class="page-content">
+<div class="wrapper active">
+    <div class="page-content">
+        <div class="page-container">
+            <div class="container">
 
-  <div class="page-title-head d-flex align-items-center gap-2">
 
-    <div class="flex-grow-1">
 
-      <div class="breadcrumb-wrapper mb-3" style="font-size: 15px; font-weight: 500;">
-        <h3 class="mb-1">Payments </h3>
-
-        <a href="https://maseco.ca/UAT/user/dashboard" style="color:#555; text-decoration:none;">
-          Dashboard
-        </a>
-
-        <span style="padding:0 6px; color:#999; font-size:14px;">
-          ▶
-        </span>
-
-        <span style="color:#2DAC92;">
-          Payments
-        </span>
-
-      </div>
-    </div>
-
+      <div class="breadcrumb-wrapper mb-3">
+        <h1 class="mb-1 dashboard_title">Payments </h1>
   </div>
 
-  <div class="page-container p-3">
+
   
 {{-- Payment Filters --}}
 <div class="card border-0 shadow-sm rounded-4 mb-4">
@@ -287,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
 
     <div
-      class="bg-white shadow-sm rounded-4 p-3 mt-3 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+      class="bg-white shadow-sm rounded-4 p-3 mt-3 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-2">
       <div>
         <h6 class="fw-bold mb-1">Need help?</h6>
         <p class="text-muted small mb-0">Questions about a payment? Email connect@maseco.ca.</p>
@@ -295,6 +280,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <a href="{{ url('contact-us') }}" class="btn btn-outline-success btn-sm px-3">Contact us</a>
     </div>
 
+  </div>
   </div>
 
 </div> <!-- container -->

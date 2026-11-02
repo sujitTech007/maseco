@@ -5525,13 +5525,11 @@ padding: 20px;
 
     width: 100%;
 
-    padding: .5rem .77rem;
+    padding:12px 10px;
 
-    font-size: .875rem;
+    font-size: 14px;
 
     font-weight: 400;
-
-    line-height: 1.5;
 
     color: var(--abstack-body-color);
 
@@ -5544,8 +5542,8 @@ padding: 20px;
     background-color: var(--abstack-secondary-bg);
 
     background-clip: padding-box;
-    border: 1.7px solid #D1D1D1;
-    border-radius: 12px;
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
 
     -webkit-transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
 
@@ -5557,6 +5555,10 @@ padding: 20px;
 
 }
 
+
+.iti.iti--allow-dropdown.iti--inline-dropdown{
+    width: 100%;
+}
 
 
 @media (prefers-reduced-motion:reduce) {

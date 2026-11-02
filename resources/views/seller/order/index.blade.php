@@ -17,31 +17,20 @@
   }
 @endphp
 
-<div class="page-content">
+ <div class="page-content">
+        <div class="page-container">
+            <div class="container">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+                    <div>
+                        <h1 class="fw-bold mb-1 dashboard_title">Orders</h1>
+                        <p class="text-muted mb-0">
+                            Monitor shipments, update tracking details and manage buyer deliveries.
+                        </p>
+                    </div>        
+                </div>
 
-    <div class="page-title-head d-flex align-items-center gap-2">
 
-        <div class="flex-grow-1">
-
-            <div class="breadcrumb-wrapper mb-1" style="font-size: 15px; font-weight: 500;">
-                <h3 class="mb-1">Orders</h3>
-
-                <a href="{{ route('user.dashboard') }}" style="color:#555; text-decoration:none;">
-                    Dashboard
-                </a>
-
-                <span style="padding:0 6px; color:#999; font-size:14px;">
-                    ▶
-                </span>
-
-                <span style="color:#2DAC92;">
-                    Orders
-                </span>
-
-            </div>
-        </div>
-
-    </div>
+   
     
 
 
@@ -95,10 +84,9 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-    <div class="page-container p-3">
         {{-- Order Filters --}}
-<div class="card border-0 shadow-sm rounded-4 mb-4">
-    <div class="card-body p-3">
+        <div class="card border-0 shadow-sm rounded-4 mb-4">
+        <div class="card-body p-3">
 
         <div class="row g-2 align-items-end">
 
@@ -114,10 +102,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     </span>
 
                     <input type="search"
-                           class="form-control"
-                           id="order-search"
-                           placeholder="Order UID or product name..."
-                           value="{{ request('search') }}">
+                            class="form-control"
+                            id="order-search"
+                            placeholder="Order UID or product name..."
+                            value="{{ request('search') }}">
                 </div>
             </div>
 
@@ -176,9 +164,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 </label>
 
                 <input type="date"
-                       class="form-control"
-                       id="order-start-date"
-                       value="{{ request('start_date') }}">
+                        class="form-control"
+                        id="order-start-date"
+                        value="{{ request('start_date') }}">
             </div>
 
             {{-- To Date --}}
@@ -188,9 +176,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 </label>
 
                 <input type="date"
-                       class="form-control"
-                       id="order-end-date"
-                       value="{{ request('end_date') }}">
+                        class="form-control"
+                        id="order-end-date"
+                        value="{{ request('end_date') }}">
             </div>
 
             {{-- Filter Button --}}
@@ -206,15 +194,15 @@ document.addEventListener('DOMContentLoaded', function () {
             <!-- {{-- Reset Button --}}
             <div class="col-6 col-md-2 col-xl-1">
                 <a href="{{ route('seller.orders') }}"
-                   class="btn btn-outline-secondary w-100 text-nowrap"
-                   title="Reset Filters">
+                    class="btn btn-outline-secondary w-100 text-nowrap"
+                    title="Reset Filters">
                     <i class="fa-solid fa-rotate-left"></i>
                 </a>
             </div> -->
 
         </div>
-    </div>
-</div>
+        </div>
+        </div>
 
         <div class="meetingPpage">
 
@@ -263,58 +251,58 @@ document.addEventListener('DOMContentLoaded', function () {
 
                                     @forelse($rows as $o)
 
-                                      <tr>
+                                        <tr>
 
-                                          <td class="text-muted">{{ $o->uid ?? ('ORD' . str_pad((string) $o->id, 4, '0', STR_PAD_LEFT)) }}</td>
-                                          <td class="text-muted">#{{ $o->id }}</td>
+                                            <td class="text-muted">{{ $o->uid ?? ('ORD' . str_pad((string) $o->id, 4, '0', STR_PAD_LEFT)) }}</td>
+                                            <td class="text-muted">#{{ $o->id }}</td>
 
-                                          <td class="fw-semibold">{{ optional($o->user)->name ?? 'User #' . $o->user_id }}</td>
+                                            <td class="fw-semibold">{{ optional($o->user)->name ?? 'User #' . $o->user_id }}</td>
 
-                                          <td>{{ $o->demo_material ?? optional(\App\Models\Material::find($o->material_id))->name }}</td>
+                                            <td>{{ $o->demo_material ?? optional(\App\Models\Material::find($o->material_id))->name }}</td>
 
-                                          <td>{{ $o->quantity ?? '-' }}</td>
+                                            <td>{{ $o->quantity ?? '-' }}</td>
 
-                                          <td class="text-nowrap">
+                                            <td class="text-nowrap">
 
-                                              <span class="fw-semibold">${{ number_format($o->amount ?? 0, 2) }}</span>
+                                                <span class="fw-semibold">${{ number_format($o->amount ?? 0, 2) }}</span>
 
-                                              <div class="text-muted small">Payment: {{ ucfirst($o->payment_status ?? 'pending') }}</div>
+                                                <div class="text-muted small">Payment: {{ ucfirst($o->payment_status ?? 'pending') }}</div>
 
-                                          </td>
+                                            </td>
 
-                                          <td class="text-nowrap text-muted">{{ $o->created_at?->format('d M Y') }}</td>
+                                            <td class="text-nowrap text-muted">{{ $o->created_at?->format('d M Y') }}</td>
 
-                                          <td><span class="ud-st ud-st-{{ ($o->payment_status ?? 'pending') === 'paid' ? 'success' : 'warning' }} rounded-pill d-inline-block text-nowrap">{{ ucfirst($o->status) }}</span></td>
-                                          <td><a class="btn btn-sm btn-outline-primary" href="{{ route('seller.orders.sharing',$o->id) }}">Open sharing</a></td>
+                                            <td><span class="ud-st ud-st-{{ ($o->payment_status ?? 'pending') === 'paid' ? 'success' : 'warning' }} rounded-pill d-inline-block text-nowrap">{{ ucfirst($o->status) }}</span></td>
+                                            <td><a class="btn btn-sm btn-outline-primary" href="{{ route('seller.orders.sharing',$o->id) }}">Open sharing</a></td>
 
-                                      </tr>
+                                        </tr>
 
                                     @empty
-                                      @if($sampleOrders->isEmpty())
-                                      <tr>
+                                        @if($sampleOrders->isEmpty())
+                                        <tr>
 
-                                          <td colspan="9" class="text-center text-muted">
-                                              <div>No orders found.</div>
-                                              <div class="small">Orders created from approved RFQs will appear here.</div>
-                                          </td>
+                                            <td colspan="9" class="text-center text-muted">
+                                                <div>No orders found.</div>
+                                                <div class="small">Orders created from approved RFQs will appear here.</div>
+                                            </td>
 
-                                      </tr>
-                                      @endif
+                                        </tr>
+                                        @endif
 
                                     @endforelse
 
                                     @foreach($sampleOrders as $sampleOrder)
-                                      <tr class="table-light">
-                                          <td class="text-muted">{{ $sampleOrder->reference }}</td>
-                                          <td><span class="badge bg-success-subtle text-success">Sample</span></td>
-                                          <td class="fw-semibold">{{ $sampleOrder->buyer->name ?? 'Buyer #'.$sampleOrder->buyer_id }}</td>
-                                          <td>{{ $sampleOrder->sample->name ?? 'Sample' }}<div class="small text-muted">{{ $sampleOrder->material->name ?? '' }}</div></td>
-                                          <td>{{ $sampleOrder->quantity }}</td>
-                                          <td class="text-nowrap"><span class="fw-semibold">{{ number_format($sampleOrder->total_amount,2) }}</span><div class="text-muted small">Payment: {{ ucfirst($sampleOrder->payment_status) }}</div></td>
-                                          <td class="text-nowrap text-muted">{{ $sampleOrder->created_at?->format('d M Y') }}</td>
-                                          <td>{{ ucfirst(str_replace('_',' ',$sampleOrder->order_status)) }}</td>
-                                          <td><div class="d-flex flex-wrap gap-1"><a class="btn btn-sm btn-outline-primary" href="{{ route('seller.samples.purchase.show',$sampleOrder) }}">Details</a>@if($sampleOrder->order_status==='awaiting_approval')<form method="POST" action="{{ route('seller.samples.decision',$sampleOrder) }}">@csrf<input type="hidden" name="decision" value="approve"><button class="btn btn-sm btn-success">Approve</button></form><form method="POST" action="{{ route('seller.samples.decision',$sampleOrder) }}">@csrf<input type="hidden" name="decision" value="reject"><button class="btn btn-sm btn-outline-danger">Reject</button></form>@endif</div></td>
-                                      </tr>
+                                        <tr class="table-light">
+                                            <td class="text-muted">{{ $sampleOrder->reference }}</td>
+                                            <td><span class="badge bg-success-subtle text-success">Sample</span></td>
+                                            <td class="fw-semibold">{{ $sampleOrder->buyer->name ?? 'Buyer #'.$sampleOrder->buyer_id }}</td>
+                                            <td>{{ $sampleOrder->sample->name ?? 'Sample' }}<div class="small text-muted">{{ $sampleOrder->material->name ?? '' }}</div></td>
+                                            <td>{{ $sampleOrder->quantity }}</td>
+                                            <td class="text-nowrap"><span class="fw-semibold">{{ number_format($sampleOrder->total_amount,2) }}</span><div class="text-muted small">Payment: {{ ucfirst($sampleOrder->payment_status) }}</div></td>
+                                            <td class="text-nowrap text-muted">{{ $sampleOrder->created_at?->format('d M Y') }}</td>
+                                            <td>{{ ucfirst(str_replace('_',' ',$sampleOrder->order_status)) }}</td>
+                                            <td><div class="d-flex flex-wrap gap-1"><a class="btn btn-sm btn-outline-primary" href="{{ route('seller.samples.purchase.show',$sampleOrder) }}">Details</a>@if($sampleOrder->order_status==='awaiting_approval')<form method="POST" action="{{ route('seller.samples.decision',$sampleOrder) }}">@csrf<input type="hidden" name="decision" value="approve"><button class="btn btn-sm btn-success">Approve</button></form><form method="POST" action="{{ route('seller.samples.decision',$sampleOrder) }}">@csrf<input type="hidden" name="decision" value="reject"><button class="btn btn-sm btn-outline-danger">Reject</button></form>@endif</div></td>
+                                        </tr>
                                     @endforeach
 
                                 </tbody>
@@ -330,7 +318,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
 
                     <div
-                        class="bg-white shadow-sm rounded-4 p-3 mt-3 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+                        class="bg-white shadow-sm rounded-4 p-3 mt-3 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-3">
                         <div>
                             <h6 class="fw-bold mb-1">Need help?</h6>
                             <p class="text-muted small mb-0">Questions about an order or a payment? Email connect@maseco.ca.</p>
@@ -345,7 +333,8 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
 
     </div> <!-- container -->
-
+    </div>
+</div>
     @include('seller.Include.footer')
 
     <script>

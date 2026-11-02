@@ -32,8 +32,9 @@
     <div class="sidenav-menu show">
         <!-- Brand Logo -->
 
-        <a href="{{ route('home') }}" class="logo">
+        <a href="{{ route('home') }}" class="logo admin-brand-logo">
             <img src="{{ asset('public/assets/images/maseco-logo.png') }}" alt="" style="width: 150px; height: auto;">
+            <img src="{{ asset('public/assets/images/favicon.png') }}" alt="" style="width: 150px; height: auto;">
         </a>
 
         <!-- Full Sidebar Menu Close Button -->

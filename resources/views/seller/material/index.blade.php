@@ -18,27 +18,18 @@
 
   <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-1">
 
-    <div class="breadcrumb-wrapper mb-2" style="font-size: 15px; font-weight: 500;">
-      <h3 class="mb-1">Materials</h3>
+    <div class="breadcrumb-wrapper mb-2">
+      <h1 class="mb-0 dashboard_title">Materials</h1>
+      <p class="text-muted mb-0">Manage the materials you offer to buyers, including pricing and availability.</p>
 
-      <a href="{{ route('user.dashboard') }}" style="color:#555; text-decoration:none;">
-        Dashboard
-      </a>
-
-      <span style="padding:0 6px; color:#999; font-size:14px;">
-        ▶
-      </span>
-
-      <span style="color:#2DAC92;">
-        Material
-      </span>
+      
 
     </div>
-    <div class="d-flex gap-2"><a href="{{ route('seller.material.create') }}" class="btn btn-success btn-sm px-3 addbtn"> Add Material +</a><button type="button" class="btn btn-outline-success btn-sm px-3" data-bs-toggle="modal" data-bs-target="#createSampleModal">+ Add Sample</button></div>
+    <div class="d-flex gap-2"><a href="{{ route('seller.material.create') }}" class="btn btn-success btn-sm p-2 addbtn"> Add Material +</a><button type="button" class="btn btn-outline-success btn-sm p-2" data-bs-toggle="modal" data-bs-target="#createSampleModal">+ Add Sample</button></div>
 
   </div>
 
-  <p class="text-muted mb-3">Manage the materials you offer to buyers, including pricing and availability.</p>
+  
 
 
 {{-- Material Filters --}}

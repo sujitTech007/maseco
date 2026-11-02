@@ -1,14 +1,14 @@
 
 @include('seller.Include.header')
 
-<div class="page-content mt-3">
-    <div class="page-container p-3">
-        <div class="container-fluid">
+<div class="page-content">
+    <div class="page-container">
+        <div class="container">
 
             {{-- Page Heading --}}
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
                 <div>
-                    <h2 class="fw-bold mb-1">Seller Reports</h2>
+                    <h1 class="fw-bold mb-1 dashboard_title">Seller Reports</h1>
                     <p class="text-muted mb-0">
                         Overview of your orders, payments and buyer enquiries with Maseco.
                     </p>

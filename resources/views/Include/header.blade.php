@@ -225,17 +225,17 @@
 
                 <ul class="d-flex align-items-center justify-content-start">
 
-                  <li class="pe-5">
+                  <!--<li class="pe-5">
 
-                    <!-- <a href="tel:+18000016555">
+                     <a href="tel:+18000016555">
 
                       <i class="fa-solid fa-phone"></i>
 
                       <span>+1800-001-6555</span>
 
-                    </a> -->
+                    </a> 
 
-                  </li>
+                  </li>-->
 
                   <li>
 

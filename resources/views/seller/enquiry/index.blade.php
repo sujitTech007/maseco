@@ -21,26 +21,13 @@
 
 <div class="wrapper active">
 
-    <!-- ============================================================== -->
-    <!-- Start Page Content here -->
-    <!-- ============================================================== -->
+ <div class="page-content">
+        <div class="page-container">
+            <div class="container">
 
-    <div class="page-content">
-
-        <div class="breadcrumb-wrapper mb-3" style="font-size: 15px; font-weight: 500;">
-            <h3 class="mb-1">Rfq</h3>
-
-            <a href="{{ route('user.dashboard') }}" style="color:#555; text-decoration:none;">
-                Dashboard
-            </a>
-
-            <span style="padding:0 6px; color:#999; font-size:14px;">
-                ▶
-            </span>
-
-            <span style="color:#2DAC92;">
-                Rfq
-            </span>
+        <div class="breadcrumb-wrapper mb-3">
+            <h1 class="mb-1 dashboard_title">Rfq</h1>
+            
 
         </div>
 
@@ -370,7 +357,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     @endforeach
 
                     <div
-                        class="bg-white shadow-sm rounded-4 p-3 mt-3 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+                        class="bg-white shadow-sm rounded-4 p-3 mt-3 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-2">
                         <div>
                             <h6 class="fw-bold mb-1">Need help?</h6>
                             <p class="text-muted small mb-0">Questions about an RFQ or creating an order? Email
