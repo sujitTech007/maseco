@@ -15,18 +15,19 @@
   
 
     <!-- App js -->
-    <script src="assets/js/app.js.download"></script>
+      <script src="{{ asset('public/assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('public/assets/admin/js/app.js') }}"></script>
 
     <!-- Apex Chart js -->
-    <script src="assets/js/apexcharts.min.js.download"></script>
+    <script src="{{ asset('public/assets/admin/js/apexcharts.min.js') }}"></script>
 
     <!-- Projects Analytics Dashboard App js -->
-    <script src="assets/js/dashboard.js.download"></script>
-    <script src="{{ asset('public/assets/js/dashboard-auto-filters.js') }}"></script>
+    <script src="{{ asset('public/assets/admin/js/dashboard.js') }}"></script>
+    <script src="{{ asset('public/assets/admin/js/dashboard-auto-filters.js') }}"></script>
 
     @if (Request::is('admin/profile'))
-        <script src="{{ asset('public/assets/js/jquery.min.js') }}"></script>
-        <script src="{{ asset('public/assets/js/bootstrap-select.min.js') }}"></script>
+        <script src="{{ asset('public/assets/admin/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('public/assets/admin/js/bootstrap-select.min.js') }}"></script>
         <script>
             jQuery(function ($) {
                 $('.selectpicker').each(function () {

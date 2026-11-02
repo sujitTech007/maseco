@@ -1809,3 +1809,21 @@ color: #fff;
     overscroll-behavior-y: contain;
     scrollbar-width: thin;
 } */
+
+
+.sidebar-collapsed .sidebar-collapsed-none,
+.sidebar-collapsed-block{
+    display: none;
+}
+
+.sidenav-menu > .logo img.sidebar-collapsed-block{
+    display: none;
+    height: 40px;
+}
+.sidebar-collapsed .sidenav-menu > .logo img.sidebar-collapsed-block{
+    display: block;
+}
+
+.sidebar-collapsed .sidenav-menu > .logo img.sidebar-collapsed-none {
+    display: none;
+}

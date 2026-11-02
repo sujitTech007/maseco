@@ -8,6 +8,7 @@
     <meta name="description" content="Maseco Admin Dashboard">
     <meta name="author" content="Maseco">
     <!-- App CSS -->
+    <link href="{{ asset('public/assets/admin/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/assets/admin/css/app.min.css') }}" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{{ asset('public/assets/admin/css/custom.css') }}" rel="stylesheet">
@@ -23,6 +24,7 @@
 
     <!-- Theme Configuration -->
     <script src="{{ asset('public/assets/admin/js/config.js.download') }}"></script>
+    
 </head>
 
 <body>
@@ -33,8 +35,8 @@
         <!-- Brand Logo -->
 
         <a href="{{ route('home') }}" class="logo admin-brand-logo">
-            <img src="{{ asset('public/assets/images/maseco-logo.png') }}" alt="" style="width: 150px; height: auto;">
-            <img src="{{ asset('public/assets/images/favicon.png') }}" alt="" style="width: 150px; height: auto;">
+            <img src="{{ asset('public/assets/images/maseco-logo.png') }}" alt="Logo" class="sidebar-collapsed-none">
+            <img src="{{ asset('public/assets/images/favicon.png') }}" alt="Logo" class="sidebar-collapsed-block">
         </a>
 
         <!-- Full Sidebar Menu Close Button -->
@@ -351,18 +353,26 @@
 
                 <div class="topbar-item nav-user">
 
+                                        
                     <div class="dropdown">
 
-                        <a class="topbar-link dropdown-toggle drop-arrow-none px-2" data-bs-toggle="dropdown"
-                            data-bs-offset="0,25" type="button" aria-haspopup="false" aria-expanded="false">
+                        <a href="#"
+                        class="topbar-link dropdown-toggle drop-arrow-none px-2"
+                        data-bs-toggle="dropdown"
+                        data-bs-offset="0,25"
+                        role="button"
+                        aria-haspopup="true"
+                        aria-expanded="false">
 
-                            <img src="{{ asset('public/assets/images/profile-icon.png') }}" width="32"
-                                class="rounded-circle me-lg-2 d-flex userImage" alt="user-image">
+                            <img src="{{ asset('public/assets/images/profile-icon.png') }}"
+                                width="32"
+                                class="rounded-circle me-lg-2 d-flex userImage"
+                                alt="user-image">
 
                             <span class="d-lg-flex flex-column gap-1 d-none">
-
-                                <span class="fw-semibold">{{ auth()->user('admin')->name ?? 'Admin'}}</span>
-
+                                <span class="fw-semibold">
+                                    {{ auth()->user('admin')->name ?? 'Admin' }}
+                                </span>
                             </span>
 
                             <i class="fa-solid fa-chevron-down d-none d-lg-block align-middle ms-2"></i>
@@ -371,18 +381,9 @@
 
                         <div class="dropdown-menu dropdown-menu-end">
 
-                            <!-- item-->
-
                             <div class="dropdown-header noti-title">
-
                                 <h6 class="text-overflow m-0">Welcome !</h6>
-
                             </div>
-
-
-
-                            <!-- item-->
-
 
                             <a href="{{ route('admin.profile') }}" class="dropdown-item">
                                 <i class="fa-solid fa-envelope me-1 fs-16 align-middle"></i>
@@ -391,15 +392,16 @@
 
                             <div class="dropdown-divider"></div>
 
-                            <a href="{{ route('admin.logout') }}" class="dropdown-item fw-semibold text-danger">
+                            <a href="{{ route('admin.logout') }}"
+                            class="dropdown-item fw-semibold text-danger">
                                 <i class="fa-solid fa-right-from-bracket me-1 fs-16 align-middle"></i>
                                 <span class="align-middle">Log Out</span>
                             </a>
 
-
                         </div>
 
                     </div>
+
 
                 </div>
 
