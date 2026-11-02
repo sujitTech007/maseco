@@ -20,6 +20,57 @@ footer p{
 }
 
 
+/* Footer links */
+footer .widget ul.menu li a {
+    color: #ffffff;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    transition: all 0.3s ease;
+	font-size: 15px;
+	display: flex;
+	align-items: center;
+	gap:10px;
+	width: fit-content;
+}
+
+/* Hover effect */
+footer .widget ul.menu li a:hover {
+    color: #8FFFD2;
+    transform: translateX(6px);
+}
+
+footer .widget ul.menu li a::before {
+	content: "";
+	width: 15px;
+	height: 2px;
+	background: var(--white-color);
+	transition: transform 0.3s ease;
+}
+
+footer .widget ul.menu li a:hover:before{
+	background: var(--primary-color);
+}
+
+/* Animated underline */
+
+
+footer .widget ul.menu li a:hover::after {
+    width: 100%;
+}
+
+footer .widget ul.menu li::marker {
+    color: #42D6B0;
+}
+
+footer .widget ul.menu li {
+    transition: all 0.3s ease;
+}
+
+footer .widget ul.menu li:hover {
+    color: #8FFFD2;
+    transform: translateX(5px);
+}
 
 
 footer .footer-top {
@@ -37,6 +88,11 @@ footer .widget:first-child {
 }
 footer .copyright-footer li a{
 	font-size: 14px;
+	color: var(--white-color);
+}
+
+footer .copyright-footer-menu li a:hover{
+	text-decoration: underline !important;
 }
 
 
@@ -78,6 +134,9 @@ footer .footer-bottom-list .footer-items:before {
 	width: 1px;
 	height: 45%;
 	transform: translateY(-50%);
+}
+footer .footer-bottom-list .footer-items.border-none:before {
+	display: none;
 }
 
 footer .footer-bottom-list .row .col-lg-4:last-child .footer-items:before {
@@ -251,31 +310,7 @@ footer .widget .footer-title {
 	margin-bottom: 10px;
 }
 
-footer .widget ul{
-	padding: 0;
-}
 
-footer .widget ul#menu-useful-links li a,
-footer .widget ul#menu-textile-service li a {
-	padding-left: 24px;
-    position: relative;
-	font-size: 14px;
-}
-
-footer .widget ul#menu-useful-links li a:before,
-footer .widget ul#menu-textile-service li a:before {
-	content: "";
-	position: absolute;
-	left: 0;
-	font-size: 10px;
-	top: 10px;
-	color: inherit;
-	line-height: normal;
-	color: var(--primary-color);
-	width: 15px;
-	height: 2px;
-	background: var(--primary-color);
-}
 
 .footer-recent-post {
 	display: flex;
@@ -350,12 +385,6 @@ footer .widget ul li {
 
 footer .widget ul li:last-child {
 	margin-bottom: 0;
-}
-
-/*=========*/
-footer .widget ul.menu li a,
-footer .widget ul li a {
-	color: var(--white-color);
 }
 
 

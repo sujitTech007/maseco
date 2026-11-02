@@ -71,7 +71,7 @@
                 <div class="card material-card h-100 border-0 shadow-sm">
                     <div class="material-image position-relative"><a href="{{ route('listing.details', $material->id) }}"><img src="{{ asset('public/' . $material->image) }}" class="card-img-top" alt="{{ $material->name }}" style="height:220px;object-fit:cover;" onerror="this.src='{{ asset('public/assets/images/placeholder.png') }}'"></a>
                         <div class="position-absolute top-0 start-0 p-2">
-                            <form method="POST" action="{{ route('user.collection.toggle', ['collection'=>'wishlist','material'=>$material->id]) }}">@csrf<button type="submit" class="listing_badge border-0 rounded-circle shadow-sm" title="Remove from Wishlist"><i class="fa-solid fa-heart text-danger"></i></button></form>
+                            <form method="POST" class="p-0 bg-transparent" action="{{ route('user.collection.toggle', ['collection'=>'wishlist','material'=>$material->id]) }}">@csrf<button type="submit" class="listing_badge border-0 rounded-circle shadow-sm wishlist-form-icons" title="Remove from Wishlist"><i class="fa-solid fa-heart text-danger"></i></button></form>
                         </div>
                     </div>
                     <div class="card-body p-3 d-flex flex-column">@if($material->is_certified)<div class="certified-badge mb-2"><img src="{{ asset('public/assets/images/certified-badge.png') }}" alt="Certified Listing" class="h-100 w-auto"></div>@endif<h5 class="fw-bold mb-2"><a href="{{ route('listing.details', $material->id) }}" class="text-dark text-decoration-none">{{ $material->name }}</a></h5>
@@ -81,7 +81,7 @@
                             <p class="mb-2 text-muted"><i class="fa-solid fa-building text_color_primary me-2"></i><span class="text-dark fw-semibold">Supplier:</span> {{ $supplierName }}</p>
                             <p class="mb-0 text-muted"><i class="fa-solid fa-cubes text_color_primary me-2"></i><span class="text-dark fw-semibold">Grade / Size:</span> {{ $material->grade ?: '—' }} / {{ $material->size ?: '—' }}</p>
                         </div>
-                        <div class="mt-auto"><a href="{{ route('listing.details', $material->id) }}" class="btn theme_btn text-white">View Details <i class="fa-solid fa-arrow-right ms-1"></i></a></div>
+                        <div class="mt-auto"><a href="{{ route('listing.details', $material->id) }}" class="btn theme-btn">View Details <i class="fa-solid fa-arrow-right ms-1"></i></a></div>
                     </div>
                 </div>
             </div>

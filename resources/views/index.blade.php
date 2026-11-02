@@ -588,7 +588,7 @@
                         </div>
 
                         <h3>Discover Materials</h3>
-                        <p>
+                        <p class="mb-0">
                             Explore textile materials and find suitable
                             options for your sourcing needs.
                         </p>
@@ -608,7 +608,7 @@
                         </div>
 
                         <h3>Connect with Suppliers</h3>
-                        <p>
+                        <p class="mb-0">
                             Discover potential partners and build
                             relationships for your business.
                         </p>
@@ -628,7 +628,7 @@
                         </div>
 
                         <h3>Design with AI</h3>
-                        <p>
+                        <p class="mb-0">
                             Explore AI-assisted design and material
                             recommendations as they become available.
                         </p>
@@ -648,7 +648,7 @@
                         </div>
 
                         <h3>Scale Production</h3>
-                        <p>
+                        <p class="mb-0">
                             Work towards a smoother production journey
                             with manufacturing and post-production support.
                         </p>

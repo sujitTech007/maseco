@@ -8,7 +8,7 @@
         <h1 class="fw-bold mb-1 dashboard_title">Identity verification</h1>
         <p class="text-muted mb-0">Submit your identity and address documents to complete your buyer setup.</p>
       </div>
-      <!-- <a href="{{ route('user.profile') }}" class="btn btn-outline-dark">Back to home</a> -->
+      <a href="{{ route('user.profile') }}" class="btn btn-outline-dark">Back to home</a>
     </div>
 
     @if(session('success'))<div class="alert alert-success" role="status">{{ session('success') }}</div>@endif
@@ -89,7 +89,7 @@
                   <div class="form-text mb-4">e.g. Utility bill or bank statement (issued within 3 months). Accepted formats: PDF, JPG, or PNG. Maximum file size: 10 MB each.</div>
                 </div>
 
-                <button type="submit" class="btn text-white px-4" style="background:#2DAC92;">
+                <button type="submit" class="btn theme-btn">
                   {{ $kycStatus === 'rejected' ? 'Resubmit for review' : 'Submit for review' }}
                 </button>
               </form>

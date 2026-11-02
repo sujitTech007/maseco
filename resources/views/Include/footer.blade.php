@@ -46,7 +46,7 @@
 
                 <div class="col-lg-5 p-lg-0">
 
-                  <div class="footer-items">
+                  <div class="footer-items border-none">
 
                     <i class="fa-solid fa-envelope"></i>
 
@@ -54,7 +54,7 @@
 
                       <h4>Email Us</h4>
 
-                      <a href="#">
+                      <a href="mailto:info@maseco.ca">
 
                         <span>info@maseco.ca</span>
 
@@ -243,11 +243,11 @@
 
               <ul>
 
-              <li><a href="https://www.facebook.com/masecotech"><i class="fa-brands fa-facebook-f"></i></a></li>
+                  <li><a href="https://www.facebook.com/masecotech" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
 
-<li><a href="https://www.instagram.com/masecotech/"><i class="fa-brands fa-instagram"></i></a></li>
+                  <li><a href="https://www.instagram.com/masecotech/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
 
-<li><a href="https://www.linkedin.com/company/masecotech/"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                  <li><a href="https://www.linkedin.com/company/masecotech/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></li>
 
               </ul>
 
@@ -264,11 +264,11 @@
 
             <div class=" d-flex align-item-center justify-content-end">
 
-              <ul class="d-flex gap-3">
+              <ul class="d-flex gap-3 copyright-footer-menu">
 
-              <li><a href="{{ route('privacy.policy') }}" class="text-white">Privacy Policy</a></li>
+              <li><a href="{{ route('privacy.policy') }}">Privacy Policy</a></li>
 
-              <li><a href="{{ route('terms.condition') }}" class="text-white">Terms and Condition</a></li>
+              <li><a href="{{ route('terms.condition') }}">Terms and Condition</a></li>
 
               </ul>
 
