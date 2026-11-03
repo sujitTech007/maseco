@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\KycSubmission;
+use App\Mail\KycUpdateMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 
 class KycController extends Controller
@@ -121,6 +124,20 @@ class KycController extends Controller
         $kyc->submitted_at = now();
         $kyc->reviewed_at  = null;
         $kyc->save();
+
+        try {
+            $account = $kyc->account();
+            if ($account?->email) {
+                Mail::to($account->email)->send(new KycUpdateMail($account, $type, 'pending'));
+            }
+        } catch (\Throwable $exception) {
+            Log::warning('KYC submission email could not be sent.', [
+                'account_type' => $type,
+                'account_id' => $accountId,
+                'exception' => $exception->getMessage(),
+            ]);
+        }
+
         return $kyc;
     }
 

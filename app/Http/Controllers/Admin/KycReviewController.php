@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\KycUpdateMail;
 use App\Models\KycSubmission;
 use App\Models\Manufacturer;
 use App\Models\Supplier;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class KycReviewController extends Controller
 {
@@ -71,6 +74,7 @@ class KycReviewController extends Controller
             'admin_note' => ['required_if:decision,rejected', 'nullable', 'string', 'max:2000'],
         ]);
 
+        $statusChanged = $kyc->status !== $data['decision'];
         $kyc->status      = $data['decision'];
         $kyc->admin_note  = $data['admin_note'] ?? null;
         $kyc->reviewed_at = now();
@@ -85,6 +89,27 @@ class KycReviewController extends Controller
         };
 
         $model::whereKey($kyc->account_id)->update(['status' => 1]);
+
+        if ($statusChanged) {
+            try {
+                $account = $kyc->account();
+                if ($account?->email) {
+                    Mail::to($account->email)->send(new KycUpdateMail(
+                        $account,
+                        $kyc->account_type,
+                        $kyc->status,
+                        $kyc->admin_note
+                    ));
+                }
+            } catch (\Throwable $exception) {
+                Log::warning('KYC decision email could not be sent.', [
+                    'account_type' => $kyc->account_type,
+                    'account_id' => $kyc->account_id,
+                    'status' => $kyc->status,
+                    'exception' => $exception->getMessage(),
+                ]);
+            }
+        }
 
         $label = $data['decision'] === 'approved' ? 'approved' : 'returned for updates';
 
