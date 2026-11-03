@@ -177,7 +177,17 @@ header ul.navbar-nav li a {
   display: block;
   font-family: "Google Sans Flex", sans-serif;
 }
+header .header-sticky ul.navbar-nav li a{
+	padding: 25px 5px;
+}
+header .header-sticky .theme-btn{
+padding: 10px 15px !important;
+font-size: 13px !important;
+}
 
+header .header-sticky .navbar-brand img{
+	height: 30px;
+}
 header ul.navbar-nav li a:focus,
 header ul.navbar-nav li a:hover,
 header ul.navbar-nav li.current-menu-item a,

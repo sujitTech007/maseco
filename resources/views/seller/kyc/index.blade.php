@@ -26,7 +26,7 @@
       {{-- Left: upload / status card --}}
       <div class="col-12 col-lg-7 col-xl-8">
         <div class="card border-0 shadow-sm h-100">
-          <div class="card-body p-4 p-xl-5">
+          <div class="card-body p-4">
             <div class="d-flex align-items-start gap-3 mb-4">
               <span class="d-inline-flex align-items-center justify-content-center rounded-circle flex-shrink-0"
                     style="width:48px;height:48px;background:#eaf7f4;color:#2DAC92;font-size:22px;" aria-hidden="true">
