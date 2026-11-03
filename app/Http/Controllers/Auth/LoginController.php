@@ -274,7 +274,7 @@ class LoginController extends Controller
             default => 'user.dashboard',
         };
 
-        return redirect()->intended(route($dashboardRoute))->with('success', 'Login successful!');
+        return redirect()->route($dashboardRoute)->with('success', 'Login successful!');
     }
 
 

@@ -44,6 +44,7 @@ Route::prefix('admin')->name('admin.')->middleware(['admin.auth'])->group(functi
     Route::get('/enquiry', [AdminPagesController::class, 'enquiry'])->name('enquiry');
     Route::get('/payment', [AdminPagesController::class, 'payment'])->name('payment');
     Route::get('/profile', [AdminPagesController::class, 'profile'])->name('profile');
+    Route::post('/profile', [AdminPagesController::class, 'updateProfile'])->name('profile.update');
     Route::get('/newsletter', [AdminPagesController::class, 'newsletterList'])->name('newsletter.list');
     Route::get('/contact-us', [AdminPagesController::class, 'contactList'])->name('contact.list');
     
@@ -183,10 +184,11 @@ Route::prefix('seller')->name('seller.')->middleware(['auth:supplier', 'kyc.appr
     Route::get('/profile', [SellerController::class, 'profile'])->name('profile');
     Route::post('/profile', [SellerController::class, 'updateProfile'])->name('profile.update');
     Route::post('/profile/business', [SellerController::class, 'updateBusiness'])->name('profile.business');
-    Route::get('/logout', [SellerController::class, 'logout'])->name('logout');
     // Approve enquiry (and create order)
     Route::post('/enquiry/{id}/approve', [EnquiryController::class, 'approveBySupplier'])->name('enquiry.approve');
 });
+Route::get('/seller/logout', [SellerController::class, 'logout'])
+    ->middleware('auth:supplier')->name('seller.logout');
 
 // Route::get('/payment/success-proxy', function (Request $request) {
 //     $sessionId = $request->query('session_id');
@@ -254,8 +256,9 @@ Route::prefix('user')->name('user.')->middleware(['auth', 'kyc.approved'])->grou
     Route::get('/orders/export', [UserDashboardController::class, 'export'])->name('orders.export');
     Route::post('/orders/{id}/pay', [\App\Http\Controllers\OrderPaymentController::class, 'checkout'])->name('orders.pay');
     Route::get('/orders/success', [\App\Http\Controllers\OrderPaymentController::class, 'success'])->name('orders.success');
-    Route::get('/logout', [UserDashboardController::class, 'logout'])->name('logout');
 });
+Route::get('/user/logout', [UserDashboardController::class, 'logout'])
+    ->middleware('auth')->name('user.logout');
 
 // Manufacturer dashboard routes (similar to seller)
 Route::prefix('manufacturer')->name('manufacturer.')->middleware(['auth:manufacturer', 'kyc.approved'])->group(function () {
@@ -290,7 +293,6 @@ Route::prefix('manufacturer')->name('manufacturer.')->middleware(['auth:manufact
     Route::get('/profile', [\App\Http\Controllers\Manufacturer\ManufacturerController::class, 'profile'])->name('profile');
     Route::post('/profile', [\App\Http\Controllers\Manufacturer\ManufacturerController::class, 'updateProfile'])->name('profile.update');
     Route::post('/profile/business', [\App\Http\Controllers\Manufacturer\ManufacturerController::class, 'updateBusiness'])->name('profile.business');
-    Route::get('/logout', [\App\Http\Controllers\Manufacturer\ManufacturerController::class, 'logout'])->name('logout');
     // Approve enquiry (and create order)
     Route::post('/enquiry/{id}/approve', [EnquiryController::class, 'approveByManufacturer'])->name('enquiry.approve');
 
@@ -304,6 +306,8 @@ Route::prefix('manufacturer')->name('manufacturer.')->middleware(['auth:manufact
     Route::delete('/material/{id}', [\App\Http\Controllers\Manufacturer\MaterialController::class, 'destroy'])->name('material.destroy');
     Route::post('/material/{id}/toggle', [\App\Http\Controllers\Manufacturer\MaterialController::class, 'toggleStatus'])->name('material.toggle');
 });
+Route::get('/manufacturer/logout', [\App\Http\Controllers\Manufacturer\ManufacturerController::class, 'logout'])
+    ->middleware('auth:manufacturer')->name('manufacturer.logout');
 
 Route::middleware(['auth:supplier,manufacturer,web'])->get('/sharing/files/{file}', [\App\Http\Controllers\SampleSystemController::class, 'downloadFile'])->name('sharing.files.download');
 Route::middleware(['admin.auth'])->post('/admin/sample-purchases/{purchase}/confirm-payment', [\App\Http\Controllers\SampleSystemController::class, 'manualPaymentConfirmed'])->name('admin.samples.payment.confirm');

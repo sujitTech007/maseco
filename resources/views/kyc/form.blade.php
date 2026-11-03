@@ -8,7 +8,7 @@
                 <h3 class="mb-1">Business verification</h3>
                 <p class="text-muted mb-0">Submit your business registration document to complete supplier setup.</p>
             </div>
-            <a href="{{ route('seller.profile') }}" class="btn btn-outline-secondary">Back to profile</a>
+            <a href="{{ route('home') }}" class="btn btn-outline-secondary">Back to home</a>
         </div>
 
         @if(session('success'))<div class="alert alert-success" role="status">{{ session('success') }}</div>@endif
@@ -49,7 +49,7 @@
                         @if($kycStatus === 'rejected')
                         <div class="alert alert-danger">Your previous document was not approved. Please upload a new document to resubmit.</div>
                         @endif
-                        <form method="POST" action="{{ route('seller.profile.kyc') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('kyc.submit') }}" enctype="multipart/form-data">
                             @csrf
                             <label for="kyc_document" class="form-label fw-semibold">Business registration document <span class="text-danger">*</span></label>
                             <input id="kyc_document" type="file" name="kyc_document" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" class="form-control" required aria-describedby="kyc-help">

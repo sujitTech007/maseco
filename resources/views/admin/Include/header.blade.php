@@ -367,14 +367,14 @@
                         aria-haspopup="true"
                         aria-expanded="false">
 
-                            <img src="{{ asset('public/assets/images/profile-icon.png') }}"
+                            <img src="{{ auth('admin')->user()?->profile_image && \Illuminate\Support\Facades\Storage::disk('public')->exists(auth('admin')->user()->profile_image) ? asset('public/storage/' . ltrim(auth('admin')->user()->profile_image, '/')) : asset('public/assets/images/profile-icon.png') }}"
                                 width="32"
                                 class="rounded-circle me-lg-2 d-flex userImage"
-                                alt="user-image">
+                                alt="{{ auth('admin')->user()->name ?? 'Admin' }} profile image">
 
                             <span class="d-lg-flex flex-column gap-1 d-none">
                                 <span class="fw-semibold">
-                                    {{ auth()->user('admin')->name ?? 'Admin' }}
+                                    {{ auth('admin')->user()->name ?? 'Admin' }}
                                 </span>
                             </span>
 

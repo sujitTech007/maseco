@@ -8,7 +8,7 @@
         <h3 class="mb-1">Business verification</h3>
         <p class="text-muted mb-0">Submit your business registration documents to complete supplier setup.</p>
       </div>
-      <!-- <a href="{{ route('seller.profile') }}" class="btn btn-outline-secondary">Back to profile</a> -->
+      <a href="{{ route('home') }}" class="btn btn-outline-secondary">Back to home</a>
     </div>
 
     @if(session('success'))<div class="alert alert-success" role="status">{{ session('success') }}</div>@endif
