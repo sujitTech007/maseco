@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>AdminDashboard</title>
     <meta name="description" content="Maseco Admin Dashboard">
     <meta name="author" content="Maseco">
+
+    <link rel="shortcut icon" href="{{ asset('public/assets/images/favicon.png') }}" type="image/png">
+    <link rel="icon" href="{{ asset('public/assets/images/favicon.png') }}" type="image/png">
     <!-- App CSS -->
     <link href="{{ asset('public/assets/admin/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/assets/admin/css/app.min.css') }}" rel="stylesheet">
