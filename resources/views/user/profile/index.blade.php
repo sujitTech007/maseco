@@ -10,17 +10,28 @@
 
 
         <!-- ===== TAB BUTTONS ===== -->
-        <div class="d-flex mt-4 mb-2" style="background: white;padding:6px;border-radius: 14px;border: 1px solid #D1D1D1;">
-            <button class="tab-btn active me-2" data-tab="account_tab"
-                style="flex: 1 1 0%;border: 1px solid #a9a9a999;background: rgb(201, 245, 233);padding: 7px;border-radius: 8px;color: rgb(45, 172, 146);    max-width: 250px;">
+        <!-- <div class="d-flex mt-4 mb-2">
+            <button class="tab-btn active me-2" data-tab="account_tab">
                 Account
             </button>
 
-            <button class="tab-btn" data-tab="security_tab"
-                style="flex:1; border:1px solid #a9a9a999; background:transparent; padding:7px; border-radius:8px;color: rgb(45, 172, 146);     max-width: 250px;">
+            <button class="tab-btn" data-tab="security_tab">
                 Security
             </button>
-        </div>
+        </div> -->
+                        <!-- Account & Security Tabs -->
+            <div class="profiles-tabs-wrappers mt-4 mb-3">
+                <button class="tab-btn active me-2" data-tab="account_tab">
+                    <i class="fa-solid fa-user-circle me-2"></i>
+                    <span>Account</span>
+                </button>
+
+                <button class="tab-btn" data-tab="security_tab">
+                    <i class="fa-solid fa-shield-halved me-2"></i>
+                    <span>Security</span>
+                </button>
+            </div>
+
 
         <!-- SUCCESS / ERROR -->
         @if(session('success'))
@@ -141,8 +152,8 @@
                 </div>
 
 
-                <button type="submit" class="btn btn-primary prflbtn">Update</button>
-                <a href="{{ route('user.dashboard') }}" class="btn btn-outline-secondary cancel">Cancel</a>
+                <button type="submit" class="btn theme-btn prflbtn">Update</button>
+                <a href="{{ route('user.dashboard') }}" class="btn btn-danger cancel">Cancel</a>
             </form>
 
         </div>
@@ -223,7 +234,7 @@
 
                 </div>
 
-                <button type="submit" class="btn btn-primary prflbtn">Update Password</button>
+                <button type="submit" class="btn theme-btn prflbtn">Update Password</button>
 
             </form>
 

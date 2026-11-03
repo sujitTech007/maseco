@@ -115,10 +115,10 @@ $rows = collect([
                     <!-- Filter Button -->
                     <div class="col-6 col-md-2 col-xl-1">
                         <button type="button"
-                            class="btn btn-success w-100 text-nowrap"
+                            class="btn theme-btn w-100 text-nowrap" style="height: 46px;"
                             id="order-filter-btn"
                             title="Apply Filters">
-                            <i class="fa-solid fa-filter"></i>
+                            <i class="fa-solid fa-filter"></i> Filter
                         </button>
                     </div>
 

@@ -113,7 +113,7 @@ return '<svg xmlns="http://www.w3.org/2000/svg" width="' . $size . '" height="' 
                 <div
                     class="card h-100 position-relative overflow-hidden rounded-4 shadow-sm bg-success bg-opacity-10 border border-success border-opacity-25">
                     {!! $ico('user', 90, 'text-success opacity-25 position-absolute end-0 top-50 translate-middle-y me-0', 1.8, true) !!}
-                    <div class="card-body position-relative p-3 p-xl-4 d-flex flex-column">
+                    <div class="card-body position-relative p-3 d-flex flex-column">
                         <div class="d-flex align-items-center gap-2 mb-3">
                             <span
                                 class="d-inline-flex align-items-center justify-content-center p-2 rounded-4 bg-success text-white align-self-start mb-0">
@@ -124,7 +124,7 @@ return '<svg xmlns="http://www.w3.org/2000/svg" width="' . $size . '" height="' 
 
                         <p class="mb-1 fw-bold text-break"><b>Name:</b> {{ $user->name }}</p>
                         <p class="mb-1 fw-bold text-break"><b>Email:</b> {{ $user->email }}</p>
-                        <p class="mb-4 fw-bold text-break"><b>Phone:</b> {{ $user->phone ? trim(($user->country_code ?? '') . ' ' . $user->phone) : '-' }}</p>
+                        <p class="mb-3 fw-bold text-break"><b>Phone:</b> {{ $user->phone ? trim(($user->country_code ?? '') . ' ' . $user->phone) : '-' }}</p>
                         <a href="{{ route('user.profile') }}"
                             class="btn btn-success btn-sm rounded-pill fw-bold px-3 px-xl-4 py-2 gap-2 align-self-start bg-opacity-10 mt-0">Edit
                             Profile {!! $ico('arrow', 16) !!} </a>
@@ -137,7 +137,7 @@ return '<svg xmlns="http://www.w3.org/2000/svg" width="' . $size . '" height="' 
                 <div
                     class="card h-100 position-relative overflow-hidden rounded-4 shadow-sm bg-primary bg-opacity-10 border border-primary border-opacity-25">
                     {!! $ico('chat', 90, 'text-primary opacity-25 position-absolute end-0 top-50 translate-middle-y me-0', 1.8, true) !!}
-                    <div class="card-body position-relative p-3 p-xl-4 d-flex flex-column">
+                    <div class="card-body position-relative p-3 d-flex flex-column">
                         <div class="d-flex align-items-center gap-2 mb-3">
                             <span
                                 class="d-inline-flex align-items-center justify-content-center p-2 rounded-4 bg-primary text-white align-self-start mb-0">
@@ -169,7 +169,7 @@ return '<svg xmlns="http://www.w3.org/2000/svg" width="' . $size . '" height="' 
                         style="color: var(--bs-orange, #fd7e14);">
                         {!! $ico('bag', 90, '', 1.8, true) !!}
                     </span>
-                    <div class="card-body position-relative p-3 p-xl-4 d-flex flex-column">
+                    <div class="card-body position-relative p-3 d-flex flex-column">
                         <div class="d-flex align-items-center gap-2 mb-3">
                             <span
                                 class="d-inline-flex align-items-center justify-content-center p-2 rounded-4 text-white align-self-start mb-0"
@@ -198,7 +198,7 @@ return '<svg xmlns="http://www.w3.org/2000/svg" width="' . $size . '" height="' 
                         style="color: var(--bs-purple, #6f42c1);">
                         {!! $ico('card', 90, '', 1.8, true) !!}
                     </span>
-                    <div class="card-body position-relative p-3 p-xl-4 d-flex flex-column">
+                    <div class="card-body position-relative p-3 d-flex flex-column">
                         <div class="d-flex align-items-center gap-2 mb-3">
                             <span
                                 class="d-inline-flex align-items-center justify-content-center p-2 rounded-4 text-white align-self-start mb-0"

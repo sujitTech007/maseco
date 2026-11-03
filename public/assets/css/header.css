@@ -237,7 +237,7 @@ header .headerNav li .sub-menu li a {
     font-size: 14px;
     border-bottom: 1px solid var(--light-grey);
 }
-header .headerNav li .sub-menu li:hover a{
+header .headerNav li .sub-menu li a:hover{
 	background-color: var(--primary-color);
 	color: var(--white-color);
 	border-bottom-color: var(--primary-color);

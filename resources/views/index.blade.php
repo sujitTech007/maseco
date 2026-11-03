@@ -309,7 +309,7 @@
               that match your sourcing requirements.
             </p>
 
-            <a href="{{ url('/marketplace') }}" class="btn theme_btn rounded-5">
+            <a href="{{ route('raw.material.supplier') }}" class="btn theme_btn rounded-5">
               Explore suppliers
               <i class="fa-solid fa-arrow-right"></i>
             </a>
@@ -330,7 +330,7 @@
               for more responsible textile production.
             </p>
 
-            <a href="{{ url('/marketplace') }}?eco_certified=1"
+            <a href="{{ route('login') }}"
               class="btn theme_btn rounded-5">
               Explore materials
               <i class="fa-solid fa-arrow-right"></i>
@@ -352,7 +352,7 @@
               needs, and find the right business partner.
             </p>
 
-            <a href="{{ url('/marketplace') }}" class="btn theme_btn rounded-5">
+            <a href="{{ route('listing') }}" class="btn theme_btn rounded-5">
               Find your match
               <i class="fa-solid fa-arrow-right"></i>
             </a>
@@ -1170,120 +1170,125 @@
         <!-- Slick Slider -->
         <div class="testimonial-slider">
 
-            <!-- Testimonial 1 -->
-            <div class="px-2 h-100">
-                <div class="testimonial-box bg-white border rounded-3 p-4 h-100">
+    <!-- Testimonial 1 -->
+    <div class="px-2 h-100">
+        <div class="testimonial-box bg-white border rounded-3 p-4 h-100">
 
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="text-warning small">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <i class="fa-solid fa-quote-right fs-3"
-                           style="color: rgba(45, 172, 146, 0.25);"></i>
-                    </div>
-
-                    <p>
-                        Maseco made our sourcing process easier and more efficient.
-                        The experience was smooth, and the team was very helpful.
-                    </p>
-
-                    <div class="d-flex align-items-center gap-3 border-top pt-3">
-                        <img src="{{ asset('public/assets/images/testimonial-user.jpg') }}"
-                             alt="Client"
-                             class="rounded-circle"
-                             width="52" height="52"
-                             style="object-fit: cover;">
-
-                        <div>
-                            <h6 class="mb-1 fw-semibold">Alex John Martin</h6>
-                            <small class="text-muted fs-12">Business Client</small>
-                        </div>
-                    </div>
-
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="text-warning small">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
                 </div>
+                <i class="fa-solid fa-quote-right fs-3"
+                   style="color: rgba(45, 172, 146, 0.25);"></i>
             </div>
 
-            <!-- Testimonial 2 -->
-            <div class="px-2 h-100">
-                <div class="testimonial-box bg-white border rounded-3 p-4 h-100">
+            <p>
+                Maseco has made sustainable material sourcing much easier
+                for our design process. Being able to explore suitable
+                materials and connect with relevant suppliers in one place
+                has saved us valuable time.
+            </p>
 
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="text-warning small">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <i class="fa-solid fa-quote-right fs-3"
-                           style="color: rgba(45, 172, 146, 0.25);"></i>
-                    </div>
+            <div class="d-flex align-items-center gap-3 border-top pt-3">
+                <img src="{{ asset('public/assets/images/testimonial-user-1.jpg') }}"
+                     alt="Alessia Romano"
+                     class="rounded-circle"
+                     width="52" height="52"
+                     style="object-fit: cover;">
 
-                    <p>
-                        We appreciate the quality and professionalism.
-                        Communication was clear, and the overall experience
-                        was excellent.
-                    </p>
-
-                    <div class="d-flex align-items-center gap-3 border-top pt-3">
-                        <img src="{{ asset('public/assets/images/testimonial-user.jpg') }}"
-                             alt="Client"
-                             class="rounded-circle"
-                             width="52" height="52"
-                             style="object-fit: cover;">
-
-                        <div>
-                            <h6 class="mb-1 fw-semibold">Sarah Williams</h6>
-                            <small class="text-muted fs-12">Verified Client</small>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Testimonial 3 -->
-            <div class="px-2 h-100">
-                <div class="testimonial-box bg-white border rounded-3 p-4 h-100">
-
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="text-warning small">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <i class="fa-solid fa-quote-right fs-3"
-                           style="color: rgba(45, 172, 146, 0.25);"></i>
-                    </div>
-
-                    <p>
-                        The team was responsive and professional throughout
-                        the process. We look forward to continuing our
-                        business relationship.
-                    </p>
-
-                    <div class="d-flex align-items-center gap-3 border-top pt-3">
-                        <img src="{{ asset('public/assets/images/testimonial-user.jpg') }}"
-                             alt="Client"
-                             class="rounded-circle"
-                             width="52" height="52"
-                             style="object-fit: cover;">
-
-                        <div>
-                            <h6 class="mb-1 fw-semibold">Michael Brown</h6>
-                            <small class="text-muted fs-12">Business Client</small>
-                        </div>
-                    </div>
-
+                <div>
+                    <h6 class="mb-1 fw-semibold">Alessia Romano</h6>
+                    <small class="text-muted fs-12">Fashion Designer</small>
                 </div>
             </div>
 
         </div>
+    </div>
+
+    <!-- Testimonial 2 -->
+    <div class="px-2 h-100">
+        <div class="testimonial-box bg-white border rounded-3 p-4 h-100">
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="text-warning small">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <i class="fa-solid fa-quote-right fs-3"
+                   style="color: rgba(45, 172, 146, 0.25);"></i>
+            </div>
+
+            <p>
+                Maseco gives us a much clearer path from sourcing to
+                manufacturing. The platform helps us discover the right
+                materials and production partners without making the
+                process unnecessarily complicated.
+            </p>
+
+            <div class="d-flex align-items-center gap-3 border-top pt-3">
+                <img src="{{ asset('public/assets/images/testimonial-user-2.jpg') }}"
+                     alt="Tanvir Hasan"
+                     class="rounded-circle"
+                     width="52" height="52"
+                     style="object-fit: cover;">
+
+                <div>
+                    <h6 class="mb-1 fw-semibold">Tanvir Hasan</h6>
+                    <small class="text-muted fs-12">Apparel Brand Founder</small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Testimonial 3 -->
+    <div class="px-2 h-100">
+        <div class="testimonial-box bg-white border rounded-3 p-4 h-100">
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="text-warning small">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <i class="fa-solid fa-quote-right fs-3"
+                   style="color: rgba(45, 172, 146, 0.25);"></i>
+            </div>
+
+            <p>
+                The AI-driven suggestions have been particularly useful
+                when exploring new design and material possibilities.
+                Maseco brings technology and sustainability together
+                in a way that supports our creative process.
+            </p>
+
+            <div class="d-flex align-items-center gap-3 border-top pt-3">
+                <img src="{{ asset('public/assets/images/testimonial-user.jpg') }}"
+                     alt="Yuki Nakamura"
+                     class="rounded-circle"
+                     width="52" height="52"
+                     style="object-fit: cover;">
+
+                <div>
+                    <h6 class="mb-1 fw-semibold">Yuki Nakamura</h6>
+                    <small class="text-muted fs-12">Product Designer</small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
 
     </div>
 </section>

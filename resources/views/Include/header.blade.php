@@ -371,6 +371,12 @@
                         </ul>
 
                       </li>
+                      <li class="menu-item {{ request()->routeIs('listing') ? 'current-menu-item' : '' }}"
+                        data-aos="fade-in">
+
+                        <a href="{{ route('listing') }}">Material List</a>
+
+                      </li>
 
                       <li class="menu-item {{ request()->routeIs('subscription.plan') ? 'current-menu-item' : '' }}"
                         data-aos="fade-in">
@@ -379,12 +385,7 @@
 
                       </li>
 
-                      <li class="menu-item {{ request()->routeIs('listing') ? 'current-menu-item' : '' }}"
-                        data-aos="fade-in">
-
-                        <a href="{{ route('listing') }}">Material List</a>
-
-                      </li>
+                      
 
 
 

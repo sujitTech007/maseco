@@ -378,6 +378,9 @@
                         <i class="fa-solid fa-bars fs-24"></i>
 
                     </button>
+                      <a href="{{ route('home') }}" class="btn theme-btn">
+    <i class="fas fa-home"></i> Back to Website
+</a>
 
 
 
@@ -410,8 +413,10 @@
 
 
                 </div>
+                
 
                 <div class="d-flex align-items-center gap-2">
+                   
 
                     @php
 

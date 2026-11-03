@@ -48,7 +48,7 @@
 } */
 .side-nav .side-nav-item .side-nav-link.active, .side-nav .side-nav-item .side-nav-link:focus, .side-nav .side-nav-item .side-nav-link:hover {
     color: #2dac92 !important;
-    background: #DBFFF8;
+    font-weight: 600;
 }
 .side-nav>.side-nav-item{
 
@@ -1982,4 +1982,55 @@ button.btn.btn-success.d-flex.align-items-center.gap-1.addbtn {
 
 .dashboard_title{
     font-size: 22px;
+}
+
+
+
+.profiles-tabs-wrappers {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    max-width: 520px;
+}
+
+.profiles-tabs-wrappers .tab-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 11px 18px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: transparent;
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+.profiles-tabs-wrappers .tab-btn i {
+    font-size: 16px;
+}
+
+.profiles-tabs-wrappers .tab-btn:hover {
+    background: #eaf8f4;
+    color: #20a486;
+}
+
+.profiles-tabs-wrappers .tab-btn.active {
+    background: #dff7ef;
+    color: #159b7b;
+    border-color: #b8eadb;
+    box-shadow: 0 2px 5px rgba(21, 155, 123, 0.08);
+}
+
+.profiles-tabs-wrappers .tab-btn:focus-visible {
+    outline: 2px solid #20a486;
+    outline-offset: 2px;
 }
