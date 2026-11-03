@@ -67,14 +67,14 @@
                 </div>
                 <div class="modal-body">
                     <div class="row g-3">
-                        <div class="col-md-6"><label class="form-label">Material</label><select name="material_id" class="form-select" required>
+                        <div class="col-md-6"><label class="form-label">Material <span class="text-danger">*</span></label><select name="material_id" class="form-select" required>
                                 <option value="">Select material</option>@foreach($materials as $material)<option value="{{ $material->id }}">{{ $material->name }}</option>@endforeach
                             </select></div>
-                        <div class="col-md-6"><label class="form-label">Sample name</label><input name="name" class="form-control" maxlength="255" required></div>
-                        <div class="col-md-6"><label class="form-label">Price</label><input name="price" type="number" min="0.01" step="0.01" class="form-control" required></div>
-                        <div class="col-md-6"><label class="form-label">Shipping fee</label><input name="shipping_fee" type="number" min="0" step="0.01" value="0" class="form-control" required></div>
-                        <div class="col-md-4"><label class="form-label">Stock</label><input name="stock_quantity" type="number" min="0" value="0" class="form-control" required></div>
-                        <div class="col-md-4"><label class="form-label">Processing days</label><input name="processing_days" type="number" min="0" value="0" class="form-control" required></div>
+                        <div class="col-md-6"><label class="form-label">Sample name <span class="text-danger">*</span></label><input name="name" class="form-control" maxlength="255" required></div>
+                        <div class="col-md-6"><label class="form-label">Price <span class="text-danger">*</span></label><input name="price" type="number" min="0.01" step="0.01" class="form-control" required></div>
+                        <div class="col-md-6"><label class="form-label">Shipping fee <span class="text-danger">*</span></label><input name="shipping_fee" type="number" min="0" step="0.01" value="0" class="form-control" required></div>
+                        <div class="col-md-4"><label class="form-label">Stock <span class="text-danger">*</span></label><input name="stock_quantity" type="number" min="0" value="0" class="form-control" required></div>
+                        <div class="col-md-4"><label class="form-label">Processing days <span class="text-danger">*</span></label><input name="processing_days" type="number" min="0" value="0" class="form-control" required></div>
                         <div class="col-md-4"><label class="form-label">Status</label><select name="status" class="form-select">
                                 <option value="active">Active</option>
                                 <option value="inactive">Inactive</option>
@@ -138,7 +138,7 @@
                     <div class="row g-3">
 
                         <div class="col-md-6">
-                            <label class="form-label">Material</label>
+                            <label class="form-label">Material <span class="text-danger">*</span></label>
                             <select name="material_id" class="form-select" required>
                                 <option value="">Select Material</option>
                                 @foreach($materials as $material)
@@ -150,7 +150,7 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label">Sample Name</label>
+                            <label class="form-label">Sample Name <span class="text-danger">*</span></label>
                             <input type="text" name="name"
                                    class="form-control"
                                    placeholder="Enter sample name"
@@ -158,7 +158,7 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label">Price</label>
+                            <label class="form-label">Price <span class="text-danger">*</span></label>
                             <input type="number" name="price"
                                    class="form-control"
                                    placeholder="Enter price"
@@ -166,7 +166,7 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label">Shipping Fee</label>
+                            <label class="form-label">Shipping Fee <span class="text-danger">*</span></label>
                             <input type="number" name="shipping_fee"
                                    class="form-control"
                                    placeholder="Enter shipping fee"
@@ -174,7 +174,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <label class="form-label">Stock Quantity</label>
+                            <label class="form-label">Stock Quantity <span class="text-danger">*</span></label>
                             <input type="number" name="stock_quantity"
                                    class="form-control"
                                    placeholder="Enter stock"
@@ -182,7 +182,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <label class="form-label">Processing Days</label>
+                            <label class="form-label">Processing Days <span class="text-danger">*</span></label>
                             <input type="number" name="processing_days"
                                    class="form-control"
                                    placeholder="Days"
@@ -190,7 +190,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <label class="form-label">Status</label>
+                            <label class="form-label">Status <span class="text-danger">*</span></label>
                             <select name="status" class="form-select" required>
                                 <option value="active" selected>Active</option>
                                 <option value="inactive">Inactive</option>

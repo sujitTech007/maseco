@@ -743,4 +743,5 @@
 
 
 
+<script src="{{ asset('public/assets/js/required-field-validation.js') }}"></script>
 </body></html>

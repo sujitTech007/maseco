@@ -86,7 +86,7 @@
             <div class="px-3 pt-2"><div class="small text-danger" id="maseco-chat-error" role="alert"></div></div>
             <form class="maseco-chat-compose" id="maseco-chat-form">
                 @csrf
-                <textarea class="form-control" name="body" rows="1" maxlength="5000" placeholder="Type a message..." aria-label="Type a message" required></textarea>
+                <textarea class="form-control" name="body" rows="1" maxlength="5000" placeholder="Type a message..." aria-label="Type a message" required></textarea><span class="text-danger">*</span>
                 <button class="btn btn-success px-4" type="submit" aria-label="Send message"><i class="fa-solid fa-paper-plane"></i><span class="d-none d-sm-inline ms-2">Send</span></button>
             </form>
         </div>

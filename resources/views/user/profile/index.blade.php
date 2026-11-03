@@ -48,7 +48,7 @@
 
                     <!-- Full Name -->
                     <div class="mb-3 col-4">
-                        <label class="form-label">Full Name</label>
+                        <label class="form-label">Full Name <span class="text-danger">*</span></label>
                         <input type="text" name="name" class="form-control" value="{{ old('name', $user->name ?? '') }}"
                             required>
                     </div>
@@ -59,7 +59,7 @@
             <div class="form-group mb-3">
               <label for="manufacturer_phone" class="form-label">
                 Phone Number
-              </label>
+               <span class="text-danger">*</span></label>
 
               <div class="input-group">
 
@@ -86,7 +86,7 @@
 
                     <!-- Email -->
                     <div class="mb-3 col-4">
-                        <label class="form-label">Email</label>
+                        <label class="form-label">Email <span class="text-danger">*</span></label>
                         <input type="email" name="email" class="form-control" value="{{ old('email', $user->email) }}"
                             required>
                     </div>
@@ -118,13 +118,13 @@
 
                     <!-- Country -->
                     <div class="mb-3 col-4">
-                        <label class="form-label">Country</label>
+                        <label class="form-label">Country <span class="text-danger">*</span></label>
                         <select id="country" class="form-control" name="country" required>
                             <option value="">Select Country</option>
                         </select>
                     </div>
                     <div class="mb-3 col-4">
-                        <label class="form-label">State</label>
+                        <label class="form-label">State <span class="text-danger">*</span></label>
                         <select id="state" class="form-control" name="state" required>
                             <option value="">Select State</option>
                         </select>

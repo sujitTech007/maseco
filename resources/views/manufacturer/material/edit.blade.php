@@ -33,7 +33,7 @@
 
         <div class="form-group mb-3">
 
-          <label class="form-label fw-semibold small">Material Name</label>
+          <label class="form-label fw-semibold small">Material Name <span class="text-danger">*</span></label>
 
           <input type="text" class="form-control" name="name" required value="{{ old('name', $material->name) }}">
 
@@ -45,7 +45,7 @@
 
         <div class="form-group mb-3">
 
-          <label class="form-label fw-semibold small">Material Code / SKU</label>
+          <label class="form-label fw-semibold small">Material Code / SKU <span class="text-danger">*</span></label>
 
           <input type="text" class="form-control" name="sku" required value="{{ old('sku', $material->sku) }}">
 
@@ -57,7 +57,7 @@
 
         <div class="form-group mb-3">
 
-          <label class="form-label fw-semibold small">Category / Type</label>
+          <label class="form-label fw-semibold small">Category / Type <span class="text-danger">*</span></label>
 
           <select class="form-select" name="category" required>
 

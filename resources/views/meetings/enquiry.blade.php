@@ -37,8 +37,8 @@
                 <form method="POST" action="{{ route('enquiry.meetings.store', $enquiry) }}">
                     @csrf
                     <div class="row g-3">
-                        <div class="col-md-5"><label class="form-label">Meeting title</label><input class="form-control" name="title" maxlength="180" value="{{ old('title') }}" placeholder="e.g. Cotton sourcing discussion" required></div>
-                        <div class="col-md-3"><label class="form-label">Date and time</label><input class="form-control" type="datetime-local" name="starts_at" value="{{ old('starts_at') }}" min="{{ now()->format('Y-m-d\TH:i') }}" required></div>
+                        <div class="col-md-5"><label class="form-label">Meeting title <span class="text-danger">*</span></label><input class="form-control" name="title" maxlength="180" value="{{ old('title') }}" placeholder="e.g. Cotton sourcing discussion" required></div>
+                        <div class="col-md-3"><label class="form-label">Date and time <span class="text-danger">*</span></label><input class="form-control" type="datetime-local" name="starts_at" value="{{ old('starts_at') }}" min="{{ now()->format('Y-m-d\TH:i') }}" required></div>
                         <div class="col-md-4"><label class="form-label">Meeting URL <span class="text-muted">(optional)</span></label><input class="form-control" type="url" name="meeting_url" maxlength="1000" value="{{ old('meeting_url') }}" placeholder="https://meet.google.com/..." ></div>
                         <div class="col-12"><button class="btn btn-success px-4"><i class="fa-regular fa-calendar-plus me-1"></i> Schedule meeting</button></div>
                     </div>

@@ -134,7 +134,7 @@
                                 {{-- FULL NAME --}}
                                 <div class="form-group">
                                     <fieldset>
-                                        <legend>Full Name</legend>
+                                        <legend>Full Name <span class="text-danger">*</span></legend>
 
                                         <input id="signup-name"
                                             class="form-control"
@@ -150,7 +150,7 @@
                                 {{-- EMAIL --}}
                                 <div class="form-group">
                                     <fieldset>
-                                        <legend>Email Address</legend>
+                                        <legend>Email Address <span class="text-danger">*</span></legend>
 
                                         <input id="signup-email"
                                             class="form-control"
@@ -166,7 +166,7 @@
                             <!-- Phone number -->
                             <div class="form-group">
                                 <fieldset>
-                                    <legend>Phone Number</legend>
+                                    <legend>Phone Number <span class="text-danger">*</span></legend>
 
                                     <div class="d-flex mobileNumber">
                                           <select id="login_country_code" name="country_code" data-live-search="true" class="selectpicker" data-country-code-select data-selected-country-code="{{ old('country_code', '+1') }}">
@@ -183,7 +183,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <fieldset>
-                                            <legend>Password</legend>
+                                            <legend>Password <span class="text-danger">*</span></legend>
 
                                             <div class="login-password-wrap">
                                                 <input class="form-control"
@@ -208,7 +208,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <fieldset>
-                                            <legend>Confirm Password</legend>
+                                            <legend>Confirm Password <span class="text-danger">*</span></legend>
 
                                             <div class="login-password-wrap">
                                                 <input class="form-control"
@@ -248,7 +248,7 @@
                                         and
                                         <a href="{{ route('privacy.policy') }}">Privacy Policy</a>
                                     </span>
-                                </label>
+                                 <span class="text-danger">*</span></label>
                             </div>
 
                             {{-- SUBMIT --}}

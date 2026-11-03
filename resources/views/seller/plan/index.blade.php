@@ -56,7 +56,7 @@
 
                     <div class="col-lg-3 col-md-6">
 
-                      <label class="form-label fw-semibold small">Name</label>
+                      <label class="form-label fw-semibold small">Name <span class="text-danger">*</span></label>
 
                       <input type="text" class="form-control" id="name" placeholder="Enter Name" required>
 
@@ -64,7 +64,7 @@
 
                     <div class="col-lg-3 col-md-6">
 
-                      <label class="form-label fw-semibold small">Features</label>
+                      <label class="form-label fw-semibold small">Features <span class="text-danger">*</span></label>
 
                       <input type="text" class="form-control" id="features" placeholder="Enter Features" required>
 
@@ -72,7 +72,7 @@
 
                     <div class="col-lg-2 col-md-4">
 
-                      <label class="form-label fw-semibold small">Plans</label>
+                      <label class="form-label fw-semibold small">Plans <span class="text-danger">*</span></label>
 
                       <select class="form-select" id="plans" required>
 
@@ -90,7 +90,7 @@
 
                     <div class="col-lg-2 col-md-4">
 
-                      <label class="form-label fw-semibold small">Call Limit</label>
+                      <label class="form-label fw-semibold small">Call Limit <span class="text-danger">*</span></label>
 
                       <input type="number" class="form-control" id="callLimit" placeholder="Enter Limit" required>
 

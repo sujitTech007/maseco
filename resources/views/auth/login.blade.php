@@ -119,7 +119,7 @@
                             <!-- Phone number -->
                             <div class="form-group">
                                 <fieldset>
-                                    <legend>Phone Number</legend>
+                                    <legend>Phone Number <span class="text-danger">*</span></legend>
 
                                     <div class="d-flex mobileNumber">
                                           <select id="login_country_code" name="country_code" data-live-search="true" class="selectpicker" data-country-code-select data-selected-country-code="{{ old('country_code', '+1') }}">
@@ -133,7 +133,7 @@
                             <!-- Password -->
                             <div class="form-group">
                                 <fieldset>
-                                    <legend>Password</legend>
+                                    <legend>Password <span class="text-danger">*</span></legend>
 
                                     <div class="login-password-wrap">
                                         <input

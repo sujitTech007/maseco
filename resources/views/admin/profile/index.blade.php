@@ -126,7 +126,7 @@
                         <div class="col-md-6">
                             <div class="profile-field">
                                 <label for="phone">
-                                    Phone Number <span>*</span>
+                                    Phone Number <span class="text-danger">*</span>
                                 </label>
 
                                 <div class="profile-input-wrap">

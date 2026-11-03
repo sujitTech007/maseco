@@ -71,7 +71,7 @@
                         @endphp
 
                         <div class="login-form-heading text-center">
-                            <h1>{{ __('Enter OTP') }}</h1>
+                            <h1>{{ __('Enter OTP') }} <span class="text-danger">*</span></h1>
                             <p>We sent a 6-digit code to {{ $maskedPhone }}</p>
                             @if (app()->environment(['local', 'testing']) && config('services.twilio.test_otp_enabled'))
                                 <p class="small text-muted mb-0">Local testing OTP: {{ config('services.twilio.test_otp', '112233') }}</p>

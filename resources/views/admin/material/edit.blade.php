@@ -49,21 +49,21 @@
             <div class="material-section-body">
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">Material Name <span class="required">*</span></label>
+                        <label class="form-label">Material Name <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" name="name"
                                value="{{ old('name', $material->name) }}"
                                placeholder="Enter material name" required>
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">Material Code / SKU <span class="required">*</span></label>
+                        <label class="form-label">Material Code / SKU <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" name="sku"
                                value="{{ old('sku', $material->sku) }}"
                                placeholder="Enter material SKU" required>
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">Category / Type <span class="required">*</span></label>
+                        <label class="form-label">Category / Type <span class="text-danger">*</span></label>
                         <select class="form-control" name="category" required>
                             <option value="" disabled>Select Category</option>
                             <option value="Fabric" {{ old('category', $material->category) === 'Fabric' ? 'selected' : '' }}>Fabric</option>

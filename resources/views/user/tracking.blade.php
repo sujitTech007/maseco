@@ -28,7 +28,7 @@
                          <div class="col-12 col-md-9">
                              <label for="tracking_number" class="form-label fw-semibold">
                                  Order UID or Tracking Number
-                             </label>
+                              <span class="text-danger">*</span></label>
                              <div class="input-group">
                                  <span class="input-group-text bg-light">
                                      <i class="fa-solid fa-magnifying-glass text-success"></i>

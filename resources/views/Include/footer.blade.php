@@ -317,6 +317,7 @@
 @endif
 
 <script src="{{ asset('public/assets/js/script.js') }}"></script>
+<script src="{{ asset('public/assets/js/required-field-validation.js') }}"></script>
 
 
 
