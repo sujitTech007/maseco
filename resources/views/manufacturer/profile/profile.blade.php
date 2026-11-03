@@ -90,7 +90,7 @@
 
           <div class="col-md-6">
             <div class="form-group mb-3">
-              <label for="name" class="form-label fw-semibold small"> Name</label>
+              <label for="name" class="form-label fw-semibold small"> Name <span class="text-danger">*</span></label>
               <input type="text" name="name" id="name" placeholder="Enter Name" class="form-control"
                 value="{{ $user->name }}" required>
             </div>
@@ -98,7 +98,7 @@
 
           <div class="col-md-6">
             <div class="form-group mb-3">
-              <label for="email" class="form-label fw-semibold small">Email</label>
+              <label for="email" class="form-label fw-semibold small">Email <span class="text-danger">*</span></label>
               <input type="email" name="email" id="email" placeholder="Enter your Email" class="form-control"
                 value="{{ $user->email }}" required>
             </div>
@@ -112,7 +112,7 @@
             <div class="form-group mb-3">
               <label for="manufacturer_phone" class="form-label">
                 Phone Number
-              </label>
+               <span class="text-danger">*</span></label>
 
               <div class="input-group">
 
@@ -141,7 +141,7 @@
 
           <div class="col-md-6">
             <div class="form-group mb-3">
-              <label for="companyName" class="form-label fw-semibold small">Company Name</label>
+              <label for="companyName" class="form-label fw-semibold small">Company Name <span class="text-danger">*</span></label>
               <input type="text" name="company_name" id="companyName" placeholder="Enter your Company Name"
                 class="form-control" value="{{ $user->company_name }}" required>
             </div>
@@ -192,7 +192,7 @@
 
           <div class="col-md-6">
             <div class="form-group mb-3">
-              <label for="businessName" class="form-label fw-semibold small">Business / Company Name</label>
+              <label for="businessName" class="form-label fw-semibold small">Business / Company Name <span class="text-danger">*</span></label>
               <input type="text" name="business_name" id="businessName" placeholder="Enter Business Name"
                 class="form-control" value="{{ old('business_name', $user->company_name) }}" required>
             </div>
@@ -200,7 +200,7 @@
 
           <div class="col-md-6">
             <div class="form-group mb-3">
-              <label for="businessType" class="form-label fw-semibold small">Business Type</label>
+              <label for="businessType" class="form-label fw-semibold small">Business Type <span class="text-danger">*</span></label>
               <select id="businessType" name="business_type" class="form-select" required>
 
                 <option disabled selected value>Select Business Type</option>
@@ -222,7 +222,7 @@
 
           <div class="col-md-6">
             <div class="form-group mb-3">
-              <label for="country" class="form-label fw-semibold small">Country</label>
+              <label for="country" class="form-label fw-semibold small">Country <span class="text-danger">*</span></label>
               <select id="country" class="form-select" name="country" required>
                 <option value="">Select Country</option>
               </select>
@@ -231,7 +231,7 @@
 
           <div class="col-md-6">
             <div class="form-group mb-3">
-              <label for="state" class="form-label fw-semibold small">State</label>
+              <label for="state" class="form-label fw-semibold small">State <span class="text-danger">*</span></label>
               <select id="state" class="form-select" name="state" required>
                 <option value="">Select State</option>
               </select>
@@ -240,7 +240,7 @@
 
           <div class="col-md-12">
             <div class="form-group mb-3">
-              <label for="address" class="form-label fw-semibold small">Business Address</label>
+              <label for="address" class="form-label fw-semibold small">Business Address <span class="text-danger">*</span></label>
               <textarea name="address" id="address" rows="3" placeholder="Enter full business address"
                 class="form-control" required>{{ old('address', $user->address) }}</textarea>
             </div>

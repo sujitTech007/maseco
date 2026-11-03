@@ -22,13 +22,13 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label id="name-label" for="name"> Name</label>
+                                    <label id="name-label" for="name"> Name <span class="text-danger">*</span></label>
                                     <input type="text" name="firstName" id="name" placeholder="Enter First Name" class="form-control" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="lastname">Title</label>
+                                    <label for="lastname">Title <span class="text-danger">*</span></label>
                                     <input type="text" name="Title" id="lastname" placeholder="Enter Title" class="form-control" required>
                                 </div>
                             </div>

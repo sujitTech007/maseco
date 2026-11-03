@@ -49,7 +49,7 @@
                         <div class="subscription-form-body">
                             <div class="mb-4">
                                 <label for="name" class="form-label">
-                                    Plan Name <span class="required-star">*</span>
+                                    Plan Name <span class="text-danger">*</span>
                                 </label>
                                 <input
                                     type="text"
@@ -68,7 +68,7 @@
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="price" class="form-label">
-                                        Price <span class="required-star">*</span>
+                                        Price <span class="text-danger">*</span>
                                     </label>
                                     <div class="subscription-input-group">
                                         <span class="input-prefix">$</span>
@@ -112,7 +112,7 @@
 
                             <div class="mb-4">
                                 <label for="features" class="form-label">
-                                    Plan Features <span class="required-star">*</span>
+                                    Plan Features <span class="text-danger">*</span>
                                 </label>
                                 <textarea
                                     id="features"

@@ -220,7 +220,7 @@
                                           maxlength="2000"
                                           placeholder="Type your message..."
                                           aria-label="Type your message"
-                                          required></textarea>
+                                          required></textarea><span class="text-danger">*</span>
 
                                 <button type="submit" class="btn btn-primary px-3">
                                     <i class="fa-solid fa-paper-plane me-1"></i>

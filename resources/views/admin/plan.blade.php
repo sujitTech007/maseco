@@ -29,15 +29,15 @@
 <form id="planForm" class="mb-4">
     <div class="row g-2 align-items-end p-2">
       <div class="col-md-3">
-        <label class="form-label">Name</label>
+        <label class="form-label">Name <span class="text-danger">*</span></label>
         <input type="text" class="form-control" id="name" placeholder="Enter Name" required>
       </div>
       <div class="col-md-3">
-        <label class="form-label">Features</label>
+        <label class="form-label">Features <span class="text-danger">*</span></label>
         <input type="text" class="form-control" id="features" placeholder="Enter Features" required>
       </div>
       <div class="col-md-2">
-        <label class="form-label">Plans</label>
+        <label class="form-label">Plans <span class="text-danger">*</span></label>
         <select class="form-select" id="plans" required>
           <option value="" disabled selected>Select Plan</option>
           <option value="Basic">Basic</option>
@@ -46,7 +46,7 @@
         </select>
       </div>
       <div class="col-md-2">
-        <label class="form-label">Call Limit</label>
+        <label class="form-label">Call Limit <span class="text-danger">*</span></label>
         <input type="number" class="form-control" id="callLimit" placeholder="Enter Limit" required>
       </div>
       <div class="col-md-2">

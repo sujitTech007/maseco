@@ -12,9 +12,9 @@
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-body">
                     <h5>Share a file</h5>
-                    <form method="POST" action="{{ $type==='buyer'?route('user.orders.files.store',$order):route($type.'.orders.files.store',$order) }}" enctype="multipart/form-data" class="row g-2">@csrf<div class="col-md-3"><input class="form-control" name="title" placeholder="File title" required maxlength="255"></div>
+                    <form method="POST" action="{{ $type==='buyer'?route('user.orders.files.store',$order):route($type.'.orders.files.store',$order) }}" enctype="multipart/form-data" class="row g-2">@csrf<div class="col-md-3"><input class="form-control" name="title" placeholder="File title" required maxlength="255"><span class="text-danger">*</span></div>
                         <div class="col-md-4"><input class="form-control" name="description" placeholder="Description (optional)"></div>
-                        <div class="col-md-3"><input class="form-control" type="file" name="file" required accept=".pdf,.png,.jpg,.jpeg,.webp,.doc,.docx,.xls,.xlsx,.csv,.txt"></div>
+                        <div class="col-md-3"><input class="form-control" type="file" name="file" required accept=".pdf,.png,.jpg,.jpeg,.webp,.doc,.docx,.xls,.xlsx,.csv,.txt"><span class="text-danger">*</span></div>
                         <div class="col-md-2"><button class="btn btn-success w-100">Upload</button></div>
                     </form><small class="text-muted">Private order files, up to 20 MB.</small>
                 </div>
@@ -29,7 +29,7 @@
                             <div class="d-flex gap-2"><a class="btn btn-sm btn-outline-primary" href="{{ route('sharing.files.download',$file) }}">Download</a>@if($type==='buyer'&&$file->uploaded_by_type==='buyer')<form method="POST" action="{{ route('user.sharing.files.destroy',$file) }}">@csrf @method('DELETE')<button class="btn btn-sm btn-outline-danger" onclick="return confirm('Delete this file?')">Delete</button></form>@endif</div>
                         </div>
                         <form method="POST" action="{{ $type==='buyer'?route('user.orders.messages.store',$order):route($type.'.orders.messages.store',$order) }}" class="row g-2 mt-2">@csrf<input type="hidden" name="sample_file_id" value="{{ $file->id }}">
-                            <div class="col"><input name="message" class="form-control form-control-sm" placeholder="Comment on this file" required maxlength="5000"></div>
+                            <div class="col"><input name="message" class="form-control form-control-sm" placeholder="Comment on this file" required maxlength="5000"><span class="text-danger">*</span></div>
                             <div class="col-auto"><button class="btn btn-sm btn-outline-secondary">Comment</button></div>
                         </form>@foreach($messages->where('sample_file_id',$file->id) as $comment)<div class="small ms-2 mt-2"><strong>{{ ucfirst($comment->sender_type) }}:</strong> {{ $comment->message }}</div>@endforeach
                     </div>@empty<p class="text-muted mb-0">No files shared for this order yet.</p>@endforelse
@@ -37,7 +37,7 @@
             </div>
             <div class="card border-0 shadow-sm mt-3">
                 <div class="card-body">
-                    <h5>Order messages</h5>@forelse($messages->whereNull('sample_file_id') as $message)<p><strong>{{ ucfirst($message->sender_type) }}:</strong> {{ $message->message }}</p>@empty<p class="text-muted">No general messages for this order.</p>@endforelse<form method="POST" action="{{ $type==='buyer'?route('user.orders.messages.store',$order):route($type.'.orders.messages.store',$order) }}" class="mt-3">@csrf<textarea class="form-control mb-2" name="message" rows="3" required maxlength="5000" placeholder="Write to the other party"></textarea><button class="btn btn-outline-success">Send message</button></form>
+                    <h5>Order messages</h5>@forelse($messages->whereNull('sample_file_id') as $message)<p><strong>{{ ucfirst($message->sender_type) }}:</strong> {{ $message->message }}</p>@empty<p class="text-muted">No general messages for this order.</p>@endforelse<form method="POST" action="{{ $type==='buyer'?route('user.orders.messages.store',$order):route($type.'.orders.messages.store',$order) }}" class="mt-3">@csrf<textarea class="form-control mb-2" name="message" rows="3" required maxlength="5000" placeholder="Write to the other party"></textarea><span class="text-danger">*</span><button class="btn btn-outline-success">Send message</button></form>
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@
                             <div><strong>Stock:</strong> {{ $sample->stock_quantity }} · <strong>Processing:</strong> {{ $sample->processing_days }} days</div>
                             <div class="small text-muted mt-2">{{ $sample->specifications }}</div>
                             @foreach($sample->files as $doc)<div class="small mt-2"><a href="{{ route('sharing.files.download',$doc) }}">Supporting file: {{ $doc->title }}</a></div>@endforeach
-                            @if($type==='buyer')<form method="POST" action="{{ route('user.samples.purchase') }}" class="mt-3">@csrf<input type="hidden" name="sample_id" value="{{ $sample->id }}"><input type="hidden" name="original_order_id" value="{{ $order->id }}"><label class="form-label">Quantity</label><input type="number" name="quantity" value="1" min="1" max="{{ $sample->stock_quantity }}" class="form-control mb-2" required><textarea name="shipping_address" class="form-control mb-2" maxlength="3000" placeholder="Delivery address" required>{{ old('shipping_address',$order->shipping_address) }}</textarea>
+                            @if($type==='buyer')<form method="POST" action="{{ route('user.samples.purchase') }}" class="mt-3">@csrf<input type="hidden" name="sample_id" value="{{ $sample->id }}"><input type="hidden" name="original_order_id" value="{{ $order->id }}"><label class="form-label">Quantity <span class="text-danger">*</span></label><input type="number" name="quantity" value="1" min="1" max="{{ $sample->stock_quantity }}" class="form-control mb-2" required><textarea name="shipping_address" class="form-control mb-2" maxlength="3000" placeholder="Delivery address" required>{{ old('shipping_address',$order->shipping_address) }}</textarea><span class="text-danger">*</span>
                                 <div class="small text-muted mb-2">Estimated total: quantity × sample price + shipping (confirmed server-side).</div><button class="btn btn-success w-100">Request sample purchase</button>
                             </form>@endif
                         </div>

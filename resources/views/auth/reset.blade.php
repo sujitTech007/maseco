@@ -5,12 +5,12 @@
     <form method="POST" action="{{ route('password.reset.submit') }}">
       @csrf
       <div class="mb-3">
-        <label class="form-label">New Password</label>
+        <label class="form-label">New Password <span class="text-danger">*</span></label>
         <input type="password" name="password" class="form-control" minlength="6" required>
         @error('password')<div class="text-danger small mt-1">{{ $message }}</div>@enderror
       </div>
       <div class="mb-3">
-        <label class="form-label">Confirm Password</label>
+        <label class="form-label">Confirm Password <span class="text-danger">*</span></label>
         <input type="password" name="password_confirmation" class="form-control" minlength="6" required>
       </div>
       <button class="btn btn-primary w-100" type="submit">Update Password</button>

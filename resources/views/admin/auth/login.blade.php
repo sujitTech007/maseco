@@ -45,7 +45,7 @@
                     </p>
 
                     <div class="form-group mb-3">
-                        <label for="email" class="form-label">Email </label>
+                        <label for="email" class="form-label">Email  <span class="text-danger">*</span></label>
                         <input
                             type="email"
                             name="email"
@@ -57,7 +57,7 @@
                     </div>
 
                     <div class="form-group position-relative mb-3">
-                        <label for="password" class="form-label">Password</label>
+                        <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
                         <input
                             type="password"
                             name="password"

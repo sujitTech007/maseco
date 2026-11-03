@@ -46,7 +46,7 @@
                         <div class="row g-3">
 
                             <div class="col-md-6">
-                                <label for="name" class="form-label">Full Name *</label>
+                                <label for="name" class="form-label">Full Name <span class="text-danger">*</span></label>
                                 <input type="text" name="name" id="name"
                                        class="form-control"
                                        placeholder="Enter your name"
@@ -58,7 +58,7 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label for="email" class="form-label">Business Email *</label>
+                                <label for="email" class="form-label">Business Email <span class="text-danger">*</span></label>
                                 <input type="email" name="email" id="email"
                                        class="form-control"
                                        placeholder="name@company.com"
@@ -70,7 +70,7 @@
                             </div>
 
                             <div class="col-md-6 mt-4">
-                                <label for="phone" class="form-label">Phone Number *</label>
+                                <label for="phone" class="form-label">Phone Number <span class="text-danger">*</span></label>
                                 @include('auth.partials.phone-input', [
                                     'phoneInputId' => 'phone',
                                     'phoneInputClass' => 'form-control',
@@ -84,7 +84,7 @@
 
                             <div class="col-md-6 mt-4">
                                 <label for="find_us" class="form-label"
-                                       style="font-size:13px;">How did you find us? *</label>
+                                       style="font-size:13px;">How did you find us? <span class="text-danger">*</span></label>
                                 <select name="find_us" id="find_us"
                                         class="form-select" required>
                                     <option value="" disabled

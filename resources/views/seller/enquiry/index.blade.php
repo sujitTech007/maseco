@@ -314,7 +314,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                                                 <div class="mb-3">
 
-                                                    <label class="form-label">Quantity</label>
+                                                    <label class="form-label">Quantity <span class="text-danger">*</span></label>
 
                                                     <input type="number" step="0.01" name="quantity" class="form-control"
                                                         value="{{ $eq->quantity }}" required>
@@ -323,7 +323,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                                                 <div class="mb-3">
 
-                                                    <label class="form-label">Order Amount ($)</label>
+                                                    <label class="form-label">Order Amount ($) <span class="text-danger">*</span></label>
 
                                                     <input type="number" step="0.01" name="amount" class="form-control"
                                                         value="{{ $eq->expected_price ?? 0 }}" required>

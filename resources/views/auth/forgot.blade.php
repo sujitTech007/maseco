@@ -79,7 +79,7 @@
                             <!-- Phone number -->
                             <div class="form-group">
                                 <fieldset>
-                                    <legend>User Type</legend>
+                                    <legend>User Type <span class="text-danger">*</span></legend>
                                     <div class="d-flex">
 
                                     <select name="user_type" class="form-control" required>

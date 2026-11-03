@@ -475,7 +475,7 @@
                     <div class="row g-3">
 
                       <div class="col-12">
-                        <label>Sample Name</label>
+                        <label>Sample Name <span class="text-danger">*</span></label>
                         <input
                           class="form-control"
                           name="name"
@@ -485,7 +485,7 @@
                       </div>
 
                       <div class="col-12 col-md-6">
-                        <label>Price</label>
+                        <label>Price <span class="text-danger">*</span></label>
                         <input
                           class="form-control"
                           type="number"
@@ -497,7 +497,7 @@
                       </div>
 
                       <div class="col-12 col-md-6">
-                        <label>Shipping Fee</label>
+                        <label>Shipping Fee <span class="text-danger">*</span></label>
                         <input
                           class="form-control"
                           type="number"
@@ -509,7 +509,7 @@
                       </div>
 
                       <div class="col-12 col-md-4">
-                        <label>Stock Quantity</label>
+                        <label>Stock Quantity <span class="text-danger">*</span></label>
                         <input
                           class="form-control"
                           type="number"
@@ -520,7 +520,7 @@
                       </div>
 
                       <div class="col-12 col-md-4">
-                        <label>Processing Days</label>
+                        <label>Processing Days <span class="text-danger">*</span></label>
                         <input
                           class="form-control"
                           type="number"
@@ -531,7 +531,7 @@
                       </div>
 
                       <div class="col-12 col-md-4">
-                        <label>Availability</label>
+                        <label>Availability <span class="text-danger">*</span></label>
                         <select name="status" class="form-select" required>
                           <option value="active" @selected($sample->status === 'active')>
                             Active
@@ -618,7 +618,7 @@
 
                       <div class="row g-2 align-items-end">
                         <div class="col-12 col-md-4">
-                          <label>Document Title</label>
+                          <label>Document Title <span class="text-danger">*</span></label>
                           <input
                             class="form-control"
                             name="title"
@@ -628,7 +628,7 @@
                         </div>
 
                         <div class="col-12 col-md-5">
-                          <label>Select Document</label>
+                          <label>Select Document <span class="text-danger">*</span></label>
                           <input
                             class="form-control"
                             type="file"

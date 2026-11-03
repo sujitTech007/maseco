@@ -53,7 +53,7 @@
 
                 <div class="mb-4">
                     <label for="name" class="form-label">
-                        Category Name <span class="required">*</span>
+                        Category Name <span class="text-danger">*</span>
                     </label>
 
                     <input
@@ -99,7 +99,7 @@
 
                 <div class="mb-4">
                     <label for="status" class="form-label">
-                        Status <span class="required">*</span>
+                        Status <span class="text-danger">*</span>
                     </label>
 
                     <select name="status" id="status" class="form-control" required>

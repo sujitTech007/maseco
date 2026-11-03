@@ -382,7 +382,7 @@
                                     <input type="text" id="enquiry-material-name" value="{{ $material->name }}" class="form-control" disabled>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Quantity</label>
+                                    <label class="form-label">Quantity <span class="text-danger">*</span></label>
                                     <input type="number" min="1" name="quantity" class="form-control" required>
                                 </div>
                                 <div class="mb-3">

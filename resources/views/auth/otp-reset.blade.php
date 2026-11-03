@@ -5,7 +5,7 @@
     <form method="POST" action="{{ route('password.otp.verify') }}">
       @csrf
       <div class="mb-3">
-        <label class="form-label">Enter 6-digit OTP</label>
+        <label class="form-label">Enter 6-digit OTP <span class="text-danger">*</span></label>
         <input type="text" name="otp" class="form-control" maxlength="6" pattern="\d{6}" required>
         @error('otp')<div class="text-danger small mt-1">{{ $message }}</div>@enderror
         @if(session('error'))<div class="text-danger small mt-1">{{ session('error') }}</div>@endif

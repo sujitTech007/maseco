@@ -10,21 +10,21 @@
       <!-- Basic Info -->
       <div class="col-md-6">
         <div class="form-group mb-3">
-          <label>Material Name</label>
+          <label>Material Name <span class="text-danger">*</span></label>
           <input type="text" class="form-control" name="name" placeholder="Enter material name" required value="{{ old('name') }}">
         </div>
       </div>
 
       <div class="col-md-6">
         <div class="form-group mb-3">
-          <label>Material Code / SKU</label>
+          <label>Material Code / SKU <span class="text-danger">*</span></label>
           <input type="text" class="form-control" name="sku" placeholder="Auto or enter SKU" required>
         </div>
       </div>
 
       <div class="col-md-6">
         <div class="form-group mb-3">
-          <label>Category / Type</label>
+          <label>Category / Type <span class="text-danger">*</span></label>
           <select class="form-control" name="category" required>
             <option disabled selected>Select Category</option>
             <option>Fabric</option>
