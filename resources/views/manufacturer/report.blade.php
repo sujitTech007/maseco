@@ -56,7 +56,7 @@
                                     <i class="fa-solid fa-circle-check"></i>
                                 </span>
                             </div>
-                            <h3 class="fw-bold mb-1">{{ $ordersCount }}</h3>
+                            <h3 class="fw-bold mb-1">{{ $completedOrdersCount }}</h3>
                             <p class="text-muted small mb-0">Orders reported as completed</p>
                         </div>
                     </div>
@@ -202,7 +202,7 @@
                                 <td class="px-3 report-number"></td>
                                 <td>Completed Orders</td>
                                 <td>Orders reported as completed</td>
-                                <td>{{ $ordersCount }}</td>
+                                <td>{{ $completedOrdersCount }}</td>
                                 <td>
                                     <span class="badge bg-success bg-opacity-10 text-success">
                                         Summary

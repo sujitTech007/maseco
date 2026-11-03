@@ -286,6 +286,9 @@ Route::prefix('manufacturer')->name('manufacturer.')->middleware(['auth:manufact
     Route::post('/sample-purchases/{purchase}/status', [\App\Http\Controllers\SampleSystemController::class, 'status'])->name('samples.status');
     Route::post('/sample-purchases/{purchase}/messages', [\App\Http\Controllers\SampleSystemController::class, 'message'])->name('samples.messages');
     Route::get('/dashboard', [\App\Http\Controllers\Manufacturer\ManufacturerController::class, 'dashboard'])->name('dashboard');
+    Route::get('/report', [\App\Http\Controllers\Manufacturer\ManufacturerController::class, 'report'])->name('report');
+    Route::get('/shipments', [\App\Http\Controllers\Manufacturer\ManufacturerController::class, 'shipments'])->name('shipments');
+    Route::patch('/shipments/{order}', [\App\Http\Controllers\Manufacturer\ManufacturerController::class, 'updateShipment'])->name('shipments.update');
     Route::get('/enquiry', [\App\Http\Controllers\Manufacturer\ManufacturerController::class, 'enquiry'])->name('enquiry');
     Route::get('/orders', [\App\Http\Controllers\Manufacturer\ManufacturerController::class, 'orders'])->name('orders');
     Route::get('/plans', [\App\Http\Controllers\Manufacturer\ManufacturerController::class, 'plans'])->name('plans');

@@ -32,6 +32,70 @@ class ManufacturerController extends Controller
         ));
     }
 
+    public function report()
+    {
+        $manufacturer = Auth::guard('manufacturer')->user();
+        $ordersCount = Order::where('manufacturer_id', $manufacturer->id)->count();
+        $completedOrdersCount = Order::where('manufacturer_id', $manufacturer->id)
+            ->where('status', 'delivered')->count();
+        $enquiriesCount = Enquiry::where('manufacturer_id', $manufacturer->id)->count();
+        $paymentsTotal = Payment::whereHas('order', function ($query) use ($manufacturer) {
+            $query->where('manufacturer_id', $manufacturer->id);
+        })->sum('amount');
+
+        return view('manufacturer.report', compact('ordersCount', 'completedOrdersCount', 'enquiriesCount', 'paymentsTotal'));
+    }
+
+    public function shipments(Request $request)
+    {
+        $manufacturer = Auth::guard('manufacturer')->user();
+        $query = Order::with('user')->where('manufacturer_id', $manufacturer->id);
+
+        if ($request->filled('search')) {
+            $search = trim($request->input('search'));
+            $query->where(function ($builder) use ($search) {
+                $builder->where('uid', 'like', '%' . $search . '%')
+                    ->orWhere('tracking_number', 'like', '%' . $search . '%')
+                    ->orWhereHas('user', fn ($userQuery) => $userQuery->where('name', 'like', '%' . $search . '%'));
+                if (ctype_digit($search)) {
+                    $builder->orWhere('id', (int) $search);
+                }
+            });
+        }
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->input('status'));
+        }
+
+        $shipments = $query->latest()->paginate(15)->withQueryString();
+        $totalShipments = Order::where('manufacturer_id', $manufacturer->id)->count();
+        $pendingShipments = Order::where('manufacturer_id', $manufacturer->id)
+            ->whereIn('status', ['pending', 'processing'])->count();
+        $inTransitShipments = Order::where('manufacturer_id', $manufacturer->id)
+            ->whereIn('status', ['shipped', 'in_transit', 'out_for_delivery'])->count();
+        $deliveredShipments = Order::where('manufacturer_id', $manufacturer->id)
+            ->where('status', 'delivered')->count();
+
+        return view('manufacturer.shipment', compact(
+            'shipments', 'totalShipments', 'pendingShipments', 'inTransitShipments', 'deliveredShipments'
+        ));
+    }
+
+    public function updateShipment(Request $request, $order)
+    {
+        $manufacturer = Auth::guard('manufacturer')->user();
+        $shipment = Order::where('manufacturer_id', $manufacturer->id)->findOrFail($order);
+        $data = $request->validate([
+            'tracking_number' => ['nullable', 'string', 'max:100'],
+            'shipping_method' => ['nullable', 'string', 'max:100'],
+            'estimated_delivery' => ['nullable', 'date'],
+            'status' => ['required', 'in:pending,processing,shipped,in_transit,out_for_delivery,delivered,cancelled'],
+        ]);
+        $shipment->update($data);
+
+        return back()->with('success', 'Shipment updated successfully.');
+    }
+
     public function enquiry()
     {
         return view('manufacturer.enquiry.enquiry');
