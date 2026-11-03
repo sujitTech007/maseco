@@ -6,14 +6,7 @@
 
         <!-- Page Heading -->
         <div class="profile-page-header">
-            <div>
-                <div class="profile-breadcrumb">
-                    <a href="{{ url('/admin/dashboard') }}">
-                        <i class="fa-solid fa-house"></i> Dashboard
-                    </a>
-                    <i class="fa-solid fa-chevron-right"></i>
-                    <span>My Account</span>
-                </div>
+            <div>             
 
                 <h2>My Profile</h2>
                 <p>Manage your personal information and account details.</p>
