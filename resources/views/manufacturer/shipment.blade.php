@@ -13,23 +13,22 @@
 @endphp
 
 <div class="wrapper active">
-    <div class="page-content mt-3">
-        <div class="page-container p-1">
-            <div class="container py-1">
+    <div class="page-content">
+        <div class="page-container">
+            <div class="container">
 
                 {{-- Page heading --}}
                 <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
                     <div>
-                        <h2 class="fw-bold mb-1">Shipment Management</h2>
-                        <p class="text-muted mb-0">
-                            Manage your shipments, tracking numbers and delivery status.
+                        <h1 class="fw-bold mb-1 dashboard_title">Shipment Management</h1>
+                        <p class="text-muted mb-0">Manage your shipments, tracking numbers and delivery status.
                         </p>
                     </div>
 
                     <div class="d-flex gap-2 flex-wrap">
                         <a href="{{ route('manufacturer.dashboard') }}"
-                           class="btn btn-outline-success rounded-pill px-3">
-                            <i class="fa-solid fa-arrow-left me-2"></i>Dashboard
+                           class="btn theme-btn">
+                            <i class="fa-solid fa-arrow-left"></i>Dashboard
                         </a>
                     </div>
                 </div>
@@ -65,9 +64,9 @@
                 <div class="row g-3 mb-4">
 
                     <div class="col-12 col-sm-6 col-xl-3">
-                        <div class="card h-100 border rounded-4 shadow-sm">
+                        <div class="card border rounded-4 shadow-sm">
                             <div class="card-body p-4">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
                                     <span class="text-muted">Total Shipments</span>
                                     <span class="bg-primary bg-opacity-10 text-primary rounded-3 p-2">
                                         <i class="fa-solid fa-boxes-stacked fa-lg"></i>
@@ -80,9 +79,9 @@
                     </div>
 
                     <div class="col-12 col-sm-6 col-xl-3">
-                        <div class="card h-100 border rounded-4 shadow-sm">
+                        <div class="card border rounded-4 shadow-sm">
                             <div class="card-body p-4">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
                                     <span class="text-muted">Pending</span>
                                     <span class="bg-warning bg-opacity-10 text-warning rounded-3 p-2">
                                         <i class="fa-solid fa-clock fa-lg"></i>
@@ -95,9 +94,9 @@
                     </div>
 
                     <div class="col-12 col-sm-6 col-xl-3">
-                        <div class="card h-100 border rounded-4 shadow-sm">
+                        <div class="card border rounded-4 shadow-sm">
                             <div class="card-body p-4">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
                                     <span class="text-muted">In Transit</span>
                                     <span class="bg-info bg-opacity-10 text-info rounded-3 p-2">
                                         <i class="fa-solid fa-truck-fast fa-lg"></i>
@@ -110,9 +109,9 @@
                     </div>
 
                     <div class="col-12 col-sm-6 col-xl-3">
-                        <div class="card h-100 border rounded-4 shadow-sm">
+                        <div class="card border rounded-4 shadow-sm">
                             <div class="card-body p-4">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
                                     <span class="text-muted">Delivered</span>
                                     <span class="bg-success bg-opacity-10 text-success rounded-3 p-2">
                                         <i class="fa-solid fa-circle-check fa-lg"></i>
@@ -128,10 +127,10 @@
 
                 {{-- Shipment table --}}
                 <div class="card border rounded-4 shadow-sm mb-4">
-                    <div class="card-header bg-white border-0 p-3 p-md-4">
+                    <div class="card-header bg-white border-0 p-2">
                         <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
                             <div>
-                                <h5 class="fw-bold mb-1">Your Shipments</h5>
+                                <h5 class="fw-bold mb-1 fs-4">Your Shipments</h5>
                                 <p class="text-muted small mb-0">
                                     Review and update shipment information.
                                 </p>
@@ -139,8 +138,8 @@
 
                             <form method="GET"
                                   action="{{ route('manufacturer.shipments') }}"
-                                  class="row g-2">
-                                <div class="col-12 col-md-auto">
+                                  class="row g-2 p-0  card_filters_form">
+                                <div class="col-12 col-md-auto card_filters_form">
                                     <div class="input-group">
                                         <span class="input-group-text bg-white">
                                             <i class="fa-solid fa-magnifying-glass text-muted"></i>
@@ -174,12 +173,12 @@
                                 </div>
 
                                 <div class="col-12 col-md-auto d-flex gap-2">
-                                    <button type="submit" class="btn btn-success">
+                                    <button type="submit" class="btn theme-btn" style="height: 38px;">
                                         Search
                                     </button>
                                     <a href="{{ route('manufacturer.shipments') }}"
-                                       class="btn btn-outline-secondary">
-                                        Reset
+                                       class="btn btn-outline-danger">
+                                        <i class="fa-solid fa-rotate-left"></i>
                                     </a>
                                 </div>
                             </form>
@@ -187,18 +186,19 @@
                     </div>
 
                     <div class="card-body p-0">
-                        <div class="table-responsive">
-                            <table class="table table-hover align-middle mb-0">
-                                <thead class="table-light">
+                          <div class="ud-scroll">
+
+                            <table class="ud-table" id="rfqTable">
+                                <thead>
                                     <tr>
-                                        <th class="px-3 py-3">Order ID</th>
-                                        <th class="py-3">Order UID</th>
-                                        <th class="py-3">Buyer</th>
-                                        <th class="py-3">Tracking Number</th>
-                                        <th class="py-3">Shipping Method</th>
-                                        <th class="py-3">Estimated Delivery</th>
-                                        <th class="py-3">Status</th>
-                                        <th class="py-3 text-center">Action</th>
+                                        <th>Order ID</th>
+                                        <th>Order UID</th>
+                                        <th>Buyer</th>
+                                        <th>Tracking Number</th>
+                                        <th>Shipping Method</th>
+                                        <th>Estimated Delivery</th>
+                                        <th>Status</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
 
@@ -389,7 +389,7 @@
                     </div>
 
                     @if(method_exists($shipments, 'links'))
-                        <div class="card-footer bg-white border-0 p-3">
+                        <div class="card-footer bg-white border-0">
                             {{ $shipments->withQueryString()->links() }}
                         </div>
                     @endif

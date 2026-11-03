@@ -59,8 +59,8 @@
 <div class="page-content">
     <div class="page-container">
     <div class="container">
-  <div class="breadcrumb-wrapper mb-1" style="font-size: 15px; font-weight: 500;">
-    <h3 class="mb-1">Manufacturer Profile </h3>
+  <div class="breadcrumb-wrapper mb-1">
+     <h1 class="fw-bold mb-1 dashboard_title">Manufacturer Profile </h1>
 
    
 
@@ -72,7 +72,7 @@
 
     <div class="bg-white shadow-sm rounded-4 p-4 mb-4">
 
-      <h3 class="h5 fw-bold mb-3">Manufacturer Profile</h3>
+      <h3 class="h5 fw-bold mb-3 fs-4">Manufacturer Profile</h3>
 
       <form id="profile-form" method="POST" action="{{ route('manufacturer.profile.update') }}">
 
@@ -168,15 +168,12 @@
 
       </form>
 
-    </div>
+       <div class="mt-3">
+        <hr class="mt-0 mb-3 text-muted">
 
-    <!-- ========== Business Details Section ========== -->
+      <h3 class="h5 fw-bold mb-3 fs-4">Business Details</h3>
 
-    <div class="bg-white shadow-sm rounded-4 p-4">
-
-      <h3 class="h5 fw-bold mb-3">Business Details</h3>
-
-      <form id="business-details-form" method="POST" action="{{ route('manufacturer.profile.business') }}">
+      <form id="business-details-form" class="row g-3 p-0 mt-3" method="POST" action="{{ route('manufacturer.profile.business') }}">
 
         @csrf
 
@@ -249,7 +246,7 @@
           <!-- Button for Business Form -->
 
           <div class="col-md-6">
-            <button type="submit" class="btn btn-success px-4 w-100">Save Business Details</button>
+            <button type="submit" class="btn theme-btn">Save Business Details</button>
           </div>
 
         </div>
@@ -258,6 +255,12 @@
 
     </div>
 
+
+    </div>
+
+    <!-- ========== Business Details Section ========== -->
+
+   
     <script>
       const countrySelect = document.getElementById('country');
       const stateSelect = document.getElementById('state');

@@ -2,20 +2,20 @@
 
 
 @php
-    $manu = Auth::guard('manufacturer')->user();
+$manu = Auth::guard('manufacturer')->user();
 
-    $enquiries = \App\Models\Enquiry::where('manufacturer_id', $manu->id)->latest()->get();
+$enquiries = \App\Models\Enquiry::where('manufacturer_id', $manu->id)->latest()->get();
 
-    // TEMP DEMO DATA: only shows when the list is empty, APP_DEBUG is true and the URL has ?demo=1. Delete before launch.
-    $rows = $enquiries;
-    if ($rows->isEmpty() && config('app.debug') && request()->boolean('demo')) {
-        $rows = collect([
-            (object) ['id' => 21, 'user' => (object) ['name' => 'Northwind Apparel'], 'user_id' => 5, 'demo_material' => 'Organic Cotton Fabric', 'quantity' => 500, 'expected_price' => 2500, 'status' => 'pending', 'created_at' => now()->subDays(1)],
-            (object) ['id' => 20, 'user' => (object) ['name' => 'Greenleaf Studio'], 'user_id' => 8, 'demo_material' => 'GOTS Linen', 'quantity' => 300, 'expected_price' => 1800, 'status' => 'approved', 'created_at' => now()->subDays(6)],
-            (object) ['id' => 19, 'user' => (object) ['name' => 'Maple & Thread'], 'user_id' => 9, 'demo_material' => 'Recycled Polyester Yarn', 'quantity' => 1200, 'expected_price' => 950, 'status' => 'pending', 'created_at' => now()->subDays(18)],
-            (object) ['id' => 18, 'user' => (object) ['name' => 'Harbour Active'], 'user_id' => 12, 'demo_material' => 'Hemp Blend Denim', 'quantity' => 50, 'expected_price' => 420, 'status' => 'rejected', 'created_at' => now()->subDays(43)],
-        ]);
-    }
+// TEMP DEMO DATA: only shows when the list is empty, APP_DEBUG is true and the URL has ?demo=1. Delete before launch.
+$rows = $enquiries;
+if ($rows->isEmpty() && config('app.debug') && request()->boolean('demo')) {
+$rows = collect([
+(object) ['id' => 21, 'user' => (object) ['name' => 'Northwind Apparel'], 'user_id' => 5, 'demo_material' => 'Organic Cotton Fabric', 'quantity' => 500, 'expected_price' => 2500, 'status' => 'pending', 'created_at' => now()->subDays(1)],
+(object) ['id' => 20, 'user' => (object) ['name' => 'Greenleaf Studio'], 'user_id' => 8, 'demo_material' => 'GOTS Linen', 'quantity' => 300, 'expected_price' => 1800, 'status' => 'approved', 'created_at' => now()->subDays(6)],
+(object) ['id' => 19, 'user' => (object) ['name' => 'Maple & Thread'], 'user_id' => 9, 'demo_material' => 'Recycled Polyester Yarn', 'quantity' => 1200, 'expected_price' => 950, 'status' => 'pending', 'created_at' => now()->subDays(18)],
+(object) ['id' => 18, 'user' => (object) ['name' => 'Harbour Active'], 'user_id' => 12, 'demo_material' => 'Hemp Blend Denim', 'quantity' => 50, 'expected_price' => 420, 'status' => 'rejected', 'created_at' => now()->subDays(43)],
+]);
+}
 @endphp
 
 <!-- Begin page -->
@@ -29,221 +29,206 @@
     <div class="page-content">
         <div class="container-fluid">
             <div class="container">
+                <div class="breadcrumb-wrapper mb-3">
+                    <h1 class="fw-bold mb-1 dashboard_title">RFQ Management </h1>
+                    <p class="text-muted">Manage your RFQs and their statuses.</p>
+                </div>
 
-        <div class="breadcrumb-wrapper mb-3">
-            <h3 class="mb-1">RFQ Management </h3>
+                <div class="meetingPpage">
+                    <div class="row card_filters_form">
+                        
+                        <div class="col-md-12">
+                            {{-- RFQ Filters --}}
+                            <div class="card border-0 shadow-sm rounded-4 mb-3">
+                                
+                                <div class="card-body p-3">
+                                    <div class="row g-3 align-items-end">
 
-            
+                                        {{-- Search RFQs --}}
+                                        <div class="col-lg-4 col-md-6">
+                                            <label for="rfq-search" class="form-label fw-semibold small">
+                                                Search RFQs
+                                            </label>
+                                            <input
+                                                type="text"
+                                                id="rfq-search"
+                                                class="form-control"
+                                                placeholder="RFQ ID or product name..."
+                                                value="{{ request('search') }}">
+                                        </div>
 
-        </div>
+                                        {{-- RFQ Status --}}
+                                        <div class="col-lg-2 col-md-6">
+                                            <label for="rfq-status" class="form-label fw-semibold small">
+                                                RFQ Status
+                                            </label>
+                                            <select id="rfq-status" class="form-select">
+                                                <option value="">All Statuses</option>
+                                                <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Pending</option>
+                                                <option value="open" {{ request('status') == 'open' ? 'selected' : '' }}>Open</option>
+                                                <option value="quoted" {{ request('status') == 'quoted' ? 'selected' : '' }}>Quoted</option>
+                                                <option value="accepted" {{ request('status') == 'accepted' ? 'selected' : '' }}>Accepted</option>
+                                                <option value="rejected" {{ request('status') == 'rejected' ? 'selected' : '' }}>Rejected</option>
+                                                <option value="closed" {{ request('status') == 'closed' ? 'selected' : '' }}>Closed</option>
+                                            </select>
+                                        </div>
 
-        <div class="meetingPpage">
+                                        {{-- From Date --}}
+                                        <div class="col-lg-2 col-md-6">
+                                            <label for="rfq-start-date" class="form-label fw-semibold small">
+                                                From Date
+                                            </label>
+                                            <input
+                                                type="date"
+                                                id="rfq-start-date"
+                                                class="form-control"
+                                                value="{{ request('start_date') }}">
+                                        </div>
 
-            <div class="row">
+                                        {{-- To Date --}}
+                                        <div class="col-lg-2 col-md-6">
+                                            <label for="rfq-end-date" class="form-label fw-semibold small">
+                                                To Date
+                                            </label>
+                                            <input
+                                                type="date"
+                                                id="rfq-end-date"
+                                                class="form-control"
+                                                value="{{ request('end_date') }}">
+                                        </div>
 
-                <div class="col-md-12">
-                
-{{-- RFQ Filters --}}
-<div class="card border-0 shadow-sm rounded-4 mb-3">
-    <div class="card-body p-3">
-        <div class="row g-3 align-items-end">
+                                        {{-- Filter & Reset --}}
+                                        <div class="col-lg-2 col-md-12 d-flex gap-2">
+                                            <button
+                                                type="button"
+                                                id="rfq-filter-btn"
+                                                class="btn theme-btn px-2" style="height: 38px;">
+                                                <i class="fa-solid fa-filter me-1"></i> Filter
+                                            </button>
 
-            {{-- Search RFQs --}}
-            <div class="col-lg-4 col-md-6">
-                <label for="rfq-search" class="form-label fw-semibold small">
-                    Search RFQs
-                </label>
-                <input
-                    type="text"
-                    id="rfq-search"
-                    class="form-control"
-                    placeholder="RFQ ID or product name..."
-                    value="{{ request('search') }}"
-                >
-            </div>
+                                            <a
+                                                href=""
+                                                class="btn btn-outline-danger"
+                                                title="Reset Filters">
+                                                <i class="fa-solid fa-rotate-left"></i>
+                                            </a>
+                                        </div>
 
-            {{-- RFQ Status --}}
-            <div class="col-lg-2 col-md-6">
-                <label for="rfq-status" class="form-label fw-semibold small">
-                    RFQ Status
-                </label>
-                <select id="rfq-status" class="form-select">
-                    <option value="">All Statuses</option>
-                    <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Pending</option>
-                    <option value="open" {{ request('status') == 'open' ? 'selected' : '' }}>Open</option>
-                    <option value="quoted" {{ request('status') == 'quoted' ? 'selected' : '' }}>Quoted</option>
-                    <option value="accepted" {{ request('status') == 'accepted' ? 'selected' : '' }}>Accepted</option>
-                    <option value="rejected" {{ request('status') == 'rejected' ? 'selected' : '' }}>Rejected</option>
-                    <option value="closed" {{ request('status') == 'closed' ? 'selected' : '' }}>Closed</option>
-                </select>
-            </div>
+                                    </div>
+                             
+                        <div class="ud-table-wrap bg-white  overflow-hidden mt-3">
 
-            {{-- From Date --}}
-            <div class="col-lg-2 col-md-6">
-                <label for="rfq-start-date" class="form-label fw-semibold small">
-                    From Date
-                </label>
-                <input
-                    type="date"
-                    id="rfq-start-date"
-                    class="form-control"
-                    value="{{ request('start_date') }}"
-                >
-            </div>
+                          
 
-            {{-- To Date --}}
-            <div class="col-lg-2 col-md-6">
-                <label for="rfq-end-date" class="form-label fw-semibold small">
-                    To Date
-                </label>
-                <input
-                    type="date"
-                    id="rfq-end-date"
-                    class="form-control"
-                    value="{{ request('end_date') }}"
-                >
-            </div>
+                                <div class="ud-scroll">
 
-            {{-- Filter & Reset --}}
-            <div class="col-lg-2 col-md-12 d-flex gap-2">
-                <button
-                    type="button"
-                    id="rfq-filter-btn"
-                   class="btn theme-btn px-2" style="height: 46px;">
-                    <i class="fa-solid fa-filter me-1"></i> Filter
-                </button>
+                                    <table class="ud-table" id="rfqTable">
 
-                <a
-                    href=""
-                    class="btn btn-outline-danger"
-                    title="Reset Filters"
-                >
-                    <i class="fa-solid fa-rotate-left"></i>
-                </a>
-            </div>
+                                        <thead>
 
-        </div>
-    </div>
-</div>
+                                            <tr>
 
+                                                <th>ID</th>
 
-                    <div class="ud-table-wrap bg-white shadow-sm rounded-4 overflow-hidden mt-4">
+                                                <th>Buyer</th>
 
-                        <div class="px-3 py-3 border-bottom">
-                            <h5 class="fw-bold mb-1">RFQ Management</h5>
-                            <p class="text-muted small mb-0">Review buyer requests and approve them to create an order.
-                            </p>
-                        </div>
+                                                <th>Material</th>
 
-                        <div class="ud-scroll">
+                                                <th>Quantity</th>
 
-                            <table class="ud-table" id="rfqTable">
+                                                <th>Expected Price</th>
 
-                                <thead>
+                                                <th>Date</th>
 
-                                    <tr>
+                                                <th>Status</th>
 
-                                        <th>ID</th>
+                                                <th>Action</th>
 
-                                        <th>Buyer</th>
+                                            </tr>
 
-                                        <th>Material</th>
+                                        </thead>
 
-                                        <th>Quantity</th>
+                                        <tbody>
 
-                                        <th>Expected Price</th>
+                                            @forelse($rows as $eq)
 
-                                        <th>Date</th>
-
-                                        <th>Status</th>
-
-                                        <th>Action</th>
-
-                                    </tr>
-
-                                </thead>
-
-                                <tbody>
-
-                                    @forelse($rows as $eq)
-
-                                        @php
+                                            @php
                                             $st = [
-                                                'approved' => 'success',
-                                                'rejected' => 'danger',
-                                                'cancelled' => 'danger',
+                                            'approved' => 'success',
+                                            'rejected' => 'danger',
+                                            'cancelled' => 'danger',
                                             ][strtolower($eq->status)] ?? 'warning';
-                                        @endphp
+                                            @endphp
 
-                                        <tr>
+                                            <tr>
 
-                                            <td class="text-muted">{{ $eq->id }}</td>
+                                                <td class="text-muted">{{ $eq->id }}</td>
 
-                                            <td class="fw-semibold">{{ optional($eq->user)->name ?? 'User #' . $eq->user_id }}
-                                            </td>
+                                                <td class="fw-semibold">{{ optional($eq->user)->name ?? 'User #' . $eq->user_id }}
+                                                </td>
 
-                                            <td>{{ $eq->demo_material ?? optional(\App\Models\Material::find($eq->material_id))->name }}
-                                            </td>
+                                                <td>{{ $eq->demo_material ?? optional(\App\Models\Material::find($eq->material_id))->name }}
+                                                </td>
 
-                                            <td>{{ $eq->quantity ?? '-' }}</td>
+                                                <td>{{ $eq->quantity ?? '-' }}</td>
 
-                                            <td class="fw-semibold text-nowrap">
-                                                ${{ number_format($eq->expected_price ?? 0, 2) }}</td>
+                                                <td class="fw-semibold text-nowrap">
+                                                    ${{ number_format($eq->expected_price ?? 0, 2) }}</td>
 
-                                            <td class="text-nowrap text-muted">{{ $eq->created_at?->format('d M Y') }}</td>
+                                                <td class="text-nowrap text-muted">{{ $eq->created_at?->format('d M Y') }}</td>
 
-                                            <td><span
-                                                    class="ud-st ud-st-{{ $st }} rounded-pill d-inline-block text-nowrap">{{ ucfirst($eq->status) }}</span>
-                                            </td>
+                                                <td><span
+                                                        class="ud-st ud-st-{{ $st }} rounded-pill d-inline-block text-nowrap">{{ ucfirst($eq->status) }}</span>
+                                                </td>
 
-                                            <td>
+                                                <td>
 
-                                                @unless(isset($eq->demo_material))
-                                                    <div class="d-flex flex-wrap gap-1"><a href="{{ route('chat.show', $eq->id) }}" class="btn btn-sm btn-outline-success px-3 text-nowrap mb-1" data-chat-enquiry="{{ $eq->id }}"><i class="fa-regular fa-comments me-1"></i>Chat <span class="badge bg-danger rounded-pill ms-1" data-chat-unread-count hidden></span></a><a href="{{ route('enquiry.meetings.index', $eq->id) }}" class="btn btn-sm btn-outline-primary px-3 text-nowrap mb-1"><i class="fa-regular fa-calendar me-1"></i>Meeting</a></div><small class="d-block text-danger mt-1" data-chat-unread-sender hidden></small>
-                                                @endunless
+                                                    @unless(isset($eq->demo_material))
+                                                    <div class="d-flex flex-wrap gap-1"><a href="{{ route('chat.show', $eq->id) }}" class="btn btn-sm btn-outline-success fs-12 px-3 text-nowrap mb-1" data-chat-enquiry="{{ $eq->id }}"><i class="fa-regular fa-comments me-1"></i>Chat <span class="badge bg-danger fs-12 rounded-pill ms-1" data-chat-unread-count hidden></span></a><a href="{{ route('enquiry.meetings.index', $eq->id) }}" class="btn btn-sm btn-outline-secondary fs-12 px-3 text-nowrap mb-1"><i class="fa-regular fa-calendar me-1"></i>Meeting</a></div><small class="d-block text-danger mt-1" data-chat-unread-sender hidden></small>
+                                                    @endunless
 
-                                                @if($eq->status !== 'approved')
+                                                    @if($eq->status !== 'approved')
 
-                                                    <button class="btn btn-sm btn-success px-3 text-nowrap"
+                                                    <button class="btn btn-sm btn-success px-3 text-nowrap fs-12"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#approveModal{{ $eq->id }}">Approve & Create
                                                         Order</button>
 
-                                                @else
+                                                    @else
 
                                                     <span class="text-success fw-semibold">Approved</span>
 
-                                                @endif
+                                                    @endif
 
-                                            </td>
+                                                </td>
 
-                                        </tr>
+                                            </tr>
 
-                                    @empty
+                                            @empty
 
-                                        <tr>
+                                            <tr>
 
-                                            <td colspan="8" class="text-center text-muted">
-                                                <div>No RFQs found.</div>
-                                                <div class="small">Requests from buyers will appear here.</div>
-                                            </td>
+                                                <td colspan="8" class="text-center text-muted">
+                                                    <div>No RFQs found.</div>
+                                                    <div class="small">Requests from buyers will appear here.</div>
+                                                </td>
 
-                                        </tr>
+                                            </tr>
 
-                                    @endforelse
+                                            @endforelse
 
-                                </tbody>
+                                        </tbody>
 
-                            </table>
+                                    </table>
 
-                        </div>
+                                </div>
 
-                    </div>
+                            </div>
 
-                    {{-- Approve modals (kept outside the table so row hover and scrolling don't affect them) --}}
-                    @foreach($rows as $eq)
+                            {{-- Approve modals (kept outside the table so row hover and scrolling don't affect them) --}}
+                            @foreach($rows as $eq)
 
-                        @if($eq->status !== 'approved')
+                            @if($eq->status !== 'approved')
 
                             <!-- Approve Modal -->
 
@@ -308,26 +293,22 @@
 
                             </div>
 
-                        @endif
+                            @endif
 
-                    @endforeach
+                            @endforeach
+                            </div>
 
-                    <div
-                        class="bg-white shadow-sm rounded-4 p-3 mt-3 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
-                        <div>
-                            <h6 class="fw-bold mb-1">Need help?</h6>
-                            <p class="text-muted small mb-0">Questions about an RFQ or creating an order? Email
-                                connect@maseco.ca.</p>
+
+   </div>
+
+                         
+
                         </div>
-                        <a href="{{ url('contact-us') }}" class="btn btn-outline-success btn-sm px-3">Contact us</a>
+
                     </div>
 
                 </div>
 
-            </div>
+            </div> <!-- container -->
 
-        </div>
-
-    </div> <!-- container -->
-
-    @include('manufacturer.Include.footer')
+            @include('manufacturer.Include.footer')

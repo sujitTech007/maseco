@@ -23,23 +23,23 @@
 <!-- Begin page -->
 <div class="wrapper active">
 
-  <div class="page-content mt-3">
+  <div class="page-content">
 
-    <div class="page-container p-1">
-      <div class="container py-1">
+    <div class="page-container">
+      <div class="container">
 
         {{-- Page heading + date range --}}
         <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center gap-3 mb-4">
           <div>
-            <h2 class="fw-bold mb-1 fs-bold">Manufacturer Dashboard</h2>
+            <h1 class="fw-bold mb-1 dashboard_title">Manufacturer Dashboard</h1>
             <p class="text-muted mb-0">Overview of your orders, payments and buyer enquiries with Maseco.</p>
           </div>
 
           <div
-            class="d-inline-flex align-items-center gap-2 bg-white border rounded-3 px-3 py-2 text-muted align-self-start">
+            class="d-inline-flex align-items-center gap-2 bg-white border rounded-3 p-2 fs-12 py-1 text-muted align-self-start">
             {!! $ico('calendar', 18) !!}
             <span>{{ now()->subDays(7)->format('M d, Y') }} - {{ now()->format('M d, Y') }}</span>
-            {!! $ico('chevron', 16) !!}
+           
           </div>
         </div>
 
@@ -88,7 +88,7 @@
                 style="color: var(--bs-orange, #fd7e14);">
                 {{-- {!! $ico('bag', 90, '', 1.8, true) !!} --}}
               </span>
-              <div class="card-body position-relative p-3 p-xl-4 d-flex flex-column">
+              <div class="card-body position-relative p-3 d-flex flex-column">
                 <div class="d-flex align-items-center gap-2 mb-3">
                   <span
                     class="d-inline-flex align-items-center justify-content-center p-2 rounded-4 text-white align-self-start mb-0"
@@ -110,7 +110,7 @@
               class="card h-100 position-relative overflow-hidden rounded-4 shadow-sm bg-success bg-opacity-10 border border-success border-opacity-25">
               {{-- {!! $ico('check', 90, 'text-success opacity-25 position-absolute end-0 top-50 translate-middle-y
               me-0', 1.8, true) !!} --}}
-              <div class="card-body position-relative p-3 p-xl-4 d-flex flex-column">
+              <div class="card-body position-relative p-3 d-flex flex-column">
                 <div class="d-flex align-items-center gap-2 mb-3">
                   <span
                     class="d-inline-flex align-items-center justify-content-center p-2 rounded-4 bg-success text-white align-self-start mb-0">
@@ -133,7 +133,7 @@
                 style="color: var(--bs-purple, #6f42c1);">
                 {{-- {!! $ico('card', 90, '', 1.8, true) !!} --}}
               </span>
-              <div class="card-body position-relative p-3 p-xl-4 d-flex flex-column">
+              <div class="card-body position-relative p-3 d-flex flex-column">
                 <div class="d-flex align-items-center gap-2 mb-3">
                   <span
                     class="d-inline-flex align-items-center justify-content-center p-2 rounded-4 text-white align-self-start mb-0"
@@ -155,7 +155,7 @@
               class="card h-100 position-relative overflow-hidden rounded-4 shadow-sm bg-primary bg-opacity-10 border border-primary border-opacity-25">
               {{-- {!! $ico('chat', 90, 'text-primary opacity-25 position-absolute end-0 top-50 translate-middle-y
               me-0', 1.8, true) !!} --}}
-              <div class="card-body position-relative p-3 p-xl-4 d-flex flex-column">
+              <div class="card-body position-relative p-3 d-flex flex-column">
                 <div class="d-flex align-items-center gap-2 mb-3">
                   <span
                     class="d-inline-flex align-items-center justify-content-center p-2 rounded-4 bg-primary text-white align-self-start mb-0">

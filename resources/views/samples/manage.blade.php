@@ -331,19 +331,22 @@
   }
 </style>
 
-<div class="page-content p-4">
 
-  <div class="samples-heading">
-    <div>
-      <h3>Manage Samples</h3>
+<div class="page-content">
+  <div class="page-container">
+      <div class="container">
+    <div class="d-flex align-items-center gap-2 justify-content-between flex-wrap">
+      <div>
+        <h1 class="fw-bold mb-1 dashboard_title">Manage Samples</h1>
       <p>Manage your sample listings, pricing, stock and supporting documents.</p>
-    </div>
-    <div class="d-flex align-items-center gap-2">
+      </div>
+    
+    
       <span class="samples-count">
         {{ $samples->total() }} Total Samples
       </span>
     </div>
-  </div>
+ 
 
   @if(session('success'))
   <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -374,8 +377,11 @@
 
     @if($samples->count())
 
-    <div class="table-responsive border-0 shadow-none p-0 rounded-0">
-      <table class="samples-table">
+    <div class="ud-table-wrap bg-white overflow-hidden">
+
+    <div class="ud-scroll">
+
+      <table class="ud-table">
         <thead>
           <tr>
             <th>Sample / Product</th>
@@ -660,8 +666,9 @@
         </tbody>
       </table>
     </div>
+    </div>
 
-    <div class="samples-pagination">
+    <div class="samples-pagination p-0">
       {{ $samples->links() }}
     </div>
 
@@ -679,6 +686,8 @@
 
   </div>
 
+</div>
+</div>
 </div>
 
 @include($type === 'supplier' ? 'seller.Include.footer' : 'manufacturer.Include.footer')

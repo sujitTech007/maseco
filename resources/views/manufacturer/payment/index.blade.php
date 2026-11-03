@@ -25,17 +25,17 @@
     <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-1">
 
       <div class="breadcrumb-wrapper">
-        <h3 class="mb-1">Payments</h3>
-        
-    <p class="text-muted">View and manage payments received from buyers for your orders.</p>
+        <h1 class="fw-bold mb-1 dashboard_title">Payments</h1>
+        <p class="text-muted">View and manage payments received from buyers for your orders.</p>
       </div>
 
     </div>
   
 {{-- Payment Filters --}}
 <div class="card border-0 shadow-sm rounded-4 mb-3">
+  
     <div class="card-body p-3">
-        <div class="row g-3 align-items-end">
+        <div class="row g-3 align-items-end card_filters_form">
 
             {{-- Search Payments --}}
             <div class="col-lg-3 col-md-6">
@@ -110,7 +110,7 @@
                 <button
                     type="button"
                     id="payment-filter-btn"
-                    class="btn theme-btn text-nowrap" style="height: 46px;"
+                    class="btn theme-btn text-nowrap" style="height: 38px;"
                     title="Filter Payments"
                 >
                     <i class="fa-solid fa-filter"></i> 
@@ -126,15 +126,10 @@
             </div>
 
         </div>
-    </div>
-</div>
+    
+      <div class="ud-table-wrap bg-white overflow-hidden mt-3">
 
-    <div class="ud-table-wrap bg-white shadow-sm rounded-4 overflow-hidden">
-
-      <div class="px-3 py-3 border-bottom">
-        <h5 class="header-title fw-bold mb-1">Order Payments</h5>
-        <p class="text-muted small mb-0">Payments received from buyers for your orders.</p>
-      </div>
+     
 
       <div class="ud-scroll">
 
@@ -223,14 +218,10 @@
 
     </div>
 
-    <div
-      class="bg-white shadow-sm rounded-4 p-3 mt-3 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
-      <div>
-        <h6 class="fw-bold mb-1">Need help?</h6>
-        <p class="text-muted small mb-0">Questions about a payment? Email connect@maseco.ca.</p>
-      </div>
-      <a href="{{ url('contact-us') }}" class="btn btn-outline-success btn-sm px-3">Contact us</a>
-    </div>
+</div>
+
+  
+
 
   </div>
 

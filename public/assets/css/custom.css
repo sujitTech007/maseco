@@ -1999,6 +1999,14 @@ button.btn.btn-success.d-flex.align-items-center.gap-1.addbtn {
 }
 
 
+.circle_icon-width-35{
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
 
 .profiles-tabs-wrappers {
     display: flex;
@@ -2067,4 +2075,11 @@ button.btn.btn-success.d-flex.align-items-center.gap-1.addbtn {
     overflow-y: auto !important;
     overflow-x: hidden;
     max-height: calc(100vh - 180px);
+}
+
+.card_filters_form .form-select, .card_filters_form .form-control {
+    font-size: 12px;
+    padding: 8px 10px;
+    height: auto;
+    min-height: auto;
 }
