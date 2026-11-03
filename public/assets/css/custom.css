@@ -27,9 +27,11 @@
 
 .side-nav .side-nav-item .side-nav-link{
 
-    color: #888888;
+    color: #222222;
 
     padding: 10px;
+    font-weight: 600;
+    text-transform: capitalize;
 
 }
 
@@ -519,7 +521,9 @@ h3.scheduleNumber small{
 }
 
 
-
+.app-topbar .topbar-menu .topbar-item .topbar-link{
+    text-transform: capitalize;
+}
 .app-topbar .topbar-menu .topbar-item .topbar-link.btnBG{
 
     background: rgba(239, 244, 255, 1);
@@ -797,6 +801,16 @@ color: #fff;
 
 }
 
+
+.td_actions_btns .btn{
+    width: 35px;
+    height: 35px;
+}
+
+
+.td_actions_btns .btn.w-auto{
+    width: auto;
+}
 
 
 
@@ -2033,4 +2047,24 @@ button.btn.btn-success.d-flex.align-items-center.gap-1.addbtn {
 .profiles-tabs-wrappers .tab-btn:focus-visible {
     outline: 2px solid #20a486;
     outline-offset: 2px;
+}
+
+.text_color_primary{
+    color: #2DAC92;
+}
+
+
+#createSampleModal .modal-dialog {
+    height: calc(100% - 1rem);
+}
+
+#createSampleModal .modal-content {
+    max-height: 100%;
+    overflow: hidden;
+}
+
+#createSampleModal .modal-body {
+    overflow-y: auto !important;
+    overflow-x: hidden;
+    max-height: calc(100vh - 180px);
 }

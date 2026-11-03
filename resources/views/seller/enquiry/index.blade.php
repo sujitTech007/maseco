@@ -103,16 +103,14 @@
                 <button
                     type="button"
                     id="rfq-filter-btn"
-                    class="btn btn-success flex-grow-1"
-                >
+                    class="btn theme-btn flex-grow-1" style="height: 46px;">
                     <i class="fa-solid fa-filter me-1"></i> Filter
                 </button>
 
                 <a
                     href=""
-                    class="btn btn-outline-secondary"
-                    title="Reset Filters"
-                >
+                    class="btn btn-outline-danger" style="height: 46px;"
+                    title="Reset Filters">
                     <i class="fa-solid fa-rotate-left"></i>
                 </a>
             </div>

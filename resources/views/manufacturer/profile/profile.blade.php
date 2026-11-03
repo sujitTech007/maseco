@@ -57,20 +57,12 @@
 </style>
 
 <div class="page-content">
+    <div class="page-container">
+    <div class="container">
   <div class="breadcrumb-wrapper mb-1" style="font-size: 15px; font-weight: 500;">
     <h3 class="mb-1">Manufacturer Profile </h3>
 
-    <a href="https://maseco.ca/UAT/manufacturer/dashboard" style="color:#555; text-decoration:none;">
-      Dashboard
-    </a>
-
-    <span style="padding:0 6px; color:#999; font-size:14px;">
-      ▶
-    </span>
-
-    <span style="color:#2DAC92;">
-      Manufacturer Profile
-    </span>
+   
 
   </div>
 
@@ -168,8 +160,8 @@
 
           <!-- Button for Profile Form -->
 
-          <div class="col-md-6 m-auto mt-2">
-            <button type="submit" class="btn btn-success px-4 w-100 m-auto">Save Profile</button>
+          <div class="col-md-6">
+            <button type="submit" class="btn theme-btn px-4 m-auto">Save Profile</button>
           </div>
 
         </div>

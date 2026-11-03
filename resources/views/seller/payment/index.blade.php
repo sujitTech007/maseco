@@ -104,7 +104,7 @@
                 <button
                     type="button"
                     id="payment-filter-btn"
-                    class="btn btn-success"
+                    class="btn theme-btn" style="height: 46px;"
                     title="Filter Payments"
                 >
                     <i class="fa-solid fa-filter"></i>
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
               <th>Provider</th>
 
-              <th>Transaction</th>
+              <!-- <th>Transaction</th> -->
 
               <th>Date</th>
 
@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 <td class="text-nowrap">{{ strtoupper($p->provider ?? '-') }}</td>
 
-                <td><code>{{ $p->transaction_id ?? '-' }}</code></td>
+                <!-- <td><code>{{ $p->transaction_id ?? '-' }}</code></td> -->
 
                 <td class="text-nowrap text-muted">{{ $p->created_at->format('d M Y H:i') }}</td>
 

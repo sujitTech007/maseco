@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         class="btn theme-btn w-100 text-nowrap" style="height: 46px;"
                         id="order-filter-btn"
                         title="Apply Filters">
-                    <i class="fa-solid fa-filter"></i>
+                    <i class="fa-solid fa-filter"></i> Filter
                 </button>
             </div>
 

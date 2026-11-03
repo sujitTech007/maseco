@@ -100,14 +100,14 @@
                         class="btn theme-btn w-100 text-nowrap" style="height: 46px;"
                         id="material-filter-btn"
                         title="Apply Filters">
-                    <i class="fa-solid fa-filter"></i>
+                    <i class="fa-solid fa-filter"></i> Filter
                 </button>
             </div>
 
             {{-- Reset Button --}}
             <div class="col-6 col-md-2 col-xl-1">
                 <a href="{{ route('seller.material') }}"
-                   class="btn btn-outline-secondary w-100 text-nowrap"
+                   class="btn btn-outline-danger text-nowrap" style="height: 46px;"
                    title="Reset Filters">
                     <i class="fa-solid fa-rotate-left"></i>
                 </a>
@@ -237,19 +237,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
               <td class="text-nowrap">
 
-                <a href="{{ route('seller.material.show', $material->id) }}" class="btn btn-sm btn-outline-success"
+               <div class="d-flex gap-1 align-items-center justify-content-center td_actions_btns">
+                 <a href="{{ route('seller.material.show', $material->id) }}" class="btn btn-sm btn-outline-success"
                   title="View"><i class="fa-solid fa-eye"></i></a>
 
                 <a href="{{ route('seller.material.edit', $material->id) }}" class="btn btn-sm btn-outline-warning"
                   title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
 
                 <form action="{{ route('seller.material.destroy', $material->id) }}" method="POST"
-                  class="d-inline delete-material-form">
+                  class="d-inline delete-material-form p-0 m-0">
                   @csrf
                   @method('DELETE')
                   <button type="submit" class="btn btn-outline-danger btn-sm" title="Delete"><i
                       class="fa-solid fa-trash"></i></button>
                 </form>
+               </div>
 
               </td>
 

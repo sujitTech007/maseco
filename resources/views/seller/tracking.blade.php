@@ -101,11 +101,11 @@
                                 </div>
 
                                 <div class="col-12 col-md-6 col-lg-3 d-flex gap-2">
-                                    <button type="submit" class="btn btn-success flex-grow-1">
+                                    <button type="submit" class="btn theme-btn flex-grow-1" style="height: 46px;">
                                         <i class="fa-solid fa-filter me-1"></i> Filter
                                     </button>
                                     <a href="{{ route('seller.tracking') }}"
-                                        class="btn btn-outline-secondary">
+                                        class="btn btn-outline-danger" style="height: 46px;">
                                         Reset
                                     </a>
                                 </div>
@@ -192,9 +192,10 @@
                                                 @endif
                                             </td>
 
-                                            <td class="px-4 py-3 text-end">
+                                            <td>
+                                                <div class="d-flex gap-1 align-items-center justify-content-center td_actions_btns">
                                                 <a href="{{ route('seller.tracking.show', $order->id) }}"
-                                                    class="btn btn-sm btn-outline-success rounded-pill px-3">
+                                                    class="btn btn-sm btn-outline-success rounded-pill px-2 text-nowrap w-auto">
                                                     <i class="fa-solid fa-location-dot me-1"></i> Track
                                                 </a>
                                             </td>

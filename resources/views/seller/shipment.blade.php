@@ -146,11 +146,13 @@
                                 </div>
 
                                 <div class="col-12 col-md-6 col-lg-3 d-flex gap-2">
-                                    <button type="submit" class="btn btn-success flex-grow-1">
+                                    <button type="submit" class="btn theme-btn flex-grow-1" style="height: 46px;">
                                         <i class="fa-solid fa-filter me-1"></i> Apply
                                     </button>
                                     <a href="{{ route('seller.shipments') }}"
-                                        class="btn btn-outline-secondary">Reset</a>
+                                        class="btn btn-outline-danger" style="height: 46px;">
+                                        Reset
+                                    </a>
                                 </div>
                             </div>
                         </form>
@@ -179,7 +181,7 @@
                                         <th>Dispatch Date</th>
                                         <th>Estimated Delivery</th>
                                         <th>Status</th>
-                                        <th class="text-end">Action</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
 
@@ -237,14 +239,17 @@
                                                 </span>
                                             </td>
 
-                                            <td class="px-4 py-3 text-end">
+                                            <td>
+                                                <div class="d-flex gap-1 align-items-center justify-content-center td_actions_btns">
                                                 <button type="button"
-                                                    class="btn btn-sm btn-outline-success rounded-pill px-3"
+                                                    class="btn btn-sm btn-outline-success rounded-pill px-2 w-auto"
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#shipmentModal{{ $shipment->id }}">
                                                     <i class="fa-solid fa-pen-to-square me-1"></i> Manage
                                                 </button>
+                                                </div>
                                             </td>
+
                                         </tr>
 
                                         {{-- Update Shipment Modal --}}

@@ -181,6 +181,7 @@
     flex-wrap: wrap;
     min-width: 125px;
   }
+  
 
   .sample-actions .btn {
     font-size: 12px;
@@ -373,7 +374,7 @@
 
     @if($samples->count())
 
-    <div class="table-responsive">
+    <div class="table-responsive border-0 shadow-none p-0 rounded-0">
       <table class="samples-table">
         <thead>
           <tr>

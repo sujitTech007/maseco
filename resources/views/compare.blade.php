@@ -5,7 +5,7 @@
     <div class="container py-4">
         <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
             <div><h3 class="fw-bold mb-2"><i class="fa-solid fa-scale-balanced text-success me-2"></i>Compare Materials</h3><p class="text-muted mb-0">Compare prices, quality, specifications and suppliers before making a decision.</p></div>
-            <a href="{{ route('listing') }}" class="btn btn-outline-success"><i class="fa-solid fa-arrow-left me-2"></i>Browse Materials</a>
+            <a href="{{ route('listing') }}" class="btn theme-btn"><i class="fa-solid fa-arrow-left me-2"></i>Browse Materials</a>
         </div>
 
         @if(session('success'))<div class="alert alert-success">{{ session('success') }}</div>@endif
@@ -54,7 +54,7 @@
         <section class="mt-5">
             <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
                 <div><h4 class="fw-bold mb-1">More materials to compare</h4><p class="text-muted mb-0">{{ $materials->count() < 3 ? 'Add up to '.(3 - $materials->count()).' more '.\Illuminate\Support\Str::plural('material', 3 - $materials->count()).' to your comparison.' : 'Remove a material from your comparison to add another.' }}</p></div>
-                <a href="{{ route('listing') }}" class="btn btn-outline-success">Browse all materials</a>
+                <a href="{{ route('listing') }}" class="btn theme-btn">Browse all materials</a>
             </div>
             <div class="row g-3">
                 @forelse($suggestedMaterials as $suggestion)
@@ -73,7 +73,7 @@
                                 <p class="text-muted mb-3"><i class="fa-solid fa-building text_color_primary me-2"></i>{{ $suggestionOwner }}</p>
                                 <div class="mt-auto">
                                     @if($materials->count() < 3)
-                                        <a href="{{ route('compare.add', $suggestion->id) }}" class="btn btn-outline-success w-100"><i class="fa-solid fa-scale-balanced me-1"></i>Add to Compare</a>
+                                        <a href="{{ route('compare.add', $suggestion->id) }}" class="btn theme-btn w-100"><i class="fa-solid fa-scale-balanced me-1"></i>Add to Compare</a>
                                     @else
                                         <button type="button" class="btn btn-outline-secondary w-100" disabled>Remove an item to add more</button>
                                     @endif

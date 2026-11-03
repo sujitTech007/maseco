@@ -1,32 +1,5 @@
 @include('manufacturer.Include.header')
 
-<style>
-    .ud-scroll { overflow-x: auto; }
-
-    .ud-table { width: 100%; border-collapse: collapse; margin: 0; border: 0 !important; background: transparent; }
-
-    .ud-table th,
-    .ud-table td {
-        border: 0 !important;
-        border-bottom: 1px solid #eef0f3 !important;
-        padding: .9rem 1rem !important;
-        text-align: left;
-        vertical-align: middle;
-        background: transparent;
-        box-shadow: none !important;
-    }
-
-    .ud-table thead { background-color: rgb(76 76 92); }
-    .ud-table th { color: #fff; font-weight: 700; font-size: .85rem; }
-    .ud-table tbody tr:last-child td { border-bottom: 0 !important; }
-    .ud-table tbody tr:hover td { background: #f3faf8 !important; }
-    .ud-table td.text-center { text-align: center !important; }
-
-    .ud-st { font-size: .8rem; font-weight: 600; padding: .3rem .7rem; }
-    .ud-st::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; margin-right: .4rem; display: inline-block; vertical-align: middle; }
-    .ud-st-success { background: #e6f4ec; color: #198754; }
-    .ud-st-warning { background: #fff4d6; color: #a06a00; }
-</style>
 
 @php
   $manufacturer = Auth::guard('manufacturer')->user();
@@ -47,31 +20,19 @@
 
 <div class="page-content">
 
-    <div class="page-title-head d-flex align-items-center gap-2">
 
-        <div class="flex-grow-1">
+    <div class="page-container">
+        <div class="container">
+            <div class="flex-grow-1">
 
             <div class="breadcrumb-wrapper mb-1" style="font-size: 15px; font-weight: 500;">
                 <h3 class="mb-1">Orders </h3>
 
-                <a href="https://maseco.ca/UAT/manufacturer/dashboard" style="color:#555; text-decoration:none;">
-                    Dashboard
-                </a>
-
-                <span style="padding:0 6px; color:#999; font-size:14px;">
-                    ▶
-                </span>
-
-                <span style="color:#2DAC92;">
-                    Orders
-                </span>
+               
 
             </div>
         </div>
-
-    </div>
-
-    <div class="page-container p-3">
+        </div>
         
 {{-- Order Filters --}}
 <div class="card border-0 shadow-sm rounded-4 mb-3">
@@ -153,7 +114,7 @@
                 <button
                     type="button"
                     id="order-filter-btn"
-                    class="btn btn-success"
+                    class="btn theme-btn" style="height: 46px;"
                     title="Filter Orders"
                 >
                     <i class="fa-solid fa-filter"></i>

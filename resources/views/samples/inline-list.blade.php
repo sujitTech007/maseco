@@ -63,7 +63,7 @@
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
             <form method="POST" action="{{ route($rolePrefix.'.samples.store') }}" enctype="multipart/form-data">@csrf<div class="modal-header">
-                    <h5 class="modal-title">Add Sample</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title fs-4 fw-bold">Add Sample</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row g-3">

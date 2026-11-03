@@ -145,11 +145,11 @@
 
                         <div class="col-12 col-xl-2 d-flex gap-2">
                             <button type="button" id="apply-filters"
-                                class="btn btn-success flex-fill">
+                                class="btn theme-btn w-100 text-nowrap" style="height: 46px;">
                                 Apply
                             </button>
                             <button type="button" id="reset-filters"
-                                class="btn btn-outline-secondary flex-fill">
+                                class="btn btn-outline-danger flex-fill" style="height: 46px;">
                                 Reset
                             </button>
                         </div>
