@@ -8,7 +8,7 @@
         <h1 class="fw-bold mb-1 dashboard_title">Identity verification</h1>
         <p class="text-muted mb-0">Submit your identity and address documents to complete your buyer setup.</p>
       </div>
-      <a href="{{ route('user.profile') }}" class="btn btn-outline-dark">Back to home</a>
+      <a href="{{ route('home') }}" class="btn btn-outline-dark">Back to home</a>
     </div>
 
     @if(session('success'))<div class="alert alert-success" role="status">{{ session('success') }}</div>@endif

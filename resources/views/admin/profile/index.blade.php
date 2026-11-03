@@ -29,10 +29,10 @@
                 </div>
 
                 <div class="profile-user-info">
-                    <h3>Alexa Rawles</h3>
+                    <h3>{{ $admin->name }}</h3>
                     <p>
                         <i class="fa-solid fa-envelope"></i>
-                        alexarawles@gmail.com
+                        {{ $admin->email }}
                     </p>
                     <span class="profile-account-label">
                         <i class="fa-solid fa-user"></i>
@@ -57,14 +57,17 @@
             </div>
 
             <div class="dashboardForms profile-form-content">
-                <form id="survey-form">
+                <form id="survey-form" method="POST" action="{{ route('admin.profile.update') }}">
+                    @csrf
+                    @if(session('success'))<div class="alert alert-success" role="status">{{ session('success') }}</div>@endif
+                    @if($errors->any())<div class="alert alert-danger" role="alert">{{ $errors->first() }}</div>@endif
 
                     <!-- Name -->
                     <div class="row g-4">
                         <div class="col-md-6">
                             <div class="profile-field">
                                 <label id="name-label" for="name">
-                                    First Name <span>*</span>
+                                    Name <span>*</span>
                                 </label>
 
                                 <div class="profile-input-wrap">
@@ -73,28 +76,9 @@
                                         type="text"
                                         name="name"
                                         id="name"
-                                        placeholder="Enter First Name"
+                                        placeholder="Enter Name"
                                         class="form-control"
-                                        required
-                                    >
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="profile-field">
-                                <label id="lastname-label" for="lastname">
-                                    Last Name <span>*</span>
-                                </label>
-
-                                <div class="profile-input-wrap">
-                                    <i class="fa-solid fa-user"></i>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        id="lastname"
-                                        placeholder="Enter Last Name"
-                                        class="form-control"
+                                        value="{{ old('name', $admin->name) }}"
                                         required
                                     >
                                 </div>
@@ -116,26 +100,9 @@
                                         id="email"
                                         placeholder="Enter your email"
                                         class="form-control"
+                                        value="{{ old('email', $admin->email) }}"
                                         required
                                     >
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Phone -->
-                        <div class="col-md-6">
-                            <div class="profile-field">
-                                <label for="phone">
-                                    Phone Number <span class="text-danger">*</span>
-                                </label>
-
-                                <div class="profile-input-wrap">
-                                    <i class="fa-solid fa-phone"></i>
-                                    @include('auth.partials.phone-input', [
-                                        'phoneInputId' => 'admin_phone',
-                                        'phoneInputClass' => 'form-control',
-                                        'phonePlaceholder' => 'Enter your phone',
-                                    ])
                                 </div>
                             </div>
                         </div>
@@ -150,24 +117,16 @@
                                 <div class="profile-input-wrap profile-select-wrap">
                                     <i class="fa-solid fa-globe"></i>
 
-                                    <select
+                                        <select
                                         id="dropdown"
-                                        name="role"
+                                        name="country"
                                         class="form-control"
                                         required
                                     >
-                                        <option value="United States">United States</option>
-                                        <option value="Afghanistan">Afghanistan</option>
-                                        <option value="Albania">Albania</option>
-                                        <option value="Algeria">Algeria</option>
-                                        <option value="American Samoa">American Samoa</option>
-                                        <option value="Andorra">Andorra</option>
-                                        <option value="Angola">Angola</option>
-                                        <option value="Anguilla">Anguilla</option>
-                                        <option value="Antarctica">Antarctica</option>
-                                        <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-                                        <option value="Argentina">Argentina</option>
-                                        <option value="Armenia">Armenia</option>
+                                        <option value="">Select Country</option>
+                                        @foreach($countries as $country)
+                                            <option value="{{ $country }}" @selected(old('country', $admin->country) === $country)>{{ $country }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -185,23 +144,13 @@
 
                                     <select
                                         id="state"
-                                        name="role"
+                                        name="state"
                                         class="form-control"
                                         required
                                     >
-                                        <option disabled selected value="">Select State</option>
-                                        <option value="United States">United States</option>
-                                        <option value="Afghanistan">Afghanistan</option>
-                                        <option value="Albania">Albania</option>
-                                        <option value="Algeria">Algeria</option>
-                                        <option value="American Samoa">American Samoa</option>
-                                        <option value="Andorra">Andorra</option>
-                                        <option value="Angola">Angola</option>
-                                        <option value="Anguilla">Anguilla</option>
-                                        <option value="Antarctica">Antarctica</option>
-                                        <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-                                        <option value="Argentina">Argentina</option>
-                                        <option value="Armenia">Armenia</option>
+                                        <option value="{{ old('state', $admin->state) }}">
+                                            {{ old('state', $admin->state) ?: 'Select State' }}
+                                        </option>
                                     </select>
                                 </div>
                             </div>
@@ -222,5 +171,50 @@
 
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const countrySelect = document.getElementById('dropdown');
+    const stateSelect = document.getElementById('state');
+    const selectedCountry = @json(old('country', $admin->country ?? ''));
+    const selectedState = @json(old('state', $admin->state ?? ''));
+
+    function loadStates(countryName) {
+        const country = window.adminCountriesData?.find(item => item.name === countryName);
+        if (!country) return;
+
+        stateSelect.replaceChildren(new Option('Select State', ''));
+        country.states.forEach(function (state) {
+            stateSelect.add(new Option(state.name, state.name, false, state.name === selectedState));
+        });
+
+        if (selectedState && !Array.from(stateSelect.options).some(option => option.value === selectedState)) {
+            stateSelect.add(new Option(selectedState, selectedState, true, true));
+        }
+    }
+
+    countrySelect.addEventListener('change', function () {
+        loadStates(this.value);
+    });
+
+    fetch('https://countriesnow.space/api/v0.1/countries/states')
+        .then(response => response.json())
+        .then(result => {
+            window.adminCountriesData = Array.isArray(result.data) ? result.data : [];
+            window.adminCountriesData.forEach(function (country) {
+                if (!Array.from(countrySelect.options).some(option => option.value === country.name)) {
+                    countrySelect.add(new Option(country.name, country.name));
+                }
+            });
+            countrySelect.value = selectedCountry;
+            loadStates(selectedCountry);
+        })
+        .catch(function () {
+            if (selectedState && !Array.from(stateSelect.options).some(option => option.value === selectedState)) {
+                stateSelect.add(new Option(selectedState, selectedState, true, true));
+            }
+        });
+});
+</script>
 
 @include('admin.Include.footer')

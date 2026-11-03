@@ -14,6 +14,8 @@ use App\Models\User;
 use App\Models\Supplier;
 use App\Models\Manufacturer;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class AdminPagesController extends Controller
 {
@@ -208,7 +210,35 @@ class AdminPagesController extends Controller
 
     public function profile()
     {
-        return view('admin.profile.index');
+        $admin = Auth::guard('admin')->user();
+        $countries = config('kyc.countries', []);
+
+        if ($admin->country && !in_array($admin->country, $countries, true)) {
+            $countries[] = $admin->country;
+        }
+
+        return view('admin.profile.index', compact('admin', 'countries'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $admin = Auth::guard('admin')->user();
+
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255', Rule::unique('admins', 'email')->ignore($admin->getKey())],
+            'country' => ['required', 'string', 'max:100'],
+            'state' => ['required', 'string', 'max:100'],
+        ]);
+
+        $admin->update([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'country' => $data['country'],
+            'state' => $data['state'],
+        ]);
+
+        return redirect()->route('admin.profile')->with('success', 'Profile updated successfully.');
     }
 
     public function toggleBuyerStatus(Request $request, $id)
