@@ -17,7 +17,7 @@
         <div class="profile-banner">
             <div class="profile-banner-content">
                 <div class="profile-avatar">
-                    <img src="{{ asset('public/assets/images/user.png') }}"
+                    <img src="{{ $profileImageUrl }}"
                          alt="User Profile">
                 </div>
 
@@ -50,7 +50,7 @@
             </div>
 
             <div class="dashboardForms profile-form-content">
-                <form id="survey-form" method="POST" action="{{ route('admin.profile.update') }}">
+                <form id="survey-form" method="POST" action="{{ route('admin.profile.update') }}" enctype="multipart/form-data">
                     @csrf
                     @if(session('success'))<div class="alert alert-success" role="status">{{ session('success') }}</div>@endif
                     @if($errors->any())<div class="alert alert-danger" role="alert">{{ $errors->first() }}</div>@endif
@@ -95,6 +95,22 @@
                                         class="form-control"
                                         value="{{ old('email', $admin->email) }}"
                                         required
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="profile-field">
+                                <label for="profile_image">Profile Image</label>
+                                <div class="profile-input-wrap">
+                                    <i class="fa-solid fa-image"></i>
+                                    <input
+                                        type="file"
+                                        name="profile_image"
+                                        id="profile_image"
+                                        accept=".jpg,.jpeg,.png,image/jpeg,image/png"
+                                        class="form-control"
                                     >
                                 </div>
                             </div>

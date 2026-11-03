@@ -15,6 +15,7 @@ use App\Models\Supplier;
 use App\Models\Manufacturer;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class AdminPagesController extends Controller
@@ -217,7 +218,11 @@ class AdminPagesController extends Controller
             $countries[] = $admin->country;
         }
 
-        return view('admin.profile.index', compact('admin', 'countries'));
+        $profileImageUrl = $admin->profile_image && Storage::disk('public')->exists($admin->profile_image)
+            ? asset('public/storage/' . ltrim($admin->profile_image, '/'))
+            : asset('public/assets/images/user.png');
+
+        return view('admin.profile.index', compact('admin', 'countries', 'profileImageUrl'));
     }
 
     public function updateProfile(Request $request)
@@ -229,14 +234,29 @@ class AdminPagesController extends Controller
             'email' => ['required', 'email', 'max:255', Rule::unique('admins', 'email')->ignore($admin->getKey())],
             'country' => ['required', 'string', 'max:100'],
             'state' => ['required', 'string', 'max:100'],
+            'profile_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:5120'],
         ]);
+
+        $previousImage = $admin->profile_image;
+        if ($request->hasFile('profile_image')) {
+            $imagePath = $request->file('profile_image')->store('admin-profiles', 'public');
+            if (!$imagePath) {
+                return back()->withErrors(['profile_image' => 'The profile image could not be uploaded.'])->withInput();
+            }
+            $data['profile_image'] = $imagePath;
+        }
 
         $admin->update([
             'name' => $data['name'],
             'email' => $data['email'],
             'country' => $data['country'],
             'state' => $data['state'],
+            'profile_image' => $data['profile_image'] ?? $admin->profile_image,
         ]);
+
+        if (isset($data['profile_image']) && $previousImage) {
+            Storage::disk('public')->delete($previousImage);
+        }
 
         return redirect()->route('admin.profile')->with('success', 'Profile updated successfully.');
     }
