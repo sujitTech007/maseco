@@ -18,11 +18,13 @@
 
         <meta content="Coderthemes" name="author">
 
+        
+    <link rel="shortcut icon" href="{{ asset('public/assets/images/favicon.png') }}" type="image/png">
+    <link rel="icon" href="{{ asset('public/assets/images/favicon.png') }}" type="image/png">
 
 
         <!-- App favicon -->
 
-        <link rel="shortcut icon" href="{{ asset('public/assets/images/favicon.ico') }}">
 
 
 

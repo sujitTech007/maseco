@@ -17,12 +17,9 @@
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
 
         <meta content="Coderthemes" name="author">
-
-
-
-        <!-- App favicon -->
-
-        <link rel="shortcut icon" href="{{ asset('public/assets/images/favicon.ico') }}">
+        
+    <link rel="shortcut icon" href="{{ asset('public/assets/images/favicon.png') }}" type="image/png">
+    <link rel="icon" href="{{ asset('public/assets/images/favicon.png') }}" type="image/png">
 
 
 
