@@ -69,7 +69,7 @@
             @endphp
             <div class="col-xl-4 col-md-6">
                 <div class="card material-card h-100 border-0 shadow-sm">
-                    <div class="material-image position-relative"><a href="{{ route('listing.details', $material->id) }}"><img src="{{ asset('public/' . $material->image) }}" class="card-img-top" alt="{{ $material->name }}" style="height:220px;object-fit:cover;" onerror="this.src='{{ asset('public/assets/images/placeholder.png') }}'"></a>
+                    <div class="material-image position-relative"><a href="{{ route('listing.details', $material->id) }}"><img src="{{ asset('public/' . $material->image) }}" class="card-img-top" alt="{{ $material->name }}" style="height:220px;object-fit:cover;" onerror="this.onerror=null;this.src='{{ asset('public/assets/images/material-1.png') }}'"></a>
                         <div class="position-absolute top-0 start-0 p-2">
                             <form method="POST" class="p-0 bg-transparent" action="{{ route('user.collection.toggle', ['collection'=>'wishlist','material'=>$material->id]) }}">@csrf<button type="submit" class="listing_badge border-0 rounded-circle shadow-sm wishlist-form-icons" title="Remove from Wishlist"><i class="fa-solid fa-heart text-danger"></i></button></form>
                         </div>
