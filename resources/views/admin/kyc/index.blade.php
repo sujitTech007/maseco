@@ -61,10 +61,7 @@
     };
     @endphp
 
-    <div class="card border-0 shadow-sm mb-3">
-      <div class="card-body p-4">
-
-        @if($kyc->status !== 'approved')
+    @if($kyc->status !== 'approved')
         <form method="POST" action="{{ route('admin.kyc.decision', $kyc) }}" class="row g-2 align-items-end mb-4">
           @csrf
           <input type="hidden" name="redirect_to" value="{{ route('admin.kyc.index', request()->query()) }}">
@@ -87,7 +84,10 @@
             </button>
           </div>
         </form>
-        @endif
+    @endif
+
+    <div class="card border-0 shadow-sm mb-3">
+      <div class="card-body p-4">
 
         {{-- Header row --}}
         <div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-3">
