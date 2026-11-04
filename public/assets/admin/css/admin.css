@@ -1014,18 +1014,7 @@ opacity: 0.6;
         white-space: nowrap;
     }
 
-    .manufacturer-page .manufacturer-status .form-check {
-        margin: 0;
-        min-height: auto;
-    }
 
-    .manufacturer-page .manufacturer-status .form-check-input {
-        margin: 0;
-        width: 2em;
-        height: 1em;
-        cursor: pointer;
-        box-shadow: none;
-    }
 
     .manufacturer-page .manufacturer-status .form-check-input:checked {
         background-color: #2DAC92;
@@ -1424,7 +1413,7 @@ opacity: 0.6;
 }
 
 /* Action buttons */
-.material-action-group {
+.td_actions_btns {
     display: flex;
     justify-content: center;
     align-items: center;

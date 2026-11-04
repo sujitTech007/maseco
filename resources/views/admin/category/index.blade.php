@@ -1,22 +1,25 @@
 @include('admin.Include.header')
 
 <div class="page-content category-page">
-    <div class="page-container p-3">
+    <div class="page-container">
+          <div class="container">
+               <div class="mb-2 d-flex justify-content-between align-items-center">
+                 <div>
+                    <h1 class="mb-1 dashboard_title">Category Directory</h1>
+                    <p class="text-muted mb-0">Manage the categories used to organize marketplace materials.</p>
+                </div>
+                 <a href="{{ route('admin.category.create') }}" class="category-add-btn">
+                <i class="fa-solid fa-plus"></i>
+                Add Category
+            </a>
 
+               </div>
     
 
         @php
             $categoryTotal = $categories->count();
         @endphp
 
-        <div class="category-topbar">
-            <h4>Manage the categories used to organize marketplace materials.</h4>
-
-            <a href="{{ route('admin.category.create') }}" class="category-add-btn">
-                <i class="fa-solid fa-plus"></i>
-                Add Category
-            </a>
-        </div>
 
         @if(session('success'))
             <div class="alert alert-success category-alert">
@@ -35,16 +38,10 @@
                 <h4 class="category-summary-value">{{ $categoryTotal }}</h4>
             </div>
         </div>
-              <!-- Category Directory Header & Filters -->
-<div class="category-table-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4 card">
 
-    <div>
-        <h4 class="category-table-title mb-1">Category Directory</h4>
-        <p class="category-table-subtitle text-muted mb-0">
-            View, edit, or remove marketplace categories.
-        </p>
-    </div>
+        <div class="category-table-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4 card">
 
+    
     <div class="row g-3 align-items-center flex-grow-1 ms-xl-3">
 
         <!-- Search Categories -->
@@ -213,6 +210,7 @@
             </div>
 
         </div>
+          </div>
     </div>
 </div>
 

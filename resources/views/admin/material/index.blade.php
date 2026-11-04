@@ -4,17 +4,7 @@
 
 <div class="page-content materials-page">
 
-    <!-- Page Header -->
-    <!-- <div class="materials-page-header container">
-        <div class="breadcrumb-wrapper">
-            <h3>Materials</h3>
-            <div class="breadcrumb-links">
-                <a href="https://maseco.ca/UAT/admin/dashboard">Dashboard</a>
-                <span>›</span>
-                <span class="current">Materials</span>
-            </div>
-        </div>
-    </div> -->
+   
 
     <div class="page-container p-3">
     @if(session('success'))<div class="alert alert-success alert-dismissible fade show" role="alert">{{ session('success') }}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>@endif
@@ -198,12 +188,31 @@
                             @endif
                         </td>
 
-                        <td>
-                            <span class="material-description">
-                                {{ $material->description ?: '—' }}
-                            </span>
-                        </td>
+                       <td>
+    @php
+        $description = $material->description ?? '';
+        $words = explode(' ', $description);
+        $shortDescription = implode(' ', array_slice($words, 0, 10));
+    @endphp
 
+    <span class="material-description"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="{{ $description }}">
+        {{ count($words) > 10 ? $shortDescription . '...' : ($description ?: '—') }}
+    </span>
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    var tooltipTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    );
+
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+});
+    </script>
+</td>
                         <td>
                             <span class="material-unit">
                                 {{ $material->unit }}
@@ -250,51 +259,48 @@
                                 @if($material->is_certified)
                                     <button type="submit" class="btn btn-sm btn-outline-danger text-nowrap">Remove Certification</button>
                                 @else
-                                    <button type="submit" class="btn btn-sm btn-outline-success text-nowrap">Mark as Certified</button>
+                                    <button type="submit" class="btn btn-sm btn-outline-success text-nowrap fs-12 p-1">Mark as Certified</button>
                                 @endif
                             </form>
                         </td>
 
                         <td>
-                            <div class="material-action-group">
+                            <div class="d-flex align-items-center justify-content gap-1 td_actions_btns">
 
-                                <a
-                                    href="{{ route('admin.material.show', $material->id) }}"
-                                    class="material-action-btn view"
-                                    title="View Material"
-                                    aria-label="View Material"
-                                >
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
+                                        <!-- View Button -->
+                                        <a href="{{ route('admin.material.show', $material->id) }}"
+                                        class="btn btn-sm btn-outline-primary"
+                                        title="View Material"
+                                        aria-label="View Material">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
 
-                                <a
-                                    href="{{ route('admin.material.edit', $material->id) }}"
-                                    class="material-action-btn edit"
-                                    title="Edit Material"
-                                    aria-label="Edit Material"
-                                >
-<i class="fa-solid fa-pen-to-square"></i>                                </a>
+                                        <!-- Edit Button -->
+                                        <a href="{{ route('admin.material.edit', $material->id) }}"
+                                        class="btn btn-sm btn-outline-warning"
+                                        title="Edit Material"
+                                        aria-label="Edit Material">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
 
-                                <form
-                                    action="{{ route('admin.material.destroy', $material->id) }}"
-                                    method="POST"
-                                    class="d-inline mb-0"
-                                    onsubmit="return confirm('Delete this material?')"
-                                >
-                                    @csrf
-                                    @method('DELETE')
+                                        <!-- Delete Button -->
+                                        <form action="{{ route('admin.material.destroy', $material->id) }}"
+                                            method="POST"
+                                            class="d-inline mb-0"
+                                            onsubmit="return confirm('Delete this material?')">
 
-                                    <button
-                                        type="submit"
-                                        class="material-action-btn delete"
-                                        title="Delete Material"
-                                        aria-label="Delete Material"
-                                    >
-                                       <i class="fa-solid fa-trash"></i>
-                                    </button>
-                                </form>
+                                            @csrf
+                                            @method('DELETE')
 
-                            </div>
+                                            <button type="submit"
+                                                    class="btn btn-sm btn-outline-danger"
+                                                    title="Delete Material"
+                                                    aria-label="Delete Material">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </form>
+
+                                    </div>
                         </td>
                     </tr>
 
