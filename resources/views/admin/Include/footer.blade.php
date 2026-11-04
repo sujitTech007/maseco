@@ -23,7 +23,7 @@
 
     <!-- Projects Analytics Dashboard App js -->
     <script src="{{ asset('public/assets/admin/js/dashboard.js') }}"></script>
-    <script src="{{ asset('public/assets/admin/js/dashboard-auto-filters.js') }}"></script>
+    <script src="{{ asset('public/assets/js/dashboard-auto-filters.js') }}"></script>
 
     @if (Request::is('admin/profile'))
         <script src="{{ asset('public/assets/admin/js/jquery.min.js') }}"></script>
