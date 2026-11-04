@@ -57,10 +57,10 @@
        <!-- Registered Sellers Header & Filters -->
         <div class="card mb-4">
             <div class="card-body">
-                <div class="row g-3 align-items-end  card_filters_form">
+                <div class="row g-3 align-items-end card_filters_form">
 
                     <!-- Search Sellers -->
-                    <div class="col">
+                    <div class="col-md-3">
                         <label for="seller-search" class="form-label">Search Seller</label>
                         <div class="input-group">
                             <span class="input-group-text">
@@ -211,7 +211,7 @@
                             </td>
 
                             <td>
-                                <div class="actionBtn d-flex align-items-center justify-content gap-1 td_actions_btns">
+                                <div class="actionBtn d-flex align-items-center justify-content gap-1 td_actions_btns position-relative">
                                     <a
                                         href="{{ route('admin.seller.show', $supplier->id) }}"
                                         class="btn btn-sm btn-outline-primary"

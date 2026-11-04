@@ -4,18 +4,17 @@
 
 
 <div class="page-content enquiry-page">
+    
+    <div class="page-container">
+        <div class="container">
+           
+                 <div>
+                    <h1 class="mb-1 dashboard_title">All Enquiries</h1>
+                    <p class="text-muted mb-0">Review buyer requests, materials and expected prices.</p>
+                </div>
 
     {{-- Page Heading --}}
-    <!-- <div class="enquiry-page-header">
-        <div>
-            <h3>Enquiries</h3>
-            <div class="enquiry-breadcrumb">
-                <a href="{{ url('/admin/dashboard') }}">Dashboard</a>
-                <span>›</span>
-                <span class="current">Enquiries</span>
-            </div>
-        </div>
-    </div> -->
+
 
     @php
     $enquiryCollection = collect($enquiries ?? []);
@@ -39,7 +38,7 @@
     })->count();
     @endphp
 
-    <div class="enquiry-container page-container">
+    <div class="enquiry-container mt-3">
 
         {{-- Summary --}}
         <div class="row g-3 enquiry-summary">
@@ -81,13 +80,9 @@
             </div>
 
         </div>
-         <div class="enquiry-card-heading d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 card">
-                <div>
-                    <h5>All Enquiries</h5>
-                    <p>Review buyer requests, materials and expected prices.</p>
-                </div>
-
-                <div class="d-flex flex-wrap align-items-center gap-2">
+         <!-- <div class="enquiry-card-heading d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 card">
+               
+                <div class="d-flex flex-wrap align-items-center gap-2 card_filters_form">
                     <select class="form-select" id="enquiry-status-filter" aria-label="Filter by status" style="width: 160px;">
                         <option value="">All Statuses</option>
                         <option value="pending">Pending</option>
@@ -120,7 +115,7 @@
                         {{ $enquiryCollection->count() === 1 ? 'record' : 'records' }}
                     </span>
                 </div>
-            </div>
+            </div> -->
 
 
         {{-- Enquiry Table Card --}}
@@ -267,6 +262,8 @@
 
         </div>
     </div>
+</div>
+</div>
 </div>
 
 

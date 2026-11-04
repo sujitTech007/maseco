@@ -59,7 +59,7 @@
         <div class="row g-3 align-items-end card_filters_form">
 
             <!-- Search -->
-            <div class="col">
+            <div class="col-md-3">
                 <label class="form-label" for="manufacturer-search">Search Manufacturer</label>
                 <div class="input-group">
                     <span class="input-group-text">
@@ -214,7 +214,7 @@
                             </td>
 
                             <td>
-                                <div class="actionBtn d-flex align-items-center justify-content gap-1 td_actions_btns">
+                                <div class="actionBtn d-flex align-items-center justify-content gap-1 td_actions_btns position-relative">
                                     <a
                                         href="{{ route('admin.manufacturer.show', $manufacturer->id) }}"
                                         class="btn btn-sm btn-outline-primary"

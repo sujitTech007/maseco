@@ -4,20 +4,85 @@
     <div class="page-container p-3">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
             <div>
-                <h2 class="fw-bold mb-1">Order Tracking</h2>
+                <h1 class="mb-1 dashboard_title">Order Tracking</h1>
                 <p class="text-muted mb-0">Review shipment progress and delivery details for customer orders.</p>
             </div>
-            <a href="{{ route('admin.orders') }}" class="btn btn-outline-primary">
-                <i class="fa-solid fa-box me-2"></i>All Orders
+            <a href="{{ route('admin.orders') }}" class="btn theme-btn">
+                <i class="fa-solid fa-box"></i>All Orders
             </a>
         </div>
 
-        <div class="row g-3 mb-4">
-            <div class="col-6 col-xl-3"><div class="card border-0 shadow-sm h-100"><div class="card-body"><div class="text-muted small">Total orders</div><div class="fs-3 fw-bold">{{ $totalOrders }}</div></div></div></div>
-            <div class="col-6 col-xl-3"><div class="card border-0 shadow-sm h-100"><div class="card-body"><div class="text-muted small">In delivery</div><div class="fs-3 fw-bold text-primary">{{ $inTransitOrders }}</div></div></div></div>
-            <div class="col-6 col-xl-3"><div class="card border-0 shadow-sm h-100"><div class="card-body"><div class="text-muted small">Delivered</div><div class="fs-3 fw-bold text-success">{{ $deliveredOrders }}</div></div></div></div>
-            <div class="col-6 col-xl-3"><div class="card border-0 shadow-sm h-100"><div class="card-body"><div class="text-muted small">Tracking not assigned</div><div class="fs-3 fw-bold text-warning">{{ $untrackedOrders }}</div></div></div></div>
+        <div class="row g-2 mb-3">
+
+    <!-- Total Orders -->
+    <div class="col-6 col-xl-3">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-3">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <div class="text-muted small mb-1">Total Orders</div>
+                        <h4 class="mb-0 fw-bold fs-1">{{ $totalOrders }}</h4>
+                    </div>
+                    <div class="bg-primary bg-opacity-10 text-primary rounded-3 p-2">
+                        <i class="fas fa-shopping-cart fs-5"></i>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+
+    <!-- In Delivery -->
+    <div class="col-6 col-xl-3">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-3">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <div class="text-muted small mb-1">In Delivery</div>
+                        <h4 class="mb-0 fw-bold text-primary fs-1">{{ $inTransitOrders }}</h4>
+                    </div>
+                    <div class="bg-info bg-opacity-10 text-info rounded-3 p-2">
+                        <i class="fas fa-truck fs-5"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delivered -->
+    <div class="col-6 col-xl-3">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-3">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <div class="text-muted small mb-1">Delivered</div>
+                        <h4 class="mb-0 fw-bold text-success fs-1">{{ $deliveredOrders }}</h4>
+                    </div>
+                    <div class="bg-success bg-opacity-10 text-success rounded-3 p-2">
+                        <i class="fas fa-check-circle fs-5"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tracking Not Assigned -->
+    <div class="col-6 col-xl-3">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-3">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <div class="text-muted small mb-1">Tracking Pending</div>
+                        <h4 class="mb-0 fw-bold text-warning fs-1">{{ $untrackedOrders }}</h4>
+                    </div>
+                    <div class="bg-warning bg-opacity-10 text-warning rounded-3 p-2">
+                        <i class="fas fa-map-marker-alt fs-5"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
 
         <div class="card border-0 shadow-sm">
             <div class="card-body border-bottom">
@@ -35,7 +100,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-6 col-md-1 d-grid"><button class="btn btn-primary" type="submit">Filter</button></div>
+                    <div class="col-6 col-md-1 d-grid"><button class="btn theme-btn" type="submit" style="height: 38px;">Filter</button></div>
                     <div class="col-6 col-md-1 d-grid"><a class="btn btn-light border" href="{{ route('admin.tracking') }}">Reset</a></div>
                 </form>
             </div>

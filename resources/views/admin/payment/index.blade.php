@@ -3,18 +3,13 @@
 
 <div class="page-content payments-page">
 
-    {{-- Page Heading --}}
-    <!-- <div class="payments-heading">
-        <div>
-            <h3>Payments</h3>
-            <div class="payments-breadcrumb">
-                <a href="{{ url('/admin/dashboard') }}">Dashboard</a>
-                <span>›</span>
-                <span class="current">Payments</span>
+    
+    <div class="page-container">
+        <div class="container">
+             <div>
+                <h1 class="mb-1 dashboard_title">Payment Transactions</h1>
+                <p>Review payment status, amounts and transaction references.</p>
             </div>
-        </div>
-    </div> -->
-
     @php
         $paymentCollection = collect($payments ?? []);
 
@@ -38,7 +33,7 @@
         });
     @endphp
 
-    <div class="page-container p-3 payments-container">
+    <div class="payments-container p-0">
 
         {{-- Summary Cards --}}
         <div class="row g-3 payments-summary">
@@ -94,13 +89,9 @@
         </div>
         
             <!-- Payment Transactions Header & Filters -->
-<div class="payments-card-heading d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 card">
+<div class="payments-card-heading d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 card w-100 p-3">
 
-    <div>
-        <h5>Payment Transactions</h5>
-        <p>Review payment status, amounts and transaction references.</p>
-    </div>
-
+  
     <div class="d-flex flex-wrap align-items-center gap-2">
 
         <!-- Payment Status -->
@@ -323,6 +314,7 @@
         </div>
     </div>
 </div>
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {

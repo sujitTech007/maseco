@@ -3,74 +3,26 @@
 
 
 <div class="page-content materials-page">
-
-   
-
     <div class="page-container p-3">
+        <div class="container">
+           
+                 <div>
+                    <h1 class="mb-1 dashboard_title">Material Inventory</h1>
+                    <p class="text-muted mb-0">Manage your available raw materials and pricing.</p>
+                </div>
+                
+
     @if(session('success'))<div class="alert alert-success alert-dismissible fade show" role="alert">{{ session('success') }}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>@endif
     @if($errors->any())<div class="alert alert-danger">{{ $errors->first() }}</div>@endif
     <!-- Search and Filter -->
-    <div class="materials-filter-card">
-        <form method="GET" class="materials-filter-form">
 
-            <div class="filter-field">
-                <label for="material-search">Search Materials</label>
-                <input
-                    type="text"
-                    id="material-search"
-                    name="search"
-                    class="form-control"
-                    value="{{ request('search') }}"
-                    placeholder="Enter material name..."
-                >
-            </div>
-
-            <div class="filter-field filter-status">
-                <label for="material-status">Status</label>
-                <select name="status" id="material-status" class="form-control">
-                    <option value="">All Status</option>
-                    <option value="active" @if(request('status')==='active') selected @endif>
-                        Active
-                    </option>
-                    <option value="inactive" @if(request('status')==='inactive') selected @endif>
-                        Inactive
-                    </option>
-                </select>
-            </div>
-
-            <div class="filter-field filter-status">
-                <label for="certification-status">Certification</label>
-                <select name="certification_status" id="certification-status" class="form-control">
-                    <option value="">All Certifications</option>
-                    <option value="certified" @selected(request('certification_status') === 'certified')>Certified</option>
-                    <option value="not_certified" @selected(request('certification_status') === 'not_certified')>Not Certified</option>
-                </select>
-            </div>
-
-            <div class="filter-actions">
-                <button type="submit" class="material-filter-btn">
-                    <i class="fa-solid fa-sliders"></i>
-                    Filter
-                </button>
-
-                <a href="{{ route('admin.material') }}" class="material-reset-btn">
-                    Reset
-                </a>
-            </div>
-
-        </form>
-    </div>
+    
         <!-- Material Inventory Header & Filters -->
-<div class="materials-table-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 card">
+<!-- <div class="materials-table-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 card mt-2">
 
-    <div>
-        <h4>Material Inventory</h4>
-        <p>Manage your available raw materials and pricing.</p>
-    </div>
 
-    <div class="d-flex flex-wrap align-items-center gap-2">
+    <div class="d-flex flex-wrap align-items-center gap-2  card_filters_form">
 
-        <!-- Material Status -->
         <select class="form-select"
                 id="materials-status-filter"
                 aria-label="Filter by material status"
@@ -81,7 +33,6 @@
             <option value="out-of-stock">Out of Stock</option>
         </select>
 
-        <!-- Material Type -->
         <select class="form-select"
                 id="materials-type-filter"
                 aria-label="Filter by material type"
@@ -94,37 +45,32 @@
             <option value="recycled">Recycled Materials</option>
         </select>
 
-        <!-- Start Date -->
+      
         <input type="date"
                class="form-control"
                id="materials-start-date"
                aria-label="Start date"
                style="width: 155px;">
 
-        <!-- End Date -->
+        
         <input type="date"
                class="form-control"
                id="materials-end-date"
                aria-label="End date"
                style="width: 155px;">
 
-        <!-- Filter Button -->
+        
         <button type="button"
                 class="btn btn-outline-success"
                 id="materials-filter-btn">
             <i class="ri-filter-3-line me-1"></i> Filter
         </button>
 
-        <!-- Materials Count -->
-        <!-- <div class="materials-count">
-            {{ $materials->count() }} Materials
-        </div> -->
-
     </div>
-</div>
+</div> -->
 
     <!-- Materials Table -->
-    <div class="materials-table-card">
+    <div class="materials-table-card mt-3">
 
    
         <div class="table-responsive">

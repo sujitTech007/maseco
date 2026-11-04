@@ -39,73 +39,84 @@
             </div>
         </div>
 
-        <div class="category-table-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4 card">
+            <!-- Category Header & Filters -->
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="row g-3 align-items-end card_filters_form">
 
-    
-    <div class="row g-3 align-items-center flex-grow-1 ms-xl-3">
+            <!-- Search -->
+            <div class="col">
+                <label class="form-label" for="category-search-input">Search Category</label>
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                    <input type="search"
+                           class="form-control"
+                           id="category-search-input"
+                           placeholder="Search category...">
+                </div>
+            </div>
 
-        <!-- Search Categories -->
-        <div class="col-12 col-md-6 col-xl-3">
-            <input
-                type="search"
-                class="form-control"
-                id="category-search-input"
-                placeholder="Search categories..."
-                aria-label="Search categories"
-            >
+            <!-- Status -->
+            <div class="col">
+                <label class="form-label" for="category-status">Status</label>
+                <select class="form-select" id="category-status">
+                    <option value="">All Status</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+            </div>
+
+            <!-- Category Type -->
+            <div class="col">
+                <label class="form-label" for="category-type">Category Type</label>
+                <select class="form-select" id="category-type">
+                    <option value="">All Categories</option>
+                    <option value="fabric">Fabric</option>
+                    <option value="garment">Garment</option>
+                    <option value="accessories">Accessories</option>
+                    <option value="recycled">Recycled Textiles</option>
+                </select>
+            </div>
+
+            <!-- Start Date -->
+            <div class="col">
+                <label class="form-label" for="category-start-date">Start Date</label>
+                <input type="date"
+                       class="form-control"
+                       id="category-start-date">
+            </div>
+
+            <!-- End Date -->
+            <div class="col">
+                <label class="form-label" for="category-end-date">End Date</label>
+                <input type="date"
+                       class="form-control"
+                       id="category-end-date">
+            </div>
+
+            <!-- Buttons -->
+            <div class="col">
+                <label class="form-label d-none d-xl-block">&nbsp;</label>
+                <div class="d-flex gap-1">
+                    <button type="button"
+                            class="btn btn-success flex-fill"
+                            id="category-filter-btn"
+                            title="Apply Filter">
+                        <i class="fa-solid fa-filter"></i>
+                    </button>
+
+                    <button type="button"
+                            class="btn btn-outline-secondary flex-fill"
+                            id="category-reset-btn"
+                            title="Reset Filter">
+                        <i class="fa-solid fa-rotate-left"></i>
+                    </button>
+                </div>
+            </div>
+
         </div>
-
-        <!-- Status Filter -->
-        <div class="col-12 col-md-6 col-xl-2">
-            <select class="form-select" id="category-status">
-                <option value="">(Status)</option>
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
-            </select>
-        </div>
-
-        <!-- Category Type -->
-        <div class="col-12 col-md-6 col-xl-2">
-            <select class="form-select" id="category-type">
-                <option value="">Category Type</option>
-                <option value="fabric">Fabric</option>
-                <option value="garment">Garment</option>
-                <option value="accessories">Accessories</option>
-                <option value="recycled">Recycled Textiles</option>
-            </select>
-        </div>
-
-        <!-- Start Date -->
-        <div class="col-12 col-md-6 col-xl-2">
-            <input
-                type="date"
-                class="form-control"
-                id="category-start-date"
-                aria-label="Start date"
-            >
-        </div>
-
-        <!-- End Date -->
-        <div class="col-12 col-md-6 col-xl-2">
-            <input
-                type="date"
-                class="form-control"
-                id="category-end-date"
-                aria-label="End date"
-            >
-        </div>
-
-        <!-- Filter Button -->
-        <div class="col-12 col-md-6 col-xl-1">
-            <button
-                type="button"
-                class="btn btn-outline-success w-100"
-                id="category-filter-btn"
-            >
-                Filter
-            </button>
-        </div>
-
     </div>
 </div>
 
@@ -167,10 +178,10 @@
                                 </td>
 
                                 <td>
-                                    <div class="category-actions">
+                                    <div class="category-actions d-flex align-items-center justify-content gap-1 td_actions_btns">
                                         <a
                                             href="{{ route('admin.category.edit', $category->id) }}"
-                                            class="category-action-btn category-edit-btn"
+                                            class="btn btn-outline-warning"
                                             title="Edit category"
                                             aria-label="Edit {{ $category->name }}"
                                         >

@@ -117,7 +117,7 @@
         <div class="row g-3 align-items-end card_filters_form">
 
             <!-- Search Buyers -->
-            <div class="col">
+            <div class="col-md-3">
                 <label for="buyer-search" class="form-label">
                     Search Buyer
                 </label>
@@ -264,7 +264,7 @@
                                 </td>
 
                                 <td>
-                                    <div class="actionBtn d-flex align-items-center justify-content gap-1 td_actions_btns">
+                                    <div class="actionBtn d-flex align-items-center justify-content gap-1 td_actions_btns position-relative">
                                         <a href="{{ route('admin.buyer.show', $user->id) }}"
                                             class="btn btn-sm btn-outline-primary"
                                             aria-label="View buyer {{ $user->name }}"

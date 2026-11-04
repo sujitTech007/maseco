@@ -1,19 +1,13 @@
 @include('admin.Include.header')
 <div class="page-content newsletter-page">
-<div class="page-container p-3">
-    {{-- Page Header --}}
-    <!-- <div class="newsletter-header">
-        <div>
-            <h3>Newsletter List</h3>
+    <div class="page-container">
+        <div class="container">
+             <div>
+                <h1 class="mb-1 dashboard_title">Newsletter Subscribers</h1>
+                <p>View and manage your newsletter subscriber list.</p>
+            </div>   
 
-            <div class="newsletter-breadcrumb">
-                <a href="{{ url('/admin/dashboard') }}">Dashboard</a>
-                <span>›</span>
-                <span class="current">Newsletter List</span>
-            </div>
-        </div>
-    </div> -->
-
+   
     @if(session('success'))
         <div class="newsletter-alert">
             <i class="fa-solid fa-circle-check"></i>
@@ -52,54 +46,7 @@
             </div>
         </div>
         
-           <!-- Newsletter Subscribers Header & Filters -->
-<div class="newsletter-card-header d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 card">
 
-    <div>
-        <h5>Newsletter Subscribers</h5>
-        <p>View and manage your newsletter subscriber list.</p>
-    </div>
-
-    <div class="d-flex flex-wrap align-items-center gap-2">
-
-        <!-- Subscription Status -->
-        <select class="form-select"
-                id="newsletter-status-filter"
-                aria-label="Filter by subscription status"
-                style="width: 165px;">
-            <option value="">All Subscribers</option>
-            <option value="subscribed">Subscribed</option>
-        </select>
-
-        <!-- Start Date -->
-        <input type="date"
-               class="form-control"
-               id="newsletter-start-date"
-               aria-label="Start date"
-               style="width: 155px;">
-
-        <!-- End Date -->
-        <input type="date"
-               class="form-control"
-               id="newsletter-end-date"
-               aria-label="End date"
-               style="width: 155px;">
-
-        <!-- Filter Button -->
-        <button type="button"
-                class="btn btn-outline-success"
-                id="newsletter-filter-btn">
-            <i class="ri-filter-3-line me-1"></i> Filter
-        </button>
-
-        <!-- Subscriber Count -->
-        <span class="newsletter-count">
-            {{ $newsletterCollection->count() }}
-            {{ $newsletterCollection->count() === 1 ? 'subscriber' : 'subscribers' }}
-        </span>
-
-    </div>
-</div>
 
         {{-- Newsletter Table --}}
         <div class="newsletter-card">

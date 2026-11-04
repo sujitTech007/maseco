@@ -1,12 +1,17 @@
 @include('admin.Include.header')
 
 
-<div class="page-content orders-page">
 
-    <!-- Page Header -->
+    <div class="page-content orders-page">
+    
+    <div class="page-container">
+        <div class="container">
+           
+                 <div>
+                    <h1 class="mb-1 dashboard_title">All Orders</h1>
+                    <p class="text-muted mb-0">Manage and track all customer orders.</p>
+                </div>
 
-
-    <div class="page-container p-3">
 
         @php
         $allOrders = collect($orders ?? []);
@@ -25,7 +30,7 @@
 
 
         <!-- Summary -->
-        <div class="orders-summary">
+        <div class="orders-summary mt-3">
 
             <div class="orders-summary-card bg-danger bg-opacity-10">
                 <div class="orders-summary-icon bg-danger bg-opacity-10">
@@ -64,10 +69,10 @@
 
 
 
-            <div class="row g-3 align-items-center flex-grow-1 ms-xl-3">
+            <div class="row g-3 align-items-center card_filters_form w-100">
 
                 <!-- Search Orders -->
-                <div class="col-12 col-md-6 col-xl-3">
+                <div class="col-md-3">
                     <input
                         type="search"
                         class="form-control"
@@ -77,7 +82,7 @@
                 </div>
 
                 <!-- Order Status -->
-                <div class="col-12 col-md-6 col-xl-2">
+                <div class="col">
                     <select class="form-select" id="orders-status-filter" aria-label="Filter by order status">
                         <option value="">All Order Statuses</option>
                         <option value="pending">Pending</option>
@@ -89,7 +94,7 @@
                 </div>
 
                 <!-- Payment Status -->
-                <div class="col-12 col-md-6 col-xl-2">
+                <div class="col">
                     <select class="form-select" id="orders-payment-filter" aria-label="Filter by payment status">
                         <option value="">All Payment Statuses</option>
                         <option value="pending">Pending</option>
@@ -100,7 +105,7 @@
                 </div>
 
                 <!-- Start Date -->
-                <div class="col-12 col-md-6 col-xl-2">
+                <div class="col">
                     <input
                         type="date"
                         class="form-control"
@@ -109,7 +114,7 @@
                 </div>
 
                 <!-- End Date -->
-                <div class="col-12 col-md-6 col-xl-2">
+                <div class="col">
                     <input
                         type="date"
                         class="form-control"
@@ -118,7 +123,7 @@
                 </div>
 
                 <!-- Filter Button -->
-                <div class="col-12 col-md-6 col-xl-1">
+                <div class="col">
                     <button
                         type="button"
                         class="btn btn-outline-success w-100"
